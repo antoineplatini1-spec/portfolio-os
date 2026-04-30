@@ -108,6 +108,20 @@ except Exception:
     pass
 
 st.sidebar.markdown("---")
+
+# ── URL tunnel Cloudflare ──────────────────────────────────────────
+_tunnel_url_file = Path(__file__).parent / "data" / "tunnel_url.txt"
+if _tunnel_url_file.exists():
+    _tunnel_url = _tunnel_url_file.read_text(encoding="utf-8").strip()
+    if _tunnel_url.startswith("http"):
+        st.sidebar.markdown("**🌐 Accès distant**")
+        st.sidebar.markdown(f"[{_tunnel_url}]({_tunnel_url})")
+    else:
+        st.sidebar.caption("🌐 Tunnel en démarrage...")
+else:
+    st.sidebar.caption("🌐 Tunnel non actif")
+
+st.sidebar.markdown("---")
 st.sidebar.caption("v0.1 · paper trading · yfinance")
 
 # ── Rendu de la page sélectionnée ────────────────────────────────
