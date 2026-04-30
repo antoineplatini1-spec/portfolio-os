@@ -1,0 +1,8 @@
+streamlit==1.56.0
+pandas==3.0.2
+pandas-ta==0.4.71b0
+numpy==2.2.6
+yfinance==1.2.1
+plotly==6.7.0
+pyarrow==23.0.1
+apscheduler==3.10.4

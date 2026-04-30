@@ -1,0 +1,39 @@
+# Environnement virtuel
+.venv/
+venv/
+env/
+
+# Cache données yfinance
+data/cache/
+*.parquet
+
+# État du portefeuille (contient des données réelles)
+data/portfolio_state.json
+data/daily_log.txt
+data/streamlit.log
+data/streamlit.log.err
+
+# Résultats backtest
+backtest_result.json
+
+# Streamlit secrets (NE PAS committer)
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scripts locaux Windows
+start_paper_trading.py
+check_scores.py
+run_backtest.py
+add_exclusions_admin.ps1
+setup_scheduler.ps1
+setup_dashboard_task.ps1
+start_dashboard.ps1
