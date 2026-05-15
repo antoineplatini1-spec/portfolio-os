@@ -35,6 +35,8 @@ class Position:
     trailing_stop_price: float = 0.0  # Niveau courant du trailing stop
     qty_remaining: float = 0.0        # Initialisé dans __post_init__
     partial_fills: list[PartialFill] = field(default_factory=list)
+    entry_score: int = 0            # Score signal à l'entrée
+    entry_atr: float = 0.0          # ATR réel à l'entrée (pour trailing stop)
     close_price: float = 0.0
     close_date: str = ""
     fees_out: float = 0.0
@@ -76,6 +78,8 @@ class Position:
             "status": self.status,
             "close_price": self.close_price,
             "close_date": self.close_date,
+            "entry_score": self.entry_score,
+            "entry_atr":   self.entry_atr,
             "fees_out": self.fees_out,
             "tp_levels": [
                 {
@@ -130,6 +134,8 @@ class Position:
             trailing_stop=d.get("trailing_stop", False),
             trailing_stop_price=d.get("trailing_stop_price", d["entry_price"]),
             partial_fills=partial_fills,
+            entry_score=d.get("entry_score", 0),
+            entry_atr=d.get("entry_atr", 0.0),
             close_price=d.get("close_price", 0.0),
             close_date=d.get("close_date", ""),
             fees_out=d.get("fees_out", 0.0),

@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 from config import (
+    ATR_SL_MULTIPLIER,
     BROKER_CONFIG,
     INITIAL_CASH,
     MAX_SECTOR_POSITIONS,
@@ -71,6 +72,7 @@ class PortfolioManager:
             self._save()
 
     def _save(self):
+        """Sauvegarde atomique : écrit dans .tmp puis renomme (évite la corruption)."""
         self.state_file.parent.mkdir(exist_ok=True)
         data = {
             "cash": self.cash,
@@ -82,8 +84,10 @@ class PortfolioManager:
             "positions": {k: v.to_dict() for k, v in self.positions.items()},
             "history": self.history,
         }
-        with open(self.state_file, "w", encoding="utf-8") as f:
+        tmp = self.state_file.with_suffix(".tmp")
+        with open(tmp, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
+        tmp.replace(self.state_file)
 
     # ── Métriques globales ────────────────────────────────────────
 
@@ -117,11 +121,13 @@ class PortfolioManager:
         return datetime.now() < start + timedelta(weeks=RAMP_UP_WEEKS)
 
     def _refresh_weekly_budget(self):
-        """Remet le compteur hebdomadaire à zéro si nouvelle semaine."""
+        """Remet le compteur hebdomadaire à zéro si nouvelle semaine (ancré sur le lundi)."""
         week_start = datetime.strptime(self.week_start, "%Y-%m-%d")
         if datetime.now() >= week_start + timedelta(days=7):
             self.weekly_deployed = 0.0
-            self.week_start = datetime.now().strftime("%Y-%m-%d")
+            today = datetime.now()
+            monday = today - timedelta(days=today.weekday())
+            self.week_start = monday.strftime("%Y-%m-%d")
 
     def available_deploy_cash(self, score: int = 50) -> float:
         """
@@ -180,12 +186,14 @@ class PortfolioManager:
         if not ok:
             return False, reason, None
 
+        # Vérifier le cash AVANT de passer l'ordre au broker
+        estimated_cost = invested + compute_fees(current_price, qty, BROKER_CONFIG)
+        if estimated_cost > self.cash:
+            return False, f"Cash insuffisant ({self.cash:.2f} < {estimated_cost:.2f})", None
+
         order = self.broker.buy(ticker, qty, current_price)
         fees = order["fees"]
         total_cost = order["total"]
-
-        if total_cost > self.cash:
-            return False, f"Cash insuffisant ({self.cash:.2f} < {total_cost:.2f})", None
 
         levels = tp_prices(current_price, atr)
         tp_level_objs = [
@@ -200,6 +208,8 @@ class PortfolioManager:
             sl=sl,
             tp_levels=tp_level_objs,
             fees_in=fees,
+            entry_score=score,
+            entry_atr=atr,
         )
 
         self.positions[ticker] = pos
@@ -242,10 +252,10 @@ class PortfolioManager:
             pos.trailing_stop = True
             pos.trailing_stop_price = pos.entry_price
 
-        # Mise à jour trailing stop
+        # Mise à jour trailing stop avec l'ATR réel d'entrée
         if pos.trailing_stop and price > pos.trailing_stop_price:
-            atr_approx = (price - pos.entry_price) * 0.02  # approximation
-            pos.trailing_stop_price = price - atr_approx
+            atr_ref = pos.entry_atr if pos.entry_atr > 0 else (price * 0.02)
+            pos.trailing_stop_price = price - ATR_SL_MULTIPLIER * atr_ref
 
         if pos.qty_remaining <= 0:
             pos.status = "closed"
@@ -279,13 +289,19 @@ class PortfolioManager:
         pos.close_price = price
         pos.close_date = datetime.now().strftime("%Y-%m-%d")
         pos.fees_out = fees
-        pnl = net_pnl(pos.entry_price, price, pos.qty_total, BROKER_CONFIG)
+        # PnL sur la quantité réellement vendue au close (hors partial fills déjà encaissés)
+        qty_closed = pos.qty_total - sum(f.qty for f in pos.partial_fills)
+        pnl_close = net_pnl(pos.entry_price, price, qty_closed, BROKER_CONFIG)
+        pnl_partials = sum(
+            (f.price - pos.entry_price) * f.qty for f in pos.partial_fills
+        )
+        pnl_total = pnl_close + pnl_partials
         self.history.append({
             "ticker": pos.ticker,
             "entry_price": pos.entry_price,
             "close_price": price,
             "qty": pos.qty_total,
-            "pnl": pnl,
+            "pnl": round(pnl_total, 4),
             "fees_total": pos.fees_in + fees,
             "close_reason": reason,
             "entry_date": pos.entry_date,

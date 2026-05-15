@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: transparent;
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+thead th {
+    background: #192235;
+    color: #445470;
+    padding: 7px 10px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #1e2d45;
+    white-space: nowrap;
+    user-select: none;
+}
+thead th:first-child { text-align: left; }
+
+tbody tr {
+    cursor: pointer;
+    border-bottom: 1px solid #13192a;
+    transition: background 0.1s ease;
+}
+tbody tr:hover   { background: #192235; }
+tbody tr.sel     { background: #1e2d45; outline: 1px solid #2a3d5c; outline-offset:-1px; }
+
+td {
+    padding: 7px 10px;
+    color: #8097b5;
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+td:first-child {
+    text-align: left;
+    color: #d6e0f0;
+    font-weight: 600;
+    font-size: 12.5px;
+}
+td.up   { color: #34d399; font-weight: 600; }
+td.dn   { color: #fb7185; font-weight: 600; }
+td.dim  { color: #445470; }
+td.chk  { color: #2dd4bf; }
+</style>
+</head>
+<body>
+<table>
+  <thead><tr id="hdr"></tr></thead>
+  <tbody id="body"></tbody>
+</table>
+
+<script>
+var currentSelected = null;
+
+function classify(val, isNumeric) {
+    if (!isNumeric) {
+        if (val === "✓") return "chk";
+        if (val === "—") return "dim";
+        return "";
+    }
+    var n = parseFloat(val);
+    if (isNaN(n)) return "";
+    return n >= 0 ? "up" : "dn";
+}
+
+function render(args) {
+    currentSelected = args.selected || null;
+
+    /* header */
+    var hdr = document.getElementById("hdr");
+    hdr.innerHTML = args.headers.map(function(h) {
+        return "<th>" + h + "</th>";
+    }).join("");
+
+    /* rows */
+    var body = document.getElementById("body");
+    body.innerHTML = "";
+    args.rows.forEach(function(row) {
+        var tr = document.createElement("tr");
+        if (row[0] === currentSelected) tr.classList.add("sel");
+        tr.dataset.ticker = row[0];
+
+        row.forEach(function(cell, ci) {
+            var td = document.createElement("td");
+            td.textContent = cell;
+            if (ci > 0) {
+                /* colour numeric / sign columns */
+                var pct = typeof cell === "string" && (cell.startsWith("+") || cell.startsWith("-"));
+                td.className = classify(cell, pct);
+            }
+            tr.appendChild(td);
+        });
+
+        tr.addEventListener("click", function() {
+            document.querySelectorAll("#body tr").forEach(function(r) {
+                r.classList.remove("sel");
+            });
+            tr.classList.add("sel");
+            currentSelected = tr.dataset.ticker;
+            window.parent.postMessage({
+                isStreamlitMessage: true,
+                type: "streamlit:setComponentValue",
+                value: currentSelected,
+                dataType: "json"
+            }, "*");
+        });
+
+        body.appendChild(tr);
+    });
+
+    /* resize iframe */
+    var h = document.documentElement.scrollHeight;
+    window.parent.postMessage({
+        isStreamlitMessage: true,
+        type: "streamlit:setFrameHeight",
+        height: h
+    }, "*");
+}
+
+window.addEventListener("message", function(ev) {
+    if (!ev.data || ev.data.type !== "streamlit:render") return;
+    render(ev.data.args);
+});
+
+window.parent.postMessage({
+    isStreamlitMessage: true,
+    type: "streamlit:componentReady",
+    apiVersion: 1
+}, "*");
+</script>
+</body>
+</html>

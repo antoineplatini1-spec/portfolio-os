@@ -115,7 +115,7 @@ def render(pm: PortfolioManager):
             deploy_cash = pm.available_deploy_cash(score)
             st.metric("Cash déployable", f"{deploy_cash:,.2f} €")
 
-        if st.button(f"Acheter {ticker}", type="primary"):
+        if st.button(f"Acheter {ticker}", key=f"buy_analysis_{ticker}", type="primary"):
             if atr <= 0:
                 st.error("ATR invalide — impossible de calculer le SL.")
             else:

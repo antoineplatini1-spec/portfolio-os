@@ -1,155 +1,222 @@
-"""Page Dashboard : vue globale du portefeuille."""
+"""Dashboard — Vue synthétique du portefeuille."""
 
 import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
-from datetime import datetime
 
-from config import INITIAL_CASH, MAX_TOTAL_EXPOSURE_PCT, RESERVE_CASH_PCT
-from data.fetcher import fetch_ohlcv
+from config import INITIAL_CASH, MAX_TOTAL_EXPOSURE_PCT, WEEKLY_DEPLOY_PCT
 from portfolio.manager import PortfolioManager
-from utils.fees import net_pnl
-
-
-def _get_live_price(ticker: str) -> float | None:
-    try:
-        df = fetch_ohlcv(ticker, period="5d", interval="1d")
-        return float(df["Close"].iloc[-1]) if not df.empty else None
-    except Exception:
-        return None
+from ui.theme import plotly_layout, COLORS as C
 
 
 def render(pm: PortfolioManager):
-    st.title("Dashboard Portefeuille")
+    st.title("Dashboard")
 
-    # ── Rafraîchissement des prix ─────────────────────────────────
-    if st.button("Rafraîchir les prix"):
-        prices = {}
-        for ticker in pm.open_positions:
-            p = _get_live_price(ticker)
-            if p:
-                prices[ticker] = p
-        pm.update_prices(prices)
-        st.success(f"{len(prices)} position(s) mises à jour.")
-        st.rerun()
-
-    # ── KPI row ───────────────────────────────────────────────────
-    total = pm.total_value
+    # ── KPIs ──────────────────────────────────────────────────────────────
+    total    = pm.total_value
     invested = pm.total_invested
-    cash_op = pm.operational_cash
-    reserve = pm.reserve_cash
+    cash_op  = pm.operational_cash
+    reserve  = pm.reserve_cash
+    pnl_real = sum(h["pnl"] for h in pm.history)
+    pnl_pct  = (total / pm.initial_cash - 1) * 100
 
-    col1, col2, col3, col4, col5 = st.columns(5)
-    col1.metric("Valeur totale", f"{total:,.2f} €")
-    col2.metric("Cash opérationnel", f"{cash_op:,.2f} €")
-    col3.metric("Poche réserve", f"{reserve:,.2f} €")
-    col4.metric("Investi", f"{invested:,.2f} €", f"{pm.exposure_pct*100:.1f}%")
-    pnl_total = total - pm.initial_cash
-    col5.metric("PnL total", f"{pnl_total:+,.2f} €",
-                f"{pnl_total/pm.initial_cash*100:+.2f}%",
-                delta_color="normal")
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Valeur totale",   f"{total:,.2f} €",
+              f"{pnl_pct:+.2f}%")
+    c2.metric("Cash disponible", f"{cash_op:,.2f} €")
+    c3.metric("Réserve",         f"{reserve:,.2f} €")
+    c4.metric("Investi",         f"{invested:,.2f} €",
+              f"{pm.exposure_pct * 100:.1f}% expo.")
+    c5.metric("PnL réalisé",     f"{pnl_real:+,.2f} €",
+              delta_color="normal")
 
-    # ── Jauge d'exposition ────────────────────────────────────────
     st.markdown("---")
-    fig_gauge = go.Figure(go.Indicator(
-        mode="gauge+number",
-        value=pm.exposure_pct * 100,
-        title={"text": "Exposition (%)"},
-        gauge={
-            "axis": {"range": [0, 100]},
-            "steps": [
-                {"range": [0, 50], "color": "#263238"},
-                {"range": [50, 80], "color": "#37474f"},
-                {"range": [80, 100], "color": "#b71c1c"},
-            ],
-            "threshold": {
-                "line": {"color": "#ef5350", "width": 3},
-                "thickness": 0.8,
-                "value": MAX_TOTAL_EXPOSURE_PCT * 100,
+
+    col_l, col_r = st.columns(2)
+
+    # ── Jauge d'exposition ────────────────────────────────────────────────
+    with col_l:
+        fig_gauge = go.Figure(go.Indicator(
+            mode="gauge+number",
+            value=pm.exposure_pct * 100,
+            title={"text": "Exposition", "font": {"color": C["text2"], "size": 13}},
+            gauge={
+                "axis": {
+                    "range": [0, 100],
+                    "tickcolor": C["text3"],
+                    "tickfont": {"color": C["text3"], "size": 10},
+                },
+                "steps": [
+                    {"range": [0,  50], "color": C["surf2"]},
+                    {"range": [50, 80], "color": C["surf3"]},
+                    {"range": [80, 100], "color": "rgba(251,113,133,0.18)"},
+                ],
+                "threshold": {
+                    "line": {"color": C["down"], "width": 3},
+                    "thickness": 0.8,
+                    "value": MAX_TOTAL_EXPOSURE_PCT * 100,
+                },
+                "bar": {"color": C["accent"], "thickness": 0.22},
+                "bgcolor": C["surf1"],
+                "borderwidth": 0,
             },
-            "bar": {"color": "#26a69a"},
-        },
-        number={"suffix": "%"},
-    ))
-    fig_gauge.update_layout(height=250, template="plotly_dark", margin=dict(t=40, b=0))
-    st.plotly_chart(fig_gauge, width='stretch')
-
-    # ── Positions ouvertes ────────────────────────────────────────
-    st.subheader("Positions ouvertes")
-    open_pos = pm.open_positions
-    if not open_pos:
-        st.info("Aucune position ouverte.")
-    else:
-        rows = []
-        for ticker, pos in open_pos.items():
-            live = _get_live_price(ticker) or pos.entry_price
-            pnl = (live - pos.entry_price) * pos.qty_remaining
-            pnl_pct = (live - pos.entry_price) / pos.entry_price * 100
-            tp_hit = sum(1 for t in pos.tp_levels if t.hit)
-            rows.append({
-                "Ticker": ticker,
-                "Entrée": f"{pos.entry_price:.4f}",
-                "Prix live": f"{live:.4f}",
-                "PnL €": f"{pnl:+.2f}",
-                "PnL %": f"{pnl_pct:+.2f}%",
-                "Qté restante": f"{pos.qty_remaining:.4f}",
-                "SL": f"{pos.sl:.4f}",
-                "TP atteints": f"{tp_hit}/{len(pos.tp_levels)}",
-                "Statut": pos.status,
-            })
-        st.dataframe(pd.DataFrame(rows), width='stretch', hide_index=True)
-
-        # Fermeture manuelle
-        st.markdown("**Fermeture manuelle**")
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            sel = st.selectbox("Ticker", list(open_pos.keys()))
-        with c2:
-            manual_price = st.number_input("Prix de clôture", value=0.0, min_value=0.0)
-        with c3:
-            st.write("")
-            st.write("")
-            if st.button("Clôturer") and manual_price > 0:
-                pm.manual_close(sel, manual_price)
-                st.success(f"Position {sel} clôturée à {manual_price:.4f}")
-                st.rerun()
-
-    # ── Répartition du portefeuille ───────────────────────────────
-    st.markdown("---")
-    st.subheader("Répartition")
-    labels = list(open_pos.keys()) + ["Cash opérationnel", "Réserve"]
-    values = [p.qty_remaining * p.entry_price for p in open_pos.values()] + [cash_op, reserve]
-    if sum(values) > 0:
-        fig_pie = go.Figure(go.Pie(
-            labels=labels, values=values,
-            hole=0.4,
-            marker=dict(colors=[
-                f"hsl({i*37 % 360}, 70%, 50%)" for i in range(len(labels))
-            ]),
+            number={
+                "suffix": "%",
+                "font": {"color": C["text1"], "size": 28,
+                         "family": "'JetBrains Mono', monospace"},
+            },
         ))
-        fig_pie.update_layout(
-            template="plotly_dark", height=350, showlegend=True,
-            margin=dict(t=20, b=20),
+        fig_gauge.update_layout(
+            **plotly_layout(height=240, margin=dict(t=30, b=10, l=30, r=30)),
         )
-        st.plotly_chart(fig_pie, width='stretch')
+        st.plotly_chart(fig_gauge, width="stretch")
 
-    # ── Allocation progressive ────────────────────────────────────
+        # Phase ramp-up
+        if pm._is_ramp_up_phase():
+            weekly_budget = pm.initial_cash * WEEKLY_DEPLOY_PCT
+            pct_used      = min(1.0, pm.weekly_deployed / weekly_budget) if weekly_budget else 0
+            remaining     = max(0.0, weekly_budget - pm.weekly_deployed)
+            st.progress(pct_used,
+                        text=f"Budget sem. : {pm.weekly_deployed:.0f} / {weekly_budget:.0f} €")
+            st.caption(f"Restant cette semaine : {remaining:.2f} € · depuis {pm.week_start}")
+        else:
+            st.caption("⚡ Phase arbitrage — pas de limite hebdomadaire")
+
+    # ── Allocation pie ────────────────────────────────────────────────────
+    with col_r:
+        open_pos = pm.open_positions
+        labels = list(open_pos.keys()) + ["Cash", "Réserve"]
+        values = [p.qty_remaining * p.entry_price
+                  for p in open_pos.values()] + [cash_op, reserve]
+
+        if sum(values) > 0:
+            n_pos = len(open_pos)
+            palette = [
+                "#2dd4bf", "#60a5fa", "#a78bfa", "#fb7185", "#fbbf24",
+                "#34d399", "#f472b6", "#38bdf8", "#818cf8", "#4ade80",
+            ]
+            colors = (
+                [palette[i % len(palette)] for i in range(n_pos)]
+                + [C["text3"], C["surf4"]]
+            )
+            # Avec beaucoup de positions : légende plutôt que labels
+            use_legend = n_pos >= 5
+            fig_pie = go.Figure(go.Pie(
+                labels=labels,
+                values=values,
+                hole=0.52,
+                marker=dict(
+                    colors=colors,
+                    line=dict(color=C["bg"], width=2),
+                ),
+                textinfo="percent" if use_legend else "label+percent",
+                textfont=dict(
+                    color=C["text1"], size=10,
+                    family="'Inter', sans-serif",
+                ),
+                hovertemplate="<b>%{label}</b><br>%{value:,.2f} €<br>%{percent}<extra></extra>",
+                insidetextorientation="radial",
+                showlegend=use_legend,
+            ))
+            legend_cfg = dict(
+                bgcolor="rgba(0,0,0,0)",
+                font=dict(color=C["text2"], size=10, family="'Inter',sans-serif"),
+                orientation="v",
+                x=1.02, y=0.5,
+                xanchor="left", yanchor="middle",
+            ) if use_legend else dict(bgcolor="rgba(0,0,0,0)")
+            fig_pie.update_layout(
+                **plotly_layout(height=300, title="Répartition",
+                                margin=dict(t=40, b=10, l=10, r=120 if use_legend else 10),
+                                showlegend=use_legend,
+                                legend=legend_cfg),
+                annotations=[dict(
+                    text=f"<b>{len(open_pos)}</b><br><span style='font-size:10px'>positions</span>",
+                    x=0.38 if use_legend else 0.5, y=0.5,
+                    font=dict(color=C["text1"], size=16,
+                              family="'JetBrains Mono', monospace"),
+                    showarrow=False,
+                )],
+            )
+            st.plotly_chart(fig_pie, width="stretch")
+
+    # ── Courbe de capital ─────────────────────────────────────────────────
+    if pm.history:
+        st.markdown("---")
+        df = pd.DataFrame(pm.history).sort_values("close_date").copy()
+        df["cum_pnl"] = df["pnl"].cumsum()
+        df["capital"] = pm.initial_cash + df["cum_pnl"]
+        above = df["capital"] >= pm.initial_cash
+
+        fig_eq = go.Figure()
+
+        # Zone above baseline
+        fig_eq.add_trace(go.Scatter(
+            x=df["close_date"], y=df["capital"],
+            mode="lines",
+            line=dict(color=C["up"], width=0),
+            fill="tonexty",
+            fillcolor=C["up_bg"],
+            showlegend=False,
+            hoverinfo="skip",
+        ))
+        # Baseline
+        fig_eq.add_trace(go.Scatter(
+            x=df["close_date"],
+            y=[pm.initial_cash] * len(df),
+            mode="lines",
+            line=dict(color=C["border2"], width=0),
+            showlegend=False,
+            hoverinfo="skip",
+        ))
+        # Main line
+        fig_eq.add_trace(go.Scatter(
+            x=df["close_date"], y=df["capital"],
+            mode="lines+markers",
+            name="Capital",
+            line=dict(color=C["accent"], width=2),
+            marker=dict(
+                size=6, color=C["accent"],
+                line=dict(color=C["bg"], width=2),
+            ),
+            hovertemplate="<b>%{x}</b><br>%{y:,.2f} €<extra></extra>",
+        ))
+        fig_eq.add_hline(
+            y=pm.initial_cash,
+            line=dict(color=C["text3"], dash="dash", width=1),
+            annotation_text=f"Capital initial {pm.initial_cash:,.0f} €",
+            annotation_font_color=C["text3"],
+            annotation_font_size=11,
+            annotation_position="bottom right",
+        )
+        fig_eq.update_layout(
+            **plotly_layout(height=260, title="Courbe de capital"),
+            showlegend=False,
+        )
+        st.plotly_chart(fig_eq, width="stretch")
+
+    # ── Résumé bas de page ────────────────────────────────────────────────
     st.markdown("---")
-    st.subheader("Allocation progressive (mois 1)")
-    if pm._is_ramp_up_phase():
-        from config import WEEKLY_DEPLOY_PCT
-        weekly_budget = pm.initial_cash * WEEKLY_DEPLOY_PCT
-        remaining = max(0, weekly_budget - pm.weekly_deployed)
-        pct_used = min(100, pm.weekly_deployed / weekly_budget * 100) if weekly_budget else 0
-        st.progress(pct_used / 100, text=f"Budget semaine : {pm.weekly_deployed:.2f} / {weekly_budget:.2f} € déployés")
-        st.caption(f"Restant cette semaine : {remaining:.2f} € | Semaine démarrée le {pm.week_start}")
-    else:
-        st.info("Phase d'arbitrage active — pas de limite hebdomadaire.")
+    open_count    = len(pm.open_positions)
+    partial_count = sum(1 for p in pm.open_positions.values() if p.status == "partial")
+    closed_count  = len(pm.history)
+    wins          = sum(1 for h in pm.history if h["pnl"] > 0)
+    win_rate      = wins / closed_count * 100 if closed_count else 0
 
-    # ── Réinitialisation ──────────────────────────────────────────
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Positions ouvertes", open_count)
+    c2.metric("Dont partielles",    partial_count)
+    c3.metric("Trades fermés",      closed_count)
+    c4.metric("Win rate",           f"{win_rate:.0f}%" if closed_count else "—")
+    c5.metric("Depuis",             pm.start_date)
+
+    # ── Paramètres avancés ────────────────────────────────────────────────
+    st.markdown("---")
     with st.expander("⚙ Paramètres avancés"):
-        new_capital = st.number_input("Capital initial (€)", value=pm.initial_cash, min_value=100.0)
-        if st.button("Réinitialiser le portefeuille (paper)"):
+        new_capital = st.number_input(
+            "Capital initial (€)", value=pm.initial_cash, min_value=100.0
+        )
+        if st.button("Réinitialiser le portefeuille", key="btn_reset_portfolio", type="primary"):
             pm.reset(new_capital)
             st.success("Portefeuille réinitialisé.")
             st.rerun()

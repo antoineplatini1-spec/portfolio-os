@@ -1,6 +1,7 @@
 """Scan multi-actifs et ranking des opportunités d'achat."""
 
 import pandas as pd
+from concurrent.futures import ThreadPoolExecutor
 
 from config import DEFAULT_WATCHLIST
 from data.fetcher import fetch_ohlcv
@@ -24,26 +25,31 @@ def scan_ticker(ticker: str, period: str = "6mo") -> dict:
         sl = sl_price(price, atr) if atr else price * 0.95
         tps = tp_prices(price, atr) if atr else []
         tp1_price = tps[0]["price"] if tps else price
+        # R-ratio calculé sur TP3 (cible finale) — avec SL=1.5×ATR et TP3=3×ATR → R=2.0
+        tp_final_price = tps[-1]["price"] if tps else tp1_price
         be = break_even_price(price, 1, None)
-        r = r_ratio(price, tp1_price, sl)
+        r = r_ratio(price, tp_final_price, sl)
 
         # Variation sur la période
         first_close = df["Close"].iloc[0]
         perf_pct = (price - first_close) / first_close * 100 if first_close else 0
 
         return {
-            "ticker": ticker,
-            "score": result["score"],
-            "signal": result["signal"],
-            "price": round(price, 4),
-            "atr": round(atr, 4),
-            "sl": round(sl, 4),
-            "tp1": round(tp1_price, 4),
+            "ticker":     ticker,
+            "score":      result["score"],
+            "bull_score": result.get("bull_score", result["score"]),
+            "bear_score": result.get("bear_score", 0),
+            "bear_flags": result.get("bear_flags", []),
+            "signal":     result["signal"],
+            "price":      round(price, 4),
+            "atr":        round(atr, 4),
+            "sl":         round(sl, 4),
+            "tp1":        round(tp1_price, 4),
             "break_even": round(be, 4),
-            "r_ratio": round(r, 2),
-            "perf_pct": round(perf_pct, 2),
-            "details": result["details"],
-            "error": None,
+            "r_ratio":    round(r, 2),
+            "perf_pct":   round(perf_pct, 2),
+            "details":    result["details"],
+            "error":      None,
         }
     except Exception as e:
         return {"ticker": ticker, "error": str(e), "score": 0, "signal": False}
@@ -61,7 +67,8 @@ def run_screener(
     if tickers is None:
         tickers = DEFAULT_WATCHLIST
 
-    rows = [scan_ticker(t, period) for t in tickers]
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        rows = list(ex.map(lambda t: scan_ticker(t, period), tickers))
     df = pd.DataFrame(rows)
     if df.empty:
         return df

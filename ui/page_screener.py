@@ -26,7 +26,7 @@ def render(pm: PortfolioManager):
         extra = [t.strip().upper() for t in custom.split(",") if t.strip()]
         tickers = list(dict.fromkeys(extra + tickers))
 
-    if st.button("Lancer le screener", type="primary"):
+    if st.button("Lancer le screener", key="btn_run_screener", type="primary"):
         with st.spinner(f"Analyse de {len(tickers)} actifs…"):
             df = run_screener(tickers, period=period, min_score=min_score)
         st.session_state["screener_result"] = df
@@ -101,7 +101,7 @@ def render(pm: PortfolioManager):
     else:
         deploy_cash = pm.available_deploy_cash(int(row["score"]))
         st.caption(f"Cash déployable : {deploy_cash:,.2f} €")
-        if st.button(f"Acheter {sel}", type="primary"):
+        if st.button(f"Acheter {sel}", key=f"buy_screener_{sel}", type="primary"):
             ok, msg, pos = pm.open_position(
                 sel, float(row["price"]), float(row["atr"]), int(row["score"])
             )

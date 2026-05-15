@@ -24,15 +24,16 @@ MAX_TOTAL_EXPOSURE_PCT = 0.85     # Exposition totale max (hors réserve)
 
 # ── Risque par trade ──────────────────────────────────────────────
 RISK_PER_TRADE_PCT = 0.01         # 1% du portefeuille risqué par trade
-ATR_SL_MULTIPLIER = 1.5           # SL = entry - ATR * multiplier
+ATR_SL_MULTIPLIER = 2.0           # SL plus large pour laisser vivre les positions
 MAX_LOSS_PCT = 0.08               # Perte max absolue par position (8% du prix d'entrée)
-MIN_R_RATIO = 0.5                 # R-ratio minimum TP1/SL — avec SL 1.5×ATR et TP1 1×ATR = 0.67
+MIN_R_RATIO = 1.5                 # R-ratio minimum sur TP3 (cible finale) — avec SL=1.5×ATR et TP3=3×ATR → R=2.0
+MAX_TRADES_PER_DAY = 2              # Max positions ouvertes par jour
 
 # ── Paliers TP par défaut ─────────────────────────────────────────
 TP_LEVELS = [
-    {"atr_mult": 1.0, "sell_pct": 0.30},   # TP1 : +1 ATR, vendre 30%
-    {"atr_mult": 2.0, "sell_pct": 0.30},   # TP2 : +2 ATR, vendre 30%
-    {"atr_mult": 3.0, "sell_pct": 0.40},   # TP3 : +3 ATR, vendre 40%
+    {"atr_mult": 1.5, "sell_pct": 0.25},   # TP1 : +1.5 ATR, vendre 25%
+    {"atr_mult": 3.0, "sell_pct": 0.35},   # TP2 : +3 ATR, vendre 35%
+    {"atr_mult": 5.0, "sell_pct": 0.40},   # TP3 : +5 ATR, laisser courir
 ]
 TRAILING_STOP_AFTER_TP1 = True    # Activer trailing stop à Entry après TP1
 

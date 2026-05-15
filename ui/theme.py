@@ -1,176 +1,548 @@
 """
-Thème clair — fond blanc chaud, couleurs reposantes, contraste élevé.
-Palette : blanc ivoire · ardoise · sauge profond · bleu doux
+Thème Abyss Finance — dark navy · teal · soft contrasts.
+Exporte : inject(), plotly_layout(), COLORS
 """
 
-CYBERPUNK_CSS = """
-<style>
-/* ── Google Fonts ─────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&display=swap');
+import streamlit as st
 
-/* ── Variables ────────────────────────────────────────────────── */
-:root {
-    --bg-base:      #faf9f6;
-    --bg-surface:   #f2f0eb;
-    --bg-raised:    #ffffff;
-    --border:       #dedad2;
-    --border-dark:  #c8c3b8;
-
-    --sage:         #3d7a65;
-    --sage-light:   #3d7a6512;
-    --sage-mid:     #3d7a6525;
-    --blue:         #3d5fa0;
-    --blue-light:   #3d5fa010;
-
-    --red:          #b84040;
-    --red-light:    #b8404010;
-    --green:        #2e7a52;
-    --green-light:  #2e7a5210;
-    --amber:        #8a6420;
-
-    --text:         #1e1c18;
-    --text-mid:     #4a4740;
-    --text-muted:   #8a8780;
+# ── Palette ────────────────────────────────────────────────────────────────
+COLORS = {
+    # Backgrounds
+    "bg":       "#0d1117",
+    "surf1":    "#13192a",
+    "surf2":    "#192235",
+    "surf3":    "#1e2a40",
+    "surf4":    "#263652",
+    # Borders
+    "border":   "#1e2d45",
+    "border2":  "#2a3d5c",
+    # Text
+    "text1":    "#d6e0f0",
+    "text2":    "#8097b5",
+    "text3":    "#445470",
+    # Accent — teal
+    "accent":   "#2dd4bf",
+    "accent2":  "#14b8a6",
+    # Finance colors
+    "up":       "#34d399",
+    "up_bg":    "rgba(52,211,153,0.10)",
+    "down":     "#fb7185",
+    "down_bg":  "rgba(251,113,133,0.10)",
+    "amber":    "#fbbf24",
+    "purple":   "#a78bfa",
+    "blue":     "#60a5fa",
 }
 
-/* ── Base ─────────────────────────────────────────────────────── */
-html, body,
+C = COLORS   # alias court
+
+
+# ── Plotly layout helper ───────────────────────────────────────────────────
+def plotly_layout(height: int = 300, title: str = "", **overrides) -> dict:
+    """
+    Retourne un dict de layout Plotly cohérent avec le thème.
+    Usage : fig.update_layout(**plotly_layout(height=280, title="Mon graphe"))
+    """
+    base: dict = dict(
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor=C["surf1"],
+        font=dict(
+            family="'Inter', 'DM Sans', system-ui, sans-serif",
+            color=C["text2"],
+            size=12,
+        ),
+        xaxis=dict(
+            gridcolor=C["border"],
+            zerolinecolor=C["border"],
+            linecolor=C["border"],
+            tickfont=dict(color=C["text3"], size=11),
+            showspikes=True, spikecolor=C["border2"],
+            spikethickness=1, spikedash="dot",
+        ),
+        yaxis=dict(
+            gridcolor=C["border"],
+            zerolinecolor=C["border"],
+            linecolor=C["border"],
+            tickfont=dict(color=C["text3"], size=11),
+        ),
+        hoverlabel=dict(
+            bgcolor=C["surf3"],
+            font_color=C["text1"],
+            bordercolor=C["border2"],
+            font_size=12,
+            font_family="'Inter', 'DM Sans', sans-serif",
+        ),
+        legend=dict(
+            bgcolor="rgba(0,0,0,0)",
+            font=dict(color=C["text2"], size=11),
+            bordercolor=C["border"],
+            borderwidth=1,
+        ),
+        margin=dict(t=50 if title else 20, b=30, l=10, r=10),
+        height=height,
+        template="plotly_dark",
+    )
+    if title:
+        base["title"] = dict(
+            text=title,
+            font=dict(
+                color=C["text1"], size=13,
+                family="'Inter', 'DM Sans', sans-serif",
+            ),
+            x=0, xanchor="left", pad=dict(l=0),
+        )
+    # Deep merge overrides
+    for k, v in overrides.items():
+        if isinstance(v, dict) and k in base and isinstance(base[k], dict):
+            base[k] = {**base[k], **v}
+        else:
+            base[k] = v
+    return base
+
+
+# ── CSS ────────────────────────────────────────────────────────────────────
+_CSS = """
+<style>
+
+/* ══════════════════════════════════════════════════════
+   FONTS
+══════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ══════════════════════════════════════════════════════
+   ROOT VARIABLES
+══════════════════════════════════════════════════════ */
+:root {
+    --bg:       #0d1117;
+    --surf1:    #13192a;
+    --surf2:    #192235;
+    --surf3:    #1e2a40;
+    --surf4:    #263652;
+    --border:   #1e2d45;
+    --border2:  #2a3d5c;
+
+    --text1:    #d6e0f0;
+    --text2:    #8097b5;
+    --text3:    #445470;
+
+    --accent:   #2dd4bf;
+    --accent2:  #14b8a6;
+
+    --up:       #34d399;
+    --up-bg:    rgba(52,211,153,0.10);
+    --down:     #fb7185;
+    --down-bg:  rgba(251,113,133,0.10);
+    --amber:    #fbbf24;
+
+    --radius:    12px;
+    --radius-sm: 8px;
+    --radius-xs: 5px;
+    --font:     'Inter', 'DM Sans', system-ui, sans-serif;
+    --mono:     'JetBrains Mono', 'DM Mono', monospace;
+
+    --shadow:   0 4px 24px rgba(0,0,0,0.35);
+    --shadow-sm:0 2px 8px  rgba(0,0,0,0.25);
+}
+
+/* ══════════════════════════════════════════════════════
+   GLOBAL BASE
+══════════════════════════════════════════════════════ */
+html, body {
+    background: var(--bg) !important;
+    font-family: var(--font) !important;
+    color: var(--text1) !important;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
 [data-testid="stAppViewContainer"],
 [data-testid="stApp"],
-[data-testid="stMain"] > div,
-[data-testid="block-container"] {
-    background-color: var(--bg-base) !important;
-    font-family: 'DM Sans', sans-serif !important;
-    color: var(--text) !important;
+[data-testid="stMain"],
+[data-testid="stMain"] > div {
+    background: var(--bg) !important;
 }
 
-/* ── Sidebar ──────────────────────────────────────────────────── */
+.block-container,
+[data-testid="block-container"] {
+    background: var(--bg) !important;
+    padding-top: 2rem !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    max-width: 1480px !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════════════════════ */
 [data-testid="stSidebar"] {
-    background-color: var(--bg-surface) !important;
+    background: var(--surf1) !important;
     border-right: 1px solid var(--border) !important;
 }
 
 [data-testid="stSidebar"] * {
-    font-family: 'DM Sans', sans-serif !important;
+    font-family: var(--font) !important;
 }
 
-/* ── Titres ───────────────────────────────────────────────────── */
-h1 {
-    font-family: 'DM Serif Display', serif !important;
-    font-weight: 400 !important;
-    font-size: 1.9rem !important;
-    color: var(--text) !important;
+/* Nav section label */
+[data-testid="stSidebar"] .stMarkdown p {
+    color: var(--text3) !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+}
+
+/* Radio nav items */
+[data-testid="stSidebar"] [data-testid="stRadio"] > div {
+    gap: 2px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label {
+    border-radius: var(--radius-sm) !important;
+    padding: 0.55rem 0.85rem !important;
+    transition: all 0.15s ease !important;
+    color: var(--text2) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    border: 1px solid transparent !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+    background: var(--surf3) !important;
+    color: var(--text1) !important;
+    border-color: var(--border) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
+    background: rgba(45,212,191,0.12) !important;
+    color: var(--accent) !important;
+    border-color: rgba(45,212,191,0.25) !important;
+    font-weight: 600 !important;
+}
+
+/* Hide radio input circles */
+[data-testid="stSidebar"] [data-testid="stRadio"] input[type="radio"] {
+    display: none !important;
+}
+
+/* Sidebar metrics */
+[data-testid="stSidebar"] [data-testid="stMetric"] {
+    background: transparent !important;
+    border: none !important;
     border-bottom: 1px solid var(--border) !important;
-    padding-bottom: 0.6rem !important;
-    margin-bottom: 1.5rem !important;
-    letter-spacing: -0.01em !important;
+    border-radius: 0 !important;
+    padding: 0.6rem 0 !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stMetricLabel"] > div {
+    color: var(--text3) !important;
+    font-size: 0.65rem !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stMetricValue"] {
+    color: var(--text1) !important;
+    font-size: 1rem !important;
+    font-family: var(--mono) !important;
+}
+
+/* Sidebar button */
+[data-testid="stSidebar"] .stButton > button {
+    width: 100% !important;
+    background: var(--surf2) !important;
+    border-color: var(--border) !important;
+    color: var(--text2) !important;
+    font-size: 0.8rem !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: var(--surf3) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+}
+
+[data-testid="stSidebar"] hr {
+    border-color: var(--border) !important;
+    margin: 0.75rem 0 !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p {
+    color: var(--text3) !important;
+    font-size: 0.7rem !important;
+    font-family: var(--mono) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════════════════════ */
+h1 {
+    font-family: var(--font) !important;
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.03em !important;
+    color: var(--text1) !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 1px solid var(--border) !important;
+    margin-bottom: 1.75rem !important;
 }
 
 h2 {
-    font-family: 'DM Sans', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 0.72rem !important;
-    letter-spacing: 0.1em !important;
-    color: var(--text-muted) !important;
+    font-family: var(--font) !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
     text-transform: uppercase !important;
-    margin-bottom: 0.8rem !important;
+    color: var(--text3) !important;
+    margin-bottom: 0.75rem !important;
 }
 
 h3 {
-    font-family: 'DM Sans', sans-serif !important;
-    font-weight: 500 !important;
+    font-family: var(--font) !important;
     font-size: 0.95rem !important;
-    color: var(--sage) !important;
+    font-weight: 600 !important;
+    color: var(--text1) !important;
+    letter-spacing: -0.01em !important;
 }
 
-p, li, span, div {
-    color: var(--text) !important;
+p, li {
+    color: var(--text2) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
 }
 
-/* ── Métriques ────────────────────────────────────────────────── */
+strong, b {
+    color: var(--text1) !important;
+    font-weight: 600 !important;
+}
+
+hr {
+    border: none !important;
+    border-top: 1px solid var(--border) !important;
+    margin: 1.5rem 0 !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   METRIC CARDS
+══════════════════════════════════════════════════════ */
 [data-testid="stMetric"] {
-    background-color: var(--bg-raised) !important;
+    background: var(--surf1) !important;
     border: 1px solid var(--border) !important;
-    border-radius: 8px !important;
-    padding: 1rem 1.2rem !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+    border-radius: var(--radius) !important;
+    padding: 1rem 1.25rem !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+[data-testid="stMetric"]::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+[data-testid="stMetric"]:hover {
+    border-color: var(--border2) !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4) !important;
+}
+
+[data-testid="stMetric"]:hover::before {
+    opacity: 1;
 }
 
 [data-testid="stMetricLabel"] > div {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 0.68rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.1em !important;
+    font-size: 0.65rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
     text-transform: uppercase !important;
-    color: var(--text-muted) !important;
+    color: var(--text3) !important;
+    font-family: var(--font) !important;
 }
 
 [data-testid="stMetricValue"] {
-    font-family: 'DM Mono', monospace !important;
-    font-size: 1.35rem !important;
-    font-weight: 500 !important;
-    color: var(--text) !important;
+    font-size: 1.45rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    color: var(--text1) !important;
+    font-family: var(--mono) !important;
+    line-height: 1.2 !important;
 }
 
 [data-testid="stMetricDelta"] svg { display: none !important; }
 
 [data-testid="stMetricDelta"] > div {
-    font-family: 'DM Mono', monospace !important;
     font-size: 0.78rem !important;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
+    font-family: var(--mono) !important;
 }
 
-/* ── Boutons ──────────────────────────────────────────────────── */
-[data-testid="stButton"] > button {
-    background-color: var(--bg-raised) !important;
-    border: 1px solid var(--border-dark) !important;
-    color: var(--text-mid) !important;
-    font-family: 'DM Sans', sans-serif !important;
+/* ══════════════════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════════════════ */
+.stButton > button {
+    background: var(--surf2) !important;
+    color: var(--text2) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font) !important;
     font-weight: 500 !important;
-    letter-spacing: 0.02em !important;
-    border-radius: 6px !important;
-    padding: 0.45rem 1.1rem !important;
+    font-size: 0.85rem !important;
+    padding: 0.45rem 1rem !important;
+    letter-spacing: 0.01em !important;
     transition: all 0.15s ease !important;
-    font-size: 0.87rem !important;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.06) !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
 }
 
-[data-testid="stButton"] > button:hover {
-    border-color: var(--sage) !important;
-    color: var(--sage) !important;
-    background-color: var(--sage-light) !important;
-    box-shadow: 0 1px 4px rgba(61,122,101,0.15) !important;
+.stButton > button:hover {
+    background: var(--surf3) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+    box-shadow: 0 0 0 1px rgba(45,212,191,0.15) !important;
 }
 
-[data-testid="stButton"] > button[kind="primary"] {
-    background-color: var(--sage) !important;
-    border-color: var(--sage) !important;
-    color: #ffffff !important;
-    box-shadow: 0 2px 6px rgba(61,122,101,0.25) !important;
+.stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+    color: var(--bg) !important;
+    border-color: transparent !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 12px rgba(45,212,191,0.3) !important;
 }
 
-[data-testid="stButton"] > button[kind="primary"]:hover {
-    background-color: #2e6352 !important;
-    box-shadow: 0 3px 10px rgba(61,122,101,0.3) !important;
+.stButton > button[kind="primary"]:hover {
+    box-shadow: 0 4px 20px rgba(45,212,191,0.4) !important;
+    transform: translateY(-1px) !important;
 }
 
-/* ── Inputs ───────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════
+   TABS
+══════════════════════════════════════════════════════ */
+.stTabs [data-baseweb="tab-list"] {
+    background: var(--surf1) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 4px !important;
+    gap: 3px !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent !important;
+    border-radius: var(--radius-xs) !important;
+    color: var(--text3) !important;
+    font-family: var(--font) !important;
+    font-weight: 500 !important;
+    font-size: 0.85rem !important;
+    padding: 0.4rem 1.1rem !important;
+    border: 1px solid transparent !important;
+    transition: all 0.15s ease !important;
+    letter-spacing: 0.01em !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: var(--text2) !important;
+    background: var(--surf2) !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background: var(--surf3) !important;
+    color: var(--text1) !important;
+    border-color: var(--border2) !important;
+    font-weight: 600 !important;
+}
+
+.stTabs [data-baseweb="tab-highlight"],
+.stTabs [data-baseweb="tab-border"] {
+    display: none !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   EXPANDERS
+══════════════════════════════════════════════════════ */
+[data-testid="stExpander"] {
+    background: var(--surf1) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    margin-bottom: 0.5rem !important;
+    box-shadow: var(--shadow-sm) !important;
+    overflow: hidden !important;
+    transition: border-color 0.2s !important;
+}
+
+[data-testid="stExpander"]:hover {
+    border-color: var(--border2) !important;
+}
+
+[data-testid="stExpander"] summary {
+    color: var(--text1) !important;
+    font-family: var(--font) !important;
+    font-weight: 500 !important;
+    font-size: 0.9rem !important;
+    padding: 0.85rem 1.1rem !important;
+    transition: background 0.15s !important;
+    border-radius: var(--radius) !important;
+}
+
+[data-testid="stExpander"] summary:hover {
+    background: var(--surf2) !important;
+}
+
+[data-testid="stExpander"] summary svg {
+    color: var(--text3) !important;
+}
+
+[data-testid="stExpander"] > div > div {
+    background: var(--surf1) !important;
+    padding: 0.5rem 1rem 1rem !important;
+    border-top: 1px solid var(--border) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   DATAFRAMES
+══════════════════════════════════════════════════════ */
+[data-testid="stDataFrame"] {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* iframe inside dataframe */
+[data-testid="stDataFrame"] iframe {
+    border-radius: var(--radius) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   INPUTS
+══════════════════════════════════════════════════════ */
 [data-testid="stTextInput"] input,
 [data-testid="stNumberInput"] input,
 [data-testid="stDateInput"] input {
-    background-color: var(--bg-raised) !important;
-    border: 1px solid var(--border-dark) !important;
-    color: var(--text) !important;
-    font-family: 'DM Mono', monospace !important;
-    font-size: 0.87rem !important;
-    border-radius: 6px !important;
+    background: var(--surf2) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text1) !important;
+    font-family: var(--mono) !important;
+    font-size: 0.88rem !important;
+    padding: 0.45rem 0.75rem !important;
+    transition: border-color 0.15s, box-shadow 0.15s !important;
 }
 
 [data-testid="stTextInput"] input:focus,
 [data-testid="stNumberInput"] input:focus {
-    border-color: var(--sage) !important;
-    box-shadow: 0 0 0 2px var(--sage-mid) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px rgba(45,212,191,0.15) !important;
     outline: none !important;
+    background: var(--surf3) !important;
 }
 
 [data-testid="stTextInput"] label,
@@ -179,180 +551,244 @@ p, li, span, div {
 [data-testid="stSelectbox"] label,
 [data-testid="stMultiSelect"] label,
 [data-testid="stSlider"] label {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 0.78rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.06em !important;
+    font-family: var(--font) !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
-    color: var(--text-muted) !important;
+    color: var(--text3) !important;
 }
 
-/* Select */
+/* Selectbox / Multiselect */
 [data-baseweb="select"] > div {
-    background-color: var(--bg-raised) !important;
-    border-color: var(--border-dark) !important;
-    border-radius: 6px !important;
-    color: var(--text) !important;
-    font-family: 'DM Sans', sans-serif !important;
+    background: var(--surf2) !important;
+    border-color: var(--border2) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text1) !important;
+    font-family: var(--font) !important;
+    transition: border-color 0.15s !important;
 }
 
-/* Slider track */
-[data-baseweb="slider"] [data-testid="stSlider"] div[role="slider"] {
-    background-color: var(--sage) !important;
+[data-baseweb="select"] > div:focus-within {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px rgba(45,212,191,0.15) !important;
 }
 
-/* ── Dataframes ───────────────────────────────────────────────── */
-[data-testid="stDataFrame"] {
-    border: 1px solid var(--border) !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+/* Dropdown menu */
+[data-baseweb="popover"] {
+    background: var(--surf3) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: var(--radius-sm) !important;
+    box-shadow: var(--shadow) !important;
 }
 
-/* ── Alertes ──────────────────────────────────────────────────── */
-[data-testid="stAlert"] {
-    border-radius: 6px !important;
-    border-left-width: 3px !important;
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 0.88rem !important;
-    font-weight: 400 !important;
+[data-baseweb="menu"] {
+    background: var(--surf3) !important;
 }
 
-/* info */
-[data-testid="stAlert"][data-baseweb="notification"][kind="info"] {
-    background-color: var(--blue-light) !important;
-    border-left-color: var(--blue) !important;
+[role="option"]:hover {
+    background: var(--surf4) !important;
 }
 
-/* success */
-[data-testid="stAlert"][data-baseweb="notification"][kind="success"] {
-    background-color: var(--green-light) !important;
-    border-left-color: var(--green) !important;
-}
-
-/* warning */
-[data-testid="stAlert"][data-baseweb="notification"][kind="warning"] {
-    background-color: #8a642010 !important;
-    border-left-color: var(--amber) !important;
-}
-
-/* error */
-[data-testid="stAlert"][data-baseweb="notification"][kind="error"] {
-    background-color: var(--red-light) !important;
-    border-left-color: var(--red) !important;
-}
-
-/* ── Expanders ────────────────────────────────────────────────── */
-[data-testid="stExpander"] {
-    background-color: var(--bg-raised) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 8px !important;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03) !important;
-}
-
-[data-testid="stExpander"] summary {
-    font-family: 'DM Sans', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 0.75rem !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    color: var(--text-muted) !important;
-}
-
-/* ── Progress bars ────────────────────────────────────────────── */
-[data-testid="stProgress"] > div > div {
-    background-color: var(--border) !important;
-    border-radius: 3px !important;
-}
-
-[data-testid="stProgress"] > div > div > div {
-    background-color: var(--sage) !important;
-    border-radius: 3px !important;
-}
-
-/* ── Radio ────────────────────────────────────────────────────── */
-[data-testid="stRadio"] label {
-    font-family: 'DM Sans', sans-serif !important;
-    font-weight: 500 !important;
-    font-size: 0.85rem !important;
-    color: var(--text-mid) !important;
-}
-
-[data-testid="stRadio"] label:has(input:checked) {
-    color: var(--sage) !important;
-    font-weight: 600 !important;
-}
-
-/* ── Checkbox ────────────────────────────────────────────────── */
-[data-testid="stCheckbox"] label {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 0.87rem !important;
-    color: var(--text-mid) !important;
-}
-
-/* ── Séparateurs ─────────────────────────────────────────────── */
-hr {
-    border: none !important;
-    border-top: 1px solid var(--border) !important;
-    margin: 1.5rem 0 !important;
-}
-
-/* ── Caption ─────────────────────────────────────────────────── */
-[data-testid="stCaptionContainer"],
-[data-testid="stCaptionContainer"] p {
-    font-family: 'DM Mono', monospace !important;
-    font-size: 0.72rem !important;
-    color: var(--text-muted) !important;
-}
-
-/* ── Multiselect tags ────────────────────────────────────────── */
+/* Tag (multiselect badge) */
 [data-baseweb="tag"] {
-    background-color: var(--sage-light) !important;
-    border: 1px solid var(--sage) !important;
+    background: rgba(45,212,191,0.12) !important;
+    border: 1px solid rgba(45,212,191,0.25) !important;
     border-radius: 4px !important;
-    font-family: 'DM Mono', monospace !important;
-    font-size: 0.74rem !important;
-    color: var(--sage) !important;
+    font-family: var(--mono) !important;
+    font-size: 0.75rem !important;
+    color: var(--accent) !important;
 }
 
-/* ── Markdown texte ──────────────────────────────────────────── */
-[data-testid="stMarkdownContainer"] p,
-[data-testid="stMarkdownContainer"] li {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 0.9rem !important;
-    line-height: 1.65 !important;
-    color: var(--text-mid) !important;
+/* ══════════════════════════════════════════════════════
+   PROGRESS BAR
+══════════════════════════════════════════════════════ */
+[data-testid="stProgress"] {
+    margin: 0.5rem 0 !important;
 }
 
-/* ── Scrollbar ───────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; height: 4px; }
-::-webkit-scrollbar-track { background: var(--bg-surface); }
-::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: var(--sage); }
-
-/* ── Header ──────────────────────────────────────────────────── */
-[data-testid="stHeader"] {
-    background-color: var(--bg-base) !important;
-    border-bottom: 1px solid var(--border) !important;
+[data-testid="stProgress"] > div {
+    background: var(--surf3) !important;
+    border-radius: 999px !important;
+    height: 6px !important;
+    border: 1px solid var(--border) !important;
+    overflow: hidden !important;
 }
 
-/* ── Sidebar métriques ───────────────────────────────────────── */
-[data-testid="stSidebar"] [data-testid="stMetric"] {
-    background: transparent !important;
+[data-testid="stProgress"] > div > div {
+    background: linear-gradient(90deg, var(--accent2), var(--accent)) !important;
+    border-radius: 999px !important;
+    height: 100% !important;
+    box-shadow: 0 0 8px rgba(45,212,191,0.4) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   ALERTS
+══════════════════════════════════════════════════════ */
+[data-testid="stAlert"] {
+    border-radius: var(--radius-sm) !important;
     border: none !important;
-    border-bottom: 1px solid var(--border) !important;
-    border-radius: 0 !important;
-    padding: 0.65rem 0 !important;
-    box-shadow: none !important;
+    font-family: var(--font) !important;
+    font-size: 0.875rem !important;
+    padding: 0.75rem 1rem !important;
 }
 
-[data-testid="stSidebar"] [data-testid="stMetricValue"] {
-    color: var(--text) !important;
+/* Success */
+.stSuccess, [data-baseweb="notification"][kind="positive"] {
+    background: var(--up-bg) !important;
+    border: 1px solid rgba(52,211,153,0.2) !important;
+    color: var(--up) !important;
 }
+
+/* Error */
+.stError, [data-baseweb="notification"][kind="negative"] {
+    background: var(--down-bg) !important;
+    border: 1px solid rgba(251,113,133,0.2) !important;
+    color: var(--down) !important;
+}
+
+/* Info */
+.stInfo, [data-baseweb="notification"][kind="info"] {
+    background: rgba(45,212,191,0.07) !important;
+    border: 1px solid rgba(45,212,191,0.18) !important;
+    color: var(--text2) !important;
+}
+
+/* Warning */
+.stWarning, [data-baseweb="notification"][kind="warning"] {
+    background: rgba(251,191,36,0.07) !important;
+    border: 1px solid rgba(251,191,36,0.2) !important;
+    color: var(--amber) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   PLOTLY CHART CONTAINER
+══════════════════════════════════════════════════════ */
+[data-testid="stPlotlyChart"] {
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   CAPTION / SMALL TEXT
+══════════════════════════════════════════════════════ */
+[data-testid="stCaptionContainer"] p,
+.stCaption p {
+    font-family: var(--mono) !important;
+    font-size: 0.72rem !important;
+    color: var(--text3) !important;
+    line-height: 1.5 !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   MARKDOWN
+══════════════════════════════════════════════════════ */
+[data-testid="stMarkdownContainer"] p {
+    font-family: var(--font) !important;
+    color: var(--text2) !important;
+    font-size: 0.9rem !important;
+}
+
+[data-testid="stMarkdownContainer"] a {
+    color: var(--accent) !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(45,212,191,0.3) !important;
+    transition: border-color 0.15s !important;
+}
+
+[data-testid="stMarkdownContainer"] a:hover {
+    border-color: var(--accent) !important;
+}
+
+/* Code inline */
+code {
+    background: var(--surf3) !important;
+    color: var(--accent) !important;
+    border-radius: 3px !important;
+    padding: 0.1em 0.35em !important;
+    font-family: var(--mono) !important;
+    font-size: 0.82em !important;
+    border: 1px solid var(--border2) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   RADIO (global)
+══════════════════════════════════════════════════════ */
+[data-testid="stRadio"] label {
+    font-family: var(--font) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: var(--text2) !important;
+    cursor: pointer !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   CHECKBOX
+══════════════════════════════════════════════════════ */
+[data-testid="stCheckbox"] label {
+    font-family: var(--font) !important;
+    font-size: 0.875rem !important;
+    color: var(--text2) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   NUMBER INPUT ARROWS
+══════════════════════════════════════════════════════ */
+[data-testid="stNumberInput"] button {
+    background: var(--surf3) !important;
+    border-color: var(--border2) !important;
+    color: var(--text2) !important;
+}
+
+[data-testid="stNumberInput"] button:hover {
+    background: var(--surf4) !important;
+    color: var(--accent) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surf4); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* ══════════════════════════════════════════════════════
+   HEADER / FOOTER (hide Streamlit chrome)
+══════════════════════════════════════════════════════ */
+[data-testid="stHeader"]  { display: none !important; }
+[data-testid="stToolbar"] { display: none !important; }
+[data-testid="stDecoration"] { display: none !important; }
+footer                    { display: none !important; }
+#MainMenu                 { display: none !important; }
+
+/* Remove top padding now that header is gone */
+.block-container { padding-top: 1rem !important; }
+
+/* ══════════════════════════════════════════════════════
+   TOOLTIP
+══════════════════════════════════════════════════════ */
+[data-baseweb="tooltip"] {
+    background: var(--surf3) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: var(--radius-xs) !important;
+    font-family: var(--font) !important;
+    font-size: 0.8rem !important;
+    color: var(--text1) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   SPINNER
+══════════════════════════════════════════════════════ */
+[data-testid="stSpinner"] {
+    color: var(--accent) !important;
+}
+
 </style>
 """
 
 
 def inject() -> None:
-    import streamlit as st
-    st.markdown(CYBERPUNK_CSS, unsafe_allow_html=True)
+    st.markdown(_CSS, unsafe_allow_html=True)

@@ -42,6 +42,7 @@ class BtPosition:
     trailing_price: float = 0.0
     qty_remaining: float = 0.0
     fees_in: float = 0.0
+    entry_atr: float = 0.0   # ATR réel à l'entrée pour trailing stop
 
     def __post_init__(self):
         if self.qty_remaining == 0.0:
@@ -83,6 +84,32 @@ class DaySnapshot:
     n_positions: int
     exposure_pct: float
     daily_pnl: float
+
+
+# ── Mock PortfolioManager pour le débat backtest ─────────────────
+
+class _BacktestPM:
+    """
+    Mock PortfolioManager pour le débat multi-agents en mode backtest.
+    Expose la même interface que PortfolioManager sans toucher au vrai état.
+    """
+    def __init__(self, engine: "BacktestEngine", day: date):
+        self._engine = engine
+        self._day = day
+        self.initial_cash = engine.initial_cash
+
+    @property
+    def open_positions(self) -> dict:
+        return self._engine.positions
+
+    @property
+    def exposure_pct(self) -> float:
+        total = self._engine._portfolio_value(self._day)
+        invested = self._engine._strategy_value(self._day)
+        return invested / total if total > 0 else 0.0
+
+    def available_deploy_cash(self, score: int = 50) -> float:
+        return self._engine._available_cash(score, self._day)
 
 
 # ── Moteur principal ──────────────────────────────────────────────
@@ -131,6 +158,9 @@ class BacktestEngine:
 
         # Cache des DataFrames historiques (chargé une seule fois)
         self._data: dict[str, pd.DataFrame] = {}
+        self._indicators_cache: dict[str, pd.DataFrame] = {}  # indicateurs pré-calculés
+        self._macro_ctx = None          # contexte macro courant (mis à jour chaque lundi)
+        self._macro_last_date = None    # date du dernier refresh macro
         self._trading_days: list[date] = []
 
     # ── Chargement des données ─────────────────────────────────────
@@ -193,6 +223,8 @@ class BacktestEngine:
 
         # Précalcule le calendrier DCA
         self._build_dca_schedule()
+        # Pré-calcul des indicateurs (une seule fois par ticker)
+        self._precompute_indicators()
         return errors
 
     def _build_dca_schedule(self):
@@ -220,6 +252,74 @@ class BacktestEngine:
                         seen_weeks.add(week)
                 self._dca_schedule[alloc.ticker] = weekly
 
+    def _precompute_indicators(self):
+        """
+        Pré-calcule compute_all() une fois par ticker sur l'historique complet.
+        Les indicateurs étant causaux (rolling), les valeurs à chaque date D
+        sont identiques à celles obtenues en calculant sur données ≤ D.
+        Gain : O(n_tickers) au lieu de O(n_tickers × n_days).
+        """
+        for ticker, df in self._data.items():
+            try:
+                self._indicators_cache[ticker] = compute_all(df.copy())
+            except Exception:
+                self._indicators_cache[ticker] = df.copy()
+
+    def _get_spy_regime(self, day: date) -> str:
+        """
+        Retourne 'bear' si SPY est sous son EMA200, 'bull' sinon.
+        Utilisé pour ajuster le débat selon le régime de marché global.
+        """
+        df = self._indicators_cache.get("SPY")
+        if df is None:
+            df = self._data.get("SPY")
+        if df is None:
+            return "neutral"
+        hist = df[df.index.date <= day]
+        if hist.empty or "EMA200" not in hist.columns:
+            return "neutral"
+        ema200 = hist["EMA200"].dropna()
+        if ema200.empty:
+            return "neutral"
+        close = float(hist["Close"].iloc[-1])
+        return "bear" if close < float(ema200.iloc[-1]) else "bull"
+
+    def _refresh_macro(self, day: date):
+        """
+        Met à jour le contexte macro chaque lundi (ou premier jour de la semaine).
+        Utilise les données pré-chargées pour éviter les téléchargements en backtest.
+        """
+        from signals.macro_agent import MacroAgent
+        from datetime import datetime
+
+        # Refresh seulement le lundi (weekday=0) ou si jamais initialisé
+        if self._macro_last_date is not None:
+            # Même semaine ISO → pas de refresh
+            if day.isocalendar()[:2] == self._macro_last_date.isocalendar()[:2]:
+                return
+
+        self._macro_last_date = day
+
+        # Passer les données pré-chargées pour éviter les appels yfinance
+        # On donne accès aux ETF de secteur + SPY + VIX si disponibles
+        data_override = {
+            ticker: df[df.index <= pd.Timestamp(day)]
+            for ticker, df in self._data.items()
+        }
+        # ^VIX n'est pas dans le watchlist en général → on l'ignore si absent
+        try:
+            self._macro_ctx = MacroAgent().analyze(
+                as_of_date=datetime.combine(day, datetime.min.time()),
+                data_override=data_override,
+            )
+            self.log.append(f"{day} MACRO: {self._macro_ctx.regime} "
+                            f"spy={self._macro_ctx.spy_vs_ema200_pct:+.1f}% "
+                            f"max_trades={self._macro_ctx.max_trades_per_day} "
+                            f"min_net={self._macro_ctx.min_net_score} "
+                            f"allowed={self._macro_ctx.allowed_sectors}")
+        except Exception as e:
+            self.log.append(f"{day} MACRO ERROR: {e}")
+
     # ── Boucle principale ──────────────────────────────────────────
 
     def run(self, progress_cb=None) -> None:
@@ -228,6 +328,7 @@ class BacktestEngine:
             if progress_cb:
                 progress_cb(i, n, day)
             self._refresh_weekly_budget(day)
+            self._refresh_macro(day)              # ← nouveau
             self._process_fixed_allocations(day)   # Allocations fixes en premier
             self._update_positions(day)             # TP/SL stratégie
             self._open_signals(day)                 # Nouveaux achats stratégie
@@ -394,8 +495,8 @@ class BacktestEngine:
             row = df[df.index.date == day]
             if not row.empty:
                 close = float(row["Close"].iloc[0])
-                atr_approx = pos.entry_price * 0.015
-                new_ts = close - atr_approx
+                atr_ref = pos.entry_atr if pos.entry_atr > 0 else pos.entry_price * 0.02
+                new_ts = close - ATR_SL_MULTIPLIER * atr_ref
                 if new_ts > pos.trailing_price:
                     pos.trailing_price = new_ts
 
@@ -424,36 +525,99 @@ class BacktestEngine:
     # ── Ouverture de positions ─────────────────────────────────────
 
     def _open_signals(self, day: date):
+        from signals.agent_debate import run_debate
+        from portfolio.risk import r_ratio as calc_r_ratio, tp_prices as calc_tp_prices
+
+        market_regime = self._get_spy_regime(day)
+
+        # Paramètres dynamiques depuis l'agent macro
+        macro = self._macro_ctx
+        max_trades_day   = macro.max_trades_per_day if macro else 3
+        min_net_override = macro.min_net_score      if macro else 10
+        allowed_sectors  = macro.allowed_sectors    if macro else None
+
         candidates = []
-        for ticker in self._data:
+
+        for ticker, df_ind in self._indicators_cache.items():
             if ticker in self.positions:
                 continue
-            df = self._data[ticker]
-            # Historique jusqu'à la veille incluse (pas de lookahead)
-            hist = df[df.index.date < day]
+            # Données jusqu'à la veille (pas de lookahead)
+            hist = df_ind[df_ind.index.date < day]
             if len(hist) < 50:
                 continue
-            hist = compute_all(hist)
             result = compute_score(hist)
-            if result["score"] < self.min_score:
+            score = result["score"]
+            if score < self.min_score:
                 continue
-            # Prix d'exécution = Open du jour courant
-            today_row = df[df.index.date == day]
+            # Prix = Open du jour courant
+            raw_df = self._data.get(ticker)
+            if raw_df is None:
+                continue
+            today_row = raw_df[raw_df.index.date == day]
             if today_row.empty:
                 continue
             exec_price = float(today_row["Open"].iloc[0])
-            atr = result.get("atr") or 0
+            atr = result.get("atr") or 0.0
             if atr <= 0:
                 continue
-            candidates.append((result["score"], ticker, exec_price, atr))
+
+            sl = exec_price - ATR_SL_MULTIPLIER * atr
+            tps = calc_tp_prices(exec_price, atr)
+            tp_final = tps[-1]["price"] if tps else exec_price
+            r = calc_r_ratio(exec_price, tp_final, sl)
+
+            candidates.append({
+                "ticker":      ticker,
+                "score":       score,
+                "bull_score":  result.get("bull_score", score),
+                "bear_score":  result.get("bear_score", 0),
+                "bear_flags":  result.get("bear_flags", []),
+                "details":     result.get("details", {}),
+                "price":       exec_price,
+                "atr":         atr,
+                "r_ratio":     r,
+                "market_regime": market_regime,
+            })
 
         self.signals_per_day[day] = len(candidates)
+        candidates.sort(key=lambda x: -x["score"])
 
-        # Trier par score décroissant
-        candidates.sort(reverse=True)
+        mock_pm = _BacktestPM(engine=self, day=day)
 
-        for score, ticker, price, atr in candidates:
-            self._try_buy(ticker, price, atr, score, day)
+        trades_opened_today = 0
+        for cand in candidates:
+            if trades_opened_today >= max_trades_day:
+                break
+
+            # Filtre sectoriel macro
+            if allowed_sectors is not None:
+                from config import SECTOR_MAP as _SM
+                if _SM.get(cand["ticker"], "Other") not in allowed_sectors:
+                    continue
+
+            cand["min_net_score"] = min_net_override
+
+            debate = run_debate(cand["ticker"], cand, mock_pm)
+            if not debate.buy:
+                self.log.append(
+                    f"{day} DEBATE-SKIP {cand['ticker']} "
+                    f"[{debate.decision}] net={debate.net_score:+.0f}"
+                )
+                continue
+            self.log.append(
+                f"{day} DEBATE-OK {cand['ticker']} "
+                f"[{debate.decision}] conv={debate.bull.score} concern={debate.bear.score} net={debate.net_score:+.0f}"
+            )
+            pos_before = cand["ticker"] in self.positions
+            self._try_buy(
+                ticker=cand["ticker"],
+                price=cand["price"],
+                atr=cand["atr"],
+                score=cand["score"],
+                day=day,
+            )
+            if not pos_before and cand["ticker"] in self.positions:
+                trades_opened_today += 1
 
     def _try_buy(self, ticker: str, price: float, atr: float, score: int, day: date):
         # Sizing
@@ -474,10 +638,10 @@ class BacktestEngine:
         if risk_per_share <= 0:
             return
 
-        # Filtre R-ratio : TP1 doit valoir au moins MIN_R_RATIO × le risque
-        tp1 = price + TP_LEVELS[0]["atr_mult"] * atr
-        r_ratio = (tp1 - price) / risk_per_share
-        if r_ratio < MIN_R_RATIO:
+        # R-ratio calculé sur TP3 (cible finale) — cohérent avec le screener live
+        tp3 = price + TP_LEVELS[-1]["atr_mult"] * atr
+        r_ratio_val = (tp3 - price) / risk_per_share if risk_per_share > 0 else 0
+        if r_ratio_val < MIN_R_RATIO:
             return
 
         qty_by_risk = (total * RISK_PER_TRADE_PCT) / risk_per_share
@@ -526,6 +690,7 @@ class BacktestEngine:
             tp_prices=tp_prices_list,
             tp_sell_pcts=tp_sell_pcts,
             fees_in=fees,
+            entry_atr=atr,
         )
         self.positions[ticker] = pos
         self.cash -= total_cost
@@ -632,6 +797,40 @@ class BacktestEngine:
         daily_ret = equity["daily_pnl"] / prev
         sharpe = float(daily_ret.mean() / daily_ret.std() * np.sqrt(252)) if daily_ret.std() > 0 else 0.0
 
+        # ── Rendement annualisé ───────────────────────────────────────────
+        n_days = len(equity)
+        if n_days > 0 and total_pnl_pct > -100:
+            ann_return = ((1 + total_pnl_pct / 100) ** (252 / n_days) - 1) * 100
+        else:
+            ann_return = 0.0
+
+        # ── Volatilité annualisée ─────────────────────────────────────────
+        volatility = float(daily_ret.std() * np.sqrt(252) * 100) if daily_ret.std() > 0 else 0.0
+
+        # ── Calmar = rendement annualisé / |max drawdown| ─────────────────
+        calmar = (ann_return / abs(max_dd)) if max_dd != 0 else 0.0
+
+        # ── Durée moyenne de détention ────────────────────────────────────
+        if self.trades:
+            holding_days = [
+                (t.exit_date - t.entry_date).days
+                for t in self.trades
+            ]
+            avg_holding_days = float(np.mean(holding_days))
+        else:
+            avg_holding_days = 0.0
+
+        # ── Rendements mensuels ───────────────────────────────────────────
+        equity["day_dt"] = pd.to_datetime(equity["day"])
+        equity["month"] = equity["day_dt"].dt.to_period("M")
+        monthly_groups = equity.groupby("month")["portfolio_value"].agg(["first", "last"])
+        monthly_rets = {}
+        for period, row_m in monthly_groups.iterrows():
+            if row_m["first"] > 0:
+                monthly_rets[str(period)] = round(
+                    (row_m["last"] - row_m["first"]) / row_m["first"] * 100, 2
+                )
+
         return {
             # ── Portefeuille total (cohérent) ─────────────────────────
             "final_value":     final_value,
@@ -652,4 +851,10 @@ class BacktestEngine:
             # ── Risque ───────────────────────────────────────────────
             "max_drawdown_pct": max_dd,
             "sharpe":           sharpe,
+            # ── Métriques avancées ────────────────────────────────────
+            "annualized_return": round(ann_return, 2),
+            "volatility":        round(volatility, 2),
+            "calmar":            round(calmar, 2),
+            "avg_holding_days":  round(avg_holding_days, 1),
+            "monthly_returns":   monthly_rets,
         }

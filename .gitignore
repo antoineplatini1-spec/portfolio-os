@@ -7,11 +7,18 @@ env/
 data/cache/
 *.parquet
 
-# État du portefeuille (contient des données réelles)
-data/portfolio_state.json
-data/daily_log.txt
+# Secrets — NE PAS committer
+data/email_config.json
+data/newsletter_cache.json
+
+# Logs locaux (chaque machine a les siens)
 data/streamlit.log
 data/streamlit.log.err
+data/cron.log
+
+# État du portefeuille — TRACKÉ pour la sync Oracle Cloud ↔ local
+# data/portfolio_state.json  ← décommenté intentionnellement
+# data/daily_log.txt         ← idem
 
 # Résultats backtest
 backtest_result.json

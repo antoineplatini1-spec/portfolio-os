@@ -41,7 +41,7 @@ def render(_pm=None):
         with rc3:
             st.write("")
             st.write("")
-            if st.button("Générer aléatoirement"):
+            if st.button("Générer aléatoirement", key="btn_backtest_random"):
                 rng = random.Random()
                 # Exclure ETF macro/volatilité, prendre actions diversifiées
                 universe = [t for t in DEFAULT_WATCHLIST
@@ -106,7 +106,7 @@ def render(_pm=None):
             default=DEFAULT_WATCHLIST[:40],
         )
 
-    if st.button("Lancer le backtest", type="primary"):
+    if st.button("Lancer le backtest", key="btn_run_backtest", type="primary"):
         if not selected:
             st.error("Sélectionne au moins un ticker.")
             return
@@ -242,6 +242,11 @@ def render(_pm=None):
     col9.metric("Gain moyen", f"{stats['avg_win']:+.2f} €")
     col10.metric("Frais totaux", f"{stats['total_fees']:.2f} €")
 
+    col_ann, col_vol, col_calmar, col_hold = st.columns(4)
+    col_ann.metric("Rend. annualisé", f"{stats.get('annualized_return', 0):+.1f}%")
+    col_vol.metric("Volatilité", f"{stats.get('volatility', 0):.1f}%")
+    col_calmar.metric("Calmar", f"{stats.get('calmar', 0):.2f}")
+    col_hold.metric("Durée moy.", f"{stats.get('avg_holding_days', 0):.0f}j")
 
     # ── Courbe de capital ─────────────────────────────────────────
     eq_df = pd.DataFrame([s.__dict__ for s in engine.equity_curve])
@@ -330,6 +335,28 @@ def render(_pm=None):
         yaxis=dict(ticksuffix="%"),
     )
     st.plotly_chart(fig_dd, width='stretch')
+
+    # ── Rendements mensuels ───────────────────────────────────────
+    monthly = stats.get("monthly_returns", {})
+    if monthly:
+        st.subheader("Rendements mensuels (%)")
+        monthly_df = pd.DataFrame(
+            list(monthly.items()), columns=["Mois", "Rendement (%)"]
+        ).set_index("Mois")
+
+        fig_m = go.Figure(go.Bar(
+            x=list(monthly.keys()),
+            y=list(monthly.values()),
+            marker_color=["#26a69a" if v >= 0 else "#ef5350" for v in monthly.values()],
+            text=[f"{v:+.1f}%" for v in monthly.values()],
+            textposition="outside",
+        ))
+        fig_m.update_layout(
+            template="plotly_dark", height=280,
+            margin=dict(t=20, b=40),
+            yaxis=dict(ticksuffix="%"),
+        )
+        st.plotly_chart(fig_m, width="stretch")
 
     # ── Tableau des trades ────────────────────────────────────────
     st.subheader(f"Trades ({stats['total_trades']})")
