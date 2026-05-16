@@ -16,7 +16,7 @@ from datetime import datetime, date
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from utils.near_miss import save_near_miss, load_recent_near_misses, purge_old_entries
+from utils.near_miss import save_near_miss, purge_old_entries
 
 BASE = os.path.dirname(__file__)
 sys.path.insert(0, BASE)
@@ -377,21 +377,17 @@ def run():
         sltp_cash=sltp_cash_delta,
         pm=pm,
         available=available,
-        near_misses=load_recent_near_misses(_data_dir),
     )
 
 
 def _send_daily_email(
     today, market_ctx, score_max, score_med, n_candidates,
     opened_positions, closed_today, sltp_cash, pm, available,
-    near_misses=None,
 ):
     """Construit et envoie le recap journalier par email."""
     from portfolio.manager import PortfolioManager
 
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
-    near_misses = near_misses or []
-
     # ── Section A — Nouvelles positions ouvertes (enrichi bull/bear) ─────────
     if opened_positions:
         def _pos_card(o: dict) -> str:
@@ -437,44 +433,8 @@ def _send_daily_email(
             f"<p style='color:#8097b5;margin:0'>{raison}</p>"
         )
 
-    # ── Section B — Valeurs à surveiller (near-misses 14j) ───────────────────
-    _reason_fr = {
-        "veto_secteur": "Véto secteur",
-        "budget":       "Budget épuisé",
-        "score_limite": "Score limite",
-        "score_bas":    "Score pré-filtre bas",
-    }
-    if near_misses:
-        top_nm = near_misses[:10]
-        def _nm_row(nm: dict) -> str:
-            net_col = "#34d399" if nm["net_score"] >= 0 else "#fb7185"
-            return (
-                f"<tr>"
-                f"<td style='padding:5px 12px;font-weight:700;color:#d6e0f0'>{nm['ticker']}</td>"
-                f"<td style='padding:5px 12px;color:#8097b5;font-size:12px'>{nm['date']}</td>"
-                f"<td style='padding:5px 12px;color:#fbbf24;font-size:12px'>"
-                f"{_reason_fr.get(nm['reason'], nm['reason'])}</td>"
-                f"<td style='padding:5px 12px;color:{net_col}'>{nm['net_score']:+.0f}</td>"
-                f"<td style='padding:5px 12px;color:#8097b5;font-size:12px'>{nm['sector']}</td>"
-                f"</tr>"
-            )
-        nm_rows = "".join(_nm_row(nm) for nm in top_nm)
-        watchlist_section = f"""
-        <h3 style='color:#8097b5;margin:24px 0 8px'>&#x1F50D; Valeurs a surveiller (14j)</h3>
-        <table style='width:100%;border-collapse:collapse;background:#0d1420;border-radius:8px;overflow:hidden'>
-            <thead>
-                <tr style='background:#192235'>
-                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TICKER</th>
-                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>DATE</th>
-                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>RAISON</th>
-                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>NET</th>
-                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>SECTEUR</th>
-                </tr>
-            </thead>
-            <tbody>{nm_rows}</tbody>
-        </table>"""
-    else:
-        watchlist_section = ""
+    # Near-misses trackés en interne mais non affichés dans l'email
+    watchlist_section = ""
 
     # Bloc fermetures
     closed_html = ""
