@@ -9,10 +9,16 @@ Pour chaque signal haussier, un contre-argument baissier est évalué.
 
 import pandas as pd
 
-from config import ADX_TREND_THRESHOLD, BUY_SIGNAL_MIN_SCORE
+from config import ADX_TREND_THRESHOLD, BUY_SIGNAL_MIN_SCORE, SECTOR_MAP
+
+# Ensemble des tickers pour lesquels le volume n'est pas un signal de conviction
+# (ETFs + ETPs macro : liquidité via marché primaire, pas secondaire)
+_ETF_TICKERS: set[str] = {
+    t for t, s in SECTOR_MAP.items() if s in ("ETF", "Macro")
+}
 
 
-def compute_score(df: pd.DataFrame) -> dict:
+def compute_score(df: pd.DataFrame, ticker: str | None = None) -> dict:
     """
     Calcule un score d'achat 0-100 sur la dernière bougie disponible.
     Retourne un dict avec le score total, bull/bear séparés, et les flags baissiers.
@@ -49,11 +55,13 @@ def compute_score(df: pd.DataFrame) -> dict:
             pts = 15
         elif rsi < 40:
             pts = 10
+        elif rsi < 55:          # zone momentum bull (40-55) : légèrement positif
+            pts = 4
         elif rsi > 70:
             pts = 0
             bear_pts += 8
             bear_flags.append(f"RSI suracheté ({rsi:.0f})")
-        else:
+        else:                   # 55-70 : neutre
             pts = 0
         details["RSI"] = {"value": round(rsi, 1), "pts": pts}
         bull_pts += pts
@@ -165,8 +173,8 @@ def compute_score(df: pd.DataFrame) -> dict:
             pts = -20
         elif close > ema200 * 1.02:
             pts = 10
-        else:
-            pts = 0
+        else:                   # 0-2% au-dessus : structure haussière naissante
+            pts = 4
         details["EMA200"] = {"value": round(ema200, 4), "pts": pts}
         bull_pts += pts
 
@@ -203,18 +211,23 @@ def compute_score(df: pd.DataFrame) -> dict:
             pts = -5
         elif mom10 > 5:
             pts = 8   # rebond confirmé = signal positif
+        elif mom10 > 2:
+            pts = 3   # tendance haussière modérée (+2% à +5%) = signal positif faible
         else:
             pts = 0
         details["Momentum10j"] = {"value": round(mom10, 1), "pts": pts}
         bull_pts += pts
 
     # ── Bear 4 : Volume faible = signal sans conviction ───────────
+    # Pour les ETFs, le volume secondaire ne reflète pas la conviction réelle
+    # (les flux passent par le mécanisme de création/rachat en nature) → pas de pénalité
+    is_etf = ticker is not None and ticker.upper() in _ETF_TICKERS
     vol = row.get("Volume")
     if pd.notna(vol) and vol_avg_20 and vol_avg_20 > 0:
         vol_ratio = float(vol) / float(vol_avg_20)
         if vol_ratio > 1.5:
             pts = 8   # volume fort = conviction haussière
-        elif vol_ratio < 0.7:
+        elif vol_ratio < 0.7 and not is_etf:
             pts = -5
             bear_pts += 5
             bear_flags.append(f"Volume faible ({vol_ratio:.1f}× moyenne)")

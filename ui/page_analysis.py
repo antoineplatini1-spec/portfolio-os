@@ -41,7 +41,7 @@ def render(pm: PortfolioManager):
         return
 
     df = compute_all(df)
-    result = compute_score(df)
+    result = compute_score(df, ticker=ticker)
     position = pm.positions.get(ticker)
 
     # ── Graphique ─────────────────────────────────────────────────

@@ -68,7 +68,7 @@ DEFAULT_WATCHLIST = [
 
     # ── Finance ───────────────────────────────────────────────────
     "JPM", "BAC", "WFC", "GS", "MS", "C", "BLK", "SCHW",
-    "V", "MA", "PYPL", "SQ", "AXP", "COF",
+    "V", "MA", "PYPL", "AXP", "COF",
 
     # ── Santé / Biotech ───────────────────────────────────────────
     "UNH", "JNJ", "LLY", "ABBV", "MRK", "PFE", "TMO", "ABT",
@@ -88,7 +88,7 @@ DEFAULT_WATCHLIST = [
     "CAT", "DE", "BA", "HON", "GE", "RTX", "LMT", "NOC", "UPS", "FDX",
 
     # ── Télécoms / Médias ─────────────────────────────────────────
-    "T", "VZ", "TMUS", "NFLX", "DIS", "CMCSA", "PARA",
+    "T", "VZ", "TMUS", "NFLX", "DIS", "CMCSA",
 
     # ── Immobilier (REITs) ────────────────────────────────────────
     "AMT", "PLD", "EQIX", "SPG", "O", "VICI",

@@ -545,7 +545,7 @@ class BacktestEngine:
             hist = df_ind[df_ind.index.date < day]
             if len(hist) < 50:
                 continue
-            result = compute_score(hist)
+            result = compute_score(hist, ticker=ticker)
             score = result["score"]
             if score < self.min_score:
                 continue

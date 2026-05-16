@@ -213,7 +213,7 @@ def render(_pm=None):
                 from indicators import compute_all
                 from signals.scoring import compute_score
                 try:
-                    r = compute_score(compute_all(hist))
+                    r = compute_score(compute_all(hist), ticker=ticker)
                     scores_debug.append({"Ticker": ticker, "Score": r["score"]})
                 except Exception:
                     pass

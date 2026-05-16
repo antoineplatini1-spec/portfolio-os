@@ -16,6 +16,7 @@ from datetime import datetime, date
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from utils.near_miss import save_near_miss, load_recent_near_misses, purge_old_entries
 
 BASE = os.path.dirname(__file__)
 sys.path.insert(0, BASE)
@@ -103,6 +104,9 @@ def run():
     for line in macro_ctx.format_log():
         log(line)
 
+    # Purger les near-misses anciens en début de session
+    purge_old_entries(_data_dir)
+
     # Variables recap email
     opened_positions_log: list[dict] = []
     closed_today: list[str] = []
@@ -174,13 +178,14 @@ def run():
     score_med = int(df_screen["score"].median())
     log(f"Scores : max={score_max}  mediane={score_med}  ({len(df_screen)} tickers)")
 
-    # Seuil issu de l'agent macro (régime marché + VIX)
-    min_score  = macro_ctx.min_net_score + 40   # min_net_score ~10-30 → min_score 50-70
+    # Seuil pré-filtre screener (le débat multi-agents est le vrai filtre)
+    # BULL: min_net=10 → min_score=40 | NEUTRAL: 20→50 | BEAR: 30→60
+    min_score  = macro_ctx.min_net_score + 30
     max_opens  = macro_ctx.max_trades_per_day
     market_ctx = macro_ctx.regime
 
-    # Garde-fou : si le meilleur score du jour est trop bas, on ne trade pas
-    if score_max < 45:
+    # Garde-fou : si le meilleur score du jour est vraiment trop bas, on ne trade pas
+    if score_max < 35:
         log(f"Qualite signaux insuffisante (max={score_max}) - pas de nouveaux achats.")
         min_score = 999
         max_opens = 0
@@ -205,6 +210,26 @@ def run():
             f"(secteurs auth. : {', '.join(macro_ctx.allowed_sectors)})")
 
     log(f"{len(candidates)} candidats pre-filtres (score>={min_score}, R>={MIN_R_RATIO*0.8:.1f})")
+
+    # Near-miss screener : tickers qui frôlent le seuil pré-filtre (score_bas)
+    if min_score < 999:
+        near_screen = df_screen[
+            (df_screen["score"] >= min_score - 10) &
+            (df_screen["score"] < min_score)
+        ]
+        for _, ns_row in near_screen.iterrows():
+            ns_ticker = ns_row["ticker"]
+            if ns_ticker not in pm.open_positions:
+                save_near_miss(
+                    ticker     = ns_ticker,
+                    net_score  = float(ns_row["score"]) - min_score,
+                    reason     = "score_bas",
+                    bull_score = int(ns_row.get("bull_score", ns_row["score"])),
+                    bear_score = int(ns_row.get("bear_score", 0)),
+                    price      = float(ns_row["price"]),
+                    sector     = SECTOR_MAP.get(ns_ticker, "Other"),
+                    data_dir   = _data_dir,
+                )
 
     # ── 3. Débat multi-agents + ouverture de positions ────────────
     available = pm.available_deploy_cash()
@@ -252,11 +277,48 @@ def run():
             # Véto sectoriel (hors débat — règle portefeuille hard)
             if sectors_used.get(sector, 0) >= 2:
                 log(f"  [VETO secteur] {ticker} : {sector} deja a {sectors_used[sector]} positions")
+                if debate.buy:
+                    save_near_miss(
+                        ticker     = ticker,
+                        net_score  = debate.net_score,
+                        reason     = "veto_secteur",
+                        bull_score = debate.bull.score,
+                        bear_score = debate.bear.score,
+                        price      = price,
+                        sector     = sector,
+                        data_dir   = _data_dir,
+                    )
                 continue
 
             # L'arbitre a tranché
             if not debate.buy:
+                # Near-miss score_limite : PASSER mais tout proche du seuil
+                if debate.net_score >= -5:
+                    save_near_miss(
+                        ticker     = ticker,
+                        net_score  = debate.net_score,
+                        reason     = "score_limite",
+                        bull_score = debate.bull.score,
+                        bear_score = debate.bear.score,
+                        price      = price,
+                        sector     = sector,
+                        data_dir   = _data_dir,
+                    )
                 continue
+
+            # Budget épuisé après vérification (available peut avoir baissé en cours de boucle)
+            if available < 100:
+                save_near_miss(
+                    ticker     = ticker,
+                    net_score  = debate.net_score,
+                    reason     = "budget",
+                    bull_score = debate.bull.score,
+                    bear_score = debate.bear.score,
+                    price      = price,
+                    sector     = sector,
+                    data_dir   = _data_dir,
+                )
+                break
 
             # ── Exécution ─────────────────────────────────────────
             ok, msg, pos = pm.open_position(
@@ -276,14 +338,16 @@ def run():
                     f"prix={price:.2f} investi={inv:.0f}EUR "
                     f"SL={pos.sl:.2f} TP1={pos.tp_levels[0].price:.2f}")
                 opened_positions_log.append({
-                    "ticker":  ticker,
-                    "score":   score,
-                    "bull":    debate.bull.score,
-                    "bear":    debate.bear.score,
-                    "prix":    price,
-                    "investi": inv,
-                    "sl":      pos.sl,
-                    "tp1":     pos.tp_levels[0].price,
+                    "ticker":    ticker,
+                    "score":     score,
+                    "bull":      debate.bull.score,
+                    "bear":      debate.bear.score,
+                    "net_score": debate.net_score,
+                    "bull_args": debate.bull.top_args(3),
+                    "prix":      price,
+                    "investi":   inv,
+                    "sl":        pos.sl,
+                    "tp1":       pos.tp_levels[0].price,
                 })
             else:
                 log(f"  [SKIP portefeuille] {ticker} : {msg}")
@@ -313,57 +377,104 @@ def run():
         sltp_cash=sltp_cash_delta,
         pm=pm,
         available=available,
+        near_misses=load_recent_near_misses(_data_dir),
     )
 
 
 def _send_daily_email(
     today, market_ctx, score_max, score_med, n_candidates,
     opened_positions, closed_today, sltp_cash, pm, available,
+    near_misses=None,
 ):
     """Construit et envoie le recap journalier par email."""
     from portfolio.manager import PortfolioManager
 
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
+    near_misses = near_misses or []
 
-    # Bloc ordres ouverts
+    # ── Section A — Nouvelles positions ouvertes (enrichi bull/bear) ─────────
     if opened_positions:
-        orders_html = "".join(
-            f"<tr>"
-            f"<td style='padding:6px 12px;font-weight:700;color:#d6e0f0'>{o['ticker']}</td>"
-            f"<td style='padding:6px 12px;color:#34d399'>{o['score']}</td>"
-            f"<td style='padding:6px 12px;color:#8097b5'>{o['prix']:.2f}</td>"
-            f"<td style='padding:6px 12px;color:#8097b5'>{o['investi']:.0f} €</td>"
-            f"<td style='padding:6px 12px;color:#fb7185'>{o['sl']:.2f}</td>"
-            f"<td style='padding:6px 12px;color:#34d399'>{o['tp1']:.2f}</td>"
-            f"<td style='padding:6px 12px;color:#8097b5'>{o['bull']}</td>"
-            f"<td style='padding:6px 12px;color:#fb7185'>{o['bear']}</td>"
-            f"</tr>"
-            for o in opened_positions
+        def _pos_card(o: dict) -> str:
+            bull_args = o.get("bull_args", [])
+            bull_args_html = "".join(
+                f"<li style='margin:2px 0;color:#6ee7b7;font-size:11px'>• {a}</li>"
+                for a in bull_args[:3]
+            ) if bull_args else ""
+            bull_list = f"<ul style='margin:6px 0 0;padding:0;list-style:none'>{bull_args_html}</ul>" if bull_args_html else ""
+            net = o.get("net_score", o["bull"] - o["bear"] * 0.6)
+            net_color = "#34d399" if net >= 0 else "#fb7185"
+            return (
+                f"<div style='background:#0d1420;border-radius:8px;padding:14px 16px;"
+                f"margin-bottom:10px;border-left:3px solid #34d399'>"
+                f"<div style='display:flex;align-items:center;gap:12px;flex-wrap:wrap'>"
+                f"<span style='font-weight:700;font-size:15px;color:#d6e0f0'>{o['ticker']}</span>"
+                f"<span style='color:#8097b5;font-size:12px'>{o['prix']:.2f} €</span>"
+                f"<span style='color:#8097b5;font-size:12px'>investi {o['investi']:.0f} €</span>"
+                f"<span style='background:#0a2218;color:#34d399;padding:1px 7px;"
+                f"border-radius:4px;font-size:11px'>SL {o['sl']:.2f}</span>"
+                f"<span style='background:#0a1a0a;color:#34d399;padding:1px 7px;"
+                f"border-radius:4px;font-size:11px'>TP1 {o['tp1']:.2f}</span>"
+                f"</div>"
+                f"<div style='display:flex;gap:16px;margin-top:8px;font-size:12px'>"
+                f"<span>BULL <strong style='color:#34d399'>{o['bull']}</strong></span>"
+                f"<span>BEAR <strong style='color:#fb7185'>{o['bear']}</strong></span>"
+                f"<span>NET <strong style='color:{net_color}'>{net:+.0f}</strong></span>"
+                f"<span style='color:#445470'>score screener {o['score']}</span>"
+                f"</div>"
+                f"{bull_list}"
+                f"</div>"
+            )
+
+        orders_section = (
+            f"<h3 style='color:#34d399;margin:24px 0 8px'>"
+            f"&#x2705; {len(opened_positions)} position(s) ouverte(s) aujourd'hui</h3>"
+            + "".join(_pos_card(o) for o in opened_positions)
         )
-        orders_section = f"""
-        <h3 style='color:#34d399;margin:24px 0 8px'>
-            ✅ {len(opened_positions)} position(s) ouverte(s)
-        </h3>
+    else:
+        raison = "Budget semaine epuise" if available < 100 else "Aucun signal suffisant (filtres score/bear)"
+        orders_section = (
+            f"<h3 style='color:#fbbf24;margin:24px 0 8px'>&#x26A0;&#xFE0F; Aucun ordre passe aujourd'hui</h3>"
+            f"<p style='color:#8097b5;margin:0'>{raison}</p>"
+        )
+
+    # ── Section B — Valeurs à surveiller (near-misses 14j) ───────────────────
+    _reason_fr = {
+        "veto_secteur": "Véto secteur",
+        "budget":       "Budget épuisé",
+        "score_limite": "Score limite",
+        "score_bas":    "Score pré-filtre bas",
+    }
+    if near_misses:
+        top_nm = near_misses[:10]
+        def _nm_row(nm: dict) -> str:
+            net_col = "#34d399" if nm["net_score"] >= 0 else "#fb7185"
+            return (
+                f"<tr>"
+                f"<td style='padding:5px 12px;font-weight:700;color:#d6e0f0'>{nm['ticker']}</td>"
+                f"<td style='padding:5px 12px;color:#8097b5;font-size:12px'>{nm['date']}</td>"
+                f"<td style='padding:5px 12px;color:#fbbf24;font-size:12px'>"
+                f"{_reason_fr.get(nm['reason'], nm['reason'])}</td>"
+                f"<td style='padding:5px 12px;color:{net_col}'>{nm['net_score']:+.0f}</td>"
+                f"<td style='padding:5px 12px;color:#8097b5;font-size:12px'>{nm['sector']}</td>"
+                f"</tr>"
+            )
+        nm_rows = "".join(_nm_row(nm) for nm in top_nm)
+        watchlist_section = f"""
+        <h3 style='color:#8097b5;margin:24px 0 8px'>&#x1F50D; Valeurs a surveiller (14j)</h3>
         <table style='width:100%;border-collapse:collapse;background:#0d1420;border-radius:8px;overflow:hidden'>
             <thead>
                 <tr style='background:#192235'>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>TICKER</th>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>SCORE</th>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>PRIX</th>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>INVESTI</th>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>SL</th>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>TP1</th>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>BULL</th>
-                    <th style='padding:8px 12px;text-align:left;color:#445470;font-size:11px'>BEAR</th>
+                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TICKER</th>
+                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>DATE</th>
+                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>RAISON</th>
+                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>NET</th>
+                    <th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>SECTEUR</th>
                 </tr>
             </thead>
-            <tbody>{orders_html}</tbody>
+            <tbody>{nm_rows}</tbody>
         </table>"""
     else:
-        raison = "Budget semaine epuise" if available < 100 else "Aucun signal suffisant (filtres score/bear)"
-        orders_section = f"""
-        <h3 style='color:#fbbf24;margin:24px 0 8px'>⚠️ Aucun ordre passe aujourd'hui</h3>
-        <p style='color:#8097b5;margin:0'>{raison}</p>"""
+        watchlist_section = ""
 
     # Bloc fermetures
     closed_html = ""
@@ -441,6 +552,7 @@ def _send_daily_email(
             {sltp_html}
             {closed_html}
             {orders_section}
+            {watchlist_section}
 
             <!-- Portefeuille -->
             <h3 style='color:#8097b5;margin:24px 0 8px'>📊 Portefeuille</h3>

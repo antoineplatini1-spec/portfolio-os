@@ -18,7 +18,7 @@ def scan_ticker(ticker: str, period: str = "6mo") -> dict:
         if df.empty or len(df) < 30:
             return {"ticker": ticker, "error": "Données insuffisantes", "score": 0}
         df = compute_all(df)
-        result = compute_score(df)
+        result = compute_score(df, ticker=ticker)
         price = result.get("last_close", 0) or 0
         atr = result.get("atr", 0) or 0
 
