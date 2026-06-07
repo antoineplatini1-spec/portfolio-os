@@ -1718,3 +1718,4 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-06-05 18:50] ----------------------------------------
 [2026-06-05 18:50] [EMAIL] Envoye a antoine.platini@outlook.fr
 [2026-06-06 18:01] Week-end (Saturday) - pas de trading.
+[2026-06-07 16:27] Week-end (Sunday) - pas de trading.
