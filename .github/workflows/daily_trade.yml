@@ -1,0 +1,52 @@
+name: Daily Trading — Zentry
+
+on:
+  schedule:
+    # 9h30 ET = 13h30 UTC (EDT, avril-octobre)
+    # En hiver (EST, UTC-5) décaler à 14h30 UTC si besoin
+    - cron: '30 13 * * 1-5'
+  workflow_dispatch:   # déclenchement manuel depuis GitHub UI
+
+jobs:
+  trade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # ── 1. Checkout avec token d'écriture ──────────────────────────────
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_PUSH }}   # Personal Access Token avec droit push
+
+      # ── 2. Python ──────────────────────────────────────────────────────
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # ── 3. Secrets → fichiers locaux ───────────────────────────────────
+      - name: Write email_config.json
+        run: |
+          mkdir -p data
+          echo '${{ secrets.EMAIL_CONFIG_JSON }}' > data/email_config.json
+
+      # ── 4. Exécution ───────────────────────────────────────────────────
+      - name: Run daily_auto.py
+        run: python daily_auto.py
+        env:
+          DATA_DIR: ${{ github.workspace }}/data
+          TZ: America/New_York
+
+      # ── 5. Commit + push état du portefeuille ──────────────────────────
+      - name: Commit portfolio state
+        run: |
+          git config user.name  "Zentry Bot"
+          git config user.email "bot@zentry.uk"
+          git add data/portfolio_state.json data/daily_log.txt
+          git diff --staged --quiet || git commit -m "auto: portfolio $(date +%Y-%m-%d)"
+          git push
