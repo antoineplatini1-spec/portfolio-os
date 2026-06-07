@@ -1,6 +1,6 @@
 streamlit==1.56.0
 pandas==3.0.2
-pandas-ta @ git+https://github.com/twopirllc/pandas-ta.git@development
+pandas-ta==0.3.14b0
 numpy==2.2.6
 yfinance==1.2.1
 plotly==6.7.0
