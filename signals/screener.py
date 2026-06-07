@@ -3,7 +3,7 @@
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 
-from config import DEFAULT_WATCHLIST
+from config import DEFAULT_WATCHLIST, SECTOR_MAP
 from data.fetcher import fetch_ohlcv
 from indicators import compute_all
 from portfolio.risk import r_ratio, sl_price, tp_prices
@@ -21,6 +21,20 @@ def scan_ticker(ticker: str, period: str = "6mo") -> dict:
         result = compute_score(df, ticker=ticker)
         price = result.get("last_close", 0) or 0
         atr = result.get("atr", 0) or 0
+
+        # ── Filtres fondamentaux ──────────────────────────────────────
+        _sector = SECTOR_MAP.get(ticker, "Other")
+        _is_etf = _sector in ("ETF", "Macro")
+        _empty = {"ticker": ticker, "score": 0, "bull_score": 0, "bear_score": 0,
+                  "bear_flags": [], "signal": False, "price": round(price, 4),
+                  "atr": 0, "sl": 0, "tp1": 0, "break_even": 0,
+                  "r_ratio": 0, "perf_pct": 0, "details": {}}
+        if price < 5:
+            return {**_empty, "error": "prix < 5$"}
+        if not _is_etf and "Volume" in df.columns and len(df) >= 21:
+            vol_20 = df["Volume"].iloc[-21:-1].mean()
+            if vol_20 < 500_000:
+                return {**_empty, "error": f"volume < 500K ({vol_20/1e6:.1f}M)"}
 
         sl = sl_price(price, atr) if atr else price * 0.95
         tps = tp_prices(price, atr) if atr else []

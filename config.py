@@ -13,14 +13,14 @@ RESERVE_CASH_PCT = 0.10           # 10% toujours conservé
 RESERVE_UNLOCK_SCORE = 85         # Score minimum pour débloquer la réserve
 
 # ── Sizing par position ───────────────────────────────────────────
-MAX_POSITION_PCT = 0.03           # Position standard : 3% max
-MAX_POSITION_OPPORTUNITY_PCT = 0.05   # Score ≥ 80 : 5% max
-MAX_POSITION_CONVICTION_PCT = 0.08    # Score ≥ 90 : 8% max
+MAX_POSITION_PCT = 0.04           # Position standard : 4% max
+MAX_POSITION_OPPORTUNITY_PCT = 0.06   # Score ≥ 80 : 6% max
+MAX_POSITION_CONVICTION_PCT = 0.09    # Score ≥ 90 : 9% max
 OPPORTUNITY_SCORE_THRESHOLD = 80
 CONVICTION_SCORE_THRESHOLD = 90
 
 MAX_SECTOR_POSITIONS = 5          # Concentration sectorielle max
-MAX_TOTAL_EXPOSURE_PCT = 0.85     # Exposition totale max (hors réserve)
+MAX_TOTAL_EXPOSURE_PCT = 0.95     # Exposition totale max (hors réserve)
 
 # ── Risque par trade ──────────────────────────────────────────────
 RISK_PER_TRADE_PCT = 0.01         # 1% du portefeuille risqué par trade

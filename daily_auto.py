@@ -23,6 +23,54 @@ sys.path.insert(0, BASE)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr  = io.TextIOWrapper(sys.stderr.buffer,  encoding='utf-8', errors='replace')
 
+# ── ETFs sectoriels → secteur sous-jacent (pour le véto de concentration) ─────
+_ETF_TO_UNDERLYING = {
+    "SMH": "Semi",  "SOXX": "Semi",
+    "XLK": "Tech",  "ARKK": "Tech", "ARKG": "Tech",
+    "XLF": "Finance",
+    "XLV": "Santé", "IBB": "Santé", "XBI": "Santé",
+    "XLE": "Energie",
+    "XLI": "Industrie",
+    "XLY": "Conso",
+    "XLP": "ConsoBase",
+    "XLB": "Materiaux",
+    "XLRE": "REIT",
+}
+
+
+def _near_earnings(ticker: str, days: int = 3) -> bool:
+    """True si une publication de résultats tombe dans les `days` prochains/derniers jours."""
+    try:
+        import yfinance as yf
+        from datetime import timedelta
+        cal = yf.Ticker(ticker).calendar
+        if not cal:
+            return False
+        today = date.today()
+        # calendar peut être un dict {"Earnings Date": [...]} selon la version yfinance
+        if isinstance(cal, dict):
+            earn_dates = cal.get("Earnings Date", [])
+            if not isinstance(earn_dates, (list, tuple)):
+                earn_dates = [earn_dates]
+        elif hasattr(cal, "index"):
+            try:
+                earn_dates = list(cal.loc["Earnings Date"])
+            except Exception:
+                return False
+        else:
+            return False
+        for d in earn_dates:
+            try:
+                from datetime import datetime as _dt
+                d_date = _dt.fromisoformat(str(d)[:10]).date()
+                if abs((d_date - today).days) <= days:
+                    return True
+            except Exception:
+                continue
+    except Exception:
+        pass
+    return False
+
 _data_dir = os.environ.get("DATA_DIR", os.path.join(BASE, "data"))
 os.makedirs(_data_dir, exist_ok=True)
 LOG_FILE = os.path.join(_data_dir, "daily_log.txt")
@@ -109,7 +157,7 @@ def run():
 
     # Variables recap email
     opened_positions_log: list[dict] = []
-    closed_today: list[str] = []
+    sales_log: list[dict] = []        # achats partiels TP + clôtures SL/time stop
     sltp_cash_delta: float = 0.0
 
     # ── 1. Mise a jour des prix des positions ouvertes ────────────
@@ -126,23 +174,48 @@ def run():
             except Exception as e:
                 log(f"  {ticker}: erreur prix - {e}")
 
+        # Snapshot fills avant update (pour détecter les nouveaux TP partiels)
+        fills_snap = {t: len(pos.partial_fills) for t, pos in open_pos.items()}
+
         before_cash = pm.cash
         pm.update_prices(prices)
 
-        # Rapport SL/TP declenches
         cash_delta = pm.cash - before_cash
         sltp_cash_delta = cash_delta
         if cash_delta != 0:
             log(f"  SL/TP declenches -> encaisse {cash_delta:+.2f} EUR")
 
-        # Positions encore ouvertes apres update
-        still_open = pm.open_positions
-        closed_today = [t for t in open_pos if t not in still_open]
-        for t in closed_today:  # noqa
+        # ── Clôtures complètes (SL ou TP3 final) ─────────────────
+        closed_tickers = [t for t in open_pos if t not in pm.open_positions]
+        for t in closed_tickers:
             log(f"  Position FERMEE : {t}")
+            h = next((x for x in reversed(pm.history) if x["ticker"] == t), None)
+            if h:
+                ep  = h["entry_price"]
+                cp  = h["close_price"]
+                pct = (cp - ep) / ep * 100
+                sales_log.append({
+                    "ticker": t, "reason": h.get("close_reason", "?"),
+                    "price": cp, "pnl": h["pnl"], "pnl_pct": round(pct, 2),
+                    "partial": False,
+                })
+
+        # ── Ventes partielles nouvelles (TP1/TP2 hits) ───────────
+        for ticker, pos in open_pos.items():
+            if ticker not in pm.open_positions:
+                continue  # déjà capturé ci-dessus
+            old_n = fills_snap.get(ticker, 0)
+            for fill in pos.partial_fills[old_n:]:
+                pnl  = (fill.price - pos.entry_price) * fill.qty
+                pct  = (fill.price / pos.entry_price - 1) * 100
+                log(f"  {fill.reason} {ticker} : {fill.price:.2f} ({pct:+.1f}%)")
+                sales_log.append({
+                    "ticker": ticker, "reason": fill.reason,
+                    "price": fill.price, "pnl": round(pnl, 2),
+                    "pnl_pct": round(pct, 2), "partial": True,
+                })
 
         # ── Time stop : fermer les positions qui stagnent ─────────
-        # Si ouverte depuis > 25 jours ET prix < entry - 2% → on coupe
         TIME_STOP_DAYS = 25
         TIME_STOP_LOSS_PCT = 0.02
         for ticker, pos in list(pm.open_positions.items()):
@@ -157,6 +230,12 @@ def run():
                     log(f"  [TIME STOP] {ticker} : {age_days}j ouverte, "
                         f"PnL={loss_pct*100:.1f}% -> fermeture")
                     pm.manual_close(ticker, price)
+                    pnl_eu = (price - pos.entry_price) * pos.qty_remaining
+                    sales_log.append({
+                        "ticker": ticker, "reason": "Time Stop",
+                        "price": price, "pnl": round(pnl_eu, 2),
+                        "pnl_pct": round(loss_pct * 100, 2), "partial": False,
+                    })
             except Exception as e:
                 log(f"  [TIME STOP ERROR] {ticker} : {e}")
     else:
@@ -243,6 +322,11 @@ def run():
         log("Aucun signal suffisant aujourd'hui.")
     else:
         sectors_used = Counter(SECTOR_MAP.get(t, "Other") for t in pm.open_positions)
+        # Les ETFs sectoriels comptent aussi pour leur secteur sous-jacent
+        for t in pm.open_positions:
+            underlying = _ETF_TO_UNDERLYING.get(t.upper())
+            if underlying and underlying != SECTOR_MAP.get(t, "Other"):
+                sectors_used[underlying] = sectors_used.get(underlying, 0) + 1
         debates_run  = 0
 
         for _, cand_row in candidates.iterrows():
@@ -260,6 +344,11 @@ def run():
             if ticker in pm.open_positions:
                 continue
             if atr <= 0:
+                continue
+
+            # ── Filtre earnings ───────────────────────────────────
+            if _near_earnings(ticker, days=3):
+                log(f"  [SKIP earnings] {ticker} : publication de résultats dans ±3j")
                 continue
 
             # ── Débat Bull / Bear / Arbitre ───────────────────────
@@ -373,16 +462,18 @@ def run():
         score_med=score_med,
         n_candidates=len(candidates),
         opened_positions=opened_positions_log,
-        closed_today=closed_today if open_pos else [],
+        sales_log=sales_log,
         sltp_cash=sltp_cash_delta,
         pm=pm,
         available=available,
+        live_prices=prices if open_pos else {},
     )
 
 
 def _send_daily_email(
     today, market_ctx, score_max, score_med, n_candidates,
-    opened_positions, closed_today, sltp_cash, pm, available,
+    opened_positions, sales_log, sltp_cash, pm, available,
+    live_prices: dict | None = None,
 ):
     """Construit et envoie le recap journalier par email."""
     from portfolio.manager import PortfolioManager
@@ -433,42 +524,88 @@ def _send_daily_email(
             f"<p style='color:#8097b5;margin:0'>{raison}</p>"
         )
 
-    # Near-misses trackés en interne mais non affichés dans l'email
     watchlist_section = ""
 
-    # Bloc fermetures
-    closed_html = ""
-    if closed_today:
-        closed_html = "<h3 style='color:#fb7185;margin:24px 0 8px'>🔴 Positions fermees</h3>"
-        closed_html += " &nbsp;".join(
-            f"<span style='background:#1e1020;color:#fb7185;padding:3px 10px;"
-            f"border-radius:4px;font-weight:700'>{t}</span>"
-            for t in closed_today
+    # ── Section ventes ────────────────────────────────────────────────────────
+    def _sale_card(s: dict) -> str:
+        pnl    = s["pnl"]
+        pct    = s["pnl_pct"]
+        reason = s["reason"]
+        clr    = "#34d399" if pnl >= 0 else "#fb7185"
+        border = clr
+        icon   = "🟢" if pnl >= 0 else "🔴"
+        # label raison
+        reason_labels = {
+            "SL": "🛑 Stop Loss", "TP1": "✅ TP1 (25%)", "TP2": "✅ TP2 (35%)",
+            "TP3": "✅ TP3 (40%)", "Time Stop": "⏱ Time Stop", "manual": "✋ Manuel",
+        }
+        reason_txt = reason_labels.get(reason, reason)
+        partial_tag = (
+            "<span style='font-size:10px;color:#8097b5;margin-left:8px'>vente partielle</span>"
+            if s.get("partial") else ""
+        )
+        return (
+            f"<div style='background:#0d1420;border-radius:8px;padding:12px 16px;"
+            f"margin-bottom:8px;border-left:3px solid {border};"
+            f"display:flex;align-items:center;gap:16px;flex-wrap:wrap'>"
+            f"<span style='font-weight:700;font-size:15px;color:#d6e0f0'>{icon} {s['ticker']}</span>"
+            f"<span style='color:#8097b5;font-size:12px'>{s['price']:.2f} €</span>"
+            f"<span style='color:#8097b5;font-size:12px'>{reason_txt}</span>"
+            f"{partial_tag}"
+            f"<span style='margin-left:auto;font-weight:700;color:{clr}'>"
+            f"{pct:+.1f}% &nbsp; {pnl:+.0f} €</span>"
+            f"</div>"
         )
 
-    # SL/TP encaisses
+    if sales_log:
+        total_pnl_sales = sum(s["pnl"] for s in sales_log)
+        clr_total = "#34d399" if total_pnl_sales >= 0 else "#fb7185"
+        sales_html = (
+            f"<h3 style='color:#8097b5;margin:24px 0 8px'>"
+            f"📤 Ventes du jour "
+            f"<span style='font-size:13px;color:{clr_total}'>"
+            f"({total_pnl_sales:+.0f} € net)</span></h3>"
+            + "".join(_sale_card(s) for s in sales_log)
+        )
+    else:
+        sales_html = ""
+
+    # SL/TP encaisses (résumé cash)
     sltp_html = ""
     if sltp_cash != 0:
         color = "#34d399" if sltp_cash > 0 else "#fb7185"
         sltp_html = (
             f"<p style='color:{color};margin:8px 0'>"
-            f"💰 SL/TP encaisses : <strong>{sltp_cash:+.2f} €</strong></p>"
+            f"💰 Cash encaisse aujourd'hui : <strong>{sltp_cash:+.2f} €</strong></p>"
         )
 
-    # Positions actuelles
-    pos_rows = "".join(
-        f"<tr>"
-        f"<td style='padding:5px 12px;font-weight:700;color:#d6e0f0'>{t}</td>"
-        f"<td style='padding:5px 12px;color:#8097b5'>{p.entry_price:.2f}</td>"
-        f"<td style='padding:5px 12px;color:#8097b5'>{p.sl:.2f}</td>"
-        f"<td style='padding:5px 12px;color:#8097b5'>{p.tp_levels[0].price:.2f}</td>"
-        f"<td style='padding:5px 12px;color:#8097b5'>{p.qty_remaining:.4f}</td>"
-        f"</tr>"
-        for t, p in pm.open_positions.items()
-    )
+    # Positions actuelles avec PnL latent
+    _lp = live_prices or {}
+    def _pos_row(t, p):
+        live  = _lp.get(t, p.entry_price)
+        pnl   = (live - p.entry_price) * p.qty_remaining
+        ppct  = (live / p.entry_price - 1) * 100
+        clr   = "#34d399" if pnl >= 0 else "#fb7185"
+        return (
+            f"<tr>"
+            f"<td style='padding:5px 12px;font-weight:700;color:#d6e0f0'>{t}</td>"
+            f"<td style='padding:5px 12px;color:#8097b5'>{p.entry_price:.2f}</td>"
+            f"<td style='padding:5px 12px;color:#8097b5'>{live:.2f}</td>"
+            f"<td style='padding:5px 12px;font-weight:600;color:{clr}'>"
+            f"{ppct:+.1f}% / {pnl:+.0f}€</td>"
+            f"<td style='padding:5px 12px;color:#8097b5'>{p.sl:.2f}</td>"
+            f"<td style='padding:5px 12px;color:#8097b5'>{p.tp_levels[0].price:.2f}</td>"
+            f"</tr>"
+        )
+    pos_rows = "".join(_pos_row(t, p) for t, p in pm.open_positions.items())
 
-    subject_icon = "✅" if opened_positions else "⚠️"
-    subject = f"{subject_icon} Portfolio {today} — {len(opened_positions)} ordre(s) | {len(pm.open_positions)} positions"
+    subject_icon = "✅" if opened_positions else ("📤" if sales_log else "⚠️")
+    n_sales = len(sales_log)
+    subject = (
+        f"{subject_icon} Portfolio {today} — "
+        f"{len(opened_positions)} achat(s) · {n_sales} vente(s) | "
+        f"{len(pm.open_positions)} positions"
+    )
 
     html = f"""
     <!DOCTYPE html>
@@ -510,7 +647,7 @@ def _send_daily_email(
             </div>
 
             {sltp_html}
-            {closed_html}
+            {sales_html}
             {orders_section}
             {watchlist_section}
 
@@ -538,7 +675,7 @@ def _send_daily_email(
             </div>
 
             <!-- Positions ouvertes -->
-            {"<table style='width:100%;border-collapse:collapse;background:#0d1420;border-radius:8px;overflow:hidden'><thead><tr style='background:#192235'><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TICKER</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>ENTREE</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>SL</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TP1</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>QTE</th></tr></thead><tbody>" + pos_rows + "</tbody></table>" if pos_rows else "<p style='color:#445470'>Aucune position ouverte.</p>"}
+            {"<table style='width:100%;border-collapse:collapse;background:#0d1420;border-radius:8px;overflow:hidden'><thead><tr style='background:#192235'><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TICKER</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>ENTRÉE</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>LIVE</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>PNL% / €</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>SL</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TP1</th></tr></thead><tbody>" + pos_rows + "</tbody></table>" if pos_rows else "<p style='color:#445470'>Aucune position ouverte.</p>"}
 
             <p style='color:#2a3d5c;font-size:11px;margin-top:24px;text-align:center'>
                 Portfolio Manager — {datetime.now().strftime("%Y-%m-%d %H:%M")}

@@ -126,7 +126,7 @@ class MacroAgent:
             for sector, bias in newsletter_signal.sector_bias.items():
                 # Le biais newsletter ajuste la perf relative (1 unité = 2%)
                 current = sector_perf.get(sector, 0.0)
-                sector_perf[sector] = round(current + bias * 2.0, 2)
+                sector_perf[sector] = round(current + bias * 1.0, 2)  # CAC40 → poids réduit (portfolio US)
             # Recalculer top_sectors avec le biais newsletter
             top_sectors = [s for s, p in sector_perf.items() if p >= OUTPERFORM_THRESHOLD]
             top_sectors.sort(key=lambda s: -sector_perf.get(s, 0))

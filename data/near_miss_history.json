@@ -1,0 +1,842 @@
+[
+  {
+    "date": "2026-06-02",
+    "ticker": "PM",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 47,
+    "bear_score": 17,
+    "price": 174.51,
+    "sector": "ConsoBase"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "XLI",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 0,
+    "price": 173.81,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "BOTZ",
+    "net_score": -4.0,
+    "reason": "score_bas",
+    "bull_score": 36,
+    "bear_score": 0,
+    "price": 40.76,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "GOOG",
+    "net_score": -5.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 12,
+    "price": 363.5,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "UNH",
+    "net_score": -6.0,
+    "reason": "score_bas",
+    "bull_score": 39,
+    "bear_score": 11,
+    "price": 376.95,
+    "sector": "Santé"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "IWM",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 0,
+    "price": 291.08,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "CRWD",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 13,
+    "price": 759.13,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "PANW",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 13,
+    "price": 293.82,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "DDOG",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 13,
+    "price": 267.75,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "SPY",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 23,
+    "price": 759.77,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "XLB",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 30,
+    "bear_score": 0,
+    "price": 51.45,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "ICLN",
+    "net_score": 49.0,
+    "reason": "veto_secteur",
+    "bull_score": 55,
+    "bear_score": 10,
+    "price": 23.5,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "ROBO",
+    "net_score": 39.0,
+    "reason": "veto_secteur",
+    "bull_score": 45,
+    "bear_score": 10,
+    "price": 90.23,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "AMD",
+    "net_score": 36.2,
+    "reason": "veto_secteur",
+    "bull_score": 50,
+    "bear_score": 23,
+    "price": 513.81,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "ON",
+    "net_score": 36.2,
+    "reason": "veto_secteur",
+    "bull_score": 50,
+    "bear_score": 23,
+    "price": 129.55,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "QCOM",
+    "net_score": 36.0,
+    "reason": "veto_secteur",
+    "bull_score": 45,
+    "bear_score": 15,
+    "price": 241.18,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "TSLA",
+    "net_score": 42.0,
+    "reason": "veto_secteur",
+    "bull_score": 51,
+    "bear_score": 15,
+    "price": 422.01,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "INTC",
+    "net_score": 36.0,
+    "reason": "veto_secteur",
+    "bull_score": 45,
+    "bear_score": 15,
+    "price": 108.41,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "WOLF",
+    "net_score": 34.0,
+    "reason": "veto_secteur",
+    "bull_score": 43,
+    "bear_score": 15,
+    "price": 60.53,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "LIT",
+    "net_score": 42.0,
+    "reason": "veto_secteur",
+    "bull_score": 48,
+    "bear_score": 10,
+    "price": 86.4,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-02",
+    "ticker": "GOOGL",
+    "net_score": 24.8,
+    "reason": "veto_secteur",
+    "bull_score": 47,
+    "bear_score": 37,
+    "price": 366.97,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "CRWD",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 43,
+    "bear_score": 8,
+    "price": 753.55,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "QCOM",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 5,
+    "price": 250.84,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "PM",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 47,
+    "bear_score": 17,
+    "price": 176.87,
+    "sector": "ConsoBase"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "XLRE",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 0,
+    "price": 43.62,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "AMD",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 43,
+    "bear_score": 13,
+    "price": 539.83,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "TSLA",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 0,
+    "price": 422.38,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "PLD",
+    "net_score": -5.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 5,
+    "price": 142.31,
+    "sector": "REIT"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "MAR",
+    "net_score": -6.0,
+    "reason": "score_bas",
+    "bull_score": 36,
+    "bear_score": 5,
+    "price": 375.46,
+    "sector": "Conso"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "ROBO",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 0,
+    "price": 89.54,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "XLV",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 0,
+    "price": 147.64,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "ARKK",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 0,
+    "price": 77.98,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "EQIX",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 31,
+    "bear_score": 0,
+    "price": 1080.6,
+    "sector": "REIT"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "QQQ",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 35,
+    "bear_score": 8,
+    "price": 744.44,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "ASML",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 6,
+    "price": 1739.2,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "LIN",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 5,
+    "price": 506.37,
+    "sector": "Materiaux"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "DE",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 36,
+    "bear_score": 12,
+    "price": 587.0,
+    "sector": "Industrie"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "INTC",
+    "net_score": 40.0,
+    "reason": "veto_secteur",
+    "bull_score": 46,
+    "bear_score": 10,
+    "price": 112.12,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "WOLF",
+    "net_score": 39.0,
+    "reason": "veto_secteur",
+    "bull_score": 48,
+    "bear_score": 15,
+    "price": 63.37,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "ON",
+    "net_score": 36.2,
+    "reason": "veto_secteur",
+    "bull_score": 50,
+    "bear_score": 23,
+    "price": 133.78,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-03",
+    "ticker": "ICLN",
+    "net_score": 38.0,
+    "reason": "veto_secteur",
+    "bull_score": 44,
+    "bear_score": 10,
+    "price": 23.13,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "PM",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 47,
+    "bear_score": 17,
+    "price": 175.94,
+    "sector": "ConsoBase"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "CRWD",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 43,
+    "bear_score": 8,
+    "price": 747.61,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "QCOM",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 5,
+    "price": 250.01,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "TSLA",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 0,
+    "price": 423.7,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "LIN",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 0,
+    "price": 507.57,
+    "sector": "Materiaux"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "XLRE",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 0,
+    "price": 43.51,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "GOOGL",
+    "net_score": -4.0,
+    "reason": "score_bas",
+    "bull_score": 42,
+    "bear_score": 12,
+    "price": 358.99,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "LLY",
+    "net_score": -6.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 15,
+    "price": 1078.78,
+    "sector": "Santé"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "ARKG",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 0,
+    "price": 33.92,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "ROBO",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 0,
+    "price": 89.64,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "SLB",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 0,
+    "price": 56.85,
+    "sector": "Energie"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "EOG",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 0,
+    "price": 141.5,
+    "sector": "Energie"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "GE",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 0,
+    "price": 314.64,
+    "sector": "Industrie"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "HON",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 0,
+    "price": 223.26,
+    "sector": "Industrie"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "ARKK",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 0,
+    "price": 78.16,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "AMT",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 0,
+    "price": 182.24,
+    "sector": "REIT"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "LRCX",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 14,
+    "price": 343.71,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "QQQ",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 35,
+    "bear_score": 8,
+    "price": 744.21,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "DE",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 36,
+    "bear_score": 12,
+    "price": 588.29,
+    "sector": "Industrie"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "ASML",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 6,
+    "price": 1726.36,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "KLAC",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 6,
+    "price": 2125.11,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "TGT",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 5,
+    "price": 124.8,
+    "sector": "Conso"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "INTC",
+    "net_score": 40.0,
+    "reason": "veto_secteur",
+    "bull_score": 46,
+    "bear_score": 10,
+    "price": 112.71,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "ON",
+    "net_score": 44.2,
+    "reason": "veto_secteur",
+    "bull_score": 55,
+    "bear_score": 18,
+    "price": 133.93,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "PANW",
+    "net_score": 46.0,
+    "reason": "veto_secteur",
+    "bull_score": 52,
+    "bear_score": 10,
+    "price": 280.43,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "WOLF",
+    "net_score": 39.0,
+    "reason": "veto_secteur",
+    "bull_score": 48,
+    "bear_score": 15,
+    "price": 61.67,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "AMD",
+    "net_score": 33.2,
+    "reason": "veto_secteur",
+    "bull_score": 50,
+    "bear_score": 28,
+    "price": 542.52,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-04",
+    "ticker": "ICLN",
+    "net_score": 38.0,
+    "reason": "veto_secteur",
+    "bull_score": 44,
+    "bear_score": 10,
+    "price": 23.09,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "SPY",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 39,
+    "bear_score": 0,
+    "price": 743.51,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "QQQ",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 39,
+    "bear_score": 0,
+    "price": 715.41,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "XLK",
+    "net_score": -2.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 0,
+    "price": 182.86,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "AMD",
+    "net_score": -4.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 5,
+    "price": 473.15,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "ON",
+    "net_score": -4.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 5,
+    "price": 120.09,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "MU",
+    "net_score": -4.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 5,
+    "price": 896.24,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "XLV",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 36,
+    "bear_score": 6,
+    "price": 154.52,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "INTC",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 17,
+    "price": 102.14,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "GE",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 5,
+    "price": 328.42,
+    "sector": "Industrie"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "MRVL",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 35,
+    "bear_score": 8,
+    "price": 283.0,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "ICLN",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 34,
+    "bear_score": 6,
+    "price": 21.47,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "TSM",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 5,
+    "price": 419.29,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "QCOM",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 5,
+    "price": 219.94,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "PANW",
+    "net_score": 43.0,
+    "reason": "veto_secteur",
+    "bull_score": 52,
+    "bear_score": 15,
+    "price": 274.43,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-05",
+    "ticker": "CRWD",
+    "net_score": 38.0,
+    "reason": "veto_secteur",
+    "bull_score": 47,
+    "bear_score": 15,
+    "price": 687.72,
+    "sector": "Tech"
+  }
+]

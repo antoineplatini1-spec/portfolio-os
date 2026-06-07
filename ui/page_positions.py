@@ -1,4 +1,4 @@
-"""Positions ouvertes — niveaux SL / TP visuels."""
+"""Positions ouvertes — vue unifiée SL/TP + détails + clôture manuelle."""
 
 from pathlib import Path
 import streamlit as st
@@ -18,16 +18,14 @@ _clickable_table = components.declare_component(
 )
 
 
-def clickable_table(headers: list, rows: list, selected: str | None = None,
-                    key: str = "ct") -> str | None:
-    """Tableau HTML cliquable — retourne le ticker sélectionné ou None."""
+def clickable_table(headers, rows, selected=None, key="ct"):
     return _clickable_table(
         headers=headers, rows=rows, selected=selected,
-        key=key, default=selected
+        key=key, default=selected,
     )
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# ── Prix live (cache 60 s) ────────────────────────────────────────────────────
 
 @st.cache_data(ttl=60)
 def _live_price(ticker: str) -> float | None:
@@ -38,7 +36,7 @@ def _live_price(ticker: str) -> float | None:
         return None
 
 
-def _pct_to(live: float, target: float) -> str:
+def _pct(live: float, target: float) -> str:
     if live == 0:
         return "—"
     return f"{(target - live) / live * 100:+.1f}%"
@@ -125,35 +123,36 @@ def _ladder_chart(ticker: str, pos: Position, live: float) -> go.Figure:
 
 # ── Fiche détaillée ───────────────────────────────────────────────────────────
 
-def _detail_card(ticker: str, pos: Position, live: float):
+def _detail_card(ticker: str, pos: Position, live: float, pm: PortfolioManager):
     pnl     = (live - pos.entry_price) * pos.qty_remaining
     pnl_pct = (live / pos.entry_price - 1) * 100
     eff_sl  = pos.trailing_stop_price if pos.trailing_stop else pos.sl
     risk_eu = abs((live - eff_sl) * pos.qty_remaining)
-    icon    = "🟢" if pnl >= 0 else "🔴"
+    pnl_color = C["up"] if pnl >= 0 else C["down"]
+    icon = "🟢" if pnl >= 0 else "🔴"
 
     st.markdown(
         f"#### {icon} {ticker} &nbsp;·&nbsp; "
         f"<span style='color:{C['text2']};font-size:0.95rem'>"
-        f"Live {live:.4f} &nbsp;·&nbsp; "
-        f"PnL <span style='color:{C['up'] if pnl >= 0 else C['down']}'>"
+        f"Live <b>{live:.4f}</b> &nbsp;·&nbsp; "
+        f"PnL <span style='color:{pnl_color}'>"
         f"{pnl:+.2f} € ({pnl_pct:+.2f}%)</span></span>",
         unsafe_allow_html=True,
     )
 
-    n_tp = len(pos.tp_levels)
-    cols = st.columns(1 + n_tp + 1)
+    # Métriques
+    c1, c2, c3, c4, c5 = st.columns(5)
     sl_label = "SL (trailing)" if pos.trailing_stop else "SL"
-    cols[0].metric(sl_label, f"{eff_sl:.4f}", _pct_to(live, eff_sl),
-                   delta_color="inverse")
-    for i, tp in enumerate(pos.tp_levels):
-        delta = "✅ atteint" if tp.hit else _pct_to(live, tp.price)
-        cols[i + 1].metric(f"TP{i+1} · {tp.sell_pct * 100:.0f}%",
-                           f"{tp.price:.4f}", delta,
-                           delta_color="off" if tp.hit else "normal")
-    cols[-1].metric("Risque SL", f"{risk_eu:.2f} €",
-                    _pct_to(live, eff_sl), delta_color="inverse")
+    c1.metric("Entrée",       f"{pos.entry_price:.4f}")
+    c2.metric(sl_label,       f"{eff_sl:.4f}", _pct(live, eff_sl), delta_color="inverse")
+    for i, tp in enumerate(pos.tp_levels[:2]):
+        delta = "✅ atteint" if tp.hit else _pct(live, tp.price)
+        [c3, c4][i].metric(f"TP{i+1} · {tp.sell_pct*100:.0f}%",
+                            f"{tp.price:.4f}", delta,
+                            delta_color="off" if tp.hit else "normal")
+    c5.metric("Risque SL", f"{risk_eu:.2f} €")
 
+    # Ladder chart
     st.plotly_chart(_ladder_chart(ticker, pos, live), width="stretch")
 
     if pos.trailing_stop:
@@ -161,10 +160,14 @@ def _detail_card(ticker: str, pos: Position, live: float):
                 f"{pos.trailing_stop_price:.4f} (entrée : {pos.entry_price:.4f})")
 
     pct_rem = (pos.qty_remaining / pos.qty_total * 100 if pos.qty_total > 0 else 0)
-    st.caption(f"Qté : {pos.qty_remaining:.4f} / {pos.qty_total:.4f} "
-               f"({pct_rem:.0f}% restant) · Entrée le {pos.entry_date}")
+    st.caption(
+        f"Qté : {pos.qty_remaining:.4f} / {pos.qty_total:.4f} "
+        f"({pct_rem:.0f}% restant) · Entrée le {pos.entry_date} · Statut : {pos.status.upper()}"
+    )
 
+    # Fills partiels
     if pos.partial_fills:
+        st.markdown("**Fills partiels réalisés**")
         fills = [{"Date": f.date, "Raison": f.reason,
                   "Qté": round(f.qty, 4), "Prix": round(f.price, 4),
                   "PnL €": round((f.price - pos.entry_price) * f.qty, 2)}
@@ -179,20 +182,47 @@ def _detail_card(ticker: str, pos: Position, live: float):
         st.dataframe(pd.DataFrame(fills).style.map(_fp, subset=["PnL €"]),
                      width="stretch", hide_index=True)
 
+    st.markdown(
+        "<div style='height:1px;background:#1e2d45;margin:1rem 0;'></div>",
+        unsafe_allow_html=True,
+    )
+
+    # Clôture manuelle
+    st.markdown("**Clôture manuelle**")
+    cc1, cc2 = st.columns([3, 1])
+    with cc1:
+        close_px = st.number_input(
+            "Prix de clôture",
+            value=float(round(live, 4)),
+            min_value=0.0001,
+            format="%.4f",
+            key=f"close_px_{ticker}",
+        )
+    with cc2:
+        st.write("")
+        st.write("")
+        if st.button(f"Clôturer {ticker}", key=f"close_btn_{ticker}",
+                     type="primary", width="stretch"):
+            pm.manual_close(ticker, close_px)
+            st.session_state.pop("_pos_selected", None)
+            st.success(f"✅ {ticker} clôturé à {close_px:.4f}")
+            st.rerun()
+
 
 # ── Page ──────────────────────────────────────────────────────────────────────
 
 def render(pm: PortfolioManager):
-    st.title("Positions ouvertes — SL / TP")
+    st.title("Positions ouvertes")
 
     open_pos = pm.open_positions
     if not open_pos:
         st.info("Aucune position ouverte.")
         return
 
-    col_btn, _ = st.columns([1, 6])
+    # ── Barre de contrôle ─────────────────────────────────────────────────
+    col_btn, col_pnl, col_nb = st.columns([1, 2, 2])
     with col_btn:
-        if st.button("🔄 Rafraîchir", key="btn_refresh_positions", width="stretch"):
+        if st.button("🔄 Rafraîchir", key="btn_refresh_pos", width="stretch"):
             _live_price.clear()
             prices_upd = {t: p for t in open_pos if (p := _live_price(t))}
             if prices_upd:
@@ -204,51 +234,56 @@ def render(pm: PortfolioManager):
         for t, pos in open_pos.items()
     }
 
-    # ── Données tableau ───────────────────────────────────────────────────
-    headers = ["Ticker", "Entrée", "Live", "PnL %", "SL", "% → SL",
-               "Trail.", "TP1", "% → TP1", "TP2", "% → TP2",
-               "TP3", "% → TP3", "Qté rest.", "Valeur €"]
+    total_pnl = sum(
+        (prices[t] - pos.entry_price) * pos.qty_remaining
+        for t, pos in open_pos.items()
+    )
+    col_pnl.metric("PnL latent total", f"{total_pnl:+,.2f} €")
+    col_nb.metric("Positions ouvertes", len(open_pos))
+
+    # ── Tableau unifié ────────────────────────────────────────────────────
+    headers = ["Ticker", "Date", "Entrée", "Live", "PnL %", "PnL €",
+               "SL", "% → SL", "Trail.", "TP1", "% → TP1",
+               "TP2", "% → TP2", "TPs ✓", "Valeur €"]
 
     rows = []
     for ticker, pos in open_pos.items():
         live   = prices[ticker]
         eff_sl = pos.trailing_stop_price if pos.trailing_stop else pos.sl
+        pnl    = (live - pos.entry_price) * pos.qty_remaining
+        pnl_pct = (live - pos.entry_price) / pos.entry_price * 100
+        tp_hit = sum(1 for t in pos.tp_levels if t.hit)
+
         row = [
             ticker,
+            pos.entry_date or "—",
             f"{pos.entry_price:.4f}",
             f"{live:.4f}",
-            f"{(live / pos.entry_price - 1) * 100:+.2f}%",
+            f"{pnl_pct:+.2f}%",
+            f"{pnl:+.2f}",
             f"{eff_sl:.4f}",
-            _pct_to(live, eff_sl),
+            _pct(live, eff_sl),
             "✓" if pos.trailing_stop else "—",
         ]
-        for i in range(3):
+        for i in range(2):
             if i < len(pos.tp_levels):
                 tp = pos.tp_levels[i]
-                row += [f"{tp.price:.4f}",
-                        "✓" if tp.hit else _pct_to(live, tp.price)]
+                row += [f"{tp.price:.4f}", "✓" if tp.hit else _pct(live, tp.price)]
             else:
                 row += ["—", "—"]
-        row += [f"{pos.qty_remaining:.4f}", f"{pos.qty_remaining * live:.2f}"]
+        row += [f"{tp_hit}/{len(pos.tp_levels)}", f"{pos.qty_remaining * live:.2f}"]
         rows.append(row)
 
-    # ── Tableau cliquable (composant natif) ───────────────────────────────
     sel_ticker = st.session_state.get("_pos_selected")
 
     clicked = clickable_table(
-        headers=headers,
-        rows=rows,
-        selected=sel_ticker,
-        key="pos_table",
+        headers=headers, rows=rows,
+        selected=sel_ticker, key="pos_table",
     )
 
-    # Met à jour la sélection si l'utilisateur a cliqué
     if clicked and clicked != sel_ticker:
         st.session_state["_pos_selected"] = clicked
         st.rerun()
-    elif not clicked and sel_ticker:
-        # Le composant renvoie None au démarrage — ne pas réinitialiser
-        pass
 
     sel_ticker = st.session_state.get("_pos_selected")
 
@@ -264,18 +299,16 @@ def render(pm: PortfolioManager):
             f"""
             <div style="
                 display:flex; flex-direction:column; align-items:center;
-                justify-content:center; gap:0.6rem;
-                padding: 3.5rem 0;
+                justify-content:center; gap:0.6rem; padding:3.5rem 0;
                 color:{C['text3']};
             ">
                 <div style="font-size:2rem; opacity:0.35">📊</div>
-                <div style="font:500 0.85rem/1 'Inter',sans-serif;
-                            letter-spacing:0.03em;">
-                    Cliquez sur une ligne pour afficher les détails
+                <div style="font:500 0.85rem/1 'Inter',sans-serif; letter-spacing:0.03em;">
+                    Cliquez sur une ligne pour afficher les détails + clôture
                 </div>
             </div>
             """,
             unsafe_allow_html=True,
         )
     else:
-        _detail_card(sel_ticker, open_pos[sel_ticker], prices[sel_ticker])
+        _detail_card(sel_ticker, open_pos[sel_ticker], prices[sel_ticker], pm)

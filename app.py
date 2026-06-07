@@ -9,8 +9,8 @@ import streamlit as st
 
 from portfolio.manager import PortfolioManager
 from ui import (
-    page_dashboard, page_orders, page_positions, page_history,
-    page_analysis, page_screener, page_backtest, page_report,
+    page_dashboard, page_positions, page_history,
+    page_analysis, page_screener, page_backtest, page_report, page_lexique,
 )
 from ui.theme import inject
 
@@ -47,7 +47,7 @@ if not _check_auth():
     st.stop()
 
 # ── Scheduler ─────────────────────────────────────────────────────────────────
-if os.environ.get("RAILWAY_ENVIRONMENT") is None:
+if os.environ.get("RAILWAY_ENVIRONMENT") is not None:
     try:
         import scheduler as sched
         if not sched.is_running():
@@ -136,23 +136,20 @@ st.sidebar.markdown(
 st.sidebar.caption("v0.1 · paper trading · yfinance")
 
 # ── NAVIGATION HORIZONTALE (tabs) ─────────────────────────────────────────────
-tab_dashboard, tab_orders, tab_positions, tab_history, \
-tab_analysis, tab_screener, tab_backtest, tab_report = st.tabs([
+tab_dashboard, tab_positions, tab_history, \
+tab_analysis, tab_screener, tab_backtest, tab_report, tab_lexique = st.tabs([
     "📊  Dashboard",
-    "📋  Ordres ouverts",
-    "🎯  Positions SL/TP",
+    "🎯  Positions",
     "📜  Historique",
     "🔍  Analyse",
     "📡  Screener",
     "⏱  Backtest",
     "📰  Rapport",
+    "📖  Lexique",
 ])
 
 with tab_dashboard:
     page_dashboard.render(pm)
-
-with tab_orders:
-    page_orders.render(pm)
 
 with tab_positions:
     page_positions.render(pm)
@@ -171,3 +168,6 @@ with tab_backtest:
 
 with tab_report:
     page_report.render(pm)
+
+with tab_lexique:
+    page_lexique.render(pm)

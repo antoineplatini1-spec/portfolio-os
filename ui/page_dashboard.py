@@ -4,9 +4,24 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 
+import yfinance as yf
 from config import INITIAL_CASH, MAX_TOTAL_EXPOSURE_PCT, WEEKLY_DEPLOY_PCT
 from portfolio.manager import PortfolioManager
 from ui.theme import plotly_layout, COLORS as C
+
+
+@st.cache_data(ttl=3600)
+def _spy_series(start_date: str, initial_cash: float) -> pd.Series | None:
+    """SPY normalisé au capital initial depuis start_date."""
+    try:
+        df = yf.download("SPY", start=start_date, progress=False,
+                         auto_adjust=True, multi_level_index=False)
+        if df.empty:
+            return None
+        close = df["Close"].dropna()
+        return (close / float(close.iloc[0]) * initial_cash).round(2)
+    except Exception:
+        return None
 
 
 def render(pm: PortfolioManager):
@@ -146,11 +161,24 @@ def render(pm: PortfolioManager):
         df = pd.DataFrame(pm.history).sort_values("close_date").copy()
         df["cum_pnl"] = df["pnl"].cumsum()
         df["capital"] = pm.initial_cash + df["cum_pnl"]
-        above = df["capital"] >= pm.initial_cash
+
+        spy_s = _spy_series(pm.start_date, pm.initial_cash)
+
+        # Métrique vs SPY
+        if spy_s is not None and not spy_s.empty:
+            spy_final = float(spy_s.iloc[-1])
+            port_final = float(df["capital"].iloc[-1])
+            spy_pct  = (spy_final  / pm.initial_cash - 1) * 100
+            port_pct = (port_final / pm.initial_cash - 1) * 100
+            alpha = port_pct - spy_pct
+            ca, cb = st.columns(2)
+            ca.metric("Portfolio", f"{port_pct:+.2f}%")
+            cb.metric("vs SPY",    f"{alpha:+.2f}%",
+                      delta_color="normal" if alpha >= 0 else "inverse")
 
         fig_eq = go.Figure()
 
-        # Zone above baseline
+        # Aire portfolio
         fig_eq.add_trace(go.Scatter(
             x=df["close_date"], y=df["capital"],
             mode="lines",
@@ -169,17 +197,26 @@ def render(pm: PortfolioManager):
             showlegend=False,
             hoverinfo="skip",
         ))
-        # Main line
+        # SPY benchmark
+        if spy_s is not None and not spy_s.empty:
+            fig_eq.add_trace(go.Scatter(
+                x=spy_s.index.astype(str), y=spy_s.values,
+                mode="lines",
+                name="SPY",
+                line=dict(color=C["text3"], width=1.5, dash="dot"),
+                hovertemplate="<b>SPY</b> %{x}<br>%{y:,.2f} €<extra></extra>",
+            ))
+        # Portfolio line
         fig_eq.add_trace(go.Scatter(
             x=df["close_date"], y=df["capital"],
             mode="lines+markers",
-            name="Capital",
+            name="Portfolio",
             line=dict(color=C["accent"], width=2),
             marker=dict(
                 size=6, color=C["accent"],
                 line=dict(color=C["bg"], width=2),
             ),
-            hovertemplate="<b>%{x}</b><br>%{y:,.2f} €<extra></extra>",
+            hovertemplate="<b>Portfolio</b> %{x}<br>%{y:,.2f} €<extra></extra>",
         ))
         fig_eq.add_hline(
             y=pm.initial_cash,
@@ -190,8 +227,8 @@ def render(pm: PortfolioManager):
             annotation_position="bottom right",
         )
         fig_eq.update_layout(
-            **plotly_layout(height=260, title="Courbe de capital"),
-            showlegend=False,
+            **plotly_layout(height=280, title="Portfolio vs SPY"),
+            showlegend=True,
         )
         st.plotly_chart(fig_eq, width="stretch")
 

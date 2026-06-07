@@ -1,0 +1,1720 @@
+[2026-04-19 11:36] Week-end (Sunday) - pas de trading.
+[2026-04-22 17:53] ============================================================
+[2026-04-22 17:53] SCAN JOURNALIER - 2026-04-22
+[2026-04-22 17:53] ============================================================
+[2026-04-22 17:53] 3 position(s) ouverte(s) - mise a jour des prix...
+[2026-04-22 17:53]   MRK: 112.48
+[2026-04-22 17:53]   O: 63.57
+[2026-04-22 17:53]   COP: 122.77
+[2026-04-22 17:53]   SL/TP declenches -> encaisse +671.61 EUR
+[2026-04-22 17:53]   Position FERMEE : MRK
+[2026-04-22 17:53]   Position FERMEE : O
+[2026-04-22 17:53] Screener en cours...
+[2026-04-22 17:54] Scores : max=43  mediane=20  (156 tickers)
+[2026-04-22 17:54] Contexte marche : FAIBLE/CORRECTION -> seuil=32, max_opens=2
+[2026-04-22 17:54] 25 candidats >= 32
+[2026-04-22 17:54] Cash deployable cette semaine : 1600 EUR
+[2026-04-22 17:54]   [ACHAT] OXY score=43 prix=56.78 investi=299EUR SL=53.37 TP1=59.06
+[2026-04-22 17:54]   [ACHAT] GOOGL score=38 prix=337.30 investi=299EUR SL=325.54 TP1=345.14
+[2026-04-22 17:54] ----------------------------------------
+[2026-04-22 17:54] RESUME : valeur=9981.61 EUR  investi=808.90 EUR  cash=9172.71 EUR  expo=8.1%  positions=3
+[2026-04-22 17:54] ----------------------------------------
+[2026-04-26 23:55] Week-end (Sunday) - pas de trading.
+[2026-04-27 18:50] ============================================================
+[2026-04-27 18:50] SCAN JOURNALIER - 2026-04-27
+[2026-04-27 18:50] ============================================================
+[2026-04-27 18:50] 3 position(s) ouverte(s) - mise a jour des prix...
+[2026-04-27 18:51]   COP: 120.73
+[2026-04-27 18:51]   OXY: 57.04
+[2026-04-27 18:51]   GOOGL: 352.31
+[2026-04-27 18:51]   SL/TP declenches -> encaisse +312.32 EUR
+[2026-04-27 18:51]   Position FERMEE : COP
+[2026-04-27 18:51] Screener en cours...
+[2026-04-27 18:51] Scores : max=48  mediane=17  (156 tickers)
+[2026-04-27 18:51] Contexte marche : MOYEN -> seuil=38, max_opens=3
+[2026-04-27 18:51] 10 candidats >= 38
+[2026-04-27 18:51] Cash deployable cette semaine : 2500 EUR
+[2026-04-27 18:51]   [ACHAT] JPM score=48 prix=310.63 investi=300EUR SL=301.20 TP1=316.92
+[2026-04-27 18:51]   [ACHAT] C score=48 prix=128.35 investi=300EUR SL=123.37 TP1=131.68
+[2026-04-27 18:51]   [ACHAT] LMT score=39 prix=516.04 investi=300EUR SL=489.42 TP1=533.79
+[2026-04-27 18:51] ----------------------------------------
+[2026-04-27 18:51] RESUME : valeur=9994.10 EUR  investi=1408.53 EUR  cash=8585.57 EUR  expo=14.1%  positions=5
+[2026-04-27 18:51] ----------------------------------------
+[2026-04-28 09:30] ============================================================
+[2026-04-28 09:30] SCAN JOURNALIER - 2026-04-28
+[2026-04-28 09:30] ============================================================
+[2026-04-28 09:31] 5 position(s) ouverte(s) - mise a jour des prix...
+[2026-04-28 09:31]   OXY: 57.27
+[2026-04-28 09:31]   GOOGL: 350.34
+[2026-04-28 09:31]   JPM: 311.63
+[2026-04-28 09:31]   C: 129.14
+[2026-04-28 09:31]   LMT: 513.35
+[2026-04-28 09:31]   SL/TP declenches -> encaisse +217.72 EUR
+[2026-04-28 09:31]   Position FERMEE : GOOGL
+[2026-04-28 09:31] Screener en cours...
+[2026-04-28 09:32] Scores : max=48  mediane=17  (156 tickers)
+[2026-04-28 09:32] Contexte marche : MOYEN -> seuil=38, max_opens=3
+[2026-04-28 09:32] 9 candidats >= 38
+[2026-04-28 09:32] Cash deployable cette semaine : 1601 EUR
+[2026-04-28 09:32]   [ACHAT] SPG score=48 prix=201.29 investi=300EUR SL=195.81 TP1=204.95
+[2026-04-28 09:32]   [ACHAT] BAC score=43 prix=52.63 investi=300EUR SL=50.89 TP1=53.79
+[2026-04-28 09:32]   [ACHAT] AA score=43 prix=67.36 investi=300EUR SL=62.68 TP1=70.48
+[2026-04-28 09:32] ----------------------------------------
+[2026-04-28 09:32] RESUME : valeur=10002.20 EUR  investi=2099.11 EUR  cash=7903.08 EUR  expo=21.0%  positions=7
+[2026-04-28 09:32] ----------------------------------------
+[2026-04-30 06:52] ============================================================
+[2026-04-30 06:52] SCAN JOURNALIER - 2026-04-30
+[2026-04-30 06:52] ============================================================
+[2026-04-30 06:52] 7 position(s) ouverte(s) - mise a jour des prix...
+[2026-04-30 06:52]   OXY: 60.76
+[2026-04-30 06:52]   JPM: 309.25
+[2026-04-30 06:52]   C: 127.61
+[2026-04-30 06:52]   LMT: 509.81
+[2026-04-30 06:52]   SPG: 200.09
+[2026-04-30 06:52]   BAC: 52.88
+[2026-04-30 06:52]   AA: 62.46
+[2026-04-30 06:52]   SL/TP declenches -> encaisse +374.36 EUR
+[2026-04-30 06:52]   Position FERMEE : AA
+[2026-04-30 06:52] Screener en cours...
+[2026-04-30 06:52] Scores : max=58  mediane=20  (156 tickers)
+[2026-04-30 06:52] Contexte marche : MOYEN -> seuil=38, max_opens=3
+[2026-04-30 06:52] 13 candidats >= 38
+[2026-04-30 06:52] Cash deployable cette semaine : 700 EUR
+[2026-04-30 06:52]   [ACHAT] EQIX score=58 prix=1089.07 investi=300EUR SL=1055.38 TP1=1111.53
+[2026-04-30 06:52]   [ACHAT] AVGO score=48 prix=405.45 investi=300EUR SL=386.06 TP1=418.38
+[2026-04-30 06:52]   [ACHAT] MRVL score=48 prix=156.57 investi=101EUR SL=144.96 TP1=164.31
+[2026-04-30 06:52] ----------------------------------------
+[2026-04-30 06:52] RESUME : valeur=9986.66 EUR  investi=2409.55 EUR  cash=7577.11 EUR  expo=24.1%  positions=9
+[2026-04-30 06:52] ----------------------------------------
+[2026-04-30 09:30] ============================================================
+[2026-04-30 09:30] SCAN JOURNALIER - 2026-04-30
+[2026-04-30 09:30] ============================================================
+[2026-04-30 09:30] 9 position(s) ouverte(s) - mise a jour des prix...
+[2026-04-30 09:30]   OXY: 60.76
+[2026-04-30 09:30]   JPM: 309.25
+[2026-04-30 09:30]   C: 127.61
+[2026-04-30 09:30]   LMT: 509.81
+[2026-04-30 09:30]   SPG: 200.09
+[2026-04-30 09:30]   BAC: 52.88
+[2026-04-30 09:30]   EQIX: 1089.07
+[2026-04-30 09:30]   AVGO: 405.45
+[2026-04-30 09:30]   MRVL: 156.57
+[2026-04-30 09:30] Screener en cours...
+[2026-04-30 09:30] Scores : max=58  mediane=20  (156 tickers)
+[2026-04-30 09:30] Contexte marche : MOYEN -> seuil=38, max_opens=3
+[2026-04-30 09:30] 13 candidats >= 38
+[2026-04-30 09:30] Cash deployable cette semaine : 0 EUR
+[2026-04-30 09:30] Budget semaine epuise - pas de nouveaux achats.
+[2026-04-30 09:30] ----------------------------------------
+[2026-04-30 09:30] RESUME : valeur=9986.66 EUR  investi=2409.55 EUR  cash=7577.11 EUR  expo=24.1%  positions=9
+[2026-04-30 09:30] ----------------------------------------
+[2026-05-01 09:30] ============================================================
+[2026-05-01 09:30] SCAN JOURNALIER - 2026-05-01
+[2026-05-01 09:30] ============================================================
+[2026-05-01 09:30] 9 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-01 09:30]   OXY: 60.58
+[2026-05-01 09:30]   JPM: 313.23
+[2026-05-01 09:30]   C: 127.98
+[2026-05-01 09:30]   LMT: 517.97
+[2026-05-01 09:30]   SPG: 203.71
+[2026-05-01 09:30]   BAC: 53.46
+[2026-05-01 09:30]   EQIX: 1082.83
+[2026-05-01 09:30]   AVGO: 417.43
+[2026-05-01 09:30]   MRVL: 165.15
+[2026-05-01 09:30]   SL/TP declenches -> encaisse +255.63 EUR
+[2026-05-01 09:30]   Position FERMEE : OXY
+[2026-05-01 09:30] Screener en cours...
+[2026-05-01 09:30] Scores : max=53  mediane=25  (156 tickers)
+[2026-05-01 09:30] Contexte marche : MOYEN -> seuil=38, max_opens=3
+[2026-05-01 09:30] 31 candidats >= 38
+[2026-05-01 09:30] Cash deployable cette semaine : 0 EUR
+[2026-05-01 09:30] Budget semaine epuise - pas de nouveaux achats.
+[2026-05-01 09:30] ----------------------------------------
+[2026-05-01 09:30] RESUME : valeur=10002.33 EUR  investi=2169.59 EUR  cash=7832.74 EUR  expo=21.7%  positions=8
+[2026-05-01 09:30] ----------------------------------------
+[2026-05-04 18:50] ============================================================
+[2026-05-04 18:50] SCAN JOURNALIER - 2026-05-04
+[2026-05-04 18:50] ============================================================
+[2026-05-04 18:50] ERREUR CRITIQUE : Traceback (most recent call last):
+  File "D:\Github - Claude\portfolio_manager\daily_auto.py", line 238, in <module>
+    run()
+  File "D:\Github - Claude\portfolio_manager\daily_auto.py", line 50, in run
+    from config import DEFAULT_WATCHLIST, SECTOR_MAP, ROTATION_MIN_SCORE_GAP, ROTATION_MAX_PER_DAY
+ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Github - Claude\portfolio_manager\config.py)
+
+[2026-05-05 11:01] ============================================================
+[2026-05-05 11:01] SCAN JOURNALIER - 2026-05-05
+[2026-05-05 11:01] ============================================================
+[2026-05-05 11:01] 8 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-05 11:01]   JPM: 307.65
+[2026-05-05 11:01]   C: 125.63
+[2026-05-05 11:01]   LMT: 518.15
+[2026-05-05 11:01]   SPG: 201.51
+[2026-05-05 11:01]   BAC: 52.19
+[2026-05-05 11:01]   EQIX: 1083.20
+[2026-05-05 11:01]   AVGO: 416.50
+[2026-05-05 11:01]   MRVL: 163.66
+[2026-05-05 11:01]   SL/TP declenches -> encaisse +74.00 EUR
+[2026-05-05 11:01]   Position FERMEE : MRVL
+[2026-05-05 11:01] Screener en cours...
+[2026-05-05 11:02] Scores : max=48  mediane=15  (156 tickers)
+[2026-05-05 11:02] Contexte marche : MOYEN -> seuil=38, max_opens=3
+[2026-05-05 11:02] 3 candidats >= 38
+[2026-05-05 11:02] Cash deployable cette semaine : 2500 EUR
+[2026-05-05 11:02]   [ACHAT] NVDA score=48 prix=198.48 investi=300EUR SL=188.99 TP1=204.81
+[2026-05-05 11:02]   [ACHAT] MS score=40 prix=188.01 investi=300EUR SL=180.86 TP1=192.78
+[2026-05-05 11:02] ----------------------------------------
+[2026-05-05 11:02] RESUME : valeur=10005.54 EUR  investi=2699.13 EUR  cash=7306.40 EUR  expo=27.0%  positions=9
+[2026-05-05 11:02] ----------------------------------------
+[2026-05-06 20:50] ============================================================
+[2026-05-06 20:50] SCAN JOURNALIER - 2026-05-06
+[2026-05-06 20:50] ============================================================
+[2026-05-06 20:51] 9 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-06 20:51]   JPM: 315.26
+[2026-05-06 20:51]   C: 128.34
+[2026-05-06 20:51]   LMT: 511.88
+[2026-05-06 20:51]   SPG: 204.56
+[2026-05-06 20:51]   BAC: 53.57
+[2026-05-06 20:51]   EQIX: 1082.93
+[2026-05-06 20:51]   AVGO: 422.45
+[2026-05-06 20:51]   NVDA: 207.04
+[2026-05-06 20:51]   MS: 193.04
+[2026-05-06 20:51]   SL/TP declenches -> encaisse +280.04 EUR
+[2026-05-06 20:51] Screener en cours...
+[2026-05-06 20:52] Scores : max=51  mediane=13  (156 tickers)
+[2026-05-06 20:52] Contexte marche : MOYEN -> seuil=48, max_opens=3
+[2026-05-06 20:52] 0 candidats >= score 48 et R-ratio >= 1.5
+[2026-05-06 20:52] Cash deployable cette semaine : 1900 EUR
+[2026-05-06 20:52] Aucun signal suffisant aujourd'hui.
+[2026-05-06 20:52] ----------------------------------------
+[2026-05-06 20:52] RESUME : valeur=10015.60 EUR  investi=2429.15 EUR  cash=7586.45 EUR  expo=24.3%  positions=9
+[2026-05-06 20:52] ----------------------------------------
+[2026-05-07 21:19] ============================================================
+[2026-05-07 21:19] SCAN JOURNALIER - 2026-05-07
+[2026-05-07 21:19] ============================================================
+[2026-05-07 21:21] 9 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-07 21:21]   JPM: 307.05
+[2026-05-07 21:21]   C: 129.62
+[2026-05-07 21:21]   LMT: 509.56
+[2026-05-07 21:21]   SPG: 201.09
+[2026-05-07 21:21]   BAC: 52.60
+[2026-05-07 21:21]   EQIX: 1068.47
+[2026-05-07 21:21]   AVGO: 412.89
+[2026-05-07 21:21]   NVDA: 212.14
+[2026-05-07 21:21]   MS: 190.28
+[2026-05-07 21:21]   SL/TP declenches -> encaisse +493.59 EUR
+[2026-05-07 21:21]   Position FERMEE : AVGO
+[2026-05-07 21:21]   Position FERMEE : MS
+[2026-05-07 21:21] Screener en cours...
+[2026-05-07 21:22] Scores : max=46  mediane=6  (156 tickers)
+[2026-05-07 21:22] Contexte marche : MOYEN -> seuil=48, max_opens=3
+[2026-05-07 21:22] 0 candidats >= score 48 et R-ratio >= 1.5
+[2026-05-07 21:22] Cash deployable cette semaine : 1900 EUR
+[2026-05-07 21:22] Aucun signal suffisant aujourd'hui.
+[2026-05-07 21:22] ----------------------------------------
+[2026-05-07 21:22] RESUME : valeur=10026.32 EUR  investi=1946.28 EUR  cash=8080.04 EUR  expo=19.4%  positions=7
+[2026-05-07 21:22] ----------------------------------------
+[2026-05-10 18:49] Week-end (Sunday) - pas de trading.
+[2026-05-11 09:30] ============================================================
+[2026-05-11 09:30] SCAN JOURNALIER - 2026-05-11
+[2026-05-11 09:30] ============================================================
+[2026-05-11 09:30] 7 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-11 09:30]   JPM: 302.10
+[2026-05-11 09:30]   C: 125.55
+[2026-05-11 09:30]   LMT: 506.51
+[2026-05-11 09:30]   SPG: 202.12
+[2026-05-11 09:30]   BAC: 51.31
+[2026-05-11 09:30]   EQIX: 1072.08
+[2026-05-11 09:30]   NVDA: 215.20
+[2026-05-11 09:30] Screener en cours...
+[2026-05-11 09:30] Scores : max=58  mediane=12  (156 tickers)
+[2026-05-11 09:30] Contexte marche : MOYEN -> seuil=48, max_opens=3
+[2026-05-11 09:30] 0 candidats >= score 48 et R-ratio >= 1.5
+[2026-05-11 09:30] Cash deployable cette semaine : 1900 EUR
+[2026-05-11 09:30] Aucun signal suffisant aujourd'hui.
+[2026-05-11 09:30] ----------------------------------------
+[2026-05-11 09:30] RESUME : valeur=10026.32 EUR  investi=1946.28 EUR  cash=8080.04 EUR  expo=19.4%  positions=7
+[2026-05-11 09:30] ----------------------------------------
+[2026-05-13 22:46] ============================================================
+[2026-05-13 22:46] SCAN JOURNALIER - 2026-05-13
+[2026-05-13 22:46] ============================================================
+[2026-05-13 22:46] 7 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-13 22:46]   JPM: 300.25
+[2026-05-13 22:46]   C: 124.10
+[2026-05-13 22:46]   LMT: 519.94
+[2026-05-13 22:46]   SPG: 200.56
+[2026-05-13 22:46]   BAC: 49.84
+[2026-05-13 22:46]   EQIX: 1077.28
+[2026-05-13 22:46]   NVDA: 225.83
+[2026-05-13 22:46]   SL/TP declenches -> encaisse +640.90 EUR
+[2026-05-13 22:46]   Position FERMEE : JPM
+[2026-05-13 22:46]   Position FERMEE : BAC
+[2026-05-13 22:46] Screener en cours...
+[2026-05-13 22:47] Scores : max=66  mediane=7  (156 tickers)
+[2026-05-13 22:47] Contexte marche : FORT -> seuil=55, max_opens=5
+[2026-05-13 22:47] 1 candidats >= score 55 et R-ratio >= 1.5
+[2026-05-13 22:47] Cash deployable cette semaine : 2500 EUR
+[2026-05-13 22:47]   [ACHAT] MRVL score=66 bull=66 bear=0 prix=177.95 investi=300EUR SL=163.50 TP1=187.59
+[2026-05-13 22:47] ----------------------------------------
+[2026-05-13 22:47] RESUME : valeur=10008.50 EUR  investi=1587.82 EUR  cash=8420.69 EUR  expo=15.9%  positions=6
+[2026-05-13 22:47] ----------------------------------------
+[2026-05-13 23:04] [EMAIL ERROR] (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-45da0a19b1dsm1252136f8f.17 - gsmtp')
+[2026-05-13 23:08] [EMAIL ERROR] (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-45d9ec3ac86sm1480041f8f.14 - gsmtp')
+[2026-05-13 23:09] [EMAIL ERROR] (535, b'5.7.8 Username and Password not accepted. For more information, go to\n5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-45da15a562dsm1455250f8f.33 - gsmtp')
+[2026-05-13 23:11] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-13 23:13] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-14 11:17] ============================================================
+[2026-05-14 11:17] SCAN JOURNALIER - 2026-05-14
+[2026-05-14 11:17] ============================================================
+[2026-05-14 11:17] 10 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-14 11:18]   C: 124.10
+[2026-05-14 11:18]   LMT: 519.94
+[2026-05-14 11:18]   SPG: 200.56
+[2026-05-14 11:18]   EQIX: 1077.28
+[2026-05-14 11:18]   MRVL: 177.95
+[2026-05-14 11:18]   NVDA: 225.83
+[2026-05-14 11:18]   AMZN: 270.13
+[2026-05-14 11:18]   SMH: 572.46
+[2026-05-14 11:18]   SOXX: 528.29
+[2026-05-14 11:18]   ON: 115.71
+[2026-05-14 11:18] Screener en cours...
+[2026-05-14 11:18] Scores : max=66  mediane=10  (156 tickers)
+[2026-05-14 11:18] Contexte marche : FORT -> seuil=55, max_opens=5
+[2026-05-14 11:18] 2 candidats pre-filtres (score>=55, R>=1.2)
+[2026-05-14 11:18] Cash deployable cette semaine : 999 EUR
+[2026-05-14 11:18] 0 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-05-14 11:18] Aucune nouvelle position ouverte.
+[2026-05-14 11:18] ----------------------------------------
+[2026-05-14 11:18] RESUME : valeur=10008.50 EUR  investi=2788.84 EUR  cash=7219.67 EUR  expo=27.9%  positions=10
+[2026-05-14 11:18] ----------------------------------------
+[2026-05-14 11:18] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-15 10:36] ============================================================
+[2026-05-15 10:36] SCAN JOURNALIER - 2026-05-15
+[2026-05-15 10:36] ============================================================
+[2026-05-15 10:37] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-05-15 10:37]   Date     : 2026-05-15  [cache]
+[2026-05-15 10:37]   CAC 40   : BEARISH
+[2026-05-15 10:37]   Valeurs  :
+[2026-05-15 10:37]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-05-15 10:37]     ✅ Ses (Tech) → BUY
+[2026-05-15 10:37]     ✅ Orange (Telecoms) → BUY
+[2026-05-15 10:37]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-05-15 10:37]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-05-15 10:37] ───────────────────────────────────────────────────────
+[2026-05-15 10:37] ══════════════════════════════════════════════
+[2026-05-15 10:37]   AGENT MACRO — 2026-05-15
+[2026-05-15 10:37] ══════════════════════════════════════════════
+[2026-05-15 10:37]   Régime marché  : BULL
+[2026-05-15 10:37]   SPY vs EMA200  : +11.6%
+[2026-05-15 10:37]   VIX            : 18.5 (LOW)
+[2026-05-15 10:37]   Max trades/j   : 3
+[2026-05-15 10:37]   Seuil net min  : 10
+[2026-05-15 10:37]   Top secteurs   : Tech, Semi, Telecoms
+[2026-05-15 10:37]   Secteurs auth. : TOUS (régime favorable)
+[2026-05-15 10:37]   Rationale      : Marché haussier (SPY +11.6% vs EMA200). Exposition maximale autorisée.
+[2026-05-15 10:37] ══════════════════════════════════════════════
+[2026-05-15 10:37] 10 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-15 10:37]   C: 124.82
+[2026-05-15 10:37]   LMT: 520.41
+[2026-05-15 10:37]   SPG: 202.80
+[2026-05-15 10:37]   EQIX: 1079.68
+[2026-05-15 10:37]   MRVL: 182.58
+[2026-05-15 10:37]   NVDA: 235.74
+[2026-05-15 10:37]   AMZN: 267.22
+[2026-05-15 10:37]   SMH: 578.34
+[2026-05-15 10:37]   SOXX: 530.03
+[2026-05-15 10:37]   ON: 118.37
+[2026-05-15 10:37] Screener en cours...
+[2026-05-15 10:37] Scores : max=53  mediane=10  (156 tickers)
+[2026-05-15 10:37] Contexte marche : BULL | seuil=50 | max_trades=3 | score_max=53
+[2026-05-15 10:37] 3 candidats pre-filtres (score>=50, R>=1.2)
+[2026-05-15 10:37] Cash deployable cette semaine : 999 EUR  (max trades/j : 2)
+[2026-05-15 10:37] ────────────────────────────────────────────────────
+[2026-05-15 10:37]   DÉBAT : INTC
+[2026-05-15 10:37] ────────────────────────────────────────────────────
+[2026-05-15 10:37]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-05-15 10:37]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-15 10:37]      • Momentum 10j fort (+22.7%) — tendance confirmée
+[2026-05-15 10:37]      • CMF fort — flux acheteur dominant
+[2026-05-15 10:37]      • Stoch RSI survendu (10) — retournement imminent
+[2026-05-15 10:37]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-15 10:37] 
+[2026-05-15 10:37]   🔴 BEAR [concern=15] → OK
+[2026-05-15 10:37]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-15 10:37]      • Budget semaine limité (40% restant)
+[2026-05-15 10:37] 
+[2026-05-15 10:37]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-05-15 10:37]      Arguments haussiers l'emportent clairement (conviction=52, concern=15, net=+43)
+[2026-05-15 10:37] ────────────────────────────────────────────────────
+[2026-05-15 10:37]   [VETO secteur] INTC : Semi deja a 2 positions
+[2026-05-15 10:37] 1 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-05-15 10:37] Aucune nouvelle position ouverte.
+[2026-05-15 10:37] ----------------------------------------
+[2026-05-15 10:37] RESUME : valeur=10008.50 EUR  investi=2788.84 EUR  cash=7219.67 EUR  expo=27.9%  positions=10
+[2026-05-15 10:37] ----------------------------------------
+[2026-05-15 10:37] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-15 17:18] ============================================================
+[2026-05-15 17:18] SCAN JOURNALIER - 2026-05-15
+[2026-05-15 17:18] ============================================================
+[2026-05-15 17:18] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-05-15 17:18]   Date     : 2026-05-15  [cache]
+[2026-05-15 17:18]   CAC 40   : BEARISH
+[2026-05-15 17:18]   Valeurs  :
+[2026-05-15 17:18]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-05-15 17:18]     ✅ Ses (Tech) → BUY
+[2026-05-15 17:18]     ✅ Orange (Telecoms) → BUY
+[2026-05-15 17:18]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-05-15 17:18]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-05-15 17:18] ───────────────────────────────────────────────────────
+[2026-05-15 17:18] ══════════════════════════════════════════════
+[2026-05-15 17:18]   AGENT MACRO — 2026-05-15
+[2026-05-15 17:18] ══════════════════════════════════════════════
+[2026-05-15 17:18]   Régime marché  : BULL
+[2026-05-15 17:18]   SPY vs EMA200  : +10.4%
+[2026-05-15 17:18]   VIX            : 18.4 (LOW)
+[2026-05-15 17:18]   Max trades/j   : 3
+[2026-05-15 17:18]   Seuil net min  : 10
+[2026-05-15 17:18]   Top secteurs   : Tech, Semi, Energie, Telecoms
+[2026-05-15 17:18]   Secteurs auth. : TOUS (régime favorable)
+[2026-05-15 17:18]   Rationale      : Marché haussier (SPY +10.4% vs EMA200). Exposition maximale autorisée.
+[2026-05-15 17:18] ══════════════════════════════════════════════
+[2026-05-15 17:18] 10 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-15 17:18]   C: 123.79
+[2026-05-15 17:18]   LMT: 518.32
+[2026-05-15 17:18]   SPG: 200.40
+[2026-05-15 17:18]   EQIX: 1061.67
+[2026-05-15 17:18]   MRVL: 178.43
+[2026-05-15 17:18]   NVDA: 227.24
+[2026-05-15 17:18]   AMZN: 263.17
+[2026-05-15 17:18]   SMH: 558.72
+[2026-05-15 17:18]   SOXX: 511.88
+[2026-05-15 17:18]   ON: 113.42
+[2026-05-15 17:18] Screener en cours...
+[2026-05-15 17:18] Scores : max=49  mediane=1  (156 tickers)
+[2026-05-15 17:18] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=49
+[2026-05-15 17:18] 2 candidats pre-filtres (score>=40, R>=1.2)
+[2026-05-15 17:18] Cash deployable cette semaine : 999 EUR  (max trades/j : 2)
+[2026-05-15 17:18] ────────────────────────────────────────────────────
+[2026-05-15 17:18]   DÉBAT : QCOM
+[2026-05-15 17:18] ────────────────────────────────────────────────────
+[2026-05-15 17:18]   🟢 BULL [conviction=50] → PENCHÉ POUR
+[2026-05-15 17:18]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-15 17:18]      • Momentum 10j fort (+14.6%) — tendance confirmée
+[2026-05-15 17:18]      • Stoch RSI survendu (2) — retournement imminent
+[2026-05-15 17:18]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-15 17:18]      • OBV en hausse — accumulation en cours
+[2026-05-15 17:18] 
+[2026-05-15 17:18]   🔴 BEAR [concern=20] → OK
+[2026-05-15 17:18]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-15 17:18]      • Volume faible (0.3× moyenne)
+[2026-05-15 17:18]      • Budget semaine limité (40% restant)
+[2026-05-15 17:18] 
+[2026-05-15 17:18]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-05-15 17:18]      Arguments haussiers l'emportent clairement (conviction=50, concern=20, net=+38)
+[2026-05-15 17:18] ────────────────────────────────────────────────────
+[2026-05-15 17:18]   [VETO secteur] QCOM : Semi deja a 2 positions
+[2026-05-15 17:18] ────────────────────────────────────────────────────
+[2026-05-15 17:18]   DÉBAT : INTC
+[2026-05-15 17:18] ────────────────────────────────────────────────────
+[2026-05-15 17:18]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-05-15 17:18]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-15 17:18]      • Momentum 10j fort (+9.0%) — tendance confirmée
+[2026-05-15 17:18]      • CMF fort — flux acheteur dominant
+[2026-05-15 17:18]      • Stoch RSI survendu (0) — retournement imminent
+[2026-05-15 17:18]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-15 17:18] 
+[2026-05-15 17:18]   🔴 BEAR [concern=20] → OK
+[2026-05-15 17:18]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-15 17:18]      • Volume faible (0.4× moyenne)
+[2026-05-15 17:18]      • Budget semaine limité (40% restant)
+[2026-05-15 17:18] 
+[2026-05-15 17:18]   ✅ ARBITRE → ACHETER  (net=+40)
+[2026-05-15 17:18]      Arguments haussiers l'emportent clairement (conviction=52, concern=20, net=+40)
+[2026-05-15 17:18] ────────────────────────────────────────────────────
+[2026-05-15 17:18]   [VETO secteur] INTC : Semi deja a 2 positions
+[2026-05-15 17:18] 2 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-05-15 17:18] Aucune nouvelle position ouverte.
+[2026-05-15 17:18] ----------------------------------------
+[2026-05-15 17:18] RESUME : valeur=10008.50 EUR  investi=2788.84 EUR  cash=7219.67 EUR  expo=27.9%  positions=10
+[2026-05-15 17:18] ----------------------------------------
+[2026-05-15 17:18] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-16 02:01] Week-end (Saturday) - pas de trading.
+[2026-05-16 14:37] Week-end (Saturday) - pas de trading.
+[2026-05-18 06:57] ============================================================
+[2026-05-18 06:57] SCAN JOURNALIER - 2026-05-18
+[2026-05-18 06:57] ============================================================
+[2026-05-18 06:57] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-05-18 06:57]   Date     : 2026-05-18  [cache]
+[2026-05-18 06:57]   CAC 40   : BEARISH
+[2026-05-18 06:57]   Valeurs  :
+[2026-05-18 06:57]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-05-18 06:57]     ✅ Ses (Tech) → BUY
+[2026-05-18 06:57]     ✅ Orange (Telecoms) → BUY
+[2026-05-18 06:57]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-05-18 06:57]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-05-18 06:57] ───────────────────────────────────────────────────────
+[2026-05-18 06:57] ══════════════════════════════════════════════
+[2026-05-18 06:57]   AGENT MACRO — 2026-05-18
+[2026-05-18 06:57] ══════════════════════════════════════════════
+[2026-05-18 06:57]   Régime marché  : BULL
+[2026-05-18 06:57]   SPY vs EMA200  : +10.1%
+[2026-05-18 06:57]   VIX            : 18.4 (LOW)
+[2026-05-18 06:57]   Max trades/j   : 3
+[2026-05-18 06:57]   Seuil net min  : 10
+[2026-05-18 06:57]   Top secteurs   : Tech, Energie, Semi, Telecoms
+[2026-05-18 06:57]   Secteurs auth. : TOUS (régime favorable)
+[2026-05-18 06:57]   Rationale      : Marché haussier (SPY +10.1% vs EMA200). Exposition maximale autorisée.
+[2026-05-18 06:57] ══════════════════════════════════════════════
+[2026-05-18 06:57] 10 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-18 06:57]   C: 123.42
+[2026-05-18 06:57]   LMT: 516.01
+[2026-05-18 06:57]   SPG: 200.02
+[2026-05-18 06:57]   EQIX: 1059.44
+[2026-05-18 06:57]   MRVL: 176.89
+[2026-05-18 06:57]   NVDA: 225.32
+[2026-05-18 06:57]   AMZN: 264.14
+[2026-05-18 06:57]   SMH: 556.34
+[2026-05-18 06:57]   SOXX: 508.52
+[2026-05-18 06:57]   ON: 113.11
+[2026-05-18 06:57] Screener en cours...
+[2026-05-18 06:58] Scores : max=56  mediane=7  (156 tickers)
+[2026-05-18 06:58] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=56
+[2026-05-18 06:58] 12 candidats pre-filtres (score>=40, R>=1.2)
+[2026-05-18 06:58] Cash deployable cette semaine : 6220 EUR  (max trades/j : 2)
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   DÉBAT : QCOM
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   🟢 BULL [conviction=55] → ACHETER
+[2026-05-18 06:58]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 06:58]      • Score haussier correct (56/100)
+[2026-05-18 06:58]      • Momentum 10j fort (+13.8%) — tendance confirmée
+[2026-05-18 06:58]      • Stoch RSI survendu (2) — retournement imminent
+[2026-05-18 06:58]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   🔴 BEAR [concern=10] → OK
+[2026-05-18 06:58]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-05-18 06:58]      Arguments haussiers l'emportent clairement (conviction=55, concern=10, net=+49)
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   [VETO secteur] QCOM : Semi deja a 2 positions
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   DÉBAT : INTC
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-05-18 06:58]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 06:58]      • Momentum 10j fort (+9.2%) — tendance confirmée
+[2026-05-18 06:58]      • CMF fort — flux acheteur dominant
+[2026-05-18 06:58]      • Stoch RSI survendu (0) — retournement imminent
+[2026-05-18 06:58]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   🔴 BEAR [concern=10] → OK
+[2026-05-18 06:58]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-05-18 06:58]      Arguments haussiers l'emportent clairement (conviction=52, concern=10, net=+46)
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   [VETO secteur] INTC : Semi deja a 2 positions
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   DÉBAT : NUE
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   🟢 BULL [conviction=42] → PENCHÉ POUR
+[2026-05-18 06:58]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 06:58]      • CMF fort — flux acheteur dominant
+[2026-05-18 06:58]      • Stoch RSI survendu (8) — retournement imminent
+[2026-05-18 06:58]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 06:58]      • Score haussier modéré (45/100)
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   🔴 BEAR [concern=0] → OK
+[2026-05-18 06:58]      (aucune objection majeure)
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   ✅ ARBITRE → ACHETER  (net=+42)
+[2026-05-18 06:58]      Arguments haussiers l'emportent clairement (conviction=42, concern=0, net=+42)
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   [ACHAT] NUE score=45 bull=42 bear=0 prix=227.02 investi=300EUR SL=215.87 TP1=235.38
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   DÉBAT : MU
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   🟢 BULL [conviction=44] → PENCHÉ POUR
+[2026-05-18 06:58]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 06:58]      • Momentum 10j fort (+33.6%) — tendance confirmée
+[2026-05-18 06:58]      • CMF fort — flux acheteur dominant
+[2026-05-18 06:58]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 06:58]      • Score haussier modéré (43/100)
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   🔴 BEAR [concern=10] → OK
+[2026-05-18 06:58]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-05-18 06:58]      Arguments haussiers l'emportent clairement (conviction=44, concern=10, net=+38)
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   [VETO secteur] MU : Semi deja a 2 positions
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   DÉBAT : MPC
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   🟢 BULL [conviction=45] → PENCHÉ POUR
+[2026-05-18 06:58]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 06:58]      • CMF fort — flux acheteur dominant
+[2026-05-18 06:58]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 06:58]      • OBV en hausse — accumulation en cours
+[2026-05-18 06:58]      • Score haussier modéré (41/100)
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   🔴 BEAR [concern=0] → OK
+[2026-05-18 06:58]      (aucune objection majeure)
+[2026-05-18 06:58] 
+[2026-05-18 06:58]   ✅ ARBITRE → ACHETER  (net=+45)
+[2026-05-18 06:58]      Arguments haussiers l'emportent clairement (conviction=45, concern=0, net=+45)
+[2026-05-18 06:58] ────────────────────────────────────────────────────
+[2026-05-18 06:58]   [ACHAT] MPC score=41 bull=45 bear=0 prix=255.03 investi=300EUR SL=238.22 TP1=267.63
+[2026-05-18 06:58] 5 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-05-18 06:58] ----------------------------------------
+[2026-05-18 06:58] RESUME : valeur=10008.50 EUR  investi=3389.35 EUR  cash=6619.16 EUR  expo=33.9%  positions=12
+[2026-05-18 06:58] ----------------------------------------
+[2026-05-18 06:58] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-18 09:30] ============================================================
+[2026-05-18 09:30] SCAN JOURNALIER - 2026-05-18
+[2026-05-18 09:30] ============================================================
+[2026-05-18 09:30] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-05-18 09:30]   Date     : 2026-05-18  [cache]
+[2026-05-18 09:30]   CAC 40   : BEARISH
+[2026-05-18 09:30]   Valeurs  :
+[2026-05-18 09:30]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-05-18 09:30]     ✅ Ses (Tech) → BUY
+[2026-05-18 09:30]     ✅ Orange (Telecoms) → BUY
+[2026-05-18 09:30]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-05-18 09:30]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-05-18 09:30] ───────────────────────────────────────────────────────
+[2026-05-18 09:30] ══════════════════════════════════════════════
+[2026-05-18 09:30]   AGENT MACRO — 2026-05-18
+[2026-05-18 09:30] ══════════════════════════════════════════════
+[2026-05-18 09:30]   Régime marché  : BULL
+[2026-05-18 09:30]   SPY vs EMA200  : +10.1%
+[2026-05-18 09:30]   VIX            : 19.2 (LOW)
+[2026-05-18 09:30]   Max trades/j   : 3
+[2026-05-18 09:30]   Seuil net min  : 10
+[2026-05-18 09:30]   Top secteurs   : Tech, Energie, Semi, Telecoms
+[2026-05-18 09:30]   Secteurs auth. : TOUS (régime favorable)
+[2026-05-18 09:30]   Rationale      : Marché haussier (SPY +10.1% vs EMA200). Exposition maximale autorisée.
+[2026-05-18 09:30] ══════════════════════════════════════════════
+[2026-05-18 09:30] 12 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-18 09:30]   C: 123.42
+[2026-05-18 09:30]   LMT: 516.01
+[2026-05-18 09:30]   SPG: 200.02
+[2026-05-18 09:30]   EQIX: 1059.44
+[2026-05-18 09:30]   MRVL: 176.89
+[2026-05-18 09:30]   NVDA: 225.32
+[2026-05-18 09:30]   AMZN: 264.14
+[2026-05-18 09:30]   SMH: 556.34
+[2026-05-18 09:30]   SOXX: 508.52
+[2026-05-18 09:30]   ON: 113.11
+[2026-05-18 09:30]   NUE: 227.02
+[2026-05-18 09:30]   MPC: 255.03
+[2026-05-18 09:30] Screener en cours...
+[2026-05-18 09:30] Scores : max=56  mediane=7  (156 tickers)
+[2026-05-18 09:30] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=56
+[2026-05-18 09:30] 12 candidats pre-filtres (score>=40, R>=1.2)
+[2026-05-18 09:30] Cash deployable cette semaine : 5619 EUR  (max trades/j : 2)
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   DÉBAT : QCOM
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   🟢 BULL [conviction=55] → ACHETER
+[2026-05-18 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 09:30]      • Score haussier correct (56/100)
+[2026-05-18 09:30]      • Momentum 10j fort (+13.8%) — tendance confirmée
+[2026-05-18 09:30]      • Stoch RSI survendu (2) — retournement imminent
+[2026-05-18 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   🔴 BEAR [concern=10] → OK
+[2026-05-18 09:30]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-05-18 09:30]      Arguments haussiers l'emportent clairement (conviction=55, concern=10, net=+49)
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   [VETO secteur] QCOM : Semi deja a 2 positions
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   DÉBAT : INTC
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-05-18 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 09:30]      • Momentum 10j fort (+9.2%) — tendance confirmée
+[2026-05-18 09:30]      • CMF fort — flux acheteur dominant
+[2026-05-18 09:30]      • Stoch RSI survendu (0) — retournement imminent
+[2026-05-18 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   🔴 BEAR [concern=10] → OK
+[2026-05-18 09:30]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-05-18 09:30]      Arguments haussiers l'emportent clairement (conviction=52, concern=10, net=+46)
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   [VETO secteur] INTC : Semi deja a 2 positions
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   DÉBAT : MU
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   🟢 BULL [conviction=44] → PENCHÉ POUR
+[2026-05-18 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 09:30]      • Momentum 10j fort (+33.6%) — tendance confirmée
+[2026-05-18 09:30]      • CMF fort — flux acheteur dominant
+[2026-05-18 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 09:30]      • Score haussier modéré (43/100)
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   🔴 BEAR [concern=10] → OK
+[2026-05-18 09:30]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-05-18 09:30]      Arguments haussiers l'emportent clairement (conviction=44, concern=10, net=+38)
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   [VETO secteur] MU : Semi deja a 2 positions
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   DÉBAT : BIIB
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   🟢 BULL [conviction=43] → PENCHÉ POUR
+[2026-05-18 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 09:30]      • OBV en hausse — accumulation en cours
+[2026-05-18 09:30]      • Score haussier modéré (40/100)
+[2026-05-18 09:30]      • Momentum 10j positif (+3.1%)
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   🔴 BEAR [concern=0] → OK
+[2026-05-18 09:30]      (aucune objection majeure)
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-05-18 09:30]      Arguments haussiers l'emportent clairement (conviction=43, concern=0, net=+43)
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   [ACHAT] BIIB score=40 bull=43 bear=0 prix=192.95 investi=300EUR SL=180.53 TP1=202.27
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   DÉBAT : CAT
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   🟢 BULL [conviction=40] → PENCHÉ POUR
+[2026-05-18 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-18 09:30]      • Stoch RSI survendu (16) — retournement imminent
+[2026-05-18 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-18 09:30]      • Score haussier modéré (40/100)
+[2026-05-18 09:30]      • RSI sain (58) — pas de surachat
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   🔴 BEAR [concern=0] → OK
+[2026-05-18 09:30]      (aucune objection majeure)
+[2026-05-18 09:30] 
+[2026-05-18 09:30]   ✅ ARBITRE → ACHETER  (net=+40)
+[2026-05-18 09:30]      Arguments haussiers l'emportent clairement (conviction=40, concern=0, net=+40)
+[2026-05-18 09:30] ────────────────────────────────────────────────────
+[2026-05-18 09:30]   [ACHAT] CAT score=40 bull=40 bear=0 prix=888.31 investi=300EUR SL=831.11 TP1=931.21
+[2026-05-18 09:30] 5 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-05-18 09:30] ----------------------------------------
+[2026-05-18 09:30] RESUME : valeur=10008.50 EUR  investi=3989.86 EUR  cash=6018.65 EUR  expo=39.9%  positions=14
+[2026-05-18 09:30] ----------------------------------------
+[2026-05-18 09:30] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-19 20:39] ============================================================
+[2026-05-19 20:39] SCAN JOURNALIER - 2026-05-19
+[2026-05-19 20:39] ============================================================
+[2026-05-19 20:39] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-05-19 20:39]   Date     : 2026-05-19  [cache]
+[2026-05-19 20:39]   CAC 40   : BEARISH
+[2026-05-19 20:39]   Valeurs  :
+[2026-05-19 20:39]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-05-19 20:39]     ✅ Ses (Tech) → BUY
+[2026-05-19 20:39]     ✅ Orange (Telecoms) → BUY
+[2026-05-19 20:39]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-05-19 20:39]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-05-19 20:39] ───────────────────────────────────────────────────────
+[2026-05-19 20:39] ══════════════════════════════════════════════
+[2026-05-19 20:39]   AGENT MACRO — 2026-05-19
+[2026-05-19 20:39] ══════════════════════════════════════════════
+[2026-05-19 20:39]   Régime marché  : BULL
+[2026-05-19 20:39]   SPY vs EMA200  : +9.4%
+[2026-05-19 20:39]   VIX            : 17.9 (LOW)
+[2026-05-19 20:39]   Max trades/j   : 3
+[2026-05-19 20:39]   Seuil net min  : 10
+[2026-05-19 20:39]   Top secteurs   : Semi, Tech, Energie
+[2026-05-19 20:39]   Secteurs auth. : TOUS (régime favorable)
+[2026-05-19 20:39]   Rationale      : Marché haussier (SPY +9.4% vs EMA200). Exposition maximale autorisée.
+[2026-05-19 20:39] ══════════════════════════════════════════════
+[2026-05-19 20:39] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-19 20:39]   C: 120.84
+[2026-05-19 20:39]   LMT: 525.31
+[2026-05-19 20:39]   SPG: 200.24
+[2026-05-19 20:39]   EQIX: 1052.08
+[2026-05-19 20:39]   MRVL: 178.43
+[2026-05-19 20:39]   NVDA: 222.55
+[2026-05-19 20:39]   AMZN: 259.28
+[2026-05-19 20:39]   SMH: 547.91
+[2026-05-19 20:39]   SOXX: 500.78
+[2026-05-19 20:39]   ON: 107.00
+[2026-05-19 20:39]   NUE: 223.56
+[2026-05-19 20:39]   MPC: 261.84
+[2026-05-19 20:39]   BIIB: 191.69
+[2026-05-19 20:39]   CAT: 863.18
+[2026-05-19 20:39]   SL/TP declenches -> encaisse +1709.55 EUR
+[2026-05-19 20:39]   Position FERMEE : C
+[2026-05-19 20:39]   Position FERMEE : EQIX
+[2026-05-19 20:39]   Position FERMEE : AMZN
+[2026-05-19 20:39]   Position FERMEE : SMH
+[2026-05-19 20:39]   Position FERMEE : SOXX
+[2026-05-19 20:39]   Position FERMEE : ON
+[2026-05-19 20:39] Screener en cours...
+[2026-05-19 20:40] Scores : max=66  mediane=7  (156 tickers)
+[2026-05-19 20:40] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=66
+[2026-05-19 20:40] 18 candidats pre-filtres (score>=40, R>=1.2)
+[2026-05-19 20:40] Cash deployable cette semaine : 6728 EUR  (max trades/j : 2)
+[2026-05-19 20:40] ────────────────────────────────────────────────────
+[2026-05-19 20:40]   DÉBAT : MU
+[2026-05-19 20:40] ────────────────────────────────────────────────────
+[2026-05-19 20:40]   🟢 BULL [conviction=63] → ACHETER
+[2026-05-19 20:40]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-19 20:40]      • Score haussier correct (66/100)
+[2026-05-19 20:40]      • Momentum 10j fort (+11.0%) — tendance confirmée
+[2026-05-19 20:40]      • CMF fort — flux acheteur dominant
+[2026-05-19 20:40]      • Stoch RSI survendu (4) — retournement imminent
+[2026-05-19 20:40] 
+[2026-05-19 20:40]   🔴 BEAR [concern=0] → OK
+[2026-05-19 20:40]      (aucune objection majeure)
+[2026-05-19 20:40] 
+[2026-05-19 20:40]   ✅ ARBITRE → ACHETER  (net=+63)
+[2026-05-19 20:40]      Arguments haussiers l'emportent clairement (conviction=63, concern=0, net=+63)
+[2026-05-19 20:40] ────────────────────────────────────────────────────
+[2026-05-19 20:40]   [ACHAT] MU score=66 bull=63 bear=0 prix=710.84 investi=298EUR SL=609.43 TP1=786.89
+[2026-05-19 20:40] ────────────────────────────────────────────────────
+[2026-05-19 20:40]   DÉBAT : SMH
+[2026-05-19 20:40] ────────────────────────────────────────────────────
+[2026-05-19 20:40]   🟢 BULL [conviction=58] → ACHETER
+[2026-05-19 20:40]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-19 20:40]      • Score haussier correct (61/100)
+[2026-05-19 20:40]      • CMF fort — flux acheteur dominant
+[2026-05-19 20:40]      • Stoch RSI survendu (1) — retournement imminent
+[2026-05-19 20:40]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-19 20:40] 
+[2026-05-19 20:40]   🔴 BEAR [concern=0] → OK
+[2026-05-19 20:40]      (aucune objection majeure)
+[2026-05-19 20:40] 
+[2026-05-19 20:40]   ✅ ARBITRE → ACHETER  (net=+58)
+[2026-05-19 20:40]      Arguments haussiers l'emportent clairement (conviction=58, concern=0, net=+58)
+[2026-05-19 20:40] ────────────────────────────────────────────────────
+[2026-05-19 20:40]   [ACHAT] SMH score=61 bull=58 bear=0 prix=547.78 investi=298EUR SL=511.31 TP1=575.13
+[2026-05-19 20:40] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-05-19 20:40] ----------------------------------------
+[2026-05-19 20:40] RESUME : valeur=9917.61 EUR  investi=2784.47 EUR  cash=7133.14 EUR  expo=28.1%  positions=10
+[2026-05-19 20:40] ----------------------------------------
+[2026-05-19 20:40] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-05-20 21:44] ============================================================
+[2026-05-20 21:44] SCAN JOURNALIER - 2026-05-20
+[2026-05-20 21:44] ============================================================
+[2026-05-20 21:44] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-05-20 21:44]   Date     : 2026-05-20  [cache]
+[2026-05-20 21:44]   CAC 40   : BEARISH
+[2026-05-20 21:44]   Valeurs  :
+[2026-05-20 21:44]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-05-20 21:44]     ✅ Ses (Tech) → BUY
+[2026-05-20 21:44]     ✅ Orange (Telecoms) → BUY
+[2026-05-20 21:44]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-05-20 21:44]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-05-20 21:44] ───────────────────────────────────────────────────────
+[2026-05-20 21:44] ══════════════════════════════════════════════
+[2026-05-20 21:44]   AGENT MACRO — 2026-05-20
+[2026-05-20 21:44] ══════════════════════════════════════════════
+[2026-05-20 21:44]   Régime marché  : BULL
+[2026-05-20 21:44]   SPY vs EMA200  : +10.1%
+[2026-05-20 21:44]   VIX            : 17.4 (LOW)
+[2026-05-20 21:44]   Max trades/j   : 3
+[2026-05-20 21:44]   Seuil net min  : 10
+[2026-05-20 21:44]   Top secteurs   : Semi, Tech, Energie
+[2026-05-20 21:44]   Secteurs auth. : TOUS (régime favorable)
+[2026-05-20 21:44]   Rationale      : Marché haussier (SPY +10.1% vs EMA200). Exposition maximale autorisée.
+[2026-05-20 21:44] ══════════════════════════════════════════════
+[2026-05-20 21:44] 10 position(s) ouverte(s) - mise a jour des prix...
+[2026-05-20 21:44]   LMT: 521.42
+[2026-05-20 21:44]   SPG: 204.27
+[2026-05-20 21:44]   MRVL: 186.07
+[2026-05-20 21:44]   NVDA: 223.40
+[2026-05-20 21:44]   SMH: 562.64
+[2026-05-20 21:44]   NUE: 224.56
+[2026-05-20 21:44]   MPC: 257.34
+[2026-05-20 21:44]   BIIB: 189.29
+[2026-05-20 21:44]   CAT: 874.34
+[2026-05-20 21:44]   MU: 729.23
+[2026-05-20 21:44] Screener en cours...
+[2026-05-20 21:44] Scores : max=66  mediane=13  (156 tickers)
+[2026-05-20 21:44] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=66
+[2026-05-20 21:44] 21 candidats pre-filtres (score>=40, R>=1.2)
+[2026-05-20 21:44] Cash deployable cette semaine : 6133 EUR  (max trades/j : 2)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : INTC
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=58] → ACHETER
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • Score haussier correct (61/100)
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (10) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=10] → OK
+[2026-05-20 21:44]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+52)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=58, concern=10, net=+52)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [VETO secteur] INTC : Semi deja a 3 positions
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : SOXX
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=53] → PENCHÉ POUR
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • Score haussier correct (61/100)
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (8) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=0] → OK
+[2026-05-20 21:44]      (aucune objection majeure)
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=53, concern=0, net=+53)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [ACHAT] SOXX score=61 bull=53 bear=0 prix=518.07 investi=298EUR SL=479.79 TP1=546.77
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : QQQ
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=53] → PENCHÉ POUR
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • Score haussier correct (61/100)
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (7) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=10] → OK
+[2026-05-20 21:44]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+47)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=53, concern=10, net=+47)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [VETO secteur] QQQ : ETF deja a 2 positions
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : XLK
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=58] → ACHETER
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • Score haussier correct (61/100)
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (7) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=10] → OK
+[2026-05-20 21:44]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+52)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=58, concern=10, net=+52)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [VETO secteur] XLK : ETF deja a 2 positions
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : AMD
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=58] → ACHETER
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • Score haussier correct (61/100)
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (11) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=15] → OK
+[2026-05-20 21:44]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-20 21:44]      • Volume faible (0.6× moyenne)
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=58, concern=15, net=+49)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [VETO secteur] AMD : Semi deja a 3 positions
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : ICLN
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=56] → ACHETER
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • Score haussier correct (58/100)
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (10) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=10] → OK
+[2026-05-20 21:44]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+50)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=56, concern=10, net=+50)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [VETO secteur] ICLN : ETF deja a 2 positions
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : ON
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=58] → ACHETER
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • Score haussier correct (56/100)
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (5) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=15] → OK
+[2026-05-20 21:44]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-05-20 21:44]      • Volume faible (0.3× moyenne)
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=58, concern=15, net=+49)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [VETO secteur] ON : Semi deja a 3 positions
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   DÉBAT : GOOGL
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   🟢 BULL [conviction=48] → PENCHÉ POUR
+[2026-05-20 21:44]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-05-20 21:44]      • CMF fort — flux acheteur dominant
+[2026-05-20 21:44]      • Stoch RSI survendu (1) — retournement imminent
+[2026-05-20 21:44]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-05-20 21:44]      • OBV en hausse — accumulation en cours
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   🔴 BEAR [concern=12] → OK
+[2026-05-20 21:44]      • Momentum 10j : -2.4% (faible)
+[2026-05-20 21:44] 
+[2026-05-20 21:44]   ✅ ARBITRE → ACHETER  (net=+41)
+[2026-05-20 21:44]      Arguments haussiers l'emportent clairement (conviction=48, concern=12, net=+41)
+[2026-05-20 21:44] ────────────────────────────────────────────────────
+[2026-05-20 21:44]   [ACHAT] GOOGL score=50 bull=48 bear=12 prix=388.44 investi=298EUR SL=368.13 TP1=403.68
+[2026-05-20 21:44] 8 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-05-20 21:44] ----------------------------------------
+[2026-05-20 21:44] RESUME : valeur=9917.61 EUR  investi=3379.53 EUR  cash=6538.09 EUR  expo=34.1%  positions=12
+[2026-05-20 21:44] ----------------------------------------
+[2026-05-20 21:44] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-02 17:51] ============================================================
+[2026-06-02 17:51] SCAN JOURNALIER - 2026-06-02
+[2026-06-02 17:51] ============================================================
+[2026-06-02 17:52] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-02 17:52]   Date     : 2026-06-02  [cache]
+[2026-06-02 17:52]   CAC 40   : BEARISH
+[2026-06-02 17:52]   Valeurs  :
+[2026-06-02 17:52]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-06-02 17:52]     ✅ Ses (Tech) → BUY
+[2026-06-02 17:52]     ✅ Orange (Telecoms) → BUY
+[2026-06-02 17:52]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-06-02 17:52]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-06-02 17:52] ───────────────────────────────────────────────────────
+[2026-06-02 17:52] ══════════════════════════════════════════════
+[2026-06-02 17:52]   AGENT MACRO — 2026-06-02
+[2026-06-02 17:52] ══════════════════════════════════════════════
+[2026-06-02 17:52]   Régime marché  : BULL
+[2026-06-02 17:52]   SPY vs EMA200  : +11.8%
+[2026-06-02 17:52]   VIX            : 16.0 (LOW)
+[2026-06-02 17:52]   Max trades/j   : 3
+[2026-06-02 17:52]   Seuil net min  : 10
+[2026-06-02 17:52]   Top secteurs   : Tech, Semi
+[2026-06-02 17:52]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-02 17:52]   Rationale      : Marché haussier (SPY +11.8% vs EMA200). Exposition maximale autorisée.
+[2026-06-02 17:52] ══════════════════════════════════════════════
+[2026-06-02 17:52] 12 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-02 17:52]   GOOGL: 366.91
+[2026-06-02 17:52]   LMT: 514.90
+[2026-06-02 17:52]   SPG: 204.54
+[2026-06-02 17:52]   MRVL: 282.86
+[2026-06-02 17:52]   NVDA: 225.15
+[2026-06-02 17:52]   SMH: 629.20
+[2026-06-02 17:52]   SOXX: 599.39
+[2026-06-02 17:52]   NUE: 257.90
+[2026-06-02 17:52]   MPC: 263.72
+[2026-06-02 17:52]   BIIB: 186.77
+[2026-06-02 17:52]   CAT: 904.91
+[2026-06-02 17:52]   MU: 1040.99
+[2026-06-02 17:52]   SL/TP declenches -> encaisse +1519.16 EUR
+[2026-06-02 17:52]   Position FERMEE : GOOGL
+[2026-06-02 17:52]   TP1 MRVL : 282.86 (+59.0%)
+[2026-06-02 17:52]   TP2 MRVL : 282.86 (+59.0%)
+[2026-06-02 17:52]   TP3 MRVL : 282.86 (+59.0%)
+[2026-06-02 17:52]   TP1 SMH : 629.20 (+14.9%)
+[2026-06-02 17:52]   TP2 SMH : 629.20 (+14.9%)
+[2026-06-02 17:52]   TP1 SOXX : 599.39 (+15.7%)
+[2026-06-02 17:52]   TP2 SOXX : 599.39 (+15.7%)
+[2026-06-02 17:52]   TP1 NUE : 257.90 (+13.6%)
+[2026-06-02 17:52]   TP2 NUE : 257.90 (+13.6%)
+[2026-06-02 17:52]   TP3 NUE : 257.90 (+13.6%)
+[2026-06-02 17:52]   TP1 MU : 1040.99 (+46.4%)
+[2026-06-02 17:52]   TP2 MU : 1040.99 (+46.4%)
+[2026-06-02 17:52]   TP3 MU : 1040.99 (+46.4%)
+[2026-06-02 17:52] Screener en cours...
+[2026-06-02 17:52] Scores : max=56  mediane=11  (156 tickers)
+[2026-06-02 17:52] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=56
+[2026-06-02 17:52] 12 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-02 17:52] Cash deployable cette semaine : 7057 EUR  (max trades/j : 2)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : ICLN
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=55] → ACHETER
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • Score haussier correct (56/100)
+[2026-06-02 17:53]      • Momentum 10j fort (+10.2%) — tendance confirmée
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=10] → OK
+[2026-06-02 17:53]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=55, concern=10, net=+49)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] ICLN : ETF deja a 2 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : ROBO
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=45] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53]      • Score haussier modéré (46/100)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=10] → OK
+[2026-06-02 17:53]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+39)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=45, concern=10, net=+39)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] ROBO : ETF deja a 2 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : AAPL
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=45] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53]      • Score haussier modéré (51/100)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=13] → OK
+[2026-06-02 17:53]      • RSI suracheté (72)
+[2026-06-02 17:53]      • Volume faible (0.3× moyenne)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=45, concern=13, net=+37)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [ACHAT] AAPL score=45 bull=45 bear=13 prix=313.05 investi=306EUR SL=301.54 TP1=321.67
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : AMD
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=50] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • Momentum 10j fort (+22.0%) — tendance confirmée
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=23] → OK
+[2026-06-02 17:53]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53]      • RSI suracheté (74)
+[2026-06-02 17:53]      • Volume faible (0.3× moyenne)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+36)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=50, concern=23, net=+36)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] AMD : Semi deja a 4 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : ON
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=50] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • Momentum 10j fort (+18.4%) — tendance confirmée
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=23] → OK
+[2026-06-02 17:53]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53]      • RSI suracheté (71)
+[2026-06-02 17:53]      • Volume faible (0.3× moyenne)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+36)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=50, concern=23, net=+36)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] ON : Semi deja a 4 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : QCOM
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=45] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • Momentum 10j fort (+18.4%) — tendance confirmée
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53]      • Score haussier modéré (46/100)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=15] → OK
+[2026-06-02 17:53]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53]      • Volume faible (0.3× moyenne)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+36)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=45, concern=15, net=+36)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] QCOM : Semi deja a 4 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : TSLA
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=51] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Stoch RSI survendu (18) — retournement imminent
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=15] → OK
+[2026-06-02 17:53]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53]      • Volume faible (0.4× moyenne)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+42)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=51, concern=15, net=+42)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] TSLA : Tech deja a 2 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : INTC
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=45] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Stoch RSI survendu (0) — retournement imminent
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • Score haussier modéré (44/100)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=15] → OK
+[2026-06-02 17:53]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53]      • Volume faible (0.4× moyenne)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+36)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=45, concern=15, net=+36)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] INTC : Semi deja a 4 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : WOLF
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=43] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • Stoch RSI survendu (5) — retournement imminent
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53]      • Score haussier modéré (43/100)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=15] → OK
+[2026-06-02 17:53]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53]      • Volume faible (0.5× moyenne)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+34)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=43, concern=15, net=+34)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] WOLF : Semi deja a 4 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : LIT
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=48] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • CMF fort — flux acheteur dominant
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • OBV en hausse — accumulation en cours
+[2026-06-02 17:53]      • Score haussier modéré (40/100)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=10] → OK
+[2026-06-02 17:53]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+42)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=48, concern=10, net=+42)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] LIT : ETF deja a 2 positions
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   DÉBAT : GOOGL
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   🟢 BULL [conviction=47] → PENCHÉ POUR
+[2026-06-02 17:53]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-02 17:53]      • Prix sous bande Bollinger inférieure — compression extrême
+[2026-06-02 17:53]      • Stoch RSI survendu (0) — retournement imminent
+[2026-06-02 17:53]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-02 17:53]      • Score haussier modéré (46/100)
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   🔴 BEAR [concern=37] → PRUDENCE
+[2026-06-02 17:53]      • Chute de -7.6% sur 10j — attraper un couteau ?
+[2026-06-02 17:53]      • Momentum 10j : -7.6% (chute forte)
+[2026-06-02 17:53]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-02 17:53] 
+[2026-06-02 17:53]   ✅ ARBITRE → ACHETER  (net=+25)
+[2026-06-02 17:53]      Arguments haussiers l'emportent clairement (conviction=47, concern=37, net=+25)
+[2026-06-02 17:53] ────────────────────────────────────────────────────
+[2026-06-02 17:53]   [VETO secteur] GOOGL : Tech deja a 2 positions
+[2026-06-02 17:53] 11 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-06-02 17:53] ----------------------------------------
+[2026-06-02 17:53] RESUME : valeur=10199.36 EUR  investi=2448.10 EUR  cash=7751.26 EUR  expo=24.0%  positions=12
+[2026-06-02 17:53] ----------------------------------------
+[2026-06-02 17:53] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-03 21:33] ============================================================
+[2026-06-03 21:33] SCAN JOURNALIER - 2026-06-03
+[2026-06-03 21:33] ============================================================
+[2026-06-03 21:33] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-03 21:33]   Date     : 2026-06-03  [cache]
+[2026-06-03 21:33]   CAC 40   : BEARISH
+[2026-06-03 21:33]   Valeurs  :
+[2026-06-03 21:33]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-06-03 21:33]     ✅ Ses (Tech) → BUY
+[2026-06-03 21:33]     ✅ Orange (Telecoms) → BUY
+[2026-06-03 21:33]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-06-03 21:33]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-06-03 21:33] ───────────────────────────────────────────────────────
+[2026-06-03 21:33] ══════════════════════════════════════════════
+[2026-06-03 21:33]   AGENT MACRO — 2026-06-03
+[2026-06-03 21:33] ══════════════════════════════════════════════
+[2026-06-03 21:33]   Régime marché  : BULL
+[2026-06-03 21:33]   SPY vs EMA200  : +10.9%
+[2026-06-03 21:33]   VIX            : 16.1 (LOW)
+[2026-06-03 21:33]   Max trades/j   : 3
+[2026-06-03 21:33]   Seuil net min  : 10
+[2026-06-03 21:33]   Top secteurs   : Tech, Semi
+[2026-06-03 21:33]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-03 21:33]   Rationale      : Marché haussier (SPY +10.9% vs EMA200). Exposition maximale autorisée.
+[2026-06-03 21:33] ══════════════════════════════════════════════
+[2026-06-03 21:33] 12 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-03 21:33]   LMT: 514.58
+[2026-06-03 21:33]   SPG: 204.38
+[2026-06-03 21:33]   MRVL: 299.63
+[2026-06-03 21:33]   NVDA: 215.34
+[2026-06-03 21:33]   SMH: 638.47
+[2026-06-03 21:33]   SOXX: 614.67
+[2026-06-03 21:33]   NUE: 258.83
+[2026-06-03 21:33]   MPC: 268.61
+[2026-06-03 21:33]   BIIB: 195.57
+[2026-06-03 21:33]   CAT: 926.24
+[2026-06-03 21:33]   MU: 1077.27
+[2026-06-03 21:33]   AAPL: 310.82
+[2026-06-03 21:33]   SL/TP declenches -> encaisse +243.64 EUR
+[2026-06-03 21:33]   Position FERMEE : NVDA
+[2026-06-03 21:33]   TP3 SOXX : 614.67 (+18.6%)
+[2026-06-03 21:33]   TP1 MPC : 268.61 (+5.3%)
+[2026-06-03 21:33] Screener en cours...
+[2026-06-03 21:34] Scores : max=53  mediane=14  (156 tickers)
+[2026-06-03 21:34] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=53
+[2026-06-03 21:34] 8 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-03 21:34] Cash deployable cette semaine : 6995 EUR  (max trades/j : 2)
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   DÉBAT : INTC
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   🟢 BULL [conviction=46] → PENCHÉ POUR
+[2026-06-03 21:34]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-03 21:34]      • Stoch RSI survendu (7) — retournement imminent
+[2026-06-03 21:34]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-03 21:34]      • OBV en hausse — accumulation en cours
+[2026-06-03 21:34]      • Score haussier modéré (53/100)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   🔴 BEAR [concern=10] → OK
+[2026-06-03 21:34]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   ✅ ARBITRE → ACHETER  (net=+40)
+[2026-06-03 21:34]      Arguments haussiers l'emportent clairement (conviction=46, concern=10, net=+40)
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   [VETO secteur] INTC : Semi deja a 4 positions
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   DÉBAT : WOLF
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   🟢 BULL [conviction=48] → PENCHÉ POUR
+[2026-06-03 21:34]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-03 21:34]      • Stoch RSI survendu (13) — retournement imminent
+[2026-06-03 21:34]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-03 21:34]      • OBV en hausse — accumulation en cours
+[2026-06-03 21:34]      • Score haussier modéré (51/100)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   🔴 BEAR [concern=15] → OK
+[2026-06-03 21:34]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-03 21:34]      • Volume faible (0.6× moyenne)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   ✅ ARBITRE → ACHETER  (net=+39)
+[2026-06-03 21:34]      Arguments haussiers l'emportent clairement (conviction=48, concern=15, net=+39)
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   [VETO secteur] WOLF : Semi deja a 4 positions
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   DÉBAT : ON
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   🟢 BULL [conviction=50] → PENCHÉ POUR
+[2026-06-03 21:34]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-03 21:34]      • Momentum 10j fort (+26.2%) — tendance confirmée
+[2026-06-03 21:34]      • CMF fort — flux acheteur dominant
+[2026-06-03 21:34]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-03 21:34]      • OBV en hausse — accumulation en cours
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   🔴 BEAR [concern=23] → OK
+[2026-06-03 21:34]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-03 21:34]      • RSI suracheté (73)
+[2026-06-03 21:34]      • Volume faible (0.5× moyenne)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   ✅ ARBITRE → ACHETER  (net=+36)
+[2026-06-03 21:34]      Arguments haussiers l'emportent clairement (conviction=50, concern=23, net=+36)
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   [VETO secteur] ON : Semi deja a 4 positions
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   DÉBAT : DDOG
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   🟢 BULL [conviction=44] → PENCHÉ POUR
+[2026-06-03 21:34]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-03 21:34]      • Momentum 10j fort (+15.7%) — tendance confirmée
+[2026-06-03 21:34]      • CMF fort — flux acheteur dominant
+[2026-06-03 21:34]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-03 21:34]      • Score haussier modéré (43/100)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   🔴 BEAR [concern=0] → OK
+[2026-06-03 21:34]      (aucune objection majeure)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   ✅ ARBITRE → ACHETER  (net=+44)
+[2026-06-03 21:34]      Arguments haussiers l'emportent clairement (conviction=44, concern=0, net=+44)
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   [ACHAT] DDOG score=43 bull=44 bear=0 prix=248.86 investi=307EUR SL=222.21 TP1=268.84
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   DÉBAT : ICLN
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   🟢 BULL [conviction=44] → PENCHÉ POUR
+[2026-06-03 21:34]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-03 21:34]      • Momentum 10j fort (+10.2%) — tendance confirmée
+[2026-06-03 21:34]      • CMF fort — flux acheteur dominant
+[2026-06-03 21:34]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-03 21:34]      • Score haussier modéré (43/100)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   🔴 BEAR [concern=10] → OK
+[2026-06-03 21:34]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-06-03 21:34]      Arguments haussiers l'emportent clairement (conviction=44, concern=10, net=+38)
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   [VETO secteur] ICLN : ETF deja a 2 positions
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   DÉBAT : UNH
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   🟢 BULL [conviction=51] → PENCHÉ POUR
+[2026-06-03 21:34]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-03 21:34]      • CMF fort — flux acheteur dominant
+[2026-06-03 21:34]      • Stoch RSI survendu (2) — retournement imminent
+[2026-06-03 21:34]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-03 21:34]      • OBV en hausse — accumulation en cours
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   🔴 BEAR [concern=17] → OK
+[2026-06-03 21:34]      • Momentum 10j : -2.4% (faible)
+[2026-06-03 21:34]      • Volume faible (0.7× moyenne)
+[2026-06-03 21:34] 
+[2026-06-03 21:34]   ✅ ARBITRE → ACHETER  (net=+41)
+[2026-06-03 21:34]      Arguments haussiers l'emportent clairement (conviction=51, concern=17, net=+41)
+[2026-06-03 21:34] ────────────────────────────────────────────────────
+[2026-06-03 21:34]   [ACHAT] UNH score=43 bull=51 bear=17 prix=380.02 investi=307EUR SL=362.19 TP1=393.39
+[2026-06-03 21:34] 6 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-06-03 21:34] ----------------------------------------
+[2026-06-03 21:34] RESUME : valeur=10221.68 EUR  investi=2840.07 EUR  cash=7381.60 EUR  expo=27.8%  positions=13
+[2026-06-03 21:34] ----------------------------------------
+[2026-06-03 21:34] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-04 09:30] ============================================================
+[2026-06-04 09:30] SCAN JOURNALIER - 2026-06-04
+[2026-06-04 09:30] ============================================================
+[2026-06-04 09:30] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-04 09:30]   Date     : 2026-06-04  [cache]
+[2026-06-04 09:30]   CAC 40   : BEARISH
+[2026-06-04 09:30]   Valeurs  :
+[2026-06-04 09:30]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-06-04 09:30]     ✅ Ses (Tech) → BUY
+[2026-06-04 09:30]     ✅ Orange (Telecoms) → BUY
+[2026-06-04 09:30]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-06-04 09:30]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-06-04 09:30] ───────────────────────────────────────────────────────
+[2026-06-04 09:30] ══════════════════════════════════════════════
+[2026-06-04 09:30]   AGENT MACRO — 2026-06-04
+[2026-06-04 09:30] ══════════════════════════════════════════════
+[2026-06-04 09:30]   Régime marché  : BULL
+[2026-06-04 09:30]   SPY vs EMA200  : +10.8%
+[2026-06-04 09:30]   VIX            : 16.3 (LOW)
+[2026-06-04 09:30]   Max trades/j   : 3
+[2026-06-04 09:30]   Seuil net min  : 10
+[2026-06-04 09:30]   Top secteurs   : Tech, Semi
+[2026-06-04 09:30]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-04 09:30]   Rationale      : Marché haussier (SPY +10.9% vs EMA200). Exposition maximale autorisée.
+[2026-06-04 09:30] ══════════════════════════════════════════════
+[2026-06-04 09:30] 13 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-04 09:30]   LMT: 512.03
+[2026-06-04 09:30]   SPG: 203.55
+[2026-06-04 09:30]   MRVL: 301.65
+[2026-06-04 09:30]   SMH: 637.90
+[2026-06-04 09:30]   SOXX: 615.68
+[2026-06-04 09:30]   NUE: 257.73
+[2026-06-04 09:30]   MPC: 267.21
+[2026-06-04 09:30]   BIIB: 195.96
+[2026-06-04 09:30]   CAT: 926.18
+[2026-06-04 09:30]   MU: 1079.57
+[2026-06-04 09:30]   AAPL: 310.26
+[2026-06-04 09:30]   DDOG: 250.33
+[2026-06-04 09:30]   UNH: 377.00
+[2026-06-04 09:30] Screener en cours...
+[2026-06-04 09:30] Scores : max=53  mediane=18  (156 tickers)
+[2026-06-04 09:30] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=53
+[2026-06-04 09:30] 11 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-04 09:30] Cash deployable cette semaine : 6382 EUR  (max trades/j : 2)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : INTC
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=46] → PENCHÉ POUR
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • Stoch RSI survendu (8) — retournement imminent
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30]      • OBV en hausse — accumulation en cours
+[2026-06-04 09:30]      • Score haussier modéré (53/100)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=10] → OK
+[2026-06-04 09:30]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+40)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=46, concern=10, net=+40)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [VETO secteur] INTC : Semi deja a 4 positions
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : ON
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=55] → ACHETER
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • Score haussier correct (56/100)
+[2026-06-04 09:30]      • Momentum 10j fort (+26.3%) — tendance confirmée
+[2026-06-04 09:30]      • CMF fort — flux acheteur dominant
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=18] → OK
+[2026-06-04 09:30]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-04 09:30]      • RSI suracheté (73)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+44)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=55, concern=18, net=+44)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [VETO secteur] ON : Semi deja a 4 positions
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : PANW
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • Momentum 10j fort (+16.8%) — tendance confirmée
+[2026-06-04 09:30]      • Volume fort (1.5× la moyenne) — intérêt institutionnel
+[2026-06-04 09:30]      • CMF fort — flux acheteur dominant
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=10] → OK
+[2026-06-04 09:30]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=52, concern=10, net=+46)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [VETO secteur] PANW : Tech deja a 2 positions
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : MAR
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=45] → PENCHÉ POUR
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • CMF fort — flux acheteur dominant
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30]      • OBV en hausse — accumulation en cours
+[2026-06-04 09:30]      • Score haussier modéré (46/100)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=0] → OK
+[2026-06-04 09:30]      (aucune objection majeure)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+45)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=45, concern=0, net=+45)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [ACHAT] MAR score=46 bull=45 bear=0 prix=376.75 investi=307EUR SL=360.03 TP1=389.29
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : WOLF
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=48] → PENCHÉ POUR
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • Stoch RSI survendu (12) — retournement imminent
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30]      • OBV en hausse — accumulation en cours
+[2026-06-04 09:30]      • Score haussier modéré (46/100)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=15] → OK
+[2026-06-04 09:30]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-04 09:30]      • Volume faible (0.7× moyenne)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+39)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=48, concern=15, net=+39)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [VETO secteur] WOLF : Semi deja a 4 positions
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : AMD
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=50] → PENCHÉ POUR
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • Momentum 10j fort (+31.0%) — tendance confirmée
+[2026-06-04 09:30]      • CMF fort — flux acheteur dominant
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30]      • OBV en hausse — accumulation en cours
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=28] → OK
+[2026-06-04 09:30]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-04 09:30]      • Stoch RSI suracheté (87) — retournement baissier possible
+[2026-06-04 09:30]      • RSI suracheté (78)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+33)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=50, concern=28, net=+33)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [VETO secteur] AMD : Semi deja a 4 positions
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : ICLN
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=44] → PENCHÉ POUR
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • Momentum 10j fort (+10.0%) — tendance confirmée
+[2026-06-04 09:30]      • CMF fort — flux acheteur dominant
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30]      • Score haussier modéré (43/100)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=10] → OK
+[2026-06-04 09:30]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=44, concern=10, net=+38)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [VETO secteur] ICLN : ETF deja a 2 positions
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   DÉBAT : PLD
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   🟢 BULL [conviction=46] → PENCHÉ POUR
+[2026-06-04 09:30]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-04 09:30]      • Stoch RSI survendu (17) — retournement imminent
+[2026-06-04 09:30]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-04 09:30]      • OBV en hausse — accumulation en cours
+[2026-06-04 09:30]      • Score haussier modéré (42/100)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   🔴 BEAR [concern=0] → OK
+[2026-06-04 09:30]      (aucune objection majeure)
+[2026-06-04 09:30] 
+[2026-06-04 09:30]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-06-04 09:30]      Arguments haussiers l'emportent clairement (conviction=46, concern=0, net=+46)
+[2026-06-04 09:30] ────────────────────────────────────────────────────
+[2026-06-04 09:30]   [ACHAT] PLD score=42 bull=46 bear=0 prix=141.82 investi=307EUR SL=136.28 TP1=145.98
+[2026-06-04 09:30] 8 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-06-04 09:30] ----------------------------------------
+[2026-06-04 09:30] RESUME : valeur=10221.68 EUR  investi=3453.37 EUR  cash=6768.30 EUR  expo=33.8%  positions=15
+[2026-06-04 09:30] ----------------------------------------
+[2026-06-04 09:30] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-05 18:49] ============================================================
+[2026-06-05 18:49] SCAN JOURNALIER - 2026-06-05
+[2026-06-05 18:49] ============================================================
+[2026-06-05 18:49] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-05 18:49]   Date     : 2026-06-05  [cache]
+[2026-06-05 18:49]   CAC 40   : BEARISH
+[2026-06-05 18:49]   Valeurs  :
+[2026-06-05 18:49]     🚫 Stmicroelectronics (Semi) → AVOID
+[2026-06-05 18:49]     ✅ Ses (Tech) → BUY
+[2026-06-05 18:49]     ✅ Orange (Telecoms) → BUY
+[2026-06-05 18:49]   Macro    : oil_bullish, semis_warning, market_caution
+[2026-06-05 18:49]   Secteurs : Semi:-4, Energie:+2, Tech:+1, Telecoms:+1
+[2026-06-05 18:49] ───────────────────────────────────────────────────────
+[2026-06-05 18:49] ══════════════════════════════════════════════
+[2026-06-05 18:49]   AGENT MACRO — 2026-06-05
+[2026-06-05 18:49] ══════════════════════════════════════════════
+[2026-06-05 18:49]   Régime marché  : BULL
+[2026-06-05 18:49]   SPY vs EMA200  : +9.1%
+[2026-06-05 18:49]   VIX            : 18.5 (LOW)
+[2026-06-05 18:49]   Max trades/j   : 3
+[2026-06-05 18:49]   Seuil net min  : 10
+[2026-06-05 18:49]   Top secteurs   : Tech, Santé, Energie, Semi
+[2026-06-05 18:49]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-05 18:49]   Rationale      : Marché haussier (SPY +9.1% vs EMA200). Exposition maximale autorisée.
+[2026-06-05 18:49] ══════════════════════════════════════════════
+[2026-06-05 18:49] 15 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-05 18:49]   LMT: 523.35
+[2026-06-05 18:49]   SPG: 209.44
+[2026-06-05 18:49]   MRVL: 283.55
+[2026-06-05 18:49]   SMH: 583.37
+[2026-06-05 18:50]   SOXX: 555.31
+[2026-06-05 18:50]   NUE: 255.50
+[2026-06-05 18:50]   MPC: 264.50
+[2026-06-05 18:50]   BIIB: 199.67
+[2026-06-05 18:50]   CAT: 912.92
+[2026-06-05 18:50]   MU: 896.77
+[2026-06-05 18:50]   AAPL: 311.41
+[2026-06-05 18:50]   DDOG: 233.18
+[2026-06-05 18:50]   UNH: 400.67
+[2026-06-05 18:50]   MAR: 391.65
+[2026-06-05 18:50]   PLD: 145.71
+[2026-06-05 18:50]   SL/TP declenches -> encaisse +817.96 EUR
+[2026-06-05 18:50]   Position FERMEE : MRVL
+[2026-06-05 18:50]   Position FERMEE : SMH
+[2026-06-05 18:50]   Position FERMEE : SOXX
+[2026-06-05 18:50]   Position FERMEE : MU
+[2026-06-05 18:50]   TP1 SPG : 209.44 (+4.0%)
+[2026-06-05 18:50]   TP2 SPG : 209.44 (+4.0%)
+[2026-06-05 18:50]   TP1 UNH : 400.67 (+5.4%)
+[2026-06-05 18:50]   TP1 MAR : 391.65 (+4.0%)
+[2026-06-05 18:50] Screener en cours...
+[2026-06-05 18:50] Scores : max=54  mediane=10  (156 tickers)
+[2026-06-05 18:50] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=54
+[2026-06-05 18:50] 9 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-05 18:50] Cash deployable cette semaine : 6586 EUR  (max trades/j : 2)
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   DÉBAT : CIBR
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   🟢 BULL [conviction=47] → PENCHÉ POUR
+[2026-06-05 18:50]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-05 18:50]      • CMF fort — flux acheteur dominant
+[2026-06-05 18:50]      • Stoch RSI survendu (13) — retournement imminent
+[2026-06-05 18:50]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-05 18:50]      • Score haussier modéré (53/100)
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   🔴 BEAR [concern=0] → OK
+[2026-06-05 18:50]      (aucune objection majeure)
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   ✅ ARBITRE → ACHETER  (net=+47)
+[2026-06-05 18:50]      Arguments haussiers l'emportent clairement (conviction=47, concern=0, net=+47)
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   [ACHAT] CIBR score=53 bull=47 bear=0 prix=87.34 investi=310EUR SL=82.06 TP1=91.30
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   DÉBAT : PANW
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-06-05 18:50]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-05 18:50]      • Momentum 10j fort (+8.5%) — tendance confirmée
+[2026-06-05 18:50]      • CMF fort — flux acheteur dominant
+[2026-06-05 18:50]      • Stoch RSI survendu (0) — retournement imminent
+[2026-06-05 18:50]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   🔴 BEAR [concern=15] → OK
+[2026-06-05 18:50]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-05 18:50]      • Volume faible (0.3× moyenne)
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-06-05 18:50]      Arguments haussiers l'emportent clairement (conviction=52, concern=15, net=+43)
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   [VETO secteur] PANW : Tech deja a 2 positions
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   DÉBAT : CRWD
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   🟢 BULL [conviction=47] → PENCHÉ POUR
+[2026-06-05 18:50]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-05 18:50]      • CMF fort — flux acheteur dominant
+[2026-06-05 18:50]      • Stoch RSI survendu (1) — retournement imminent
+[2026-06-05 18:50]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-05 18:50]      • Score haussier modéré (48/100)
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   🔴 BEAR [concern=15] → OK
+[2026-06-05 18:50]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-05 18:50]      • Volume faible (0.7× moyenne)
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-06-05 18:50]      Arguments haussiers l'emportent clairement (conviction=47, concern=15, net=+38)
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   [VETO secteur] CRWD : Tech deja a 2 positions
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   DÉBAT : HACK
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   🟢 BULL [conviction=39] → PENCHÉ POUR
+[2026-06-05 18:50]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-05 18:50]      • CMF fort — flux acheteur dominant
+[2026-06-05 18:50]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-05 18:50]      • Score haussier modéré (43/100)
+[2026-06-05 18:50]      • Momentum 10j positif (+5.5%)
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   🔴 BEAR [concern=0] → OK
+[2026-06-05 18:50]      (aucune objection majeure)
+[2026-06-05 18:50] 
+[2026-06-05 18:50]   ✅ ARBITRE → ACHETER  (net=+39)
+[2026-06-05 18:50]      Arguments haussiers l'emportent clairement (conviction=39, concern=0, net=+39)
+[2026-06-05 18:50] ────────────────────────────────────────────────────
+[2026-06-05 18:50]   [ACHAT] HACK score=43 bull=39 bear=0 prix=97.83 investi=310EUR SL=91.95 TP1=102.24
+[2026-06-05 18:50] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-06-05 18:50] ----------------------------------------
+[2026-06-05 18:50] RESUME : valeur=10325.90 EUR  investi=3359.19 EUR  cash=6966.71 EUR  expo=32.5%  positions=13
+[2026-06-05 18:50] ----------------------------------------
+[2026-06-05 18:50] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-06 18:01] Week-end (Saturday) - pas de trading.
