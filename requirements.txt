@@ -1,8 +1,8 @@
 streamlit==1.56.0
-pandas==3.0.2
+pandas>=2.0
 pandas-ta==0.4.67b0
-numpy==2.2.6
-yfinance==1.2.1
-plotly==6.7.0
-pyarrow==23.0.1
+numpy>=1.26
+yfinance>=0.2.50
+plotly>=5.0
+pyarrow>=10.0
 apscheduler==3.10.4
