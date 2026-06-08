@@ -3,6 +3,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 
+from config import SLIPPAGE_PCT
 from utils.fees import compute_fees
 
 
@@ -23,29 +24,33 @@ class PaperBroker(OrderBroker):
         self.broker_config = broker_config
 
     def buy(self, ticker: str, qty: float, price: float) -> dict:
-        fees = compute_fees(price, qty, self.broker_config)
+        """Achat avec slippage réaliste (on paie légèrement plus que le prix affiché)."""
+        exec_price = round(price * (1 + SLIPPAGE_PCT), 6)
+        fees = compute_fees(exec_price, qty, self.broker_config)
         return {
-            "status": "filled",
-            "ticker": ticker,
-            "side": "buy",
-            "qty": qty,
-            "price": price,
-            "fees": fees,
-            "total": price * qty + fees,
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "status":     "filled",
+            "ticker":     ticker,
+            "side":       "buy",
+            "qty":        qty,
+            "price":      exec_price,
+            "fees":       fees,
+            "total":      exec_price * qty + fees,
+            "date":       datetime.now().strftime("%Y-%m-%d %H:%M"),
         }
 
     def sell(self, ticker: str, qty: float, price: float) -> dict:
-        fees = compute_fees(price, qty, self.broker_config)
+        """Vente avec slippage réaliste (on reçoit légèrement moins que le prix affiché)."""
+        exec_price = round(price * (1 - SLIPPAGE_PCT), 6)
+        fees = compute_fees(exec_price, qty, self.broker_config)
         return {
-            "status": "filled",
-            "ticker": ticker,
-            "side": "sell",
-            "qty": qty,
-            "price": price,
-            "fees": fees,
-            "total": price * qty - fees,
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "status":     "filled",
+            "ticker":     ticker,
+            "side":       "sell",
+            "qty":        qty,
+            "price":      exec_price,
+            "fees":       fees,
+            "total":      exec_price * qty - fees,
+            "date":       datetime.now().strftime("%Y-%m-%d %H:%M"),
         }
 
 

@@ -23,6 +23,7 @@ MAX_SECTOR_POSITIONS = 5          # Concentration sectorielle max
 MAX_TOTAL_EXPOSURE_PCT = 0.95     # Exposition totale max (hors réserve)
 
 # ── Risque par trade ──────────────────────────────────────────────
+SLIPPAGE_PCT = 0.001              # 0.1% slippage (bid-ask spread + impact marché)
 RISK_PER_TRADE_PCT = 0.01         # 1% du portefeuille risqué par trade
 ATR_SL_MULTIPLIER = 2.0           # SL plus large pour laisser vivre les positions
 MAX_LOSS_PCT = 0.08               # Perte max absolue par position (8% du prix d'entrée)
