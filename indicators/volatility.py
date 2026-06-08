@@ -1,34 +1,51 @@
 """Indicateurs de volatilité : Bollinger Bands, ATR, Keltner Channel."""
 
 import pandas as pd
-import pandas_ta as ta
+import numpy as np
 
 
 def add_bollinger(df: pd.DataFrame, length: int = 20, std: float = 2.0) -> pd.DataFrame:
-    df = df.copy()
-    bb = ta.bbands(df["Close"], length=length, std=std)
-    if bb is not None and not bb.empty:
-        df["BB_lower"] = bb.iloc[:, 0]
-        df["BB_mid"] = bb.iloc[:, 1]
-        df["BB_upper"] = bb.iloc[:, 2]
-        df["BB_width"] = bb.iloc[:, 3]
-        df["BB_pct"] = bb.iloc[:, 4]
+    df  = df.copy()
+    ma  = df["Close"].rolling(length).mean()
+    sig = df["Close"].rolling(length).std()
+    df["BB_lower"] = ma - std * sig
+    df["BB_mid"]   = ma
+    df["BB_upper"] = ma + std * sig
+    df["BB_width"] = (df["BB_upper"] - df["BB_lower"]) / ma.replace(0, np.nan)
+    df["BB_pct"]   = (df["Close"] - df["BB_lower"]) / (df["BB_upper"] - df["BB_lower"]).replace(0, np.nan)
     return df
 
 
 def add_atr(df: pd.DataFrame, length: int = 14) -> pd.DataFrame:
-    df = df.copy()
-    df["ATR"] = ta.atr(df["High"], df["Low"], df["Close"], length=length)
+    df    = df.copy()
+    high  = df["High"]
+    low   = df["Low"]
+    close = df["Close"]
+    tr = pd.concat([
+        high - low,
+        (high - close.shift(1)).abs(),
+        (low  - close.shift(1)).abs(),
+    ], axis=1).max(axis=1)
+    df["ATR"] = tr.ewm(alpha=1/length, adjust=False).mean()
     return df
 
 
 def add_keltner(df: pd.DataFrame, length: int = 20, scalar: float = 2.0) -> pd.DataFrame:
-    df = df.copy()
-    kc = ta.kc(df["High"], df["Low"], df["Close"], length=length, scalar=scalar)
-    if kc is not None and not kc.empty:
-        df["KC_lower"] = kc.iloc[:, 0]
-        df["KC_basis"] = kc.iloc[:, 1]
-        df["KC_upper"] = kc.iloc[:, 2]
+    df    = df.copy()
+    high  = df["High"]
+    low   = df["Low"]
+    close = df["Close"]
+    # ATR (Wilder)
+    tr = pd.concat([
+        high - low,
+        (high - close.shift(1)).abs(),
+        (low  - close.shift(1)).abs(),
+    ], axis=1).max(axis=1)
+    atr  = tr.ewm(alpha=1/length, adjust=False).mean()
+    basis = close.ewm(span=length, adjust=False).mean()
+    df["KC_lower"] = basis - scalar * atr
+    df["KC_basis"] = basis
+    df["KC_upper"] = basis + scalar * atr
     return df
 
 
