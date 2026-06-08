@@ -2,8 +2,9 @@ name: Daily Trading — Zentry
 
 on:
   schedule:
-    # 9h30 ET = 13h30 UTC (EDT avril-octobre) / 14h30 UTC (EST novembre-mars)
-    - cron: '30 13 * * 1-5'
+    # 14h00 Paris été (CEST=UTC+2) / 13h00 Paris hiver (CET=UTC+1)
+    # Après la newsletter Momentum (13h Paris) — avant fermeture EU
+    - cron: '0 12 * * 1-5'
   workflow_dispatch:
 
 env:
