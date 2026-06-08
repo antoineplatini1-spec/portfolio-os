@@ -838,5 +838,225 @@
     "bear_score": 15,
     "price": 687.72,
     "sector": "Tech"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "LRCX",
+    "net_score": -1.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 5,
+    "price": 327.15,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "CRWD",
+    "net_score": -2.0,
+    "reason": "score_bas",
+    "bull_score": 40,
+    "bear_score": 5,
+    "price": 654.02,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "AA",
+    "net_score": -2.0,
+    "reason": "score_bas",
+    "bull_score": 40,
+    "bear_score": 5,
+    "price": 73.51,
+    "sector": "Materiaux"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "RSP",
+    "net_score": -2.0,
+    "reason": "score_bas",
+    "bull_score": 38,
+    "bear_score": 0,
+    "price": 207.9,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "IWM",
+    "net_score": -3.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 0,
+    "price": 284.55,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "NOW",
+    "net_score": -4.0,
+    "reason": "score_bas",
+    "bull_score": 46,
+    "bear_score": 20,
+    "price": 114.11,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "INTC",
+    "net_score": -6.0,
+    "reason": "score_bas",
+    "bull_score": 42,
+    "bear_score": 17,
+    "price": 110.36,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "AMAT",
+    "net_score": -6.0,
+    "reason": "score_bas",
+    "bull_score": 36,
+    "bear_score": 5,
+    "price": 491.16,
+    "sector": "Semi"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "ICLN",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 39,
+    "bear_score": 12,
+    "price": 21.22,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "FCX",
+    "net_score": -7.0,
+    "reason": "score_bas",
+    "bull_score": 35,
+    "bear_score": 5,
+    "price": 64.34,
+    "sector": "Materiaux"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "HYG",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 0,
+    "price": 79.5,
+    "sector": "Macro"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "TGT",
+    "net_score": -8.0,
+    "reason": "score_bas",
+    "bull_score": 37,
+    "bear_score": 11,
+    "price": 122.86,
+    "sector": "Conso"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "GS",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 20,
+    "price": 1053.6,
+    "sector": "Finance"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "SNOW",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 41,
+    "bear_score": 20,
+    "price": 240.11,
+    "sector": "Tech"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "SLB",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 5,
+    "price": 57.05,
+    "sector": "Energie"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "C",
+    "net_score": -9.0,
+    "reason": "score_bas",
+    "bull_score": 33,
+    "bear_score": 5,
+    "price": 134.23,
+    "sector": "Finance"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "EOG",
+    "net_score": -10.0,
+    "reason": "score_bas",
+    "bull_score": 32,
+    "bear_score": 5,
+    "price": 140.33,
+    "sector": "Energie"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "XLK",
+    "net_score": 50.0,
+    "reason": "veto_secteur",
+    "bull_score": 56,
+    "bear_score": 10,
+    "price": 184.91,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "SOXX",
+    "net_score": 47.0,
+    "reason": "veto_secteur",
+    "bull_score": 53,
+    "bear_score": 10,
+    "price": 573.29,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "SPY",
+    "net_score": 37.0,
+    "reason": "veto_secteur",
+    "bull_score": 43,
+    "bear_score": 10,
+    "price": 740.62,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "QQQ",
+    "net_score": 37.0,
+    "reason": "veto_secteur",
+    "bull_score": 43,
+    "bear_score": 10,
+    "price": 717.33,
+    "sector": "ETF"
+  },
+  {
+    "date": "2026-06-08",
+    "ticker": "SMH",
+    "net_score": 42.0,
+    "reason": "veto_secteur",
+    "bull_score": 48,
+    "bear_score": 10,
+    "price": 598.89,
+    "sector": "ETF"
   }
 ]

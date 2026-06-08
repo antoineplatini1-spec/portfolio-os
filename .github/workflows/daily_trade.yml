@@ -25,6 +25,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Check requirements
+        run: cat requirements.txt
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
