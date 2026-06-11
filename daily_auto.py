@@ -476,55 +476,78 @@ def _send_daily_email(
     live_prices: dict | None = None,
 ):
     """Construit et envoie le recap journalier par email."""
-    from portfolio.manager import PortfolioManager
-
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
-    # ── Section A — Nouvelles positions ouvertes (enrichi bull/bear) ─────────
+
+    # ── Helpers layout email-safe (table-based, pas de flex) ─────────────────
+    def _cell(label: str, value: str, color: str = "#d6e0f0") -> str:
+        return (
+            f"<td style='padding:14px 8px;text-align:center;"
+            f"background:#192235;border-radius:8px'>"
+            f"<div style='color:#445470;font-size:10px;letter-spacing:.08em;"
+            f"text-transform:uppercase;margin-bottom:5px'>{label}</div>"
+            f"<div style='font-size:20px;font-weight:700;color:{color}'>{value}</div>"
+            f"</td>"
+        )
+
+    def _spacer_td() -> str:
+        return "<td style='width:8px'></td>"
+
+    # ── Section achats ────────────────────────────────────────────────────────
     if opened_positions:
         def _pos_card(o: dict) -> str:
             bull_args = o.get("bull_args", [])
             bull_args_html = "".join(
-                f"<li style='margin:2px 0;color:#6ee7b7;font-size:11px'>• {a}</li>"
+                f"<tr><td style='padding:1px 0;color:#6ee7b7;font-size:11px'>• {a}</td></tr>"
                 for a in bull_args[:3]
-            ) if bull_args else ""
-            bull_list = f"<ul style='margin:6px 0 0;padding:0;list-style:none'>{bull_args_html}</ul>" if bull_args_html else ""
+            )
+            bull_table = (
+                f"<table style='margin-top:6px;border-collapse:collapse'>"
+                f"{bull_args_html}</table>"
+            ) if bull_args_html else ""
             net = o.get("net_score", o["bull"] - o["bear"] * 0.6)
             net_color = "#34d399" if net >= 0 else "#fb7185"
             return (
-                f"<div style='background:#0d1420;border-radius:8px;padding:14px 16px;"
-                f"margin-bottom:10px;border-left:3px solid #34d399'>"
-                f"<div style='display:flex;align-items:center;gap:12px;flex-wrap:wrap'>"
+                f"<table width='100%' style='border-collapse:collapse;"
+                f"background:#0d1420;border-radius:8px;"
+                f"border-left:3px solid #34d399;margin-bottom:10px'>"
+                f"<tr>"
+                f"<td style='padding:12px 14px'>"
                 f"<span style='font-weight:700;font-size:15px;color:#d6e0f0'>{o['ticker']}</span>"
+                f"&nbsp;&nbsp;"
                 f"<span style='color:#8097b5;font-size:12px'>{o['prix']:.2f} €</span>"
+                f"&nbsp;·&nbsp;"
                 f"<span style='color:#8097b5;font-size:12px'>investi {o['investi']:.0f} €</span>"
-                f"<span style='background:#0a2218;color:#34d399;padding:1px 7px;"
+                f"<br>"
+                f"<span style='display:inline-block;margin-top:6px;"
+                f"background:#0a2218;color:#34d399;padding:2px 8px;"
                 f"border-radius:4px;font-size:11px'>SL {o['sl']:.2f}</span>"
-                f"<span style='background:#0a1a0a;color:#34d399;padding:1px 7px;"
+                f"&nbsp;"
+                f"<span style='display:inline-block;"
+                f"background:#0a1a0a;color:#34d399;padding:2px 8px;"
                 f"border-radius:4px;font-size:11px'>TP1 {o['tp1']:.2f}</span>"
-                f"</div>"
-                f"<div style='display:flex;gap:16px;margin-top:8px;font-size:12px'>"
-                f"<span>BULL <strong style='color:#34d399'>{o['bull']}</strong></span>"
-                f"<span>BEAR <strong style='color:#fb7185'>{o['bear']}</strong></span>"
-                f"<span>NET <strong style='color:{net_color}'>{net:+.0f}</strong></span>"
-                f"<span style='color:#445470'>score screener {o['score']}</span>"
-                f"</div>"
-                f"{bull_list}"
-                f"</div>"
+                f"<br>"
+                f"<span style='font-size:12px;color:#8097b5;margin-top:6px;display:inline-block'>"
+                f"BULL <strong style='color:#34d399'>{o['bull']}</strong>"
+                f"&nbsp;&nbsp;BEAR <strong style='color:#fb7185'>{o['bear']}</strong>"
+                f"&nbsp;&nbsp;NET <strong style='color:{net_color}'>{net:+.0f}</strong>"
+                f"&nbsp;&nbsp;<span style='color:#445470'>score {o['score']}</span>"
+                f"</span>"
+                f"{bull_table}"
+                f"</td>"
+                f"</tr></table>"
             )
-
         orders_section = (
-            f"<h3 style='color:#34d399;margin:24px 0 8px'>"
-            f"&#x2705; {len(opened_positions)} position(s) ouverte(s) aujourd'hui</h3>"
+            f"<p style='color:#34d399;font-weight:700;font-size:14px;margin:24px 0 8px'>"
+            f"&#x2705; {len(opened_positions)} position(s) ouverte(s) aujourd'hui</p>"
             + "".join(_pos_card(o) for o in opened_positions)
         )
     else:
         raison = "Budget semaine epuise" if available < 100 else "Aucun signal suffisant (filtres score/bear)"
         orders_section = (
-            f"<h3 style='color:#fbbf24;margin:24px 0 8px'>&#x26A0;&#xFE0F; Aucun ordre passe aujourd'hui</h3>"
-            f"<p style='color:#8097b5;margin:0'>{raison}</p>"
+            f"<p style='color:#fbbf24;font-weight:700;font-size:14px;margin:24px 0 4px'>"
+            f"&#x26A0;&#xFE0F; Aucun ordre passe aujourd'hui</p>"
+            f"<p style='color:#8097b5;font-size:12px;margin:0'>{raison}</p>"
         )
-
-    watchlist_section = ""
 
     # ── Section ventes ────────────────────────────────────────────────────────
     def _sale_card(s: dict) -> str:
@@ -532,72 +555,95 @@ def _send_daily_email(
         pct    = s["pnl_pct"]
         reason = s["reason"]
         clr    = "#34d399" if pnl >= 0 else "#fb7185"
-        border = clr
         icon   = "🟢" if pnl >= 0 else "🔴"
-        # label raison
         reason_labels = {
-            "SL": "🛑 Stop Loss", "TP1": "✅ TP1 (25%)", "TP2": "✅ TP2 (35%)",
-            "TP3": "✅ TP3 (40%)", "Time Stop": "⏱ Time Stop", "manual": "✋ Manuel",
+            "SL":        "&#x1F6D1; Stop Loss",
+            "TP1":       "&#x2705; TP1 (25%)",
+            "TP2":       "&#x2705; TP2 (35%)",
+            "TP3":       "&#x2705; TP3 (40%)",
+            "Time Stop": "&#x23F1; Time Stop",
+            "manual":    "&#x270B; Manuel",
         }
-        reason_txt = reason_labels.get(reason, reason)
+        reason_txt  = reason_labels.get(reason, reason)
         partial_tag = (
-            "<span style='font-size:10px;color:#8097b5;margin-left:8px'>vente partielle</span>"
+            "<span style='font-size:10px;color:#8097b5'> &nbsp;(partiel)</span>"
             if s.get("partial") else ""
         )
         return (
-            f"<div style='background:#0d1420;border-radius:8px;padding:12px 16px;"
-            f"margin-bottom:8px;border-left:3px solid {border};"
-            f"display:flex;align-items:center;gap:16px;flex-wrap:wrap'>"
-            f"<span style='font-weight:700;font-size:15px;color:#d6e0f0'>{icon} {s['ticker']}</span>"
-            f"<span style='color:#8097b5;font-size:12px'>{s['price']:.2f} €</span>"
-            f"<span style='color:#8097b5;font-size:12px'>{reason_txt}</span>"
-            f"{partial_tag}"
-            f"<span style='margin-left:auto;font-weight:700;color:{clr}'>"
-            f"{pct:+.1f}% &nbsp; {pnl:+.0f} €</span>"
-            f"</div>"
+            f"<table width='100%' style='border-collapse:collapse;"
+            f"background:#0d1420;border-radius:8px;"
+            f"border-left:3px solid {clr};margin-bottom:8px'>"
+            f"<tr>"
+            f"<td style='padding:10px 14px;width:60%'>"
+            f"<span style='font-weight:700;font-size:14px;color:#d6e0f0'>{icon} {s['ticker']}</span>"
+            f"{partial_tag}<br>"
+            f"<span style='font-size:11px;color:#8097b5'>"
+            f"{reason_txt} &nbsp;·&nbsp; prix {s['price']:.2f} €</span>"
+            f"</td>"
+            f"<td style='padding:10px 14px;text-align:right'>"
+            f"<span style='font-size:18px;font-weight:700;color:{clr}'>{pct:+.1f}%</span><br>"
+            f"<span style='font-size:13px;font-weight:600;color:{clr}'>{pnl:+.0f} €</span>"
+            f"</td>"
+            f"</tr></table>"
         )
 
     if sales_log:
         total_pnl_sales = sum(s["pnl"] for s in sales_log)
         clr_total = "#34d399" if total_pnl_sales >= 0 else "#fb7185"
         sales_html = (
-            f"<h3 style='color:#8097b5;margin:24px 0 8px'>"
-            f"📤 Ventes du jour "
-            f"<span style='font-size:13px;color:{clr_total}'>"
-            f"({total_pnl_sales:+.0f} € net)</span></h3>"
+            f"<p style='color:#8097b5;font-weight:700;font-size:14px;margin:24px 0 8px'>"
+            f"&#x1F4E4; Ventes du jour &nbsp;"
+            f"<span style='font-size:14px;font-weight:700;color:{clr_total}'>"
+            f"PnL net : {total_pnl_sales:+.0f} €</span></p>"
             + "".join(_sale_card(s) for s in sales_log)
         )
     else:
         sales_html = ""
 
-    # SL/TP encaisses (résumé cash)
+    # ── Cash flow du jour (delta cash après SL/TP) ────────────────────────────
     sltp_html = ""
     if sltp_cash != 0:
-        color = "#34d399" if sltp_cash > 0 else "#fb7185"
+        clr_cf = "#34d399" if sltp_cash > 0 else "#fb7185"
         sltp_html = (
-            f"<p style='color:{color};margin:8px 0'>"
-            f"💰 Cash encaisse aujourd'hui : <strong>{sltp_cash:+.2f} €</strong></p>"
+            f"<p style='margin:8px 0;font-size:13px;color:#8097b5'>"
+            f"&#x1F4B0; Cash flow du jour : "
+            f"<strong style='color:{clr_cf}'>{sltp_cash:+.2f} €</strong>"
+            f" <span style='font-size:11px;color:#445470'>"
+            f"(cash encaisse apres SL/TP)</span></p>"
         )
 
-    # Positions actuelles avec PnL latent
+    # ── Positions ouvertes avec PnL latent ────────────────────────────────────
     _lp = live_prices or {}
-    def _pos_row(t, p):
-        live  = _lp.get(t, p.entry_price)
-        pnl   = (live - p.entry_price) * p.qty_remaining
-        ppct  = (live / p.entry_price - 1) * 100
-        clr   = "#34d399" if pnl >= 0 else "#fb7185"
+    def _pos_row(t, p) -> str:
+        live = _lp.get(t, p.entry_price)
+        pnl  = (live - p.entry_price) * p.qty_remaining
+        ppct = (live / p.entry_price - 1) * 100
+        clr  = "#34d399" if pnl >= 0 else "#fb7185"
+        bg   = "background:#0a1d12" if pnl >= 0 else "background:#1d0a0a"
         return (
-            f"<tr>"
-            f"<td style='padding:5px 12px;font-weight:700;color:#d6e0f0'>{t}</td>"
-            f"<td style='padding:5px 12px;color:#8097b5'>{p.entry_price:.2f}</td>"
-            f"<td style='padding:5px 12px;color:#8097b5'>{live:.2f}</td>"
-            f"<td style='padding:5px 12px;font-weight:600;color:{clr}'>"
-            f"{ppct:+.1f}% / {pnl:+.0f}€</td>"
-            f"<td style='padding:5px 12px;color:#8097b5'>{p.sl:.2f}</td>"
-            f"<td style='padding:5px 12px;color:#8097b5'>{p.tp_levels[0].price:.2f}</td>"
+            f"<tr style='{bg}'>"
+            f"<td style='padding:7px 10px;font-weight:700;color:#d6e0f0;"
+            f"font-size:13px'>{t}</td>"
+            f"<td style='padding:7px 10px;color:#8097b5;font-size:12px'>"
+            f"{p.entry_price:.2f}</td>"
+            f"<td style='padding:7px 10px;color:#8097b5;font-size:12px'>"
+            f"{live:.2f}</td>"
+            f"<td style='padding:7px 10px;font-weight:700;color:{clr};"
+            f"font-size:13px'>{ppct:+.1f}%</td>"
+            f"<td style='padding:7px 10px;font-weight:600;color:{clr};"
+            f"font-size:13px'>{pnl:+.0f} €</td>"
+            f"<td style='padding:7px 10px;color:#8097b5;font-size:11px'>"
+            f"SL {p.sl:.2f}</td>"
             f"</tr>"
         )
     pos_rows = "".join(_pos_row(t, p) for t, p in pm.open_positions.items())
+
+    # ── PnL latent total ──────────────────────────────────────────────────────
+    latent_pnl = sum(
+        (_lp.get(t, p.entry_price) - p.entry_price) * p.qty_remaining
+        for t, p in pm.open_positions.items()
+    )
+    latent_color = "#34d399" if latent_pnl >= 0 else "#fb7185"
 
     subject_icon = "✅" if opened_positions else ("📤" if sales_log else "⚠️")
     n_sales = len(sales_log)
@@ -607,83 +653,90 @@ def _send_daily_email(
         f"{len(pm.open_positions)} positions"
     )
 
-    html = f"""
-    <!DOCTYPE html>
-    <html>
-    <body style='background:#0a0f1a;color:#d6e0f0;font-family:Inter,Arial,sans-serif;
-                 margin:0;padding:24px'>
-        <div style='max-width:640px;margin:0 auto'>
+    html = f"""<!DOCTYPE html>
+<html>
+<body style='margin:0;padding:0;background:#0a0f1a'>
+<table width='100%' cellpadding='0' cellspacing='0'
+       style='background:#0a0f1a;font-family:Arial,sans-serif'>
+<tr><td align='center' style='padding:24px 12px'>
+<table width='600' cellpadding='0' cellspacing='0'
+       style='max-width:600px;width:100%'>
 
-            <!-- Header -->
-            <div style='background:#192235;border-radius:10px;padding:20px 24px;
-                        border-left:4px solid {ctx_color};margin-bottom:20px'>
-                <h2 style='margin:0 0 4px;color:#d6e0f0'>
-                    Rapport journalier — {today}
-                </h2>
-                <span style='background:{ctx_color}22;color:{ctx_color};
-                             padding:2px 10px;border-radius:4px;font-size:12px;font-weight:700'>
-                    Marche {market_ctx}
-                </span>
-            </div>
+  <!-- HEADER -->
+  <tr><td style='background:#192235;border-radius:10px;
+                 padding:20px 24px;border-left:4px solid {ctx_color};
+                 margin-bottom:20px'>
+    <div style='font-size:18px;font-weight:700;color:#d6e0f0;margin-bottom:6px'>
+      Rapport journalier &mdash; {today}
+    </div>
+    <span style='background:{ctx_color}33;color:{ctx_color};
+                 padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700'>
+      March&eacute; {market_ctx}
+    </span>
+  </td></tr>
 
-            <!-- Marché -->
-            <div style='display:flex;gap:12px;margin-bottom:20px'>
-                <div style='flex:1;background:#192235;border-radius:8px;padding:14px 18px;text-align:center'>
-                    <div style='color:#445470;font-size:11px;margin-bottom:4px'>SCORE MAX</div>
-                    <div style='font-size:22px;font-weight:700;color:{ctx_color}'>{score_max}</div>
-                </div>
-                <div style='flex:1;background:#192235;border-radius:8px;padding:14px 18px;text-align:center'>
-                    <div style='color:#445470;font-size:11px;margin-bottom:4px'>MEDIANE</div>
-                    <div style='font-size:22px;font-weight:700;color:#8097b5'>{score_med}</div>
-                </div>
-                <div style='flex:1;background:#192235;border-radius:8px;padding:14px 18px;text-align:center'>
-                    <div style='color:#445470;font-size:11px;margin-bottom:4px'>CANDIDATS</div>
-                    <div style='font-size:22px;font-weight:700;color:#8097b5'>{n_candidates}</div>
-                </div>
-                <div style='flex:1;background:#192235;border-radius:8px;padding:14px 18px;text-align:center'>
-                    <div style='color:#445470;font-size:11px;margin-bottom:4px'>POSITIONS</div>
-                    <div style='font-size:22px;font-weight:700;color:#8097b5'>{len(pm.open_positions)}</div>
-                </div>
-            </div>
+  <tr><td style='height:12px'></td></tr>
 
-            {sltp_html}
-            {sales_html}
-            {orders_section}
-            {watchlist_section}
+  <!-- STATS MARCHE (table 4 colonnes) -->
+  <tr><td>
+    <table width='100%' cellpadding='0' cellspacing='0'>
+      <tr>
+        {_cell("Score max",  str(score_max),              ctx_color)}
+        {_spacer_td()}
+        {_cell("M&eacute;diane",    str(score_med),              "#8097b5")}
+        {_spacer_td()}
+        {_cell("Candidats", str(n_candidates),            "#8097b5")}
+        {_spacer_td()}
+        {_cell("Positions", str(len(pm.open_positions)),  "#8097b5")}
+      </tr>
+    </table>
+  </td></tr>
 
-            <!-- Portefeuille -->
-            <h3 style='color:#8097b5;margin:24px 0 8px'>📊 Portefeuille</h3>
-            <div style='display:flex;gap:12px;margin-bottom:16px'>
-                <div style='flex:1;background:#192235;border-radius:8px;padding:12px 16px'>
-                    <div style='color:#445470;font-size:11px'>VALEUR TOTALE</div>
-                    <div style='font-size:18px;font-weight:700;color:#d6e0f0'>
-                        {pm.total_value:,.2f} €
-                    </div>
-                </div>
-                <div style='flex:1;background:#192235;border-radius:8px;padding:12px 16px'>
-                    <div style='color:#445470;font-size:11px'>CASH LIBRE</div>
-                    <div style='font-size:18px;font-weight:700;color:#d6e0f0'>
-                        {pm.cash:,.2f} €
-                    </div>
-                </div>
-                <div style='flex:1;background:#192235;border-radius:8px;padding:12px 16px'>
-                    <div style='color:#445470;font-size:11px'>EXPOSITION</div>
-                    <div style='font-size:18px;font-weight:700;color:#d6e0f0'>
-                        {pm.exposure_pct*100:.1f}%
-                    </div>
-                </div>
-            </div>
+  <tr><td style='height:16px'></td></tr>
 
-            <!-- Positions ouvertes -->
-            {"<table style='width:100%;border-collapse:collapse;background:#0d1420;border-radius:8px;overflow:hidden'><thead><tr style='background:#192235'><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TICKER</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>ENTRÉE</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>LIVE</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>PNL% / €</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>SL</th><th style='padding:7px 12px;text-align:left;color:#445470;font-size:11px'>TP1</th></tr></thead><tbody>" + pos_rows + "</tbody></table>" if pos_rows else "<p style='color:#445470'>Aucune position ouverte.</p>"}
+  <!-- CASH FLOW -->
+  <tr><td>{sltp_html}</td></tr>
 
-            <p style='color:#2a3d5c;font-size:11px;margin-top:24px;text-align:center'>
-                Portfolio Manager — {datetime.now().strftime("%Y-%m-%d %H:%M")}
-            </p>
-        </div>
-    </body>
-    </html>
-    """
+  <!-- VENTES -->
+  <tr><td>{sales_html}</td></tr>
+
+  <!-- ACHATS -->
+  <tr><td>{orders_section}</td></tr>
+
+  <tr><td style='height:20px'></td></tr>
+
+  <!-- PORTEFEUILLE -->
+  <tr><td style='color:#8097b5;font-weight:700;font-size:14px;
+                 padding-bottom:8px'>&#x1F4CA; Portefeuille</td></tr>
+  <tr><td>
+    <table width='100%' cellpadding='0' cellspacing='0'>
+      <tr>
+        {_cell("Valeur totale", f"{pm.total_value:,.0f}&nbsp;&euro;", "#d6e0f0")}
+        {_spacer_td()}
+        {_cell("Cash libre",   f"{pm.cash:,.0f}&nbsp;&euro;",        "#d6e0f0")}
+        {_spacer_td()}
+        {_cell("Exposition",   f"{pm.exposure_pct*100:.1f}%",        "#d6e0f0")}
+        {_spacer_td()}
+        {_cell("PnL latent",   f"{latent_pnl:+.0f}&nbsp;&euro;",    latent_color)}
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td style='height:16px'></td></tr>
+
+  <!-- POSITIONS OUVERTES -->
+  {"<tr><td><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;background:#0d1420;border-radius:8px'><thead><tr style='background:#192235'><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px;letter-spacing:.06em'>TICKER</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL %</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL €</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th></tr></thead><tbody>" + pos_rows + "</tbody></table></td></tr>" if pos_rows else "<tr><td style='color:#445470;font-size:12px;padding:8px 0'>Aucune position ouverte.</td></tr>"}
+
+  <!-- FOOTER -->
+  <tr><td style='color:#2a3d5c;font-size:11px;text-align:center;padding-top:24px'>
+    Portfolio Manager &mdash; {datetime.now().strftime("%Y-%m-%d %H:%M")}
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>"""
     send_email(subject, html)
 
 

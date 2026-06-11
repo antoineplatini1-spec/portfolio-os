@@ -91,8 +91,10 @@ def _render_scan(s: DayScan):
         if s.sltp_cash != 0:
             color = _pnl_color(s.sltp_cash)
             st.markdown(
-                f"💰 SL/TP déclenchés → encaissé "
-                f"<span style='color:{color};font-weight:700'>{s.sltp_cash:+.2f} €</span>",
+                f"💰 Cash flow du jour "
+                f"<span style='color:{color};font-weight:700'>{s.sltp_cash:+.2f} €</span>"
+                f"<span style='color:{C['text3']};font-size:0.8em'>"
+                f" — cash reçu après SL/TP déclenchés</span>",
                 unsafe_allow_html=True,
             )
 
@@ -188,7 +190,7 @@ def render(pm: PortfolioManager):
     b1.metric("Dernier achat",      last_buy or "—")
     b2.metric("Total achats",       total_buys)
     b3.metric("Total fermetures",   total_closes)
-    b4.metric("Encaissé SL/TP",     f"{total_sltp:+.2f} €",
+    b4.metric("Cash flow (SL/TP)",  f"{total_sltp:+.2f} €",
               delta_color="normal")
 
     st.markdown(
