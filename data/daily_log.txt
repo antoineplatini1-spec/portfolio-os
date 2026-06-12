@@ -2511,3 +2511,413 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-06-11 10:37] RESUME : valeur=10325.17 EUR  investi=5637.41 EUR  cash=4687.76 EUR  expo=54.6%  positions=19
 [2026-06-11 10:37] ----------------------------------------
 [2026-06-11 10:37] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-12 10:10] ============================================================
+[2026-06-12 10:10] SCAN JOURNALIER - 2026-06-12
+[2026-06-12 10:10] ============================================================
+[2026-06-12 10:10] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-12 10:10]   Date     :   [none]  ⚠ ANCIENNE
+[2026-06-12 10:10]   CAC 40   : NEUTRAL
+[2026-06-12 10:10] ───────────────────────────────────────────────────────
+[2026-06-12 10:10] ══════════════════════════════════════════════
+[2026-06-12 10:10]   AGENT MACRO — 2026-06-12
+[2026-06-12 10:10] ══════════════════════════════════════════════
+[2026-06-12 10:10]   Régime marché  : BULL
+[2026-06-12 10:10]   SPY vs EMA200  : +8.1%
+[2026-06-12 10:10]   VIX            : 19.5 (LOW)
+[2026-06-12 10:10]   Max trades/j   : 3
+[2026-06-12 10:10]   Seuil net min  : 10
+[2026-06-12 10:10]   Top secteurs   : Semi, Santé, REIT, Finance, Tech, Macro
+[2026-06-12 10:10]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-12 10:10]   Rationale      : Marché haussier (SPY +8.1% vs EMA200). Exposition maximale autorisée.
+[2026-06-12 10:10] ══════════════════════════════════════════════
+[2026-06-12 10:10] 19 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-12 10:10]   LMT: 544.83
+[2026-06-12 10:10]   SPG: 218.58
+[2026-06-12 10:10]   MS: 216.01
+[2026-06-12 10:10]   ON: 117.03
+[2026-06-12 10:10]   NUE: 267.75
+[2026-06-12 10:10]   MPC: 266.42
+[2026-06-12 10:10]   BIIB: 202.08
+[2026-06-12 10:10]   CAT: 915.22
+[2026-06-12 10:10]   DDOG: 236.81
+[2026-06-12 10:10]   UNH: 406.72
+[2026-06-12 10:10]   MAR: 397.96
+[2026-06-12 10:10]   PLD: 149.20
+[2026-06-12 10:10]   CIBR: 85.80
+[2026-06-12 10:10]   HACK: 96.46
+[2026-06-12 10:10]   AMD: 516.04
+[2026-06-12 10:10]   SNOW: 240.92
+[2026-06-12 10:10]   EOG: 138.04
+[2026-06-12 10:10]   PM: 183.56
+[2026-06-12 10:10]   GS: 1059.56
+[2026-06-12 10:10]   SL/TP declenches -> encaisse +108.42 EUR
+[2026-06-12 10:10]   TP1 GS : 1059.56 (+5.1%)
+[2026-06-12 10:10] Screener en cours...
+[2026-06-12 10:11] Scores : max=69  mediane=18  (156 tickers)
+[2026-06-12 10:11] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=69
+[2026-06-12 10:11] 31 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-12 10:11] Cash deployable cette semaine : 3796 EUR  (max trades/j : 2)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : SOXX
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=62] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (388.82) — tendance long terme haussière
+[2026-06-12 10:11]      • Score haussier correct (61/100)
+[2026-06-12 10:11]      • Stoch RSI survendu (19) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=10] → OK
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+56)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=62, concern=10, net=+56)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] SOXX : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : PANW
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=65] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (196.10) — tendance long terme haussière
+[2026-06-12 10:11]      • Score haussier correct (58/100)
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Stoch RSI survendu (5) — retournement imminent
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.1× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+56)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=65, concern=15, net=+56)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] PANW : Tech deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : XLI
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=67] → ACHETER
+[2026-06-12 10:11]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (165.64) — tendance long terme haussière
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=10] → OK
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=67, concern=10, net=+61)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] XLI : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : ARKG
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=49] → PENCHÉ POUR
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (30.07) — tendance long terme haussière
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=10] → OK
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=49, concern=10, net=+43)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] ARKG : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : INTC
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=57] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (63.90) — tendance long terme haussière
+[2026-06-12 10:11]      • Score haussier correct (55/100)
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.3× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+48)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=57, concern=15, net=+48)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] INTC : Semi deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : VTI
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=55] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (343.16) — tendance long terme haussière
+[2026-06-12 10:11]      • Stoch RSI survendu (18) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=10] → OK
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=55, concern=10, net=+49)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] VTI : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : MU
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=54] → PENCHÉ POUR
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (468.52) — tendance long terme haussière
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.2× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+45)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=54, concern=15, net=+45)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] MU : Semi deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : ABBV
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=60] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (216.47) — tendance long terme haussière
+[2026-06-12 10:11]      • Stoch RSI survendu (15) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Santé déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.1× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+51)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=60, concern=15, net=+51)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] ABBV : Santé deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : LRCX
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=62] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (229.63) — tendance long terme haussière
+[2026-06-12 10:11]      • Momentum 10j fort (+14.8%) — tendance confirmée
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.2× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=62, concern=15, net=+53)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] LRCX : Semi deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : CRWD
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=60] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (501.86) — tendance long terme haussière
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Stoch RSI survendu (9) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=27] → OK
+[2026-06-12 10:11]      • Momentum 10j : -4.0% (faible)
+[2026-06-12 10:11]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.1× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+44)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=60, concern=27, net=+44)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] CRWD : Tech deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : C
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=62] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (118.11) — tendance long terme haussière
+[2026-06-12 10:11]      • Momentum 10j fort (+10.6%) — tendance confirmée
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=33] → PRUDENCE
+[2026-06-12 10:11]      • Secteur Finance déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Stoch RSI suracheté (86) — retournement baissier possible
+[2026-06-12 10:11]      • RSI suracheté (74)
+[2026-06-12 10:11]      • Volume faible (0.1× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+42)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=62, concern=33, net=+42)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] C : Finance deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : ASML
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=56] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (1345.83) — tendance long terme haussière
+[2026-06-12 10:11]      • Momentum 10j fort (+16.1%) — tendance confirmée
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.4× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+47)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=56, concern=15, net=+47)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] ASML : Semi deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : MRVL
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=56] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (126.18) — tendance long terme haussière
+[2026-06-12 10:11]      • Momentum 10j fort (+36.8%) — tendance confirmée
+[2026-06-12 10:11]      • Stoch RSI survendu (9) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.2× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+47)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=56, concern=15, net=+47)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] MRVL : Semi deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : DIA
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=55] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (487.53) — tendance long terme haussière
+[2026-06-12 10:11]      • Stoch RSI survendu (16) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=10] → OK
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=55, concern=10, net=+49)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] DIA : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : SLB
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=60] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (47.80) — tendance long terme haussière
+[2026-06-12 10:11]      • Stoch RSI survendu (12) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=15] → OK
+[2026-06-12 10:11]      • Secteur Energie déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11]      • Volume faible (0.1× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+51)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=60, concern=15, net=+51)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] SLB : Energie deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : XLK
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=60] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (153.02) — tendance long terme haussière
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Stoch RSI survendu (9) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=37] → PRUDENCE
+[2026-06-12 10:11]      • Tendance baissière forte (ADX=31, DMN>DMP)
+[2026-06-12 10:11]      • Momentum 10j : -3.3% (faible)
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=60, concern=37, net=+38)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] XLK : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : ROBO
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=60] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (75.84) — tendance long terme haussière
+[2026-06-12 10:11]      • RSI bas (40) — zone d'accumulation
+[2026-06-12 10:11]      • Stoch RSI survendu (5) — retournement imminent
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=37] → PRUDENCE
+[2026-06-12 10:11]      • Chute de -6.7% sur 10j — attraper un couteau ?
+[2026-06-12 10:11]      • Momentum 10j : -6.7% (chute forte)
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=60, concern=37, net=+38)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] ROBO : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : XBI
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (127.22) — tendance long terme haussière
+[2026-06-12 10:11]      • Croisement MACD haussier — signal d'achat
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=10] → OK
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=52, concern=10, net=+46)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] XBI : ETF deja a 2 positions
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : HLT
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=57] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (305.23) — tendance long terme haussière
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11]      • OBV en hausse — accumulation en cours
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=13] → OK
+[2026-06-12 10:11]      • RSI suracheté (70)
+[2026-06-12 10:11]      • Volume faible (0.1× moyenne)
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=57, concern=13, net=+49)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [ACHAT] HLT score=40 bull=57 bear=13 prix=345.50 investi=413EUR SL=329.44 TP1=357.54
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   DÉBAT : XLB
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   🟢 BULL [conviction=57] → ACHETER
+[2026-06-12 10:11]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-12 10:11]      • Prix au-dessus EMA200 (48.77) — tendance long terme haussière
+[2026-06-12 10:11]      • Croisement MACD haussier — signal d'achat
+[2026-06-12 10:11]      • CMF fort — flux acheteur dominant
+[2026-06-12 10:11]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   🔴 BEAR [concern=22] → OK
+[2026-06-12 10:11]      • EMA50 en baisse (pente négative)
+[2026-06-12 10:11]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-12 10:11] 
+[2026-06-12 10:11]   ✅ ARBITRE → ACHETER  (net=+44)
+[2026-06-12 10:11]      Arguments haussiers l'emportent clairement (conviction=57, concern=22, net=+44)
+[2026-06-12 10:11] ────────────────────────────────────────────────────
+[2026-06-12 10:11]   [VETO secteur] XLB : ETF deja a 2 positions
+[2026-06-12 10:11] 20 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-06-12 10:11] ----------------------------------------
+[2026-06-12 10:11] RESUME : valeur=10329.92 EUR  investi=5947.36 EUR  cash=4382.55 EUR  expo=57.6%  positions=20
+[2026-06-12 10:11] ----------------------------------------
+[2026-06-12 10:11] [EMAIL] Envoye a antoine.platini@outlook.fr
