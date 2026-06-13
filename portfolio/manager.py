@@ -129,13 +129,15 @@ class PortfolioManager:
 
     @property
     def pnl_realized(self) -> float:
-        """PnL réalisé total : trades fermés + fills partiels (TP1/TP2) sur positions encore ouvertes."""
-        from config import SLIPPAGE_PCT
+        """PnL réalisé total : trades fermés + fills partiels (TP1/TP2) sur positions encore ouvertes.
+        Note : f.price est déjà l'exec_price après slippage (stocké par _partial_sell),
+        donc on ne réapplique pas SLIPPAGE_PCT ici."""
         # Trades complètement fermés
         closed = sum(h["pnl"] for h in self.history)
         # Fills partiels sur positions encore ouvertes (TP1, TP2 déjà encaissés)
+        # f.price = exec_price (après slippage) → PnL = (exec_price - entry_price) * qty
         partials = sum(
-            (f.price * (1 - SLIPPAGE_PCT) - pos.entry_price) * f.qty
+            (f.price - pos.entry_price) * f.qty
             for pos in self.open_positions.values()
             for f in pos.partial_fills
         )
