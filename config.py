@@ -19,7 +19,7 @@ MAX_POSITION_CONVICTION_PCT = 0.09    # Score ≥ 90 : 9% max
 OPPORTUNITY_SCORE_THRESHOLD = 80
 CONVICTION_SCORE_THRESHOLD = 90
 
-MAX_SECTOR_POSITIONS = 5          # Concentration sectorielle max
+MAX_SECTOR_POSITIONS = 4          # Concentration sectorielle max
 MAX_TOTAL_EXPOSURE_PCT = 0.95     # Exposition totale max (hors réserve)
 
 # ── Risque par trade ──────────────────────────────────────────────
