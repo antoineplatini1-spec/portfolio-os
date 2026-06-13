@@ -48,18 +48,31 @@ def render(pm: PortfolioManager):
               f"{closed_count} trades")
     c6.metric("Positions",       len(pm.open_positions), f"depuis {pm.start_date}")
 
-    # ── Barre d'exposition ────────────────────────────────────────────────
+    # ── Barres d'état ────────────────────────────────────────────────────
+    st.markdown("<div style='margin-top:0.5rem'></div>", unsafe_allow_html=True)
+
     expo_norm = min(1.0, pm.exposure_pct / MAX_TOTAL_EXPOSURE_PCT)
-    st.progress(expo_norm,
-                text=f"Exposition : **{expo_pct:.1f}%** / {MAX_TOTAL_EXPOSURE_PCT*100:.0f}% max")
+    expo_color = "#34d399" if expo_pct < 70 else ("#fbbf24" if expo_pct < 88 else "#fb7185")
+    st.markdown(
+        f"<div style='font:500 0.75rem/1 monospace;color:#8097b5;margin-bottom:4px'>"
+        f"Exposition &nbsp;<b style='color:{expo_color}'>{expo_pct:.1f}%</b>"
+        f" <span style='color:#445470'>/ {MAX_TOTAL_EXPOSURE_PCT*100:.0f}% max</span></div>",
+        unsafe_allow_html=True,
+    )
+    st.progress(expo_norm)
 
     if pm._is_ramp_up_phase():
         weekly_budget = pm.initial_cash * WEEKLY_DEPLOY_PCT
         pct_used      = min(1.0, pm.weekly_deployed / weekly_budget) if weekly_budget else 0
         remaining     = max(0.0, weekly_budget - pm.weekly_deployed)
-        st.progress(pct_used,
-                    text=f"Budget semaine : **{pm.weekly_deployed:.0f} / {weekly_budget:.0f} €** "
-                         f"— reste {remaining:.0f} €")
+        st.markdown(
+            f"<div style='font:500 0.75rem/1 monospace;color:#8097b5;"
+            f"margin:8px 0 4px'>Budget semaine &nbsp;"
+            f"<b style='color:#d6e0f0'>{pm.weekly_deployed:.0f} / {weekly_budget:.0f} €</b>"
+            f" <span style='color:#445470'>— reste {remaining:.0f} €</span></div>",
+            unsafe_allow_html=True,
+        )
+        st.progress(pct_used)
     else:
         st.caption("⚡ Phase arbitrage — pas de limite hebdomadaire")
 
