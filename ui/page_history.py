@@ -103,15 +103,20 @@ def render(pm: PortfolioManager):
             total_fees   = float(df["fees_total"].sum())
             total_pnl    = float(df["pnl"].sum())
             pf = abs(avg_win / avg_loss) if avg_loss != 0 else None
+            # PnL réalisé complet (trades fermés + fills partiels en cours)
+            pnl_realized_total = pm.pnl_realized
 
             c1, c2, c3, c4, c5, c6 = st.columns(6)
-            c1.metric("Trades",        total_trades)
-            c2.metric("Win rate",      f"{win_rate:.1f}%")
-            c3.metric("PnL net",       f"{total_pnl:+.2f} €",
-                      delta_color="normal")
-            c4.metric("Gain moyen",    f"{avg_win:+.2f} €")
-            c5.metric("Perte moyenne", f"{avg_loss:+.2f} €",
-                      delta_color="inverse")
+            c1.metric("Trades fermés",  total_trades)
+            c2.metric("Win rate",       f"{win_rate:.1f}%")
+            c3.metric("PnL fermés",     f"{total_pnl:+.2f} €",
+                      delta_color="normal",
+                      help="PnL des trades complètement clôturés uniquement.")
+            c4.metric("PnL réalisé total", f"{pnl_realized_total:+.2f} €",
+                      delta_color="normal",
+                      help="PnL fermés + fills partiels TP déjà encaissés sur positions encore ouvertes.")
+            c5.metric("Gain moy / Perte moy",
+                      f"{avg_win:+.2f} € / {avg_loss:+.2f} €")
             c6.metric("Profit factor", f"{pf:.2f}" if pf is not None else "∞")
 
             st.caption(f"Frais totaux : {total_fees:.2f} €")

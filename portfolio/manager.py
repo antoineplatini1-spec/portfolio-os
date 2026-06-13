@@ -60,6 +60,8 @@ class PortfolioManager:
             self.history: list[dict] = data.get("history", [])
             self.weekly_deployed: float = data.get("weekly_deployed", 0.0)
             self.week_start: str = data.get("week_start", datetime.now().strftime("%Y-%m-%d"))
+            # Derniers prix connus (mis à jour par update_prices)
+            self.last_prices: dict[str, float] = data.get("last_prices", {})
         else:
             self.cash = INITIAL_CASH
             self.initial_cash = INITIAL_CASH
@@ -69,6 +71,7 @@ class PortfolioManager:
             self.history: list[dict] = []
             self.weekly_deployed: float = 0.0
             self.week_start: str = datetime.now().strftime("%Y-%m-%d")
+            self.last_prices: dict[str, float] = {}
             self._save()
 
     def _save(self):
@@ -83,6 +86,7 @@ class PortfolioManager:
             "week_start": self.week_start,
             "positions": {k: v.to_dict() for k, v in self.positions.items()},
             "history": self.history,
+            "last_prices": self.last_prices,
         }
         tmp = self.state_file.with_suffix(".tmp")
         with open(tmp, "w", encoding="utf-8") as f:
@@ -98,17 +102,51 @@ class PortfolioManager:
 
     @property
     def total_invested(self) -> float:
+        """Valeur des positions au coût d'entrée (basis)."""
         return sum(p.qty_remaining * p.entry_price for p in self.open_positions.values())
 
     @property
+    def total_market_value(self) -> float:
+        """Valeur des positions au dernier prix de marché connu."""
+        return sum(
+            p.qty_remaining * self.last_prices.get(t, p.entry_price)
+            for t, p in self.open_positions.items()
+        )
+
+    @property
     def total_value(self) -> float:
-        return self.cash + self.total_invested
+        """Valeur totale du portefeuille au dernier prix de marché connu.
+        Si aucun prix de marché disponible, utilise le coût d'entrée."""
+        return self.cash + self.total_market_value
+
+    @property
+    def pnl_unrealized(self) -> float:
+        """PnL latent sur les positions ouvertes (prix marché - prix entrée)."""
+        return sum(
+            (self.last_prices.get(t, p.entry_price) - p.entry_price) * p.qty_remaining
+            for t, p in self.open_positions.items()
+        )
+
+    @property
+    def pnl_realized(self) -> float:
+        """PnL réalisé total : trades fermés + fills partiels (TP1/TP2) sur positions encore ouvertes."""
+        from config import SLIPPAGE_PCT
+        # Trades complètement fermés
+        closed = sum(h["pnl"] for h in self.history)
+        # Fills partiels sur positions encore ouvertes (TP1, TP2 déjà encaissés)
+        partials = sum(
+            (f.price * (1 - SLIPPAGE_PCT) - pos.entry_price) * f.qty
+            for pos in self.open_positions.values()
+            for f in pos.partial_fills
+        )
+        return closed + partials
 
     @property
     def exposure_pct(self) -> float:
+        """Exposition en % de la valeur totale, calculée au prix de marché."""
         if self.total_value == 0:
             return 0.0
-        return self.total_invested / self.total_value
+        return self.total_market_value / self.total_value
 
     @property
     def open_positions(self) -> dict[str, Position]:
@@ -222,7 +260,9 @@ class PortfolioManager:
         """
         Passe en revue les positions ouvertes avec les prix actuels.
         Déclenche les paliers TP/SL si atteints.
+        Mémorise les derniers prix connus pour les métriques de marché.
         """
+        self.last_prices.update(prices)
         for ticker, pos in list(self.open_positions.items()):
             price = prices.get(ticker)
             if price is None:
@@ -262,50 +302,55 @@ class PortfolioManager:
 
     def _partial_sell(self, pos: Position, qty: float, price: float, reason: str):
         order = self.broker.sell(pos.ticker, qty, price)
-        fees = order["fees"]
+        exec_price = order["price"]   # prix réel après slippage
+        fees       = order["fees"]
         self.cash += order["total"]
         pos.qty_remaining -= qty
         pos.partial_fills.append(
             PartialFill(
                 date=datetime.now().strftime("%Y-%m-%d"),
                 qty=qty,
-                price=price,
+                price=exec_price,    # prix d'exécution réel (avec slippage)
                 reason=reason,
             )
         )
         if pos.qty_remaining <= 0.0001:
             pos.status = "closed"
-            pos.close_price = price
+            pos.close_price = exec_price
             pos.close_date = datetime.now().strftime("%Y-%m-%d")
         else:
             pos.status = "partial"
 
     def _close_position(self, pos: Position, price: float, reason: str):
         order = self.broker.sell(pos.ticker, pos.qty_remaining, price)
-        fees = order["fees"]
+        exec_price = order["price"]   # prix réel après slippage
+        fees       = order["fees"]
         self.cash += order["total"]
         pos.qty_remaining = 0.0
         pos.status = "closed"
-        pos.close_price = price
+        pos.close_price = exec_price
         pos.close_date = datetime.now().strftime("%Y-%m-%d")
         pos.fees_out = fees
-        # PnL sur la quantité réellement vendue au close (hors partial fills déjà encaissés)
-        qty_closed = pos.qty_total - sum(f.qty for f in pos.partial_fills)
-        pnl_close = net_pnl(pos.entry_price, price, qty_closed, BROKER_CONFIG)
-        pnl_partials = sum(
+        # PnL final : quantité vendue au close (hors fills partiels déjà comptabilisés)
+        qty_closed  = pos.qty_total - sum(f.qty for f in pos.partial_fills)
+        pnl_close   = net_pnl(pos.entry_price, exec_price, qty_closed, BROKER_CONFIG)
+        # PnL des fills partiels : exec_price déjà stocké avec slippage, fees déduits aussi
+        fees_partials  = sum(compute_fees(f.price, f.qty, BROKER_CONFIG) for f in pos.partial_fills)
+        pnl_partials   = sum(
             (f.price - pos.entry_price) * f.qty for f in pos.partial_fills
-        )
+        ) - fees_partials
         pnl_total = pnl_close + pnl_partials
+        fees_all  = pos.fees_in + fees + fees_partials
         self.history.append({
-            "ticker": pos.ticker,
-            "entry_price": pos.entry_price,
-            "close_price": price,
-            "qty": pos.qty_total,
-            "pnl": round(pnl_total, 4),
-            "fees_total": pos.fees_in + fees,
+            "ticker":       pos.ticker,
+            "entry_price":  pos.entry_price,
+            "close_price":  exec_price,
+            "qty":          pos.qty_total,
+            "pnl":          round(pnl_total, 4),
+            "fees_total":   round(fees_all, 4),
             "close_reason": reason,
-            "entry_date": pos.entry_date,
-            "close_date": pos.close_date,
+            "entry_date":   pos.entry_date,
+            "close_date":   pos.close_date,
         })
 
     def manual_close(self, ticker: str, price: float):

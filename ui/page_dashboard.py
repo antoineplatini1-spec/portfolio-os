@@ -27,26 +27,48 @@ def render(pm: PortfolioManager):
     st.title("Dashboard")
 
     # ── KPIs ──────────────────────────────────────────────────────────────
-    total    = pm.total_value
-    invested = pm.total_invested
-    cash_op  = pm.operational_cash
-    reserve  = pm.reserve_cash
-    pnl_real = sum(h["pnl"] for h in pm.history)
-    pnl_pct  = (total / pm.initial_cash - 1) * 100
-    expo_pct = pm.exposure_pct * 100
+    total       = pm.total_value          # marché (last_prices ou entry si pas de prix)
+    invested    = pm.total_market_value   # positions au prix de marché
+    invested_cost = pm.total_invested     # positions au coût d'entrée
+    cash_op     = pm.operational_cash
+    reserve     = pm.reserve_cash
+    pnl_real    = pm.pnl_realized         # réalisé : trades fermés + fills partiels TP
+    pnl_lat     = pm.pnl_unrealized       # latent : positions ouvertes au marché
+    pnl_total   = pnl_real + pnl_lat
+    pnl_pct     = (total / pm.initial_cash - 1) * 100
+    expo_pct    = pm.exposure_pct * 100
+    has_prices  = bool(pm.last_prices)
 
     closed_count = len(pm.history)
     wins         = sum(1 for h in pm.history if h["pnl"] > 0)
     win_rate     = wins / closed_count * 100 if closed_count else 0
 
     c1, c2, c3, c4, c5, c6 = st.columns(6)
-    c1.metric("Valeur totale",   f"{total:,.0f} €",   f"{pnl_pct:+.2f}%")
-    c2.metric("Investi",         f"{invested:,.0f} €", f"{expo_pct:.1f}% expo.")
-    c3.metric("Cash dispo",      f"{cash_op:,.0f} €")
-    c4.metric("PnL réalisé",     f"{pnl_real:+,.0f} €", delta_color="normal")
+    price_note = "" if has_prices else " ⚠"
+    c1.metric(
+        f"Valeur totale{price_note}",
+        f"{total:,.0f} €",
+        f"{pnl_pct:+.2f}%",
+        help="Valorisation au dernier prix de marché connu. ⚠ = prix non disponibles (valeur au coût)." if not has_prices
+             else "Valorisation au dernier prix de marché connu (mis à jour chaque jour à 13h).",
+    )
+    c2.metric(
+        "PnL total",
+        f"{pnl_total:+,.0f} €",
+        f"réalisé {pnl_real:+,.0f} € / latent {pnl_lat:+,.0f} €",
+        delta_color="normal",
+        help="PnL réalisé = trades fermés + fills partiels TP déjà encaissés. PnL latent = positions ouvertes au prix de marché.",
+    )
+    c3.metric("Cash dispo",      f"{cash_op:,.0f} €",  help="Cash opérationnel hors réserve.")
+    c4.metric("Investi (marché)",f"{invested:,.0f} €",  f"{expo_pct:.1f}% expo.",
+              help="Valeur des positions ouvertes au dernier prix de marché.")
     c5.metric("Win rate",        f"{win_rate:.0f}%" if closed_count else "—",
-              f"{closed_count} trades")
+              f"{closed_count} trades fermés")
     c6.metric("Positions",       len(pm.open_positions), f"depuis {pm.start_date}")
+
+    if not has_prices:
+        st.caption("⚠️ Aucun prix de marché disponible — valeurs affichées au coût d'entrée. "
+                   "Les prix se mettent à jour à 13h via GitHub Actions.")
 
     # ── Barres d'état ────────────────────────────────────────────────────
     st.markdown("<div style='margin-top:0.5rem'></div>", unsafe_allow_html=True)
