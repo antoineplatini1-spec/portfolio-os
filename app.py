@@ -126,9 +126,13 @@ st.sidebar.markdown(
         <div style="font:600 0.62rem/1 'Inter',sans-serif; color:#445470;
                     letter-spacing:0.05em; margin-bottom:0.3rem;">🌐 Accès distant</div>
         <a href="https://dashboard.zentry.uk" target="_blank" style="
-            font:500 0.78rem/1 'Inter',sans-serif;
+            display:block;font:500 0.78rem/1.6 'Inter',sans-serif;
             color:#2dd4bf; text-decoration:none;
         ">dashboard.zentry.uk</a>
+        <a href="https://portfolio-os-wogyzautrgj4zbakdmehk5.streamlit.app" target="_blank" style="
+            display:block;font:400 0.7rem/1.6 'Inter',sans-serif;
+            color:#445470; text-decoration:none;
+        ">streamlit backup</a>
     </div>
     """,
     unsafe_allow_html=True,
