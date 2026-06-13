@@ -67,7 +67,11 @@ def render(pm: PortfolioManager):
 
     # ── Pie chart + positions côte à côte ────────────────────────────────
     open_pos = pm.open_positions
-    col_pie, col_pos = st.columns([1, 2])
+    if open_pos:
+        col_pie, col_pos = st.columns([1, 2])
+    else:
+        col_pie = st.container()
+        col_pos = st.container()
 
     with col_pie:
         labels = list(open_pos.keys()) + ["Cash", "Réserve"]
@@ -106,14 +110,18 @@ def render(pm: PortfolioManager):
         if open_pos:
             rows = []
             for t, p in open_pos.items():
-                pnl_lat = (p.entry_price - p.entry_price) * p.qty_remaining  # placeholder
+                live_px = p.entry_price  # prix d'entrée par défaut (pas de fetch ici)
+                pnl_lat = (live_px - p.entry_price) * p.qty_remaining
+                pnl_pct = (live_px / p.entry_price - 1) * 100 if p.entry_price else 0
+                tp1 = f"{p.tp_levels[0].price:.2f}" if p.tp_levels else "—"
                 rows.append({
-                    "Ticker":  t,
-                    "Entrée":  f"{p.entry_price:.2f}",
-                    "Qté":     f"{p.qty_remaining:.2f}",
-                    "SL":      f"{p.sl:.2f}",
-                    "TP1":     f"{p.tp_levels[0].price:.2f}" if p.tp_levels else "—",
-                    "Statut":  p.status,
+                    "Ticker":   t,
+                    "Entrée":   f"{p.entry_price:.2f}",
+                    "SL":       f"{p.sl:.2f}",
+                    "TP1":      tp1,
+                    "PnL %":   f"{pnl_pct:+.1f}%",
+                    "Statut":   p.status.upper(),
+                    "Depuis":   p.entry_date or "—",
                 })
             st.dataframe(
                 pd.DataFrame(rows),

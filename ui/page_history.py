@@ -188,31 +188,6 @@ def render(pm: PortfolioManager):
             )
             st.plotly_chart(fig_bar, width="stretch")
 
-            # ── Pie raisons de clôture ────────────────────────────────
-            reason_counts = df["close_reason"].value_counts()
-            reason_palette = [
-                C["down"], C["up"], C["accent"], C["amber"],
-                C["purple"], C["blue"],
-            ]
-            fig_rea = go.Figure(go.Pie(
-                labels=reason_counts.index.tolist(),
-                values=reason_counts.values.tolist(),
-                hole=0.45,
-                marker=dict(
-                    colors=reason_palette[:len(reason_counts)],
-                    line=dict(color=C["bg"], width=2),
-                ),
-                textinfo="label+percent",
-                textfont=dict(color=C["text1"], size=11),
-                hovertemplate="<b>%{label}</b><br>%{value} trades<br>%{percent}<extra></extra>",
-            ))
-            fig_rea.update_layout(
-                **plotly_layout(height=240, title="Raisons de clôture",
-                                margin=dict(t=40, b=10, l=10, r=10),
-                                showlegend=False),
-            )
-            st.plotly_chart(fig_rea, width="stretch")
-
             # ── Tableau détaillé ──────────────────────────────────────
             st.subheader("Détail des trades fermés")
             display = df[[

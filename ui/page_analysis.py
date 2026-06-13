@@ -25,10 +25,11 @@ def render(pm: PortfolioManager):
     with col3:
         interval = st.selectbox("Intervalle", ["1d", "1wk"], index=0)
 
-    show_ema = st.checkbox("EMA 20/50/200", value=True)
-    show_bb = st.checkbox("Bollinger", value=True)
-    show_vwap = st.checkbox("VWAP", value=True)
-    show_fib = st.checkbox("Fibonacci", value=False)
+    ov1, ov2, ov3, ov4, _ = st.columns([1, 1, 1, 1, 4])
+    show_ema  = ov1.checkbox("EMA", value=True)
+    show_bb   = ov2.checkbox("Bollinger", value=True)
+    show_vwap = ov3.checkbox("VWAP", value=True)
+    show_fib  = ov4.checkbox("Fibonacci", value=False)
 
     if not ticker:
         return

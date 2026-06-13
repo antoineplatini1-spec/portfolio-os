@@ -56,26 +56,6 @@ def render(pm: PortfolioManager):
     styled = display.style.applymap(color_score, subset=["Score"])
     st.dataframe(styled, width='stretch', hide_index=True)
 
-    # ── Graphique des scores ───────────────────────────────────────
-    colors = [
-        "#66bb6a" if s >= BUY_SIGNAL_MIN_SCORE else "#ef5350"
-        for s in df["score"]
-    ]
-    fig = go.Figure(go.Bar(
-        x=df["ticker"], y=df["score"],
-        marker_color=colors,
-        text=df["score"], textposition="outside",
-    ))
-    fig.add_hline(y=BUY_SIGNAL_MIN_SCORE,
-                  line=dict(color="#ffb300", dash="dash"),
-                  annotation_text=f"Seuil signal ({BUY_SIGNAL_MIN_SCORE})")
-    fig.update_layout(
-        template="plotly_dark", height=380, title="Scores par actif",
-        xaxis_title="Ticker", yaxis_title="Score",
-        margin=dict(t=50, b=30),
-    )
-    st.plotly_chart(fig, width='stretch')
-
     # ── Achat rapide depuis le screener ───────────────────────────
     st.markdown("---")
     st.subheader("Achat rapide")
