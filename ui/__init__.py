@@ -7,4 +7,5 @@ from ui import (  # noqa: F401
     page_backtest,
     page_report,
     page_lexique,
+    page_watchhunter,
 )
