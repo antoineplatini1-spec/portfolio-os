@@ -7,6 +7,7 @@ import os
 
 
 WATCH_HUNTER_DIR = r"D:\Github\WatchHunter"
+RUNS_LOG = r"D:\Github\WatchHunter\runs.csv"
 
 
 def charger_opportunites() -> pd.DataFrame:
@@ -38,9 +39,39 @@ def charger_opportunites() -> pd.DataFrame:
     return combined.reset_index(drop=True)
 
 
+def charger_historique() -> pd.DataFrame:
+    try:
+        df = pd.read_csv(RUNS_LOG, encoding="utf-8-sig")
+        df["date"] = pd.to_datetime(df["date"])
+        return df.sort_values("date", ascending=False)
+    except Exception:
+        return pd.DataFrame()
+
+
 def render():
     st.title("🕐 WatchHunter")
     st.caption("Opportunités montres d'occasion — ACHETER & NÉGOCIER uniquement")
+
+    # ── Historique des runs ───────────────────────────────────────────────────
+    hist = charger_historique()
+    if not hist.empty:
+        with st.expander(f"📋 Historique — {len(hist)} run(s)", expanded=False):
+            total_annonces = hist["nb_annonces"].sum()
+            total_opps = hist["nb_opportunites"].sum()
+            dernier_run = hist["date"].iloc[0].strftime("%d/%m/%Y %H:%M")
+
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Dernier run", dernier_run)
+            c2.metric("Annonces analysées", int(total_annonces))
+            c3.metric("Opportunités trouvées", int(total_opps))
+
+            st.dataframe(
+                hist.rename(columns={"date": "Date", "nb_annonces": "Annonces", "nb_opportunites": "Opportunités"}),
+                use_container_width=True,
+                hide_index=True,
+            )
+
+    st.markdown("<div style='height:1px;background:#1e2d45;margin:1rem 0;'></div>", unsafe_allow_html=True)
 
     df = charger_opportunites()
 
