@@ -43,13 +43,22 @@ BUY_SIGNAL_MIN_SCORE = 60         # Score minimum pour suggérer un achat
 ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance
 
 # ── Frais ─────────────────────────────────────────────────────────
-# Alpaca : pas de commission sur les actions US (commission-free)
+# Alpaca broker : commission-free sur actions US, mais on simule les frais
+# réalistes pour anticiper le live trading (spread + impact marché).
+# Ajuster flat_fee selon le courtier réel : Alpaca=0, IBKR≈3€, Degiro≈2€.
 BROKER_CONFIG = {
     "name": "Alpaca",
-    "flat_fee": 0.00,             # Commission-free
-    "pct_fee": 0.00,
-    "min_fee": 0.00,
+    "flat_fee": 2.00,             # €2 par ordre (coût minimum réaliste live)
+    "pct_fee": 0.0005,            # 0.05% (spread + impact marché)
+    "min_fee": 2.00,              # minimum garanti par ordre
 }
+
+# Profit net minimum par vente partielle TP pour qu'elle soit exécutée.
+# Si le PnL net après frais est inférieur à ce seuil, le TP est reconnu
+# (trailing stop activé) mais la vente partielle est sautée.
+# Paper trading (10K€) : positions ~300-400€ → TP1 gross ≈ 2-10€, donc seuil bas.
+# Live trading (50K€+) : positions ~1500-3000€ → monter ce seuil à 15-20€.
+MIN_TP_NET_PROFIT = 5.0          # €5 net min (paper). Monter à 15€+ en live.
 
 # ── Données ───────────────────────────────────────────────────────
 DEFAULT_PERIOD = "6mo"

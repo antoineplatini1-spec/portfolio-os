@@ -10,6 +10,7 @@ from config import (
     INITIAL_CASH,
     MAX_SECTOR_POSITIONS,
     MAX_TOTAL_EXPOSURE_PCT,
+    MIN_TP_NET_PROFIT,
     RAMP_UP_WEEKS,
     RESERVE_CASH_PCT,
     RESERVE_UNLOCK_SCORE,
@@ -284,7 +285,14 @@ class PortfolioManager:
         for i, tp in enumerate(pos.tp_levels):
             if not tp.hit and price >= tp.price:
                 qty_to_sell = pos.qty_remaining * tp.sell_pct
-                self._partial_sell(pos, qty_to_sell, price, f"TP{i+1}")
+                # Guard frais : vente seulement si PnL net > MIN_TP_NET_PROFIT.
+                # Le TP est quand même marqué "hit" pour activer le trailing stop.
+                gross_pnl = (price - pos.entry_price) * qty_to_sell
+                fee_out   = compute_fees(price, qty_to_sell, BROKER_CONFIG)
+                net_profit = gross_pnl - fee_out
+                if net_profit >= MIN_TP_NET_PROFIT:
+                    self._partial_sell(pos, qty_to_sell, price, f"TP{i+1}")
+                # TP reconnu même si vente skippée (trailing stop + état cohérent)
                 tp.hit = True
                 tp.hit_date = datetime.now().strftime("%Y-%m-%d")
                 if i == 0:
