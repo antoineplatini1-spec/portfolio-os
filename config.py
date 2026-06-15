@@ -13,9 +13,9 @@ RESERVE_CASH_PCT = 0.10           # 10% toujours conservé
 RESERVE_UNLOCK_SCORE = 85         # Score minimum pour débloquer la réserve
 
 # ── Sizing par position ───────────────────────────────────────────
-MAX_POSITION_PCT = 0.04           # Position standard : 4% max
-MAX_POSITION_OPPORTUNITY_PCT = 0.06   # Score ≥ 80 : 6% max
-MAX_POSITION_CONVICTION_PCT = 0.09    # Score ≥ 90 : 9% max
+MAX_POSITION_PCT = 0.05               # Position standard : 5% max (€500 sur 10K€)
+MAX_POSITION_OPPORTUNITY_PCT = 0.08   # Score ≥ 80 : 8% max (€800)
+MAX_POSITION_CONVICTION_PCT = 0.12    # Score ≥ 90 : 12% max (€1200)
 OPPORTUNITY_SCORE_THRESHOLD = 80
 CONVICTION_SCORE_THRESHOLD = 90
 
@@ -48,17 +48,15 @@ ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance
 # Ajuster flat_fee selon le courtier réel : Alpaca=0, IBKR≈3€, Degiro≈2€.
 BROKER_CONFIG = {
     "name": "Alpaca",
-    "flat_fee": 2.00,             # €2 par ordre (coût minimum réaliste live)
-    "pct_fee": 0.0005,            # 0.05% (spread + impact marché)
-    "min_fee": 2.00,              # minimum garanti par ordre
+    "flat_fee": 0.0,              # Alpaca : zéro commission sur actions US
+    "pct_fee": 0.0,               # pas de frais %
+    "min_fee": 0.0,
 }
 
 # Profit net minimum par vente partielle TP pour qu'elle soit exécutée.
-# Si le PnL net après frais est inférieur à ce seuil, le TP est reconnu
-# (trailing stop activé) mais la vente partielle est sautée.
-# Paper trading (10K€) : positions ~300-400€ → TP1 gross ≈ 2-10€, donc seuil bas.
-# Live trading (50K€+) : positions ~1500-3000€ → monter ce seuil à 15-20€.
-MIN_TP_NET_PROFIT = 5.0          # €5 net min (paper). Monter à 15€+ en live.
+# Alpaca étant gratuit, 0 = tout PnL positif déclenche la vente.
+# À ajuster si on change de broker (ex: IBKR → 15€+).
+MIN_TP_NET_PROFIT = 0.0
 
 # ── Données ───────────────────────────────────────────────────────
 DEFAULT_PERIOD = "6mo"
