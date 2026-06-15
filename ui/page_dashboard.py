@@ -167,20 +167,20 @@ def render(pm: PortfolioManager):
         else:
             st.caption("Aucune position ouverte.")
 
-    # ── Courbe de capital ─────────────────────────────────────────────────
+    # ── Courbe de capital (base 100) ──────────────────────────────────────
     if pm.history:
         st.markdown("---")
         df = pd.DataFrame(pm.history).sort_values("close_date").copy()
         df["cum_pnl"] = df["pnl"].cumsum()
         df["capital"] = pm.initial_cash + df["cum_pnl"]
+        df["idx"] = df["capital"] / pm.initial_cash * 100
 
         spy_s = _spy_series(pm.start_date, pm.initial_cash)
+        spy_idx = (spy_s / pm.initial_cash * 100) if spy_s is not None and not spy_s.empty else None
 
-        if spy_s is not None and not spy_s.empty:
-            spy_final  = float(spy_s.iloc[-1])
-            port_final = float(df["capital"].iloc[-1])
-            spy_pct    = (spy_final  / pm.initial_cash - 1) * 100
-            port_pct   = (port_final / pm.initial_cash - 1) * 100
+        if spy_idx is not None:
+            spy_pct    = float(spy_idx.iloc[-1]) - 100
+            port_pct   = float(df["idx"].iloc[-1]) - 100
             alpha      = port_pct - spy_pct
             ca, cb, _  = st.columns([1, 1, 4])
             ca.metric("Portfolio", f"{port_pct:+.2f}%")
@@ -188,40 +188,40 @@ def render(pm: PortfolioManager):
 
         fig_eq = go.Figure()
         fig_eq.add_trace(go.Scatter(
-            x=df["close_date"], y=[pm.initial_cash] * len(df),
+            x=df["close_date"], y=[100.0] * len(df),
             mode="lines", line=dict(color=C["border2"], width=0),
             showlegend=False, hoverinfo="skip",
         ))
         fig_eq.add_trace(go.Scatter(
-            x=df["close_date"], y=df["capital"],
+            x=df["close_date"], y=df["idx"],
             mode="lines", fill="tonexty", fillcolor=C["up_bg"],
             line=dict(color=C["up"], width=0),
             showlegend=False, hoverinfo="skip",
         ))
-        if spy_s is not None and not spy_s.empty:
+        if spy_idx is not None:
             fig_eq.add_trace(go.Scatter(
-                x=spy_s.index.astype(str), y=spy_s.values,
+                x=spy_idx.index.astype(str), y=spy_idx.values,
                 mode="lines", name="SPY",
                 line=dict(color=C["text3"], width=1.5, dash="dot"),
-                hovertemplate="<b>SPY</b> %{x}<br>%{y:,.0f} €<extra></extra>",
+                hovertemplate="<b>SPY</b> %{x}<br>%{y:.1f}<extra></extra>",
             ))
         fig_eq.add_trace(go.Scatter(
-            x=df["close_date"], y=df["capital"],
+            x=df["close_date"], y=df["idx"],
             mode="lines+markers", name="Portfolio",
             line=dict(color=C["accent"], width=2),
             marker=dict(size=5, color=C["accent"], line=dict(color=C["bg"], width=2)),
-            hovertemplate="<b>Portfolio</b> %{x}<br>%{y:,.0f} €<extra></extra>",
+            hovertemplate="<b>Portfolio</b> %{x}<br>%{y:.1f}<extra></extra>",
         ))
         fig_eq.add_hline(
-            y=pm.initial_cash,
+            y=100,
             line=dict(color=C["text3"], dash="dash", width=1),
-            annotation_text=f"{pm.initial_cash:,.0f} €",
+            annotation_text="Base 100",
             annotation_font_color=C["text3"],
             annotation_font_size=10,
             annotation_position="bottom right",
         )
         fig_eq.update_layout(
-            **plotly_layout(height=240, title="Portfolio vs SPY"),
+            **plotly_layout(height=240, title="Portfolio vs SPY (base 100)"),
             showlegend=True,
         )
         st.plotly_chart(fig_eq, use_container_width=True)
