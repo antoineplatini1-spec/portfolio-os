@@ -173,6 +173,14 @@ def render(pm: PortfolioManager):
         df = pd.DataFrame(pm.history).sort_values("close_date").copy()
         df["cum_pnl"] = df["pnl"].cumsum()
         df["capital"] = pm.initial_cash + df["cum_pnl"]
+
+        # Ajouter un point final = valeur totale marché (réalisé + latent)
+        # pour que la courbe se termine au même niveau que le KPI "Valeur totale"
+        today = pd.Timestamp.now().strftime("%Y-%m-%d")
+        df_today = pd.DataFrame([{"close_date": today, "capital": pm.total_value}])
+        df = pd.concat([df, df_today], ignore_index=True).drop_duplicates("close_date", keep="last")
+        df = df.sort_values("close_date")
+
         df["idx"] = df["capital"] / pm.initial_cash * 100
 
         spy_s = _spy_series(pm.start_date, pm.initial_cash)
