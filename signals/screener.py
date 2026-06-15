@@ -11,14 +11,38 @@ from signals.scoring import compute_score
 from utils.fees import break_even_price
 
 
-def scan_ticker(ticker: str, period: str = "6mo") -> dict:
+def get_market_regime() -> dict:
+    """
+    Retourne le régime de marché basé sur SPY (fetché une seule fois par session).
+    Utilisé pour contextualiser le score de chaque ticker dans le screener.
+    """
+    try:
+        df = fetch_ohlcv("SPY", period="1y")
+        if df.empty or len(df) < 50:
+            return {}
+        df = compute_all(df)
+        row    = df.iloc[-1]
+        close  = float(row["Close"])
+        ema50  = row.get("EMA50")
+        ema200 = row.get("EMA200")
+        close_20d = float(df["Close"].iloc[-21]) if len(df) >= 21 else close
+        return {
+            "spy_above_ema50":  bool(pd.notna(ema50)  and close > float(ema50)),
+            "spy_above_ema200": bool(pd.notna(ema200) and close > float(ema200)),
+            "spy_return_20d":   round((close - close_20d) / close_20d * 100, 2),
+        }
+    except Exception:
+        return {}
+
+
+def scan_ticker(ticker: str, period: str = "6mo", market_regime: dict | None = None) -> dict:
     """Analyse complète d'un ticker. Retourne un dict résumé."""
     try:
         df = fetch_ohlcv(ticker, period=period)
         if df.empty or len(df) < 30:
             return {"ticker": ticker, "error": "Données insuffisantes", "score": 0}
         df = compute_all(df)
-        result = compute_score(df, ticker=ticker)
+        result = compute_score(df, ticker=ticker, market_regime=market_regime)
         price = result.get("last_close", 0) or 0
         atr = result.get("atr", 0) or 0
 
@@ -77,12 +101,15 @@ def run_screener(
     """
     Lance le screener sur une liste d'actifs.
     Retourne un DataFrame trié par score décroissant.
+    Le régime de marché (SPY) est fetché une seule fois et injecté dans chaque score.
     """
     if tickers is None:
         tickers = DEFAULT_WATCHLIST
 
+    regime = get_market_regime()
+
     with ThreadPoolExecutor(max_workers=8) as ex:
-        rows = list(ex.map(lambda t: scan_ticker(t, period), tickers))
+        rows = list(ex.map(lambda t: scan_ticker(t, period, regime), tickers))
     df = pd.DataFrame(rows)
     if df.empty:
         return df

@@ -18,10 +18,19 @@ _ETF_TICKERS: set[str] = {
 }
 
 
-def compute_score(df: pd.DataFrame, ticker: str | None = None) -> dict:
+def compute_score(
+    df: pd.DataFrame,
+    ticker: str | None = None,
+    market_regime: dict | None = None,
+) -> dict:
     """
     Calcule un score d'achat 0-100 sur la dernière bougie disponible.
     Retourne un dict avec le score total, bull/bear séparés, et les flags baissiers.
+
+    market_regime (optionnel) : dict fourni par get_market_regime()
+        spy_above_ema50  : bool
+        spy_above_ema200 : bool
+        spy_return_20d   : float  (performance SPY sur 20 jours, en %)
     """
     if df.empty or len(df) < 20:
         return {"score": 0, "bull_score": 0, "bear_score": 0,
@@ -31,6 +40,7 @@ def compute_score(df: pd.DataFrame, ticker: str | None = None) -> dict:
     prev    = df.iloc[-2]
     row_5d  = df.iloc[-6]  if len(df) >= 6  else df.iloc[0]
     row_10d = df.iloc[-11] if len(df) >= 11 else df.iloc[0]
+    row_20d = df.iloc[-21] if len(df) >= 21 else df.iloc[0]
 
     vol_avg_20 = (
         df["Volume"].iloc[-21:-1].mean()
@@ -243,10 +253,46 @@ def compute_score(df: pd.DataFrame, ticker: str | None = None) -> dict:
             bear_flags.append(f"Tendance baissière forte (ADX={adx:.0f}, DMN>DMP)")
 
     # ══════════════════════════════════════════════════════════════
-    # SCORE FINAL
-    # bull pénalisé par la moitié du bear_score (cap à -40 pts)
+    # RÉGIME DE MARCHÉ + FORCE RELATIVE (contexte SPY)
+    # Signaux soft : renforcent ou affaiblissent sans bloquer
     # ══════════════════════════════════════════════════════════════
-    bear_penalty = min(bear_pts, 40) // 2
+    if market_regime:
+        spy_above_ema50  = market_regime.get("spy_above_ema50",  True)
+        spy_above_ema200 = market_regime.get("spy_above_ema200", True)
+        spy_ret_20d      = market_regime.get("spy_return_20d",   0.0)
+
+        # ── Régime SPY ────────────────────────────────────────────
+        if not spy_above_ema200:
+            bear_pts += 25
+            bear_flags.append("SPY sous EMA200 — marché baissier structurel")
+        elif not spy_above_ema50:
+            bear_pts += 15
+            bear_flags.append("SPY sous EMA50 — marché en correction")
+        else:
+            bull_pts += 5   # marché en tendance haussière = légère prime
+
+        # ── Force relative vs SPY (20 jours) ─────────────────────
+        close_20d = row_20d.get("Close")
+        if pd.notna(close_20d) and float(close_20d) > 0 and pd.notna(close):
+            stock_ret_20d = (float(close) - float(close_20d)) / float(close_20d) * 100
+            rs = stock_ret_20d - spy_ret_20d
+            if rs > 5:
+                pts = 10
+                bull_pts += pts
+            elif rs < -5:
+                pts = -8
+                bear_pts += 8
+                bear_flags.append(f"Force relative négative vs SPY ({rs:+.1f}% sur 20j)")
+            else:
+                pts = 0
+            details["RelStrength"] = {"value": round(rs, 1), "pts": pts}
+
+    # ══════════════════════════════════════════════════════════════
+    # SCORE FINAL
+    # bull pénalisé par la moitié du bear_score (cap relevé à 60 pts)
+    # → max pénalité = 30 pts au lieu de 20 (signaux baissiers pèsent plus)
+    # ══════════════════════════════════════════════════════════════
+    bear_penalty = min(bear_pts, 60) // 2
     final_score  = max(0, min(100, bull_pts - bear_penalty))
 
     return {

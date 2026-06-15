@@ -8,6 +8,7 @@ from data.fetcher import fetch_ohlcv
 from indicators import compute_all
 from portfolio.manager import PortfolioManager
 from portfolio.risk import r_ratio, sl_price, tp_prices
+from signals.screener import get_market_regime
 from signals.scoring import compute_score
 from ui.charts import build_price_chart
 from utils.fees import break_even_price, compute_fees
@@ -42,7 +43,8 @@ def render(pm: PortfolioManager):
         return
 
     df = compute_all(df)
-    result = compute_score(df, ticker=ticker)
+    regime = get_market_regime()
+    result = compute_score(df, ticker=ticker, market_regime=regime)
     position = pm.positions.get(ticker)
 
     # ── Graphique ─────────────────────────────────────────────────
