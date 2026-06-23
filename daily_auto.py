@@ -159,6 +159,7 @@ def run():
     opened_positions_log: list[dict] = []
     sales_log: list[dict] = []        # achats partiels TP + clôtures SL/time stop
     sltp_cash_delta: float = 0.0
+    blockers: list[str] = []          # diagnostic structurel si le bot ne peut pas acheter
 
     # ── 1. Mise a jour des prix des positions ouvertes ────────────
     open_pos = pm.open_positions
@@ -318,6 +319,7 @@ def run():
 
     if available < 100:
         log("Budget semaine epuise - pas de nouveaux achats.")
+        blockers.append("Budget semaine epuise")
     elif candidates.empty:
         log("Aucun signal suffisant aujourd'hui.")
     else:
@@ -327,6 +329,24 @@ def run():
             underlying = _ETF_TO_UNDERLYING.get(t.upper())
             if underlying and underlying != SECTOR_MAP.get(t, "Other"):
                 sectors_used[underlying] = sectors_used.get(underlying, 0) + 1
+
+        # ── Auto-diagnostic : détecter les blocages structurels ───
+        full_sectors = [s for s, c in sectors_used.items() if c >= MAX_SECTOR_POSITIONS]
+        all_candidate_sectors = set(
+            SECTOR_MAP.get(t, "Other")
+            for t in candidates["ticker"] if t not in pm.open_positions
+        )
+        if all_candidate_sectors and all_candidate_sectors.issubset(set(full_sectors)):
+            msg = (f"ALERTE : tous les secteurs des candidats sont pleins "
+                   f"({', '.join(full_sectors)}). Aucun achat possible.")
+            log(f"  [BLOCAGE STRUCTUREL] {msg}")
+            blockers.append(msg)
+        elif len(full_sectors) > len(sectors_used) * 0.7:
+            msg = (f"Attention : {len(full_sectors)}/{len(sectors_used)} secteurs "
+                   f"pleins ({MAX_SECTOR_POSITIONS} max)")
+            log(f"  [SATURATION] {msg}")
+            blockers.append(msg)
+
         debates_run  = 0
 
         for _, cand_row in candidates.iterrows():
@@ -467,6 +487,7 @@ def run():
         pm=pm,
         available=available,
         live_prices=prices if open_pos else {},
+        blockers=blockers,
     )
 
 
@@ -474,6 +495,7 @@ def _send_daily_email(
     today, market_ctx, score_max, score_med, n_candidates,
     opened_positions, sales_log, sltp_cash, pm, available,
     live_prices: dict | None = None,
+    blockers: list[str] | None = None,
 ):
     """Construit et envoie le recap journalier par email."""
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
@@ -646,12 +668,16 @@ def _send_daily_email(
     latent_color = "#34d399" if latent_pnl >= 0 else "#fb7185"
 
     subject_icon = "✅" if opened_positions else ("📤" if sales_log else "⚠️")
+    if blockers:
+        subject_icon = "🚨"
     n_sales = len(sales_log)
     subject = (
         f"{subject_icon} Portfolio {today} — "
         f"{len(opened_positions)} achat(s) · {n_sales} vente(s) | "
         f"{len(pm.open_positions)} positions"
     )
+    if blockers:
+        subject += " | BLOCAGE"
 
     html = f"""<!DOCTYPE html>
 <html>
@@ -676,6 +702,8 @@ def _send_daily_email(
   </td></tr>
 
   <tr><td style='height:12px'></td></tr>
+
+  {"" if not blockers else "<tr><td style='background:#3d1111;border-radius:8px;border-left:4px solid #fb7185;padding:14px 18px;margin-bottom:12px'><div style='color:#fb7185;font-weight:700;font-size:14px;margin-bottom:6px'>&#x1F6A8; Blocage structurel detect&eacute;</div>" + "".join(f"<div style='color:#e8a0a0;font-size:12px;margin:3px 0'>&#x2022; {b}</div>" for b in blockers) + "</td></tr><tr><td style='height:12px'></td></tr>"}
 
   <!-- STATS MARCHE (table 4 colonnes) -->
   <tr><td>
