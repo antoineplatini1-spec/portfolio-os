@@ -134,7 +134,7 @@ def run():
     from signals.scoring import compute_score
     from config import DEFAULT_WATCHLIST, SECTOR_MAP, MIN_R_RATIO
     from signals.macro_agent import MacroAgent
-    from config import MAX_TRADES_PER_DAY
+    from config import MAX_TRADES_PER_DAY, MAX_SECTOR_POSITIONS
 
     pm = PortfolioManager()
 
@@ -364,7 +364,7 @@ def run():
                 log(line)
 
             # Véto sectoriel (hors débat — règle portefeuille hard)
-            if sectors_used.get(sector, 0) >= 2:
+            if sectors_used.get(sector, 0) >= MAX_SECTOR_POSITIONS:
                 log(f"  [VETO secteur] {ticker} : {sector} deja a {sectors_used[sector]} positions")
                 if debate.buy:
                     save_near_miss(
