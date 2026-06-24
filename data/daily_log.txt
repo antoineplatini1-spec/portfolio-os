@@ -7172,3 +7172,94 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-06-23 09:43] RESUME : valeur=10301.43 EUR  investi=7159.64 EUR  cash=3139.61 EUR  expo=69.5%  positions=22
 [2026-06-23 09:43] ----------------------------------------
 [2026-06-23 09:44] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-24 09:22] ============================================================
+[2026-06-24 09:22] SCAN JOURNALIER - 2026-06-24
+[2026-06-24 09:22] ============================================================
+[2026-06-24 09:22] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-24 09:22]   Date     :   [none]  ⚠ ANCIENNE
+[2026-06-24 09:22]   CAC 40   : NEUTRAL
+[2026-06-24 09:22] ───────────────────────────────────────────────────────
+[2026-06-24 09:22] ══════════════════════════════════════════════
+[2026-06-24 09:22]   AGENT MACRO — 2026-06-24
+[2026-06-24 09:22] ══════════════════════════════════════════════
+[2026-06-24 09:22]   Régime marché  : BULL
+[2026-06-24 09:22]   SPY vs EMA200  : +6.8%
+[2026-06-24 09:22]   VIX            : 19.1 (LOW)
+[2026-06-24 09:22]   Max trades/j   : 3
+[2026-06-24 09:22]   Seuil net min  : 10
+[2026-06-24 09:22]   Top secteurs   : Semi, Finance, Industrie, Tech, Macro, Santé, Materiaux, REIT
+[2026-06-24 09:22]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-24 09:22]   Rationale      : Marché haussier (SPY +6.8% vs EMA200). Exposition maximale autorisée.
+[2026-06-24 09:22] ══════════════════════════════════════════════
+[2026-06-24 09:22] 22 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-24 09:22]   SPG: 216.74
+[2026-06-24 09:22]   MS: 226.03
+[2026-06-24 09:22]   ON: 117.06
+[2026-06-24 09:22]   NUE: 239.63
+[2026-06-24 09:22]   BIIB: 197.19
+[2026-06-24 09:22]   CAT: 984.24
+[2026-06-24 09:22]   UNH: 409.25
+[2026-06-24 09:22]   MAR: 386.83
+[2026-06-24 09:22]   PLD: 145.25
+[2026-06-24 09:22]   CIBR: 84.21
+[2026-06-24 09:23]   HACK: 95.96
+[2026-06-24 09:23]   AMD: 519.85
+[2026-06-24 09:23]   SNOW: 230.41
+[2026-06-24 09:23]   PM: 178.69
+[2026-06-24 09:23]   GS: 1094.44
+[2026-06-24 09:23]   HLT: 343.83
+[2026-06-24 09:23]   FCX: 64.40
+[2026-06-24 09:23]   CL: 91.43
+[2026-06-24 09:23]   TLT: 86.20
+[2026-06-24 09:23]   HYG: 79.87
+[2026-06-24 09:23]   GE: 356.47
+[2026-06-24 09:23]   PANW: 290.92
+[2026-06-24 09:23] Screener en cours...
+[2026-06-24 09:23] Scores : max=83  mediane=17  (156 tickers)
+[2026-06-24 09:23] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=83
+[2026-06-24 09:23] 43 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-24 09:23] Cash deployable cette semaine : 2140 EUR  (max trades/j : 2)
+[2026-06-24 09:23]   [SKIP earnings] MU : publication de résultats dans ±3j
+[2026-06-24 09:23] ────────────────────────────────────────────────────
+[2026-06-24 09:23]   DÉBAT : CRWD
+[2026-06-24 09:23] ────────────────────────────────────────────────────
+[2026-06-24 09:23]   🟢 BULL [conviction=85] → ACHETER
+[2026-06-24 09:23]      • Score haussier fort (76/100)
+[2026-06-24 09:23]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-24 09:23]      • Prix au-dessus EMA200 (504.60) — tendance long terme haussière
+[2026-06-24 09:23]      • RSI bas (30) — zone d'accumulation
+[2026-06-24 09:23]      • CMF fort — flux acheteur dominant
+[2026-06-24 09:23] 
+[2026-06-24 09:23]   🔴 BEAR [concern=23] → OK
+[2026-06-24 09:23]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-06-24 09:23]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-06-24 09:23]      • Volume faible (0.6× moyenne)
+[2026-06-24 09:23] 
+[2026-06-24 09:23]   ✅ ARBITRE → ACHETER  (net=+71)
+[2026-06-24 09:23]      Arguments haussiers l'emportent clairement (conviction=85, concern=23, net=+71)
+[2026-06-24 09:23] ────────────────────────────────────────────────────
+[2026-06-24 09:23]   [ACHAT] CRWD score=74 bull=85 bear=23 prix=680.92 investi=517EUR SL=612.79 TP1=732.02
+[2026-06-24 09:23] ────────────────────────────────────────────────────
+[2026-06-24 09:23]   DÉBAT : ABBV
+[2026-06-24 09:23] ────────────────────────────────────────────────────
+[2026-06-24 09:23]   🟢 BULL [conviction=84] → ACHETER
+[2026-06-24 09:23]      • Score haussier fort (76/100)
+[2026-06-24 09:23]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-06-24 09:23]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-24 09:23]      • Prix au-dessus EMA200 (218.79) — tendance long terme haussière
+[2026-06-24 09:23]      • CMF fort — flux acheteur dominant
+[2026-06-24 09:23] 
+[2026-06-24 09:23]   🔴 BEAR [concern=26] → OK
+[2026-06-24 09:23]      • Secteur Santé déjà exposé (2 positions) — diversification limitée
+[2026-06-24 09:23]      • Prix au-dessus BB supérieure (surachat)
+[2026-06-24 09:23]      • Exposition modérée (75%) — prudence sur les ajouts
+[2026-06-24 09:23] 
+[2026-06-24 09:23]   ✅ ARBITRE → ACHETER  (net=+68)
+[2026-06-24 09:23]      Arguments haussiers l'emportent clairement (conviction=84, concern=26, net=+68)
+[2026-06-24 09:23] ────────────────────────────────────────────────────
+[2026-06-24 09:23]   [ACHAT] ABBV score=73 bull=84 bear=26 prix=234.76 investi=516EUR SL=222.60 TP1=243.88
+[2026-06-24 09:23] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-06-24 09:23] ----------------------------------------
+[2026-06-24 09:23] RESUME : valeur=10329.13 EUR  investi=8192.63 EUR  cash=2105.58 EUR  expo=79.6%  positions=24
+[2026-06-24 09:23] ----------------------------------------
+[2026-06-24 09:23] [EMAIL] Envoye a antoine.platini@outlook.fr
