@@ -7263,3 +7263,98 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-06-24 09:23] RESUME : valeur=10329.13 EUR  investi=8192.63 EUR  cash=2105.58 EUR  expo=79.6%  positions=24
 [2026-06-24 09:23] ----------------------------------------
 [2026-06-24 09:23] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-25 09:18] ============================================================
+[2026-06-25 09:18] SCAN JOURNALIER - 2026-06-25
+[2026-06-25 09:18] ============================================================
+[2026-06-25 09:18] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-25 09:18]   Date     :   [none]  ⚠ ANCIENNE
+[2026-06-25 09:18]   CAC 40   : NEUTRAL
+[2026-06-25 09:18] ───────────────────────────────────────────────────────
+[2026-06-25 09:18] ══════════════════════════════════════════════
+[2026-06-25 09:18]   AGENT MACRO — 2026-06-25
+[2026-06-25 09:18] ══════════════════════════════════════════════
+[2026-06-25 09:18]   Régime marché  : BULL
+[2026-06-25 09:18]   SPY vs EMA200  : +6.6%
+[2026-06-25 09:18]   VIX            : 17.9 (LOW)
+[2026-06-25 09:18]   Max trades/j   : 3
+[2026-06-25 09:18]   Seuil net min  : 10
+[2026-06-25 09:18]   Top secteurs   : Finance, Santé, Industrie, Macro, Semi, ConsoBase, Utilities, Materiaux, REIT
+[2026-06-25 09:18]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-25 09:18]   Rationale      : Marché haussier (SPY +6.6% vs EMA200). Exposition maximale autorisée.
+[2026-06-25 09:18] ══════════════════════════════════════════════
+[2026-06-25 09:18] 24 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-25 09:18]   SPG: 222.15
+[2026-06-25 09:18]   MS: 219.86
+[2026-06-25 09:18]   ON: 115.74
+[2026-06-25 09:18]   NUE: 240.52
+[2026-06-25 09:18]   BIIB: 199.59
+[2026-06-25 09:18]   CAT: 994.45
+[2026-06-25 09:18]   UNH: 405.80
+[2026-06-25 09:18]   MAR: 383.56
+[2026-06-25 09:18]   PLD: 140.87
+[2026-06-25 09:18]   CIBR: 83.80
+[2026-06-25 09:18]   HACK: 96.02
+[2026-06-25 09:18]   AMD: 519.74
+[2026-06-25 09:18]   SNOW: 225.95
+[2026-06-25 09:18]   PM: 178.78
+[2026-06-25 09:18]   GS: 1076.91
+[2026-06-25 09:18]   HLT: 343.42
+[2026-06-25 09:18]   FCX: 61.84
+[2026-06-25 09:18]   CL: 91.88
+[2026-06-25 09:18]   TLT: 87.38
+[2026-06-25 09:18]   HYG: 79.85
+[2026-06-25 09:18]   GE: 365.88
+[2026-06-25 09:18]   PANW: 285.26
+[2026-06-25 09:18]   CRWD: 673.02
+[2026-06-25 09:18]   ABBV: 234.89
+[2026-06-25 09:18]   SL/TP declenches -> encaisse +504.37 EUR
+[2026-06-25 09:18]   Position FERMEE : FCX
+[2026-06-25 09:18]   TP1 TLT : 87.29 (+1.2%)
+[2026-06-25 09:18] Screener en cours...
+[2026-06-25 09:19] Scores : max=86  mediane=21  (156 tickers)
+[2026-06-25 09:19] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=86
+[2026-06-25 09:19] 50 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-25 09:19] Cash deployable cette semaine : 1610 EUR  (max trades/j : 2)
+[2026-06-25 09:19] ────────────────────────────────────────────────────
+[2026-06-25 09:19]   DÉBAT : ARKG
+[2026-06-25 09:19] ────────────────────────────────────────────────────
+[2026-06-25 09:19]   🟢 BULL [conviction=85] → ACHETER
+[2026-06-25 09:19]      • Score haussier fort (89/100)
+[2026-06-25 09:19]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-25 09:19]      • Prix au-dessus EMA200 (30.33) — tendance long terme haussière
+[2026-06-25 09:19]      • Momentum 10j fort (+15.0%) — tendance confirmée
+[2026-06-25 09:19]      • Volume fort (1.6× la moyenne) — intérêt institutionnel
+[2026-06-25 09:19] 
+[2026-06-25 09:19]   🔴 BEAR [concern=26] → OK
+[2026-06-25 09:19]      • Secteur ETF déjà exposé (2 positions) — diversification limitée
+[2026-06-25 09:19]      • Prix au-dessus BB supérieure (surachat)
+[2026-06-25 09:19]      • Exposition modérée (75%) — prudence sur les ajouts
+[2026-06-25 09:19] 
+[2026-06-25 09:19]   ✅ ARBITRE → ACHETER  (net=+69)
+[2026-06-25 09:19]      Arguments haussiers l'emportent clairement (conviction=85, concern=26, net=+69)
+[2026-06-25 09:19] ────────────────────────────────────────────────────
+[2026-06-25 09:19]   [ACHAT] ARKG score=86 bull=85 bear=26 prix=38.58 investi=823EUR SL=35.25 TP1=41.08
+[2026-06-25 09:19] ────────────────────────────────────────────────────
+[2026-06-25 09:19]   DÉBAT : AMAT
+[2026-06-25 09:19] ────────────────────────────────────────────────────
+[2026-06-25 09:19]   🟢 BULL [conviction=69] → ACHETER
+[2026-06-25 09:19]      • Score haussier fort (71/100)
+[2026-06-25 09:19]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-25 09:19]      • Prix au-dessus EMA200 (367.28) — tendance long terme haussière
+[2026-06-25 09:19]      • Momentum 10j fort (+18.0%) — tendance confirmée
+[2026-06-25 09:19]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-25 09:19] 
+[2026-06-25 09:19]   🔴 BEAR [concern=35] → PRUDENCE
+[2026-06-25 09:19]      • Exposition déjà élevée (83%) — risque de surconcentration
+[2026-06-25 09:19]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-06-25 09:19]      • Budget semaine limité (31% restant)
+[2026-06-25 09:19] 
+[2026-06-25 09:19]   ✅ ARBITRE → ACHETER  (net=+48)
+[2026-06-25 09:19]      Arguments haussiers l'emportent clairement (conviction=69, concern=35, net=+48)
+[2026-06-25 09:19] ────────────────────────────────────────────────────
+[2026-06-25 09:19]   [ACHAT] AMAT score=71 bull=69 bear=35 prix=588.97 investi=515EUR SL=520.92 TP1=640.01
+[2026-06-25 09:19] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-06-25 09:19] ----------------------------------------
+[2026-06-25 09:19] RESUME : valeur=10290.61 EUR  investi=8981.60 EUR  cash=1270.71 EUR  expo=87.7%  positions=25
+[2026-06-25 09:19] ----------------------------------------
+[2026-06-25 09:19] [EMAIL] Envoye a antoine.platini@outlook.fr
