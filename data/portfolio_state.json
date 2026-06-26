@@ -1,9 +1,9 @@
 {
-  "cash": 1270.705522485806,
+  "cash": 647.6286150004163,
   "initial_cash": 10000.0,
   "reserve_cash": 1000.0,
   "start_date": "2026-04-19",
-  "weekly_deployed": 2370.903170791283,
+  "weekly_deployed": 3208.49625366486,
   "week_start": "2026-06-22",
   "positions": {
     "MRK": {
@@ -338,7 +338,7 @@
       "qty_remaining": 0.43827015935181973,
       "sl": 195.80599999999998,
       "trailing_stop": true,
-      "trailing_stop_price": 213.263994140625,
+      "trailing_stop_price": 216.4704052734375,
       "entry_date": "2026-04-28",
       "fees_in": 0.0,
       "status": "partial",
@@ -668,7 +668,7 @@
       "qty_remaining": 1.4492137968813952,
       "sl": 203.4066,
       "trailing_stop": true,
-      "trailing_stop_price": 209.72160061035157,
+      "trailing_stop_price": 210.90159328613282,
       "entry_date": "2026-06-09",
       "fees_in": 0.0,
       "status": "partial",
@@ -897,7 +897,7 @@
       "qty_remaining": 0.38685854456555296,
       "sl": 215.8716,
       "trailing_stop": true,
-      "trailing_stop_price": 229.37160427246093,
+      "trailing_stop_price": 237.74159938964843,
       "entry_date": "2026-05-18",
       "fees_in": 0.0,
       "status": "partial",
@@ -1034,10 +1034,10 @@
       "ticker": "CAT",
       "entry_price": 888.31,
       "qty_total": 0.3380071532634546,
-      "qty_remaining": 0.16477848721593413,
+      "qty_remaining": 0.09886709232956048,
       "sl": 831.1099999999999,
       "trailing_stop": true,
-      "trailing_stop_price": 937.2500122070312,
+      "trailing_stop_price": 999.810009765625,
       "entry_date": "2026-05-18",
       "fees_in": 0.0,
       "status": "partial",
@@ -1062,8 +1062,8 @@
         {
           "price": 1031.31,
           "sell_pct": 0.4,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-06-26"
         }
       ],
       "partial_fills": [
@@ -1078,6 +1078,12 @@
           "qty": 0.08872687773165683,
           "price": 976.742251,
           "reason": "TP2"
+        },
+        {
+          "date": "2026-06-26",
+          "qty": 0.06591139488637365,
+          "price": 1055.953,
+          "reason": "TP3"
         }
       ]
     },
@@ -1221,7 +1227,7 @@
       "qty_remaining": 0.3933793160455131,
       "sl": 362.187,
       "trailing_stop": true,
-      "trailing_stop_price": 387.9669877929688,
+      "trailing_stop_price": 397.6969987792969,
       "entry_date": "2026-06-03",
       "fees_in": 0.0,
       "status": "partial",
@@ -1272,7 +1278,7 @@
       "qty_remaining": 0.39679365012240453,
       "sl": 360.0302,
       "trailing_stop": true,
-      "trailing_stop_price": 366.84019755859373,
+      "trailing_stop_price": 362.19020366210935,
       "entry_date": "2026-06-04",
       "fees_in": 0.0,
       "status": "partial",
@@ -1323,7 +1329,7 @@
       "qty_remaining": 1.6216873792740083,
       "sl": 136.2774,
       "trailing_stop": true,
-      "trailing_stop_price": 135.3273951171875,
+      "trailing_stop_price": 134.98739877929688,
       "entry_date": "2026-06-04",
       "fees_in": 0.0,
       "status": "partial",
@@ -1444,7 +1450,7 @@
       "qty_remaining": 0.6280451336325833,
       "sl": 434.62620000000004,
       "trailing_stop": true,
-      "trailing_stop_price": 461.12619023437503,
+      "trailing_stop_price": 473.9562073242188,
       "entry_date": "2026-06-08",
       "fees_in": 0.0,
       "status": "partial",
@@ -1603,7 +1609,7 @@
       "qty_remaining": 0.199733929454175,
       "sl": 943.9206,
       "trailing_stop": true,
-      "trailing_stop_price": 1012.7456341796875,
+      "trailing_stop_price": 1000.9255658203125,
       "entry_date": "2026-06-11",
       "fees_in": 0.0,
       "status": "partial",
@@ -1689,7 +1695,7 @@
       "ticker": "FCX",
       "entry_price": 69.44,
       "qty_total": 6.027327471915805,
-      "qty_remaining": 0.0,
+      "qty_remaining": 6.027327471915805,
       "sl": 62.9144,
       "trailing_stop": false,
       "trailing_stop_price": 69.44,
@@ -1768,7 +1774,7 @@
       "qty_remaining": 4.536963366965407,
       "sl": 84.9716,
       "trailing_stop": true,
-      "trailing_stop_price": 86.12659725341797,
+      "trailing_stop_price": 86.0965984741211,
       "entry_date": "2026-06-16",
       "fees_in": 0.0,
       "status": "partial",
@@ -2038,13 +2044,13 @@
       "ticker": "AMAT",
       "entry_price": 588.97,
       "qty_total": 0.8736546924565869,
-      "qty_remaining": 0.8736546924565869,
+      "qty_remaining": 0.6552410193424402,
       "sl": 520.9186,
-      "trailing_stop": false,
-      "trailing_stop_price": 588.97,
+      "trailing_stop": true,
+      "trailing_stop_price": 599.9485999999999,
       "entry_date": "2026-06-25",
       "fees_in": 0.0,
-      "status": "open",
+      "status": "partial",
       "close_price": 0.0,
       "close_date": "",
       "entry_score": 71,
@@ -2054,8 +2060,8 @@
         {
           "price": 640.00855,
           "sell_pct": 0.25,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-06-26"
         },
         {
           "price": 691.0471,
@@ -2065,6 +2071,51 @@
         },
         {
           "price": 759.0985000000001,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": [
+        {
+          "date": "2026-06-26",
+          "qty": 0.21841367311414672,
+          "price": 667.332,
+          "reason": "TP1"
+        }
+      ]
+    },
+    "KLAC": {
+      "ticker": "KLAC",
+      "entry_price": 258.8,
+      "qty_total": 3.2364493155856904,
+      "qty_remaining": 3.2364493155856904,
+      "sl": 227.4896,
+      "trailing_stop": false,
+      "trailing_stop_price": 258.8,
+      "entry_date": "2026-06-26",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 86,
+      "entry_atr": 15.6552,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 282.2828,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 305.7656,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 337.076,
           "sell_pct": 0.4,
           "hit": false,
           "hit_date": ""
@@ -2396,32 +2447,34 @@
   ],
   "last_prices": {
     "LMT": 513.43701171875,
-    "SPG": 222.14999389648438,
-    "MS": 219.86000061035156,
-    "ON": 115.73999786376953,
-    "NUE": 240.52000427246094,
+    "SPG": 225.49000549316406,
+    "MS": 221.0399932861328,
+    "ON": 118.73999786376953,
+    "NUE": 248.88999938964844,
     "MPC": 248.1999969482422,
-    "BIIB": 199.58999633789062,
-    "CAT": 994.4500122070312,
+    "BIIB": 201.9600067138672,
+    "CAT": 1057.010009765625,
     "DDOG": 215.94500732421875,
-    "UNH": 405.79998779296875,
-    "MAR": 383.55999755859375,
-    "PLD": 140.8699951171875,
-    "CIBR": 83.80000305175781,
-    "HACK": 96.0199966430664,
-    "AMD": 519.739990234375,
-    "SNOW": 225.9499969482422,
+    "UNH": 415.5299987792969,
+    "MAR": 378.9100036621094,
+    "PLD": 140.52999877929688,
+    "CIBR": 83.66000366210938,
+    "HACK": 96.2699966430664,
+    "AMD": 532.5700073242188,
+    "SNOW": 227.05999755859375,
     "EOG": 131.47999572753906,
-    "PM": 178.77999877929688,
-    "GS": 1076.9100341796875,
-    "HLT": 343.4200134277344,
+    "PM": 178.92999267578125,
+    "GS": 1065.0899658203125,
+    "HLT": 340.54998779296875,
     "FCX": 61.84000015258789,
-    "CL": 91.87999725341797,
-    "TLT": 87.37999725341797,
-    "HYG": 79.8499984741211,
-    "GE": 365.8800048828125,
-    "PANW": 285.260009765625,
-    "CRWD": 673.02001953125,
-    "ABBV": 234.88999938964844
+    "CL": 91.05999755859375,
+    "TLT": 87.3499984741211,
+    "HYG": 79.87999725341797,
+    "GE": 371.3599853515625,
+    "PANW": 293.0899963378906,
+    "CRWD": 678.6500244140625,
+    "ABBV": 243.13999938964844,
+    "ARKG": 40.11000061035156,
+    "AMAT": 668.0
   }
 }

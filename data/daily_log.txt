@@ -7358,3 +7358,79 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-06-25 09:19] RESUME : valeur=10290.61 EUR  investi=8981.60 EUR  cash=1270.71 EUR  expo=87.7%  positions=25
 [2026-06-25 09:19] ----------------------------------------
 [2026-06-25 09:19] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-26 09:11] ============================================================
+[2026-06-26 09:11] SCAN JOURNALIER - 2026-06-26
+[2026-06-26 09:11] ============================================================
+[2026-06-26 09:11] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-26 09:11]   Date     :   [none]  ⚠ ANCIENNE
+[2026-06-26 09:11]   CAC 40   : NEUTRAL
+[2026-06-26 09:11] ───────────────────────────────────────────────────────
+[2026-06-26 09:12] ══════════════════════════════════════════════
+[2026-06-26 09:12]   AGENT MACRO — 2026-06-26
+[2026-06-26 09:12] ══════════════════════════════════════════════
+[2026-06-26 09:12]   Régime marché  : BULL
+[2026-06-26 09:12]   SPY vs EMA200  : +6.7%
+[2026-06-26 09:12]   VIX            : 20.1 (MEDIUM)
+[2026-06-26 09:12]   Max trades/j   : 3
+[2026-06-26 09:12]   Seuil net min  : 10
+[2026-06-26 09:12]   Top secteurs   : Semi, Industrie, Santé, Finance, Macro, Utilities, Materiaux, REIT, Tech
+[2026-06-26 09:12]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-26 09:12]   Rationale      : Marché haussier (SPY +6.6% vs EMA200). Exposition maximale autorisée.
+[2026-06-26 09:12] ══════════════════════════════════════════════
+[2026-06-26 09:12] 25 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-26 09:12]   SPG: 225.49
+[2026-06-26 09:12]   MS: 221.04
+[2026-06-26 09:12]   ON: 118.74
+[2026-06-26 09:12]   NUE: 248.89
+[2026-06-26 09:12]   BIIB: 201.96
+[2026-06-26 09:12]   CAT: 1057.01
+[2026-06-26 09:12]   UNH: 415.53
+[2026-06-26 09:12]   MAR: 378.91
+[2026-06-26 09:12]   PLD: 140.53
+[2026-06-26 09:12]   CIBR: 83.66
+[2026-06-26 09:12]   HACK: 96.27
+[2026-06-26 09:12]   AMD: 532.57
+[2026-06-26 09:12]   SNOW: 227.06
+[2026-06-26 09:12]   PM: 178.93
+[2026-06-26 09:12]   GS: 1065.09
+[2026-06-26 09:12]   HLT: 340.55
+[2026-06-26 09:12]   CL: 91.06
+[2026-06-26 09:12]   TLT: 87.35
+[2026-06-26 09:12]   HYG: 79.88
+[2026-06-26 09:12]   GE: 371.36
+[2026-06-26 09:12]   PANW: 293.09
+[2026-06-26 09:12]   CRWD: 678.65
+[2026-06-26 09:12]   ABBV: 243.14
+[2026-06-26 09:12]   ARKG: 40.11
+[2026-06-26 09:12]   AMAT: 668.00
+[2026-06-26 09:12]   SL/TP declenches -> encaisse +215.35 EUR
+[2026-06-26 09:12]   TP3 CAT : 1055.95 (+18.9%)
+[2026-06-26 09:12]   TP1 AMAT : 667.33 (+13.3%)
+[2026-06-26 09:12] Screener en cours...
+[2026-06-26 09:12] Scores : max=91  mediane=20  (156 tickers)
+[2026-06-26 09:12] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=91
+[2026-06-26 09:12] 61 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-26 09:12] Cash deployable cette semaine : 486 EUR  (max trades/j : 2)
+[2026-06-26 09:12] ────────────────────────────────────────────────────
+[2026-06-26 09:12]   DÉBAT : KLAC
+[2026-06-26 09:12] ────────────────────────────────────────────────────
+[2026-06-26 09:12]   🟢 BULL [conviction=80] → ACHETER
+[2026-06-26 09:12]      • Score haussier fort (86/100)
+[2026-06-26 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-26 09:12]      • Prix au-dessus EMA200 (164.02) — tendance long terme haussière
+[2026-06-26 09:12]      • Momentum 10j fort (+21.2%) — tendance confirmée
+[2026-06-26 09:12]      • Stoch RSI survendu (18) — retournement imminent
+[2026-06-26 09:12] 
+[2026-06-26 09:12]   🔴 BEAR [concern=38] → PRUDENCE
+[2026-06-26 09:12]      • Exposition déjà élevée (86%) — risque de surconcentration
+[2026-06-26 09:12]      • Secteur Semi très concentré (3 positions) — risque sectoriel
+[2026-06-26 09:12] 
+[2026-06-26 09:12]   ✅ ARBITRE → ACHETER  (net=+57)
+[2026-06-26 09:12]      Arguments haussiers l'emportent clairement (conviction=80, concern=38, net=+57)
+[2026-06-26 09:12] ────────────────────────────────────────────────────
+[2026-06-26 09:12]   [ACHAT] KLAC score=86 bull=80 bear=38 prix=258.80 investi=838EUR SL=227.49 TP1=282.28
+[2026-06-26 09:12] 1 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-06-26 09:12] ----------------------------------------
+[2026-06-26 09:12] RESUME : valeur=10469.08 EUR  investi=9632.01 EUR  cash=647.63 EUR  expo=93.8%  positions=26
+[2026-06-26 09:12] ----------------------------------------
+[2026-06-26 09:12] [EMAIL] Envoye a antoine.platini@outlook.fr
