@@ -7434,3 +7434,112 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-06-26 09:12] RESUME : valeur=10469.08 EUR  investi=9632.01 EUR  cash=647.63 EUR  expo=93.8%  positions=26
 [2026-06-26 09:12] ----------------------------------------
 [2026-06-26 09:12] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-06-29 10:48] ============================================================
+[2026-06-29 10:48] SCAN JOURNALIER - 2026-06-29
+[2026-06-29 10:48] ============================================================
+[2026-06-29 10:48] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-06-29 10:48]   Date     :   [none]  ⚠ ANCIENNE
+[2026-06-29 10:48]   CAC 40   : NEUTRAL
+[2026-06-29 10:48] ───────────────────────────────────────────────────────
+[2026-06-29 10:48] ══════════════════════════════════════════════
+[2026-06-29 10:48]   AGENT MACRO — 2026-06-29
+[2026-06-29 10:48] ══════════════════════════════════════════════
+[2026-06-29 10:48]   Régime marché  : BULL
+[2026-06-29 10:48]   SPY vs EMA200  : +6.7%
+[2026-06-29 10:48]   VIX            : 18.6 (LOW)
+[2026-06-29 10:48]   Max trades/j   : 3
+[2026-06-29 10:48]   Seuil net min  : 10
+[2026-06-29 10:48]   Top secteurs   : Santé, Industrie, Finance, Utilities, ConsoBase, REIT, Macro, Semi
+[2026-06-29 10:48]   Secteurs auth. : TOUS (régime favorable)
+[2026-06-29 10:48]   Rationale      : Marché haussier (SPY +6.7% vs EMA200). Exposition maximale autorisée.
+[2026-06-29 10:48] ══════════════════════════════════════════════
+[2026-06-29 10:48] 26 position(s) ouverte(s) - mise a jour des prix...
+[2026-06-29 10:48]   SPG: 226.65
+[2026-06-29 10:48]   MS: 213.36
+[2026-06-29 10:48]   ON: 86.88
+[2026-06-29 10:48]   NUE: 233.84
+[2026-06-29 10:48]   BIIB: 217.44
+[2026-06-29 10:48]   CAT: 1002.40
+[2026-06-29 10:48]   UNH: 419.41
+[2026-06-29 10:48]   MAR: 380.53
+[2026-06-29 10:48]   PLD: 137.60
+[2026-06-29 10:48]   CIBR: 88.29
+[2026-06-29 10:48]   HACK: 102.39
+[2026-06-29 10:48]   AMD: 505.07
+[2026-06-29 10:48]   SNOW: 251.20
+[2026-06-29 10:48]   PM: 180.53
+[2026-06-29 10:48]   GS: 1022.94
+[2026-06-29 10:48]   HLT: 339.77
+[2026-06-29 10:48]   CL: 92.31
+[2026-06-29 10:48]   TLT: 87.40
+[2026-06-29 10:48]   HYG: 79.90
+[2026-06-29 10:48]   GE: 373.26
+[2026-06-29 10:48]   PANW: 326.23
+[2026-06-29 10:48]   CRWD: 748.21
+[2026-06-29 10:48]   ABBV: 254.19
+[2026-06-29 10:48]   ARKG: 42.30
+[2026-06-29 10:48]   AMAT: 665.53
+[2026-06-29 10:48]   KLAC: 258.79
+[2026-06-29 10:48]   SL/TP declenches -> encaisse +1600.37 EUR
+[2026-06-29 10:48]   Position FERMEE : ON
+[2026-06-29 10:48]   Position FERMEE : NUE
+[2026-06-29 10:48]   TP1 BIIB : 217.22 (+12.6%)
+[2026-06-29 10:48]   TP2 BIIB : 217.22 (+12.6%)
+[2026-06-29 10:48]   TP1 HACK : 102.29 (+4.6%)
+[2026-06-29 10:48]   TP1 PANW : 325.91 (+16.8%)
+[2026-06-29 10:48]   TP2 PANW : 325.91 (+16.8%)
+[2026-06-29 10:48]   TP1 CRWD : 747.46 (+9.8%)
+[2026-06-29 10:48]   TP1 ABBV : 253.94 (+8.2%)
+[2026-06-29 10:48]   TP2 ABBV : 253.94 (+8.2%)
+[2026-06-29 10:48]   TP1 ARKG : 42.26 (+9.5%)
+[2026-06-29 10:48]   [TIME STOP] PLD : 25j ouverte, PnL=-3.0% -> fermeture
+[2026-06-29 10:48] Screener en cours...
+[2026-06-29 10:48] Scores : max=69  mediane=14  (156 tickers)
+[2026-06-29 10:48] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=69
+[2026-06-29 10:48] 37 candidats pre-filtres (score>=40, R>=1.2)
+[2026-06-29 10:48] Cash deployable cette semaine : 1471 EUR  (max trades/j : 2)
+[2026-06-29 10:48] ────────────────────────────────────────────────────
+[2026-06-29 10:48]   DÉBAT : LRCX
+[2026-06-29 10:48] ────────────────────────────────────────────────────
+[2026-06-29 10:48]   🟢 BULL [conviction=67] → ACHETER
+[2026-06-29 10:48]      • Score haussier fort (71/100)
+[2026-06-29 10:48]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-29 10:48]      • Prix au-dessus EMA200 (248.46) — tendance long terme haussière
+[2026-06-29 10:48]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-29 10:48]      • OBV en hausse — accumulation en cours
+[2026-06-29 10:48] 
+[2026-06-29 10:48]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-06-29 10:48]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-06-29 10:48]      • Secteur Semi très concentré (3 positions) — risque sectoriel
+[2026-06-29 10:48]      • Volume faible (0.3× moyenne)
+[2026-06-29 10:48] 
+[2026-06-29 10:48]   ✅ ARBITRE → ACHETER  (net=+41)
+[2026-06-29 10:48]      Arguments haussiers l'emportent clairement (conviction=67, concern=43, net=+41)
+[2026-06-29 10:48] ────────────────────────────────────────────────────
+[2026-06-29 10:48]   [ACHAT] LRCX score=69 bull=67 bear=43 prix=392.01 investi=530EUR SL=343.98 TP1=428.03
+[2026-06-29 10:48] ────────────────────────────────────────────────────
+[2026-06-29 10:48]   DÉBAT : XBI
+[2026-06-29 10:48] ────────────────────────────────────────────────────
+[2026-06-29 10:48]   🟢 BULL [conviction=62] → ACHETER
+[2026-06-29 10:48]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-06-29 10:48]      • Prix au-dessus EMA200 (129.06) — tendance long terme haussière
+[2026-06-29 10:48]      • Score haussier correct (68/100)
+[2026-06-29 10:48]      • Momentum 10j fort (+16.9%) — tendance confirmée
+[2026-06-29 10:48]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-06-29 10:48] 
+[2026-06-29 10:48]   🔴 BEAR [concern=61] → ÉVITER
+[2026-06-29 10:48]      • Exposition déjà élevée (82%) — risque de surconcentration
+[2026-06-29 10:48]      • Secteur ETF très concentré (3 positions) — risque sectoriel
+[2026-06-29 10:48]      • Stoch RSI suracheté (99) — retournement baissier possible
+[2026-06-29 10:48]      • RSI suracheté (90)
+[2026-06-29 10:48]      • Budget semaine limité (38% restant)
+[2026-06-29 10:48] 
+[2026-06-29 10:48]   ✅ ARBITRE → ACHETER  (net=+25)
+[2026-06-29 10:48]      Arguments haussiers l'emportent clairement (conviction=62, concern=61, net=+25)
+[2026-06-29 10:48] ────────────────────────────────────────────────────
+[2026-06-29 10:48]   [ACHAT] XBI score=64 bull=62 bear=61 prix=156.25 investi=530EUR SL=147.81 TP1=162.58
+[2026-06-29 10:48] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-06-29 10:48] ----------------------------------------
+[2026-06-29 10:48] RESUME : valeur=10604.81 EUR  investi=8865.30 EUR  cash=1409.30 EUR  expo=86.7%  positions=25
+[2026-06-29 10:48] ----------------------------------------
+[2026-06-29 10:48] [EMAIL] Envoye a antoine.platini@outlook.fr
