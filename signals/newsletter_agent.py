@@ -14,7 +14,8 @@ import os
 import re
 import urllib.request
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Optional
 
@@ -330,12 +331,15 @@ class NewsletterAgent:
     def _parse(self, text: str, subject: str, date_str: str, source: str) -> NewsletterSignal:
         text_lower = text.lower()
 
-        # Fraîcheur : date dans le sujet ou le texte
+        # Fraîcheur : email reçu dans les 36 dernières heures
         today = datetime.now().strftime("%Y-%m-%d")
-        is_fresh = (
-            datetime.now().strftime("%d %B %Y").lower() in text_lower or
-            datetime.now().strftime("%Y").lower() in date_str
-        )
+        try:
+            email_dt = parsedate_to_datetime(date_str)
+            age_h = (datetime.now(timezone.utc) - email_dt.astimezone(timezone.utc)).total_seconds() / 3600
+            is_fresh = age_h <= 36
+        except Exception:
+            # Fallback : chercher la date du jour dans le corps
+            is_fresh = datetime.now().strftime("%d %B %Y").lower() in text_lower
 
         # ── CAC 40 sentiment ──────────────────────────────────────────
         cac40_section = self._extract_section(text, "CAC 40")
