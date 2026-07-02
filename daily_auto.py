@@ -165,7 +165,10 @@ def run():
     open_pos = pm.open_positions
     if open_pos:
         log(f"{len(open_pos)} position(s) ouverte(s) - mise a jour des prix...")
-        MAX_DAILY_MOVE = 0.25   # rejet si prix dévie > 25% du dernier connu (data error)
+        # Seuil de suspicion : au-delà, on double-vérifie avant de laisser SL/TP s'exécuter.
+        # Un vrai gap de -27% (ON semi, earnings) peut arriver — on ne bloque pas aveuglément,
+        # on CONFIRME via une deuxième source (données intraday 60min).
+        MAX_DAILY_MOVE = 0.25
 
         prices = {}
         for ticker in open_pos:
@@ -177,13 +180,38 @@ def run():
                     if last_known and last_known > 0:
                         move = abs(new_price - last_known) / last_known
                         if move > MAX_DAILY_MOVE:
-                            log(f"  {ticker}: PRIX ABERRANT rejete "
-                                f"({last_known:.2f} -> {new_price:.2f}, "
-                                f"{move*100:.1f}% > {MAX_DAILY_MOVE*100:.0f}%) — prix ignore")
-                            blockers.append(
-                                f"{ticker}: prix aberrant {last_known:.2f}→{new_price:.2f} "
-                                f"({move*100:.1f}%) — SL/TP non declencheS"
-                            )
+                            # Mouvement suspect : double-vérification intraday
+                            log(f"  {ticker}: mouvement suspect "
+                                f"{last_known:.2f}→{new_price:.2f} ({move*100:.1f}%) "
+                                f"— double verification intraday...")
+                            confirmed = False
+                            try:
+                                df2 = fetch_ohlcv(ticker, period="1d", interval="60m",
+                                                  force_refresh=True)
+                                if not df2.empty:
+                                    price2 = float(df2["Close"].iloc[-1])
+                                    move2 = abs(price2 - last_known) / last_known
+                                    # Intraday confirme si lui aussi > 60% du seuil (>15%)
+                                    if move2 > MAX_DAILY_MOVE * 0.6:
+                                        prices[ticker] = price2
+                                        log(f"  {ticker}: CONFIRME intraday "
+                                            f"({price2:.2f}, {move2*100:.1f}%) "
+                                            f"→ SL/TP actives")
+                                        confirmed = True
+                                    else:
+                                        log(f"  {ticker}: INFIRME intraday "
+                                            f"({price2:.2f}, {move2*100:.1f}%) "
+                                            f"→ prix journalier REJETE")
+                                else:
+                                    log(f"  {ticker}: intraday vide → rejete par precaution")
+                            except Exception as e2:
+                                log(f"  {ticker}: erreur double-check ({e2}) "
+                                    f"→ rejete par precaution")
+                            if not confirmed:
+                                blockers.append(
+                                    f"{ticker}: mvt suspect {last_known:.2f}→{new_price:.2f} "
+                                    f"({move*100:.1f}%) non confirme par intraday — SL/TP suspendus"
+                                )
                             continue
                     prices[ticker] = new_price
                     log(f"  {ticker}: {new_price:.2f}")
