@@ -58,6 +58,12 @@ BROKER_CONFIG = {
 # À ajuster si on change de broker (ex: IBKR → 15€+).
 MIN_TP_NET_PROFIT = 0.0
 
+# ── Momentum PTF (newsletter Capital Momentum) ────────────────────
+MOMENTUM_INITIAL_CASH     = 10_000.0   # Poche dédiée newsletter
+MOMENTUM_MAX_POSITION_PCT = 0.10       # 10% par position = ~1000€
+MOMENTUM_DEFAULT_SL_PCT   = 0.07       # SL par défaut si non mentionné : -7%
+MOMENTUM_TRAIL_PCT        = 0.05       # Trailing stop : 5% sous le plus haut après TP1
+
 # ── Données ───────────────────────────────────────────────────────
 DEFAULT_PERIOD = "6mo"
 DEFAULT_INTERVAL = "1d"

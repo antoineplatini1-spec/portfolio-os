@@ -19,6 +19,53 @@ from pathlib import Path
 from typing import Optional
 
 
+# ── Mapping société française → ticker yfinance (.PA) ─────────────
+FR_TICKER_MAP: dict[str, str] = {
+    "orange":               "ORA.PA",
+    "ses":                  "SESG.PA",
+    "stmicroelectronics":   "STM.PA",
+    "airbus":               "AIR.PA",
+    "sanofi":               "SAN.PA",
+    "lvmh":                 "MC.PA",
+    "totalenergies":        "TTE.PA",
+    "total":                "TTE.PA",
+    "bnp":                  "BNP.PA",
+    "société générale":     "GLE.PA",
+    "crédit agricole":      "ACA.PA",
+    "axa":                  "CS.PA",
+    "schneider":            "SU.PA",
+    "capgemini":            "CAP.PA",
+    "dassault aviation":    "AM.PA",
+    "dassault systèmes":    "DSY.PA",
+    "safran":               "SAF.PA",
+    "kering":               "KER.PA",
+    "hermès":               "RMS.PA",
+    "l'oréal":              "OR.PA",
+    "danone":               "BN.PA",
+    "renault":              "RNO.PA",
+    "stellantis":           "STLAM.MI",
+    "vinci":                "DG.PA",
+    "eiffage":              "FGR.PA",
+    "bouygues":             "EN.PA",
+    "legrand":              "LR.PA",
+    "engie":                "ENGI.PA",
+    "vallourec":            "VK.PA",
+    "bureau veritas":       "BVI.PA",
+    "eurofins":             "ERF.PA",
+    "ipsen":                "IPN.PA",
+    "medincell":            "MEDIC.PA",
+    "biomérieux":           "BIM.PA",
+    "alstom":               "ALO.PA",
+    "unibail":              "URW.PA",
+    "aperam":               "APAM.AS",
+    "saint-gobain":         "SGO.PA",
+    "arcelormittal":        "MT.PA",
+    "teleperformance":      "TEP.PA",
+    "atos":                 "ATO.PA",
+    "iliad":                "ILD.PA",
+}
+
+
 # ── Mapping valeur française → secteur US ─────────────────────────
 TICKER_TO_SECTOR = {
     # Clés longues avant les courtes pour éviter les faux positifs
@@ -67,6 +114,17 @@ MACRO_PATTERNS = {
 
 
 @dataclass
+class MomentumTrade:
+    """Signal d'achat/vente extrait de la newsletter pour le portefeuille Momentum."""
+    company: str          # nom affiché ("Orange")
+    ticker: str           # ticker yfinance ("ORA.PA")
+    action: str           # "BUY" | "SELL" | "HOLD" | "AVOID"
+    tp_levels: list[float]   # prix cibles absolus en euros
+    sl: float = 0.0          # prix SL (0 = utiliser défaut %)
+    raw_rec: str = ""        # texte brut de la recommandation
+
+
+@dataclass
 class StockSignal:
     name: str           # nom de la valeur (français)
     sector: str         # secteur US mappé
@@ -84,6 +142,7 @@ class NewsletterSignal:
     macro_flags: list[str]               # ["oil_bullish", "semis_warning", ...]
     raw_subject: str                     # sujet de l'email
     is_fresh: bool                       # newsletter d'aujourd'hui ou d'hier
+    momentum_trades: list[MomentumTrade] = field(default_factory=list)  # trades pour le Momentum PTF
 
     def format_log(self) -> list[str]:
         lines = [
@@ -332,15 +391,18 @@ class NewsletterAgent:
         if "energy_strong" in macro_flags:
             sector_bias["Energie"] = sector_bias.get("Energie", 0) + 1
 
+        momentum_trades = self._extract_momentum_trades(text)
+
         return NewsletterSignal(
-            date           = today,
-            source         = source,
-            cac40_sentiment= cac40_sentiment,
-            stock_signals  = stock_signals,
-            sector_bias    = sector_bias,
-            macro_flags    = macro_flags,
-            raw_subject    = subject,
-            is_fresh       = is_fresh,
+            date            = today,
+            source          = source,
+            cac40_sentiment = cac40_sentiment,
+            stock_signals   = stock_signals,
+            sector_bias     = sector_bias,
+            macro_flags     = macro_flags,
+            raw_subject     = subject,
+            is_fresh        = is_fresh,
+            momentum_trades = momentum_trades,
         )
 
     def _extract_section(self, text: str, keyword: str) -> str:
@@ -420,6 +482,99 @@ class NewsletterAgent:
         if any(kw in text for kw in CAUTION_KEYWORDS):
             return "BEARISH"
         return "NEUTRAL"
+
+    # ── Extraction Momentum Trades ─────────────────────────────────
+
+    def _extract_momentum_trades(self, text: str) -> list[MomentumTrade]:
+        """
+        Parcourt chaque société connue dans FR_TICKER_MAP, extrait :
+        - action (BUY / SELL / AVOID / HOLD)
+        - TP levels (prix absolus en euros depuis "viser X puis Y")
+        - SL (depuis "stopper sous X" ou support mentionné)
+        """
+        trades: list[MomentumTrade] = []
+        text_lower = text.lower()
+
+        for name_lower, ticker in FR_TICKER_MAP.items():
+            if name_lower not in text_lower:
+                continue
+
+            section = self._extract_section_for(text, name_lower)
+            if not section:
+                continue
+            rec = self._extract_recommendation(section)
+            if not rec:
+                continue
+
+            action = self._classify_recommendation(rec, section)
+            if action in ("UNKNOWN",):
+                continue
+
+            tp_levels = self._extract_tp_prices(rec)
+            sl        = self._extract_sl_price(rec + " " + section[:300])
+
+            trades.append(MomentumTrade(
+                company   = name_lower.title(),
+                ticker    = ticker,
+                action    = action,
+                tp_levels = tp_levels,
+                sl        = sl,
+                raw_rec   = rec[:200],
+            ))
+
+        return trades
+
+    @staticmethod
+    def _parse_price_str(s: str) -> float:
+        """'19,53' ou '19.53' ou '19 53' → 19.53"""
+        return float(s.strip().replace(" ", "").replace(",", "."))
+
+    def _extract_tp_prices(self, rec: str) -> list[float]:
+        """
+        Extrait les prix cibles depuis le texte de recommandation.
+        Gère : "viser 19,53 euros", "viser 19,53-19,68 euros", "puis 20,70 euros",
+               "résistance de 20,70-21,07 euros", "objectif de X euros".
+        """
+        tps: list[float] = []
+        # Patterns explicites pour capturer les prix cibles.
+        # Chaque pattern : (groupe1=prix1, groupe2=prix2_optionnel_fourchette)
+        tp_patterns = [
+            re.compile(r"viser\s+([\d]+[,.][\d]+)(?:\s*[-–]\s*([\d]+[,.][\d]+))?",          re.IGNORECASE),
+            re.compile(r"objectif[s]?\s+(?:de\s+)?([\d]+[,.][\d]+)(?:\s*[-–]\s*([\d]+[,.][\d]+))?", re.IGNORECASE),
+            re.compile(r"résistance\s+(?:de\s+)?([\d]+[,.][\d]+)(?:\s*[-–]\s*([\d]+[,.][\d]+))?",   re.IGNORECASE),
+            re.compile(r"puis\s+([\d]+[,.][\d]+)(?:\s*[-–]\s*([\d]+[,.][\d]+))?\s+euros?\b",         re.IGNORECASE),
+        ]
+        for pat in tp_patterns:
+            for m in pat.finditer(rec):
+                try:
+                    v1 = self._parse_price_str(m.group(1))
+                    v2 = self._parse_price_str(m.group(2)) if m.group(2) else None
+                    price = round((v1 + v2) / 2, 4) if v2 else v1
+                    if price > 0 and price not in tps:
+                        tps.append(price)
+                except ValueError:
+                    continue
+        return sorted(tps)
+
+    def _extract_sl_price(self, text: str) -> float:
+        """
+        Extrait le SL depuis : "stopper sous X", "stop sous X",
+        "en cas de retour sous X", "en cas d'enfoncement de X".
+        Retourne 0.0 si non trouvé.
+        """
+        pattern = re.compile(
+            r"(?:stopper?\s+(?:vos\s+pertes\s+)?(?:sous|à)|stop\s+(?:sous|à)"
+            r"|retour\s+sous|enfoncement\s+(?:de\s+)?(?:la\s+)?(?:résistance|support)?\s*(?:de\s+)?)"
+            r"\s*([\d\s]+[,.][\d]+)\s*(?:euro|€|point)",
+            re.IGNORECASE,
+        )
+        m = pattern.search(text)
+        if m:
+            try:
+                return self._parse_price_str(m.group(1))
+            except ValueError:
+                pass
+        return 0.0
 
     def _empty_signal(self) -> NewsletterSignal:
         return NewsletterSignal(

@@ -517,6 +517,120 @@ def run():
         f"positions={len(pm.open_positions)}")
     log("-" * 40)
 
+    # ── 4b. Momentum PTF (newsletter Capital Momentum) ────────────
+    momentum_log: list[dict] = []
+    try:
+        from portfolio.momentum_portfolio import MomentumPortfolio
+        mpm = MomentumPortfolio()
+
+        # 4b-1 : Mise à jour des prix des positions Momentum ouvertes
+        if mpm.open_positions:
+            log(f"[MOMENTUM] {len(mpm.open_positions)} position(s) ouverte(s)...")
+            m_prices: dict[str, float] = {}
+            for mticker in mpm.open_positions:
+                try:
+                    df_m = fetch_ohlcv(mticker, period="5d", interval="1d", force_refresh=True)
+                    if not df_m.empty:
+                        mp = float(df_m["Close"].iloc[-1])
+                        last_m = mpm.last_prices.get(mticker)
+                        if last_m and last_m > 0:
+                            move_m = abs(mp - last_m) / last_m
+                            if move_m > 0.25:
+                                # Double-check intraday
+                                try:
+                                    df_m2 = fetch_ohlcv(mticker, period="1d", interval="60m",
+                                                        force_refresh=True)
+                                    if not df_m2.empty:
+                                        mp2 = float(df_m2["Close"].iloc[-1])
+                                        if abs(mp2 - last_m) / last_m > 0.15:
+                                            mp = mp2   # confirmé
+                                        else:
+                                            log(f"  [MOMENTUM] {mticker}: prix suspect {last_m:.2f}→{mp:.2f} non confirme")
+                                            continue
+                                    else:
+                                        continue
+                                except Exception:
+                                    continue
+                        m_prices[mticker] = mp
+                        log(f"  [MOMENTUM] {mticker}: {mp:.2f}")
+                except Exception as e:
+                    log(f"  [MOMENTUM] {mticker}: erreur prix - {e}")
+            mpm.update_prices(m_prices)
+
+        # 4b-2 : Nouvelles positions depuis la newsletter
+        if nl_signal and nl_signal.is_fresh and nl_signal.momentum_trades:
+            log(f"[MOMENTUM] {len(nl_signal.momentum_trades)} signal(s) newsletter...")
+            for trade in nl_signal.momentum_trades:
+                if trade.action not in ("BUY",):
+                    # SELL/AVOID : fermer si en portefeuille
+                    if trade.ticker in mpm.open_positions:
+                        try:
+                            df_m = fetch_ohlcv(trade.ticker, period="5d", interval="1d",
+                                               force_refresh=True)
+                            sell_price = float(df_m["Close"].iloc[-1]) if not df_m.empty else 0
+                            if sell_price > 0:
+                                mpm.manual_close(trade.ticker, sell_price)
+                                log(f"  [MOMENTUM SELL] {trade.company} ({trade.ticker}) "
+                                    f"@ {sell_price:.2f} — raison newsletter : {trade.action}")
+                                momentum_log.append({
+                                    "ticker": trade.ticker, "company": trade.company,
+                                    "action": "SELL", "price": sell_price,
+                                    "reason": f"newsletter:{trade.action}",
+                                })
+                        except Exception as e:
+                            log(f"  [MOMENTUM] Erreur fermeture {trade.ticker}: {e}")
+                    continue
+
+                if trade.ticker in mpm.open_positions:
+                    continue  # déjà en portefeuille
+                if not trade.tp_levels:
+                    log(f"  [MOMENTUM SKIP] {trade.company}: aucun TP extrait de la newsletter")
+                    continue
+
+                # Fetch prix actuel
+                try:
+                    df_m = fetch_ohlcv(trade.ticker, period="5d", interval="1d",
+                                       force_refresh=True)
+                    if df_m.empty:
+                        log(f"  [MOMENTUM SKIP] {trade.ticker}: données vides")
+                        continue
+                    entry_price = float(df_m["Close"].iloc[-1])
+                except Exception as e:
+                    log(f"  [MOMENTUM SKIP] {trade.ticker}: erreur fetch - {e}")
+                    continue
+
+                ok, msg, pos = mpm.open_position(
+                    ticker    = trade.ticker,
+                    company   = trade.company,
+                    price     = entry_price,
+                    tp_prices = trade.tp_levels,
+                    sl        = trade.sl,
+                )
+                log(f"  {msg}")
+                if ok and pos:
+                    momentum_log.append({
+                        "ticker":   trade.ticker,
+                        "company":  trade.company,
+                        "action":   "BUY",
+                        "price":    entry_price,
+                        "tp":       trade.tp_levels,
+                        "sl":       pos.sl,
+                        "raw_rec":  trade.raw_rec,
+                    })
+        elif nl_signal and not nl_signal.is_fresh:
+            log("[MOMENTUM] Newsletter non fraîche — pas de nouveaux achats.")
+        else:
+            log("[MOMENTUM] Aucun signal newsletter disponible.")
+
+        log(f"[MOMENTUM] valeur={mpm.total_value:.2f}€  "
+            f"cash={mpm.cash:.2f}€  "
+            f"positions={len(mpm.open_positions)}  "
+            f"PnL={mpm.pnl_realized+mpm.pnl_unrealized:+.2f}€")
+
+    except Exception as e:
+        import traceback
+        log(f"[MOMENTUM ERROR] {e}\n{traceback.format_exc()[:500]}")
+
     # ── 5. Email recap ────────────────────────────────────────────
     _send_daily_email(
         today=today,
@@ -531,7 +645,90 @@ def run():
         available=available,
         live_prices=prices if open_pos else {},
         blockers=blockers,
+        momentum_log=momentum_log,
+        mpm=mpm if 'mpm' in dir() else None,
     )
+
+
+def _momentum_email_section(momentum_log: list[dict], mpm) -> str:
+    """Génère la section HTML du Momentum PTF pour l'email récap."""
+    if mpm is None:
+        return ""
+
+    lp = mpm.last_prices if hasattr(mpm, "last_prices") else {}
+    total = mpm.total_value
+    pnl   = mpm.pnl_realized + mpm.pnl_unrealized
+    pnl_pct = (total - mpm.initial_cash) / mpm.initial_cash * 100
+    pnl_color = "#34d399" if pnl >= 0 else "#fb7185"
+
+    # Positions ouvertes
+    pos_rows = ""
+    for t, p in mpm.open_positions.items():
+        live  = lp.get(t, p.entry_price)
+        upnl  = (live - p.entry_price) * p.qty_remaining
+        ppct  = (live / p.entry_price - 1) * 100
+        clr   = "#34d399" if upnl >= 0 else "#fb7185"
+        tps   = " / ".join(f"{tp.price:.2f}" for tp in p.tp_levels if not tp.hit)
+        pos_rows += (
+            f"<tr style='background:#0d1420'>"
+            f"<td style='padding:6px 10px;font-weight:700;color:#d6e0f0;font-size:12px'>{t}</td>"
+            f"<td style='padding:6px 10px;color:#8097b5;font-size:11px'>{p.entry_price:.2f}</td>"
+            f"<td style='padding:6px 10px;color:#8097b5;font-size:11px'>{live:.2f}</td>"
+            f"<td style='padding:6px 10px;font-weight:700;color:{clr};font-size:12px'>{ppct:+.1f}%</td>"
+            f"<td style='padding:6px 10px;font-weight:600;color:{clr};font-size:12px'>{upnl:+.0f}€</td>"
+            f"<td style='padding:6px 10px;color:#445470;font-size:11px'>SL {p.sl:.2f}</td>"
+            f"<td style='padding:6px 10px;color:#6ee7b7;font-size:11px'>{tps}</td>"
+            f"</tr>"
+        )
+
+    # Mouvements du jour
+    moves_html = ""
+    for m in momentum_log:
+        clr = "#34d399" if m["action"] == "BUY" else "#fb7185"
+        icon = "&#x2705;" if m["action"] == "BUY" else "&#x1F4E4;"
+        detail = ""
+        if m["action"] == "BUY":
+            tps = " / ".join(f"{tp:.2f}" for tp in m.get("tp", []))
+            detail = f"TPs: {tps} | SL: {m.get('sl',0):.2f}"
+        else:
+            detail = m.get("reason", "")
+        moves_html += (
+            f"<div style='margin:4px 0;font-size:12px;color:{clr}'>"
+            f"{icon} <strong>{m['company']} ({m['ticker']})</strong> "
+            f"@ {m['price']:.2f}€ — {detail}"
+            f"</div>"
+        )
+
+    pos_table = (
+        f"<table width='100%' cellpadding='0' cellspacing='0' "
+        f"style='border-collapse:collapse;background:#0d1420;border-radius:8px'>"
+        f"<thead><tr style='background:#192235'>"
+        f"<th style='padding:6px 10px;text-align:left;color:#445470;font-size:10px'>TICKER</th>"
+        f"<th style='padding:6px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th>"
+        f"<th style='padding:6px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th>"
+        f"<th style='padding:6px 10px;text-align:left;color:#445470;font-size:10px'>PNL%</th>"
+        f"<th style='padding:6px 10px;text-align:left;color:#445470;font-size:10px'>PNL€</th>"
+        f"<th style='padding:6px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th>"
+        f"<th style='padding:6px 10px;text-align:left;color:#445470;font-size:10px'>TPs restants</th>"
+        f"</tr></thead><tbody>{pos_rows}</tbody></table>"
+        if pos_rows else "<div style='color:#445470;font-size:12px'>Aucune position ouverte.</div>"
+    )
+
+    return f"""
+  <tr><td style='height:24px'></td></tr>
+  <tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;padding:16px 18px'>
+    <div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:4px'>
+      &#x1F4F0; Momentum PTF — Capital Momentum
+    </div>
+    <div style='font-size:12px;color:#8097b5;margin-bottom:12px'>
+      Valeur : <strong style='color:#d6e0f0'>{total:,.0f}€</strong>
+      &nbsp;&nbsp;Cash : <strong style='color:#d6e0f0'>{mpm.cash:,.0f}€</strong>
+      &nbsp;&nbsp;PnL : <strong style='color:{pnl_color}'>{pnl:+.0f}€ ({pnl_pct:+.1f}%)</strong>
+    </div>
+    {('<div style="margin-bottom:10px">' + moves_html + '</div>') if moves_html else ''}
+    {pos_table}
+  </td></tr>
+"""
 
 
 def _send_daily_email(
@@ -539,6 +736,8 @@ def _send_daily_email(
     opened_positions, sales_log, sltp_cash, pm, available,
     live_prices: dict | None = None,
     blockers: list[str] | None = None,
+    momentum_log: list[dict] | None = None,
+    mpm=None,
 ):
     """Construit et envoie le recap journalier par email."""
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
@@ -797,6 +996,9 @@ def _send_daily_email(
 
   <!-- POSITIONS OUVERTES -->
   {"<tr><td><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;background:#0d1420;border-radius:8px'><thead><tr style='background:#192235'><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px;letter-spacing:.06em'>TICKER</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL %</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL €</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th></tr></thead><tbody>" + pos_rows + "</tbody></table></td></tr>" if pos_rows else "<tr><td style='color:#445470;font-size:12px;padding:8px 0'>Aucune position ouverte.</td></tr>"}
+
+  <!-- MOMENTUM PTF -->
+  {_momentum_email_section(momentum_log or [], mpm)}
 
   <!-- FOOTER -->
   <tr><td style='color:#2a3d5c;font-size:11px;text-align:center;padding-top:24px'>
