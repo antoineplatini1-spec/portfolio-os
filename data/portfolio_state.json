@@ -1,5 +1,5 @@
 {
-  "cash": 999.5832042829575,
+  "cash": 1327.1031060167177,
   "initial_cash": 10000.0,
   "reserve_cash": 1000.0,
   "start_date": "2026-04-19",
@@ -2727,11 +2727,11 @@
     {
       "ticker": "CRWD",
       "entry_price": 680.92,
-      "close_price": 192.991813,
+      "close_price": 768.6905,
       "qty": 0.7585446724666463,
-      "pnl": -264.9687,
+      "pnl": 62.4101,
       "fees_total": 0.0,
-      "close_reason": "SL",
+      "close_reason": "SL_data_corrected",
       "entry_date": "2026-06-24",
       "close_date": "2026-07-02"
     },
