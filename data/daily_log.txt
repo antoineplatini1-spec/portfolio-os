@@ -7820,3 +7820,83 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-07-01 09:34] RESUME : valeur=10732.44 EUR  investi=9311.83 EUR  cash=1005.02 EUR  expo=90.6%  positions=26
 [2026-07-01 09:34] ----------------------------------------
 [2026-07-01 09:34] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-02 08:58] ============================================================
+[2026-07-02 08:58] SCAN JOURNALIER - 2026-07-02
+[2026-07-02 08:58] ============================================================
+[2026-07-02 08:58] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-02 08:58]   Date     :   [none]  ⚠ ANCIENNE
+[2026-07-02 08:58]   CAC 40   : NEUTRAL
+[2026-07-02 08:58] ───────────────────────────────────────────────────────
+[2026-07-02 08:58] ══════════════════════════════════════════════
+[2026-07-02 08:58]   AGENT MACRO — 2026-07-02
+[2026-07-02 08:58] ══════════════════════════════════════════════
+[2026-07-02 08:58]   Régime marché  : BULL
+[2026-07-02 08:58]   SPY vs EMA200  : +7.9%
+[2026-07-02 08:58]   VIX            : 16.0 (LOW)
+[2026-07-02 08:58]   Max trades/j   : 3
+[2026-07-02 08:58]   Seuil net min  : 10
+[2026-07-02 08:58]   Top secteurs   : Santé, Finance, Industrie, Utilities, ConsoBase, REIT, Conso
+[2026-07-02 08:58]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-02 08:58]   Rationale      : Marché haussier (SPY +7.9% vs EMA200). Exposition maximale autorisée.
+[2026-07-02 08:58] ══════════════════════════════════════════════
+[2026-07-02 08:58] 26 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-02 08:58]   JPM: 334.07
+[2026-07-02 08:58]   SPG: 223.00
+[2026-07-02 08:58]   MS: 211.86
+[2026-07-02 08:58]   BIIB: 209.74
+[2026-07-02 08:58]   CAT: 991.41
+[2026-07-02 08:58]   UNH: 426.54
+[2026-07-02 08:58]   MAR: 368.32
+[2026-07-02 08:58]   CIBR: 91.11
+[2026-07-02 08:58]   HACK: 107.10
+[2026-07-02 08:58]   AMD: 540.88
+[2026-07-02 08:58]   SNOW: 261.19
+[2026-07-02 08:58]   PM: 177.69
+[2026-07-02 08:58]   GS: 1019.61
+[2026-07-02 08:58]   HLT: 332.12
+[2026-07-02 08:58]   CL: 92.76
+[2026-07-02 08:58]   HYG: 79.59
+[2026-07-02 08:58]   GE: 374.94
+[2026-07-02 08:58]   PANW: 352.04
+[2026-07-02 08:58]   CRWD: 193.18
+[2026-07-02 08:58]   ABBV: 251.06
+[2026-07-02 08:58]   ARKG: 42.62
+[2026-07-02 08:58]   AMAT: 650.91
+[2026-07-02 08:58]   KLAC: 266.19
+[2026-07-02 08:58]   LRCX: 391.26
+[2026-07-02 08:58]   XBI: 156.55
+[2026-07-02 08:58]   MO: 71.54
+[2026-07-02 08:58]   SL/TP declenches -> encaisse +265.78 EUR
+[2026-07-02 08:58]   Position FERMEE : CRWD
+[2026-07-02 08:58]   TP3 UNH : 426.11 (+12.1%)
+[2026-07-02 08:58]   TP2 HACK : 106.99 (+9.4%)
+[2026-07-02 08:58]   [TIME STOP] MAR : 28j ouverte, PnL=-2.2% -> fermeture
+[2026-07-02 08:58] Screener en cours...
+[2026-07-02 08:58] Scores : max=77  mediane=12  (156 tickers)
+[2026-07-02 08:58] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=77
+[2026-07-02 08:58] 43 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-02 08:58] Cash deployable cette semaine : 417 EUR  (max trades/j : 2)
+[2026-07-02 08:58] ────────────────────────────────────────────────────
+[2026-07-02 08:58]   DÉBAT : WFC
+[2026-07-02 08:58] ────────────────────────────────────────────────────
+[2026-07-02 08:58]   🟢 BULL [conviction=79] → ACHETER
+[2026-07-02 08:58]      • Score haussier fort (77/100)
+[2026-07-02 08:58]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-02 08:58]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-02 08:58]      • Prix au-dessus EMA200 (85.33) — tendance long terme haussière
+[2026-07-02 08:58]      • Stoch RSI survendu (17) — retournement imminent
+[2026-07-02 08:58] 
+[2026-07-02 08:58]   🔴 BEAR [concern=50] → ÉVITER
+[2026-07-02 08:58]      • Exposition déjà élevée (86%) — risque de surconcentration
+[2026-07-02 08:58]      • Secteur Finance très concentré (3 positions) — risque sectoriel
+[2026-07-02 08:58]      • Budget semaine presque épuisé (17% restant) — conserver pour mieux
+[2026-07-02 08:58] 
+[2026-07-02 08:58]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-07-02 08:58]      Arguments haussiers l'emportent clairement (conviction=79, concern=50, net=+49)
+[2026-07-02 08:58] ────────────────────────────────────────────────────
+[2026-07-02 08:58]   [ACHAT] WFC score=77 bull=79 bear=50 prix=85.94 investi=417EUR SL=81.99 TP1=88.90
+[2026-07-02 08:58] 1 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-07-02 08:58] ----------------------------------------
+[2026-07-02 08:58] RESUME : valeur=10362.53 EUR  investi=9050.64 EUR  cash=999.58 EUR  expo=90.4%  positions=25
+[2026-07-02 08:58] ----------------------------------------
+[2026-07-02 08:58] [EMAIL] Envoye a antoine.platini@outlook.fr
