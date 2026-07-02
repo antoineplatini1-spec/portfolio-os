@@ -165,13 +165,28 @@ def run():
     open_pos = pm.open_positions
     if open_pos:
         log(f"{len(open_pos)} position(s) ouverte(s) - mise a jour des prix...")
+        MAX_DAILY_MOVE = 0.25   # rejet si prix dévie > 25% du dernier connu (data error)
+
         prices = {}
         for ticker in open_pos:
             try:
                 df = fetch_ohlcv(ticker, period="5d", interval="1d", force_refresh=True)
                 if not df.empty:
-                    prices[ticker] = float(df["Close"].iloc[-1])
-                    log(f"  {ticker}: {prices[ticker]:.2f}")
+                    new_price = float(df["Close"].iloc[-1])
+                    last_known = pm.last_prices.get(ticker)
+                    if last_known and last_known > 0:
+                        move = abs(new_price - last_known) / last_known
+                        if move > MAX_DAILY_MOVE:
+                            log(f"  {ticker}: PRIX ABERRANT rejete "
+                                f"({last_known:.2f} -> {new_price:.2f}, "
+                                f"{move*100:.1f}% > {MAX_DAILY_MOVE*100:.0f}%) — prix ignore")
+                            blockers.append(
+                                f"{ticker}: prix aberrant {last_known:.2f}→{new_price:.2f} "
+                                f"({move*100:.1f}%) — SL/TP non declencheS"
+                            )
+                            continue
+                    prices[ticker] = new_price
+                    log(f"  {ticker}: {new_price:.2f}")
             except Exception as e:
                 log(f"  {ticker}: erreur prix - {e}")
 
