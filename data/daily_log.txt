@@ -8121,3 +8121,83 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-07-03 08:56] [MOMENTUM] Newsletter non fraîche — pas de nouveaux achats.
 [2026-07-03 08:56] [MOMENTUM] valeur=10000.00€  cash=10000.00€  positions=0  PnL=+0.00€
 [2026-07-03 08:56] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-06 10:26] ============================================================
+[2026-07-06 10:26] SCAN JOURNALIER - 2026-07-06
+[2026-07-06 10:26] ============================================================
+[2026-07-06 10:26] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-06 10:26]   Date     :   [none]  ⚠ ANCIENNE
+[2026-07-06 10:26]   CAC 40   : NEUTRAL
+[2026-07-06 10:26] ───────────────────────────────────────────────────────
+[2026-07-06 10:26] ══════════════════════════════════════════════
+[2026-07-06 10:26]   AGENT MACRO — 2026-07-06
+[2026-07-06 10:26] ══════════════════════════════════════════════
+[2026-07-06 10:26]   Régime marché  : BULL
+[2026-07-06 10:26]   SPY vs EMA200  : +8.3%
+[2026-07-06 10:26]   VIX            : 16.2 (LOW)
+[2026-07-06 10:26]   Max trades/j   : 3
+[2026-07-06 10:26]   Seuil net min  : 10
+[2026-07-06 10:26]   Top secteurs   : Finance, Santé, Industrie, Utilities, ConsoBase
+[2026-07-06 10:26]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-06 10:26]   Rationale      : Marché haussier (SPY +8.3% vs EMA200). Exposition maximale autorisée.
+[2026-07-06 10:26] ══════════════════════════════════════════════
+[2026-07-06 10:26] 26 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-06 10:26]   JPM: 337.09
+[2026-07-06 10:26]   SPG: 224.91
+[2026-07-06 10:26]   MS: 220.71
+[2026-07-06 10:26]   BIIB: 211.96
+[2026-07-06 10:26]   CAT: 986.74
+[2026-07-06 10:26]   UNH: 417.97
+[2026-07-06 10:26]   CIBR: 93.22
+[2026-07-06 10:26]   HACK: 110.46
+[2026-07-06 10:26]   AMD: 568.04
+[2026-07-06 10:26]   SNOW: 260.40
+[2026-07-06 10:26]   PM: 181.99
+[2026-07-06 10:26]   GS: 1051.96
+[2026-07-06 10:26]   HLT: 333.80
+[2026-07-06 10:26]   CL: 92.72
+[2026-07-06 10:26]   HYG: 79.79
+[2026-07-06 10:26]   GE: 376.56
+[2026-07-06 10:26]   PANW: 362.81
+[2026-07-06 10:26]   ABBV: 256.39
+[2026-07-06 10:26]   ARKG: 43.00
+[2026-07-06 10:26]   AMAT: 613.65
+[2026-07-06 10:26]   KLAC: 240.43
+[2026-07-06 10:26]   LRCX: 362.95
+[2026-07-06 10:26]   XBI: 159.32
+[2026-07-06 10:26]   MO: 71.52
+[2026-07-06 10:26]   WFC: 86.76
+[2026-07-06 10:26]   KO: 82.89
+[2026-07-06 10:26]   SL/TP declenches -> encaisse +82.58 EUR
+[2026-07-06 10:26]   TP1 CIBR : 93.13 (+6.6%)
+[2026-07-06 10:26] Screener en cours...
+[2026-07-06 10:26] Scores : max=66  mediane=13  (156 tickers)
+[2026-07-06 10:26] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=66
+[2026-07-06 10:26] 42 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-06 10:26] Cash deployable cette semaine : 126 EUR  (max trades/j : 2)
+[2026-07-06 10:26] ────────────────────────────────────────────────────
+[2026-07-06 10:26]   DÉBAT : DE
+[2026-07-06 10:26] ────────────────────────────────────────────────────
+[2026-07-06 10:26]   🟢 BULL [conviction=54] → PENCHÉ POUR
+[2026-07-06 10:26]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-06 10:26]      • Prix au-dessus EMA200 (549.89) — tendance long terme haussière
+[2026-07-06 10:26]      • Score haussier correct (66/100)
+[2026-07-06 10:26]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-06 10:26]      • OBV en hausse — accumulation en cours
+[2026-07-06 10:26] 
+[2026-07-06 10:26]   🔴 BEAR [concern=47] → PRUDENCE
+[2026-07-06 10:26]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-06 10:26]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-06 10:26]      • Secteur Industrie déjà exposé (2 positions) — diversification limitée
+[2026-07-06 10:26]      • Volume faible (0.1× moyenne)
+[2026-07-06 10:26] 
+[2026-07-06 10:26]   ✅ ARBITRE → ACHETER  (net=+26)
+[2026-07-06 10:26]      Arguments haussiers l'emportent clairement (conviction=54, concern=47, net=+26)
+[2026-07-06 10:26] ────────────────────────────────────────────────────
+[2026-07-06 10:26]   [ACHAT] DE score=64 bull=54 bear=47 prix=621.29 investi=126EUR SL=586.31 TP1=647.54
+[2026-07-06 10:26] 1 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-07-06 10:26] ----------------------------------------
+[2026-07-06 10:26] RESUME : valeur=10645.60 EUR  investi=9394.08 EUR  cash=999.87 EUR  expo=90.6%  positions=27
+[2026-07-06 10:26] ----------------------------------------
+[2026-07-06 10:26] [MOMENTUM] Newsletter non fraîche — pas de nouveaux achats.
+[2026-07-06 10:26] [MOMENTUM] valeur=10000.00€  cash=10000.00€  positions=0  PnL=+0.00€
+[2026-07-06 10:26] [EMAIL] Envoye a antoine.platini@outlook.fr
