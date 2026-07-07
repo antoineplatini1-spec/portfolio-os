@@ -8201,3 +8201,62 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-07-06 10:26] [MOMENTUM] Newsletter non fraîche — pas de nouveaux achats.
 [2026-07-06 10:26] [MOMENTUM] valeur=10000.00€  cash=10000.00€  positions=0  PnL=+0.00€
 [2026-07-06 10:26] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-07 09:21] ============================================================
+[2026-07-07 09:21] SCAN JOURNALIER - 2026-07-07
+[2026-07-07 09:21] ============================================================
+[2026-07-07 09:21] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-07 09:21]   Date     :   [none]  ⚠ ANCIENNE
+[2026-07-07 09:21]   CAC 40   : NEUTRAL
+[2026-07-07 09:21] ───────────────────────────────────────────────────────
+[2026-07-07 09:21] ══════════════════════════════════════════════
+[2026-07-07 09:21]   AGENT MACRO — 2026-07-07
+[2026-07-07 09:21] ══════════════════════════════════════════════
+[2026-07-07 09:21]   Régime marché  : BULL
+[2026-07-07 09:21]   SPY vs EMA200  : +8.5%
+[2026-07-07 09:21]   VIX            : 15.9 (LOW)
+[2026-07-07 09:21]   Max trades/j   : 3
+[2026-07-07 09:21]   Seuil net min  : 10
+[2026-07-07 09:21]   Top secteurs   : Finance, Santé, Industrie, Utilities, ConsoBase
+[2026-07-07 09:21]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-07 09:21]   Rationale      : Marché haussier (SPY +8.5% vs EMA200). Exposition maximale autorisée.
+[2026-07-07 09:21] ══════════════════════════════════════════════
+[2026-07-07 09:21] 27 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-07 09:21]   JPM: 337.72
+[2026-07-07 09:21]   SPG: 225.00
+[2026-07-07 09:21]   MS: 222.10
+[2026-07-07 09:21]   BIIB: 208.46
+[2026-07-07 09:21]   CAT: 969.92
+[2026-07-07 09:21]   UNH: 417.99
+[2026-07-07 09:21]   CIBR: 92.91
+[2026-07-07 09:21]   HACK: 110.27
+[2026-07-07 09:21]   AMD: 552.05
+[2026-07-07 09:21]   SNOW: 262.09
+[2026-07-07 09:21]   PM: 184.76
+[2026-07-07 09:21]   GS: 1055.29
+[2026-07-07 09:21]   HLT: 339.41
+[2026-07-07 09:21]   CL: 93.39
+[2026-07-07 09:21]   HYG: 79.87
+[2026-07-07 09:21]   GE: 378.68
+[2026-07-07 09:21]   PANW: 357.53
+[2026-07-07 09:21]   ABBV: 254.76
+[2026-07-07 09:21]   ARKG: 43.57
+[2026-07-07 09:21]   AMAT: 592.79
+[2026-07-07 09:21]   KLAC: 233.31
+[2026-07-07 09:21]   LRCX: 350.20
+[2026-07-07 09:21]   XBI: 160.81
+[2026-07-07 09:21]   MO: 71.88
+[2026-07-07 09:21]   WFC: 87.45
+[2026-07-07 09:21]   KO: 82.96
+[2026-07-07 09:21]   DE: 635.24
+[2026-07-07 09:21] Screener en cours...
+[2026-07-07 09:21] Scores : max=77  mediane=21  (156 tickers)
+[2026-07-07 09:21] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=77
+[2026-07-07 09:21] 48 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-07 09:21] Cash deployable cette semaine : 0 EUR  (max trades/j : 2)
+[2026-07-07 09:21] Budget semaine epuise - pas de nouveaux achats.
+[2026-07-07 09:21] ----------------------------------------
+[2026-07-07 09:21] RESUME : valeur=10624.56 EUR  investi=9394.08 EUR  cash=999.87 EUR  expo=90.6%  positions=27
+[2026-07-07 09:21] ----------------------------------------
+[2026-07-07 09:21] [MOMENTUM] Newsletter non fraîche — pas de nouveaux achats.
+[2026-07-07 09:21] [MOMENTUM] valeur=10000.00€  cash=10000.00€  positions=0  PnL=+0.00€
+[2026-07-07 09:21] [EMAIL] Envoye a antoine.platini@outlook.fr
