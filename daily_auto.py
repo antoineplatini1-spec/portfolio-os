@@ -13,6 +13,7 @@ Actions :
 import sys, os, io, json, traceback
 from collections import Counter
 from datetime import datetime, date
+from pathlib import Path
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -561,6 +562,19 @@ def run():
         # 4b-2 : Nouvelles positions depuis la newsletter
         if nl_signal and nl_signal.is_fresh and nl_signal.momentum_trades:
             log(f"[MOMENTUM] {len(nl_signal.momentum_trades)} signal(s) newsletter...")
+            interp_trades: list[dict] = []   # journal d'interprétation par société
+
+            def _interp(tr, decision):
+                interp_trades.append({
+                    "company":  tr.company,
+                    "ticker":   tr.ticker,
+                    "action":   tr.action,
+                    "tp":       tr.tp_levels,
+                    "sl":       tr.sl,
+                    "raw_rec":  (tr.raw_rec or "")[:400],
+                    "decision": decision,
+                })
+
             for trade in nl_signal.momentum_trades:
                 if trade.action not in ("BUY",):
                     # SELL/AVOID : fermer si en portefeuille
@@ -578,14 +592,22 @@ def run():
                                     "action": "SELL", "price": sell_price,
                                     "reason": f"newsletter:{trade.action}",
                                 })
+                                _interp(trade, f"CLÔTURE @ {sell_price:.2f} (signal {trade.action})")
+                            else:
+                                _interp(trade, "vente demandée mais prix indisponible")
                         except Exception as e:
                             log(f"  [MOMENTUM] Erreur fermeture {trade.ticker}: {e}")
+                            _interp(trade, f"erreur clôture : {e}")
+                    else:
+                        _interp(trade, f"{trade.action} — pas en portefeuille, rien à faire")
                     continue
 
                 if trade.ticker in mpm.open_positions:
-                    continue  # déjà en portefeuille
+                    _interp(trade, "déjà en portefeuille — conservé")
+                    continue
                 if not trade.tp_levels:
                     log(f"  [MOMENTUM SKIP] {trade.company}: aucun TP extrait de la newsletter")
+                    _interp(trade, "ignoré — aucun objectif (TP) extrait du texte")
                     continue
 
                 # Fetch prix actuel
@@ -594,10 +616,12 @@ def run():
                                        force_refresh=True)
                     if df_m.empty:
                         log(f"  [MOMENTUM SKIP] {trade.ticker}: données vides")
+                        _interp(trade, "ignoré — données de prix vides")
                         continue
                     entry_price = float(df_m["Close"].iloc[-1])
                 except Exception as e:
                     log(f"  [MOMENTUM SKIP] {trade.ticker}: erreur fetch - {e}")
+                    _interp(trade, f"ignoré — erreur récupération prix : {e}")
                     continue
 
                 ok, msg, pos = mpm.open_position(
@@ -618,7 +642,13 @@ def run():
                         "sl":       pos.sl,
                         "raw_rec":  trade.raw_rec,
                     })
+                    _interp(trade, f"ACHAT @ {entry_price:.2f} — SL {pos.sl:.2f}")
+                else:
+                    _interp(trade, f"achat refusé — {msg}")
             momentum_status = "active"
+            _record_momentum_interpretation(
+                today, nl_signal.raw_subject, nl_signal.source, interp_trades
+            )
         elif not nl_signal or getattr(nl_signal, "source", "none") == "none":
             # Aucune newsletter récupérée : IMAP non configuré (app password manquant),
             # ni cache, ni Google Drive. La poche ne peut PAS trader.
@@ -659,6 +689,38 @@ def run():
         mpm=mpm if 'mpm' in dir() else None,
         momentum_status=momentum_status,
     )
+
+
+def _record_momentum_interpretation(date: str, subject: str, source: str, trades: list[dict]):
+    """
+    Persiste, pour chaque newsletter, comment le bot l'a interprétée et ce qu'il en a
+    fait (journal de transparence lu par le dashboard). Dédoublonné par date : un
+    re-run du même jour remplace l'entrée existante.
+    """
+    path = Path(_data_dir) / "momentum_signals.jsonl"
+    record = {
+        "date": date,
+        "subject": subject or "",
+        "source": source,
+        "trades": trades,
+    }
+    existing = []
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    r = json.loads(line)
+                    if r.get("date") != date:
+                        existing.append(r)
+                except json.JSONDecodeError:
+                    continue
+    existing.append(record)
+    with open(path, "w", encoding="utf-8") as f:
+        for r in existing:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
 
 
 def _momentum_email_section(momentum_log: list[dict], mpm, momentum_status: str = "unknown") -> str:

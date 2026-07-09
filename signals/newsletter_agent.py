@@ -64,6 +64,32 @@ FR_TICKER_MAP: dict[str, str] = {
     "teleperformance":      "TEP.PA",
     "atos":                 "ATO.PA",
     "iliad":                "ILD.PA",
+    # ── Ajouts CAC40 / SBF120 fréquents dans Capital Momentum ────
+    "scor":                 "SCR.PA",
+    "air liquide":          "AI.PA",
+    "carrefour":            "CA.PA",
+    "essilorluxottica":     "EL.PA",
+    "essilor":              "EL.PA",
+    "michelin":             "ML.PA",
+    "pernod ricard":        "RI.PA",
+    "publicis":             "PUB.PA",
+    "thales":               "HO.PA",
+    "veolia":               "VIE.PA",
+    "worldline":            "WLN.PA",
+    "edenred":              "EDEN.PA",
+    "sodexo":               "SW.PA",
+    "getlink":              "GET.PA",
+    "valeo":                "FR.PA",
+    "forvia":               "FRVIA.PA",
+    "faurecia":             "FRVIA.PA",
+    "soitec":               "SOI.PA",
+    "ubisoft":              "UBI.PA",
+    "ovhcloud":             "OVH.PA",
+    "vivendi":              "VIV.PA",
+    "alten":                "ATE.PA",
+    "nexans":               "NEX.PA",
+    "gtt":                  "GTT.PA",
+    "spie":                 "SPIE.PA",
 }
 
 
@@ -507,7 +533,9 @@ class NewsletterAgent:
         text_lower = text.lower()
 
         for name_lower, ticker in FR_TICKER_MAP.items():
-            if name_lower not in text_lower:
+            # Match par limite de mot : évite que "scor" matche "score",
+            # "total" matche "totalement", etc.
+            if not re.search(r"\b" + re.escape(name_lower) + r"\b", text_lower):
                 continue
 
             section = self._extract_section_for(text, name_lower)

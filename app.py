@@ -11,7 +11,7 @@ from portfolio.manager import PortfolioManager
 from ui import (
     page_dashboard, page_positions, page_history,
     page_analysis, page_screener, page_backtest, page_report, page_lexique,
-    page_watchhunter,
+    page_watchhunter, page_momentum,
 )
 from ui.theme import inject
 
@@ -141,10 +141,11 @@ st.sidebar.markdown(
 st.sidebar.caption("v0.1 · paper trading · yfinance")
 
 # ── NAVIGATION HORIZONTALE (tabs) ─────────────────────────────────────────────
-tab_dashboard, tab_positions, tab_history, \
+tab_dashboard, tab_positions, tab_momentum, tab_history, \
 tab_analysis, tab_screener, tab_backtest, tab_report, tab_lexique, tab_watchhunter = st.tabs([
     "📊  Dashboard",
     "🎯  Positions",
+    "📰  Momentum",
     "📜  Historique",
     "🔍  Analyse",
     "📡  Screener",
@@ -159,6 +160,9 @@ with tab_dashboard:
 
 with tab_positions:
     page_positions.render(pm)
+
+with tab_momentum:
+    page_momentum.render()
 
 with tab_history:
     page_history.render(pm)
