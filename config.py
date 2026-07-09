@@ -1,5 +1,7 @@
 """Configuration globale du gestionnaire de portefeuille."""
 
+import os
+
 # ── Portefeuille ──────────────────────────────────────────────────
 INITIAL_CASH = 10_000.0          # Capital de départ (€)
 CURRENCY = "EUR"
@@ -57,6 +59,27 @@ BROKER_CONFIG = {
 # Alpaca étant gratuit, 0 = tout PnL positif déclenche la vente.
 # À ajuster si on change de broker (ex: IBKR → 15€+).
 MIN_TP_NET_PROFIT = 0.0
+
+# ── Broker réel : Interactive Brokers (paper puis live) ───────────
+# Le bot bascule du PaperBroker simulé vers IBKR quand IBKR_ENABLED=True.
+# Toute la config sensible passe par variables d'environnement (jamais en dur).
+#   IBKR_ENABLED       : "1" pour router les ordres vers IB Gateway
+#   IBKR_HOST          : hôte du Gateway (localhost sur le VPS)
+#   IBKR_PORT          : 4002 = paper, 4001 = live, 7497/7496 = TWS
+#   IBKR_CLIENT_ID     : id de session API (unique par connexion)
+#   IBKR_ACCOUNT       : code compte (DU… en paper), optionnel
+#   IBKR_ORDER_TYPE    : MKT (défaut), MOO (market-on-open, adapté au cron pré-ouverture), LMT
+#   IBKR_SHADOW        : "1" pour exécuter EN PARALLÈLE le PaperBroker et logger sim-vs-réel
+IBKR_CONFIG = {
+    "enabled":    os.environ.get("IBKR_ENABLED", "0") == "1",
+    "host":       os.environ.get("IBKR_HOST", "127.0.0.1"),
+    "port":       int(os.environ.get("IBKR_PORT", "4002")),
+    "client_id":  int(os.environ.get("IBKR_CLIENT_ID", "17")),
+    "account":    os.environ.get("IBKR_ACCOUNT", "") or None,
+    "order_type": os.environ.get("IBKR_ORDER_TYPE", "MKT").upper(),
+    "shadow":     os.environ.get("IBKR_SHADOW", "1") == "1",
+    "fill_timeout_sec": int(os.environ.get("IBKR_FILL_TIMEOUT", "60")),
+}
 
 # ── Momentum PTF (newsletter Capital Momentum) ────────────────────
 MOMENTUM_INITIAL_CASH     = 10_000.0   # Poche dédiée newsletter

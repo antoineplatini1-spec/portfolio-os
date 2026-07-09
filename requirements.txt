@@ -4,3 +4,7 @@ numpy
 yfinance
 plotly
 apscheduler
+
+# Broker réel Interactive Brokers (requis uniquement quand IBKR_ENABLED=1).
+# Fork maintenu de ib_insync. Pure Python, n'impacte pas GitHub Actions.
+ib_async

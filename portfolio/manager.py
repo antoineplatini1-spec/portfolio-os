@@ -19,7 +19,7 @@ from config import (
     TRAILING_STOP_AFTER_TP1,
     WEEKLY_DEPLOY_PCT,
 )
-from portfolio.orders import PaperBroker
+from portfolio.orders import make_broker
 from portfolio.position import PartialFill, Position, TPLevel
 from portfolio.risk import can_open_position, compute_qty, sl_price, tp_prices
 from utils.fees import compute_fees, net_pnl
@@ -31,7 +31,7 @@ STATE_FILE = _data_dir / "portfolio_state.json"
 class PortfolioManager:
     def __init__(self, state_file: Path = STATE_FILE):
         self.state_file = state_file
-        self.broker = PaperBroker(BROKER_CONFIG)
+        self.broker = make_broker(BROKER_CONFIG)
         self._load()
 
     # ── Persistence ───────────────────────────────────────────────

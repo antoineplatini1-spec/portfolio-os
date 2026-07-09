@@ -11,6 +11,10 @@ data/cache/
 data/email_config.json
 data/newsletter_cache.json
 
+# IBKR — identifiants Gateway & état local du Gateway (NE PAS committer)
+docker/.env
+docker/ibc-settings/
+
 # Logs locaux (chaque machine a les siens)
 data/streamlit.log
 data/streamlit.log.err

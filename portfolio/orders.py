@@ -1,9 +1,12 @@
-"""Couche d'abstraction des ordres : Paper trading et futur broker réel."""
+"""Couche d'abstraction des ordres : Paper trading et broker réel IBKR."""
 
+import json
+import os
 from abc import ABC, abstractmethod
 from datetime import datetime
+from pathlib import Path
 
-from config import SLIPPAGE_PCT
+from config import BROKER_CONFIG, IBKR_CONFIG, SLIPPAGE_PCT
 from utils.fees import compute_fees
 
 
@@ -54,7 +57,60 @@ class PaperBroker(OrderBroker):
         }
 
 
-# ── Stubs pour futures intégrations ──────────────────────────────
+class DualBroker(OrderBroker):
+    """
+    Exécute réellement via `real` (IBKR) et calcule EN PARALLÈLE ce que `shadow`
+    (PaperBroker) aurait produit, pour valider le modèle de frais/slippage avant
+    le go-live. Le portefeuille utilise le fill RÉEL ; la comparaison est loggée.
+
+    Chaque ordre écrit une ligne JSONL dans validation_log :
+        {date, ticker, side, qty, real_price, sim_price, price_diff_pct,
+         real_fees, sim_fees, fees_diff}
+    """
+
+    def __init__(self, real: OrderBroker, shadow: OrderBroker, log_path: Path):
+        self.real = real
+        self.shadow = shadow
+        self.log_path = Path(log_path)
+        self.log_path.parent.mkdir(parents=True, exist_ok=True)
+
+    def buy(self, ticker, qty, price):
+        return self._exec("buy", ticker, qty, price)
+
+    def sell(self, ticker, qty, price):
+        return self._exec("sell", ticker, qty, price)
+
+    def _exec(self, side, ticker, qty, price):
+        real_res = getattr(self.real, side)(ticker, qty, price)
+        try:
+            sim_res = getattr(self.shadow, side)(ticker, qty, price)
+            self._log_delta(side, ticker, qty, real_res, sim_res)
+        except Exception:
+            # La comparaison ne doit jamais bloquer l'exécution réelle
+            pass
+        return real_res
+
+    def _log_delta(self, side, ticker, qty, real_res, sim_res):
+        rp, sp = real_res.get("price", 0), sim_res.get("price", 0)
+        price_diff_pct = ((rp - sp) / sp * 100) if sp else 0.0
+        row = {
+            "date":           datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "ticker":         ticker,
+            "side":           side,
+            "qty":            qty,
+            "real_price":     rp,
+            "sim_price":      sp,
+            "price_diff_pct": round(price_diff_pct, 4),
+            "real_fees":      real_res.get("fees", 0),
+            "sim_fees":       sim_res.get("fees", 0),
+            "fees_diff":      round(real_res.get("fees", 0) - sim_res.get("fees", 0), 4),
+            "ibkr_status":    real_res.get("ibkr_status"),
+        }
+        with open(self.log_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+
+# ── Stub future intégration ───────────────────────────────────────
 
 class BinanceBroker(OrderBroker):
     """Non implémenté — stub pour connexion future."""
@@ -66,11 +122,29 @@ class BinanceBroker(OrderBroker):
         raise NotImplementedError("BinanceBroker non configuré")
 
 
-class IBKRBroker(OrderBroker):
-    """Non implémenté — stub pour connexion Interactive Brokers."""
+# ── Factory : sélection du broker selon la config ─────────────────
 
-    def buy(self, ticker, qty, price):
-        raise NotImplementedError("IBKRBroker non configuré")
+def make_broker(broker_config: dict = None, validation_log: str = None) -> OrderBroker:
+    """
+    Renvoie le broker à utiliser selon IBKR_CONFIG.
 
-    def sell(self, ticker, qty, price):
-        raise NotImplementedError("IBKRBroker non configuré")
+    - IBKR désactivé  → PaperBroker (comportement historique, aucune régression)
+    - IBKR activé      → IBKRBroker (exécution réelle)
+    - IBKR + shadow    → DualBroker (réel IBKR + comparaison PaperBroker)
+
+    Import de IBKRBroker paresseux : `ib_async` n'est requis que si IBKR est activé.
+    """
+    broker_config = broker_config or BROKER_CONFIG
+
+    if not IBKR_CONFIG.get("enabled"):
+        return PaperBroker(broker_config)
+
+    from portfolio.ibkr_broker import IBKRBroker
+    real = IBKRBroker(IBKR_CONFIG)
+
+    if IBKR_CONFIG.get("shadow"):
+        data_dir = Path(os.environ.get("DATA_DIR", Path(__file__).parent.parent / "data"))
+        log_path = Path(validation_log) if validation_log else data_dir / "ibkr_validation.jsonl"
+        return DualBroker(real, PaperBroker(broker_config), log_path)
+
+    return real

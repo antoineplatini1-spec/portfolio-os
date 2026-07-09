@@ -1,0 +1,31 @@
+# IB Gateway (paper) + auto-login IBC, à lancer sur le VPS.
+#
+#   cd docker && cp .env.example .env   # puis remplir .env avec TES identifiants
+#   docker compose up -d
+#
+# Le bot (daily_auto.py) tourne sur le MÊME VPS et se connecte à localhost:4002.
+# VNC (port 5900) permet de voir le Gateway en cas de souci d'auth.
+#
+# ⚠️ .env contient tes identifiants IBKR — il est git-ignoré, ne JAMAIS le committer.
+
+services:
+  ib-gateway:
+    image: ghcr.io/gnzsnz/ib-gateway:stable
+    container_name: ib-gateway
+    restart: unless-stopped
+    environment:
+      TWS_USERID:        ${TWS_USERID}
+      TWS_PASSWORD:      ${TWS_PASSWORD}
+      TRADING_MODE:      paper            # 'paper' d'abord, 'live' au go-live
+      READ_ONLY_API:     "no"
+      TWS_ACCEPT_INCOMING: accept
+      TIME_ZONE:         Europe/Paris
+      # Auto-restart quotidien du Gateway (IBKR force une reconnexion/jour)
+      AUTO_RESTART_TIME:  "11:55 AM"       # avant le scan de 13h Paris
+    ports:
+      # Exposés en localhost uniquement (le bot tourne sur le même host).
+      - "127.0.0.1:4001:4003"   # live  (mappé, non utilisé en paper)
+      - "127.0.0.1:4002:4004"   # paper API
+      - "127.0.0.1:5900:5900"   # VNC (debug auth) — protéger/fermer en prod
+    volumes:
+      - ./ibc-settings:/home/ibgateway/tws_settings
