@@ -466,10 +466,17 @@ class NewsletterAgent:
         text = rec.lower()
         if any(kw in text for kw in AVOID_KEYWORDS):
             return "AVOID"
+        # BUY prioritaire sur SELL : dans le format Capital Momentum, une reco d'achat
+        # ("Achetez l'action X, pour viser… Mais en cas d'enfoncement… vendre/alléger")
+        # contient une clause de sortie conditionnelle = le stop-loss, PAS un signal de
+        # vente. On ne classe donc pas en SELL quand un ordre d'achat explicite est présent
+        # (hors négation type "n'achetez pas").
+        has_buy = any(kw in text for kw in BUY_KEYWORDS)
+        negated = any(n in text for n in ("n'achetez", "n'acheter", "ne pas acheter", "pas d'achat"))
+        if has_buy and not negated:
+            return "BUY"
         if any(kw in text for kw in SELL_KEYWORDS):
             return "SELL"
-        if any(kw in text for kw in BUY_KEYWORDS):
-            return "BUY"
         if any(kw in text for kw in CAUTION_KEYWORDS):
             return "CAUTION"
         if "conserver" in text or "conservez" in text:
