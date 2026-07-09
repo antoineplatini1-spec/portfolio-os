@@ -22,10 +22,22 @@ Le bot et le Gateway tournent sur **le même host** : l'API IBKR n'est exposée 
    noter le user (`TWS_USERID`) et le mot de passe. Le compte paper commence par `DU`.
 2. **VPS** : ~2 vCPU / 2–4 Go RAM (Hetzner CX22 ≈ 4€/mois convient). Docker installé.
 
+## Étape 0 — Bootstrap du VPS (une commande)
+
+Sur un VPS Hetzner **CX22** fraîchement créé (Ubuntu 24.04) :
+
+```bash
+ssh root@<IP_DU_VPS>
+curl -fsSL https://raw.githubusercontent.com/antoineplatini1-spec/portfolio-os/master/docker/vps_setup.sh | bash
+```
+
+Installe Docker + Python + le repo + le venv, puis affiche les 5 étapes manuelles
+ci-dessous (identifiants, jamais automatisés).
+
 ## Étape 1 — Lancer le Gateway
 
 ```bash
-git clone <repo> && cd portfolio_manager/docker
+cd ~/portfolio-os/docker
 cp .env.example .env
 nano .env          # remplir TWS_USERID / TWS_PASSWORD  (⚠️ toi seul, jamais dans le chat)
 docker compose up -d
@@ -33,13 +45,12 @@ docker compose logs -f ib-gateway     # attendre "IBC: Login has completed"
 ```
 
 En cas de blocage d'auth (2FA IBKR Mobile) : se connecter en VNC sur `127.0.0.1:5900`
-via un tunnel SSH (`ssh -L 5900:localhost:5900 vps`) pour voir l'écran du Gateway.
+via un tunnel SSH (`ssh -L 5900:localhost:5900 root@<IP>`) pour voir l'écran du Gateway.
 
 ## Étape 2 — Smoke test (aucun ordre passé)
 
 ```bash
-cd ..                      # racine du projet
-pip install -r requirements.txt
+cd ~/portfolio-os && source .venv/bin/activate
 IBKR_ENABLED=1 python tools/ibkr_smoketest.py
 ```
 
@@ -53,13 +64,30 @@ Variables d'environnement du cron (voir `config.py` → `IBKR_CONFIG`) :
 |------------------|-------------------|--------------------------------------------------|
 | `IBKR_ENABLED`   | `1`               | Route les ordres vers IBKR                        |
 | `IBKR_PORT`      | `4002`            | Paper (4001 = live)                               |
-| `IBKR_ACCOUNT`   | `DUxxxxxx`        | Ton compte paper                                  |
-| `IBKR_ORDER_TYPE`| `MOO`             | Market-On-Open (le cron tourne avant l'ouverture) |
+| `IBKR_ACCOUNT`   | `DUP588572`       | Ton compte paper                                  |
+| `IBKR_ORDER_TYPE`| `MKT`             | Ordre marché immédiat (le cron tourne EN séance)  |
 | `IBKR_SHADOW`    | `1`               | Garde la simulation en parallèle pour comparer    |
 
-> ⚠️ Le scan tourne à 13h Paris = **avant l'ouverture US (15h30 Paris)**. En `MKT`
-> les ordres seraient rejetés/en attente hors séance. `MOO` (tif=OPG) les fait
-> exécuter à l'ouverture officielle → fills réalistes.
+> ⚠️ **Timing du cron** : on ne scanne plus avant l'ouverture (héritage yfinance)
+> mais **en séance US**, ~1h après l'open (14h30 UTC = 10h30 ET = 16h30 Paris été).
+> Pourquoi : en `MKT` intraday, entrées ET sorties (stop-loss) se remplissent
+> immédiatement au prix réel. Un `MOO` retarderait les sorties SL à l'ouverture
+> suivante — dangereux. `run_daily.sh` fixe déjà ces variables.
+
+Tout est câblé dans `docker/run_daily.sh` (installé par `vps_setup.sh` dans le cron).
+
+## Étape 3bis — ⚠️ Couper GitHub Actions (éviter le double trading)
+
+Le VPS et GitHub Actions écrivent le **même** `portfolio_state.json`. Dès que le VPS
+trade, il faut désactiver le cron GitHub, sinon les deux tradent en double et se
+marchent dessus. Dans `.github/workflows/daily_trade.yml`, commenter le `schedule` :
+
+```yaml
+on:
+  # schedule:
+  #   - cron: '0 11 * * 1-5'   # désactivé : le VPS a pris le relais
+  workflow_dispatch:            # gardé pour un run manuel de secours
+```
 
 ## Étape 4 — Valider avant go-live
 

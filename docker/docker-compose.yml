@@ -20,8 +20,9 @@ services:
       READ_ONLY_API:     "no"
       TWS_ACCEPT_INCOMING: accept
       TIME_ZONE:         Europe/Paris
-      # Auto-restart quotidien du Gateway (IBKR force une reconnexion/jour)
-      AUTO_RESTART_TIME:  "11:55 AM"       # avant le scan de 13h Paris
+      # Auto-restart quotidien du Gateway (IBKR force une reconnexion/jour).
+      # Placé avant l'ouverture US, donc bien avant le scan en séance (~16h30 Paris).
+      AUTO_RESTART_TIME:  "07:00 AM"
     ports:
       # Exposés en localhost uniquement (le bot tourne sur le même host).
       - "127.0.0.1:4001:4003"   # live  (mappé, non utilisé en paper)
