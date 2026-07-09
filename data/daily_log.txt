@@ -8828,3 +8828,78 @@ ImportError: cannot import name 'ROTATION_MIN_SCORE_GAP' from 'config' (D:\Githu
 [2026-07-09 09:50] [MOMENTUM] Newsletter non fraîche — pas de nouveaux achats.
 [2026-07-09 09:50] [MOMENTUM] valeur=10000.00€  cash=10000.00€  positions=0  PnL=+0.00€
 [2026-07-09 09:50] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-09 10:44] ============================================================
+[2026-07-09 10:44] SCAN JOURNALIER - 2026-07-09
+[2026-07-09 10:44] ============================================================
+[2026-07-09 10:44] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-09 10:44]   Date     : 2026-07-09  [imap]
+[2026-07-09 10:44]   CAC 40   : NEUTRAL
+[2026-07-09 10:44]   Valeurs  :
+[2026-07-09 10:44]     ✅ Vallourec (Energie) → BUY
+[2026-07-09 10:44]   Macro    : market_caution, market_bullish
+[2026-07-09 10:44]   Secteurs : Energie:+1
+[2026-07-09 10:44] ───────────────────────────────────────────────────────
+[2026-07-09 10:44] ══════════════════════════════════════════════
+[2026-07-09 10:44]   AGENT MACRO — 2026-07-09
+[2026-07-09 10:44] ══════════════════════════════════════════════
+[2026-07-09 10:44]   Régime marché  : BULL
+[2026-07-09 10:44]   SPY vs EMA200  : +7.8%
+[2026-07-09 10:44]   VIX            : 16.6 (LOW)
+[2026-07-09 10:44]   Max trades/j   : 3
+[2026-07-09 10:44]   Seuil net min  : 10
+[2026-07-09 10:44]   Top secteurs   : Finance, Santé, Utilities
+[2026-07-09 10:44]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-09 10:44]   Rationale      : Marché haussier (SPY +7.8% vs EMA200). Exposition maximale autorisée.
+[2026-07-09 10:44] ══════════════════════════════════════════════
+[2026-07-09 10:44] 28 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-09 10:44]   JPM: 335.91
+[2026-07-09 10:44]   SPG: 219.82
+[2026-07-09 10:44]   MS: 224.09
+[2026-07-09 10:44]   BIIB: 199.76
+[2026-07-09 10:44]   CAT: 955.98
+[2026-07-09 10:44]   DDOG: 265.51
+[2026-07-09 10:44]   UNH: 433.34
+[2026-07-09 10:44]   CIBR: 93.23
+[2026-07-09 10:44]   HACK: 110.75
+[2026-07-09 10:44]   AMD: 555.12
+[2026-07-09 10:44]   SNOW: 263.94
+[2026-07-09 10:44]   PM: 184.90
+[2026-07-09 10:44]   GS: 1062.92
+[2026-07-09 10:44]   CL: 92.19
+[2026-07-09 10:44]   HYG: 79.78
+[2026-07-09 10:44]   GE: 360.27
+[2026-07-09 10:44]   PANW: 330.33
+[2026-07-09 10:44]   ABBV: 252.53
+[2026-07-09 10:44]   ARKG: 43.49
+[2026-07-09 10:44]   AMAT: 615.21
+[2026-07-09 10:44]   KLAC: 237.49
+[2026-07-09 10:44]   XBI: 165.25
+[2026-07-09 10:44]   MO: 72.82
+[2026-07-09 10:44]   WFC: 86.98
+[2026-07-09 10:44]   KO: 82.14
+[2026-07-09 10:44]   DE: 600.32
+[2026-07-09 10:44]   RTX: 195.28
+[2026-07-09 10:44]   ASML: 1829.99
+[2026-07-09 10:44] Screener en cours...
+[2026-07-09 10:44] Scores : max=77  mediane=13  (156 tickers)
+[2026-07-09 10:44] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=77
+[2026-07-09 10:44] 38 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-09 10:44] Cash deployable cette semaine : 0 EUR  (max trades/j : 2)
+[2026-07-09 10:44] Budget semaine epuise - pas de nouveaux achats.
+[2026-07-09 10:44] ----------------------------------------
+[2026-07-09 10:44] RESUME : valeur=10487.29 EUR  investi=9154.71 EUR  cash=999.89 EUR  expo=90.5%  positions=28
+[2026-07-09 10:44] ----------------------------------------
+[2026-07-09 10:44] [MOMENTUM] 2 signal(s) newsletter...
+[2026-07-09 10:44]   [MOMENTUM] Vallourec (VK.PA) 48.473× à 20.63€ | SL=19.19 | TPs=23.11 / 27.34 | investi=1000€
+[2026-07-09 10:44]   [MOMENTUM] Scor (SCR.PA) 31.726× à 31.52€ | SL=29.31 | TPs=32.90 | investi=1000€
+[2026-07-09 10:44] [MOMENTUM ERROR] Object of type date is not JSON serializable
+Traceback (most recent call last):
+  File "/home/runner/work/portfolio-os/portfolio-os/daily_auto.py", line 649, in run
+    _record_momentum_interpretation(
+  File "/home/runner/work/portfolio-os/portfolio-os/daily_auto.py", line 723, in _record_momentum_interpretation
+    f.write(json.dumps(r, ensure_ascii=False) + "\n")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+       
+[2026-07-09 10:44] [EMAIL] Envoye a antoine.platini@outlook.fr

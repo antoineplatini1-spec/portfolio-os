@@ -1,0 +1,67 @@
+{
+  "cash": 7998.000022289656,
+  "initial_cash": 10000.0,
+  "start_date": "2026-07-09",
+  "positions": {
+    "VK.PA": {
+      "ticker": "VK.PA",
+      "entry_price": 20.650629159927366,
+      "qty_total": 48.473099402823266,
+      "qty_remaining": 48.473099402823266,
+      "sl": 19.185899219512937,
+      "trailing_stop": false,
+      "trailing_stop_price": 20.650629159927366,
+      "entry_date": "2026-07-09",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 23.11,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 27.34,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "SCR.PA": {
+      "ticker": "SCR.PA",
+      "entry_price": 31.551520458221432,
+      "qty_total": 31.725887864119322,
+      "qty_remaining": 31.725887864119322,
+      "sl": 29.313600425720214,
+      "trailing_stop": false,
+      "trailing_stop_price": 31.551520458221432,
+      "entry_date": "2026-07-09",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 32.9,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    }
+  },
+  "history": [],
+  "last_prices": {}
+}
