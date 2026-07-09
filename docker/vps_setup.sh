@@ -17,6 +17,20 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
 apt-get install -y git python3 python3-venv python3-pip ca-certificates curl
 
+echo "── 1b · Swap 2 Go (filet RAM pour VPS 4 Go) ─────────────────"
+# IB Gateway + le pic pandas du scan quotidien peuvent frôler les 3 Go sur 4 Go.
+# Un swap de 2 Go évite tout OOM. Idempotent.
+if ! swapon --show 2>/dev/null | grep -q '/swapfile'; then
+    fallocate -l 2G /swapfile 2>/dev/null || dd if=/dev/zero of=/swapfile bs=1M count=2048
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    grep -q '^/swapfile' /etc/fstab || echo '/swapfile none swap sw 0 0' >> /etc/fstab
+    echo "  swap activé : $(free -h | awk '/Swap/{print $2}')"
+else
+    echo "  swap déjà présent"
+fi
+
 echo "── 2/5 · Docker ─────────────────────────────────────────────"
 if ! command -v docker >/dev/null 2>&1; then
     curl -fsSL https://get.docker.com | sh
