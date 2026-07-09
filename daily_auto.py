@@ -698,6 +698,7 @@ def _record_momentum_interpretation(date: str, subject: str, source: str, trades
     re-run du même jour remplace l'entrée existante.
     """
     path = Path(_data_dir) / "momentum_signals.jsonl"
+    date = str(date)   # today est un datetime.date → non sérialisable JSON tel quel
     record = {
         "date": date,
         "subject": subject or "",
