@@ -1532,7 +1532,7 @@
       "entry_price": 244.1,
       "qty_total": 1.690480620754463,
       "qty_remaining": 1.690480620754463,
-      "sl": 215.6372,
+      "sl": 224.572,
       "trailing_stop": false,
       "trailing_stop_price": 244.1,
       "entry_date": "2026-06-09",

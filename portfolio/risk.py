@@ -3,6 +3,7 @@
 from config import (
     ATR_SL_MULTIPLIER,
     CONVICTION_SCORE_THRESHOLD,
+    MAX_LOSS_PCT,
     MAX_POSITION_CONVICTION_PCT,
     MAX_POSITION_OPPORTUNITY_PCT,
     MAX_POSITION_PCT,
@@ -15,8 +16,16 @@ from utils.fees import compute_fees
 
 
 def sl_price(entry: float, atr: float) -> float:
-    """Stop-loss initial basé sur l'ATR."""
-    return entry - ATR_SL_MULTIPLIER * atr
+    """
+    Stop-loss initial basé sur l'ATR, plafonné à MAX_LOSS_PCT.
+
+    L'ATR peut placer le stop très bas sur les valeurs volatiles (semis, biotech),
+    d'où des pertes réelles de -16% observées en live. On remonte le stop pour ne
+    jamais risquer plus de MAX_LOSS_PCT sous l'entrée — cohérent avec le backtest.
+    """
+    atr_stop  = entry - ATR_SL_MULTIPLIER * atr
+    hard_stop = entry * (1 - MAX_LOSS_PCT)
+    return max(atr_stop, hard_stop)
 
 
 def tp_prices(entry: float, atr: float) -> list[dict]:

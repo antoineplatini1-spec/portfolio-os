@@ -302,10 +302,15 @@ class PortfolioManager:
             pos.trailing_stop = True
             pos.trailing_stop_price = pos.entry_price
 
-        # Mise à jour trailing stop avec l'ATR réel d'entrée
+        # Mise à jour trailing stop avec l'ATR réel d'entrée.
+        # max() impératif : un trailing stop ne doit JAMAIS redescendre, sinon il
+        # relâche la protection des gains dès que le prix recule sans casser le stop.
         if pos.trailing_stop and price > pos.trailing_stop_price:
             atr_ref = pos.entry_atr if pos.entry_atr > 0 else (price * 0.02)
-            pos.trailing_stop_price = price - ATR_SL_MULTIPLIER * atr_ref
+            pos.trailing_stop_price = max(
+                pos.trailing_stop_price,
+                price - ATR_SL_MULTIPLIER * atr_ref,
+            )
 
         if pos.qty_remaining <= 0:
             pos.status = "closed"
