@@ -1,0 +1,5 @@
+# Force LF sur les scripts destinés au VPS Linux : un CRLF ferait planter bash
+# (erreurs "\r command not found") au checkout sur le serveur.
+*.sh text eol=lf
+docker/run_daily.sh   text eol=lf
+docker/vps_setup.sh   text eol=lf
