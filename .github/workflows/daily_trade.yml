@@ -46,6 +46,6 @@ jobs:
         run: |
           git config user.name  "Zentry Bot"
           git config user.email "bot@zentry.uk"
-          git add data/portfolio_state.json data/daily_log.txt
+          git add data/portfolio_state.json data/momentum_state.json data/daily_log.txt
           git diff --staged --quiet || git commit -m "auto: portfolio $(date +%Y-%m-%d)"
           git push

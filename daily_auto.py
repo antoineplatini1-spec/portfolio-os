@@ -519,6 +519,7 @@ def run():
 
     # ── 4b. Momentum PTF (newsletter Capital Momentum) ────────────
     momentum_log: list[dict] = []
+    momentum_status = "unknown"   # unavailable | stale | no_signal | active
     try:
         from portfolio.momentum_portfolio import MomentumPortfolio
         mpm = MomentumPortfolio()
@@ -617,10 +618,19 @@ def run():
                         "sl":       pos.sl,
                         "raw_rec":  trade.raw_rec,
                     })
-        elif nl_signal and not nl_signal.is_fresh:
-            log("[MOMENTUM] Newsletter non fraîche — pas de nouveaux achats.")
+            momentum_status = "active"
+        elif not nl_signal or getattr(nl_signal, "source", "none") == "none":
+            # Aucune newsletter récupérée : IMAP non configuré (app password manquant),
+            # ni cache, ni Google Drive. La poche ne peut PAS trader.
+            momentum_status = "unavailable"
+            log("[MOMENTUM] ⚠ Newsletter NON RÉCUPÉRÉE (source indisponible : "
+                "vérifier reader.password/IMAP dans email_config.json) — poche inactive.")
+        elif not nl_signal.is_fresh:
+            momentum_status = "stale"
+            log("[MOMENTUM] Newsletter trouvée mais ancienne (> 36h) — pas de nouveaux achats.")
         else:
-            log("[MOMENTUM] Aucun signal newsletter disponible.")
+            momentum_status = "no_signal"
+            log("[MOMENTUM] Newsletter fraîche mais aucun signal exploitable.")
 
         log(f"[MOMENTUM] valeur={mpm.total_value:.2f}€  "
             f"cash={mpm.cash:.2f}€  "
@@ -647,10 +657,11 @@ def run():
         blockers=blockers,
         momentum_log=momentum_log,
         mpm=mpm if 'mpm' in dir() else None,
+        momentum_status=momentum_status,
     )
 
 
-def _momentum_email_section(momentum_log: list[dict], mpm) -> str:
+def _momentum_email_section(momentum_log: list[dict], mpm, momentum_status: str = "unknown") -> str:
     """Génère la section HTML du Momentum PTF pour l'email récap."""
     if mpm is None:
         return ""
@@ -660,6 +671,40 @@ def _momentum_email_section(momentum_log: list[dict], mpm) -> str:
     pnl   = mpm.pnl_realized + mpm.pnl_unrealized
     pnl_pct = (total - mpm.initial_cash) / mpm.initial_cash * 100
     pnl_color = "#34d399" if pnl >= 0 else "#fb7185"
+
+    # Bandeau de statut : évite d'afficher une poche figée sans explication.
+    status_banner = ""
+    n_open = len(mpm.open_positions)
+    if momentum_status == "unavailable":
+        status_banner = (
+            "<div style='background:#3a1d1d;border:1px solid #fb7185;border-radius:6px;"
+            "padding:8px 10px;margin-bottom:10px;color:#fca5a5;font-size:12px'>"
+            "&#x26A0; Newsletter non connectée — poche inactive (aucun email lu). "
+            "Renseigne <code>reader.password</code> (App Password Gmail) dans email_config.json."
+            "</div>"
+        )
+    elif momentum_status == "stale":
+        status_banner = (
+            "<div style='background:#3a331d;border:1px solid #fbbf24;border-radius:6px;"
+            "padding:8px 10px;margin-bottom:10px;color:#fcd34d;font-size:12px'>"
+            "&#x26A0; Newsletter du jour non reçue (dernière > 36h) — pas de nouveaux signaux."
+            "</div>"
+        )
+    # Poche jamais activée : n'affiche pas un PnL % trompeur.
+    if n_open == 0 and not mpm.history and momentum_status in ("unavailable", "stale", "unknown"):
+        return f"""
+  <tr><td style='height:24px'></td></tr>
+  <tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;padding:16px 18px'>
+    <div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:4px'>
+      &#x1F4F0; Momentum PTF — Capital Momentum
+    </div>
+    {status_banner}
+    <div style='font-size:12px;color:#8097b5'>
+      Poche en attente : <strong style='color:#d6e0f0'>{total:,.0f}€</strong> disponibles,
+      aucune position. Se déclenchera dès réception d'une newsletter exploitable.
+    </div>
+  </td></tr>
+"""
 
     # Positions ouvertes
     pos_rows = ""
@@ -720,6 +765,7 @@ def _momentum_email_section(momentum_log: list[dict], mpm) -> str:
     <div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:4px'>
       &#x1F4F0; Momentum PTF — Capital Momentum
     </div>
+    {status_banner}
     <div style='font-size:12px;color:#8097b5;margin-bottom:12px'>
       Valeur : <strong style='color:#d6e0f0'>{total:,.0f}€</strong>
       &nbsp;&nbsp;Cash : <strong style='color:#d6e0f0'>{mpm.cash:,.0f}€</strong>
@@ -738,6 +784,7 @@ def _send_daily_email(
     blockers: list[str] | None = None,
     momentum_log: list[dict] | None = None,
     mpm=None,
+    momentum_status: str = "unknown",
 ):
     """Construit et envoie le recap journalier par email."""
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
@@ -998,7 +1045,7 @@ def _send_daily_email(
   {"<tr><td><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;background:#0d1420;border-radius:8px'><thead><tr style='background:#192235'><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px;letter-spacing:.06em'>TICKER</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL %</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL €</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th></tr></thead><tbody>" + pos_rows + "</tbody></table></td></tr>" if pos_rows else "<tr><td style='color:#445470;font-size:12px;padding:8px 0'>Aucune position ouverte.</td></tr>"}
 
   <!-- MOMENTUM PTF -->
-  {_momentum_email_section(momentum_log or [], mpm)}
+  {_momentum_email_section(momentum_log or [], mpm, momentum_status)}
 
   <!-- FOOTER -->
   <tr><td style='color:#2a3d5c;font-size:11px;text-align:center;padding-top:24px'>
