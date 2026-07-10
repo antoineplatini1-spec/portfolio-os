@@ -8903,3 +8903,277 @@ Traceback (most recent call last):
     **kw).encode(obj)
        
 [2026-07-09 10:44] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-10 09:11] ============================================================
+[2026-07-10 09:11] SCAN JOURNALIER - 2026-07-10
+[2026-07-10 09:11] ============================================================
+[2026-07-10 09:11] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-10 09:11]   Date     : 2026-07-10  [imap]
+[2026-07-10 09:11]   CAC 40   : BEARISH
+[2026-07-10 09:11]   Valeurs  :
+[2026-07-10 09:11]     ✅ Axa (Finance) → BUY
+[2026-07-10 09:11]     ✅ Biomérieux (Santé) → BUY
+[2026-07-10 09:11]     ✅ Total (Energie) → BUY
+[2026-07-10 09:11]   Macro    : market_caution
+[2026-07-10 09:11]   Secteurs : Finance:+1, Santé:+1, Energie:+1
+[2026-07-10 09:11] ───────────────────────────────────────────────────────
+[2026-07-10 09:12] ══════════════════════════════════════════════
+[2026-07-10 09:12]   AGENT MACRO — 2026-07-10
+[2026-07-10 09:12] ══════════════════════════════════════════════
+[2026-07-10 09:12]   Régime marché  : BULL
+[2026-07-10 09:12]   SPY vs EMA200  : +8.2%
+[2026-07-10 09:12]   VIX            : 15.8 (LOW)
+[2026-07-10 09:12]   Max trades/j   : 3
+[2026-07-10 09:12]   Seuil net min  : 10
+[2026-07-10 09:12]   Top secteurs   : Finance, Santé
+[2026-07-10 09:12]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-10 09:12]   Rationale      : Marché haussier (SPY +8.2% vs EMA200). Exposition maximale autorisée.
+[2026-07-10 09:12] ══════════════════════════════════════════════
+[2026-07-10 09:12] 28 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-10 09:12]   JPM: 335.47
+[2026-07-10 09:12]   SPG: 219.71
+[2026-07-10 09:12]   MS: 222.13
+[2026-07-10 09:12]   BIIB: 198.91
+[2026-07-10 09:12]   CAT: 938.39
+[2026-07-10 09:12]   DDOG: 269.00
+[2026-07-10 09:12]   UNH: 431.68
+[2026-07-10 09:12]   CIBR: 94.26
+[2026-07-10 09:12]   HACK: 111.88
+[2026-07-10 09:12]   AMD: 546.72
+[2026-07-10 09:12]   SNOW: 267.49
+[2026-07-10 09:12]   PM: 181.17
+[2026-07-10 09:12]   GS: 1055.97
+[2026-07-10 09:12]   CL: 91.01
+[2026-07-10 09:12]   HYG: 79.75
+[2026-07-10 09:12]   GE: 359.04
+[2026-07-10 09:12]   PANW: 338.31
+[2026-07-10 09:12]   ABBV: 249.91
+[2026-07-10 09:12]   ARKG: 43.00
+[2026-07-10 09:12]   AMAT: 588.66
+[2026-07-10 09:12]   KLAC: 229.52
+[2026-07-10 09:12]   XBI: 164.28
+[2026-07-10 09:12]   MO: 71.59
+[2026-07-10 09:12]   WFC: 86.91
+[2026-07-10 09:12]   KO: 82.63
+[2026-07-10 09:12]   DE: 592.90
+[2026-07-10 09:12]   RTX: 195.20
+[2026-07-10 09:12]   ASML: 1804.25
+[2026-07-10 09:12]   SL/TP declenches -> encaisse +112.93 EUR
+[2026-07-10 09:12]   TP1 SNOW : 267.22 (+9.5%)
+[2026-07-10 09:12] Screener en cours...
+[2026-07-10 09:12] Scores : max=81  mediane=16  (156 tickers)
+[2026-07-10 09:12] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=81
+[2026-07-10 09:12] 44 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-10 09:12] Cash deployable cette semaine : 113 EUR  (max trades/j : 2)
+[2026-07-10 09:12]   [SATURATION] Attention : 7/9 secteurs pleins (4 max)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : BAC
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=67] → ACHETER
+[2026-07-10 09:12]      • Score haussier fort (76/100)
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (53.58) — tendance long terme haussière
+[2026-07-10 09:12]      • Stoch RSI survendu (20) — retournement imminent
+[2026-07-10 09:12]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=50] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur Finance très concentré (4 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=67, concern=50, net=+37)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] BAC : Finance deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : MRNA
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=85] → ACHETER
+[2026-07-10 09:12]      • Score haussier fort (76/100)
+[2026-07-10 09:12]      • R-ratio excellent (4.1×) — asymétrie gain/risque idéale
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (47.55) — tendance long terme haussière
+[2026-07-10 09:12]      • Momentum 10j fort (+26.7%) — tendance confirmée
+[2026-07-10 09:12]      • CMF fort — flux acheteur dominant
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=55] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12]      • Volume faible (0.4× moyenne)
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+52)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=85, concern=55, net=+52)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] MRNA : Santé deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : IBB
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=77] → ACHETER
+[2026-07-10 09:12]      • Score haussier fort (73/100)
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (172.90) — tendance long terme haussière
+[2026-07-10 09:12]      • Momentum 10j fort (+8.7%) — tendance confirmée
+[2026-07-10 09:12]      • CMF fort — flux acheteur dominant
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=68] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur ETF très concentré (4 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12]      • Stoch RSI suracheté (92) — retournement baissier possible
+[2026-07-10 09:12]      • RSI suracheté (92)
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+36)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=77, concern=68, net=+36)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] IBB : ETF deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : VRTX
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=56] → ACHETER
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (458.05) — tendance long terme haussière
+[2026-07-10 09:12]      • Score haussier correct (63/100)
+[2026-07-10 09:12]      • CMF fort — flux acheteur dominant
+[2026-07-10 09:12]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=50] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+26)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=56, concern=50, net=+26)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] VRTX : Santé deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : AAPL
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (274.88) — tendance long terme haussière
+[2026-07-10 09:12]      • Score haussier correct (63/100)
+[2026-07-10 09:12]      • CMF fort — flux acheteur dominant
+[2026-07-10 09:12]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=60] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12]      • Stoch RSI suracheté (93) — retournement baissier possible
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+26)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=62, concern=60, net=+26)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] AAPL : Tech deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : CRWD
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=67] → ACHETER
+[2026-07-10 09:12]      • R-ratio solide (3.0×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (131.87) — tendance long terme haussière
+[2026-07-10 09:12]      • Score haussier correct (68/100)
+[2026-07-10 09:12]      • Momentum 10j fort (+17.9%) — tendance confirmée
+[2026-07-10 09:12]      • CMF fort — flux acheteur dominant
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=73] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12]      • Stoch RSI suracheté (85) — retournement baissier possible
+[2026-07-10 09:12]      • RSI suracheté (76)
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🚫 ARBITRE → VETO  (net=-6)
+[2026-07-10 09:12]      Concern baissier trop élevé (73/100) — risque inacceptable
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] CRWD : Tech deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : ARKK
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=60] → ACHETER
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (77.92) — tendance long terme haussière
+[2026-07-10 09:12]      • Score haussier correct (61/100)
+[2026-07-10 09:12]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-10 09:12]      • OBV en hausse — accumulation en cours
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=50] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur ETF très concentré (4 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+30)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=60, concern=50, net=+30)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] ARKK : ETF deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : JNJ
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=56] → ACHETER
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (227.48) — tendance long terme haussière
+[2026-07-10 09:12]      • Score haussier correct (60/100)
+[2026-07-10 09:12]      • CMF fort — flux acheteur dominant
+[2026-07-10 09:12]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=60] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12]      • Stoch RSI suracheté (81) — retournement baissier possible
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+20)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=56, concern=60, net=+20)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] JNJ : Santé deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : SCHW
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (95.64) — tendance long terme haussière
+[2026-07-10 09:12]      • Score haussier correct (61/100)
+[2026-07-10 09:12]      • Momentum 10j fort (+11.5%) — tendance confirmée
+[2026-07-10 09:12]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=55] → ÉVITER
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Secteur Finance très concentré (4 positions) — risque sectoriel
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12]      • Volume faible (0.5× moyenne)
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+29)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=62, concern=55, net=+29)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [VETO secteur] SCHW : Finance deja a 4 positions
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   DÉBAT : SBUX
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   🟢 BULL [conviction=57] → ACHETER
+[2026-07-10 09:12]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-10 09:12]      • Prix au-dessus EMA200 (96.10) — tendance long terme haussière
+[2026-07-10 09:12]      • Score haussier correct (61/100)
+[2026-07-10 09:12]      • CMF fort — flux acheteur dominant
+[2026-07-10 09:12]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   🔴 BEAR [concern=40] → PRUDENCE
+[2026-07-10 09:12]      • Exposition déjà élevée (89%) — risque de surconcentration
+[2026-07-10 09:12]      • Budget semaine presque épuisé (5% restant) — conserver pour mieux
+[2026-07-10 09:12]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-10 09:12] 
+[2026-07-10 09:12]   ✅ ARBITRE → ACHETER  (net=+33)
+[2026-07-10 09:12]      Arguments haussiers l'emportent clairement (conviction=57, concern=40, net=+33)
+[2026-07-10 09:12] ────────────────────────────────────────────────────
+[2026-07-10 09:12]   [ACHAT] SBUX score=58 bull=57 bear=40 prix=106.41 investi=113EUR SL=100.88 TP1=110.55
+[2026-07-10 09:12] 10 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-07-10 09:12] ----------------------------------------
+[2026-07-10 09:12] RESUME : valeur=10430.73 EUR  investi=9164.37 EUR  cash=999.89 EUR  expo=90.4%  positions=29
+[2026-07-10 09:12] ----------------------------------------
+[2026-07-10 09:12] [MOMENTUM] 2 position(s) ouverte(s)...
+[2026-07-10 09:12]   [MOMENTUM] VK.PA: 20.60
+[2026-07-10 09:12]   [MOMENTUM] SCR.PA: 31.96
+[2026-07-10 09:12] [MOMENTUM] 4 signal(s) newsletter...
+[2026-07-10 09:12]   [MOMENTUM SKIP] Total: aucun TP extrait de la newsletter
+[2026-07-10 09:12]   [MOMENTUM SKIP] Axa: aucun TP extrait de la newsletter
+[2026-07-10 09:12]   [MOMENTUM] Biomérieux (BIM.PA) 14.124× à 70.80€ | SL=65.84 | TPs=74.65 / 77.48 | investi=1000€
+[2026-07-10 09:12]   [MOMENTUM] Air Liquide (AI.PA) 5.782× à 172.94€ | SL=160.83 | TPs=180.30 | investi=1000€
+[2026-07-10 09:12] [MOMENTUM] valeur=10010.51€  cash=5996.00€  positions=4  PnL=+10.51€
+[2026-07-10 09:12] [EMAIL] Envoye a antoine.platini@outlook.fr

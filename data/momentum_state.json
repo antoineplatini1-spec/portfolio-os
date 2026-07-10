@@ -1,5 +1,5 @@
 {
-  "cash": 7998.000022289656,
+  "cash": 5996.000025630286,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -60,8 +60,69 @@
         }
       ],
       "partial_fills": []
+    },
+    "BIM.PA": {
+      "ticker": "BIM.PA",
+      "entry_price": 70.87080305480956,
+      "qty_total": 14.124293176498275,
+      "qty_remaining": 14.124293176498275,
+      "sl": 65.84400283813476,
+      "trailing_stop": false,
+      "trailing_stop_price": 70.87080305480956,
+      "entry_date": "2026-07-10",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 74.65,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 77.48,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "AI.PA": {
+      "ticker": "AI.PA",
+      "entry_price": 173.11294244384763,
+      "qty_total": 5.782352179269858,
+      "qty_remaining": 5.782352179269858,
+      "sl": 160.8342022705078,
+      "trailing_stop": false,
+      "trailing_stop_price": 173.11294244384763,
+      "entry_date": "2026-07-10",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 180.3,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [],
-  "last_prices": {}
+  "last_prices": {
+    "VK.PA": 20.600000381469727,
+    "SCR.PA": 31.959999084472656
+  }
 }
