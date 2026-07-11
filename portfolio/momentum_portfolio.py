@@ -20,7 +20,7 @@ from config import (
     MOMENTUM_TRAIL_PCT,
     SLIPPAGE_PCT,
 )
-from portfolio.orders import make_broker
+from portfolio.orders import PaperBroker
 from portfolio.position import PartialFill, Position, TPLevel
 
 _data_dir = Path(os.environ.get("DATA_DIR", Path(__file__).parent.parent / "data"))
@@ -32,10 +32,11 @@ class MomentumPortfolio:
 
     def __init__(self, state_file: Path = STATE_FILE):
         self.state_file = state_file
-        self.broker = make_broker(
-            BROKER_CONFIG,
-            validation_log=str(_data_dir / "ibkr_validation_momentum.jsonl"),
-        )
+        # Poche Momentum TOUJOURS simulée (PaperBroker), même quand IBKR est activé :
+        # le compte IBKR est unique et déjà piloté par le portefeuille principal.
+        # Router aussi le Momentum dessus créerait un conflit de compta cash/positions.
+        # (À rebrancher sur IBKR plus tard si on lui dédie un sous-compte.)
+        self.broker = PaperBroker(BROKER_CONFIG)
         self._load()
 
     # ── Persistence ───────────────────────────────────────────────
