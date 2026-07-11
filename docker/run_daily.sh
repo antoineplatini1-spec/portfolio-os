@@ -22,7 +22,7 @@ export IBKR_HOST=127.0.0.1
 export IBKR_PORT=4002                 # 4002 = paper, 4001 = live (go-live)
 export IBKR_ACCOUNT=DUP588572
 export IBKR_ORDER_TYPE=MKT            # MKT car le cron tourne EN SÉANCE (voir crontab)
-export IBKR_SHADOW=1                  # garde la simulation en parallèle pour comparer
+export IBKR_SHADOW=0                  # pur IBKR : on a laissé tomber la simulation parallèle
 
 # venv Python
 # shellcheck disable=SC1091
