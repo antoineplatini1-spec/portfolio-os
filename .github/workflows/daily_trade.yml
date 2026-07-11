@@ -1,10 +1,11 @@
 name: Daily Trading — Zentry
 
 on:
-  schedule:
-    # 13h00 Paris été (CEST=UTC+2) / 12h00 Paris hiver (CET=UTC+1)
-    - cron: '0 11 * * 1-5'
-  workflow_dispatch:
+  # ⚠️ Schedule DÉSACTIVÉ : le VPS OVH (IBKR paper) a pris le relais du trading
+  # quotidien. Réactiver uniquement si on revient sur GitHub Actions + PaperBroker.
+  # schedule:
+  #   - cron: '0 11 * * 1-5'
+  workflow_dispatch:            # gardé pour un run manuel de secours
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
