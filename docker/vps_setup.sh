@@ -78,7 +78,8 @@ cat <<'NEXT'
        # → ajouter dans GitHub : repo > Settings > Deploy keys > Add (Allow write access)
        cd ~/portfolio-os && git remote set-url origin git@github.com:antoineplatini1-spec/portfolio-os.git
 
-  5. Cron (scan en séance US, ~10h30 ET = 14h30 UTC, lun-ven) :
-       ( crontab -l 2>/dev/null; echo "30 14 * * 1-5 ~/portfolio-os/docker/run_daily.sh" ) | crontab -
+  5. Cron (scan à 10h00 New York = 30 min après l'ouverture, lun-ven).
+     CRON_TZ ancre sur l'heure US → robuste au changement d'heure :
+       ( echo "CRON_TZ=America/New_York"; echo "0 10 * * 1-5 ~/portfolio-os/docker/run_daily.sh >> ~/portfolio-os/data/cron.log 2>&1" ) | crontab -
 
 NEXT
