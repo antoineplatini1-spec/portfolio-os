@@ -36,9 +36,10 @@ git pull --rebase --autostash origin master || echo "git pull échoué (on conti
 # Scan + trading
 python daily_auto.py
 
-# Persiste l'état (état PTF + logs + logs de validation sim-vs-réel)
+# Persiste l'état (état PTF + Momentum + journaux). `git add data/` reste robuste
+# même si un fichier manque ; les secrets (email_config.json) sont git-ignorés.
 git add data/portfolio_state.json data/momentum_state.json \
-        data/daily_log.txt data/ibkr_validation*.jsonl 2>/dev/null || true
+        data/momentum_signals.jsonl data/daily_log.txt 2>/dev/null || true
 if ! git diff --staged --quiet; then
     git commit -m "auto(vps): portfolio $(date +%F)"
     git push || echo "git push échoué (vérifier la deploy key)"
