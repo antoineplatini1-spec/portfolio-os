@@ -233,10 +233,23 @@ class PortfolioManager:
             return False, f"Cash insuffisant ({self.cash:.2f} < {estimated_cost:.2f})", None
 
         order = self.broker.buy(ticker, qty, current_price)
-        fees = order["fees"]
+
+        # Ne créer une position QUE si l'ordre a réellement été exécuté.
+        # Avec IBKR un ordre peut être annulé/non rempli (marché fermé, rejet,
+        # illiquidité) → sinon on enregistrerait une position fantôme.
+        filled_qty = order.get("qty", 0) or 0
+        if order.get("status") != "filled" or filled_qty <= 0:
+            reason = order.get("ibkr_status") or order.get("status") or "non exécuté"
+            return False, f"Ordre {ticker} non exécuté ({reason}) — marché fermé/illiquide ?", None
+
+        # On travaille sur le prix et la quantité RÉELLEMENT exécutés.
+        fill_price = order["price"]
+        fees       = order["fees"]
         total_cost = order["total"]
 
-        levels = tp_prices(current_price, atr)
+        # SL/TP recalculés sur le prix de fill réel (cohérence entrée ↔ stops)
+        sl = sl_price(fill_price, atr)
+        levels = tp_prices(fill_price, atr)
         tp_level_objs = [
             TPLevel(price=lvl["price"], sell_pct=lvl["sell_pct"])
             for lvl in levels
@@ -244,8 +257,8 @@ class PortfolioManager:
 
         pos = Position(
             ticker=ticker,
-            entry_price=current_price,
-            qty_total=qty,
+            entry_price=fill_price,
+            qty_total=filled_qty,
             sl=sl,
             tp_levels=tp_level_objs,
             fees_in=fees,
@@ -255,9 +268,9 @@ class PortfolioManager:
 
         self.positions[ticker] = pos
         self.cash -= total_cost
-        self.weekly_deployed += invested
+        self.weekly_deployed += fill_price * filled_qty
         self._save()
-        return True, f"Achat {qty:.4f} {ticker} à {current_price:.4f} (frais: {fees:.2f})", pos
+        return True, f"Achat {filled_qty:.4f} {ticker} à {fill_price:.4f} (frais: {fees:.2f})", pos
 
     def update_prices(self, prices: dict[str, float]):
         """
@@ -317,14 +330,19 @@ class PortfolioManager:
 
     def _partial_sell(self, pos: Position, qty: float, price: float, reason: str):
         order = self.broker.sell(pos.ticker, qty, price)
+        # Si la vente n'a pas été exécutée (IBKR : marché fermé/rejet), ne rien
+        # modifier — la position reste intacte et sera réévaluée au prochain scan.
+        sold_qty = order.get("qty", 0) or 0
+        if order.get("status") != "filled" or sold_qty <= 0:
+            return
         exec_price = order["price"]   # prix réel après slippage
         fees       = order["fees"]
         self.cash += order["total"]
-        pos.qty_remaining -= qty
+        pos.qty_remaining -= sold_qty
         pos.partial_fills.append(
             PartialFill(
                 date=datetime.now().strftime("%Y-%m-%d"),
-                qty=qty,
+                qty=sold_qty,
                 price=exec_price,    # prix d'exécution réel (avec slippage)
                 reason=reason,
             )
@@ -338,6 +356,11 @@ class PortfolioManager:
 
     def _close_position(self, pos: Position, price: float, reason: str):
         order = self.broker.sell(pos.ticker, pos.qty_remaining, price)
+        # Clôture non exécutée (IBKR : marché fermé/rejet) → on n'altère pas la
+        # position, on retentera au prochain scan.
+        sold_qty = order.get("qty", 0) or 0
+        if order.get("status") != "filled" or sold_qty <= 0:
+            return
         exec_price = order["price"]   # prix réel après slippage
         fees       = order["fees"]
         self.cash += order["total"]
