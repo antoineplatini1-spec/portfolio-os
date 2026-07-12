@@ -9,7 +9,7 @@ import streamlit as st
 
 from portfolio.manager import PortfolioManager
 from ui import (
-    page_dashboard, page_positions, page_history,
+    page_dashboard, page_history,
     page_analysis, page_screener, page_backtest, page_report, page_lexique,
     page_watchhunter, page_momentum,
 )
@@ -141,10 +141,9 @@ st.sidebar.markdown(
 st.sidebar.caption("v0.1 · paper trading · yfinance")
 
 # ── NAVIGATION HORIZONTALE (tabs) ─────────────────────────────────────────────
-tab_dashboard, tab_positions, tab_momentum, tab_history, \
+tab_dashboard, tab_momentum, tab_history, \
 tab_analysis, tab_screener, tab_backtest, tab_report, tab_lexique, tab_watchhunter = st.tabs([
     "📊  Dashboard",
-    "🎯  Positions",
     "📰  Momentum",
     "📜  Historique",
     "🔍  Analyse",
@@ -157,9 +156,6 @@ tab_analysis, tab_screener, tab_backtest, tab_report, tab_lexique, tab_watchhunt
 
 with tab_dashboard:
     page_dashboard.render(pm)
-
-with tab_positions:
-    page_positions.render(pm)
 
 with tab_momentum:
     page_momentum.render()
