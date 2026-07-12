@@ -10,6 +10,10 @@ data/cache/
 # Secrets — NE PAS committer
 data/email_config.json
 data/newsletter_cache.json
+data/llm.env                 # clé ANTHROPIC_API_KEY (couche LLM)
+
+# Journal d'audit LLM (local à chaque machine, peut grossir)
+data/llm_signals.jsonl
 
 # IBKR — identifiants Gateway & état local du Gateway (NE PAS committer)
 docker/.env

@@ -24,6 +24,16 @@ export IBKR_ACCOUNT=DUP588572
 export IBKR_ORDER_TYPE=MKT            # MKT car le cron tourne EN SÉANCE (voir crontab)
 export IBKR_SHADOW=0                  # pur IBKR : on a laissé tomber la simulation parallèle
 
+# ── Enrichissement LLM : couche de LECTURE (news + biais secteur) ─
+# S'active seulement si LLM_ENABLED=1 ET une clé API présente
+# (cf. llm_enrich.is_enabled). La clé vit dans data/llm.env — fichier GITIGNORÉ
+# rempli par l'utilisateur — jamais en dur dans ce script (qui est versionné).
+export LLM_ENABLED=1
+if [ -f "$DATA_DIR/llm.env" ]; then
+    set -a; . "$DATA_DIR/llm.env"; set +a
+fi
+# export LLM_MODEL=claude-sonnet-5   # décommenter pour ~2,5× moins cher (extraction)
+
 # venv Python
 # shellcheck disable=SC1091
 source .venv/bin/activate 2>/dev/null || true
