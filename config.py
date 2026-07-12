@@ -11,8 +11,12 @@ RAMP_UP_WEEKS = 4                 # Durée de la montée en charge
 WEEKLY_DEPLOY_PCT = 0.25          # % du cash initial déployable par semaine
 
 # ── Poche de réserve ("pépites") ─────────────────────────────────
-RESERVE_CASH_PCT = 0.10           # 10% toujours conservé
-RESERVE_UNLOCK_SCORE = 85         # Score minimum pour débloquer la réserve
+# Réserve SUPPRIMÉE (2026-07-12, décision utilisateur : pleine latitude pour engager
+# le capital). 0 → aucun cash bloqué d'office, déploiement jusqu'à ~100% dans la
+# limite des autres plafonds (5%/position, 20%/secteur, exposition max, montée en
+# charge). RESERVE_UNLOCK_SCORE devient sans effet (plus rien à débloquer).
+RESERVE_CASH_PCT = 0.0            # plus de réserve imposée
+RESERVE_UNLOCK_SCORE = 85         # (inopérant tant que RESERVE_CASH_PCT = 0)
 
 # ── Sizing par position ───────────────────────────────────────────
 MAX_POSITION_PCT = 0.05               # Position standard : 5% max (€500 sur 10K€)

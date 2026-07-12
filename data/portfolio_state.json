@@ -1,7 +1,7 @@
 {
   "cash": 250000.0,
   "initial_cash": 250000.0,
-  "reserve_cash": 25000.0,
+  "reserve_cash": 0.0,
   "start_date": "2026-07-11",
   "weekly_deployed": 0.0,
   "week_start": "2026-07-11",
