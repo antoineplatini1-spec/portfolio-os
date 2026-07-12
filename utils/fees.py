@@ -4,11 +4,31 @@ from config import BROKER_CONFIG
 
 
 def compute_fees(price: float, qty: float, broker: dict = None) -> float:
-    """Frais pour un ordre (achat ou vente)."""
+    """
+    Frais pour un ordre (achat ou vente).
+
+    Modèle générique qui couvre les deux courtiers du projet :
+      - Alpaca : tout à zéro → frais nuls (comportement historique).
+      - IBKR (US, tarif fixe) : per_share_fee=0.005, min_fee=1.00, cap 1% du notionnel
+        (max_pct_fee). C'est ce barème que les garde-fous SL/TP doivent voir dès que
+        les ordres partent réellement chez IBKR, sinon ils raisonnent avec des frais nuls
+        et déclenchent des ventes partielles trop petites pour couvrir la commission.
+    """
     if broker is None:
         broker = BROKER_CONFIG
-    raw = broker["flat_fee"] + price * qty * broker["pct_fee"]
-    return max(raw, broker.get("min_fee", 0.0))
+    notional = price * qty
+    raw = (
+        broker.get("flat_fee", 0.0)
+        + broker.get("per_share_fee", 0.0) * qty
+        + notional * broker.get("pct_fee", 0.0)
+    )
+    fee = max(raw, broker.get("min_fee", 0.0))
+    max_pct = broker.get("max_pct_fee", 0.0)
+    if max_pct and notional > 0:
+        # Chez IBKR le plafond (1% du notionnel) prime même sur le minimum : sur un
+        # tout petit ordre on paie 1% plutôt que le minimum forfaitaire.
+        fee = min(fee, notional * max_pct)
+    return fee
 
 
 def round_trip_fees(price: float, qty: float, broker: dict = None) -> float:

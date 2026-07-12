@@ -13,7 +13,7 @@ from datetime import datetime
 from pathlib import Path
 
 from config import (
-    BROKER_CONFIG,
+    ALPACA_BROKER_CONFIG,
     MOMENTUM_DEFAULT_SL_PCT,
     MOMENTUM_INITIAL_CASH,
     MOMENTUM_MAX_POSITION_PCT,
@@ -36,7 +36,9 @@ class MomentumPortfolio:
         # le compte IBKR est unique et déjà piloté par le portefeuille principal.
         # Router aussi le Momentum dessus créerait un conflit de compta cash/positions.
         # (À rebrancher sur IBKR plus tard si on lui dédie un sous-compte.)
-        self.broker = PaperBroker(BROKER_CONFIG)
+        # Barème Alpaca FORCÉ (0 frais) : c'est une simulation ; on ne veut pas que le
+        # PnL simulé change selon IBKR_ENABLED (le barème IBKR modélise du US, pas les .PA).
+        self.broker = PaperBroker(ALPACA_BROKER_CONFIG)
         self._load()
 
     # ── Persistence ───────────────────────────────────────────────

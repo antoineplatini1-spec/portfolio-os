@@ -93,6 +93,18 @@ def _load_email_cfg() -> dict | None:
         return json.load(f)
 
 
+def _newsletter_raw_text() -> str:
+    """Texte brut de la dernière newsletter (caché par NewsletterAgent). '' si absent."""
+    path = os.path.join(_data_dir, "newsletter_cache.json")
+    if not os.path.exists(path):
+        return ""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f).get("text", "") or ""
+    except Exception:
+        return ""
+
+
 def send_email(subject: str, html_body: str):
     """Envoie un email HTML via Gmail SMTP."""
     cfg = _load_email_cfg()
@@ -148,6 +160,26 @@ def run():
             log(line)
     except Exception as e:
         log(f"[NEWSLETTER] Erreur lecture : {e}")
+
+    # ── 0b. Enrichissement LLM du biais sectoriel (optionnel, éteint par défaut) ─
+    # Le LLM ne fait que FIABILISER le biais sectoriel déjà extrait par regex, à
+    # partir du texte verbatim de la newsletter, AVANT que le MacroAgent l'utilise.
+    # Toute panne (pas de clé, API down, JSON invalide) → on garde le biais regex.
+    from signals import llm_enrich
+    llm_sector_detail = None          # dict {secteur: biais} si LLM a fiabilisé, sinon None
+    news_signals: dict = {}           # signaux d'actualité LLM par ticker (rempli plus bas)
+    if nl_signal is not None and llm_enrich.is_enabled():
+        try:
+            llm_bias = llm_enrich.enrich_sector_bias(
+                _newsletter_raw_text(), nl_signal.sector_bias
+            )
+            if llm_bias:
+                nl_signal.sector_bias = {**nl_signal.sector_bias, **llm_bias}
+                llm_sector_detail = llm_bias
+                log("[LLM] Biais sectoriel fiabilisé : "
+                    + ", ".join(f"{s}:{v:+d}" for s, v in llm_bias.items()))
+        except Exception as e:
+            log(f"[LLM] enrich secteur échoué (fallback regex) : {e}")
 
     macro_ctx = MacroAgent().analyze(newsletter_signal=nl_signal)
     for line in macro_ctx.format_log():
@@ -335,6 +367,26 @@ def run():
 
     log(f"{len(candidates)} candidats pre-filtres (score>={min_score}, R>={MIN_R_RATIO*0.8:.1f})")
 
+    # ── News LLM (optionnel) : un seul appel batch sur candidats + positions tenues ─
+    # Le code fournit les headlines ; le LLM en tire un signal événementiel typé.
+    # Usage : véto SOUPLE sur un candidat (actualité négative forte → on passe),
+    # annotation sur une position tenue (surveillance, jamais de vente forcée).
+    if llm_enrich.is_enabled():
+        try:
+            watch = list(dict.fromkeys(
+                list(candidates["ticker"]) + list(pm.open_positions.keys())
+            ))
+            news_signals = llm_enrich.fetch_news_signals(watch)
+            for tk, s in news_signals.items():
+                log(f"[LLM news] {tk}: {s['direction']} {s['strength']:.2f} — {s['event']}")
+            # Actualité négative forte sur une position tenue → surveillance (pas un blocage)
+            for tk in pm.open_positions:
+                s = news_signals.get(tk)
+                if s and s["direction"] == "bearish" and s["strength"] >= 0.6:
+                    log(f"  [LLM news] ⚠ position tenue {tk} : {s['event']} — à surveiller")
+        except Exception as e:
+            log(f"[LLM news] échec (ignoré) : {e}")
+
     # Near-miss screener : tickers qui frôlent le seuil pré-filtre (score_bas)
     if min_score < 999:
         near_screen = df_screen[
@@ -413,6 +465,15 @@ def run():
             # ── Filtre earnings ───────────────────────────────────
             if _near_earnings(ticker, days=3):
                 log(f"  [SKIP earnings] {ticker} : publication de résultats dans ±3j")
+                continue
+
+            # ── Véto souple actualité (LLM, optionnel) ────────────
+            # Actualité négative RÉCENTE et FORTE → on n'ouvre pas (comme l'earnings).
+            # Le LLM ne décide pas d'acheter, il ne fait que bloquer un mauvais timing.
+            nsig = news_signals.get(ticker)
+            if nsig and nsig["direction"] == "bearish" and nsig["strength"] >= 0.6:
+                log(f"  [SKIP news] {ticker} : actualité négative forte "
+                    f"({nsig['strength']:.2f}) — {nsig['event']}")
                 continue
 
             # ── Débat Bull / Bear / Arbitre ───────────────────────
@@ -688,6 +749,11 @@ def run():
         momentum_log=momentum_log,
         mpm=mpm if 'mpm' in dir() else None,
         momentum_status=momentum_status,
+        llm_summary={
+            "enabled": llm_enrich.is_enabled(),
+            "sector":  llm_sector_detail,
+            "news":    news_signals,
+        },
     )
 
 
@@ -840,6 +906,69 @@ def _momentum_email_section(momentum_log: list[dict], mpm, momentum_status: str 
 """
 
 
+def _llm_email_section(llm_summary: dict | None) -> str:
+    """Section HTML d'audit des signaux LLM du jour (secteur + actualités)."""
+    if not llm_summary:
+        return ""
+    if not llm_summary.get("enabled"):
+        # LLM éteint : bandeau honnête (aucun signal LLM utilisé aujourd'hui).
+        return (
+            "<tr><td style='height:16px'></td></tr>"
+            "<tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #445470;"
+            "padding:12px 16px'><div style='font-size:12px;color:#8097b5'>"
+            "&#x1F9E0; Enrichissement LLM désactivé — décisions 100% déterministes "
+            "(screener + macro + newsletter regex).</div></td></tr>"
+        )
+
+    sector = llm_summary.get("sector") or {}
+    news   = llm_summary.get("news") or {}
+    if not sector and not news:
+        return (
+            "<tr><td style='height:16px'></td></tr>"
+            "<tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;"
+            "padding:12px 16px'><div style='font-size:12px;color:#8097b5'>"
+            "&#x1F9E0; LLM actif — aucun signal matériel aujourd'hui.</div></td></tr>"
+        )
+
+    sector_html = ""
+    if sector:
+        chips = " ".join(
+            f"<span style='display:inline-block;background:#1a2440;color:"
+            f"{'#34d399' if v > 0 else ('#fb7185' if v < 0 else '#8097b5')};"
+            f"padding:2px 8px;border-radius:4px;font-size:11px;margin:2px'>{s} {v:+d}</span>"
+            for s, v in sorted(sector.items(), key=lambda x: -abs(x[1]))
+        )
+        sector_html = (
+            f"<div style='font-size:12px;color:#8097b5;margin-bottom:6px'>"
+            f"Biais sectoriel fiabilisé :</div><div>{chips}</div>"
+        )
+
+    news_html = ""
+    if news:
+        rows = ""
+        for tk, s in news.items():
+            clr = {"bullish": "#34d399", "bearish": "#fb7185"}.get(s["direction"], "#8097b5")
+            rows += (
+                f"<div style='margin:4px 0;font-size:12px;color:#8097b5'>"
+                f"<strong style='color:{clr}'>{tk}</strong> "
+                f"<span style='color:{clr}'>{s['direction']} {s['strength']:.2f}</span> — "
+                f"{s['event']}</div>"
+            )
+        news_html = (
+            f"<div style='font-size:12px;color:#8097b5;margin:10px 0 4px'>"
+            f"Actualités par titre :</div>{rows}"
+        )
+
+    return (
+        "<tr><td style='height:16px'></td></tr>"
+        "<tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;"
+        "padding:14px 18px'>"
+        "<div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:8px'>"
+        "&#x1F9E0; Signaux LLM du jour</div>"
+        f"{sector_html}{news_html}</td></tr>"
+    )
+
+
 def _send_daily_email(
     today, market_ctx, score_max, score_med, n_candidates,
     opened_positions, sales_log, sltp_cash, pm, available,
@@ -848,6 +977,7 @@ def _send_daily_email(
     momentum_log: list[dict] | None = None,
     mpm=None,
     momentum_status: str = "unknown",
+    llm_summary: dict | None = None,
 ):
     """Construit et envoie le recap journalier par email."""
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
@@ -1106,6 +1236,9 @@ def _send_daily_email(
 
   <!-- POSITIONS OUVERTES -->
   {"<tr><td><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;background:#0d1420;border-radius:8px'><thead><tr style='background:#192235'><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px;letter-spacing:.06em'>TICKER</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL %</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL €</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th></tr></thead><tbody>" + pos_rows + "</tbody></table></td></tr>" if pos_rows else "<tr><td style='color:#445470;font-size:12px;padding:8px 0'>Aucune position ouverte.</td></tr>"}
+
+  <!-- SIGNAUX LLM -->
+  {_llm_email_section(llm_summary)}
 
   <!-- MOMENTUM PTF -->
   {_momentum_email_section(momentum_log or [], mpm, momentum_status)}

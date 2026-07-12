@@ -45,20 +45,43 @@ BUY_SIGNAL_MIN_SCORE = 60         # Score minimum pour suggérer un achat
 ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance
 
 # ── Frais ─────────────────────────────────────────────────────────
-# Alpaca broker : commission-free sur actions US, mais on simule les frais
-# réalistes pour anticiper le live trading (spread + impact marché).
-# Ajuster flat_fee selon le courtier réel : Alpaca=0, IBKR≈3€, Degiro≈2€.
-BROKER_CONFIG = {
+# On maintient DEUX barèmes et on sélectionne l'effectif selon le broker réellement
+# utilisé (IBKR_ENABLED). C'est essentiel : les garde-fous de risque (sizing,
+# ventes partielles TP) estiment les frais via BROKER_CONFIG. Si on exécute chez
+# IBKR mais qu'on laisse le barème Alpaca (frais=0), les garde-fous croient
+# l'aller-retour gratuit et déclenchent des TP partiels trop petits pour couvrir
+# la commission → grignotage silencieux du PnL.
+_IBKR_ENABLED = os.environ.get("IBKR_ENABLED", "0") == "1"
+
+ALPACA_BROKER_CONFIG = {
     "name": "Alpaca",
     "flat_fee": 0.0,              # Alpaca : zéro commission sur actions US
     "pct_fee": 0.0,               # pas de frais %
     "min_fee": 0.0,
 }
 
-# Profit net minimum par vente partielle TP pour qu'elle soit exécutée.
-# Alpaca étant gratuit, 0 = tout PnL positif déclenche la vente.
-# À ajuster si on change de broker (ex: IBKR → 15€+).
-MIN_TP_NET_PROFIT = 0.0
+# IBKR US, tarif fixe : 0,005$/action, min 1$/ordre, plafonné à 1% du notionnel.
+# (Devise : compte US en USD ; le portefeuille raisonne en EUR — l'écart USD/EUR
+# est négligeable pour un simple garde-fou de frais, on ne convertit pas ici.)
+IBKR_BROKER_CONFIG = {
+    "name": "IBKR",
+    "flat_fee": 0.0,
+    "per_share_fee": 0.005,
+    "pct_fee": 0.0,
+    "min_fee": 1.0,
+    "max_pct_fee": 0.01,
+}
+
+BROKER_CONFIG = IBKR_BROKER_CONFIG if _IBKR_ENABLED else ALPACA_BROKER_CONFIG
+
+# Profit NET minimum (après frais de vente) pour qu'une vente partielle TP soit
+# exécutée. Le palier reste marqué "hit" (le trailing stop s'active), mais on ne
+# vend pas si le gain net ne dépasse pas ce seuil : on garde les titres pour un TP
+# plus haut ou le trailing, plutôt que de payer une commission pour un gain minuscule.
+#   - Alpaca (gratuit)  : 0 → tout PnL positif déclenche.
+#   - IBKR (frais réels): 2 unités de marge AU-DELÀ de la commission de vente déjà
+#     déduite dans le garde-fou du manager (≈ couvre le round-trip + petit tampon).
+MIN_TP_NET_PROFIT = 2.0 if _IBKR_ENABLED else 0.0
 
 # ── Broker réel : Interactive Brokers (paper puis live) ───────────
 # Le bot bascule du PaperBroker simulé vers IBKR quand IBKR_ENABLED=True.

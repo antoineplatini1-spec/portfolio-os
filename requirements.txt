@@ -8,3 +8,7 @@ apscheduler
 # Broker réel Interactive Brokers (requis uniquement quand IBKR_ENABLED=1).
 # Fork maintenu de ib_insync. Pure Python, n'impacte pas GitHub Actions.
 ib_async
+
+# Enrichissement LLM (requis uniquement quand LLM_ENABLED=1 + ANTHROPIC_API_KEY).
+# Import paresseux : tant que le LLM est éteint, le SDK n'est jamais chargé.
+anthropic
