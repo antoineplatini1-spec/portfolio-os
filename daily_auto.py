@@ -127,6 +127,8 @@ def _maybe_postmortem(ticker, entry_price, close_price, pnl_pct,
                 "cause": res["cause_tag"], "lesson": res["lesson"],
             })
             log(f"  [LLM post-mortem] {ticker}: {res['cause_tag']} — {res['lesson']}")
+        else:
+            log(f"  [LLM post-mortem] {ticker}: aucun résultat exploitable (voir erreurs LLM)")
     except Exception as e:
         log(f"  [LLM post-mortem] échec {ticker}: {e}")
 
@@ -194,24 +196,43 @@ def run():
     from signals import llm_enrich
     llm_sector_detail = None          # dict {secteur: biais} si LLM a fiabilisé, sinon None
     news_signals: dict = {}           # signaux d'actualité LLM par ticker (rempli plus bas)
-    if nl_signal is not None and llm_enrich.is_enabled():
+    llm_on = llm_enrich.is_enabled()
+    # Provenance EXPLICITE de chaque brique : "LLM" ou "algo (…)". Aucun fallback muet :
+    # on sait toujours, dans les logs ET l'email, ce qui vient du LLM et ce qui vient de l'algo.
+    llm_provenance = {
+        "secteur":  "LLM" if llm_on else "algo (LLM off)",
+        "momentum": "LLM" if llm_on else "algo (LLM off)",
+        "news":     "LLM" if llm_on else "off",
+    }
+    if llm_on and nl_signal is None:
+        llm_provenance["secteur"]  = "algo (pas de newsletter)"
+        llm_provenance["momentum"] = "algo (pas de newsletter)"
+    elif nl_signal is not None and llm_on:
         try:
-            # UN SEUL appel : biais secteur + trades momentum (la newsletter n'est lue
-            # qu'une fois). Fallback regex sur échec.
+            # UN SEUL appel : biais secteur + trades momentum (newsletter lue une fois).
             enriched = llm_enrich.enrich_newsletter(
                 _newsletter_raw_text(), nl_signal.sector_bias, nl_signal.momentum_trades
             )
-            if enriched:
+            if enriched is None:
+                llm_provenance["secteur"]  = "algo (fallback LLM)"
+                llm_provenance["momentum"] = "algo (fallback LLM)"
+                log("[LLM] newsletter → ÉCHEC/vide → FALLBACK ALGO (regex) secteur + momentum")
+            else:
                 llm_bias = enriched.get("sector_bias")
                 if llm_bias:
                     nl_signal.sector_bias = {**nl_signal.sector_bias, **llm_bias}
                     llm_sector_detail = llm_bias
-                    log("[LLM] Biais sectoriel fiabilisé : "
+                    llm_provenance["secteur"] = "LLM"
+                    log("[LLM] Biais sectoriel = LLM : "
                         + ", ".join(f"{s}:{v:+d}" for s, v in llm_bias.items()))
-                # Trades appliqués seulement si la newsletter est fraîche (sinon non
-                # exploités par la poche Momentum en aval).
+                else:
+                    llm_provenance["secteur"] = "algo (LLM: rien d'exploitable)"
+                    log("[LLM] Biais sectoriel : LLM sans résultat → algo (regex)")
+
                 llm_trades = enriched.get("momentum_trades")
-                if llm_trades and nl_signal.is_fresh:
+                if not nl_signal.is_fresh:
+                    llm_provenance["momentum"] = "n/a (newsletter ancienne)"
+                elif llm_trades:
                     from signals.newsletter_agent import MomentumTrade
                     nl_signal.momentum_trades = [
                         MomentumTrade(
@@ -220,10 +241,16 @@ def run():
                         )
                         for t in llm_trades
                     ]
-                    log(f"[LLM] Trades momentum fiabilisés ({len(llm_trades)}) : "
+                    llm_provenance["momentum"] = "LLM"
+                    log(f"[LLM] Trades momentum = LLM ({len(llm_trades)}) : "
                         + ", ".join(f"{t['company']}:{t['action']}" for t in llm_trades))
+                else:
+                    llm_provenance["momentum"] = "algo (LLM: rien d'exploitable)"
+                    log("[LLM] Trades momentum : LLM sans résultat → algo (regex)")
         except Exception as e:
-            log(f"[LLM] enrichissement newsletter échoué (fallback regex) : {e}")
+            llm_provenance["secteur"]  = "algo (fallback LLM)"
+            llm_provenance["momentum"] = "algo (fallback LLM)"
+            log(f"[LLM] enrichissement newsletter EXCEPTION → FALLBACK ALGO : {e}")
 
     macro_ctx = MacroAgent().analyze(newsletter_signal=nl_signal)
     for line in macro_ctx.format_log():
@@ -792,6 +819,11 @@ def run():
         log(f"[MOMENTUM ERROR] {e}\n{traceback.format_exc()[:500]}")
 
     # ── 5. Email recap ────────────────────────────────────────────
+    # Erreurs LLM du run : jamais silencieuses → journal + email.
+    _llm_errors = llm_enrich.run_errors()
+    if _llm_errors:
+        log(f"[LLM] {len(_llm_errors)} erreur(s) d'appel → fallback algo : "
+            + " | ".join(_llm_errors))
     _send_daily_email(
         today=today,
         market_ctx=market_ctx,
@@ -814,6 +846,8 @@ def run():
             "news":    news_signals,
             "usage":   llm_enrich.usage_summary(),
             "learning": __import__("signals.learning", fromlist=["digest"]).digest(),
+            "provenance": llm_provenance,
+            "errors":  _llm_errors,
         },
     )
 
@@ -967,6 +1001,30 @@ def _momentum_email_section(momentum_log: list[dict], mpm, momentum_status: str 
 """
 
 
+def _render_provenance(prov: dict | None, errs: list | None) -> str:
+    """Ligne de provenance (LLM vs algo) par brique + erreurs LLM éventuelles."""
+    html = ""
+    if prov:
+        def _tag(v: str) -> str:
+            is_llm = v == "LLM"
+            icon = "&#x1F9E0;" if is_llm else "&#x2699;&#xFE0F;"   # 🧠 / ⚙️
+            clr = "#34d399" if is_llm else "#8097b5"
+            return f"<span style='color:{clr}'>{icon} {v}</span>"
+        html += (
+            "<div style='font-size:11px;color:#445470;margin:2px 0 8px'>"
+            f"Provenance — secteur: {_tag(prov.get('secteur','?'))} &middot; "
+            f"momentum: {_tag(prov.get('momentum','?'))} &middot; "
+            f"news: {_tag(prov.get('news','?'))}</div>"
+        )
+    if errs:
+        items = "".join(f"<div style='margin:2px 0'>&#x26A0; {e}</div>" for e in errs)
+        html += (
+            "<div style='font-size:11px;color:#fca5a5;margin:6px 0;padding:6px 8px;"
+            f"background:#2a1414;border-radius:4px'>Erreurs LLM (→ fallback algo) :{items}</div>"
+        )
+    return html
+
+
 def _render_learning(learning: dict | None) -> str:
     """Bloc HTML : suggestions d'ajustement (le vrai livrable) + leçons récentes."""
     if not learning or not (learning.get("suggestions") or learning.get("recent_lessons")):
@@ -1039,6 +1097,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
     # Bloc apprentissage (agrégat des post-mortems + suggestions), historique —
     # indépendant des signaux du jour.
     learning_html = _render_learning(llm_summary.get("learning"))
+    prov_html = _render_provenance(llm_summary.get("provenance"), llm_summary.get("errors"))
 
     if not sector and not news:
         return (
@@ -1046,7 +1105,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
             "<tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;"
             "padding:12px 16px'><div style='font-size:12px;color:#8097b5'>"
             "&#x1F9E0; LLM actif — aucun signal matériel aujourd'hui.</div>"
-            f"{learning_html}{usage_html}</td></tr>"
+            f"{prov_html}{learning_html}{usage_html}</td></tr>"
         )
 
     sector_html = ""
@@ -1084,7 +1143,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
         "padding:14px 18px'>"
         "<div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:8px'>"
         "&#x1F9E0; Signaux LLM du jour</div>"
-        f"{sector_html}{news_html}{learning_html}{usage_html}</td></tr>"
+        f"{prov_html}{sector_html}{news_html}{learning_html}{usage_html}</td></tr>"
     )
 
 

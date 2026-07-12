@@ -77,6 +77,16 @@ def usage_summary() -> dict:
     }
 
 
+# Erreurs des appels LLM du run — JAMAIS avalées : surfacées dans les logs + l'email,
+# pour toujours savoir quand un fallback algo a eu lieu et pourquoi.
+_run_status = {"errors": []}
+
+
+def run_errors() -> list:
+    """Liste des échecs d'appels LLM du run (vide = tout OK)."""
+    return list(_run_status["errors"])
+
+
 # ── Activation ────────────────────────────────────────────────────
 
 def is_enabled() -> bool:
@@ -158,7 +168,9 @@ def _call(system: str, user: str, max_tokens: int = 1500) -> tuple[Optional[obje
         _usage_run["output"] += usage["out"] or 0
         _usage_run["calls"]  += 1
         return _extract_json(text), usage
-    except Exception:
+    except Exception as e:
+        # Ne JAMAIS avaler : on enregistre la raison pour la rendre visible en aval.
+        _run_status["errors"].append(f"{type(e).__name__}: {str(e)[:150]}")
         return None, {}
 
 
