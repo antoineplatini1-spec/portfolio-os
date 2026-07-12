@@ -105,6 +105,32 @@ def _newsletter_raw_text() -> str:
         return ""
 
 
+def _maybe_postmortem(ticker, entry_price, close_price, pnl_pct,
+                      reason, holding_days, entry_score):
+    """
+    Post-mortem LLM d'un trade clôturé → journal d'apprentissage (optionnel).
+    Le LLM attribue une cause typée + une leçon ; le code l'enregistre pour
+    l'agrégation déterministe (signals.learning). No-op si LLM éteint.
+    """
+    from signals import llm_enrich, learning
+    if not llm_enrich.is_enabled():
+        return
+    try:
+        res = llm_enrich.postmortem({
+            "ticker": ticker, "entry_price": entry_price, "close_price": close_price,
+            "pnl_pct": round(pnl_pct, 2), "reason": reason,
+            "holding_days": holding_days, "entry_score": entry_score,
+        })
+        if res:
+            learning.record_postmortem({
+                "ticker": ticker, "pnl_pct": round(pnl_pct, 2), "reason": reason,
+                "cause": res["cause_tag"], "lesson": res["lesson"],
+            })
+            log(f"  [LLM post-mortem] {ticker}: {res['cause_tag']} — {res['lesson']}")
+    except Exception as e:
+        log(f"  [LLM post-mortem] échec {ticker}: {e}")
+
+
 def send_email(subject: str, html_body: str):
     """Envoie un email HTML via Gmail SMTP."""
     cfg = _load_email_cfg()
@@ -180,6 +206,26 @@ def run():
                     + ", ".join(f"{s}:{v:+d}" for s, v in llm_bias.items()))
         except Exception as e:
             log(f"[LLM] enrich secteur échoué (fallback regex) : {e}")
+
+        # #1 — Extraction des trades momentum fiabilisée par le LLM (remplace le regex,
+        # plus robuste sur les tournures inattendues). Fallback : on garde le regex.
+        try:
+            llm_trades = llm_enrich.enrich_momentum_trades(
+                _newsletter_raw_text(), nl_signal.momentum_trades
+            )
+            if llm_trades:
+                from signals.newsletter_agent import MomentumTrade
+                nl_signal.momentum_trades = [
+                    MomentumTrade(
+                        company=t["company"], ticker=t["ticker"], action=t["action"],
+                        tp_levels=t["tp_levels"], sl=t["sl"], raw_rec=t["quote"],
+                    )
+                    for t in llm_trades
+                ]
+                log(f"[LLM] Trades momentum fiabilisés ({len(llm_trades)}) : "
+                    + ", ".join(f"{t['company']}:{t['action']}" for t in llm_trades))
+        except Exception as e:
+            log(f"[LLM] enrich trades momentum échoué (fallback regex) : {e}")
 
     macro_ctx = MacroAgent().analyze(newsletter_signal=nl_signal)
     for line in macro_ctx.format_log():
@@ -276,6 +322,17 @@ def run():
                     "price": cp, "pnl": h["pnl"], "pnl_pct": round(pct, 2),
                     "partial": False,
                 })
+                # Post-mortem LLM (boucle d'apprentissage)
+                try:
+                    _hold = (datetime.strptime(h.get("close_date", ""), "%Y-%m-%d")
+                             - datetime.strptime(h.get("entry_date", ""), "%Y-%m-%d")).days
+                except Exception:
+                    _hold = 0
+                _pos_obj = open_pos.get(t)
+                _maybe_postmortem(
+                    t, ep, cp, pct, h.get("close_reason", "?"), _hold,
+                    getattr(_pos_obj, "entry_score", 0) if _pos_obj else 0,
+                )
 
         # ── Ventes partielles nouvelles (TP1/TP2 hits) ───────────
         for ticker, pos in open_pos.items():
@@ -313,6 +370,10 @@ def run():
                         "price": price, "pnl": round(pnl_eu, 2),
                         "pnl_pct": round(loss_pct * 100, 2), "partial": False,
                     })
+                    _maybe_postmortem(
+                        ticker, pos.entry_price, price, loss_pct * 100,
+                        "Time Stop", age_days, getattr(pos, "entry_score", 0),
+                    )
             except Exception as e:
                 log(f"  [TIME STOP ERROR] {ticker} : {e}")
     else:
@@ -754,6 +815,7 @@ def run():
             "sector":  llm_sector_detail,
             "news":    news_signals,
             "usage":   llm_enrich.usage_summary(),
+            "learning": __import__("signals.learning", fromlist=["digest"]).digest(),
         },
     )
 
@@ -907,8 +969,43 @@ def _momentum_email_section(momentum_log: list[dict], mpm, momentum_status: str 
 """
 
 
+def _render_learning(learning: dict | None) -> str:
+    """Bloc HTML : suggestions d'ajustement (le vrai livrable) + leçons récentes."""
+    if not learning or not (learning.get("suggestions") or learning.get("recent_lessons")):
+        return ""
+    sugg = learning.get("suggestions") or []
+    sugg_html = ""
+    if sugg:
+        items = "".join(f"<li style='margin:2px 0'>{s}</li>" for s in sugg)
+        sugg_html = (
+            "<div style='font-size:12px;color:#fbbf24;margin:8px 0 2px;font-weight:600'>"
+            "&#x1F4A1; Suggestions d'ajustement :</div>"
+            f"<ul style='margin:0 0 4px 16px;padding:0;color:#d6e0f0;font-size:12px'>{items}</ul>"
+        )
+    lessons = learning.get("recent_lessons") or []
+    les_html = ""
+    if lessons:
+        rows = "".join(
+            f"<div style='margin:3px 0;font-size:11px;color:#8097b5'>"
+            f"<strong style='color:#d6e0f0'>{l.get('ticker','?')}</strong> "
+            f"<span style='color:#445470'>[{l.get('cause','')}]</span> {l.get('lesson','')}</div>"
+            for l in lessons
+        )
+        les_html = (
+            "<div style='font-size:12px;color:#8097b5;margin:8px 0 2px'>"
+            f"Leçons récentes ({learning.get('n', 0)} clôtures analysées, "
+            f"{learning.get('n_losers', 0)} perdantes) :</div>{rows}"
+        )
+    return (
+        "<div style='margin-top:10px;padding-top:8px;border-top:1px solid #1e2d45'>"
+        "<div style='font-size:13px;font-weight:700;color:#d6e0f0;margin-bottom:4px'>"
+        "&#x1F393; Apprentissage</div>"
+        f"{sugg_html}{les_html}</div>"
+    )
+
+
 def _llm_email_section(llm_summary: dict | None) -> str:
-    """Section HTML d'audit des signaux LLM du jour (secteur + actualités)."""
+    """Section HTML d'audit des signaux LLM du jour (secteur + actualités + apprentissage)."""
     if not llm_summary:
         return ""
     if not llm_summary.get("enabled"):
@@ -941,13 +1038,17 @@ def _llm_email_section(llm_summary: dict | None) -> str:
             f"<strong style='color:#8097b5'>{cost_str}</strong> estimatif</div>"
         )
 
+    # Bloc apprentissage (agrégat des post-mortems + suggestions), historique —
+    # indépendant des signaux du jour.
+    learning_html = _render_learning(llm_summary.get("learning"))
+
     if not sector and not news:
         return (
             "<tr><td style='height:16px'></td></tr>"
             "<tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;"
             "padding:12px 16px'><div style='font-size:12px;color:#8097b5'>"
             "&#x1F9E0; LLM actif — aucun signal matériel aujourd'hui.</div>"
-            f"{usage_html}</td></tr>"
+            f"{learning_html}{usage_html}</td></tr>"
         )
 
     sector_html = ""
@@ -985,7 +1086,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
         "padding:14px 18px'>"
         "<div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:8px'>"
         "&#x1F9E0; Signaux LLM du jour</div>"
-        f"{sector_html}{news_html}{usage_html}</td></tr>"
+        f"{sector_html}{news_html}{learning_html}{usage_html}</td></tr>"
     )
 
 

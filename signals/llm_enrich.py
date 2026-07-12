@@ -27,6 +27,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
+from signals.learning import CAUSE_VOCAB
+
 # Modèle par défaut : Opus 4.8 (le plus capable). Basculer sur claude-sonnet-5 via
 # la variable d'env LLM_MODEL pour diviser le coût par ~2,5 sur ces tâches
 # d'extraction (Sonnet suffit largement à lire du texte).
@@ -352,3 +354,122 @@ def enrich_sector_bias(
     _log("sector_bias", {"regex_hint": regex_bias, "llm_bias": bias,
                          "detail": audit_rows}, usage)
     return bias
+
+
+# ── 3. Extraction des trades momentum de la newsletter (fiabilise le regex) ──
+
+_MOMENTUM_SYSTEM = (
+    "Tu es analyste actions. On te donne le texte d'une newsletter boursière française "
+    "et une extraction heuristique préalable. Pour chaque SOCIÉTÉ FRANÇAISE ayant une "
+    "recommandation d'action claire, renvoie un objet. N'invente AUCUN prix : extrais-les "
+    "verbatim du texte (objectifs = TP ; seuil de sortie / support cassé = SL). "
+    "Réponds UNIQUEMENT par un tableau JSON. Schéma par élément : "
+    '{"company": str (nom FR), "action": "BUY"|"SELL"|"HOLD"|"AVOID", '
+    '"tp_levels": [float euros], "sl": float euros ou 0, "quote": str (extrait justifiant)}. '
+    "Tableau vide [] si aucune reco exploitable."
+)
+
+
+def enrich_momentum_trades(
+    newsletter_text: str, regex_trades: list
+) -> Optional[list[dict]]:
+    """
+    Extrait les trades momentum de la newsletter via LLM (classification + prix TP/SL),
+    plus robuste que le regex sur les tournures inattendues. Retourne une liste de dicts
+    {company, ticker, action, tp_levels, sl, quote} ou None (→ garder le regex).
+
+    Anti-hallucination : société acceptée seulement si dans FR_TICKER_MAP (whitelist),
+    action dans le vocabulaire fermé, prix = floats positifs, citation obligatoire.
+    """
+    if not is_enabled() or not newsletter_text or not newsletter_text.strip():
+        return None
+    from signals.newsletter_agent import FR_TICKER_MAP
+
+    hint = ", ".join(f"{getattr(t, 'company', '?')}:{getattr(t, 'action', '?')}"
+                     for t in (regex_trades or [])) or "(aucune)"
+    user = (
+        f"Extraction heuristique préalable : {hint}\n\n"
+        f"--- NEWSLETTER ---\n{newsletter_text[:12000]}"
+    )
+    data, usage = _call(_MOMENTUM_SYSTEM, user, max_tokens=2000)
+    if not isinstance(data, list):
+        return None
+
+    valid_actions = {"BUY", "SELL", "HOLD", "AVOID"}
+    out: list[dict] = []
+    seen: set[str] = set()
+    for it in data:
+        if not isinstance(it, dict):
+            continue
+        company = str(it.get("company", "")).strip().lower()
+        ticker = FR_TICKER_MAP.get(company)
+        if not ticker or ticker in seen:      # whitelist stricte + dédup
+            continue
+        action = str(it.get("action", "")).upper()
+        if action not in valid_actions:
+            continue
+        quote = str(it.get("quote", "")).strip()
+        if not quote:                          # citation obligatoire
+            continue
+        tps: list[float] = []
+        for p in (it.get("tp_levels") or []):
+            try:
+                v = float(p)
+                if v > 0:
+                    tps.append(round(v, 4))
+            except (TypeError, ValueError):
+                continue
+        try:
+            sl = float(it.get("sl", 0) or 0)
+            sl = sl if sl > 0 else 0.0
+        except (TypeError, ValueError):
+            sl = 0.0
+        seen.add(ticker)
+        out.append({
+            "company":   company.title(),
+            "ticker":    ticker,
+            "action":    action,
+            "tp_levels": sorted(tps),
+            "sl":        sl,
+            "quote":     quote[:200],
+        })
+
+    if not out:
+        return None
+    _log("momentum_trades", {"n": len(out), "trades": out}, usage)
+    return out
+
+
+# ── 4. Post-mortem d'un trade clôturé (catégorisation → boucle d'apprentissage) ──
+
+_POSTMORTEM_SYSTEM = (
+    "Tu es analyste risque. On te donne les FAITS d'un trade CLÔTURÉ. Attribue UNE cause "
+    "parmi cette liste FERMÉE (renvoie la clé exacte, rien d'autre) : "
+    + ", ".join(CAUSE_VOCAB) + ". "
+    "Puis écris une leçon courte (1 phrase), actionnable. Fonde-toi UNIQUEMENT sur les "
+    'faits fournis. Réponds UNIQUEMENT par un objet JSON : {"cause": str, "lesson": str}.'
+)
+
+
+def postmortem(trade: dict) -> Optional[dict]:
+    """
+    Catégorise un trade clôturé : {cause_tag (∈ CAUSE_VOCAB), lesson}. None si off/échec.
+    trade attendu : {ticker, entry_price, close_price, pnl_pct, reason, holding_days, entry_score}.
+    """
+    if not is_enabled():
+        return None
+    facts = (
+        f"ticker={trade.get('ticker')} entrée={trade.get('entry_price')} "
+        f"sortie={trade.get('close_price')} PnL={trade.get('pnl_pct')}% "
+        f"raison_sortie={trade.get('reason')} durée_jours={trade.get('holding_days')} "
+        f"score_entrée={trade.get('entry_score')}"
+    )
+    data, usage = _call(_POSTMORTEM_SYSTEM, facts, max_tokens=300)
+    if not isinstance(data, dict):
+        return None
+    cause = str(data.get("cause", "")).strip()
+    if cause not in CAUSE_VOCAB:
+        return None
+    lesson = str(data.get("lesson", "")).strip()[:200]
+    _log("postmortem", {"ticker": trade.get("ticker"), "cause": cause, "lesson": lesson}, usage)
+    return {"cause_tag": cause, "lesson": lesson}
