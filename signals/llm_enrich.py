@@ -287,48 +287,29 @@ def fetch_news_signals(tickers: list[str], max_tickers: int = 30) -> dict[str, d
     return result
 
 
-# ── 2. Fiabilisation du biais sectoriel de la newsletter ──────────
+# ── 2. Lecture de la newsletter en UN appel : biais secteur + trades momentum ──
 
-_SECTOR_SYSTEM = (
-    "Tu es un analyste macro. On te donne le texte d'une newsletter boursière "
-    "(valeurs surtout françaises) et un biais sectoriel calculé par heuristique. "
-    "Ta tâche : produire un biais sectoriel NET par secteur, en te fondant "
-    "UNIQUEMENT sur le texte fourni (n'invente rien). Utilise EXCLUSIVEMENT ces "
-    f"secteurs : {', '.join(SECTOR_VOCAB)}. "
-    "Réponds UNIQUEMENT par un objet JSON, sans texte autour. Schéma : "
-    '{"sectors": [{"sector": str∈vocab, "bias": int -2..2, "quote": str (extrait '
-    'verbatim justifiant), "rationale": str court}]}. '
-    "N'inclus un secteur QUE si le texte le justifie explicitement (avec citation)."
+_NEWSLETTER_SYSTEM = (
+    "Tu analyses une newsletter boursière française. Réponds UNIQUEMENT par un objet "
+    "JSON à DEUX clés, sans texte autour, en te fondant EXCLUSIVEMENT sur le texte "
+    "fourni (n'invente rien) :\n"
+    '- "sectors": [{"sector": str, "bias": int -2..2, "quote": str extrait verbatim}] '
+    f"— biais sectoriel net. Secteurs AUTORISÉS uniquement : {', '.join(SECTOR_VOCAB)}. "
+    "N'inclus un secteur que si le texte le justifie (citation obligatoire).\n"
+    '- "trades": [{"company": str nom FR, "action": "BUY"|"SELL"|"HOLD"|"AVOID", '
+    '"tp_levels": [float euros], "sl": float euros ou 0, "quote": str extrait}] '
+    "— pour chaque société française avec une reco claire. N'invente AUCUN prix : "
+    "extrais-les verbatim (objectifs = TP ; seuil de sortie / support cassé = SL). "
+    "Citation obligatoire. Liste vide si rien d'exploitable."
 )
 
 
-def enrich_sector_bias(
-    newsletter_text: str, regex_bias: dict[str, int]
-) -> Optional[dict[str, int]]:
-    """
-    Renvoie un dict {sector: bias int} fiabilisé par le LLM, ou None pour signaler
-    à l'appelant de conserver le biais regex existant (LLM désactivé / échec / texte
-    vide). N'émet que des secteurs du vocabulaire fermé, chacun justifié par citation.
-    """
-    if not is_enabled() or not newsletter_text or not newsletter_text.strip():
-        return None
-
-    hint = ", ".join(f"{s}:{v:+d}" for s, v in sorted(regex_bias.items())) or "(aucun)"
-    # On borne le texte (coût) : l'essentiel du signal sectoriel tient au début.
-    user = (
-        f"Biais heuristique préalable (indicatif) : {hint}\n\n"
-        f"--- NEWSLETTER ---\n{newsletter_text[:8000]}"
-    )
-
-    data, usage = _call(_SECTOR_SYSTEM, user, max_tokens=1200)
-    if not isinstance(data, dict):
-        return None
-    rows = data.get("sectors")
-    if not isinstance(rows, list):
-        return None
-
+def _parse_sector_rows(rows) -> tuple[dict, list]:
+    """Valide les lignes secteur : vocab fermé + citation obligatoire. → (bias, audit)."""
     bias: dict[str, int] = {}
-    audit_rows = []
+    audit: list = []
+    if not isinstance(rows, list):
+        return bias, audit
     for r in rows:
         if not isinstance(r, dict):
             continue
@@ -336,8 +317,7 @@ def enrich_sector_bias(
         if sector not in SECTOR_VOCAB:
             continue
         quote = str(r.get("quote", "")).strip()
-        if not quote:
-            # Anti-hallucination : pas de citation → on rejette le biais.
+        if not quote:                          # anti-hallucination
             continue
         try:
             b = int(r.get("bias", 0))
@@ -345,65 +325,25 @@ def enrich_sector_bias(
             continue
         b = max(-2, min(2, b))
         bias[sector] = b
-        audit_rows.append({"sector": sector, "bias": b, "quote": quote[:200],
-                            "rationale": str(r.get("rationale", ""))[:200]})
-
-    if not bias:
-        return None
-
-    _log("sector_bias", {"regex_hint": regex_bias, "llm_bias": bias,
-                         "detail": audit_rows}, usage)
-    return bias
+        audit.append({"sector": sector, "bias": b, "quote": quote[:200]})
+    return bias, audit
 
 
-# ── 3. Extraction des trades momentum de la newsletter (fiabilise le regex) ──
-
-_MOMENTUM_SYSTEM = (
-    "Tu es analyste actions. On te donne le texte d'une newsletter boursière française "
-    "et une extraction heuristique préalable. Pour chaque SOCIÉTÉ FRANÇAISE ayant une "
-    "recommandation d'action claire, renvoie un objet. N'invente AUCUN prix : extrais-les "
-    "verbatim du texte (objectifs = TP ; seuil de sortie / support cassé = SL). "
-    "Réponds UNIQUEMENT par un tableau JSON. Schéma par élément : "
-    '{"company": str (nom FR), "action": "BUY"|"SELL"|"HOLD"|"AVOID", '
-    '"tp_levels": [float euros], "sl": float euros ou 0, "quote": str (extrait justifiant)}. '
-    "Tableau vide [] si aucune reco exploitable."
-)
-
-
-def enrich_momentum_trades(
-    newsletter_text: str, regex_trades: list
-) -> Optional[list[dict]]:
-    """
-    Extrait les trades momentum de la newsletter via LLM (classification + prix TP/SL),
-    plus robuste que le regex sur les tournures inattendues. Retourne une liste de dicts
-    {company, ticker, action, tp_levels, sl, quote} ou None (→ garder le regex).
-
-    Anti-hallucination : société acceptée seulement si dans FR_TICKER_MAP (whitelist),
-    action dans le vocabulaire fermé, prix = floats positifs, citation obligatoire.
-    """
-    if not is_enabled() or not newsletter_text or not newsletter_text.strip():
-        return None
+def _parse_trade_rows(rows) -> list[dict]:
+    """Valide les trades : whitelist FR_TICKER_MAP + citation + prix positifs."""
+    if not isinstance(rows, list):
+        return []
     from signals.newsletter_agent import FR_TICKER_MAP
-
-    hint = ", ".join(f"{getattr(t, 'company', '?')}:{getattr(t, 'action', '?')}"
-                     for t in (regex_trades or [])) or "(aucune)"
-    user = (
-        f"Extraction heuristique préalable : {hint}\n\n"
-        f"--- NEWSLETTER ---\n{newsletter_text[:12000]}"
-    )
-    data, usage = _call(_MOMENTUM_SYSTEM, user, max_tokens=2000)
-    if not isinstance(data, list):
-        return None
 
     valid_actions = {"BUY", "SELL", "HOLD", "AVOID"}
     out: list[dict] = []
     seen: set[str] = set()
-    for it in data:
+    for it in rows:
         if not isinstance(it, dict):
             continue
         company = str(it.get("company", "")).strip().lower()
         ticker = FR_TICKER_MAP.get(company)
-        if not ticker or ticker in seen:      # whitelist stricte + dédup
+        if not ticker or ticker in seen:       # whitelist stricte + dédup
             continue
         action = str(it.get("action", "")).upper()
         if action not in valid_actions:
@@ -433,14 +373,44 @@ def enrich_momentum_trades(
             "sl":        sl,
             "quote":     quote[:200],
         })
-
-    if not out:
-        return None
-    _log("momentum_trades", {"n": len(out), "trades": out}, usage)
     return out
 
 
-# ── 4. Post-mortem d'un trade clôturé (catégorisation → boucle d'apprentissage) ──
+def enrich_newsletter(
+    newsletter_text: str,
+    regex_bias: dict[str, int],
+    regex_trades: list,
+) -> Optional[dict]:
+    """
+    UN SEUL appel LLM qui lit la newsletter et renvoie à la fois le biais sectoriel
+    fiabilisé ET les trades momentum (classification + prix TP/SL), pour ne pas lire
+    le texte deux fois. Retourne {"sector_bias": dict|None, "momentum_trades": list|None}
+    ou None (LLM off / échec / texte vide → l'appelant garde le regex).
+    """
+    if not is_enabled() or not newsletter_text or not newsletter_text.strip():
+        return None
+
+    hint_b = ", ".join(f"{s}:{v:+d}" for s, v in sorted((regex_bias or {}).items())) or "(aucun)"
+    hint_t = ", ".join(f"{getattr(t, 'company', '?')}:{getattr(t, 'action', '?')}"
+                       for t in (regex_trades or [])) or "(aucune)"
+    user = (
+        f"Biais sectoriel heuristique : {hint_b}\n"
+        f"Trades heuristiques : {hint_t}\n\n"
+        f"--- NEWSLETTER ---\n{newsletter_text[:12000]}"
+    )
+
+    data, usage = _call(_NEWSLETTER_SYSTEM, user, max_tokens=2500)
+    if not isinstance(data, dict):
+        return None
+
+    bias, audit = _parse_sector_rows(data.get("sectors"))
+    trades = _parse_trade_rows(data.get("trades"))
+    _log("newsletter", {"sector_bias": bias, "sector_detail": audit,
+                        "n_trades": len(trades), "trades": trades}, usage)
+    return {"sector_bias": bias or None, "momentum_trades": trades or None}
+
+
+# ── 3. Post-mortem d'un trade clôturé (catégorisation → boucle d'apprentissage) ──
 
 _POSTMORTEM_SYSTEM = (
     "Tu es analyste risque. On te donne les FAITS d'un trade CLÔTURÉ. Attribue UNE cause "

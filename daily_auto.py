@@ -196,40 +196,34 @@ def run():
     news_signals: dict = {}           # signaux d'actualité LLM par ticker (rempli plus bas)
     if nl_signal is not None and llm_enrich.is_enabled():
         try:
-            llm_bias = llm_enrich.enrich_sector_bias(
-                _newsletter_raw_text(), nl_signal.sector_bias
+            # UN SEUL appel : biais secteur + trades momentum (la newsletter n'est lue
+            # qu'une fois). Fallback regex sur échec.
+            enriched = llm_enrich.enrich_newsletter(
+                _newsletter_raw_text(), nl_signal.sector_bias, nl_signal.momentum_trades
             )
-            if llm_bias:
-                nl_signal.sector_bias = {**nl_signal.sector_bias, **llm_bias}
-                llm_sector_detail = llm_bias
-                log("[LLM] Biais sectoriel fiabilisé : "
-                    + ", ".join(f"{s}:{v:+d}" for s, v in llm_bias.items()))
+            if enriched:
+                llm_bias = enriched.get("sector_bias")
+                if llm_bias:
+                    nl_signal.sector_bias = {**nl_signal.sector_bias, **llm_bias}
+                    llm_sector_detail = llm_bias
+                    log("[LLM] Biais sectoriel fiabilisé : "
+                        + ", ".join(f"{s}:{v:+d}" for s, v in llm_bias.items()))
+                # Trades appliqués seulement si la newsletter est fraîche (sinon non
+                # exploités par la poche Momentum en aval).
+                llm_trades = enriched.get("momentum_trades")
+                if llm_trades and nl_signal.is_fresh:
+                    from signals.newsletter_agent import MomentumTrade
+                    nl_signal.momentum_trades = [
+                        MomentumTrade(
+                            company=t["company"], ticker=t["ticker"], action=t["action"],
+                            tp_levels=t["tp_levels"], sl=t["sl"], raw_rec=t["quote"],
+                        )
+                        for t in llm_trades
+                    ]
+                    log(f"[LLM] Trades momentum fiabilisés ({len(llm_trades)}) : "
+                        + ", ".join(f"{t['company']}:{t['action']}" for t in llm_trades))
         except Exception as e:
-            log(f"[LLM] enrich secteur échoué (fallback regex) : {e}")
-
-        # #1 — Extraction des trades momentum fiabilisée par le LLM (remplace le regex,
-        # plus robuste sur les tournures inattendues). Fallback : on garde le regex.
-        # Seulement si la newsletter est FRAÎCHE : sinon ses trades ne sont pas exploités
-        # par la poche Momentum (cf. plus bas) → inutile de dépenser des tokens.
-        try:
-            llm_trades = (
-                llm_enrich.enrich_momentum_trades(
-                    _newsletter_raw_text(), nl_signal.momentum_trades)
-                if nl_signal.is_fresh else None
-            )
-            if llm_trades:
-                from signals.newsletter_agent import MomentumTrade
-                nl_signal.momentum_trades = [
-                    MomentumTrade(
-                        company=t["company"], ticker=t["ticker"], action=t["action"],
-                        tp_levels=t["tp_levels"], sl=t["sl"], raw_rec=t["quote"],
-                    )
-                    for t in llm_trades
-                ]
-                log(f"[LLM] Trades momentum fiabilisés ({len(llm_trades)}) : "
-                    + ", ".join(f"{t['company']}:{t['action']}" for t in llm_trades))
-        except Exception as e:
-            log(f"[LLM] enrich trades momentum échoué (fallback regex) : {e}")
+            log(f"[LLM] enrichissement newsletter échoué (fallback regex) : {e}")
 
     macro_ctx = MacroAgent().analyze(newsletter_signal=nl_signal)
     for line in macro_ctx.format_log():
