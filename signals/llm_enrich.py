@@ -42,8 +42,37 @@ SECTOR_VOCAB = [
 
 PROMPT_VERSION = "2026-07-11.1"
 
+# Tarifs $/million de tokens (input, output) — pour l'ESTIMATION de coût affichée
+# dans l'email récap. Tarif STANDARD (borne haute) : pendant une période d'intro le
+# coût réel est plus bas. À ajuster si Anthropic change ses prix.
+PRICING = {
+    "claude-sonnet-5":  (3.0, 15.0),
+    "claude-opus-4-8":  (5.0, 25.0),
+    "claude-opus-4-7":  (5.0, 25.0),
+    "claude-haiku-4-5": (1.0, 5.0),
+    "claude-fable-5":   (10.0, 50.0),
+}
+
+# Accumulateur de conso sur le run courant (le process daily_auto tourne 1×/jour).
+_usage_run = {"input": 0, "output": 0, "calls": 0}
+
 _data_dir = Path(os.environ.get("DATA_DIR", Path(__file__).parent.parent / "data"))
 LLM_LOG = _data_dir / "llm_signals.jsonl"
+
+
+def usage_summary() -> dict:
+    """Conso LLM cumulée du run : {model, calls, input, output, cost_usd}.
+    cost_usd = None si le modèle n'est pas au barème."""
+    rate = PRICING.get(LLM_MODEL)
+    inp, outp = _usage_run["input"], _usage_run["output"]
+    cost = (inp / 1e6 * rate[0] + outp / 1e6 * rate[1]) if rate else None
+    return {
+        "model":    LLM_MODEL,
+        "calls":    _usage_run["calls"],
+        "input":    inp,
+        "output":   outp,
+        "cost_usd": cost,
+    }
 
 
 # ── Activation ────────────────────────────────────────────────────
@@ -117,6 +146,9 @@ def _call(system: str, user: str, max_tokens: int = 1500) -> tuple[Optional[obje
             "in": getattr(msg.usage, "input_tokens", None),
             "out": getattr(msg.usage, "output_tokens", None),
         }
+        _usage_run["input"]  += usage["in"] or 0
+        _usage_run["output"] += usage["out"] or 0
+        _usage_run["calls"]  += 1
         return _extract_json(text), usage
     except Exception:
         return None, {}

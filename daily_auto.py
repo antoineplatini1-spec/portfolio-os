@@ -753,6 +753,7 @@ def run():
             "enabled": llm_enrich.is_enabled(),
             "sector":  llm_sector_detail,
             "news":    news_signals,
+            "usage":   llm_enrich.usage_summary(),
         },
     )
 
@@ -922,12 +923,31 @@ def _llm_email_section(llm_summary: dict | None) -> str:
 
     sector = llm_summary.get("sector") or {}
     news   = llm_summary.get("news") or {}
+
+    # Footer conso : tokens + coût estimatif du jour (dès qu'un appel LLM a eu lieu).
+    usage = llm_summary.get("usage") or {}
+    usage_html = ""
+    if usage.get("calls"):
+        inp  = usage.get("input", 0)
+        outp = usage.get("output", 0)
+        cost = usage.get("cost_usd")
+        cost_str = (f"&#8776; {cost*100:.1f}&#162; (~{cost:.3f}$)"
+                    if cost is not None else "n/a")
+        usage_html = (
+            "<div style='margin-top:10px;padding-top:8px;border-top:1px solid #1e2d45;"
+            "font-size:11px;color:#445470'>"
+            f"&#x1F9FE; {usage.get('model','?')} &middot; {usage['calls']} appel(s) &middot; "
+            f"{inp + outp:,} tokens (in {inp:,} / out {outp:,}) &middot; "
+            f"<strong style='color:#8097b5'>{cost_str}</strong> estimatif</div>"
+        )
+
     if not sector and not news:
         return (
             "<tr><td style='height:16px'></td></tr>"
             "<tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;"
             "padding:12px 16px'><div style='font-size:12px;color:#8097b5'>"
-            "&#x1F9E0; LLM actif — aucun signal matériel aujourd'hui.</div></td></tr>"
+            "&#x1F9E0; LLM actif — aucun signal matériel aujourd'hui.</div>"
+            f"{usage_html}</td></tr>"
         )
 
     sector_html = ""
@@ -965,7 +985,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
         "padding:14px 18px'>"
         "<div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:8px'>"
         "&#x1F9E0; Signaux LLM du jour</div>"
-        f"{sector_html}{news_html}</td></tr>"
+        f"{sector_html}{news_html}{usage_html}</td></tr>"
     )
 
 
