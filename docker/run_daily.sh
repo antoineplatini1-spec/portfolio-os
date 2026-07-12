@@ -32,7 +32,8 @@ export LLM_ENABLED=1
 if [ -f "$DATA_DIR/llm.env" ]; then
     set -a; . "$DATA_DIR/llm.env"; set +a
 fi
-# export LLM_MODEL=claude-sonnet-5   # décommenter pour ~2,5× moins cher (extraction)
+export LLM_MODEL=claude-sonnet-5      # Sonnet 5 : ~2,5× moins cher qu'Opus, largement
+                                     # assez fin pour de la lecture/extraction de texte.
 
 # venv Python
 # shellcheck disable=SC1091
