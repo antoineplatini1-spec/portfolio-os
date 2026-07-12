@@ -434,12 +434,30 @@ def enrich_newsletter(
 # ── 3. Post-mortem d'un trade clôturé (catégorisation → boucle d'apprentissage) ──
 
 _POSTMORTEM_SYSTEM = (
-    "Tu es analyste risque. On te donne les FAITS d'un trade CLÔTURÉ. Attribue UNE cause "
-    "parmi cette liste FERMÉE (renvoie la clé exacte, rien d'autre) : "
-    + ", ".join(CAUSE_VOCAB) + ". "
-    "Puis écris une leçon courte (1 phrase), actionnable. Fonde-toi UNIQUEMENT sur les "
-    'faits fournis. Réponds UNIQUEMENT par un objet JSON : {"cause": str, "lesson": str}.'
+    "Tu es analyste risque. On te donne les FAITS d'un trade CLÔTURÉ, parfois précédés "
+    "d'un bloc MÉMOIRE (tendances des clôtures passées). Attribue UNE cause parmi cette "
+    "liste FERMÉE (clé exacte, rien d'autre) : " + ", ".join(CAUSE_VOCAB) + ". "
+    "La cause doit venir UNIQUEMENT des faits du trade — ne te laisse PAS biaiser par les "
+    "fréquences passées. Utilise la MÉMOIRE seulement pour rendre la leçon plus pertinente "
+    "(la relier à une tendance récurrente si c'en est une). Écris une leçon courte "
+    '(1 phrase), actionnable. Réponds UNIQUEMENT par un objet JSON : {"cause": str, "lesson": str}.'
 )
+
+
+def _memory_block() -> str:
+    """
+    Résumé COMPACT et de TAILLE FIXE des post-mortems passés (Niveau 0 d'apprentissage).
+    Ce n'est PAS l'historique tronqué : c'est l'agrégat déterministe (comptage des causes,
+    borné par le vocab fermé), donc constant quel que soit le nombre de clôtures → le coût
+    du prompt reste plafonné. Vide tant qu'il n'y a pas assez de données.
+    """
+    from signals.learning import digest
+    d = digest()
+    if not d or not d.get("causes"):
+        return ""
+    causes = ", ".join(f"{k}={v}" for k, v in sorted(d["causes"].items(), key=lambda x: -x[1]))
+    return (f"MÉMOIRE — {d['n']} clôtures/90j ({d['n_losers']} perdantes). "
+            f"Causes récurrentes : {causes}.")
 
 
 def postmortem(trade: dict) -> Optional[dict]:
@@ -455,7 +473,9 @@ def postmortem(trade: dict) -> Optional[dict]:
         f"raison_sortie={trade.get('reason')} durée_jours={trade.get('holding_days')} "
         f"score_entrée={trade.get('entry_score')}"
     )
-    data, usage = _call(_POSTMORTEM_SYSTEM, facts, max_tokens=300)
+    mem = _memory_block()   # Niveau 0 : mémoire compacte de taille fixe (coût plafonné)
+    user = (mem + "\n\n" + facts) if mem else facts
+    data, usage = _call(_POSTMORTEM_SYSTEM, user, max_tokens=300)
     if not isinstance(data, dict):
         return None
     cause = str(data.get("cause", "")).strip()
