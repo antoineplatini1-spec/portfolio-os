@@ -117,14 +117,20 @@ def _log(kind: str, payload: dict, usage: Optional[dict] = None):
 
 
 def _extract_json(text: str):
-    """Extrait le premier objet/tableau JSON d'une réponse (robuste aux préambules)."""
+    """
+    Extrait l'objet OU le tableau JSON d'une réponse (robuste aux préambules / fences).
+    Le conteneur externe est choisi selon le PREMIER crochet rencontré : '{' → objet,
+    '[' → tableau. Indispensable pour ne pas prendre un tableau interne (ex. la valeur
+    "sectors":[...]) pour le conteneur d'un objet {"sectors":[...], "trades":[...]}.
+    """
     text = text.strip()
-    for opener, closer in (("[", "]"), ("{", "}")):
-        i = text.find(opener)
-        j = text.rfind(closer)
-        if i != -1 and j != -1 and j > i:
-            return json.loads(text[i : j + 1])
-    return json.loads(text)
+    obj_i = text.find("{")
+    arr_i = text.find("[")
+    if obj_i == -1 and arr_i == -1:
+        return json.loads(text)
+    if arr_i == -1 or (obj_i != -1 and obj_i < arr_i):
+        return json.loads(text[obj_i : text.rfind("}") + 1])
+    return json.loads(text[arr_i : text.rfind("]") + 1])
 
 
 def _call(system: str, user: str, max_tokens: int = 1500) -> tuple[Optional[object], dict]:
