@@ -209,9 +209,13 @@ def run():
 
         # #1 — Extraction des trades momentum fiabilisée par le LLM (remplace le regex,
         # plus robuste sur les tournures inattendues). Fallback : on garde le regex.
+        # Seulement si la newsletter est FRAÎCHE : sinon ses trades ne sont pas exploités
+        # par la poche Momentum (cf. plus bas) → inutile de dépenser des tokens.
         try:
-            llm_trades = llm_enrich.enrich_momentum_trades(
-                _newsletter_raw_text(), nl_signal.momentum_trades
+            llm_trades = (
+                llm_enrich.enrich_momentum_trades(
+                    _newsletter_raw_text(), nl_signal.momentum_trades)
+                if nl_signal.is_fresh else None
             )
             if llm_trades:
                 from signals.newsletter_agent import MomentumTrade
