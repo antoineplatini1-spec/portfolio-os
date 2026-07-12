@@ -449,6 +449,66 @@ def enrich_newsletter(
     return {"sector_bias": bias or None, "momentum_trades": trades or None}
 
 
+# ── 2bis. Newsletter US (ex. Barchart) : biais secteur + idées titres US ──────────
+
+_US_SOURCE_SYSTEM = (
+    "Tu analyses une newsletter boursière US. Réponds UNIQUEMENT par un objet JSON à "
+    "deux clés, fondé EXCLUSIVEMENT sur le texte (n'invente rien) :\n"
+    '- "sectors": [{"sector": str, "bias": int -2..2, "quote": str}] — biais sectoriel. '
+    f"Secteurs AUTORISÉS uniquement : {', '.join(SECTOR_VOCAB)}. Citation obligatoire.\n"
+    '- "tickers": [{"ticker": str (symbole US en MAJUSCULES), '
+    '"stance": "bullish"|"bearish"|"neutral", "quote": str}] — valeurs US explicitement '
+    "mises en avant. Citation obligatoire. Listes vides si rien. Citations COURTES (≤15 mots)."
+)
+
+
+def enrich_us_source(text: str) -> Optional[dict]:
+    """
+    Lit une newsletter US → {"sector_bias": dict|None, "tickers": [{ticker, stance, quote}]}.
+    Tickers validés contre le référentiel US EDGAR (whitelist anti-hallucination) ;
+    secteurs contre le vocab fermé ; citation obligatoire partout. None si off/échec/vide.
+    """
+    if not is_enabled() or not text or not text.strip():
+        return None
+
+    data, usage = _call(_US_SOURCE_SYSTEM, f"--- NEWSLETTER US ---\n{text[:10000]}",
+                        max_tokens=1500)
+    if not isinstance(data, dict):
+        return None
+
+    bias, _audit = _parse_sector_rows(data.get("sectors"))
+
+    # Whitelist tickers = référentiel SEC EDGAR (si dispo). Sinon, on exige au moins
+    # une citation (garde-fou minimal) plutôt que de tout rejeter.
+    try:
+        from signals import edgar
+        cikmap = edgar._load_cik_map()
+    except Exception:
+        cikmap = {}
+    valid_stance = {"bullish", "bearish", "neutral"}
+    tickers: list[dict] = []
+    seen: set[str] = set()
+    for it in (data.get("tickers") or []):
+        if not isinstance(it, dict):
+            continue
+        tk = str(it.get("ticker", "")).upper().strip()
+        if not tk or tk in seen:
+            continue
+        if cikmap and tk not in cikmap:            # ticker US inconnu → rejet
+            continue
+        quote = str(it.get("quote", "")).strip()
+        if not quote:
+            continue
+        stance = str(it.get("stance", "")).lower()
+        if stance not in valid_stance:
+            stance = "neutral"
+        seen.add(tk)
+        tickers.append({"ticker": tk, "stance": stance, "quote": quote[:200]})
+
+    _log("us_source", {"sector_bias": bias, "tickers": tickers}, usage)
+    return {"sector_bias": bias or None, "tickers": tickers}
+
+
 # ── 3. Post-mortem d'un trade clôturé (catégorisation → boucle d'apprentissage) ──
 
 _POSTMORTEM_SYSTEM = (

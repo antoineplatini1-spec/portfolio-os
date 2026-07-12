@@ -203,7 +203,9 @@ def run():
         "secteur":  "LLM" if llm_on else "algo (LLM off)",
         "momentum": "LLM" if llm_on else "algo (LLM off)",
         "news":     "LLM" if llm_on else "off",
+        "us_src":   "off",
     }
+    barchart_tickers: list[str] = []   # idées US Barchart → injectées dans l'univers screener
     if llm_on and nl_signal is None:
         llm_provenance["secteur"]  = "algo (pas de newsletter)"
         llm_provenance["momentum"] = "algo (pas de newsletter)"
@@ -251,6 +253,42 @@ def run():
             llm_provenance["secteur"]  = "algo (fallback LLM)"
             llm_provenance["momentum"] = "algo (fallback LLM)"
             log(f"[LLM] enrichissement newsletter EXCEPTION → FALLBACK ALGO : {e}")
+
+    # ── 0c. Newsletter US (Barchart) : source US directe (secteur + idées titres) ──
+    # Séparée de la poche FR. Le biais secteur US s'ajoute à l'overlay macro ; les tickers
+    # US mis en avant sont injectés dans l'univers du screener (validés ensuite par le
+    # débat déterministe — Barchart ne force aucun achat, il nomme des candidats).
+    if llm_on:
+        llm_provenance["us_src"] = "algo (pas d'email)"
+        try:
+            from signals.newsletter_agent import NewsletterAgent
+            fetched = NewsletterAgent().fetch_source_text("newsletters@barchart.com")
+            if not fetched or not (fetched[0] or "").strip():
+                log("[US] Barchart : aucun email récent")
+            else:
+                us_txt, us_subj, _ = fetched
+                us = llm_enrich.enrich_us_source(us_txt)
+                if us is None:
+                    llm_provenance["us_src"] = "algo (fallback LLM)"
+                    log("[US] Barchart → échec extraction LLM (fallback)")
+                else:
+                    llm_provenance["us_src"] = "LLM"
+                    us_bias = us.get("sector_bias") or {}
+                    if us_bias:
+                        if nl_signal is None:
+                            from signals.newsletter_agent import NewsletterSignal
+                            nl_signal = NewsletterSignal(
+                                date="", source="us", cac40_sentiment="NEUTRAL",
+                                stock_signals=[], sector_bias=dict(us_bias), macro_flags=[],
+                                raw_subject=us_subj, is_fresh=False)
+                        else:
+                            nl_signal.sector_bias = {**nl_signal.sector_bias, **us_bias}
+                    barchart_tickers = [t["ticker"] for t in (us.get("tickers") or [])]
+                    log(f"[US] Barchart «{us_subj[:40]}» → secteur {us_bias or '—'} | "
+                        f"idées: {', '.join(barchart_tickers) or '—'}")
+        except Exception as e:
+            llm_provenance["us_src"] = "algo (fallback LLM)"
+            log(f"[US] Barchart EXCEPTION → fallback : {e}")
 
     macro_ctx = MacroAgent().analyze(newsletter_signal=nl_signal)
     for line in macro_ctx.format_log():
@@ -407,7 +445,11 @@ def run():
     # ── 2. Screener ───────────────────────────────────────────────
     log("Screener en cours...")
     try:
-        df_screen = run_screener(tickers=DEFAULT_WATCHLIST, period="6mo", min_score=0)
+        universe = list(dict.fromkeys(DEFAULT_WATCHLIST + barchart_tickers))
+        if barchart_tickers:
+            log(f"[US] Univers screener enrichi de {len(barchart_tickers)} idée(s) Barchart "
+                f": {', '.join(barchart_tickers)}")
+        df_screen = run_screener(tickers=universe, period="6mo", min_score=0)
     except Exception as e:
         log(f"Erreur screener : {e}")
         return
@@ -1025,11 +1067,13 @@ def _render_provenance(prov: dict | None, errs: list | None) -> str:
             icon = "&#x1F9E0;" if is_llm else "&#x2699;&#xFE0F;"   # 🧠 / ⚙️
             clr = "#34d399" if is_llm else "#8097b5"
             return f"<span style='color:{clr}'>{icon} {v}</span>"
+        us_seg = (f" &middot; Barchart: {_tag(prov.get('us_src'))}"
+                  if prov.get("us_src") and prov.get("us_src") != "off" else "")
         html += (
             "<div style='font-size:11px;color:#445470;margin:2px 0 8px'>"
             f"Provenance — secteur: {_tag(prov.get('secteur','?'))} &middot; "
             f"momentum: {_tag(prov.get('momentum','?'))} &middot; "
-            f"news: {_tag(prov.get('news','?'))}</div>"
+            f"news: {_tag(prov.get('news','?'))}{us_seg}</div>"
         )
     if errs:
         items = "".join(f"<div style='margin:2px 0'>&#x26A0; {e}</div>" for e in errs)

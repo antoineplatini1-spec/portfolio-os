@@ -293,6 +293,51 @@ class NewsletterAgent:
             return None
         return reader
 
+    def fetch_source_text(self, sender: str, since_days: int = 3):
+        """
+        Récupère le dernier email d'un EXPÉDITEUR quelconque via IMAP (généralise
+        _fetch_imap à d'autres newsletters, ex. Barchart US). Retourne (text, subject,
+        date_str) ou None si pas d'email / IMAP non configuré. Fallback HTML→texte si
+        l'email n'a pas de partie text/plain (cas fréquent des newsletters US).
+        """
+        cfg = self._load_imap_cfg()
+        if not cfg:
+            return None
+        mail = imaplib.IMAP4_SSL(cfg.get("imap_server", "imap.gmail.com"), 993)
+        mail.login(cfg["email"], cfg["password"])
+        mail.select("inbox")
+        since = (datetime.now() - timedelta(days=since_days)).strftime("%d-%b-%Y")
+        _, data = mail.search(None, f'(FROM "{sender}" SINCE "{since}")')
+        ids = data[0].split()
+        if not ids:
+            mail.logout()
+            return None
+        _, msg_data = mail.fetch(ids[-1], "(RFC822)")
+        mail.logout()
+
+        msg = email.message_from_bytes(msg_data[0][1])
+        subject = str(msg["Subject"] or "")
+        date_str = str(msg["Date"] or "")
+        body, html = "", ""
+        if msg.is_multipart():
+            for part in msg.walk():
+                payload = part.get_payload(decode=True)
+                if not payload:
+                    continue
+                ct = part.get_content_type()
+                if ct == "text/plain" and not body:
+                    body = payload.decode("utf-8", errors="replace")
+                elif ct == "text/html" and not html:
+                    html = payload.decode("utf-8", errors="replace")
+        else:
+            payload = msg.get_payload(decode=True)
+            if payload:
+                body = payload.decode("utf-8", errors="replace")
+        if not body and html:                       # newsletters HTML-only
+            body = re.sub(r"<[^>]+>", " ", html)
+            body = re.sub(r"\s+", " ", body).strip()
+        return (body, subject, date_str)
+
     def _fetch_imap(self, cfg: dict) -> tuple[str, str, str]:
         """Récupère le dernier email de momentum@prismamedia.com via IMAP."""
         mail = imaplib.IMAP4_SSL(cfg.get("imap_server", "imap.gmail.com"), 993)
