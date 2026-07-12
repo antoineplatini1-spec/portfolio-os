@@ -300,7 +300,8 @@ _NEWSLETTER_SYSTEM = (
     '"tp_levels": [float euros], "sl": float euros ou 0, "quote": str extrait}] '
     "— pour chaque société française avec une reco claire. N'invente AUCUN prix : "
     "extrais-les verbatim (objectifs = TP ; seuil de sortie / support cassé = SL). "
-    "Citation obligatoire. Liste vide si rien d'exploitable."
+    "Citation obligatoire. Liste vide si rien d'exploitable.\n"
+    "Toute citation doit être COURTE (≤ 15 mots)."
 )
 
 
@@ -399,7 +400,9 @@ def enrich_newsletter(
         f"--- NEWSLETTER ---\n{newsletter_text[:12000]}"
     )
 
-    data, usage = _call(_NEWSLETTER_SYSTEM, user, max_tokens=2500)
+    # 4000 : le combiné (secteurs + trades + citations) est plus verbeux qu'un appel
+    # simple ; un plafond trop bas tronque le JSON → parse échoué → fallback inutile.
+    data, usage = _call(_NEWSLETTER_SYSTEM, user, max_tokens=4000)
     if not isinstance(data, dict):
         return None
 
