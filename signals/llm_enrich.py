@@ -242,22 +242,40 @@ def _recent_headlines(ticker: str, max_items: int = 5, max_age_days: int = 4) ->
     return out
 
 
-def fetch_news_signals(tickers: list[str], max_tickers: int = 30) -> dict[str, dict]:
+def fetch_news_signals(
+    tickers: list[str], max_tickers: int = 30, edgar_events: dict | None = None
+) -> dict[str, dict]:
     """
     Retourne {ticker: {event, direction, strength, horizon_days, quote, url}} pour les
     valeurs ayant une actualité matérielle récente. {} si LLM désactivé ou aucune
     actualité. Un SEUL appel LLM (batch) pour tenir le coût.
+
+    edgar_events : {ticker: [{date, labels, url, ...}]} déjà récupéré par le code (SEC
+    8-K). Fusionné VERBATIM dans le corpus → le LLM interprète les événements officiels
+    en même temps que les headlines, sans appel supplémentaire.
     """
     if not is_enabled() or not tickers:
         return {}
 
-    # Le code récupère les faits (headlines) et les passe VERBATIM au LLM.
+    # Le code récupère les faits (headlines + 8-K SEC) et les passe VERBATIM au LLM.
     # Le LLM ne "va" jamais chercher lui-même → factuel, auditable.
     corpus: dict[str, list[dict]] = {}
     for t in tickers[:max_tickers]:
         hl = _recent_headlines(t)
         if hl:
             corpus[t] = hl
+
+    # Événements 8-K officiels prépendus (prioritaires) — inclut les tickers qui ont un
+    # 8-K mais pas de headline.
+    for tk, evs in (edgar_events or {}).items():
+        entries = [
+            {"title": f"SEC 8-K ({e.get('date')}) : " + ", ".join(e.get("labels", [])),
+             "publisher": "SEC EDGAR", "url": e.get("url", "")}
+            for e in evs
+        ]
+        if entries:
+            corpus[tk.upper()] = entries + corpus.get(tk.upper(), [])
+
     if not corpus:
         return {}
 

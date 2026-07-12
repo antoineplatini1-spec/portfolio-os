@@ -15,6 +15,9 @@ data/llm.env                 # clé ANTHROPIC_API_KEY (couche LLM)
 # Journal d'audit LLM (local à chaque machine, peut grossir)
 data/llm_signals.jsonl
 
+# Cache SEC EDGAR ticker→CIK (regénéré depuis la SEC, ~1 Mo)
+data/edgar_ciks.json
+
 # IBKR — identifiants Gateway & état local du Gateway (NE PAS committer)
 docker/.env
 docker/ibc-settings/

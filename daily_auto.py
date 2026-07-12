@@ -462,7 +462,22 @@ def run():
             watch = list(dict.fromkeys(
                 list(candidates["ticker"]) + list(pm.open_positions.keys())
             ))
-            news_signals = llm_enrich.fetch_news_signals(watch)
+            # SEC 8-K (déterministe, officiel) : loggé visiblement (provenance SEC/algo)
+            # AVANT l'interprétation, puis fourni à l'appel news pour être interprété.
+            edgar_events = {}
+            try:
+                from signals import edgar
+                edgar_events = edgar.recent_8k(watch)
+                for tk, evs in edgar_events.items():
+                    for e in evs:
+                        mark = " ⚠MATÉRIEL" if e.get("material") else ""
+                        log(f"  [SEC 8-K] {tk} ({e['date']}){mark} : " + ", ".join(e["labels"]))
+                if not edgar_events:
+                    log("  [SEC 8-K] aucun dépôt 8-K récent sur les tickers suivis")
+            except Exception as ee:
+                log(f"  [SEC 8-K] ÉCHEC fetch EDGAR (événements non interprétés) : {ee}")
+
+            news_signals = llm_enrich.fetch_news_signals(watch, edgar_events=edgar_events)
             for tk, s in news_signals.items():
                 log(f"[LLM news] {tk}: {s['direction']} {s['strength']:.2f} — {s['event']}")
             # Actualité négative forte sur une position tenue → surveillance (pas un blocage)
@@ -471,7 +486,7 @@ def run():
                 if s and s["direction"] == "bearish" and s["strength"] >= 0.6:
                     log(f"  [LLM news] ⚠ position tenue {tk} : {s['event']} — à surveiller")
         except Exception as e:
-            log(f"[LLM news] échec (ignoré) : {e}")
+            log(f"[LLM news] ÉCHEC → aucun signal news ce jour (fallback algo) : {e}")
 
     # Near-miss screener : tickers qui frôlent le seuil pré-filtre (score_bas)
     if min_score < 999:
