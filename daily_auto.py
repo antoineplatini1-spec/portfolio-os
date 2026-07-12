@@ -1052,11 +1052,19 @@ def _render_learning(learning: dict | None) -> str:
             f"Leçons récentes ({learning.get('n', 0)} clôtures analysées, "
             f"{learning.get('n_losers', 0)} perdantes) :</div>{rows}"
         )
+    n = learning.get("n", 0)
+    # Honnêteté statistique : ces suggestions sont des HYPOTHÈSES sur petit échantillon,
+    # pas des vérités. Les perfs passées ne préjugent pas du futur — écrit noir sur blanc.
+    caveat = (
+        "<div style='font-size:10px;color:#8097b5;font-style:italic;margin:2px 0 6px'>"
+        f"&#x26A0; {n} clôtures observées — hypothèses à confirmer, pas des vérités "
+        "(les performances passées ne préjugent pas du futur).</div>"
+    )
     return (
         "<div style='margin-top:10px;padding-top:8px;border-top:1px solid #1e2d45'>"
         "<div style='font-size:13px;font-weight:700;color:#d6e0f0;margin-bottom:4px'>"
         "&#x1F393; Apprentissage</div>"
-        f"{sugg_html}{les_html}</div>"
+        f"{caveat}{sugg_html}{les_html}</div>"
     )
 
 
