@@ -205,7 +205,7 @@ def run():
         "news":     "LLM" if llm_on else "off",
         "us_src":   "off",
     }
-    barchart_tickers: list[str] = []   # idées US Barchart → injectées dans l'univers screener
+    us_ideas: list[str] = []   # idées titres US (Barchart, Transcript…) → univers screener
     if llm_on and nl_signal is None:
         llm_provenance["secteur"]  = "algo (pas de newsletter)"
         llm_provenance["momentum"] = "algo (pas de newsletter)"
@@ -254,41 +254,51 @@ def run():
             llm_provenance["momentum"] = "algo (fallback LLM)"
             log(f"[LLM] enrichissement newsletter EXCEPTION → FALLBACK ALGO : {e}")
 
-    # ── 0c. Newsletter US (Barchart) : source US directe (secteur + idées titres) ──
-    # Séparée de la poche FR. Le biais secteur US s'ajoute à l'overlay macro ; les tickers
-    # US mis en avant sont injectés dans l'univers du screener (validés ensuite par le
-    # débat déterministe — Barchart ne force aucun achat, il nomme des candidats).
+    # ── 0c. Newsletters US (Barchart, The Transcript) : sources US directes ──────────
+    # Séparées de la poche FR. Le biais secteur US s'ajoute à l'overlay macro ; les
+    # tickers US mis en avant sont injectés dans l'univers du screener (validés ensuite
+    # par le débat déterministe — une newsletter ne force aucun achat, elle nomme).
+    US_SOURCES = [
+        ("newsletters@barchart.com", "Barchart"),
+        ("thetranscript@substack.com", "The Transcript"),
+    ]
     if llm_on:
+        from signals.newsletter_agent import NewsletterAgent, NewsletterSignal
         llm_provenance["us_src"] = "algo (pas d'email)"
-        try:
-            from signals.newsletter_agent import NewsletterAgent
-            fetched = NewsletterAgent().fetch_source_text("newsletters@barchart.com")
-            if not fetched or not (fetched[0] or "").strip():
-                log("[US] Barchart : aucun email récent")
-            else:
+        _us_provs: list[str] = []
+        for _sender, _name in US_SOURCES:
+            try:
+                fetched = NewsletterAgent().fetch_source_text(_sender)
+                if not fetched or not (fetched[0] or "").strip():
+                    log(f"[US] {_name} : aucun email récent")
+                    continue
                 us_txt, us_subj, _ = fetched
                 us = llm_enrich.enrich_us_source(us_txt)
                 if us is None:
-                    llm_provenance["us_src"] = "algo (fallback LLM)"
-                    log("[US] Barchart → échec extraction LLM (fallback)")
-                else:
-                    llm_provenance["us_src"] = "LLM"
-                    us_bias = us.get("sector_bias") or {}
-                    if us_bias:
-                        if nl_signal is None:
-                            from signals.newsletter_agent import NewsletterSignal
-                            nl_signal = NewsletterSignal(
-                                date="", source="us", cac40_sentiment="NEUTRAL",
-                                stock_signals=[], sector_bias=dict(us_bias), macro_flags=[],
-                                raw_subject=us_subj, is_fresh=False)
-                        else:
-                            nl_signal.sector_bias = {**nl_signal.sector_bias, **us_bias}
-                    barchart_tickers = [t["ticker"] for t in (us.get("tickers") or [])]
-                    log(f"[US] Barchart «{us_subj[:40]}» → secteur {us_bias or '—'} | "
-                        f"idées: {', '.join(barchart_tickers) or '—'}")
-        except Exception as e:
-            llm_provenance["us_src"] = "algo (fallback LLM)"
-            log(f"[US] Barchart EXCEPTION → fallback : {e}")
+                    _us_provs.append("algo (fallback)")
+                    log(f"[US] {_name} → échec extraction LLM (fallback)")
+                    continue
+                _us_provs.append("LLM")
+                us_bias = us.get("sector_bias") or {}
+                if us_bias:
+                    if nl_signal is None:
+                        nl_signal = NewsletterSignal(
+                            date="", source="us", cac40_sentiment="NEUTRAL",
+                            stock_signals=[], sector_bias=dict(us_bias), macro_flags=[],
+                            raw_subject=us_subj, is_fresh=False)
+                    else:
+                        nl_signal.sector_bias = {**nl_signal.sector_bias, **us_bias}
+                for _t in (us.get("tickers") or []):
+                    if _t["ticker"] not in us_ideas:
+                        us_ideas.append(_t["ticker"])
+                log(f"[US] {_name} «{us_subj[:40]}» → secteur {us_bias or '—'} | "
+                    f"idées: {', '.join(t['ticker'] for t in us.get('tickers') or []) or '—'}")
+            except Exception as e:
+                _us_provs.append("algo (fallback)")
+                log(f"[US] {_name} EXCEPTION → fallback : {e}")
+        us_ideas = us_ideas[:12]                      # borne l'univers ajouté
+        if _us_provs:
+            llm_provenance["us_src"] = "LLM" if "LLM" in _us_provs else _us_provs[0]
 
     macro_ctx = MacroAgent().analyze(newsletter_signal=nl_signal)
     for line in macro_ctx.format_log():
@@ -445,10 +455,10 @@ def run():
     # ── 2. Screener ───────────────────────────────────────────────
     log("Screener en cours...")
     try:
-        universe = list(dict.fromkeys(DEFAULT_WATCHLIST + barchart_tickers))
-        if barchart_tickers:
-            log(f"[US] Univers screener enrichi de {len(barchart_tickers)} idée(s) Barchart "
-                f": {', '.join(barchart_tickers)}")
+        universe = list(dict.fromkeys(DEFAULT_WATCHLIST + us_ideas))
+        if us_ideas:
+            log(f"[US] Univers screener enrichi de {len(us_ideas)} idée(s) newsletters US "
+                f": {', '.join(us_ideas)}")
         df_screen = run_screener(tickers=universe, period="6mo", min_score=0)
     except Exception as e:
         log(f"Erreur screener : {e}")
