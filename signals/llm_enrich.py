@@ -337,6 +337,10 @@ _NEWSLETTER_SYSTEM = (
     "— pour chaque société française avec une reco claire. N'invente AUCUN prix : "
     "extrais-les verbatim (objectifs = TP ; seuil de sortie / support cassé = SL). "
     "Citation obligatoire. Liste vide si rien d'exploitable.\n"
+    '- "us_trades": [{"ticker": str (symbole US, ETF ou action), "action": "BUY"|"SELL", '
+    '"tp_levels": [float], "sl": float ou 0, "quote": str}] — UNIQUEMENT les instruments '
+    "COTÉS AUX USA explicitement recommandés (ex. ETF SPY/QQQ/XLE, actions US). "
+    "Prix extraits verbatim. Liste vide si aucun.\n"
     "Toute citation doit être COURTE (≤ 15 mots)."
 )
 
@@ -444,9 +448,60 @@ def enrich_newsletter(
 
     bias, audit = _parse_sector_rows(data.get("sectors"))
     trades = _parse_trade_rows(data.get("trades"))
+    us_trades = _parse_us_trade_rows(data.get("us_trades"))
     _log("newsletter", {"sector_bias": bias, "sector_detail": audit,
-                        "n_trades": len(trades), "trades": trades}, usage)
-    return {"sector_bias": bias or None, "momentum_trades": trades or None}
+                        "n_trades": len(trades), "trades": trades,
+                        "us_trades": us_trades}, usage)
+    return {"sector_bias": bias or None, "momentum_trades": trades or None,
+            "us_trades": us_trades or None}
+
+
+def _parse_us_trade_rows(rows) -> list[dict]:
+    """
+    Valide les instruments US directs recommandés par la newsletter FR (ETF/actions US) :
+    ticker ∈ (watchlist US ∪ référentiel EDGAR), action BUY/SELL, prix positifs, citation.
+    Ces trades s'exécutent aux TERMES de la newsletter sur le book réel (≠ poche FR).
+    """
+    if not isinstance(rows, list):
+        return []
+    from config import DEFAULT_WATCHLIST
+    us_ok = set(DEFAULT_WATCHLIST)
+    try:
+        from signals import edgar
+        us_ok |= set(edgar._load_cik_map().keys())
+    except Exception:
+        pass
+    out: list[dict] = []
+    seen: set[str] = set()
+    for it in rows:
+        if not isinstance(it, dict):
+            continue
+        tk = str(it.get("ticker", "")).upper().strip()
+        if not tk or tk in seen or tk not in us_ok:   # whitelist US stricte
+            continue
+        action = str(it.get("action", "")).upper()
+        if action not in {"BUY", "SELL"}:
+            continue
+        quote = str(it.get("quote", "")).strip()
+        if not quote:
+            continue
+        tps: list[float] = []
+        for p in (it.get("tp_levels") or []):
+            try:
+                v = float(p)
+                if v > 0:
+                    tps.append(round(v, 4))
+            except (TypeError, ValueError):
+                continue
+        try:
+            sl = float(it.get("sl", 0) or 0)
+            sl = sl if sl > 0 else 0.0
+        except (TypeError, ValueError):
+            sl = 0.0
+        seen.add(tk)
+        out.append({"ticker": tk, "action": action, "tp_levels": sorted(tps),
+                    "sl": sl, "quote": quote[:200]})
+    return out
 
 
 # ── 2bis. Newsletter US (ex. Barchart) : biais secteur + idées titres US ──────────

@@ -48,6 +48,11 @@ TRAILING_STOP_AFTER_TP1 = True    # Activer trailing stop à Entry après TP1
 BUY_SIGNAL_MIN_SCORE = 60         # Score minimum pour suggérer un achat
 ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance
 
+# Bonus/malus de score par unité de biais sectoriel (newsletter/LLM, −2..+2).
+# Appliqué à un score EFFECTIF (pré-filtre + classement des candidats) dans TOUS les
+# régimes ; le score brut reste inchangé pour le sizing. 3 pts × [−2..+2] = ±6 pts.
+SECTOR_BONUS_POINTS = 3
+
 # ── Frais ─────────────────────────────────────────────────────────
 # On maintient DEUX barèmes et on sélectionne l'effectif selon le broker réellement
 # utilisé (IBKR_ENABLED). C'est essentiel : les garde-fous de risque (sizing,
@@ -113,6 +118,13 @@ MOMENTUM_INITIAL_CASH     = 10_000.0   # Poche dédiée newsletter
 MOMENTUM_MAX_POSITION_PCT = 0.10       # 10% par position = ~1000€
 MOMENTUM_DEFAULT_SL_PCT   = 0.07       # SL par défaut si non mentionné : -7%
 MOMENTUM_TRAIL_PCT        = 0.05       # Trailing stop : 5% sous le plus haut après TP1
+
+# ── Trades US directs issus de la newsletter (Capital Momentum) ───
+# Quand la newsletter recommande un instrument US (ETF/action), il est exécuté sur le
+# book RÉEL aux termes de la newsletter (TP/SL du texte), sans passer par le screener.
+# La newsletter ne donne pas de taille → position fixe. Le SL est plafonné à MAX_LOSS_PCT
+# (backstop : jamais pire que -8%, même si la newsletter dit plus large).
+NEWSLETTER_US_POSITION_PCT = 0.05      # 5% du portefeuille par trade newsletter US
 
 # ── Données ───────────────────────────────────────────────────────
 DEFAULT_PERIOD = "6mo"

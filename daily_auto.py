@@ -206,6 +206,7 @@ def run():
         "us_src":   "off",
     }
     us_ideas: list[str] = []   # idées titres US (Barchart, Transcript…) → univers screener
+    us_direct_trades: list[dict] = []   # instruments US de Capital Momentum → exécution directe
     if llm_on and nl_signal is None:
         llm_provenance["secteur"]  = "algo (pas de newsletter)"
         llm_provenance["momentum"] = "algo (pas de newsletter)"
@@ -220,6 +221,7 @@ def run():
                 llm_provenance["momentum"] = "algo (fallback LLM)"
                 log("[LLM] newsletter → ÉCHEC/vide → FALLBACK ALGO (regex) secteur + momentum")
             else:
+                us_direct_trades = enriched.get("us_trades") or []
                 llm_bias = enriched.get("sector_bias")
                 if llm_bias:
                     nl_signal.sector_bias = {**nl_signal.sector_bias, **llm_bias}
@@ -486,11 +488,28 @@ def run():
 
     log(f"Contexte marche : {market_ctx} | seuil={min_score} | max_trades={max_opens} | score_max={score_max}")
 
-    # Pré-filtre large : on laisse le débat gérer les cas limites
+    # ── Bonus sectoriel : le biais newsletter/LLM (−2..+2) devient un bonus/malus de
+    # points sur un score EFFECTIF, utilisé pour le pré-filtre ET le classement, dans
+    # TOUS les régimes (pas seulement BEAR). Le score BRUT reste intact pour le sizing.
+    from config import SECTOR_BONUS_POINTS
+    _sector_bias = getattr(nl_signal, "sector_bias", {}) if nl_signal else {}
+    df_screen = df_screen.copy()
+    df_screen["eff_score"] = df_screen.apply(
+        lambda r: r["score"] + SECTOR_BONUS_POINTS
+        * _sector_bias.get(SECTOR_MAP.get(r["ticker"], "Other"), 0),
+        axis=1,
+    )
+    if _sector_bias:
+        _fav = [s for s, v in _sector_bias.items() if v > 0]
+        _dis = [s for s, v in _sector_bias.items() if v < 0]
+        log(f"Bonus sectoriel appliqué (±{SECTOR_BONUS_POINTS}pts/unité) — "
+            f"favorisés: {', '.join(_fav) or '—'} | pénalisés: {', '.join(_dis) or '—'}")
+
+    # Pré-filtre large : on laisse le débat gérer les cas limites (sur score EFFECTIF)
     candidates = df_screen[
-        (df_screen["score"] >= min_score) &
+        (df_screen["eff_score"] >= min_score) &
         (df_screen["r_ratio"] >= MIN_R_RATIO * 0.8)
-    ].sort_values("score", ascending=False)
+    ].sort_values("eff_score", ascending=False)
 
     # Filtre sectoriel macro
     if macro_ctx.allowed_sectors:
@@ -559,6 +578,38 @@ def run():
                     sector     = SECTOR_MAP.get(ns_ticker, "Other"),
                     data_dir   = _data_dir,
                 )
+
+    # ── 2c. Trades US DIRECTS de la newsletter (Capital Momentum) ─────────────────
+    # Instruments US recommandés → book RÉEL aux termes de la newsletter (TP/SL du texte),
+    # SANS screener (conviction newsletter payante). Taille fixe, SL plafonné -8% (backstop).
+    if us_direct_trades:
+        from config import NEWSLETTER_US_POSITION_PCT
+        log(f"[NEWSLETTER US] {len(us_direct_trades)} instrument(s) US recommandé(s)")
+        for ut in us_direct_trades:
+            tkr = ut["ticker"]
+            if ut["action"] != "BUY" or tkr in pm.open_positions:
+                continue
+            try:
+                dfu = fetch_ohlcv(tkr, period="5d", interval="1d", force_refresh=True)
+                px = float(dfu["Close"].iloc[-1]) if not dfu.empty else 0.0
+            except Exception as e:
+                log(f"  [NEWSLETTER US] {tkr}: erreur prix ({e}) → ignoré")
+                continue
+            if px <= 0:
+                log(f"  [NEWSLETTER US] {tkr}: prix indisponible → ignoré")
+                continue
+            ok, msg, pos = pm.open_position_levels(
+                tkr, px, ut.get("sl", 0.0), ut.get("tp_levels", []),
+                NEWSLETTER_US_POSITION_PCT,
+            )
+            log(f"  [NEWSLETTER US] {msg}" if ok else f"  [NEWSLETTER US SKIP] {tkr}: {msg}")
+            if ok and pos:
+                opened_positions_log.append({
+                    "ticker": tkr, "score": 0, "bull": 0, "bear": 0, "net_score": 0,
+                    "bull_args": [f"Newsletter US (exécution directe) : {ut.get('quote','')[:80]}"],
+                    "prix": pos.entry_price, "investi": pos.qty_remaining * pos.entry_price,
+                    "sl": pos.sl, "tp1": pos.tp_levels[0].price,
+                })
 
     # ── 3. Débat multi-agents + ouverture de positions ────────────
     available = pm.available_deploy_cash()

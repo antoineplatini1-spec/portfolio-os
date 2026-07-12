@@ -272,6 +272,72 @@ class PortfolioManager:
         self._save()
         return True, f"Achat {filled_qty:.4f} {ticker} à {fill_price:.4f} (frais: {fees:.2f})", pos
 
+    def open_position_levels(self, ticker, price, sl, tp_prices_list, size_pct, score=60):
+        """
+        Ouvre une position aux TERMES fournis (TP/SL de la newsletter) sur le book réel,
+        SANS passer par le screener. Taille fixe = size_pct du portefeuille (la newsletter
+        n'en donne pas). Le SL est PLAFONNÉ à MAX_LOSS_PCT (backstop : jamais pire que -8%,
+        même si le SL fourni est plus large ou invalide).
+        """
+        from config import MAX_LOSS_PCT
+        if ticker in self.open_positions:
+            return False, f"{ticker} déjà en portefeuille", None
+        if price <= 0:
+            return False, "Prix invalide", None
+
+        deploy_cash = self.available_deploy_cash(score)
+        invest = min(self.total_value * size_pct, deploy_cash)
+        qty = invest / price
+        if qty <= 0:
+            return False, "Quantité nulle (cash/déploiement épuisé)", None
+
+        ok, reason = can_open_position(
+            available_cash=deploy_cash, total_portfolio=self.total_value,
+            current_exposure_pct=self.exposure_pct,
+            sector_positions=self.sector_position_count(ticker),
+            invested_amount=invest, max_total_exposure=MAX_TOTAL_EXPOSURE_PCT,
+            max_sector_positions=MAX_SECTOR_POSITIONS)
+        if not ok:
+            return False, reason, None
+
+        estimated_cost = invest + compute_fees(price, qty, BROKER_CONFIG)
+        if estimated_cost > self.cash:
+            return False, f"Cash insuffisant ({self.cash:.2f} < {estimated_cost:.2f})", None
+
+        order = self.broker.buy(ticker, qty, price)
+        filled_qty = order.get("qty", 0) or 0
+        if order.get("status") != "filled" or filled_qty <= 0:
+            r = order.get("ibkr_status") or order.get("status") or "non exécuté"
+            return False, f"Ordre {ticker} non exécuté ({r}) — marché fermé/illiquide ?", None
+
+        fill_price = order["price"]
+        fees       = order["fees"]
+        total_cost = order["total"]
+
+        # SL : terme newsletter, mais PLANCHER -8% (backstop). Ignore un SL invalide (≥ prix).
+        floor = fill_price * (1 - MAX_LOSS_PCT)
+        sl_valid = sl if (sl and 0 < sl < fill_price) else 0.0
+        sl_final = max(sl_valid, floor) if sl_valid else floor
+
+        # TP : niveaux newsletter (> prix de fill), répartition uniforme. Aucun → 1 TP +10%.
+        levels = sorted(tp for tp in (tp_prices_list or []) if tp and tp > fill_price)
+        if levels:
+            tp_level_objs = [TPLevel(price=tp, sell_pct=1.0 / len(levels)) for tp in levels]
+        else:
+            tp_level_objs = [TPLevel(price=fill_price * 1.10, sell_pct=1.0)]
+
+        pos = Position(ticker=ticker, entry_price=fill_price, qty_total=filled_qty,
+                       sl=sl_final, tp_levels=tp_level_objs, fees_in=fees,
+                       entry_score=score, entry_atr=0.0)
+        self.positions[ticker] = pos
+        self.cash -= total_cost
+        self.weekly_deployed += fill_price * filled_qty
+        self._save()
+        capped = " (SL plafonné -8%)" if (sl_valid and sl_valid < floor) else ""
+        tp_str = ", ".join(f"{t:.2f}" for t in levels) or "+10%"
+        return True, (f"Achat NEWSLETTER {filled_qty:.4f} {ticker} @ {fill_price:.2f} "
+                      f"SL {sl_final:.2f}{capped} TP {tp_str}"), pos
+
     def update_prices(self, prices: dict[str, float]):
         """
         Passe en revue les positions ouvertes avec les prix actuels.
