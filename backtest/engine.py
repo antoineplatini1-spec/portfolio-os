@@ -580,7 +580,22 @@ class BacktestEngine:
             })
 
         self.signals_per_day[day] = len(candidates)
-        candidates.sort(key=lambda x: -x["score"])
+
+        # Classement par le MÊME score de décision unifié qu'en live (signals/decision.py).
+        # En backtest, seules les features déterministes existent : momentum + tilt sectoriel
+        # dérivé de la perf relative macro (news/newsletter/conviction = 0, non rejouables).
+        # → permet de valider historiquement le poids du secteur ; les signaux LLM ne se
+        #   valident QUE par l'attribution live.
+        from signals.decision import Features, decision_score
+        from config import DECISION_WEIGHTS
+        _sector_perf = (macro.sector_perf if macro else {}) or {}
+        def _bt_decision(c):
+            perf = _sector_perf.get(SECTOR_MAP.get(c["ticker"], "Other"), 0.0)
+            sector_unit = max(-2.0, min(2.0, round(perf / 2.0)))   # 2% de surperf = 1 unité
+            total, _ = decision_score(
+                Features(momentum=float(c["score"]), sector=sector_unit), DECISION_WEIGHTS)
+            return total
+        candidates.sort(key=_bt_decision, reverse=True)
 
         mock_pm = _BacktestPM(engine=self, day=day)
 

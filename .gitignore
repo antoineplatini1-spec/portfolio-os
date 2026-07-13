@@ -18,6 +18,10 @@ data/llm_signals.jsonl
 # Cache SEC EDGAR ticker→CIK (regénéré depuis la SEC, ~1 Mo)
 data/edgar_ciks.json
 
+# Journaux d'apprentissage/attribution (locaux à chaque machine)
+data/postmortems.jsonl
+data/decisions_log.jsonl
+
 # IBKR — identifiants Gateway & état local du Gateway (NE PAS committer)
 docker/.env
 docker/ibc-settings/

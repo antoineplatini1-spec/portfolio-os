@@ -579,6 +579,32 @@ def run():
                     data_dir   = _data_dir,
                 )
 
+    # ── 2b-bis. SCORE DE DÉCISION UNIFIÉ ──────────────────────────────────────────
+    # Un seul endroit où momentum + secteur + news + conviction se combinent, en features
+    # pondérées et BIDIRECTIONNELLES (la news haussière AIDE, plus seulement le véto
+    # baissier). Re-classe les candidats avant la sélection ; features loggées → attribution.
+    from signals import decision as _decision
+    from config import DECISION_WEIGHTS
+    _decision_info: dict[str, dict] = {}
+    if not candidates.empty:
+        def _decide(row):
+            tk  = row["ticker"]
+            sec = SECTOR_MAP.get(tk, "Other")
+            nsig = news_signals.get(tk) or {}
+            feats = _decision.Features(
+                momentum=float(row["score"]),
+                sector=float(_sector_bias.get(sec, 0)),
+                news=_decision.news_feature(nsig.get("direction", ""), nsig.get("strength", 0)),
+                conviction=1.0 if tk in us_ideas else 0.0,
+            )
+            total, contrib = _decision.decision_score(feats, DECISION_WEIGHTS)
+            _decision_info[tk] = {"features": dict(feats.__dict__), "contrib": contrib, "total": total}
+            return total
+        candidates = candidates.copy()
+        candidates["decision_score"] = candidates.apply(_decide, axis=1)
+        candidates = candidates.sort_values("decision_score", ascending=False)
+        log("Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés")
+
     # ── 2c. Trades US DIRECTS de la newsletter (Capital Momentum) ─────────────────
     # Instruments US recommandés → book RÉEL aux termes de la newsletter (TP/SL du texte),
     # SANS screener (conviction newsletter payante). Taille fixe, SL plafonné -8% (backstop).
@@ -767,6 +793,12 @@ def run():
                     "sl":        pos.sl,
                     "tp1":       pos.tp_levels[0].price,
                 })
+                # Attribution : logge les features de décision de cette ouverture.
+                _info = _decision_info.get(ticker)
+                if _info:
+                    from signals import attribution
+                    attribution.record_decision(
+                        ticker, _info["features"], _info["contrib"], _info["total"])
             else:
                 log(f"  [SKIP portefeuille] {ticker} : {msg}")
 
@@ -964,6 +996,7 @@ def run():
             "news":    news_signals,
             "usage":   llm_enrich.usage_summary(),
             "learning": __import__("signals.learning", fromlist=["digest"]).digest(),
+            "attribution": __import__("signals.attribution", fromlist=["digest"]).digest(),
             "provenance": llm_provenance,
             "errors":  _llm_errors,
         },
@@ -1145,6 +1178,30 @@ def _render_provenance(prov: dict | None, errs: list | None) -> str:
     return html
 
 
+def _render_attribution(attr: dict | None) -> str:
+    """Bloc HTML : corrélation mesurée de chaque signal avec le PnL réalisé."""
+    if not attr or not attr.get("corr"):
+        return ""
+    chips = ""
+    for feat, c in attr["corr"].items():
+        if c is None:
+            txt, clr = "n/a", "#445470"
+        else:
+            clr = "#34d399" if c > 0.05 else ("#fb7185" if c < -0.05 else "#8097b5")
+            txt = f"{c:+.2f}"
+        chips += (f"<span style='display:inline-block;background:#1a2440;padding:2px 8px;"
+                  f"border-radius:4px;font-size:11px;margin:2px;color:#8097b5'>"
+                  f"{feat} <strong style='color:{clr}'>{txt}</strong></span>")
+    return (
+        "<div style='margin-top:10px;padding-top:8px;border-top:1px solid #1e2d45'>"
+        "<div style='font-size:13px;font-weight:700;color:#d6e0f0;margin-bottom:2px'>"
+        "&#x1F4C8; Attribution</div>"
+        f"<div style='font-size:11px;color:#445470;margin-bottom:4px'>{attr['n']} trades "
+        f"appariés, PnL moyen {attr['avg_pnl']:+.1f}% — corrélation mesurée signal↔PnL "
+        f"(le juge de paix : &gt;0 = le signal paie) :</div>{chips}</div>"
+    )
+
+
 def _render_learning(learning: dict | None) -> str:
     """Bloc HTML : suggestions d'ajustement (le vrai livrable) + leçons récentes."""
     if not learning or not (learning.get("suggestions") or learning.get("recent_lessons")):
@@ -1225,6 +1282,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
     # Bloc apprentissage (agrégat des post-mortems + suggestions), historique —
     # indépendant des signaux du jour.
     learning_html = _render_learning(llm_summary.get("learning"))
+    attr_html = _render_attribution(llm_summary.get("attribution"))
     prov_html = _render_provenance(llm_summary.get("provenance"), llm_summary.get("errors"))
 
     if not sector and not news:
@@ -1233,7 +1291,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
             "<tr><td style='background:#0d1420;border-radius:10px;border-left:4px solid #a78bfa;"
             "padding:12px 16px'><div style='font-size:12px;color:#8097b5'>"
             "&#x1F9E0; LLM actif — aucun signal matériel aujourd'hui.</div>"
-            f"{prov_html}{learning_html}{usage_html}</td></tr>"
+            f"{prov_html}{attr_html}{learning_html}{usage_html}</td></tr>"
         )
 
     sector_html = ""
@@ -1271,7 +1329,7 @@ def _llm_email_section(llm_summary: dict | None) -> str:
         "padding:14px 18px'>"
         "<div style='font-size:15px;font-weight:700;color:#d6e0f0;margin-bottom:8px'>"
         "&#x1F9E0; Signaux LLM du jour</div>"
-        f"{prov_html}{sector_html}{news_html}{learning_html}{usage_html}</td></tr>"
+        f"{prov_html}{sector_html}{news_html}{attr_html}{learning_html}{usage_html}</td></tr>"
     )
 
 

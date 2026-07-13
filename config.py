@@ -53,6 +53,15 @@ ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance
 # régimes ; le score brut reste inchangé pour le sizing. 3 pts × [−2..+2] = ±6 pts.
 SECTOR_BONUS_POINTS = 3
 
+# Poids du SCORE DE DÉCISION unifié (signals/decision.py) — points par unité de feature.
+# Chaque source devient une feature pondérée et bidirectionnelle. À valider/tuner via
+# l'attribution (live) et le backtest (secteur seulement). news ±1 → ±8 pts, etc.
+DECISION_WEIGHTS = {
+    "sector":     SECTOR_BONUS_POINTS,   # biais −2..+2  → ±6 pts
+    "news":       8.0,                   # actu −1..+1   → ±8 pts (bullish AIDE)
+    "conviction": 5.0,                   # nommé newsletter 0/1 → +5 pts
+}
+
 # ── Frais ─────────────────────────────────────────────────────────
 # On maintient DEUX barèmes et on sélectionne l'effectif selon le broker réellement
 # utilisé (IBKR_ENABLED). C'est essentiel : les garde-fous de risque (sizing,
