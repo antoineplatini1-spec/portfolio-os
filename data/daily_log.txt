@@ -9872,3 +9872,616 @@ Traceback (most recent call last):
 [2026-07-13 06:01] [MOMENTUM] Newsletter trouvée mais ancienne (> 36h) — pas de nouveaux achats.
 [2026-07-13 06:01] [MOMENTUM] valeur=10018.35€  cash=5996.00€  positions=4  PnL=+18.35€
 [2026-07-13 06:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-13 13:20] ============================================================
+[2026-07-13 13:20] SCAN JOURNALIER - 2026-07-13
+[2026-07-13 13:20] ============================================================
+[2026-07-13 13:20] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-13 13:20]   Date     : 2026-07-13  [imap]  ⚠ ANCIENNE
+[2026-07-13 13:20]   CAC 40   : BEARISH
+[2026-07-13 13:20]   Valeurs  :
+[2026-07-13 13:20]     ✅ Axa (Finance) → BUY
+[2026-07-13 13:20]     ✅ Biomérieux (Santé) → BUY
+[2026-07-13 13:20]     ✅ Total (Energie) → BUY
+[2026-07-13 13:20]   Macro    : market_caution
+[2026-07-13 13:20]   Secteurs : Finance:+1, Santé:+1, Energie:+1
+[2026-07-13 13:20] ───────────────────────────────────────────────────────
+[2026-07-13 13:20] [LLM] Biais sectoriel = LLM : Semi:+1, Finance:+2, Santé:+1, Industrie:+1, Macro:-1
+[2026-07-13 13:20] [US] Barchart : aucun email récent
+[2026-07-13 13:20] [US] The Transcript «Stealing Alpha» → secteur {'Macro': 1, 'Energie': 1, 'ConsoBase': -1, 'Conso': 0} | idées: LEVI, GIS, HELE, STZ
+[2026-07-13 13:21] ══════════════════════════════════════════════
+[2026-07-13 13:21]   AGENT MACRO — 2026-07-13
+[2026-07-13 13:21] ══════════════════════════════════════════════
+[2026-07-13 13:21]   Régime marché  : BULL
+[2026-07-13 13:21]   SPY vs EMA200  : +7.8%
+[2026-07-13 13:21]   VIX            : 16.7 (LOW)
+[2026-07-13 13:21]   Max trades/j   : 3
+[2026-07-13 13:21]   Seuil net min  : 10
+[2026-07-13 13:21]   Top secteurs   : Finance, Santé, Utilities, Industrie
+[2026-07-13 13:21]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-13 13:21]   Rationale      : Marché haussier (SPY +7.9% vs EMA200). Exposition maximale autorisée.
+[2026-07-13 13:21] ══════════════════════════════════════════════
+[2026-07-13 13:21] Aucune position ouverte.
+[2026-07-13 13:21] Screener en cours...
+[2026-07-13 13:21] [US] Univers screener enrichi de 4 idée(s) newsletters US : LEVI, GIS, HELE, STZ
+[2026-07-13 13:21] Scores : max=72  mediane=15  (160 tickers)
+[2026-07-13 13:21] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=72
+[2026-07-13 13:21] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Finance, Santé, Energie, Semi, Industrie, Macro | pénalisés: ConsoBase
+[2026-07-13 13:21] 34 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-13 13:21]   [SEC 8-K] VRTX (2026-07-07) ⚠MATÉRIEL : Accord matériel signé, Divulgation Regulation FD, Autre événement matériel, États financiers & annexes
+[2026-07-13 13:21]   [SEC 8-K] MRNA (2026-07-08) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-07-13 13:21]   [SEC 8-K] ABBV (2026-07-06) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-13 13:21] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-13 13:21] Cash deployable cette semaine : 62500 EUR  (max trades/j : 2)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : SNOW
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=100] → ACHETER
+[2026-07-13 13:21]      • Score haussier fort (78/100)
+[2026-07-13 13:21]      • R-ratio excellent (3.0×) — asymétrie gain/risque idéale
+[2026-07-13 13:21]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (199.25) — tendance long terme haussière
+[2026-07-13 13:21]      • Momentum 10j fort (+8.8%) — tendance confirmée
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=23] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (98) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (82)
+[2026-07-13 13:21]      • Volume faible (0.4× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+86)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=100, concern=23, net=+86)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] SNOW : Ordre SNOW non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : PANW
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=87] → ACHETER
+[2026-07-13 13:21]      • Score haussier fort (71/100)
+[2026-07-13 13:21]      • R-ratio excellent (3.0×) — asymétrie gain/risque idéale
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (216.77) — tendance long terme haussière
+[2026-07-13 13:21]      • Momentum 10j fort (+8.2%) — tendance confirmée
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=5] → OK
+[2026-07-13 13:21]      • Volume faible (0.3× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+84)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=87, concern=5, net=+84)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] PANW : Ordre PANW non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : CIBR
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=77] → ACHETER
+[2026-07-13 13:21]      • Score haussier fort (73/100)
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (75.04) — tendance long terme haussière
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=18] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (90) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (74)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+66)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=77, concern=18, net=+66)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] CIBR : Ordre CIBR non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : HACK
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=82] → ACHETER
+[2026-07-13 13:21]      • Score haussier fort (73/100)
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (85.83) — tendance long terme haussière
+[2026-07-13 13:21]      • Momentum 10j fort (+10.9%) — tendance confirmée
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=18] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (91) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (81)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+71)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=82, concern=18, net=+71)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] HACK : Ordre HACK non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : V
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=59] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (324.39) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (66/100)
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=13] → OK
+[2026-07-13 13:21]      • RSI suracheté (74)
+[2026-07-13 13:21]      • Volume faible (0.3× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+51)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=59, concern=13, net=+51)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] V : Ordre V non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21]   [SKIP earnings] JNJ : publication de résultats dans ±3j
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : AXP
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=59] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (333.62) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (61/100)
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=5] → OK
+[2026-07-13 13:21]      • Volume faible (0.4× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+56)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=59, concern=5, net=+56)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] AXP : Ordre AXP non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : DDOG
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=80] → ACHETER
+[2026-07-13 13:21]      • R-ratio excellent (3.1×) — asymétrie gain/risque idéale
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (164.49) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (68/100)
+[2026-07-13 13:21]      • Momentum 10j fort (+9.1%) — tendance confirmée
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=23] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (94) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (73)
+[2026-07-13 13:21]      • Volume faible (0.3× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+66)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=80, concern=23, net=+66)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] DDOG : Ordre DDOG non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : MA
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (516.74) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (61/100)
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=13] → OK
+[2026-07-13 13:21]      • RSI suracheté (76)
+[2026-07-13 13:21]      • Volume faible (0.3× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+54)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=62, concern=13, net=+54)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] MA : Ordre MA non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : IBB
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=56] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (173.23) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (60/100)
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=0] → OK
+[2026-07-13 13:21]      (aucune objection majeure)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+56)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=56, concern=0, net=+56)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] IBB : Ordre IBB non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : XLF
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=59] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (52.55) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (56/100)
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=0] → OK
+[2026-07-13 13:21]      (aucune objection majeure)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+59)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=59, concern=0, net=+59)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] XLF : Ordre XLF non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : CRWD
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=67] → ACHETER
+[2026-07-13 13:21]      • R-ratio excellent (3.2×) — asymétrie gain/risque idéale
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (133.05) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (56/100)
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=17] → OK
+[2026-07-13 13:21]      • Croisement MACD baissier — momentum vendeur actif
+[2026-07-13 13:21]      • Volume faible (0.3× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+57)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=67, concern=17, net=+57)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] CRWD : Ordre CRWD non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : APD
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=64] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (279.26) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (56/100)
+[2026-07-13 13:21]      • Momentum 10j fort (+9.7%) — tendance confirmée
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=5] → OK
+[2026-07-13 13:21]      • Volume faible (0.2× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=64, concern=5, net=+61)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] APD : Ordre APD non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : TMO
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=67] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (528.42) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (57/100)
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=23] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (100) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (79)
+[2026-07-13 13:21]      • Volume faible (0.2× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=67, concern=23, net=+53)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] TMO : Ordre TMO non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21]   [SKIP earnings] UNH : publication de résultats dans ±3j
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : MPC
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=72] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (220.08) — tendance long terme haussière
+[2026-07-13 13:21]      • Score haussier correct (58/100)
+[2026-07-13 13:21]      • Momentum 10j fort (+16.5%) — tendance confirmée
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-07-13 13:21]      • Stoch RSI suracheté (100) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (87)
+[2026-07-13 13:21]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-13 13:21]      • Volume faible (0.4× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=72, concern=31, net=+53)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] MPC : Ordre MPC non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : ARKG
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=43] → PENCHÉ POUR
+[2026-07-13 13:21]      • R-ratio solide (2.7×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (32.30) — tendance long terme haussière
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (50/100)
+[2026-07-13 13:21]      • Portefeuille peu exposé (0 positions) — capacité à déployer
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=0] → OK
+[2026-07-13 13:21]      (aucune objection majeure)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=43, concern=0, net=+43)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] ARKG : Ordre ARKG non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : SCHW
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=56] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (95.58) — tendance long terme haussière
+[2026-07-13 13:21]      • Momentum 10j fort (+13.2%) — tendance confirmée
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (50/100)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=23] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (88) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (77)
+[2026-07-13 13:21]      • Volume faible (0.2× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+42)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=56, concern=23, net=+42)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] SCHW : Ordre SCHW non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : XLU
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=60] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (44.18) — tendance long terme haussière
+[2026-07-13 13:21]      • Stoch RSI survendu (14) — retournement imminent
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=0] → OK
+[2026-07-13 13:21]      (aucune objection majeure)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+60)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=60, concern=0, net=+60)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] XLU : Ordre XLU non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : AMD
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=64] → ACHETER
+[2026-07-13 13:21]      • R-ratio excellent (4.2×) — asymétrie gain/risque idéale
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (331.70) — tendance long terme haussière
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (47/100)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=5] → OK
+[2026-07-13 13:21]      • Volume faible (0.4× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=64, concern=5, net=+61)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] AMD : Ordre AMD non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : VRTX
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=54] → PENCHÉ POUR
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (456.83) — tendance long terme haussière
+[2026-07-13 13:21]      • Stoch RSI survendu (11) — retournement imminent
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (50/100)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=17] → OK
+[2026-07-13 13:21]      • Momentum 10j : -2.2% (faible)
+[2026-07-13 13:21]      • Volume faible (0.2× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+44)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=54, concern=17, net=+44)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] VRTX : Ordre VRTX non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : NET
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=75] → ACHETER
+[2026-07-13 13:21]      • R-ratio excellent (3.1×) — asymétrie gain/risque idéale
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (208.90) — tendance long terme haussière
+[2026-07-13 13:21]      • Momentum 10j fort (+14.3%) — tendance confirmée
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=23] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (97) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (84)
+[2026-07-13 13:21]      • Volume faible (0.4× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=75, concern=23, net=+61)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] NET : Ordre NET non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : XLV
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (152.39) — tendance long terme haussière
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21]      • Score haussier modéré (50/100)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=18] → OK
+[2026-07-13 13:21]      • Stoch RSI suracheté (97) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (72)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+41)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=52, concern=18, net=+41)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] XLV : Ordre XLV non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : MRNA
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-13 13:21]      • R-ratio excellent (4.8×) — asymétrie gain/risque idéale
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (49.62) — tendance long terme haussière
+[2026-07-13 13:21]      • Stoch RSI survendu (12) — retournement imminent
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (45/100)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=17] → OK
+[2026-07-13 13:21]      • Croisement MACD baissier — momentum vendeur actif
+[2026-07-13 13:21]      • Volume faible (0.4× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+52)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=62, concern=17, net=+52)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] MRNA : Ordre MRNA non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : XBI
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=48] → PENCHÉ POUR
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (131.90) — tendance long terme haussière
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (45/100)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=12] → OK
+[2026-07-13 13:21]      • Croisement MACD baissier — momentum vendeur actif
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+41)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=48, concern=12, net=+41)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] XBI : Ordre XBI non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : ABBV
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=48] → PENCHÉ POUR
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (220.16) — tendance long terme haussière
+[2026-07-13 13:21]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (45/100)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=17] → OK
+[2026-07-13 13:21]      • Momentum 10j : -2.6% (faible)
+[2026-07-13 13:21]      • Volume faible (0.1× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=48, concern=17, net=+38)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] ABBV : Ordre ABBV non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21]   [SKIP earnings] MS : publication de résultats dans ±3j
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : SPY
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=49] → PENCHÉ POUR
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (706.93) — tendance long terme haussière
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • Score haussier modéré (42/100)
+[2026-07-13 13:21]      • Portefeuille peu exposé (0 positions) — capacité à déployer
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=0] → OK
+[2026-07-13 13:21]      (aucune objection majeure)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=49, concern=0, net=+49)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] SPY : Ordre SPY non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   DÉBAT : PSX
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-13 13:21]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:21]      • Prix au-dessus EMA200 (159.85) — tendance long terme haussière
+[2026-07-13 13:21]      • Momentum 10j fort (+14.4%) — tendance confirmée
+[2026-07-13 13:21]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:21]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-07-13 13:21]      • Stoch RSI suracheté (100) — retournement baissier possible
+[2026-07-13 13:21]      • RSI suracheté (81)
+[2026-07-13 13:21]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-13 13:21]      • Volume faible (0.4× moyenne)
+[2026-07-13 13:21] 
+[2026-07-13 13:21]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-07-13 13:21]      Arguments haussiers l'emportent clairement (conviction=62, concern=31, net=+43)
+[2026-07-13 13:21] ────────────────────────────────────────────────────
+[2026-07-13 13:21]   [SKIP portefeuille] PSX : Ordre PSX non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   DÉBAT : XLE
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-13 13:22]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:22]      • Prix au-dessus EMA200 (53.08) — tendance long terme haussière
+[2026-07-13 13:22]      • CMF fort — flux acheteur dominant
+[2026-07-13 13:22]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:22]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   🔴 BEAR [concern=22] → OK
+[2026-07-13 13:22]      • EMA50 en baisse (pente négative)
+[2026-07-13 13:22]      • Stoch RSI suracheté (99) — retournement baissier possible
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   ✅ ARBITRE → ACHETER  (net=+49)
+[2026-07-13 13:22]      Arguments haussiers l'emportent clairement (conviction=62, concern=22, net=+49)
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   [SKIP portefeuille] XLE : Ordre XLE non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   DÉBAT : LLY
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   🟢 BULL [conviction=49] → PENCHÉ POUR
+[2026-07-13 13:22]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:22]      • Prix au-dessus EMA200 (1052.08) — tendance long terme haussière
+[2026-07-13 13:22]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:22]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:22]      • Score haussier modéré (40/100)
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   🔴 BEAR [concern=15] → OK
+[2026-07-13 13:22]      • Stoch RSI suracheté (85) — retournement baissier possible
+[2026-07-13 13:22]      • Volume faible (0.3× moyenne)
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   ✅ ARBITRE → ACHETER  (net=+40)
+[2026-07-13 13:22]      Arguments haussiers l'emportent clairement (conviction=49, concern=15, net=+40)
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   [SKIP portefeuille] LLY : Ordre LLY non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   DÉBAT : AAPL
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-13 13:22]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:22]      • Prix au-dessus EMA200 (275.92) — tendance long terme haussière
+[2026-07-13 13:22]      • Momentum 10j fort (+11.4%) — tendance confirmée
+[2026-07-13 13:22]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:22]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   🔴 BEAR [concern=15] → OK
+[2026-07-13 13:22]      • Stoch RSI suracheté (98) — retournement baissier possible
+[2026-07-13 13:22]      • Volume faible (0.3× moyenne)
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-07-13 13:22]      Arguments haussiers l'emportent clairement (conviction=62, concern=15, net=+53)
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   [SKIP portefeuille] AAPL : Ordre AAPL non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   DÉBAT : XLP
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   🟢 BULL [conviction=61] → ACHETER
+[2026-07-13 13:22]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-13 13:22]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:22]      • Prix au-dessus EMA200 (82.51) — tendance long terme haussière
+[2026-07-13 13:22]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:22]      • OBV en hausse — accumulation en cours
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   🔴 BEAR [concern=0] → OK
+[2026-07-13 13:22]      (aucune objection majeure)
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-07-13 13:22]      Arguments haussiers l'emportent clairement (conviction=61, concern=0, net=+61)
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   [SKIP portefeuille] XLP : Ordre XLP non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   DÉBAT : RTX
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   🟢 BULL [conviction=51] → PENCHÉ POUR
+[2026-07-13 13:22]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 13:22]      • Prix au-dessus EMA200 (189.96) — tendance long terme haussière
+[2026-07-13 13:22]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 13:22]      • Score haussier modéré (43/100)
+[2026-07-13 13:22]      • Momentum 10j positif (+4.2%)
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   🔴 BEAR [concern=13] → OK
+[2026-07-13 13:22]      • RSI suracheté (72)
+[2026-07-13 13:22]      • Volume faible (0.2× moyenne)
+[2026-07-13 13:22] 
+[2026-07-13 13:22]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-07-13 13:22]      Arguments haussiers l'emportent clairement (conviction=51, concern=13, net=+43)
+[2026-07-13 13:22] ────────────────────────────────────────────────────
+[2026-07-13 13:22]   [SKIP portefeuille] RTX : Ordre RTX non exécuté (Cancelled) — marché fermé/illiquide ?
+[2026-07-13 13:22] 31 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-07-13 13:22] Aucune nouvelle position ouverte.
+[2026-07-13 13:22] ----------------------------------------
+[2026-07-13 13:22] RESUME : valeur=250000.00 EUR  investi=0.00 EUR  cash=250000.00 EUR  expo=0.0%  positions=0
+[2026-07-13 13:22] ----------------------------------------
+[2026-07-13 13:22] [MOMENTUM] 4 position(s) ouverte(s)...
+[2026-07-13 13:22]   [MOMENTUM] VK.PA: 21.07
+[2026-07-13 13:22]   [MOMENTUM] SCR.PA: 32.18
+[2026-07-13 13:22]   [MOMENTUM] BIM.PA: 70.85
+[2026-07-13 13:22]   [MOMENTUM] AI.PA: 176.74
+[2026-07-13 13:22] [MOMENTUM] Newsletter trouvée mais ancienne (> 36h) — pas de nouveaux achats.
+[2026-07-13 13:22] [MOMENTUM] valeur=10060.95€  cash=5996.00€  positions=4  PnL=+60.95€
+[2026-07-13 13:22] [LLM] 1 erreur(s) d'appel → fallback algo : JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2026-07-13 13:22] [EMAIL] Envoye a antoine.platini@outlook.fr
