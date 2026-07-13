@@ -44,6 +44,15 @@ TP_LEVELS = [
 ]
 TRAILING_STOP_AFTER_TP1 = True    # Activer trailing stop à Entry après TP1
 
+# ── Niveaux STRUCTURELS (SL/TP calés sur support/résistance + conviction + régime) ──
+# Gated : OFF par défaut → comportement ATR historique inchangé. À passer ON UNIQUEMENT
+# si le backtest comparatif (structure vs ATR) montre un gain (Sharpe/DD/profit factor).
+USE_STRUCTURAL_LEVELS    = False
+STRUCT_LOOKBACK          = 20      # fenêtre support/résistance (jours)
+STRUCT_CONVICTION_MARGIN = 0.15    # +15% de marge de stop max à pleine conviction
+STRUCT_MIN_ATR           = 1.0     # stop jamais plus serré que 1×ATR (anti-bruit)
+STRUCT_VIX_MULT          = {"LOW": 0.9, "MEDIUM": 1.0, "HIGH": 1.2}  # stop élargi si VIX haut
+
 # ── Signaux ───────────────────────────────────────────────────────
 BUY_SIGNAL_MIN_SCORE = 60         # Score minimum pour suggérer un achat
 ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance

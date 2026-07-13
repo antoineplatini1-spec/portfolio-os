@@ -60,8 +60,13 @@ def scan_ticker(ticker: str, period: str = "6mo", market_regime: dict | None = N
             if vol_20 < 500_000:
                 return {**_empty, "error": f"volume < 500K ({vol_20/1e6:.1f}M)"}
 
-        sl = sl_price(price, atr) if atr else price * 0.95
-        tps = tp_prices(price, atr) if atr else []
+        # Support / résistance récents (pour les niveaux structurels)
+        from config import STRUCT_LOOKBACK as _LB
+        support    = float(df["Low"].iloc[-_LB:].min())  if len(df) >= _LB else float(df["Low"].min())
+        resistance = float(df["High"].iloc[-_LB:].max()) if len(df) >= _LB else float(df["High"].max())
+
+        sl = sl_price(price, atr, support=support) if atr else price * 0.95
+        tps = tp_prices(price, atr, resistance=resistance, sl=sl) if atr else []
         tp1_price = tps[0]["price"] if tps else price
         # R-ratio calculé sur TP3 (cible finale) — avec SL=1.5×ATR et TP3=3×ATR → R=2.0
         tp_final_price = tps[-1]["price"] if tps else tp1_price
@@ -83,6 +88,8 @@ def scan_ticker(ticker: str, period: str = "6mo", market_regime: dict | None = N
             "atr":        round(atr, 4),
             "sl":         round(sl, 4),
             "tp1":        round(tp1_price, 4),
+            "support":    round(support, 4),
+            "resistance": round(resistance, 4),
             "break_even": round(be, 4),
             "r_ratio":    round(r, 2),
             "perf_pct":   round(perf_pct, 2),

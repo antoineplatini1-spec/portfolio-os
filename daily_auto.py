@@ -765,11 +765,17 @@ def run():
                 break
 
             # ── Exécution ─────────────────────────────────────────
+            _dec = _decision_info.get(ticker, {})
+            _conv = max(0.0, min(1.0, (_dec.get("total", score) - 50) / 50))
             ok, msg, pos = pm.open_position(
                 ticker=ticker,
                 current_price=price,
                 atr=atr,
                 score=score,
+                support=float(cand_row.get("support", 0) or 0),
+                resistance=float(cand_row.get("resistance", 0) or 0),
+                conviction=_conv,
+                vix_regime=getattr(macro_ctx, "vix_regime", "MEDIUM"),
             )
 
             if ok:

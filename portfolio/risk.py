@@ -15,29 +15,55 @@ from config import (
 from utils.fees import compute_fees
 
 
-def sl_price(entry: float, atr: float) -> float:
+def sl_price(entry: float, atr: float, support: float = 0.0,
+             conviction: float = 0.0, vix_regime: str = "MEDIUM") -> float:
     """
-    Stop-loss initial basé sur l'ATR, plafonné à MAX_LOSS_PCT.
+    Stop-loss initial, plafonné à MAX_LOSS_PCT (jamais pire que -8%).
 
-    L'ATR peut placer le stop très bas sur les valeurs volatiles (semis, biotech),
-    d'où des pertes réelles de -16% observées en live. On remonte le stop pour ne
-    jamais risquer plus de MAX_LOSS_PCT sous l'entrée — cohérent avec le backtest.
+    - Mode ATR (USE_STRUCTURAL_LEVELS=False) : entry - 2×ATR, capé. Comportement historique.
+    - Mode STRUCTUREL : stop calé JUSTE SOUS le support réel s'il est dans l'enveloppe de
+      risque ; sinon retombe sur l'ATR. Le multiplicateur ATR est modulé par la conviction
+      (forte → plus de marge, laisser respirer) et le régime VIX (nerveux → plus large).
+      Bornes : jamais plus serré que 1×ATR (anti-bruit), jamais plus bas que -8% (cap).
     """
-    atr_stop  = entry - ATR_SL_MULTIPLIER * atr
-    hard_stop = entry * (1 - MAX_LOSS_PCT)
-    return max(atr_stop, hard_stop)
+    from config import USE_STRUCTURAL_LEVELS
+    hard_floor = entry * (1 - MAX_LOSS_PCT)
+    if not USE_STRUCTURAL_LEVELS:
+        return max(entry - ATR_SL_MULTIPLIER * atr, hard_floor)
+
+    from config import STRUCT_CONVICTION_MARGIN, STRUCT_VIX_MULT, STRUCT_MIN_ATR
+    mult = (ATR_SL_MULTIPLIER
+            * (1 + STRUCT_CONVICTION_MARGIN * min(1.0, max(0.0, conviction)))
+            * STRUCT_VIX_MULT.get(vix_regime, 1.0))
+    sl = support * 0.995 if (support and 0 < support < entry) else (entry - mult * atr)
+    if atr > 0:
+        sl = min(sl, entry - STRUCT_MIN_ATR * atr)   # anti-bruit : au moins 1 ATR
+    return max(sl, hard_floor)                        # cap -8% prioritaire
 
 
-def tp_prices(entry: float, atr: float) -> list[dict]:
-    """Retourne les paliers TP avec prix calculés."""
-    return [
-        {
-            "price": entry + lvl["atr_mult"] * atr,
-            "sell_pct": lvl["sell_pct"],
-            "atr_mult": lvl["atr_mult"],
-        }
+def tp_prices(entry: float, atr: float, resistance: float = 0.0,
+              sl: float = 0.0) -> list[dict]:
+    """
+    Paliers TP. Mode ATR par défaut. Mode STRUCTUREL : TP1 calé juste SOUS la résistance
+    réelle (prendre le profit avant le mur) et dernier TP garanti à ≥ MIN_R_RATIO × risque.
+    """
+    levels = [
+        {"price": entry + lvl["atr_mult"] * atr,
+         "sell_pct": lvl["sell_pct"], "atr_mult": lvl["atr_mult"]}
         for lvl in TP_LEVELS
     ]
+    from config import USE_STRUCTURAL_LEVELS
+    if not USE_STRUCTURAL_LEVELS or not levels:
+        return levels
+
+    from config import MIN_R_RATIO
+    if resistance and resistance > entry:
+        levels[0]["price"] = min(levels[0]["price"], resistance * 0.99)
+    if sl and sl < entry:
+        min_final = entry + MIN_R_RATIO * (entry - sl)
+        if levels[-1]["price"] < min_final:
+            levels[-1]["price"] = min_final
+    return levels
 
 
 def max_position_size_pct(score: int) -> float:

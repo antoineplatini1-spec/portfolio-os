@@ -200,13 +200,19 @@ class PortfolioManager:
         current_price: float,
         atr: float,
         score: int = 50,
+        support: float = 0.0,
+        resistance: float = 0.0,
+        conviction: float = 0.0,
+        vix_regime: str = "MEDIUM",
     ) -> tuple[bool, str, Position | None]:
         """
         Tente d'ouvrir une position.
+        support/resistance/conviction/vix_regime alimentent les niveaux structurels
+        (sans effet si USE_STRUCTURAL_LEVELS=False → comportement ATR historique).
         Retourne (succès, message, position_ou_None).
         """
         deploy_cash = self.available_deploy_cash(score)
-        sl = sl_price(current_price, atr)
+        sl = sl_price(current_price, atr, support, conviction, vix_regime)
         qty, invested = compute_qty(self.total_value, current_price, sl, score, BROKER_CONFIG)
 
         if qty <= 0:
@@ -248,8 +254,8 @@ class PortfolioManager:
         total_cost = order["total"]
 
         # SL/TP recalculés sur le prix de fill réel (cohérence entrée ↔ stops)
-        sl = sl_price(fill_price, atr)
-        levels = tp_prices(fill_price, atr)
+        sl = sl_price(fill_price, atr, support, conviction, vix_regime)
+        levels = tp_prices(fill_price, atr, resistance, sl)
         tp_level_objs = [
             TPLevel(price=lvl["price"], sell_pct=lvl["sell_pct"])
             for lvl in levels

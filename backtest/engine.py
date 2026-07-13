@@ -644,17 +644,24 @@ class BacktestEngine:
         else:
             max_pct = MAX_POSITION_PCT
 
-        sl = price - ATR_SL_MULTIPLIER * atr
-        # Hard stop : jamais plus de MAX_LOSS_PCT sous le prix d'entrée
-        hard_stop = price * (1 - MAX_LOSS_PCT)
-        sl = max(sl, hard_stop)
+        # Niveaux via les MÊMES fonctions que le live (structure si USE_STRUCTURAL_LEVELS).
+        from portfolio.risk import sl_price as _sl_price, tp_prices as _tp_prices
+        from config import STRUCT_LOOKBACK
+        _df = self._data.get(ticker)
+        support = resistance = 0.0
+        if _df is not None:
+            _hist = _df[_df.index.date < day]
+            if len(_hist) >= STRUCT_LOOKBACK:
+                support    = float(_hist["Low"].iloc[-STRUCT_LOOKBACK:].min())
+                resistance = float(_hist["High"].iloc[-STRUCT_LOOKBACK:].max())
 
+        sl = _sl_price(price, atr, support=support)   # conviction/vix par défaut en backtest
         risk_per_share = price - sl
         if risk_per_share <= 0:
             return
 
-        # R-ratio calculé sur TP3 (cible finale) — cohérent avec le screener live
-        tp3 = price + TP_LEVELS[-1]["atr_mult"] * atr
+        _tps = _tp_prices(price, atr, resistance=resistance, sl=sl)
+        tp3 = _tps[-1]["price"] if _tps else price
         r_ratio_val = (tp3 - price) / risk_per_share if risk_per_share > 0 else 0
         if r_ratio_val < MIN_R_RATIO:
             return
@@ -692,9 +699,9 @@ class BacktestEngine:
         if total_cost > self.cash:
             return
 
-        # TP levels
-        tp_prices_list = [price + lvl["atr_mult"] * atr for lvl in TP_LEVELS]
-        tp_sell_pcts   = [lvl["sell_pct"] for lvl in TP_LEVELS]
+        # TP levels (mêmes que le calcul de niveaux ci-dessus)
+        tp_prices_list = [t["price"] for t in _tps]
+        tp_sell_pcts   = [t["sell_pct"] for t in _tps]
 
         pos = BtPosition(
             ticker=ticker,
