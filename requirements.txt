@@ -4,6 +4,8 @@ numpy
 yfinance
 plotly
 apscheduler
+pandas_ta            # indicateurs techniques (ATR backtest) — était une dépendance cachée
+pytest               # suite de tests (fonctions pures : risk, fees, decision, parseurs)
 
 # Broker réel Interactive Brokers (requis uniquement quand IBKR_ENABLED=1).
 # Fork maintenu de ib_insync. Pure Python, n'impacte pas GitHub Actions.
