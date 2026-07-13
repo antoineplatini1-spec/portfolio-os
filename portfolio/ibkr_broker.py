@@ -124,6 +124,14 @@ class IBKRBroker:
         else:
             order = MarketOrder(action, qty_int)
 
+        # Le compte a un preset qui force TIF=DAY. On l'envoie EXPLICITEMENT pour éviter
+        # l'Error 10349 : sinon l'ordre passe transitoirement "Cancelled" (le temps que IBKR
+        # ajuste le TIF) puis se re-soumet et REMPLIT → le broker lisait le "Cancelled",
+        # croyait l'ordre échoué, ne l'enregistrait pas → position fantôme sur IBKR + cash
+        # local jamais décrémenté → surlevier. MOO garde son tif=OPG.
+        if self.order_type != "MOO":
+            order.tif = "DAY"
+
         if self.cfg.get("account"):
             order.account = self.cfg["account"]
 
@@ -136,6 +144,12 @@ class IBKRBroker:
         while not trade.isDone() and waited < deadline:
             self.ib.waitOnUpdate(timeout=step)
             waited += step
+
+        # Filet anti-transient : si l'ordre ressort "Cancelled" SANS fill (ex. Error 10349
+        # résiduelle), on laisse une re-soumission éventuelle se remplir avant de conclure.
+        if (trade.orderStatus.status in ("Cancelled", "ApiCancelled")
+                and float(trade.orderStatus.filled or 0) == 0):
+            self.ib.sleep(2.0)
 
         status = trade.orderStatus.status
         filled_qty = float(trade.orderStatus.filled or 0)
