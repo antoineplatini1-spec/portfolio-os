@@ -105,6 +105,50 @@ def _newsletter_raw_text() -> str:
         return ""
 
 
+def _reconcile_ibkr(pm):
+    """
+    Sécurité : IBKR = SOURCE DE VÉRITÉ. Compare les positions réelles du compte au ledger
+    local. Détecte les **positions fantômes** (présentes sur IBKR mais pas dans le ledger,
+    ex. un fill que le bot a cru échoué) → HALT des nouveaux achats + alerte, pour ne
+    jamais empiler du surlevier silencieux (cf. incident TIF/10349).
+
+    Retourne (halt: bool, issues: list[str], ibkr_cash: float | None).
+    No-op si IBKR désactivé ou broker sans introspection compte.
+    """
+    from config import IBKR_CONFIG
+    if not IBKR_CONFIG.get("enabled"):
+        return False, [], None
+    broker = getattr(pm.broker, "real", pm.broker)   # DualBroker → .real
+    if not hasattr(broker, "account_positions"):
+        return False, [], None
+    try:
+        ibkr_pos = broker.account_positions()        # {ticker: {qty, avg_cost}}
+        ibkr_cash = broker.account_cash()
+    except Exception as e:
+        return False, [f"réconciliation IBKR impossible : {e}"], None
+
+    ledger = set(pm.open_positions.keys())
+    issues, phantom = [], []
+    for tk, info in ibkr_pos.items():
+        if abs(info.get("qty", 0)) < 1e-9:
+            continue
+        if tk.endswith(".PA"):                        # orphelin connu (hors book US) — non bloquant
+            issues.append(f"position hors book US sur IBKR : {tk} {info['qty']:+.0f} (à réconcilier)")
+            continue
+        if tk not in ledger:
+            phantom.append(f"{tk} {info['qty']:+.0f}")
+    for tk in ledger:                                 # ledger dit détenir, IBKR non → fermée à notre insu
+        q = ibkr_pos.get(tk, {}).get("qty", 0)
+        if abs(q) < 1e-9:
+            issues.append(f"{tk} dans le ledger mais absente d'IBKR (fermée à notre insu ?)")
+
+    halt = bool(phantom)
+    if phantom:
+        issues.append("POSITIONS FANTÔMES sur IBKR absentes du ledger : "
+                      + ", ".join(phantom) + " → ACHATS SUSPENDUS ce run (anti-surlevier)")
+    return halt, issues, ibkr_cash
+
+
 def _maybe_postmortem(ticker, entry_price, close_price, pnl_pct,
                       reason, holding_days, entry_score):
     """
@@ -314,6 +358,18 @@ def run():
     sales_log: list[dict] = []        # achats partiels TP + clôtures SL/time stop
     sltp_cash_delta: float = 0.0
     blockers: list[str] = []          # diagnostic structurel si le bot ne peut pas acheter
+
+    # ── Sécurité : réconciliation IBKR (source de vérité) AVANT tout achat ──────────
+    # Détecte les positions fantômes (fill non enregistré) → suspend les achats pour ne
+    # jamais empiler du surlevier silencieux.
+    reconcile_halt, _rec_issues, _ibkr_cash = _reconcile_ibkr(pm)
+    for _iss in _rec_issues:
+        log(f"[RECONCILE IBKR] {_iss}")
+        blockers.append("Réconciliation IBKR : " + _iss)
+    if _ibkr_cash is not None:
+        log(f"[RECONCILE IBKR] cash réel IBKR = {_ibkr_cash:.0f} | ledger = {pm.cash:.0f}")
+    if reconcile_halt:
+        log("[RECONCILE IBKR] ⛔ Divergence critique → NOUVEAUX ACHATS SUSPENDUS ce run.")
 
     # ── 1. Mise a jour des prix des positions ouvertes ────────────
     open_pos = pm.open_positions
@@ -608,7 +664,7 @@ def run():
     # ── 2c. Trades US DIRECTS de la newsletter (Capital Momentum) ─────────────────
     # Instruments US recommandés → book RÉEL aux termes de la newsletter (TP/SL du texte),
     # SANS screener (conviction newsletter payante). Taille fixe, SL plafonné -8% (backstop).
-    if us_direct_trades:
+    if us_direct_trades and not reconcile_halt:
         from config import NEWSLETTER_US_POSITION_PCT
         log(f"[NEWSLETTER US] {len(us_direct_trades)} instrument(s) US recommandé(s)")
         for ut in us_direct_trades:
@@ -640,7 +696,7 @@ def run():
     # ── 3. Débat multi-agents + ouverture de positions ────────────
     available = pm.available_deploy_cash()
     opened = 0
-    max_opens = min(max_opens, macro_ctx.max_trades_per_day, MAX_TRADES_PER_DAY)
+    max_opens = 0 if reconcile_halt else min(max_opens, macro_ctx.max_trades_per_day, MAX_TRADES_PER_DAY)
     log(f"Cash deployable cette semaine : {available:.0f} EUR  (max trades/j : {max_opens})")
 
     if available < 100:
