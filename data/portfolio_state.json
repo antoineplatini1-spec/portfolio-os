@@ -1,11 +1,88 @@
 {
-  "cash": 250000.0,
+  "cash": 225012.3498,
   "initial_cash": 250000.0,
   "reserve_cash": 0.0,
   "start_date": "2026-07-11",
-  "weekly_deployed": 0.0,
+  "weekly_deployed": 24985.65,
   "week_start": "2026-07-11",
-  "positions": {},
+  "positions": {
+    "PANW": {
+      "ticker": "PANW",
+      "entry_price": 327.55,
+      "qty_total": 38.0,
+      "qty_remaining": 38.0,
+      "sl": 301.346,
+      "trailing_stop": false,
+      "trailing_stop_price": 327.55,
+      "entry_date": "2026-07-13",
+      "fees_in": 1.0001,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 69,
+      "entry_atr": 16.0595,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 351.63925,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 375.7285,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 407.8475,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "V": {
+      "ticker": "V",
+      "entry_price": 358.25,
+      "qty_total": 35.0,
+      "qty_remaining": 35.0,
+      "sl": 342.0218,
+      "trailing_stop": false,
+      "trailing_stop_price": 358.25,
+      "entry_date": "2026-07-13",
+      "fees_in": 1.0001,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 60,
+      "entry_atr": 8.1141,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 370.42115,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 382.5923,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 398.8205,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    }
+  },
   "history": [],
   "last_prices": {
     "LMT": 513.43701171875,

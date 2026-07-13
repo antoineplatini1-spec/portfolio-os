@@ -10485,3 +10485,131 @@ Traceback (most recent call last):
 [2026-07-13 13:22] [MOMENTUM] valeur=10060.95€  cash=5996.00€  positions=4  PnL=+60.95€
 [2026-07-13 13:22] [LLM] 1 erreur(s) d'appel → fallback algo : JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [2026-07-13 13:22] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-13 14:21] ============================================================
+[2026-07-13 14:21] SCAN JOURNALIER - 2026-07-13
+[2026-07-13 14:21] ============================================================
+[2026-07-13 14:25] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-13 14:25]   Date     : 2026-07-13  [imap]  ⚠ ANCIENNE
+[2026-07-13 14:25]   CAC 40   : BEARISH
+[2026-07-13 14:25]   Valeurs  :
+[2026-07-13 14:25]     ✅ Axa (Finance) → BUY
+[2026-07-13 14:25]     ✅ Biomérieux (Santé) → BUY
+[2026-07-13 14:25]     ✅ Total (Energie) → BUY
+[2026-07-13 14:25]   Macro    : market_caution
+[2026-07-13 14:25]   Secteurs : Finance:+1, Santé:+1, Energie:+1
+[2026-07-13 14:25] ───────────────────────────────────────────────────────
+[2026-07-13 14:26] [LLM] Biais sectoriel = LLM : Finance:+2, Semi:+1, Macro:-1, Santé:+1
+[2026-07-13 14:26] [US] Barchart : aucun email récent
+[2026-07-13 14:26] [US] The Transcript «Stealing Alpha» → secteur {'Macro': 1, 'ConsoBase': -1, 'Conso': 1} | idées: LEVI, GIS, HELE, STZ
+[2026-07-13 14:26] ══════════════════════════════════════════════
+[2026-07-13 14:26]   AGENT MACRO — 2026-07-13
+[2026-07-13 14:26] ══════════════════════════════════════════════
+[2026-07-13 14:26]   Régime marché  : BULL
+[2026-07-13 14:26]   SPY vs EMA200  : +7.7%
+[2026-07-13 14:26]   VIX            : 17.1 (LOW)
+[2026-07-13 14:26]   Max trades/j   : 3
+[2026-07-13 14:26]   Seuil net min  : 10
+[2026-07-13 14:26]   Top secteurs   : Finance, Santé, Utilities
+[2026-07-13 14:26]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-13 14:26]   Rationale      : Marché haussier (SPY +7.7% vs EMA200). Exposition maximale autorisée.
+[2026-07-13 14:26] ══════════════════════════════════════════════
+[2026-07-13 14:26] [RECONCILE IBKR] position hors book US sur IBKR : FGR.PA -8 (à réconcilier)
+[2026-07-13 14:26] [RECONCILE IBKR] cash réel IBKR = 249503 | ledger = 250000
+[2026-07-13 14:26] Aucune position ouverte.
+[2026-07-13 14:26] Screener en cours...
+[2026-07-13 14:26] [US] Univers screener enrichi de 4 idée(s) newsletters US : LEVI, GIS, HELE, STZ
+[2026-07-13 14:26] Scores : max=69  mediane=15  (160 tickers)
+[2026-07-13 14:26] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=69
+[2026-07-13 14:26] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Finance, Santé, Energie, Semi, Macro, Conso | pénalisés: ConsoBase
+[2026-07-13 14:26] 33 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-13 14:26]   [SEC 8-K] VRTX (2026-07-07) ⚠MATÉRIEL : Accord matériel signé, Divulgation Regulation FD, Autre événement matériel, États financiers & annexes
+[2026-07-13 14:26]   [SEC 8-K] MRNA (2026-07-08) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-07-13 14:26]   [SEC 8-K] OXY (2026-07-10) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-13 14:26]   [SEC 8-K] ABBV (2026-07-06) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-13 14:26]   [SEC 8-K] AMZN (2026-07-09) : Autre événement matériel, États financiers & annexes
+[2026-07-13 14:27] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-13 14:27] Cash deployable cette semaine : 62500 EUR  (max trades/j : 2)
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   DÉBAT : PANW
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   🟢 BULL [conviction=82] → ACHETER
+[2026-07-13 14:27]      • Score haussier fort (71/100)
+[2026-07-13 14:27]      • R-ratio excellent (3.1×) — asymétrie gain/risque idéale
+[2026-07-13 14:27]      • Prix au-dessus EMA200 (216.75) — tendance long terme haussière
+[2026-07-13 14:27]      • CMF fort — flux acheteur dominant
+[2026-07-13 14:27]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   🔴 BEAR [concern=5] → OK
+[2026-07-13 14:27]      • Volume faible (0.3× moyenne)
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   ✅ ARBITRE → ACHETER  (net=+79)
+[2026-07-13 14:27]      Arguments haussiers l'emportent clairement (conviction=82, concern=5, net=+79)
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   [ACHAT] PANW score=69 bull=82 bear=5 prix=327.47 investi=12447EUR SL=301.35 TP1=351.64
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   DÉBAT : HACK
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   🟢 BULL [conviction=82] → ACHETER
+[2026-07-13 14:27]      • Score haussier fort (73/100)
+[2026-07-13 14:27]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 14:27]      • Prix au-dessus EMA200 (85.83) — tendance long terme haussière
+[2026-07-13 14:27]      • Momentum 10j fort (+10.7%) — tendance confirmée
+[2026-07-13 14:27]      • CMF fort — flux acheteur dominant
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   🔴 BEAR [concern=18] → OK
+[2026-07-13 14:27]      • Stoch RSI suracheté (91) — retournement baissier possible
+[2026-07-13 14:27]      • RSI suracheté (81)
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   ✅ ARBITRE → ACHETER  (net=+71)
+[2026-07-13 14:27]      Arguments haussiers l'emportent clairement (conviction=82, concern=18, net=+71)
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   [SKIP portefeuille] HACK : Ordre HACK non exécuté (Inactive) — marché fermé/illiquide ?
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   DÉBAT : CIBR
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   🟢 BULL [conviction=77] → ACHETER
+[2026-07-13 14:27]      • Score haussier fort (73/100)
+[2026-07-13 14:27]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 14:27]      • Prix au-dessus EMA200 (75.04) — tendance long terme haussière
+[2026-07-13 14:27]      • CMF fort — flux acheteur dominant
+[2026-07-13 14:27]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   🔴 BEAR [concern=18] → OK
+[2026-07-13 14:27]      • Stoch RSI suracheté (90) — retournement baissier possible
+[2026-07-13 14:27]      • RSI suracheté (74)
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   ✅ ARBITRE → ACHETER  (net=+66)
+[2026-07-13 14:27]      Arguments haussiers l'emportent clairement (conviction=77, concern=18, net=+66)
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   [SKIP portefeuille] CIBR : Ordre CIBR non exécuté (Inactive) — marché fermé/illiquide ?
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   DÉBAT : V
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   🟢 BULL [conviction=59] → ACHETER
+[2026-07-13 14:27]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-13 14:27]      • Prix au-dessus EMA200 (324.39) — tendance long terme haussière
+[2026-07-13 14:27]      • Score haussier correct (66/100)
+[2026-07-13 14:27]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-13 14:27]      • OBV en hausse — accumulation en cours
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   🔴 BEAR [concern=13] → OK
+[2026-07-13 14:27]      • RSI suracheté (75)
+[2026-07-13 14:27]      • Volume faible (0.4× moyenne)
+[2026-07-13 14:27] 
+[2026-07-13 14:27]   ✅ ARBITRE → ACHETER  (net=+51)
+[2026-07-13 14:27]      Arguments haussiers l'emportent clairement (conviction=59, concern=13, net=+51)
+[2026-07-13 14:27] ────────────────────────────────────────────────────
+[2026-07-13 14:27]   [ACHAT] V score=60 bull=59 bear=13 prix=358.02 investi=12539EUR SL=342.02 TP1=370.42
+[2026-07-13 14:27] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-13 14:27] ----------------------------------------
+[2026-07-13 14:27] RESUME : valeur=250406.88 EUR  investi=24985.65 EUR  cash=225012.35 EUR  expo=10.1%  positions=2
+[2026-07-13 14:27] ----------------------------------------
+[2026-07-13 14:27] [MOMENTUM] 4 position(s) ouverte(s)...
+[2026-07-13 14:27]   [MOMENTUM] VK.PA: 21.07
+[2026-07-13 14:27]   [MOMENTUM] SCR.PA: 32.18
+[2026-07-13 14:27]   [MOMENTUM] BIM.PA: 70.85
+[2026-07-13 14:27]   [MOMENTUM] AI.PA: 176.74
+[2026-07-13 14:27] [MOMENTUM] Newsletter trouvée mais ancienne (> 36h) — pas de nouveaux achats.
+[2026-07-13 14:27] [MOMENTUM] valeur=10060.95€  cash=5996.00€  positions=4  PnL=+60.95€
+[2026-07-13 14:27] [LLM] 1 erreur(s) d'appel → fallback algo : JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2026-07-13 14:27] [EMAIL] Envoye a antoine.platini@outlook.fr
