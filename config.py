@@ -53,6 +53,13 @@ STRUCT_CONVICTION_MARGIN = 0.15    # +15% de marge de stop max à pleine convict
 STRUCT_MIN_ATR           = 1.0     # stop jamais plus serré que 1×ATR (anti-bruit)
 STRUCT_VIX_MULT          = {"LOW": 0.9, "MEDIUM": 1.0, "HIGH": 1.2}  # stop élargi si VIX haut
 
+# ── Seuils de gestion quotidienne (centralisés, ex-magic numbers de daily_auto) ──
+MAX_DAILY_MOVE_PCT   = 0.25    # au-delà → double-vérif intraday avant d'activer SL/TP
+TIME_STOP_DAYS       = 25      # ferme une position qui stagne depuis N jours…
+TIME_STOP_LOSS_PCT   = 0.02    # …si elle est en perte de plus de ce %
+NEWS_VETO_STRENGTH   = 0.6     # force min d'une news baissière pour véto candidat / alerte
+EXCLUDE_ETFS_FROM_TRADING = True  # ETF/indices non achetés (KID/PRIIPs EU) — gardés pour la macro
+
 # ── Signaux ───────────────────────────────────────────────────────
 BUY_SIGNAL_MIN_SCORE = 60         # Score minimum pour suggérer un achat
 ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance

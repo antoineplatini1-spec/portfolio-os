@@ -368,6 +368,12 @@ def run():
         blockers.append("Réconciliation IBKR : " + _iss)
     if _ibkr_cash is not None:
         log(f"[RECONCILE IBKR] cash réel IBKR = {_ibkr_cash:.0f} | ledger = {pm.cash:.0f}")
+        # IBKR = source de vérité : on ALIGNE le cash du ledger sur le réel (hors halt) →
+        # les décisions de déploiement se basent sur le cash effectif, plus sur une compta
+        # locale qui peut dériver.
+        if not reconcile_halt and _ibkr_cash > 0 and abs(_ibkr_cash - pm.cash) > 1:
+            log(f"[RECONCILE IBKR] cash ledger aligné sur IBKR : {pm.cash:.0f} → {_ibkr_cash:.0f}")
+            pm.cash = _ibkr_cash
     if reconcile_halt:
         log("[RECONCILE IBKR] ⛔ Divergence critique → NOUVEAUX ACHATS SUSPENDUS ce run.")
 
@@ -378,7 +384,7 @@ def run():
         # Seuil de suspicion : au-delà, on double-vérifie avant de laisser SL/TP s'exécuter.
         # Un vrai gap de -27% (ON semi, earnings) peut arriver — on ne bloque pas aveuglément,
         # on CONFIRME via une deuxième source (données intraday 60min).
-        MAX_DAILY_MOVE = 0.25
+        from config import MAX_DAILY_MOVE_PCT as MAX_DAILY_MOVE
 
         prices = {}
         for ticker in open_pos:
@@ -481,8 +487,7 @@ def run():
                 })
 
         # ── Time stop : fermer les positions qui stagnent ─────────
-        TIME_STOP_DAYS = 25
-        TIME_STOP_LOSS_PCT = 0.02
+        from config import TIME_STOP_DAYS, TIME_STOP_LOSS_PCT
         for ticker, pos in list(pm.open_positions.items()):
             price = prices.get(ticker)
             if price is None or not pos.entry_date:
@@ -578,6 +583,18 @@ def run():
         log(f"Filtre sectoriel macro : {before} → {len(candidates)} candidats "
             f"(secteurs auth. : {', '.join(macro_ctx.allowed_sectors)})")
 
+    # Exclure ETF/indices : non achetables sur le compte paper EU (règle KID/PRIIPs).
+    # Ils restent dans l'univers du screener pour la perf sectorielle macro, mais ne
+    # sont jamais des candidats d'achat → plus de tentatives quotidiennes rejetées.
+    from config import EXCLUDE_ETFS_FROM_TRADING
+    if EXCLUDE_ETFS_FROM_TRADING:
+        _before_etf = len(candidates)
+        candidates = candidates[
+            candidates["ticker"].apply(lambda t: SECTOR_MAP.get(t, "Other") not in ("ETF", "Macro"))
+        ]
+        if _before_etf != len(candidates):
+            log(f"Filtre ETF/indices (non achetables) : {_before_etf} → {len(candidates)} candidats")
+
     log(f"{len(candidates)} candidats pre-filtres (score>={min_score}, R>={MIN_R_RATIO*0.8:.1f})")
 
     # ── News LLM (optionnel) : un seul appel batch sur candidats + positions tenues ─
@@ -608,9 +625,10 @@ def run():
             for tk, s in news_signals.items():
                 log(f"[LLM news] {tk}: {s['direction']} {s['strength']:.2f} — {s['event']}")
             # Actualité négative forte sur une position tenue → surveillance (pas un blocage)
+            from config import NEWS_VETO_STRENGTH
             for tk in pm.open_positions:
                 s = news_signals.get(tk)
-                if s and s["direction"] == "bearish" and s["strength"] >= 0.6:
+                if s and s["direction"] == "bearish" and s["strength"] >= NEWS_VETO_STRENGTH:
                     log(f"  [LLM news] ⚠ position tenue {tk} : {s['event']} — à surveiller")
         except Exception as e:
             log(f"[LLM news] ÉCHEC → aucun signal news ce jour (fallback algo) : {e}")
@@ -757,7 +775,7 @@ def run():
             # Actualité négative RÉCENTE et FORTE → on n'ouvre pas (comme l'earnings).
             # Le LLM ne décide pas d'acheter, il ne fait que bloquer un mauvais timing.
             nsig = news_signals.get(ticker)
-            if nsig and nsig["direction"] == "bearish" and nsig["strength"] >= 0.6:
+            if nsig and nsig["direction"] == "bearish" and nsig["strength"] >= NEWS_VETO_STRENGTH:
                 log(f"  [SKIP news] {ticker} : actualité négative forte "
                     f"({nsig['strength']:.2f}) — {nsig['event']}")
                 continue

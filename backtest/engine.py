@@ -635,14 +635,7 @@ class BacktestEngine:
                 trades_opened_today += 1
 
     def _try_buy(self, ticker: str, price: float, atr: float, score: int, day: date):
-        # Sizing
         total = self._portfolio_value(day)
-        if score >= CONVICTION_SCORE_THRESHOLD:
-            max_pct = MAX_POSITION_CONVICTION_PCT
-        elif score >= OPPORTUNITY_SCORE_THRESHOLD:
-            max_pct = MAX_POSITION_OPPORTUNITY_PCT
-        else:
-            max_pct = MAX_POSITION_PCT
 
         # Niveaux via les MÊMES fonctions que le live (structure si USE_STRUCTURAL_LEVELS).
         from portfolio.risk import sl_price as _sl_price, tp_prices as _tp_prices
@@ -666,13 +659,11 @@ class BacktestEngine:
         if r_ratio_val < MIN_R_RATIO:
             return
 
-        qty_by_risk = (total * RISK_PER_TRADE_PCT) / risk_per_share
-        qty_by_size = (total * max_pct) / price
-        qty = min(qty_by_risk, qty_by_size)
+        # Sizing via la MÊME fonction que le live (plus de duplication → plus de divergence).
+        from portfolio.risk import compute_qty
+        qty, invest = compute_qty(total, price, sl, score, BROKER_CONFIG)
         if qty <= 0:
             return
-
-        invest = qty * price
         avail = self._available_cash(score, day)
         if invest > avail:
             qty = avail / price
