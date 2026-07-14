@@ -10613,3 +10613,103 @@ Traceback (most recent call last):
 [2026-07-13 14:27] [MOMENTUM] valeur=10060.95€  cash=5996.00€  positions=4  PnL=+60.95€
 [2026-07-13 14:27] [LLM] 1 erreur(s) d'appel → fallback algo : JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [2026-07-13 14:27] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-14 11:00] ============================================================
+[2026-07-14 11:00] SCAN JOURNALIER - 2026-07-14
+[2026-07-14 11:00] ============================================================
+[2026-07-14 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-14 11:00]   Date     : 2026-07-14  [cache]  ⚠ ANCIENNE
+[2026-07-14 11:00]   CAC 40   : BEARISH
+[2026-07-14 11:00]   Valeurs  :
+[2026-07-14 11:00]     ✅ Axa (Finance) → BUY
+[2026-07-14 11:00]     ✅ Biomérieux (Santé) → BUY
+[2026-07-14 11:00]     ✅ Total (Energie) → BUY
+[2026-07-14 11:00]   Macro    : market_caution
+[2026-07-14 11:00]   Secteurs : Finance:+1, Santé:+1, Energie:+1
+[2026-07-14 11:00] ───────────────────────────────────────────────────────
+[2026-07-14 11:00] [LLM] Biais sectoriel = LLM : Finance:+1, Semi:+1, Santé:+1, Macro:-1
+[2026-07-14 11:00] [US] Barchart : aucun email récent
+[2026-07-14 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Tech': -1, 'Macro': 0, 'ConsoBase': 1} | idées: PLTR, COST, PEP
+[2026-07-14 11:00] ══════════════════════════════════════════════
+[2026-07-14 11:00]   AGENT MACRO — 2026-07-14
+[2026-07-14 11:00] ══════════════════════════════════════════════
+[2026-07-14 11:00]   Régime marché  : BULL
+[2026-07-14 11:00]   SPY vs EMA200  : +8.0%
+[2026-07-14 11:00]   VIX            : 16.5 (LOW)
+[2026-07-14 11:00]   Max trades/j   : 3
+[2026-07-14 11:00]   Seuil net min  : 10
+[2026-07-14 11:00]   Top secteurs   : Finance, Santé, Utilities
+[2026-07-14 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-14 11:00]   Rationale      : Marché haussier (SPY +8.0% vs EMA200). Exposition maximale autorisée.
+[2026-07-14 11:00] ══════════════════════════════════════════════
+[2026-07-14 11:00] [RECONCILE IBKR] cash réel IBKR = 227674 | ledger = 225012
+[2026-07-14 11:00] [RECONCILE IBKR] cash ledger aligné sur IBKR : 225012 → 227674
+[2026-07-14 11:00] 2 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-14 11:00]   PANW: 350.00
+[2026-07-14 11:00]   V: 358.06
+[2026-07-14 11:00] Screener en cours...
+[2026-07-14 11:00] [US] Univers screener enrichi de 3 idée(s) newsletters US : PLTR, COST, PEP
+[2026-07-14 11:00] Scores : max=80  mediane=11  (156 tickers)
+[2026-07-14 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=80
+[2026-07-14 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Finance, Santé, Energie, Semi, ConsoBase | pénalisés: Tech
+[2026-07-14 11:00] Filtre ETF/indices (non achetables) : 33 → 23 candidats
+[2026-07-14 11:00] 23 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-14 11:01]   [SEC 8-K] BAC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-14 11:01]   [SEC 8-K] VRTX (2026-07-07) ⚠MATÉRIEL : Accord matériel signé, Divulgation Regulation FD, Autre événement matériel, États financiers & annexes
+[2026-07-14 11:01]   [SEC 8-K] GS (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-14 11:01]   [SEC 8-K] MRNA (2026-07-08) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-07-14 11:01]   [SEC 8-K] C (2026-07-14) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-14 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-14 11:01] Cash deployable cette semaine : 37514 EUR  (max trades/j : 2)
+[2026-07-14 11:01] ────────────────────────────────────────────────────
+[2026-07-14 11:01]   DÉBAT : CRWD
+[2026-07-14 11:01] ────────────────────────────────────────────────────
+[2026-07-14 11:01]   🟢 BULL [conviction=100] → ACHETER
+[2026-07-14 11:01]      • Score haussier fort (86/100)
+[2026-07-14 11:01]      • R-ratio excellent (3.1×) — asymétrie gain/risque idéale
+[2026-07-14 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-14 11:01]      • Prix au-dessus EMA200 (133.25) — tendance long terme haussière
+[2026-07-14 11:01]      • Momentum 10j fort (+11.3%) — tendance confirmée
+[2026-07-14 11:01] 
+[2026-07-14 11:01]   🔴 BEAR [concern=13] → OK
+[2026-07-14 11:01]      • RSI suracheté (73)
+[2026-07-14 11:01]      • Volume faible (0.4× moyenne)
+[2026-07-14 11:01] 
+[2026-07-14 11:01]   ✅ ARBITRE → ACHETER  (net=+92)
+[2026-07-14 11:01]      Arguments haussiers l'emportent clairement (conviction=100, concern=13, net=+92)
+[2026-07-14 11:01] ────────────────────────────────────────────────────
+[2026-07-14 11:01]   [ACHAT] CRWD score=80 bull=100 bear=13 prix=206.63 investi=20243EUR SL=190.04 TP1=221.88
+[2026-07-14 11:01]   [SKIP earnings] MS : publication de résultats dans ±3j
+[2026-07-14 11:01] ────────────────────────────────────────────────────
+[2026-07-14 11:01]   DÉBAT : SNOW
+[2026-07-14 11:01] ────────────────────────────────────────────────────
+[2026-07-14 11:01]   🟢 BULL [conviction=97] → ACHETER
+[2026-07-14 11:01]      • Score haussier fort (78/100)
+[2026-07-14 11:01]      • R-ratio excellent (3.0×) — asymétrie gain/risque idéale
+[2026-07-14 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-14 11:01]      • Prix au-dessus EMA200 (199.05) — tendance long terme haussière
+[2026-07-14 11:01]      • Momentum 10j fort (+9.3%) — tendance confirmée
+[2026-07-14 11:01] 
+[2026-07-14 11:01]   🔴 BEAR [concern=38] → PRUDENCE
+[2026-07-14 11:01]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-07-14 11:01]      • Stoch RSI suracheté (98) — retournement baissier possible
+[2026-07-14 11:01]      • RSI suracheté (82)
+[2026-07-14 11:01]      • Volume faible (0.2× moyenne)
+[2026-07-14 11:01]      • Budget semaine limité (28% restant)
+[2026-07-14 11:01] 
+[2026-07-14 11:01]   ✅ ARBITRE → ACHETER  (net=+74)
+[2026-07-14 11:01]      Arguments haussiers l'emportent clairement (conviction=97, concern=38, net=+74)
+[2026-07-14 11:01] ────────────────────────────────────────────────────
+[2026-07-14 11:01]   [ACHAT] SNOW score=72 bull=97 bear=38 prix=275.00 investi=12658EUR SL=253.17 TP1=295.00
+[2026-07-14 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-14 11:01] ----------------------------------------
+[2026-07-14 11:01] RESUME : valeur=251839.62 EUR  investi=57887.41 EUR  cash=194770.85 EUR  expo=22.7%  positions=4
+[2026-07-14 11:01] ----------------------------------------
+[2026-07-14 11:01] [MOMENTUM] 4 position(s) ouverte(s)...
+[2026-07-14 11:01]   [MOMENTUM] VK.PA: 20.93
+[2026-07-14 11:01]   [MOMENTUM] SCR.PA: 32.38
+[2026-07-14 11:01]   [MOMENTUM] BIM.PA: 70.20
+[2026-07-14 11:01]   [MOMENTUM] AI.PA: 177.84
+[2026-07-14 11:01] [MOMENTUM] Newsletter trouvée mais ancienne (> 36h) — pas de nouveaux achats.
+[2026-07-14 11:01] [MOMENTUM] valeur=10057.69€  cash=5996.00€  positions=4  PnL=+57.69€
+[2026-07-14 11:01] [LLM] 1 erreur(s) d'appel → fallback algo : JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2026-07-14 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
