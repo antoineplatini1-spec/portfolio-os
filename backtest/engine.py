@@ -447,7 +447,8 @@ class BacktestEngine:
         hard_stop = pos.entry_price * (1 - MAX_LOSS_PCT)
         effective_sl = max(sl_level, hard_stop) if not pos.trailing_stop else sl_level
 
-        if low <= effective_sl:
+        from portfolio.risk import hit_stop
+        if hit_stop(low, effective_sl):
             # Gap down : on exécute à l'Open du jour, pas au SL théorique
             df = self._data.get(ticker)
             row = df[df.index.date == day] if df is not None else None
@@ -457,19 +458,16 @@ class BacktestEngine:
             self._close_position(pos, ticker, day, exec_price, reason)
 
     def _check_tp(self, pos: BtPosition, ticker: str, day: date, high: float):
-        tp1_just_hit = False
-        for i, (tp_price, sell_pct, hit) in enumerate(
-            zip(pos.tp_prices, pos.tp_sell_pcts, pos.tp_hit)
-        ):
-            if hit or high < tp_price:
-                continue
+        from portfolio.risk import newly_hit_tps, next_trailing
+        hits = newly_hit_tps(high, pos.tp_prices, pos.tp_hit)   # décision partagée live↔backtest
+        tp1_just_hit = 0 in hits
+        for i in hits:
+            tp_price, sell_pct = pos.tp_prices[i], pos.tp_sell_pcts[i]
             qty_sell = pos.qty_remaining * sell_pct
             fees = compute_fees(tp_price, qty_sell, BROKER_CONFIG)
             self.cash += tp_price * qty_sell - fees
             pos.qty_remaining -= qty_sell
             pos.tp_hit[i] = True
-            if i == 0:
-                tp1_just_hit = True
             reason = f"TP{i+1}"
             self.trades.append(BtTrade(
                 ticker=ticker,
@@ -489,16 +487,13 @@ class BacktestEngine:
             pos.trailing_stop = True
             pos.trailing_price = pos.entry_price
 
-        # Trailing stop update
+        # Trailing stop (ne redescend jamais) — même décision que le live.
         if pos.trailing_stop:
-            df = self._data[ticker]
-            row = df[df.index.date == day]
+            row = self._data[ticker][self._data[ticker].index.date == day]
             if not row.empty:
                 close = float(row["Close"].iloc[0])
-                atr_ref = pos.entry_atr if pos.entry_atr > 0 else pos.entry_price * 0.02
-                new_ts = close - ATR_SL_MULTIPLIER * atr_ref
-                if new_ts > pos.trailing_price:
-                    pos.trailing_price = new_ts
+                pos.trailing_price = next_trailing(close, pos.entry_atr, pos.entry_price,
+                                                   pos.trailing_price)
 
         if pos.qty_remaining <= 0.0001:
             del self.positions[ticker]

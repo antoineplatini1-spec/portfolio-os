@@ -102,6 +102,27 @@ def compute_qty(
     return qty, invested
 
 
+# ── Décisions de SORTIE (partagées live ↔ backtest) ──────────────────────────────
+# Fonctions PURES : le manager (live) et le backtest les appellent à l'identique, pour
+# que la logique SL/TP/trailing ne puisse plus diverger entre les deux. La mutation de
+# l'état (Position vs BtPosition) reste propre à chaque, mais la DÉCISION est commune.
+
+def hit_stop(low: float, stop: float) -> bool:
+    """True si le plus-bas du jour touche/perce le stop."""
+    return stop > 0 and low <= stop
+
+
+def newly_hit_tps(high: float, tp_prices: list[float], tp_hit: list[bool]) -> list[int]:
+    """Indices des paliers TP nouvellement atteints (non encore touchés) au plus-haut."""
+    return [i for i, (p, h) in enumerate(zip(tp_prices, tp_hit)) if not h and high >= p]
+
+
+def next_trailing(price: float, entry_atr: float, entry_price: float, current: float) -> float:
+    """Nouveau niveau de trailing stop (ne redescend JAMAIS). ATR d'entrée, fallback 2%."""
+    atr_ref = entry_atr if entry_atr > 0 else price * 0.02
+    return max(current, price - ATR_SL_MULTIPLIER * atr_ref)
+
+
 def r_ratio(entry: float, tp: float, sl: float) -> float:
     """Ratio récompense/risque."""
     risk = entry - sl

@@ -53,6 +53,8 @@ git add data/portfolio_state.json data/momentum_state.json \
         data/momentum_signals.jsonl data/daily_log.txt 2>/dev/null || true
 if ! git diff --staged --quiet; then
     git commit -m "auto(vps): portfolio $(date +%F)"
+    # Récupère d'éventuels commits distants (push de dev) AVANT de pousser → plus de conflit.
+    git pull --rebase --autostash origin master || echo "git pull avant push échoué (on tente quand même)"
     git push || echo "git push échoué (vérifier la deploy key)"
 else
     echo "Aucun changement à committer."

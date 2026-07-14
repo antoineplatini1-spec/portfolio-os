@@ -21,7 +21,8 @@ from config import (
 )
 from portfolio.orders import make_broker
 from portfolio.position import PartialFill, Position, TPLevel
-from portfolio.risk import can_open_position, compute_qty, sl_price, tp_prices
+from portfolio.risk import (can_open_position, compute_qty, sl_price, tp_prices,
+                            hit_stop, newly_hit_tps, next_trailing)
 from utils.fees import compute_fees, net_pnl
 
 _data_dir = Path(os.environ.get("DATA_DIR", Path(__file__).parent.parent / "data"))
@@ -362,40 +363,34 @@ class PortfolioManager:
 
     def _check_sl(self, pos: Position, price: float):
         sl = pos.trailing_stop_price if pos.trailing_stop else pos.sl
-        if price <= sl:
+        if hit_stop(price, sl):                       # décision partagée live↔backtest
             self._close_position(pos, price, "SL")
 
     def _check_tp_levels(self, pos: Position, price: float):
-        tp1_just_hit = False
-        for i, tp in enumerate(pos.tp_levels):
-            if not tp.hit and price >= tp.price:
-                qty_to_sell = pos.qty_remaining * tp.sell_pct
-                # Guard frais : vente seulement si PnL net > MIN_TP_NET_PROFIT.
-                # Le TP est quand même marqué "hit" pour activer le trailing stop.
-                gross_pnl = (price - pos.entry_price) * qty_to_sell
-                fee_out   = compute_fees(price, qty_to_sell, BROKER_CONFIG)
-                net_profit = gross_pnl - fee_out
-                if net_profit >= MIN_TP_NET_PROFIT:
-                    self._partial_sell(pos, qty_to_sell, price, f"TP{i+1}")
-                # TP reconnu même si vente skippée (trailing stop + état cohérent)
-                tp.hit = True
-                tp.hit_date = datetime.now().strftime("%Y-%m-%d")
-                if i == 0:
-                    tp1_just_hit = True
+        # Paliers atteints : décision partagée (même logique que le backtest).
+        hits = newly_hit_tps(price, [tp.price for tp in pos.tp_levels],
+                             [tp.hit for tp in pos.tp_levels])
+        tp1_just_hit = 0 in hits
+        for i in hits:
+            tp = pos.tp_levels[i]
+            qty_to_sell = pos.qty_remaining * tp.sell_pct
+            # Guard frais : vente seulement si PnL net > MIN_TP_NET_PROFIT.
+            # Le TP est quand même marqué "hit" pour activer le trailing stop.
+            gross_pnl  = (price - pos.entry_price) * qty_to_sell
+            fee_out    = compute_fees(price, qty_to_sell, BROKER_CONFIG)
+            if gross_pnl - fee_out >= MIN_TP_NET_PROFIT:
+                self._partial_sell(pos, qty_to_sell, price, f"TP{i+1}")
+            tp.hit = True
+            tp.hit_date = datetime.now().strftime("%Y-%m-%d")
 
         if tp1_just_hit and TRAILING_STOP_AFTER_TP1:
             pos.trailing_stop = True
             pos.trailing_stop_price = pos.entry_price
 
-        # Mise à jour trailing stop avec l'ATR réel d'entrée.
-        # max() impératif : un trailing stop ne doit JAMAIS redescendre, sinon il
-        # relâche la protection des gains dès que le prix recule sans casser le stop.
+        # Trailing stop : ne redescend JAMAIS (décision partagée next_trailing).
         if pos.trailing_stop and price > pos.trailing_stop_price:
-            atr_ref = pos.entry_atr if pos.entry_atr > 0 else (price * 0.02)
-            pos.trailing_stop_price = max(
-                pos.trailing_stop_price,
-                price - ATR_SL_MULTIPLIER * atr_ref,
-            )
+            pos.trailing_stop_price = next_trailing(
+                price, pos.entry_atr, pos.entry_price, pos.trailing_stop_price)
 
         if pos.qty_remaining <= 0:
             pos.status = "closed"

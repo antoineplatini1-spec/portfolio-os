@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
 
 from portfolio.risk import (sl_price, tp_prices, compute_qty, r_ratio,
-                            max_position_size_pct)
+                            max_position_size_pct, hit_stop, newly_hit_tps, next_trailing)
 from utils.fees import compute_fees, net_pnl
 from signals import decision as D
 from signals import attribution as A
@@ -54,6 +54,27 @@ def test_compute_qty_size_cap_binds():
 def test_compute_qty_null_when_sl_above_entry():
     qty, invested = compute_qty(250_000, 100, 100, 50, ALPACA)
     assert qty == 0.0
+
+
+# ── Décisions de sortie (partagées live ↔ backtest) ──────────────
+
+def test_hit_stop():
+    assert hit_stop(95, 96) is True      # low sous le stop
+    assert hit_stop(97, 96) is False     # low au-dessus
+    assert hit_stop(95, 0) is False      # pas de stop
+
+def test_newly_hit_tps():
+    # high 106, paliers [103,106,110], aucun encore touché → TP1 et TP2
+    assert newly_hit_tps(106, [103, 106, 110], [False, False, False]) == [0, 1]
+    # TP1 déjà touché → seul TP2 est nouveau
+    assert newly_hit_tps(106, [103, 106, 110], [True, False, False]) == [1]
+    assert newly_hit_tps(101, [103, 106, 110], [False, False, False]) == []
+
+def test_next_trailing_never_descends():
+    # prix monte → trailing monte ; ATR entrée 2, mult 2 → prix-4
+    assert next_trailing(110, 2, 100, 100) == pytest.approx(106.0)
+    # prix baisse mais trailing ne redescend pas
+    assert next_trailing(104, 2, 100, 106) == pytest.approx(106.0)
 
 
 # ── Frais ─────────────────────────────────────────────────────────
