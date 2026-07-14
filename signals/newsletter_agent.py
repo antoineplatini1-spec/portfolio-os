@@ -333,9 +333,14 @@ class NewsletterAgent:
             payload = msg.get_payload(decode=True)
             if payload:
                 body = payload.decode("utf-8", errors="replace")
-        if not body and html:                       # newsletters HTML-only
-            body = re.sub(r"<[^>]+>", " ", html)
-            body = re.sub(r"\s+", " ", body).strip()
+        # Certains émetteurs (Barchart) mettent un text/plain PLACEHOLDER d'1 caractère qui
+        # masquerait le vrai contenu HTML : dès que le texte brut est trop court, on bascule
+        # sur l'HTML nettoyé s'il est plus riche.
+        if html and len(body.strip()) < 200:
+            stripped = re.sub(r"<[^>]+>", " ", html)
+            stripped = re.sub(r"\s+", " ", stripped).strip()
+            if len(stripped) > len(body.strip()):
+                body = stripped
         return (body, subject, date_str)
 
     def _fetch_imap(self, cfg: dict) -> tuple[str, str, str]:
