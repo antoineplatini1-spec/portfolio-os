@@ -143,10 +143,14 @@ def _extract_json(text: str):
     return json.loads(text[arr_i : text.rfind("]") + 1])
 
 
-def _call(system: str, user: str, max_tokens: int = 1500) -> tuple[Optional[object], dict]:
+def _call(system: str, user: str, max_tokens: int = 4000,
+          label: str = "") -> tuple[Optional[object], dict]:
     """
-    Un appel LLM, sans thinking (extraction simple → on garde coût/latence bas).
-    Retourne (data_json_ou_None, usage). Toute erreur → (None, {}).
+    Un appel LLM d'extraction. `max_tokens` GÉNÉREUX volontairement : Sonnet 5 « réfléchit »
+    (thinking) avant de répondre ; un plafond trop bas fait consommer TOUT le budget de
+    sortie en réflexion → texte vide → JSONDecodeError (le bug historique du gros appel news).
+    Facturé à l'usage RÉEL, donc un plafond haut ne coûte pas plus. `label` identifie l'appel
+    dans les erreurs. Retourne (data_json_ou_None, usage).
     """
     try:
         client = _client()
@@ -167,10 +171,17 @@ def _call(system: str, user: str, max_tokens: int = 1500) -> tuple[Optional[obje
         _usage_run["input"]  += usage["in"] or 0
         _usage_run["output"] += usage["out"] or 0
         _usage_run["calls"]  += 1
+        if not text.strip():
+            # Cas thinking-starvation : réflexion a mangé tout le budget, aucun texte.
+            reason = getattr(msg, "stop_reason", "?")
+            _run_status["errors"].append(
+                f"[{label}] réponse LLM vide (stop_reason={reason}, out={usage['out']}) "
+                f"→ max_tokens trop bas")
+            return None, usage
         return _extract_json(text), usage
     except Exception as e:
-        # Ne JAMAIS avaler : on enregistre la raison pour la rendre visible en aval.
-        _run_status["errors"].append(f"{type(e).__name__}: {str(e)[:150]}")
+        # Ne JAMAIS avaler : on enregistre la raison (avec le label) pour la rendre visible.
+        _run_status["errors"].append(f"[{label}] {type(e).__name__}: {str(e)[:150]}")
         return None, {}
 
 
@@ -287,7 +298,8 @@ def fetch_news_signals(
             lines.append(f"- {h['title']}{src}")
     user = "\n".join(lines)
 
-    data, usage = _call(_NEWS_SYSTEM, user, max_tokens=2000)
+    # max_tokens élevé : gros corpus (30 tickers + 8-K) → laisse la place au thinking + JSON.
+    data, usage = _call(_NEWS_SYSTEM, user, max_tokens=8000, label="news")
     if not isinstance(data, list):
         return {}
 
@@ -442,7 +454,7 @@ def enrich_newsletter(
 
     # 4000 : le combiné (secteurs + trades + citations) est plus verbeux qu'un appel
     # simple ; un plafond trop bas tronque le JSON → parse échoué → fallback inutile.
-    data, usage = _call(_NEWSLETTER_SYSTEM, user, max_tokens=4000)
+    data, usage = _call(_NEWSLETTER_SYSTEM, user, max_tokens=6000, label="newsletter")
     if not isinstance(data, dict):
         return None
 
@@ -527,7 +539,7 @@ def enrich_us_source(text: str) -> Optional[dict]:
         return None
 
     data, usage = _call(_US_SOURCE_SYSTEM, f"--- NEWSLETTER US ---\n{text[:10000]}",
-                        max_tokens=1500)
+                        max_tokens=4000, label="us_source")
     if not isinstance(data, dict):
         return None
 
@@ -608,7 +620,7 @@ def postmortem(trade: dict) -> Optional[dict]:
     )
     mem = _memory_block()   # Niveau 0 : mémoire compacte de taille fixe (coût plafonné)
     user = (mem + "\n\n" + facts) if mem else facts
-    data, usage = _call(_POSTMORTEM_SYSTEM, user, max_tokens=300)
+    data, usage = _call(_POSTMORTEM_SYSTEM, user, max_tokens=1500, label="postmortem")
     if not isinstance(data, dict):
         return None
     cause = str(data.get("cause", "")).strip()
