@@ -10713,3 +10713,104 @@ Traceback (most recent call last):
 [2026-07-14 11:01] [MOMENTUM] valeur=10057.69€  cash=5996.00€  positions=4  PnL=+57.69€
 [2026-07-14 11:01] [LLM] 1 erreur(s) d'appel → fallback algo : JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [2026-07-14 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-15 11:00] ============================================================
+[2026-07-15 11:00] SCAN JOURNALIER - 2026-07-15
+[2026-07-15 11:00] ============================================================
+[2026-07-15 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-15 11:00]   Date     : 2026-07-15  [imap]
+[2026-07-15 11:00]   CAC 40   : NEUTRAL
+[2026-07-15 11:00]   Valeurs  :
+[2026-07-15 11:00]     ⚠️ Stmicroelectronics (Semi) → CAUTION
+[2026-07-15 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-15 11:00]     ⚠️ Total (Energie) → CAUTION
+[2026-07-15 11:00]     ✅ Schneider (Industrie) → BUY
+[2026-07-15 11:00]     ✅ Airbus (Industrie) → BUY
+[2026-07-15 11:00]     ⚠️ Lvmh (Conso) → CAUTION
+[2026-07-15 11:00]     ⚠️ Kering (Conso) → CAUTION
+[2026-07-15 11:00]     ⚠️ Hermès (Conso) → CAUTION
+[2026-07-15 11:00]   Macro    : oil_bullish, inflation_high, market_caution, market_bullish
+[2026-07-15 11:00]   Secteurs : Conso:-3, Tech:-2, Industrie:+2, Semi:-1, Energie:+1
+[2026-07-15 11:00] ───────────────────────────────────────────────────────
+[2026-07-15 11:00] [LLM] Biais sectoriel = LLM : Conso:+1, Semi:-1, Energie:+1, Industrie:+2
+[2026-07-15 11:00] [LLM] Trades momentum = LLM (2) : Airbus:BUY, Edenred:HOLD
+[2026-07-15 11:00] [US] Barchart «The AI Gold Rush Has a Hidden Cost. =?ut» → secteur {'Semi': 2, 'Tech': -1} | idées: IBM, MSFT, AMZN, GOOG, META
+[2026-07-15 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Tech': -1, 'Macro': 0, 'ConsoBase': 1} | idées: PLTR, COST, PEP
+[2026-07-15 11:00] ══════════════════════════════════════════════
+[2026-07-15 11:00]   AGENT MACRO — 2026-07-15
+[2026-07-15 11:00] ══════════════════════════════════════════════
+[2026-07-15 11:00]   Régime marché  : BULL
+[2026-07-15 11:00]   SPY vs EMA200  : +8.2%
+[2026-07-15 11:00]   VIX            : 16.3 (LOW)
+[2026-07-15 11:00]   Max trades/j   : 3
+[2026-07-15 11:00]   Seuil net min  : 10
+[2026-07-15 11:00]   Top secteurs   : Finance, Santé, Utilities, Industrie, Energie
+[2026-07-15 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-15 11:00]   Rationale      : Marché haussier (SPY +8.2% vs EMA200). Exposition maximale autorisée.
+[2026-07-15 11:00] ══════════════════════════════════════════════
+[2026-07-15 11:00] [RECONCILE IBKR] cash réel IBKR = 198887 | ledger = 194771
+[2026-07-15 11:00] [RECONCILE IBKR] cash ledger aligné sur IBKR : 194771 → 198887
+[2026-07-15 11:00] 4 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-15 11:00]   PANW: 353.71
+[2026-07-15 11:00]   V: 357.27
+[2026-07-15 11:00]   CRWD: 205.50
+[2026-07-15 11:00]   SNOW: 269.33
+[2026-07-15 11:00]   SL/TP declenches -> encaisse +3530.40 EUR
+[2026-07-15 11:00]   TP1 PANW : 353.04 (+7.8%)
+[2026-07-15 11:00] Screener en cours...
+[2026-07-15 11:00] [US] Univers screener enrichi de 8 idée(s) newsletters US : IBM, MSFT, AMZN, GOOG, META, PLTR, COST, PEP
+[2026-07-15 11:01] Scores : max=78  mediane=12  (157 tickers)
+[2026-07-15 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=78
+[2026-07-15 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Semi, Energie, Industrie, Conso, ConsoBase | pénalisés: Tech
+[2026-07-15 11:01] Filtre ETF/indices (non achetables) : 38 → 29 candidats
+[2026-07-15 11:01] 29 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-15 11:01]   [SEC 8-K] JPM (2026-07-14) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-15 11:01]   [SEC 8-K] JPM (2026-07-14) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-15 11:01]   [SEC 8-K] JNJ (2026-07-15) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-15 11:01]   [SEC 8-K] BAC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-15 11:01]   [SEC 8-K] MS (2026-07-15) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-15 11:01]   [SEC 8-K] MRNA (2026-07-08) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-07-15 11:01]   [SEC 8-K] O (2026-07-13) ⚠MATÉRIEL : Accord matériel signé, Résiliation d'accord matériel, Nouvelle obligation financière, Autre événement matériel, États financiers & annexes
+[2026-07-15 11:01] [LLM news] JPM: bullish 0.70 — Stress test réussi, relèvement du payout
+[2026-07-15 11:01] [LLM news] PYPL: bullish 0.90 — Offre de rachat Stripe/Advent à 53 Mds$
+[2026-07-15 11:01] [LLM news] AXP: bullish 0.50 — Hausse de 29% des frais Platinum, augmente les revenus de frais de carte
+[2026-07-15 11:01] [LLM news] JNJ: bullish 0.85 — Résultats Q2 supérieurs aux attentes, relèvement des prévisions annuelles
+[2026-07-15 11:01] [LLM news] MS: bullish 0.85 — Résultats Q2 record (revenu et profit)
+[2026-07-15 11:01] [LLM news] MRK: bullish 0.60 — Approbation FDA de Keytruda pour nouvelle indication (cancer de la vessie)
+[2026-07-15 11:01] [LLM news] VRTX: bullish 0.70 — Acquisition de Crinetics Pharmaceuticals pour 85$/action en cash
+[2026-07-15 11:01] [LLM news] RTX: bullish 0.30 — Pratt & Whitney acquiert Aiir Innovations pour l'inspection de moteurs par IA
+[2026-07-15 11:01] [LLM news] UPS: neutral 0.20 — Règlement d'un procès pour discrimination raciale d'un ancien chauffeur
+[2026-07-15 11:01] [LLM news] AAPL: bullish 0.25 — Apple obtient le rejet d'un procès sur iCloud
+[2026-07-15 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-15 11:01] Cash deployable cette semaine : 4613 EUR  (max trades/j : 2)
+[2026-07-15 11:01] ────────────────────────────────────────────────────
+[2026-07-15 11:01]   DÉBAT : JPM
+[2026-07-15 11:01] ────────────────────────────────────────────────────
+[2026-07-15 11:01]   🟢 BULL [conviction=76] → ACHETER
+[2026-07-15 11:01]      • Score haussier fort (76/100)
+[2026-07-15 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-15 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-15 11:01]      • Prix au-dessus EMA200 (308.81) — tendance long terme haussière
+[2026-07-15 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-15 11:01] 
+[2026-07-15 11:01]   🔴 BEAR [concern=25] → OK
+[2026-07-15 11:01]      • Budget semaine presque épuisé (7% restant) — conserver pour mieux
+[2026-07-15 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-15 11:01]      • Volume faible (0.3× moyenne)
+[2026-07-15 11:01] 
+[2026-07-15 11:01]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-07-15 11:01]      Arguments haussiers l'emportent clairement (conviction=76, concern=25, net=+61)
+[2026-07-15 11:01] ────────────────────────────────────────────────────
+[2026-07-15 11:01]   [ACHAT] JPM score=71 bull=76 bear=25 prix=348.05 investi=4526EUR SL=332.68 TP1=359.81
+[2026-07-15 11:01] 1 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-07-15 11:01] ----------------------------------------
+[2026-07-15 11:01] RESUME : valeur=257188.98 EUR  investi=59138.25 EUR  cash=197891.22 EUR  expo=23.1%  positions=5
+[2026-07-15 11:01] ----------------------------------------
+[2026-07-15 11:01] [MOMENTUM] 4 position(s) ouverte(s)...
+[2026-07-15 11:01]   [MOMENTUM] VK.PA: 20.70
+[2026-07-15 11:01]   [MOMENTUM] SCR.PA: 31.96
+[2026-07-15 11:01]   [MOMENTUM] BIM.PA: 71.70
+[2026-07-15 11:01]   [MOMENTUM] AI.PA: 175.08
+[2026-07-15 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-07-15 11:01]   [MOMENTUM] Airbus (AIR.PA) 5.112× à 195.62€ | SL=187.93 | TPs=220.20 | investi=1000€
+[2026-07-15 11:01] [MOMENTUM] valeur=10038.44€  cash=4995.00€  positions=5  PnL=+38.44€
+[2026-07-15 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr

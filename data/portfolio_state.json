@@ -1,22 +1,22 @@
 {
-  "cash": 194770.8498,
+  "cash": 197891.22,
   "initial_cash": 250000.0,
   "reserve_cash": 0.0,
   "start_date": "2026-07-11",
-  "weekly_deployed": 57887.409956,
+  "weekly_deployed": 62413.749956,
   "week_start": "2026-07-11",
   "positions": {
     "PANW": {
       "ticker": "PANW",
       "entry_price": 327.55,
       "qty_total": 38.0,
-      "qty_remaining": 38.0,
+      "qty_remaining": 28.0,
       "sl": 301.346,
-      "trailing_stop": false,
+      "trailing_stop": true,
       "trailing_stop_price": 327.55,
       "entry_date": "2026-07-13",
       "fees_in": 1.0001,
-      "status": "open",
+      "status": "partial",
       "close_price": 0.0,
       "close_date": "",
       "entry_score": 69,
@@ -26,8 +26,8 @@
         {
           "price": 351.63925,
           "sell_pct": 0.25,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-07-15"
         },
         {
           "price": 375.7285,
@@ -42,7 +42,14 @@
           "hit_date": ""
         }
       ],
-      "partial_fills": []
+      "partial_fills": [
+        {
+          "date": "2026-07-15",
+          "qty": 10.0,
+          "price": 353.04,
+          "reason": "TP1"
+        }
+      ]
     },
     "V": {
       "ticker": "V",
@@ -157,6 +164,44 @@
         }
       ],
       "partial_fills": []
+    },
+    "JPM": {
+      "ticker": "JPM",
+      "entry_price": 348.18,
+      "qty_total": 13.0,
+      "qty_remaining": 13.0,
+      "sl": 332.68,
+      "trailing_stop": false,
+      "trailing_stop_price": 348.18,
+      "entry_date": "2026-07-15",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 71,
+      "entry_atr": 7.75,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 359.805,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 371.43,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 386.93,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [],
@@ -176,7 +221,7 @@
     "CIBR": 94.26000213623047,
     "HACK": 111.87999725341797,
     "AMD": 546.719970703125,
-    "SNOW": 267.489990234375,
+    "SNOW": 269.3299865722656,
     "EOG": 131.47999572753906,
     "PM": 181.1699981689453,
     "GS": 1055.969970703125,
@@ -186,8 +231,8 @@
     "TLT": 85.46600341796875,
     "HYG": 79.75,
     "GE": 359.0400085449219,
-    "PANW": 350.0,
-    "CRWD": 193.18499755859375,
+    "PANW": 353.7149963378906,
+    "CRWD": 205.5,
     "ABBV": 249.91000366210938,
     "ARKG": 43.0,
     "AMAT": 588.6599731445312,
@@ -201,6 +246,6 @@
     "DE": 592.9000244140625,
     "RTX": 195.1999969482422,
     "ASML": 1804.25,
-    "V": 358.05999755859375
+    "V": 357.2698974609375
   }
 }

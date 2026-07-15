@@ -1,5 +1,5 @@
 {
-  "cash": 5996.000025630286,
+  "cash": 4995.000026204381,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -118,13 +118,39 @@
         }
       ],
       "partial_fills": []
+    },
+    "AIR.PA": {
+      "ticker": "AIR.PA",
+      "entry_price": 195.81561511230467,
+      "qty_total": 5.111951870773451,
+      "qty_remaining": 5.111951870773451,
+      "sl": 187.93,
+      "trailing_stop": false,
+      "trailing_stop_price": 195.81561511230467,
+      "entry_date": "2026-07-15",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 220.2,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [],
   "last_prices": {
-    "VK.PA": 20.93000030517578,
-    "SCR.PA": 32.380001068115234,
-    "BIM.PA": 70.19999694824219,
-    "AI.PA": 177.83999633789062
+    "VK.PA": 20.700000762939453,
+    "SCR.PA": 31.959999084472656,
+    "BIM.PA": 71.69999694824219,
+    "AI.PA": 175.0800018310547
   }
 }
