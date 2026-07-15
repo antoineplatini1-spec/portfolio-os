@@ -6,9 +6,14 @@ import os
 INITIAL_CASH = 10_000.0          # Capital de départ (€)
 CURRENCY = "EUR"
 
-# ── Allocation progressive (Phase 1 = mois 1) ────────────────────
-RAMP_UP_WEEKS = 4                 # Durée de la montée en charge
-WEEKLY_DEPLOY_PCT = 0.25          # % du cash initial déployable par semaine
+# ── Allocation progressive (montée en charge) ────────────────────
+# RETIRÉE (2026-07-15) : le backtest montre un bénéfice NUL (drawdown identique avec/sans)
+# — le timing est déjà géré, en mieux et de façon adaptative, par le régime macro + le
+# rythme naturel (2-3 trades/j × 5-12%/position). La rampe ne faisait que bloquer des
+# signaux en marché fort. Remettre RAMP_UP_WEEKS > 0 pour la réactiver, ou baisser
+# WEEKLY_DEPLOY_PCT pour l'adoucir sans la supprimer.
+RAMP_UP_WEEKS = 0                 # 0 = pas de rampe (déploiement piloté par le régime)
+WEEKLY_DEPLOY_PCT = 0.25          # (inopérant tant que RAMP_UP_WEEKS = 0)
 
 # ── Poche de réserve ("pépites") ─────────────────────────────────
 # Réserve SUPPRIMÉE (2026-07-12, décision utilisateur : pleine latitude pour engager
