@@ -90,6 +90,20 @@ def next_trailing(close: float, entry_atr: float, entry_price: float,
     return max(prev_trailing, candidate)
 
 
+def live_exposure_cap(weeks_live: float, drawdown_pct: float,
+                      start: float, step: float, health_dd: float,
+                      max_cap: float) -> float:
+    """
+    Plafond d'exposition ADAPTATIF au go-live (« prove-to-scale »). Part de `start`,
+    monte de `step` par semaine live SI le live est sain, mais RETOMBE au plancher `start`
+    dès que le drawdown est pire que `health_dd` (de-risk automatique). Borné à `max_cap`.
+    Pur → testable ; utilisé seulement quand LIVE_RAMP_ENABLED.
+    """
+    if drawdown_pct <= health_dd:
+        return start
+    return min(max_cap, start + step * max(0.0, weeks_live))
+
+
 def max_position_size_pct(score: int) -> float:
     """Taille maximale d'une position en % du portefeuille selon le score."""
     if score >= CONVICTION_SCORE_THRESHOLD:

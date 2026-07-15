@@ -22,7 +22,7 @@ from config import (
 from portfolio.orders import make_broker
 from portfolio.position import PartialFill, Position, TPLevel
 from portfolio.risk import (can_open_position, compute_qty, sl_price, tp_prices,
-                            hit_stop, newly_hit_tps, next_trailing)
+                            hit_stop, newly_hit_tps, next_trailing, live_exposure_cap)
 from utils.fees import compute_fees, net_pnl
 
 _data_dir = Path(os.environ.get("DATA_DIR", Path(__file__).parent.parent / "data"))
@@ -64,6 +64,8 @@ class PortfolioManager:
             self.week_start: str = data.get("week_start", datetime.now().strftime("%Y-%m-%d"))
             # Derniers prix connus (mis à jour par update_prices)
             self.last_prices: dict[str, float] = data.get("last_prices", {})
+            # Pic de valeur (pour le drawdown de la rampe go-live adaptative)
+            self.peak_value: float = data.get("peak_value", self.cash)
         else:
             self.cash = INITIAL_CASH
             self.initial_cash = INITIAL_CASH
@@ -74,6 +76,7 @@ class PortfolioManager:
             self.weekly_deployed: float = 0.0
             self.week_start: str = datetime.now().strftime("%Y-%m-%d")
             self.last_prices: dict[str, float] = {}
+            self.peak_value: float = INITIAL_CASH
             self._save()
 
     def _save(self):
@@ -89,6 +92,7 @@ class PortfolioManager:
             "positions": {k: v.to_dict() for k, v in self.positions.items()},
             "history": self.history,
             "last_prices": self.last_prices,
+            "peak_value": self.peak_value,
         }
         tmp = self.state_file.with_suffix(".tmp")
         with open(tmp, "w", encoding="utf-8") as f:
@@ -155,6 +159,23 @@ class PortfolioManager:
     @property
     def open_positions(self) -> dict[str, Position]:
         return {k: v for k, v in self.positions.items() if not v.is_closed}
+
+    @property
+    def effective_max_exposure(self) -> float:
+        """
+        Plafond d'exposition : fixe (MAX_TOTAL_EXPOSURE_PCT) en paper ; ADAPTATIF
+        (prove-to-scale) au go-live — monte avec les semaines live si sain, retombe au
+        plancher si le drawdown depuis le pic dérape.
+        """
+        from config import (LIVE_RAMP_ENABLED, LIVE_RAMP_START_EXPO, LIVE_RAMP_WEEKLY_STEP,
+                            LIVE_RAMP_HEALTH_DD, MAX_TOTAL_EXPOSURE_PCT)
+        if not LIVE_RAMP_ENABLED:
+            return MAX_TOTAL_EXPOSURE_PCT
+        start = datetime.strptime(self.start_date, "%Y-%m-%d")
+        weeks_live = max(0.0, (datetime.now() - start).days / 7.0)
+        dd = (self.total_value - self.peak_value) / self.peak_value if self.peak_value > 0 else 0.0
+        return live_exposure_cap(weeks_live, dd, LIVE_RAMP_START_EXPO,
+                                 LIVE_RAMP_WEEKLY_STEP, LIVE_RAMP_HEALTH_DD, MAX_TOTAL_EXPOSURE_PCT)
 
     # ── Allocation progressive ─────────────────────────────────────
 
@@ -228,7 +249,7 @@ class PortfolioManager:
             current_exposure_pct=self.exposure_pct,
             sector_positions=self.sector_position_count(ticker),
             invested_amount=invested,
-            max_total_exposure=MAX_TOTAL_EXPOSURE_PCT,
+            max_total_exposure=self.effective_max_exposure,
             max_sector_positions=MAX_SECTOR_POSITIONS,
         )
         if not ok:
@@ -359,6 +380,8 @@ class PortfolioManager:
             self._check_sl(pos, price)
             if not pos.is_closed:
                 self._check_tp_levels(pos, price)
+        # Pic de valeur (drawdown de la rampe go-live)
+        self.peak_value = max(self.peak_value, self.total_value)
         self._save()
 
     def _check_sl(self, pos: Position, price: float):

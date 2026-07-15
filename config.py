@@ -15,6 +15,16 @@ CURRENCY = "EUR"
 RAMP_UP_WEEKS = 0                 # 0 = pas de rampe (déploiement piloté par le régime)
 WEEKLY_DEPLOY_PCT = 0.25          # (inopérant tant que RAMP_UP_WEEKS = 0)
 
+# ── Rampe GO-LIVE « prove-to-scale » (vrai argent uniquement) ─────
+# ADAPTATIVE, pas calendaire : au démarrage live le modèle n'est pas prouvé EN RÉEL
+# (slippage, exécution, comportements). On plafonne l'exposition bas, on la monte si le
+# live se passe bien, et on RETOMBE au plancher si le drawdown dérape (de-risk auto).
+# Éteinte en paper (aucun effet) ; à activer au go-live (avec TRADING_MODE=live).
+LIVE_RAMP_ENABLED     = False     # activé au go-live seulement
+LIVE_RAMP_START_EXPO  = 0.25      # exposition max au démarrage live (25%)
+LIVE_RAMP_WEEKLY_STEP = 0.15      # +15% de cap débloqué par semaine SI le live est sain
+LIVE_RAMP_HEALTH_DD   = -0.05     # si drawdown live pire que -5% → retour au plancher
+
 # ── Poche de réserve ("pépites") ─────────────────────────────────
 # Réserve SUPPRIMÉE (2026-07-12, décision utilisateur : pleine latitude pour engager
 # le capital). 0 → aucun cash bloqué d'office, déploiement jusqu'à ~100% dans la

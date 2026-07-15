@@ -12,7 +12,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import pytest
 
 from portfolio.risk import (sl_price, tp_prices, compute_qty, r_ratio,
-                            max_position_size_pct, hit_stop, newly_hit_tps, next_trailing)
+                            max_position_size_pct, hit_stop, newly_hit_tps, next_trailing,
+                            live_exposure_cap)
 from utils.fees import compute_fees, net_pnl
 from signals import decision as D
 from signals import attribution as A
@@ -75,6 +76,22 @@ def test_next_trailing_never_descends():
     assert next_trailing(110, 2, 100, 100) == pytest.approx(106.0)
     # prix baisse mais trailing ne redescend pas
     assert next_trailing(104, 2, 100, 106) == pytest.approx(106.0)
+
+
+# ── Rampe go-live adaptative (prove-to-scale) ─────────────────────
+
+def test_live_ramp_starts_low():
+    assert live_exposure_cap(0, 0.0, 0.25, 0.15, -0.05, 0.95) == pytest.approx(0.25)
+
+def test_live_ramp_grows_when_healthy():
+    assert live_exposure_cap(2, 0.0, 0.25, 0.15, -0.05, 0.95) == pytest.approx(0.55)
+
+def test_live_ramp_capped():
+    assert live_exposure_cap(10, 0.0, 0.25, 0.15, -0.05, 0.95) == pytest.approx(0.95)
+
+def test_live_ramp_derisks_on_drawdown():
+    # drawdown pire que -5% → retour au plancher malgré le temps écoulé
+    assert live_exposure_cap(6, -0.06, 0.25, 0.15, -0.05, 0.95) == pytest.approx(0.25)
 
 
 # ── Frais ─────────────────────────────────────────────────────────
