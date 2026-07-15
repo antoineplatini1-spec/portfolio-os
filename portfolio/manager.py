@@ -204,7 +204,14 @@ class PortfolioManager:
         if self._is_ramp_up_phase() and not is_opportunity:
             weekly_budget = self.initial_cash * WEEKLY_DEPLOY_PCT
             remaining_budget = max(0.0, weekly_budget - self.weekly_deployed)
-            return min(base_cash, remaining_budget)
+            base_cash = min(base_cash, remaining_budget)
+
+        # Garde-fou ANTI-MARGE : ne jamais déployer au-delà du cash RÉEL (moins un tampon),
+        # même si le compte autorise l'emprunt. self.cash est aligné sur le cash IBKR réel
+        # par la réconciliation → verrou dur contre tout levier.
+        from config import NO_MARGIN, CASH_SAFETY_BUFFER
+        if NO_MARGIN:
+            base_cash = min(base_cash, max(0.0, self.cash * (1 - CASH_SAFETY_BUFFER)))
         return base_cash
 
     def sector_position_count(self, ticker: str) -> int:

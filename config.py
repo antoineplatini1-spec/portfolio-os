@@ -43,6 +43,13 @@ CONVICTION_SCORE_THRESHOLD = 90
 MAX_SECTOR_POSITIONS = 4          # Concentration sectorielle max
 MAX_TOTAL_EXPOSURE_PCT = 0.95     # Exposition totale max (hors réserve)
 
+# ── Garde-fou ANTI-MARGE (on ne trade jamais sur emprunt) ────────
+# Le compte IBKR autorise la marge (BuyingPower ≈ 6× l'équité) — on la VERROUILLE :
+# le bot ne déploie jamais plus que son cash RÉEL, moins un petit tampon pour que les
+# frais/slippage ne fassent jamais basculer le cash en négatif (= emprunt).
+NO_MARGIN = True                 # jamais de levier : déploiement ≤ cash disponible
+CASH_SAFETY_BUFFER = 0.02        # garde 2% de cash intouchable (coussin frais/slippage)
+
 # ── Risque par trade ──────────────────────────────────────────────
 SLIPPAGE_PCT = 0.001              # 0.1% slippage (bid-ask spread + impact marché)
 RISK_PER_TRADE_PCT = 0.01         # 1% du portefeuille risqué par trade
