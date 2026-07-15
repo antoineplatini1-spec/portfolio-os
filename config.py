@@ -59,6 +59,14 @@ TP_LEVELS = [
 ]
 TRAILING_STOP_AFTER_TP1 = True    # Activer trailing stop à Entry après TP1
 
+# ── Ordres bracket natifs IBKR (SL/TP intraday, autonomie) ────────
+# OFF par défaut. Quand activé : à l'ouverture, le SL et le TP sont posés SUR IBKR
+# (groupe OCA) et déclenchés INTRADAY par IBKR — plus besoin du check quotidien du bot.
+# ⚠️ Change l'exécution : le bot cesse de gérer SL/TP lui-même et RÉCONCILIE les fills
+# natifs. Simplifie le ladder à 1 TP (cible finale) — les brackets natifs ne portent
+# proprement qu'un SL + un TP. À valider EN SÉANCE paper avant activation.
+USE_NATIVE_BRACKETS = False
+
 # ── Niveaux STRUCTURELS (SL/TP calés sur support/résistance + conviction + régime) ──
 # Gated : OFF par défaut → comportement ATR historique inchangé. À passer ON UNIQUEMENT
 # si le backtest comparatif (structure vs ATR) montre un gain (Sharpe/DD/profit factor).

@@ -41,11 +41,22 @@ source .venv/bin/activate 2>/dev/null || true
 
 echo "===== $(date -u +'%Y-%m-%dT%H:%M:%SZ') — run_daily ====="
 
+# ── Dead-man's switch (surveillance) ──────────────────────────────
+# URL de ping (healthchecks.io ou équivalent), dans data/heartbeat.url (gitignoré) ou
+# la var d'env HEARTBEAT_URL. Vide → no-op. Un run manqué/échoué → le service t'alerte.
+HEARTBEAT_URL="${HEARTBEAT_URL:-}"
+[ -f "$DATA_DIR/heartbeat.url" ] && HEARTBEAT_URL="$(tr -d '[:space:]' < "$DATA_DIR/heartbeat.url")"
+[ -n "$HEARTBEAT_URL" ] && curl -fsS -m 10 "$HEARTBEAT_URL/start" >/dev/null 2>&1 || true
+
 # Récupère les éventuels changements distants avant de trader
 git pull --rebase --autostash origin master || echo "git pull échoué (on continue)"
 
-# Scan + trading
+# Scan + trading — on capture le code de sortie SANS que set -e ne tue le script,
+# pour pouvoir signaler l'échec au dead-man's switch.
+set +e
 python daily_auto.py
+RUN_RC=$?
+set -e
 
 # Persiste l'état (état PTF + Momentum + journaux). `git add data/` reste robuste
 # même si un fichier manque ; les secrets (email_config.json) sont git-ignorés.
@@ -60,4 +71,14 @@ else
     echo "Aucun changement à committer."
 fi
 
-echo "===== fin run_daily ====="
+# Ping final : succès → dead-man's switch réarmé ; échec → alerte immédiate.
+if [ -n "$HEARTBEAT_URL" ]; then
+    if [ "$RUN_RC" -eq 0 ]; then
+        curl -fsS -m 10 "$HEARTBEAT_URL" >/dev/null 2>&1 || true
+    else
+        curl -fsS -m 10 "$HEARTBEAT_URL/fail" >/dev/null 2>&1 || true
+    fi
+fi
+
+echo "===== fin run_daily (rc=$RUN_RC) ====="
+exit $RUN_RC

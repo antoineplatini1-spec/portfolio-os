@@ -188,6 +188,66 @@ class IBKRBroker:
             "ibkr_status": status,
         }
 
+    # ── Ordre bracket natif (SL/TP intraday, gérés par IBKR) ──────
+
+    def buy_bracket(self, ticker: str, qty: float, price: float,
+                    sl: float, tp: float) -> dict:
+        """
+        Ordre BRACKET natif : entrée MKT + STOP protecteur (SL) + LIMIT (TP), en groupe OCA
+        (l'un annule l'autre). IBKR déclenche les sorties INTRADAY sur ses serveurs → le
+        portefeuille reste protégé même quand le bot ne tourne pas. Entrée tif=DAY (fix
+        10349) ; SL/TP en GTC. Retourne le dict du fill d'ENTRÉE (format buy) + le groupe
+        OCA ; les ordres SL/TP restent OUVERTS sur IBKR après retour.
+        """
+        from ib_async import MarketOrder, Order
+
+        qty_int = max(1, round(qty))
+        contract = self._stock_contract(ticker)
+        oca = f"br_{ticker}_{int(datetime.now().timestamp())}"
+
+        parent = MarketOrder("BUY", qty_int)
+        parent.tif = "DAY"
+        parent.transmit = False
+        parent.orderId = self.ib.client.getReqId()
+        stop = Order(action="SELL", orderType="STP", totalQuantity=qty_int,
+                     auxPrice=round(sl, 2), parentId=parent.orderId, tif="GTC",
+                     ocaGroup=oca, ocaType=1, transmit=False)
+        take = Order(action="SELL", orderType="LMT", totalQuantity=qty_int,
+                     lmtPrice=round(tp, 2), parentId=parent.orderId, tif="GTC",
+                     ocaGroup=oca, ocaType=1, transmit=True)
+        if self.cfg.get("account"):
+            parent.account = stop.account = take.account = self.cfg["account"]
+
+        trade = self.ib.placeOrder(contract, parent)
+        self.ib.placeOrder(contract, stop)
+        self.ib.placeOrder(contract, take)
+
+        deadline, waited, step = self.fill_timeout, 0.0, 0.5
+        while not trade.isDone() and waited < deadline:
+            self.ib.waitOnUpdate(timeout=step)
+            waited += step
+        if (trade.orderStatus.status in ("Cancelled", "ApiCancelled")
+                and float(trade.orderStatus.filled or 0) == 0):
+            self.ib.sleep(2.0)
+
+        status = trade.orderStatus.status
+        filled_qty = float(trade.orderStatus.filled or 0)
+        avg_price = float(trade.orderStatus.avgFillPrice or 0)
+        commission = sum(
+            abs(float(f.commissionReport.commission))
+            for f in trade.fills if f.commissionReport and f.commissionReport.commission
+        )
+        if filled_qty <= 0:
+            return {"status": status or "unfilled", "ticker": ticker, "side": "buy",
+                    "qty": 0.0, "price": 0.0, "fees": 0.0, "total": 0.0,
+                    "date": datetime.now().strftime("%Y-%m-%d %H:%M"), "ibkr_status": status}
+        gross = avg_price * filled_qty
+        return {"status": "filled" if status == "Filled" else status, "ticker": ticker,
+                "side": "buy", "qty": filled_qty, "price": round(avg_price, 6),
+                "fees": round(commission, 4), "total": round(gross + commission, 4),
+                "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                "ibkr_status": status, "bracket": oca}
+
     # ── Réconciliation ────────────────────────────────────────────
 
     def account_positions(self) -> dict[str, dict]:
