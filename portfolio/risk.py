@@ -66,6 +66,30 @@ def tp_prices(entry: float, atr: float, resistance: float = 0.0,
     return levels
 
 
+# ── Décisions de SORTIE (pures, partagées live ↔ backtest pour éviter la divergence) ──
+
+def hit_stop(low: float, stop: float) -> bool:
+    """True si le plus-bas de la séance a touché/dépassé le stop (stop > 0)."""
+    return stop > 0 and low <= stop
+
+
+def newly_hit_tps(high: float, tp_prices_list: list, tp_hit: list) -> list:
+    """Indices des paliers TP NOUVELLEMENT atteints (high ≥ prix ET pas déjà touché)."""
+    return [i for i, (p, hit) in enumerate(zip(tp_prices_list, tp_hit))
+            if not hit and p and high >= p]
+
+
+def next_trailing(close: float, entry_atr: float, entry_price: float,
+                  prev_trailing: float) -> float:
+    """
+    Nouveau niveau de trailing stop : close − 2×ATR (ATR d'entrée, sinon 2% du prix),
+    mais NE REDESCEND JAMAIS (protection des gains). Retourne max(prev, candidat).
+    """
+    atr_ref = entry_atr if entry_atr > 0 else entry_price * 0.02
+    candidate = close - ATR_SL_MULTIPLIER * atr_ref
+    return max(prev_trailing, candidate)
+
+
 def max_position_size_pct(score: int) -> float:
     """Taille maximale d'une position en % du portefeuille selon le score."""
     if score >= CONVICTION_SCORE_THRESHOLD:
