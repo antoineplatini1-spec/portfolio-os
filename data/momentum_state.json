@@ -1,5 +1,5 @@
 {
-  "cash": 4995.000026204381,
+  "cash": 3994.0000266014085,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -144,13 +144,46 @@
         }
       ],
       "partial_fills": []
+    },
+    "LR.PA": {
+      "ticker": "LR.PA",
+      "entry_price": 138.18805305480956,
+      "qty_total": 7.2437521035409125,
+      "qty_remaining": 7.2437521035409125,
+      "sl": 121.55,
+      "trailing_stop": false,
+      "trailing_stop_price": 138.18805305480956,
+      "entry_date": "2026-07-16",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "tp_levels": [
+        {
+          "price": 154.05,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 165.05,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [],
   "last_prices": {
-    "VK.PA": 20.700000762939453,
-    "SCR.PA": 31.959999084472656,
-    "BIM.PA": 71.69999694824219,
-    "AI.PA": 175.0800018310547
+    "VK.PA": 20.56999969482422,
+    "SCR.PA": 32.380001068115234,
+    "BIM.PA": 72.0999984741211,
+    "AI.PA": 175.36000061035156,
+    "AIR.PA": 195.05999755859375
   }
 }

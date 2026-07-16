@@ -10814,3 +10814,122 @@ Traceback (most recent call last):
 [2026-07-15 11:01]   [MOMENTUM] Airbus (AIR.PA) 5.112× à 195.62€ | SL=187.93 | TPs=220.20 | investi=1000€
 [2026-07-15 11:01] [MOMENTUM] valeur=10038.44€  cash=4995.00€  positions=5  PnL=+38.44€
 [2026-07-15 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-16 11:00] ============================================================
+[2026-07-16 11:00] SCAN JOURNALIER - 2026-07-16
+[2026-07-16 11:00] ============================================================
+[2026-07-16 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-16 11:00]   Date     : 2026-07-16  [imap]
+[2026-07-16 11:00]   CAC 40   : NEUTRAL
+[2026-07-16 11:00]   Valeurs  :
+[2026-07-16 11:00]     ⚠️ Stmicroelectronics (Semi) → CAUTION
+[2026-07-16 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-16 11:00]     ✅ Total (Energie) → BUY
+[2026-07-16 11:00]     ⚠️ Schneider (Industrie) → CAUTION
+[2026-07-16 11:00]     ⚠️ Legrand (Industrie) → CAUTION
+[2026-07-16 11:00]   Macro    : tech_pressure, market_caution
+[2026-07-16 11:00]   Secteurs : Tech:-2, Industrie:-2, Semi:-1, Energie:+1
+[2026-07-16 11:00] ───────────────────────────────────────────────────────
+[2026-07-16 11:00] [LLM] Biais sectoriel = LLM : Semi:-1, Industrie:-1, Tech:-2
+[2026-07-16 11:00] [LLM] Trades momentum = LLM (1) : Legrand:BUY
+[2026-07-16 11:00] [US] Barchart «2 Reasons to Feel Bullish on GOOGL Stock» → secteur {'Tech': 2, 'Materiaux': 1} | idées: GOOGL
+[2026-07-16 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Tech': -1, 'Macro': 0, 'ConsoBase': 1} | idées: PLTR, COST, PEP
+[2026-07-16 11:00] ══════════════════════════════════════════════
+[2026-07-16 11:00]   AGENT MACRO — 2026-07-16
+[2026-07-16 11:00] ══════════════════════════════════════════════
+[2026-07-16 11:00]   Régime marché  : BULL
+[2026-07-16 11:00]   SPY vs EMA200  : +8.2%
+[2026-07-16 11:00]   VIX            : 15.8 (LOW)
+[2026-07-16 11:00]   Max trades/j   : 3
+[2026-07-16 11:00]   Seuil net min  : 10
+[2026-07-16 11:00]   Top secteurs   : Santé, Energie, Finance
+[2026-07-16 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-16 11:00]   Rationale      : Marché haussier (SPY +8.2% vs EMA200). Exposition maximale autorisée.
+[2026-07-16 11:00] ══════════════════════════════════════════════
+[2026-07-16 11:00] [RECONCILE IBKR] cash réel IBKR = 198044 | ledger = 197891
+[2026-07-16 11:00] [RECONCILE IBKR] cash ledger aligné sur IBKR : 197891 → 198044
+[2026-07-16 11:00] 5 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-16 11:00]   PANW: 353.72
+[2026-07-16 11:00]   V: 361.30
+[2026-07-16 11:00]   CRWD: 204.29
+[2026-07-16 11:00]   SNOW: 271.07
+[2026-07-16 11:00]   JPM: 345.58
+[2026-07-16 11:00] Screener en cours...
+[2026-07-16 11:00] [US] Univers screener enrichi de 4 idée(s) newsletters US : GOOGL, PLTR, COST, PEP
+[2026-07-16 11:01] Scores : max=78  mediane=20  (156 tickers)
+[2026-07-16 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=78
+[2026-07-16 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Energie, Materiaux, ConsoBase | pénalisés: Semi, Tech, Industrie
+[2026-07-16 11:01] Filtre ETF/indices (non achetables) : 37 → 27 candidats
+[2026-07-16 11:01] 27 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-16 11:01]   [SEC 8-K] JNJ (2026-07-15) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-16 11:01]   [SEC 8-K] UNH (2026-07-16) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-16 11:01]   [SEC 8-K] BAC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-16 11:01]   [SEC 8-K] V (2026-07-15) : Modification des statuts, États financiers & annexes
+[2026-07-16 11:01]   [SEC 8-K] AXP (2026-07-15) : Divulgation Regulation FD
+[2026-07-16 11:01]   [SEC 8-K] WFC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-16 11:01]   [SEC 8-K] O (2026-07-13) ⚠MATÉRIEL : Accord matériel signé, Résiliation d'accord matériel, Nouvelle obligation financière, Autre événement matériel, États financiers & annexes
+[2026-07-16 11:01]   [SEC 8-K] SNOW (2026-07-16) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-07-16 11:01]   [SEC 8-K] JPM (2026-07-14) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-16 11:01]   [SEC 8-K] JPM (2026-07-14) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-16 11:01] [LLM news] JNJ: bullish 0.60 — CFO commentaire sur performance exceptionnelle d'un médicament
+[2026-07-16 11:01] [LLM news] UNH: bullish 0.85 — Résultats Q2 supérieurs, relève ses prévisions annuelles
+[2026-07-16 11:01] [LLM news] MPC: bullish 0.50 — Marges de raffinage élevées favorisant les résultats
+[2026-07-16 11:01] [LLM news] BAC: bullish 0.55 — Résultats financiers publiés (8-K) et commentaires du CEO sur pipeline de deals
+[2026-07-16 11:01] [LLM news] VRTX: bullish 0.75 — Acquisition de Crinetics Pharmaceuticals pour 85$/action en cash
+[2026-07-16 11:01] [LLM news] MRK: bullish 0.70 — Approbation FDA pour un nouveau traitement du cholestérol
+[2026-07-16 11:01] [LLM news] MO: bullish 0.50 — Nouvelles règles FDA visant les fabricants de tabac étrangers, favorable à Altria
+[2026-07-16 11:01] [LLM news] WFC: neutral 0.50 — Publication des résultats financiers (8-K)
+[2026-07-16 11:01] [LLM news] PYPL: bullish 0.90 — Offre de rachat de Stripe pour 53 milliards de dollars
+[2026-07-16 11:01] [LLM news] LLY: bullish 0.70 — Acquisition d'AtaiBeckley jusqu'à 3.8 milliards de dollars pour renforcer le pipeline neuroscience
+[2026-07-16 11:01] [LLM news] SNOW: neutral 0.40 — Nouveau plan de rémunération du CEO de 448 millions de dollars lié à des objectifs boursiers ambitieux
+[2026-07-16 11:01] [LLM news] JPM: neutral 0.50 — Publication des résultats financiers (8-K)
+[2026-07-16 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-16 11:01] Cash deployable cette semaine : 194083 EUR  (max trades/j : 2)
+[2026-07-16 11:01] ────────────────────────────────────────────────────
+[2026-07-16 11:01]   DÉBAT : JNJ
+[2026-07-16 11:01] ────────────────────────────────────────────────────
+[2026-07-16 11:01]   🟢 BULL [conviction=75] → ACHETER
+[2026-07-16 11:01]      • Score haussier fort (77/100)
+[2026-07-16 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-16 11:01]      • Prix au-dessus EMA200 (231.23) — tendance long terme haussière
+[2026-07-16 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-16 11:01]      • Stoch RSI survendu (0) — retournement imminent
+[2026-07-16 11:01] 
+[2026-07-16 11:01]   🔴 BEAR [concern=5] → OK
+[2026-07-16 11:01]      • Volume faible (0.2× moyenne)
+[2026-07-16 11:01] 
+[2026-07-16 11:01]   ✅ ARBITRE → ACHETER  (net=+72)
+[2026-07-16 11:01]      Arguments haussiers l'emportent clairement (conviction=75, concern=5, net=+72)
+[2026-07-16 11:01] ────────────────────────────────────────────────────
+[2026-07-16 11:01]   [ACHAT] JNJ score=75 bull=75 bear=5 prix=251.37 investi=12831EUR SL=239.13 TP1=260.93
+[2026-07-16 11:01]   [SKIP earnings] UNH : publication de résultats dans ±3j
+[2026-07-16 11:01] ────────────────────────────────────────────────────
+[2026-07-16 11:01]   DÉBAT : ABBV
+[2026-07-16 11:01] ────────────────────────────────────────────────────
+[2026-07-16 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-07-16 11:01]      • Score haussier fort (73/100)
+[2026-07-16 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-16 11:01]      • Prix au-dessus EMA200 (218.13) — tendance long terme haussière
+[2026-07-16 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-16 11:01]      • Stoch RSI survendu (3) — retournement imminent
+[2026-07-16 11:01] 
+[2026-07-16 11:01]   🔴 BEAR [concern=5] → OK
+[2026-07-16 11:01]      • Volume faible (0.2× moyenne)
+[2026-07-16 11:01] 
+[2026-07-16 11:01]   ✅ ARBITRE → ACHETER  (net=+69)
+[2026-07-16 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=5, net=+69)
+[2026-07-16 11:01] ────────────────────────────────────────────────────
+[2026-07-16 11:01]   [ACHAT] ABBV score=71 bull=72 bear=5 prix=252.12 investi=12868EUR SL=239.42 TP1=261.98
+[2026-07-16 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-16 11:01] ----------------------------------------
+[2026-07-16 11:01] RESUME : valeur=257452.60 EUR  investi=84837.15 EUR  cash=172344.75 EUR  expo=33.1%  positions=7
+[2026-07-16 11:01] ----------------------------------------
+[2026-07-16 11:01] [MOMENTUM] 5 position(s) ouverte(s)...
+[2026-07-16 11:01]   [MOMENTUM] VK.PA: 20.57
+[2026-07-16 11:01]   [MOMENTUM] SCR.PA: 32.38
+[2026-07-16 11:01]   [MOMENTUM] BIM.PA: 72.10
+[2026-07-16 11:01]   [MOMENTUM] AI.PA: 175.36
+[2026-07-16 11:01]   [MOMENTUM] AIR.PA: 195.06
+[2026-07-16 11:01] [MOMENTUM] 1 signal(s) newsletter...
+[2026-07-16 11:01]   [MOMENTUM] Legrand (LR.PA) 7.244× à 138.05€ | SL=121.55 | TPs=154.05 / 165.05 | investi=1000€
+[2026-07-16 11:01] [MOMENTUM] valeur=10048.87€  cash=3994.00€  positions=6  PnL=+48.87€
+[2026-07-16 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
