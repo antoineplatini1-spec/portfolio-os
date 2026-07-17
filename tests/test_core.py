@@ -197,8 +197,8 @@ class _FakeBracketBroker:
         self.calls.append(("buy", ticker))
         return self._fill(ticker, qty, price)
 
-    def buy_bracket(self, ticker, qty, price, sl, tp):
-        self.calls.append(("bracket", ticker, sl, tp))
+    def buy_bracket(self, ticker, qty, price, sl, tps):
+        self.calls.append(("bracket", ticker, sl, tps))
         r = self._fill(ticker, qty, price)
         if self.stop_live:
             r["bracket"] = f"br_{ticker}"
@@ -218,15 +218,42 @@ def _fresh_pm(tmp_path, broker, native, monkeypatch):
     return pm
 
 
-def test_bracket_entry_sets_oca_and_single_tp(tmp_path, monkeypatch):
+def test_bracket_entry_keeps_full_ladder(tmp_path, monkeypatch):
     br = _FakeBracketBroker(stop_live=True)
     pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
     ok, msg, pos = pm.open_position("AAA", 100.0, atr=2.0, score=60, resistance=130.0)
     assert ok, msg
     assert pos.bracket_oca == "br_AAA"          # marqué bracketé
-    assert len(pos.tp_levels) == 1              # ladder réduit à 1 TP final
-    assert pos.tp_levels[0].sell_pct == 1.0
-    assert any(c[0] == "bracket" for c in br.calls)  # le bracket a bien été appelé
+    assert len(pos.tp_levels) >= 2              # LADDER complet conservé (pas réduit à 1 TP)
+    assert sum(t.sell_pct for t in pos.tp_levels) == pytest.approx(1.0)
+    # les tranches (prix, fraction) ont bien été transmises au bracket natif
+    tranches = [c[3] for c in br.calls if c[0] == "bracket"][0]
+    assert isinstance(tranches, list) and len(tranches) == len(pos.tp_levels)
+
+
+def test_alloc_shares_sums_exactly():
+    from portfolio.ibkr_broker import IBKRBroker
+    for q in (1, 2, 3, 7, 10, 137, 250):
+        a = IBKRBroker._alloc_shares(q, [0.25, 0.35, 0.40])
+        assert sum(a) == q                       # le stop total couvre 100% de la position
+        assert all(x >= 0 for x in a)
+
+
+def test_book_native_partial_reduces_and_keeps_open(tmp_path, monkeypatch):
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("FFF", 100.0, atr=2.0, score=60, resistance=130.0)
+    assert ok
+    qty0 = pos.qty_remaining
+    cash0 = pm.cash
+    sold = max(1.0, qty0 * 0.25)
+    ok2 = pm.book_native_partial("FFF", sold, exit_price=115.0, fees=1.0, reason="TP")
+    assert ok2
+    p = pm.open_positions["FFF"]
+    assert not p.is_closed                        # reste ouverte (ladder en cours)
+    assert p.qty_remaining == pytest.approx(qty0 - sold)
+    assert pm.cash == pytest.approx(cash0 + 115.0 * sold - 1.0)
+    assert p.partial_fills[-1].reason == "TP"
 
 
 def test_bracket_skips_bot_sl_tp(tmp_path, monkeypatch):

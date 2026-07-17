@@ -280,15 +280,15 @@ class PortfolioManager:
         if estimated_cost > self.cash:
             return False, f"Cash insuffisant ({self.cash:.2f} < {estimated_cost:.2f})", None
 
-        # ── Exécution : bracket NATIF (SL/TP côté IBKR) ou ordre simple ──
+        # ── Exécution : bracket NATIF LADDER (SL/TP côté IBKR) ou ordre simple ──
         bb = self._bracket_broker()
+        pre_levels = tp_prices(current_price, atr, resistance, sl)   # ladder pré-trade
         if bb is not None:
-            # Bracket natif : SL + TP UNIQUE (cible finale) posés AVANT le fill, aux niveaux
-            # calculés sur le prix pré-trade (le MKT remplit tout près). IBKR gère les sorties
-            # intraday, même bot éteint. Le ladder multi-TP se réduit à 1 TP (la cible finale).
-            final_tp = max((lvl["price"] for lvl in tp_prices(current_price, atr, resistance, sl)),
-                           default=current_price * 1.10)
-            order = bb.buy_bracket(ticker, qty, current_price, sl, final_tp)
+            # Bracket natif : SL réparti + LADDER complet de TP posés AVANT le fill (une paire
+            # OCA par tranche), aux niveaux calculés sur le prix pré-trade (le MKT remplit tout
+            # près). IBKR gère TOUTES les sorties intraday, même bot éteint.
+            tranches = [(lvl["price"], lvl["sell_pct"]) for lvl in pre_levels]
+            order = bb.buy_bracket(ticker, qty, current_price, sl, tranches)
         else:
             order = self.broker.buy(ticker, qty, current_price)
 
@@ -309,10 +309,12 @@ class PortfolioManager:
         bracket_oca = order.get("bracket", "")
 
         if bracket_oca:
-            # SL/TP déjà posés sur IBKR aux niveaux pré-trade → on les enregistre TELS QUELS
+            # Ladder déjà posé sur IBKR aux niveaux pré-trade → on enregistre le MÊME ladder
             # (pas de recalcul sur le fill : les ordres serveur sont déjà à ces prix absolus).
             sl_final = sl
-            tp_level_objs = [TPLevel(price=final_tp, sell_pct=1.0)]
+            tp_level_objs = [
+                TPLevel(price=lvl["price"], sell_pct=lvl["sell_pct"]) for lvl in pre_levels
+            ] or [TPLevel(price=current_price * 1.10, sell_pct=1.0)]
         else:
             # SL/TP recalculés sur le prix de fill réel (cohérence entrée ↔ stops), gérés par le bot.
             sl_final = sl_price(fill_price, atr, support, conviction, vix_regime)
@@ -338,7 +340,11 @@ class PortfolioManager:
         self.cash -= total_cost
         self.weekly_deployed += fill_price * filled_qty
         self._save()
-        br = f" [bracket IBKR SL {sl_final:.2f}/TP {tp_level_objs[0].price:.2f}]" if bracket_oca else ""
+        if bracket_oca:
+            tp_str = "/".join(f"{t.price:.2f}" for t in tp_level_objs)
+            br = f" [bracket IBKR SL {sl_final:.2f} TP {tp_str}]"
+        else:
+            br = ""
         return True, f"Achat {filled_qty:.4f} {ticker} à {fill_price:.4f} (frais: {fees:.2f}){br}", pos
 
     def open_position_levels(self, ticker, price, sl, tp_prices_list, size_pct, score=60):
@@ -382,7 +388,12 @@ class PortfolioManager:
 
         bb = self._bracket_broker()
         if bb is not None:
-            order = bb.buy_bracket(ticker, qty, price, sl_pre, final_tp_pre)
+            # Ladder natif : chaque TP newsletter = une tranche (répartition uniforme), stop réparti.
+            if levels_pre:
+                tranches = [(tp, 1.0 / len(levels_pre)) for tp in levels_pre]
+            else:
+                tranches = [(final_tp_pre, 1.0)]
+            order = bb.buy_bracket(ticker, qty, price, sl_pre, tranches)
         else:
             order = self.broker.buy(ticker, qty, price)
         filled_qty = order.get("qty", 0) or 0
@@ -396,10 +407,14 @@ class PortfolioManager:
         bracket_oca = order.get("bracket", "")
 
         if bracket_oca:
-            # SL/TP déjà posés sur IBKR (bracket natif) → 1 SL + 1 TP final, enregistrés tels quels.
+            # Ladder déjà posé sur IBKR (bracket natif) → mêmes niveaux, enregistrés tels quels.
             sl_final = sl_pre
-            tp_level_objs = [TPLevel(price=final_tp_pre, sell_pct=1.0)]
-            levels = [final_tp_pre]
+            if levels_pre:
+                tp_level_objs = [TPLevel(price=tp, sell_pct=1.0 / len(levels_pre)) for tp in levels_pre]
+                levels = levels_pre
+            else:
+                tp_level_objs = [TPLevel(price=final_tp_pre, sell_pct=1.0)]
+                levels = [final_tp_pre]
             capped = " (SL plafonné -8%)" if (sl_valid0 and sl_valid0 < floor0) else ""
         else:
             # SL : terme newsletter, mais PLANCHER -8% (backstop). Ignore un SL invalide (≥ prix).
@@ -546,6 +561,37 @@ class PortfolioManager:
             "entry_date":   pos.entry_date,
             "close_date":   pos.close_date,
         })
+
+    def book_native_partial(self, ticker: str, qty_sold: float, exit_price: float,
+                            fees: float = 0.0, reason: str = "TP") -> bool:
+        """
+        Enregistre un TP natif PARTIEL : IBKR a rempli une tranche du ladder côté serveur → on
+        réduit la quantité du ledger et on journalise le fill partiel (sans envoyer d'ordre).
+        La position reste OUVERTE (le reste du ladder + les stops restent posés sur IBKR).
+        Appelé par _reconcile_ibkr quand IBKR détient MOINS que le ledger sur une position bracketée.
+        """
+        pos = self.open_positions.get(ticker)
+        if pos is None or qty_sold <= 0:
+            return False
+        qty_sold = min(qty_sold, pos.qty_remaining)
+        self.cash += exit_price * qty_sold - fees
+        pos.qty_remaining -= qty_sold
+        pos.partial_fills.append(PartialFill(
+            date=datetime.now().strftime("%Y-%m-%d"), qty=qty_sold,
+            price=exit_price, reason=reason))
+        # Marque le prochain TP non atteint (affichage / cohérence next_tp).
+        nxt = pos.next_tp()
+        if nxt is not None:
+            nxt.hit = True
+            nxt.hit_date = datetime.now().strftime("%Y-%m-%d")
+        if pos.qty_remaining <= 0.0001:
+            pos.status = "closed"
+            pos.close_price = exit_price
+            pos.close_date = datetime.now().strftime("%Y-%m-%d")
+        else:
+            pos.status = "partial"
+        self._save()
+        return True
 
     def book_native_exit(self, ticker: str, exit_price: float, fees: float = 0.0,
                          reason: str = "BRACKET") -> bool:

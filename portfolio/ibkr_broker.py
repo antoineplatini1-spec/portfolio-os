@@ -190,37 +190,79 @@ class IBKRBroker:
 
     # ── Ordre bracket natif (SL/TP intraday, gérés par IBKR) ──────
 
-    def buy_bracket(self, ticker: str, qty: float, price: float,
-                    sl: float, tp: float) -> dict:
+    @staticmethod
+    def _alloc_shares(qty_int: int, fracs: list[float]) -> list[int]:
         """
-        Ordre BRACKET natif : entrée MKT + STOP protecteur (SL) + LIMIT (TP), en groupe OCA
-        (l'un annule l'autre). IBKR déclenche les sorties INTRADAY sur ses serveurs → le
-        portefeuille reste protégé même quand le bot ne tourne pas. Entrée tif=DAY (fix
-        10349) ; SL/TP en GTC. Retourne le dict du fill d'ENTRÉE (format buy) + le groupe
-        OCA ; les ordres SL/TP restent OUVERTS sur IBKR après retour.
+        Répartit qty_int actions (entier) sur des tranches de poids `fracs` (somme≈1). Corrige
+        l'arrondi sur la plus grosse tranche pour que la somme == qty_int EXACTEMENT (le stop
+        total doit couvrir 100% de la position). Les tranches à 0 action sont laissées à 0
+        (l'appelant les ignore) — leur part est absorbée par la tranche corrigée.
+        """
+        raw = [max(0, int(round(qty_int * f))) for f in fracs]
+        diff = qty_int - sum(raw)
+        if raw:
+            idx = max(range(len(fracs)), key=lambda i: fracs[i])
+            raw[idx] = max(0, raw[idx] + diff)
+        return raw
+
+    def buy_bracket(self, ticker: str, qty: float, price: float,
+                    sl: float, tps) -> dict:
+        """
+        Ordre BRACKET natif LADDER : entrée MKT + N tranches (TP LMT + STOP STP), une PAIRE OCA
+        par tranche, tous les stops au MÊME prix (SL). IBKR déclenche les sorties INTRADAY sur
+        ses serveurs → protégé même bot éteint. Chaque paire OCA s'auto-annule (TP rempli →
+        son stop tombe ; le prix touche SL → tous les stops partent et tous les TP tombent).
+
+        `tps` : float (1 TP, tout vendu) OU liste de (prix_tp, fraction) sommant ≈ 1.
+        Entrée tif=DAY (fix 10349) ; SL/TP en GTC. Retourne le dict du fill d'ENTRÉE + la clé
+        "bracket" (id de base) UNIQUEMENT si TOUS les stops sont confirmés vivants côté IBKR.
         """
         from ib_async import MarketOrder, Order
 
         qty_int = max(1, round(qty))
         contract = self._stock_contract(ticker)
-        oca = f"br_{ticker}_{int(datetime.now().timestamp())}"
+        base = f"br_{ticker}_{int(datetime.now().timestamp())}"
+
+        # Normalise `tps` → tranches [(prix, actions)] sommant à qty_int.
+        if isinstance(tps, (int, float)):
+            tranches_spec = [(float(tps), 1.0)]
+        else:
+            tranches_spec = [(float(p), float(f)) for p, f in tps if p and p > 0]
+        if not tranches_spec:
+            tranches_spec = [(price * 1.10, 1.0)]
+        fracs = [f for _, f in tranches_spec]
+        tot = sum(fracs) or 1.0
+        shares = self._alloc_shares(qty_int, [f / tot for f in fracs])
+        tranches = [(prc, sh) for (prc, _), sh in zip(tranches_spec, shares) if sh > 0]
+        if not tranches:                                   # sécurité : au moins 1 tranche full
+            tranches = [(tranches_spec[0][0], qty_int)]
 
         parent = MarketOrder("BUY", qty_int)
         parent.tif = "DAY"
         parent.transmit = False
         parent.orderId = self.ib.client.getReqId()
-        stop = Order(action="SELL", orderType="STP", totalQuantity=qty_int,
-                     auxPrice=round(sl, 2), parentId=parent.orderId, tif="GTC",
-                     ocaGroup=oca, ocaType=1, transmit=False)
-        take = Order(action="SELL", orderType="LMT", totalQuantity=qty_int,
-                     lmtPrice=round(tp, 2), parentId=parent.orderId, tif="GTC",
-                     ocaGroup=oca, ocaType=1, transmit=True)
         if self.cfg.get("account"):
-            parent.account = stop.account = take.account = self.cfg["account"]
+            parent.account = self.cfg["account"]
+
+        # Enfants : pour chaque tranche, un STP + un LMT dans une paire OCA dédiée. Seul le TOUT
+        # DERNIER ordre transmet (transmit=True) → IBKR active tout le lot d'un coup.
+        children = []            # [(kind, order)]
+        for i, (tp_prc, sh) in enumerate(tranches):
+            oca = f"{base}_{i}"
+            stop = Order(action="SELL", orderType="STP", totalQuantity=sh,
+                         auxPrice=round(sl, 2), parentId=parent.orderId, tif="GTC",
+                         ocaGroup=oca, ocaType=1, transmit=False)
+            take = Order(action="SELL", orderType="LMT", totalQuantity=sh,
+                         lmtPrice=round(tp_prc, 2), parentId=parent.orderId, tif="GTC",
+                         ocaGroup=oca, ocaType=1, transmit=False)
+            if self.cfg.get("account"):
+                stop.account = take.account = self.cfg["account"]
+            children.append(("stop", stop))
+            children.append(("take", take))
+        children[-1][1].transmit = True                    # dernier ordre → transmet le lot
 
         trade = self.ib.placeOrder(contract, parent)
-        stop_trade = self.ib.placeOrder(contract, stop)
-        take_trade = self.ib.placeOrder(contract, take)
+        child_trades = [(kind, self.ib.placeOrder(contract, o)) for kind, o in children]
 
         deadline, waited, step = self.fill_timeout, 0.0, 0.5
         while not trade.isDone() and waited < deadline:
@@ -242,27 +284,27 @@ class IBKRBroker:
                     "qty": 0.0, "price": 0.0, "fees": 0.0, "total": 0.0,
                     "date": datetime.now().strftime("%Y-%m-%d %H:%M"), "ibkr_status": status}
 
-        # SÉCURITÉ : ne se déclare "bracketé" QUE si le STOP protecteur est confirmé vivant côté
-        # IBKR. Sinon (rejet du child, précaution, etc.) on renvoie le fill SANS clé "bracket" →
-        # le bot reprend la gestion SL/TP lui-même : jamais de position nue sans protection.
+        # SÉCURITÉ : ne se déclare "bracketé" QUE si TOUS les STOPS protecteurs sont confirmés
+        # vivants côté IBKR (couverture 100% de la position). Sinon on ANNULE tous les enfants et
+        # on renvoie le fill SANS clé "bracket" → le bot reprend la gestion : jamais de position nue.
         LIVE = ("PreSubmitted", "Submitted", "PendingSubmit")
+        stop_trades = [t for kind, t in child_trades if kind == "stop"]
         s_wait = 0.0
-        while stop_trade.orderStatus.status not in LIVE and not stop_trade.isDone() and s_wait < 5.0:
+        while (any(t.orderStatus.status not in LIVE and not t.isDone() for t in stop_trades)
+               and s_wait < 5.0):
             self.ib.waitOnUpdate(timeout=step)
             s_wait += step
-        stop_live = stop_trade.orderStatus.status in LIVE
+        stops_live = all(t.orderStatus.status in LIVE for t in stop_trades)
 
         gross = avg_price * filled_qty
         out = {"status": "filled" if status == "Filled" else status, "ticker": ticker,
                "side": "buy", "qty": filled_qty, "price": round(avg_price, 6),
                "fees": round(commission, 4), "total": round(gross + commission, 4),
                "date": datetime.now().strftime("%Y-%m-%d %H:%M"), "ibkr_status": status}
-        if stop_live:
-            out["bracket"] = oca
+        if stops_live:
+            out["bracket"] = base
         else:
-            # Stop non confirmé → on ANNULE les enfants restants (SL/TP) pour ne pas laisser un
-            # ordre serveur orphelin en conflit avec la gestion SL/TP reprise par le bot.
-            for t in (stop_trade, take_trade):
+            for _, t in child_trades:
                 try:
                     if not t.isDone():
                         self.ib.cancelOrder(t.order)
@@ -296,6 +338,8 @@ class IBKRBroker:
         exécutions IBKR. Sert à enregistrer au ledger la sortie d'un bracket NATIF qui s'est
         déclenché côté serveur (SL ou TP). None si aucune vente trouvée aujourd'hui.
         """
+        from datetime import timezone
+        today = datetime.now(timezone.utc).date()
         sym = ticker[:-3] if ticker.endswith(".PA") else ticker
         tot_qty = tot_val = tot_fee = 0.0
         for f in self.ib.fills():
@@ -303,6 +347,11 @@ class IBKRBroker:
                 if f.contract.symbol != sym:
                     continue
                 if f.execution.side != "SLD":            # BOT = achat, SLD = vente
+                    continue
+                # Gateway tourne en continu → ib.fills() peut accumuler plusieurs jours. On ne
+                # garde que les ventes du JOUR (sinon on ré-attribuerait de vieux fills).
+                t = getattr(f.execution, "time", None)
+                if t is not None and hasattr(t, "date") and t.date() != today:
                     continue
                 q = float(f.execution.shares)
                 p = float(f.execution.avgPrice or f.execution.price or 0)
