@@ -402,11 +402,11 @@ def run():
         blockers.append("Réconciliation IBKR : " + _iss)
     if _ibkr_cash is not None:
         log(f"[RECONCILE IBKR] cash réel IBKR = {_ibkr_cash:.0f} | ledger = {pm.cash:.0f}")
-        # IBKR = source de vérité : on ALIGNE le cash du ledger sur le réel (hors halt) →
-        # les décisions de déploiement se basent sur le cash effectif, plus sur une compta
-        # locale qui peut dériver.
-        if not reconcile_halt and _ibkr_cash > 0 and abs(_ibkr_cash - pm.cash) > 1:
-            log(f"[RECONCILE IBKR] cash ledger aligné sur IBKR : {pm.cash:.0f} → {_ibkr_cash:.0f}")
+        # IBKR = SOURCE UNIQUE de vérité pour le cash. On SEED le ledger sur le réel IBKR à chaque
+        # run (inconditionnel, hors halt) : le cash du ledger n'est qu'un CACHE intra-run, décrémenté
+        # au fil des achats, ré-écrasé par IBKR au run suivant. Plus de compta parallèle qui dérive.
+        if not reconcile_halt and _ibkr_cash > 0 and abs(_ibkr_cash - pm.cash) > 0.01:
+            log(f"[RECONCILE IBKR] cash ledger seedé sur IBKR : {pm.cash:.0f} → {_ibkr_cash:.0f}")
             pm.cash = _ibkr_cash
     if reconcile_halt:
         log("[RECONCILE IBKR] ⛔ Divergence critique → NOUVEAUX ACHATS SUSPENDUS ce run.")
