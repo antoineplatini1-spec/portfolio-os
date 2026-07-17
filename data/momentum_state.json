@@ -1,5 +1,5 @@
 {
-  "cash": 3994.0000266014085,
+  "cash": 3036.005672643746,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -19,6 +19,7 @@
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
+      "bracket_oca": "",
       "tp_levels": [
         {
           "price": 23.11,
@@ -39,27 +40,35 @@
       "ticker": "SCR.PA",
       "entry_price": 31.551520458221432,
       "qty_total": 31.725887864119322,
-      "qty_remaining": 31.725887864119322,
+      "qty_remaining": 0.0,
       "sl": 29.313600425720214,
-      "trailing_stop": false,
+      "trailing_stop": true,
       "trailing_stop_price": 31.551520458221432,
       "entry_date": "2026-07-09",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 32.907058628082275,
+      "close_date": "2026-07-17",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
+      "bracket_oca": "",
       "tp_levels": [
         {
           "price": 32.9,
           "sell_pct": 1.0,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-07-17"
         }
       ],
-      "partial_fills": []
+      "partial_fills": [
+        {
+          "date": "2026-07-17",
+          "qty": 31.725887864119322,
+          "price": 32.907058628082275,
+          "reason": "TP1"
+        }
+      ]
     },
     "BIM.PA": {
       "ticker": "BIM.PA",
@@ -77,6 +86,7 @@
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
+      "bracket_oca": "",
       "tp_levels": [
         {
           "price": 74.65,
@@ -109,6 +119,7 @@
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
+      "bracket_oca": "",
       "tp_levels": [
         {
           "price": 180.3,
@@ -135,6 +146,7 @@
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
+      "bracket_oca": "",
       "tp_levels": [
         {
           "price": 220.2,
@@ -161,6 +173,7 @@
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
+      "bracket_oca": "",
       "tp_levels": [
         {
           "price": 154.05,
@@ -176,14 +189,69 @@
         }
       ],
       "partial_fills": []
+    },
+    "PUB.PA": {
+      "ticker": "PUB.PA",
+      "entry_price": 87.3272378616333,
+      "qty_total": 11.46263210094938,
+      "qty_remaining": 11.46263210094938,
+      "sl": 82.58,
+      "trailing_stop": false,
+      "trailing_stop_price": 87.3272378616333,
+      "entry_date": "2026-07-17",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 99.84,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "ML.PA": {
+      "ticker": "ML.PA",
+      "entry_price": 35.19515984725952,
+      "qty_total": 28.44141081740088,
+      "qty_remaining": 28.44141081740088,
+      "sl": 33.93,
+      "trailing_stop": false,
+      "trailing_stop_price": 35.19515984725952,
+      "entry_date": "2026-07-17",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 38.37,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [],
   "last_prices": {
-    "VK.PA": 20.56999969482422,
-    "SCR.PA": 32.380001068115234,
-    "BIM.PA": 72.0999984741211,
-    "AI.PA": 175.36000061035156,
-    "AIR.PA": 195.05999755859375
+    "VK.PA": 20.610000610351562,
+    "SCR.PA": 32.939998626708984,
+    "BIM.PA": 73.3499984741211,
+    "AI.PA": 176.1199951171875,
+    "AIR.PA": 193.3000030517578,
+    "LR.PA": 135.60000610351562
   }
 }

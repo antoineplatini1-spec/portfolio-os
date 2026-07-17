@@ -10933,3 +10933,123 @@ Traceback (most recent call last):
 [2026-07-16 11:01]   [MOMENTUM] Legrand (LR.PA) 7.244× à 138.05€ | SL=121.55 | TPs=154.05 / 165.05 | investi=1000€
 [2026-07-16 11:01] [MOMENTUM] valeur=10048.87€  cash=3994.00€  positions=6  PnL=+48.87€
 [2026-07-16 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-17 11:00] ============================================================
+[2026-07-17 11:00] SCAN JOURNALIER - 2026-07-17
+[2026-07-17 11:00] ============================================================
+[2026-07-17 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-17 11:00]   Date     : 2026-07-17  [imap]
+[2026-07-17 11:00]   CAC 40   : BEARISH
+[2026-07-17 11:00]   Valeurs  :
+[2026-07-17 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-17 11:00]     ⚠️ Eurofins (Santé) → CAUTION
+[2026-07-17 11:00]     ⚠️ Orange (Telecoms) → CAUTION
+[2026-07-17 11:00]   Macro    : market_caution
+[2026-07-17 11:00]   Secteurs : Tech:-1, Santé:-1, Telecoms:-1
+[2026-07-17 11:00] ───────────────────────────────────────────────────────
+[2026-07-17 11:00] [LLM] Biais sectoriel = LLM : Tech:-2, Semi:-2, Telecoms:+1, Santé:+1, Industrie:+2, Media:+2, Macro:-1
+[2026-07-17 11:00] [LLM] Trades momentum = LLM (2) : Publicis:BUY, Michelin:BUY
+[2026-07-17 11:00] [US] Barchart «Warren Buffett Might Prefer Apple Over A» → secteur {'Tech': 1, 'Semi': 1} | idées: AAPL, GOOGL, NVDA, BABA, AVGO, INTC
+[2026-07-17 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Tech': -1, 'ConsoBase': 1, 'Macro': -1} | idées: PLTR, COST, PEP
+[2026-07-17 11:00] ══════════════════════════════════════════════
+[2026-07-17 11:00]   AGENT MACRO — 2026-07-17
+[2026-07-17 11:00] ══════════════════════════════════════════════
+[2026-07-17 11:00]   Régime marché  : BULL
+[2026-07-17 11:00]   SPY vs EMA200  : +6.7%
+[2026-07-17 11:00]   VIX            : 18.2 (LOW)
+[2026-07-17 11:00]   Max trades/j   : 3
+[2026-07-17 11:00]   Seuil net min  : 10
+[2026-07-17 11:00]   Top secteurs   : Santé, Energie, REIT, Finance, ConsoBase, Utilities, Industrie, Media
+[2026-07-17 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-17 11:00]   Rationale      : Marché haussier (SPY +6.7% vs EMA200). Exposition maximale autorisée.
+[2026-07-17 11:00] ══════════════════════════════════════════════
+[2026-07-17 11:00] [RECONCILE IBKR] cash réel IBKR = 175559 | ledger = 172345
+[2026-07-17 11:00] [RECONCILE IBKR] cash ledger aligné sur IBKR : 172345 → 175559
+[2026-07-17 11:00] 7 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-17 11:00]   PANW: 360.29
+[2026-07-17 11:00]   V: 358.42
+[2026-07-17 11:00]   CRWD: 204.48
+[2026-07-17 11:00]   SNOW: 265.92
+[2026-07-17 11:00]   JPM: 345.24
+[2026-07-17 11:00]   JNJ: 254.57
+[2026-07-17 11:00]   ABBV: 258.43
+[2026-07-17 11:00] Screener en cours...
+[2026-07-17 11:00] [US] Univers screener enrichi de 9 idée(s) newsletters US : AAPL, GOOGL, NVDA, BABA, AVGO, INTC, PLTR, COST, PEP
+[2026-07-17 11:01] Scores : max=79  mediane=16  (157 tickers)
+[2026-07-17 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=79
+[2026-07-17 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Santé, Telecoms, Semi, Industrie, Media, ConsoBase | pénalisés: Tech, Macro
+[2026-07-17 11:01] Filtre ETF/indices (non achetables) : 43 → 33 candidats
+[2026-07-17 11:01] 33 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-17 11:01]   [SEC 8-K] UNH (2026-07-16) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] JNJ (2026-07-15) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] BAC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] WFC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] SNOW (2026-07-16) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-07-17 11:01]   [SEC 8-K] O (2026-07-13) ⚠MATÉRIEL : Accord matériel signé, Résiliation d'accord matériel, Nouvelle obligation financière, Autre événement matériel, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] DE (2026-07-15) : Autre événement matériel, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] V (2026-07-15) : Modification des statuts, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] PLD (2026-07-16) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] JPM (2026-07-14) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-17 11:01]   [SEC 8-K] JPM (2026-07-14) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-17 11:01] [LLM news] MRK: bullish 0.50 — Reported bid in genomics takeover battle
+[2026-07-17 11:01] [LLM news] MO: bullish 0.50 — FDA rule proposals targeting foreign tobacco manufacturers
+[2026-07-17 11:01] [LLM news] UNH: bullish 0.80 — Bigger buyback, higher guidance, CEO turnaround comments
+[2026-07-17 11:01] [LLM news] VRTX: bullish 0.70 — Acquisition of Crinetics Pharmaceuticals for $85/share cash
+[2026-07-17 11:01] [LLM news] LLY: bullish 0.60 — Acquisition of AtaiBeckley for $3.8 billion
+[2026-07-17 11:01] [LLM news] DE: neutral 0.40 — Potential settlement of FTC right-to-repair dispute
+[2026-07-17 11:01] [LLM news] RTX: bullish 0.50 — Major UK training contract win
+[2026-07-17 11:01] [LLM news] PYPL: bearish 0.40 — PayPal board reportedly not sold on $53B Stripe-Advent bid
+[2026-07-17 11:01] [LLM news] SNOW: bullish 0.30 — CEO stock award seen as positive for AI growth strategy
+[2026-07-17 11:01] [LLM news] DDOG: bearish 0.30 — CEO sells $32.9 million in shares
+[2026-07-17 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-17 11:01] Cash deployable cette semaine : 172048 EUR  (max trades/j : 2)
+[2026-07-17 11:01] ────────────────────────────────────────────────────
+[2026-07-17 11:01]   DÉBAT : MRK
+[2026-07-17 11:01] ────────────────────────────────────────────────────
+[2026-07-17 11:01]   🟢 BULL [conviction=90] → ACHETER
+[2026-07-17 11:01]      • Score haussier fort (77/100)
+[2026-07-17 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-17 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-17 11:01]      • Prix au-dessus EMA200 (114.99) — tendance long terme haussière
+[2026-07-17 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-17 11:01] 
+[2026-07-17 11:01]   🔴 BEAR [concern=15] → OK
+[2026-07-17 11:01]      • Secteur Santé déjà exposé (2 positions) — diversification limitée
+[2026-07-17 11:01]      • Volume faible (0.4× moyenne)
+[2026-07-17 11:01] 
+[2026-07-17 11:01]   ✅ ARBITRE → ACHETER  (net=+81)
+[2026-07-17 11:01]      Arguments haussiers l'emportent clairement (conviction=90, concern=15, net=+81)
+[2026-07-17 11:01] ────────────────────────────────────────────────────
+[2026-07-17 11:01]   [ACHAT] MRK score=75 bull=90 bear=15 prix=131.51 investi=13024EUR SL=124.34 TP1=149.46
+[2026-07-17 11:01] ────────────────────────────────────────────────────
+[2026-07-17 11:01]   DÉBAT : MO
+[2026-07-17 11:01] ────────────────────────────────────────────────────
+[2026-07-17 11:01]   🟢 BULL [conviction=82] → ACHETER
+[2026-07-17 11:01]      • Score haussier fort (70/100)
+[2026-07-17 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-17 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-17 11:01]      • Prix au-dessus EMA200 (65.73) — tendance long terme haussière
+[2026-07-17 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-17 11:01] 
+[2026-07-17 11:01]   🔴 BEAR [concern=5] → OK
+[2026-07-17 11:01]      • Volume faible (0.4× moyenne)
+[2026-07-17 11:01] 
+[2026-07-17 11:01]   ✅ ARBITRE → ACHETER  (net=+79)
+[2026-07-17 11:01]      Arguments haussiers l'emportent clairement (conviction=82, concern=5, net=+79)
+[2026-07-17 11:01] ────────────────────────────────────────────────────
+[2026-07-17 11:01]   [ACHAT] MO score=68 bull=82 bear=5 prix=74.49 investi=13034EUR SL=70.99 TP1=83.24
+[2026-07-17 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-17 11:01] ----------------------------------------
+[2026-07-17 11:01] RESUME : valeur=260607.33 EUR  investi=110895.59 EUR  cash=149500.05 EUR  expo=42.6%  positions=9
+[2026-07-17 11:01] ----------------------------------------
+[2026-07-17 11:01] [MOMENTUM] 6 position(s) ouverte(s)...
+[2026-07-17 11:01]   [MOMENTUM] VK.PA: 20.61
+[2026-07-17 11:01]   [MOMENTUM] SCR.PA: 32.94
+[2026-07-17 11:01]   [MOMENTUM] BIM.PA: 73.35
+[2026-07-17 11:01]   [MOMENTUM] AI.PA: 176.12
+[2026-07-17 11:01]   [MOMENTUM] AIR.PA: 193.30
+[2026-07-17 11:01]   [MOMENTUM] LR.PA: 135.60
+[2026-07-17 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-07-17 11:01]   [MOMENTUM] Publicis (PUB.PA) 11.463× à 87.24€ | SL=82.58 | TPs=99.84 | investi=1000€
+[2026-07-17 11:01]   [MOMENTUM] Michelin (ML.PA) 28.441× à 35.16€ | SL=33.93 | TPs=38.37 | investi=1000€
+[2026-07-17 11:01] [MOMENTUM] valeur=10061.83€  cash=3036.01€  positions=7  PnL=+18.83€
+[2026-07-17 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
