@@ -72,7 +72,10 @@ TRAILING_STOP_AFTER_TP1 = True    # Activer trailing stop à Entry après TP1
 # ⚠️ Change l'exécution : le bot cesse de gérer SL/TP lui-même et RÉCONCILIE les fills
 # natifs. Simplifie le ladder à 1 TP (cible finale) — les brackets natifs ne portent
 # proprement qu'un SL + un TP. À valider EN SÉANCE paper avant activation.
-USE_NATIVE_BRACKETS = False
+USE_NATIVE_BRACKETS = True     # ON (2026-07-17) : brackets natifs actifs en PAPER pour valider
+                               # en séance. Sécurité : buy_bracket ne marque une position
+                               # "bracketée" QUE si le STOP est confirmé vivant côté IBKR ;
+                               # sinon repli automatique sur la gestion SL/TP du bot.
 
 # ── Niveaux STRUCTURELS (SL/TP calés sur support/résistance + conviction + régime) ──
 # Gated : OFF par défaut → comportement ATR historique inchangé. À passer ON UNIQUEMENT

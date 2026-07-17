@@ -219,8 +219,8 @@ class IBKRBroker:
             parent.account = stop.account = take.account = self.cfg["account"]
 
         trade = self.ib.placeOrder(contract, parent)
-        self.ib.placeOrder(contract, stop)
-        self.ib.placeOrder(contract, take)
+        stop_trade = self.ib.placeOrder(contract, stop)
+        take_trade = self.ib.placeOrder(contract, take)
 
         deadline, waited, step = self.fill_timeout, 0.0, 0.5
         while not trade.isDone() and waited < deadline:
@@ -241,12 +241,34 @@ class IBKRBroker:
             return {"status": status or "unfilled", "ticker": ticker, "side": "buy",
                     "qty": 0.0, "price": 0.0, "fees": 0.0, "total": 0.0,
                     "date": datetime.now().strftime("%Y-%m-%d %H:%M"), "ibkr_status": status}
+
+        # SÉCURITÉ : ne se déclare "bracketé" QUE si le STOP protecteur est confirmé vivant côté
+        # IBKR. Sinon (rejet du child, précaution, etc.) on renvoie le fill SANS clé "bracket" →
+        # le bot reprend la gestion SL/TP lui-même : jamais de position nue sans protection.
+        LIVE = ("PreSubmitted", "Submitted", "PendingSubmit")
+        s_wait = 0.0
+        while stop_trade.orderStatus.status not in LIVE and not stop_trade.isDone() and s_wait < 5.0:
+            self.ib.waitOnUpdate(timeout=step)
+            s_wait += step
+        stop_live = stop_trade.orderStatus.status in LIVE
+
         gross = avg_price * filled_qty
-        return {"status": "filled" if status == "Filled" else status, "ticker": ticker,
-                "side": "buy", "qty": filled_qty, "price": round(avg_price, 6),
-                "fees": round(commission, 4), "total": round(gross + commission, 4),
-                "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                "ibkr_status": status, "bracket": oca}
+        out = {"status": "filled" if status == "Filled" else status, "ticker": ticker,
+               "side": "buy", "qty": filled_qty, "price": round(avg_price, 6),
+               "fees": round(commission, 4), "total": round(gross + commission, 4),
+               "date": datetime.now().strftime("%Y-%m-%d %H:%M"), "ibkr_status": status}
+        if stop_live:
+            out["bracket"] = oca
+        else:
+            # Stop non confirmé → on ANNULE les enfants restants (SL/TP) pour ne pas laisser un
+            # ordre serveur orphelin en conflit avec la gestion SL/TP reprise par le bot.
+            for t in (stop_trade, take_trade):
+                try:
+                    if not t.isDone():
+                        self.ib.cancelOrder(t.order)
+                except Exception:
+                    pass
+        return out
 
     # ── Réconciliation ────────────────────────────────────────────
 
@@ -267,3 +289,31 @@ class IBKRBroker:
             if r.tag == "TotalCashValue":
                 return float(r.value)
         return 0.0
+
+    def recent_exit_fill(self, ticker: str) -> dict | None:
+        """
+        Prix moyen + frais de la/les VENTE(S) du jour pour ce symbole, agrégés sur les
+        exécutions IBKR. Sert à enregistrer au ledger la sortie d'un bracket NATIF qui s'est
+        déclenché côté serveur (SL ou TP). None si aucune vente trouvée aujourd'hui.
+        """
+        sym = ticker[:-3] if ticker.endswith(".PA") else ticker
+        tot_qty = tot_val = tot_fee = 0.0
+        for f in self.ib.fills():
+            try:
+                if f.contract.symbol != sym:
+                    continue
+                if f.execution.side != "SLD":            # BOT = achat, SLD = vente
+                    continue
+                q = float(f.execution.shares)
+                p = float(f.execution.avgPrice or f.execution.price or 0)
+                if q <= 0 or p <= 0:
+                    continue
+                tot_qty += q
+                tot_val += q * p
+                if f.commissionReport and f.commissionReport.commission:
+                    tot_fee += abs(float(f.commissionReport.commission))
+            except Exception:
+                continue
+        if tot_qty <= 0:
+            return None
+        return {"qty": tot_qty, "price": tot_val / tot_qty, "fees": round(tot_fee, 4)}

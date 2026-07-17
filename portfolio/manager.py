@@ -17,6 +17,7 @@ from config import (
     SECTOR_MAP,
     TP_LEVELS,
     TRAILING_STOP_AFTER_TP1,
+    USE_NATIVE_BRACKETS,
     WEEKLY_DEPLOY_PCT,
 )
 from portfolio.orders import make_broker
@@ -223,6 +224,18 @@ class PortfolioManager:
 
     # ── Actions ───────────────────────────────────────────────────
 
+    def _bracket_broker(self):
+        """
+        Renvoie le broker capable de poser un bracket NATIF (entrée+SL+TP côté serveur),
+        ou None. Actif seulement si USE_NATIVE_BRACKETS ET le broker réel expose buy_bracket
+        (donc IBKR). PaperBroker n'a pas buy_bracket → None → gestion SL/TP classique par le
+        bot (aucune régression en backtest / IBKR désactivé).
+        """
+        if not USE_NATIVE_BRACKETS:
+            return None
+        real = getattr(self.broker, "real", self.broker)   # DualBroker → .real
+        return real if hasattr(real, "buy_bracket") else None
+
     def open_position(
         self,
         ticker: str,
@@ -267,7 +280,17 @@ class PortfolioManager:
         if estimated_cost > self.cash:
             return False, f"Cash insuffisant ({self.cash:.2f} < {estimated_cost:.2f})", None
 
-        order = self.broker.buy(ticker, qty, current_price)
+        # ── Exécution : bracket NATIF (SL/TP côté IBKR) ou ordre simple ──
+        bb = self._bracket_broker()
+        if bb is not None:
+            # Bracket natif : SL + TP UNIQUE (cible finale) posés AVANT le fill, aux niveaux
+            # calculés sur le prix pré-trade (le MKT remplit tout près). IBKR gère les sorties
+            # intraday, même bot éteint. Le ladder multi-TP se réduit à 1 TP (la cible finale).
+            final_tp = max((lvl["price"] for lvl in tp_prices(current_price, atr, resistance, sl)),
+                           default=current_price * 1.10)
+            order = bb.buy_bracket(ticker, qty, current_price, sl, final_tp)
+        else:
+            order = self.broker.buy(ticker, qty, current_price)
 
         # Ne créer une position QUE si l'ordre a réellement été exécuté.
         # Avec IBKR un ordre peut être annulé/non rempli (marché fermé, rejet,
@@ -281,31 +304,42 @@ class PortfolioManager:
         fill_price = order["price"]
         fees       = order["fees"]
         total_cost = order["total"]
+        # bracket_oca non-vide SEULEMENT si le STOP protecteur est confirmé vivant côté IBKR
+        # (buy_bracket ne renvoie "bracket" qu'à cette condition → jamais de position nue).
+        bracket_oca = order.get("bracket", "")
 
-        # SL/TP recalculés sur le prix de fill réel (cohérence entrée ↔ stops)
-        sl = sl_price(fill_price, atr, support, conviction, vix_regime)
-        levels = tp_prices(fill_price, atr, resistance, sl)
-        tp_level_objs = [
-            TPLevel(price=lvl["price"], sell_pct=lvl["sell_pct"])
-            for lvl in levels
-        ]
+        if bracket_oca:
+            # SL/TP déjà posés sur IBKR aux niveaux pré-trade → on les enregistre TELS QUELS
+            # (pas de recalcul sur le fill : les ordres serveur sont déjà à ces prix absolus).
+            sl_final = sl
+            tp_level_objs = [TPLevel(price=final_tp, sell_pct=1.0)]
+        else:
+            # SL/TP recalculés sur le prix de fill réel (cohérence entrée ↔ stops), gérés par le bot.
+            sl_final = sl_price(fill_price, atr, support, conviction, vix_regime)
+            levels = tp_prices(fill_price, atr, resistance, sl_final)
+            tp_level_objs = [
+                TPLevel(price=lvl["price"], sell_pct=lvl["sell_pct"])
+                for lvl in levels
+            ]
 
         pos = Position(
             ticker=ticker,
             entry_price=fill_price,
             qty_total=filled_qty,
-            sl=sl,
+            sl=sl_final,
             tp_levels=tp_level_objs,
             fees_in=fees,
             entry_score=score,
             entry_atr=atr,
+            bracket_oca=bracket_oca,
         )
 
         self.positions[ticker] = pos
         self.cash -= total_cost
         self.weekly_deployed += fill_price * filled_qty
         self._save()
-        return True, f"Achat {filled_qty:.4f} {ticker} à {fill_price:.4f} (frais: {fees:.2f})", pos
+        br = f" [bracket IBKR SL {sl_final:.2f}/TP {tp_level_objs[0].price:.2f}]" if bracket_oca else ""
+        return True, f"Achat {filled_qty:.4f} {ticker} à {fill_price:.4f} (frais: {fees:.2f}){br}", pos
 
     def open_position_levels(self, ticker, price, sl, tp_prices_list, size_pct, score=60):
         """
@@ -339,7 +373,18 @@ class PortfolioManager:
         if estimated_cost > self.cash:
             return False, f"Cash insuffisant ({self.cash:.2f} < {estimated_cost:.2f})", None
 
-        order = self.broker.buy(ticker, qty, price)
+        # SL/TP aux TERMES newsletter, calculés sur le prix pré-trade pour le bracket natif.
+        floor0 = price * (1 - MAX_LOSS_PCT)
+        sl_valid0 = sl if (sl and 0 < sl < price) else 0.0
+        sl_pre = max(sl_valid0, floor0) if sl_valid0 else floor0
+        levels_pre = sorted(tp for tp in (tp_prices_list or []) if tp and tp > price)
+        final_tp_pre = max(levels_pre) if levels_pre else price * 1.10
+
+        bb = self._bracket_broker()
+        if bb is not None:
+            order = bb.buy_bracket(ticker, qty, price, sl_pre, final_tp_pre)
+        else:
+            order = self.broker.buy(ticker, qty, price)
         filled_qty = order.get("qty", 0) or 0
         if order.get("status") != "filled" or filled_qty <= 0:
             r = order.get("ibkr_status") or order.get("status") or "non exécuté"
@@ -348,30 +393,39 @@ class PortfolioManager:
         fill_price = order["price"]
         fees       = order["fees"]
         total_cost = order["total"]
+        bracket_oca = order.get("bracket", "")
 
-        # SL : terme newsletter, mais PLANCHER -8% (backstop). Ignore un SL invalide (≥ prix).
-        floor = fill_price * (1 - MAX_LOSS_PCT)
-        sl_valid = sl if (sl and 0 < sl < fill_price) else 0.0
-        sl_final = max(sl_valid, floor) if sl_valid else floor
-
-        # TP : niveaux newsletter (> prix de fill), répartition uniforme. Aucun → 1 TP +10%.
-        levels = sorted(tp for tp in (tp_prices_list or []) if tp and tp > fill_price)
-        if levels:
-            tp_level_objs = [TPLevel(price=tp, sell_pct=1.0 / len(levels)) for tp in levels]
+        if bracket_oca:
+            # SL/TP déjà posés sur IBKR (bracket natif) → 1 SL + 1 TP final, enregistrés tels quels.
+            sl_final = sl_pre
+            tp_level_objs = [TPLevel(price=final_tp_pre, sell_pct=1.0)]
+            levels = [final_tp_pre]
+            capped = " (SL plafonné -8%)" if (sl_valid0 and sl_valid0 < floor0) else ""
         else:
-            tp_level_objs = [TPLevel(price=fill_price * 1.10, sell_pct=1.0)]
+            # SL : terme newsletter, mais PLANCHER -8% (backstop). Ignore un SL invalide (≥ prix).
+            floor = fill_price * (1 - MAX_LOSS_PCT)
+            sl_valid = sl if (sl and 0 < sl < fill_price) else 0.0
+            sl_final = max(sl_valid, floor) if sl_valid else floor
+
+            # TP : niveaux newsletter (> prix de fill), répartition uniforme. Aucun → 1 TP +10%.
+            levels = sorted(tp for tp in (tp_prices_list or []) if tp and tp > fill_price)
+            if levels:
+                tp_level_objs = [TPLevel(price=tp, sell_pct=1.0 / len(levels)) for tp in levels]
+            else:
+                tp_level_objs = [TPLevel(price=fill_price * 1.10, sell_pct=1.0)]
+            capped = " (SL plafonné -8%)" if (sl_valid and sl_valid < floor) else ""
 
         pos = Position(ticker=ticker, entry_price=fill_price, qty_total=filled_qty,
                        sl=sl_final, tp_levels=tp_level_objs, fees_in=fees,
-                       entry_score=score, entry_atr=0.0)
+                       entry_score=score, entry_atr=0.0, bracket_oca=bracket_oca)
         self.positions[ticker] = pos
         self.cash -= total_cost
         self.weekly_deployed += fill_price * filled_qty
         self._save()
-        capped = " (SL plafonné -8%)" if (sl_valid and sl_valid < floor) else ""
         tp_str = ", ".join(f"{t:.2f}" for t in levels) or "+10%"
+        br = " [bracket IBKR]" if bracket_oca else ""
         return True, (f"Achat NEWSLETTER {filled_qty:.4f} {ticker} @ {fill_price:.2f} "
-                      f"SL {sl_final:.2f}{capped} TP {tp_str}"), pos
+                      f"SL {sl_final:.2f}{capped} TP {tp_str}{br}"), pos
 
     def update_prices(self, prices: dict[str, float]):
         """
@@ -383,6 +437,11 @@ class PortfolioManager:
         for ticker, pos in list(self.open_positions.items()):
             price = prices.get(ticker)
             if price is None:
+                continue
+            # Position gérée par un bracket NATIF IBKR : les sorties SL/TP sont déclenchées
+            # côté serveur (intraday, même bot éteint). On NE double PAS ici — la réconciliation
+            # IBKR (daily_auto._reconcile_ibkr) enregistre le fill quand le bracket part.
+            if pos.bracket_oca:
                 continue
             self._check_sl(pos, price)
             if not pos.is_closed:
@@ -487,6 +546,45 @@ class PortfolioManager:
             "entry_date":   pos.entry_date,
             "close_date":   pos.close_date,
         })
+
+    def book_native_exit(self, ticker: str, exit_price: float, fees: float = 0.0,
+                         reason: str = "BRACKET") -> bool:
+        """
+        Enregistre au ledger la sortie d'une position gérée par un bracket NATIF IBKR : le SL
+        ou le TP s'est déclenché CÔTÉ SERVEUR (hors run) et IBKR a déjà vendu. On NE renvoie
+        DONC AUCUN ordre — on met juste à jour histo + cash + statut pour refléter le fill réel.
+        (Le cash sera de toute façon réaligné sur IBKR par la réconciliation.)
+        Appelé par daily_auto._reconcile_ibkr quand une position bracketée disparaît d'IBKR.
+        """
+        pos = self.open_positions.get(ticker)
+        if pos is None:
+            return False
+        self.cash += exit_price * pos.qty_remaining - fees
+        pos.qty_remaining = 0.0
+        pos.status = "closed"
+        pos.close_price = exit_price
+        pos.close_date = datetime.now().strftime("%Y-%m-%d")
+        pos.fees_out = fees
+        # PnL : même comptabilité que _close_position (fills partiels déjà comptés séparément).
+        qty_closed  = pos.qty_total - sum(f.qty for f in pos.partial_fills)
+        pnl_close   = net_pnl(pos.entry_price, exit_price, qty_closed, BROKER_CONFIG)
+        fees_partials = sum(compute_fees(f.price, f.qty, BROKER_CONFIG) for f in pos.partial_fills)
+        pnl_partials  = sum((f.price - pos.entry_price) * f.qty for f in pos.partial_fills) - fees_partials
+        pnl_total = pnl_close + pnl_partials
+        fees_all  = pos.fees_in + fees + fees_partials
+        self.history.append({
+            "ticker":       pos.ticker,
+            "entry_price":  pos.entry_price,
+            "close_price":  exit_price,
+            "qty":          pos.qty_total,
+            "pnl":          round(pnl_total, 4),
+            "fees_total":   round(fees_all, 4),
+            "close_reason": reason,
+            "entry_date":   pos.entry_date,
+            "close_date":   pos.close_date,
+        })
+        self._save()
+        return True
 
     def manual_close(self, ticker: str, price: float):
         pos = self.open_positions.get(ticker)

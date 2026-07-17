@@ -177,3 +177,101 @@ def test_newsletter_sell():
 
 def test_newsletter_negation_not_buy():
     assert _classify("n'achetez pas cette action") != "BUY"
+
+
+# ── Ordres bracket natifs (entrée + réconciliation) ───────────────
+
+class _FakeBracketBroker:
+    """Broker factice exposant buy_bracket (comme IBKR). stop_live=False simule un STOP
+    non confirmé → pas de clé 'bracket' → repli gestion bot."""
+    def __init__(self, stop_live=True):
+        self.stop_live = stop_live
+        self.calls = []
+
+    def _fill(self, ticker, qty, price):
+        q = max(1, round(qty))
+        return {"status": "filled", "ticker": ticker, "side": "buy", "qty": q,
+                "price": price, "fees": 1.0, "total": price * q + 1.0}
+
+    def buy(self, ticker, qty, price):
+        self.calls.append(("buy", ticker))
+        return self._fill(ticker, qty, price)
+
+    def buy_bracket(self, ticker, qty, price, sl, tp):
+        self.calls.append(("bracket", ticker, sl, tp))
+        r = self._fill(ticker, qty, price)
+        if self.stop_live:
+            r["bracket"] = f"br_{ticker}"
+        return r
+
+    def sell(self, ticker, qty, price):
+        return {"status": "filled", "ticker": ticker, "side": "sell", "qty": qty,
+                "price": price, "fees": 1.0, "total": price * qty - 1.0}
+
+
+def _fresh_pm(tmp_path, broker, native, monkeypatch):
+    from portfolio import manager as M
+    monkeypatch.setattr(M, "USE_NATIVE_BRACKETS", native)
+    pm = M.PortfolioManager(state_file=tmp_path / "state.json")
+    pm.broker = broker
+    pm.cash = 100_000.0
+    return pm
+
+
+def test_bracket_entry_sets_oca_and_single_tp(tmp_path, monkeypatch):
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, msg, pos = pm.open_position("AAA", 100.0, atr=2.0, score=60, resistance=130.0)
+    assert ok, msg
+    assert pos.bracket_oca == "br_AAA"          # marqué bracketé
+    assert len(pos.tp_levels) == 1              # ladder réduit à 1 TP final
+    assert pos.tp_levels[0].sell_pct == 1.0
+    assert any(c[0] == "bracket" for c in br.calls)  # le bracket a bien été appelé
+
+
+def test_bracket_skips_bot_sl_tp(tmp_path, monkeypatch):
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("BBB", 100.0, atr=2.0, score=60)
+    assert ok
+    # Prix qui plonge SOUS le SL : le bot ne doit PAS clôturer (IBKR gère côté serveur).
+    pm.update_prices({"BBB": pos.sl * 0.5})
+    assert "BBB" in pm.open_positions
+    assert not pm.open_positions["BBB"].is_closed
+
+
+def test_bracket_fallback_when_stop_not_live(tmp_path, monkeypatch):
+    # STOP non confirmé → pas de clé 'bracket' → position gérée par le bot (bracket_oca vide).
+    br = _FakeBracketBroker(stop_live=False)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("CCC", 100.0, atr=2.0, score=60)
+    assert ok
+    assert pos.bracket_oca == ""
+    # Le bot reprend : un prix sous le SL déclenche la clôture classique.
+    pm.update_prices({"CCC": pos.sl * 0.5})
+    assert pm.open_positions.get("CCC") is None or pm.open_positions["CCC"].is_closed
+
+
+def test_native_disabled_uses_plain_buy(tmp_path, monkeypatch):
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=False, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("DDD", 100.0, atr=2.0, score=60, resistance=130.0)
+    assert ok
+    assert pos.bracket_oca == ""
+    assert all(c[0] != "bracket" for c in br.calls)   # jamais de bracket si flag OFF
+    assert len(pos.tp_levels) >= 1                     # ladder ATR classique conservé
+
+
+def test_book_native_exit_records_pnl_and_closes(tmp_path, monkeypatch):
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("EEE", 100.0, atr=2.0, score=60)
+    assert ok
+    qty = pos.qty_total
+    cash_before = pm.cash
+    booked = pm.book_native_exit("EEE", exit_price=110.0, fees=1.0, reason="BRACKET")
+    assert booked
+    assert pm.open_positions.get("EEE") is None       # fermée
+    assert pm.cash == pytest.approx(cash_before + 110.0 * qty - 1.0)
+    assert pm.history[-1]["close_reason"] == "BRACKET"
+    assert pm.history[-1]["pnl"] > 0                   # sortie à +10% → gain net

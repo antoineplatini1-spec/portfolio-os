@@ -40,6 +40,9 @@ class Position:
     close_price: float = 0.0
     close_date: str = ""
     fees_out: float = 0.0
+    # Groupe OCA du bracket NATIF IBKR (SL+TP posés côté serveur). Non-vide → IBKR gère
+    # les sorties intraday ; le bot NE double PAS le check SL/TP et RÉCONCILIE les fills.
+    bracket_oca: str = ""
 
     def __post_init__(self):
         if self.qty_remaining == 0.0:
@@ -81,6 +84,7 @@ class Position:
             "entry_score": self.entry_score,
             "entry_atr":   self.entry_atr,
             "fees_out": self.fees_out,
+            "bracket_oca": self.bracket_oca,
             "tp_levels": [
                 {
                     "price": t.price,
@@ -139,4 +143,5 @@ class Position:
             close_price=d.get("close_price", 0.0),
             close_date=d.get("close_date", ""),
             fees_out=d.get("fees_out", 0.0),
+            bracket_oca=d.get("bracket_oca", ""),
         )

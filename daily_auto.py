@@ -137,9 +137,25 @@ def _reconcile_ibkr(pm):
             continue
         if tk not in ledger:
             phantom.append(f"{tk} {info['qty']:+.0f}")
-    for tk in ledger:                                 # ledger dit détenir, IBKR non → fermée à notre insu
+    for tk in list(ledger):                           # ledger dit détenir, IBKR non → fermée hors run
         q = ibkr_pos.get(tk, {}).get("qty", 0)
-        if abs(q) < 1e-9:
+        if abs(q) >= 1e-9:
+            continue
+        pos = pm.open_positions.get(tk)
+        if pos is not None and getattr(pos, "bracket_oca", ""):
+            # Bracket NATIF déclenché intraday par IBKR (SL ou TP) → on ENREGISTRE la sortie au
+            # ledger, au prix de fill réel remonté par IBKR (fallback : dernier prix connu).
+            fill = None
+            if hasattr(broker, "recent_exit_fill"):
+                try:
+                    fill = broker.recent_exit_fill(tk)
+                except Exception:
+                    fill = None
+            exit_price = (fill or {}).get("price") or pm.last_prices.get(tk) or pos.entry_price
+            exit_fees  = (fill or {}).get("fees", 0.0)
+            pm.book_native_exit(tk, exit_price, exit_fees, reason="BRACKET")
+            issues.append(f"{tk} : bracket natif exécuté par IBKR @ {exit_price:.2f} → clôturé au ledger")
+        else:
             issues.append(f"{tk} dans le ledger mais absente d'IBKR (fermée à notre insu ?)")
 
     halt = bool(phantom)
@@ -1581,7 +1597,7 @@ def _send_daily_email(
             f"<td style='padding:7px 10px;font-weight:600;color:{clr};"
             f"font-size:13px'>{pnl:+.0f} €</td>"
             f"<td style='padding:7px 10px;color:#8097b5;font-size:11px'>"
-            f"SL {p.sl:.2f}</td>"
+            f"SL {p.sl:.2f}{' 🔒IBKR' if getattr(p, 'bracket_oca', '') else ''}</td>"
             f"</tr>"
         )
     pos_rows = "".join(_pos_row(t, p) for t, p in pm.open_positions.items())
