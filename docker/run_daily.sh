@@ -60,6 +60,10 @@ set -e
 
 # Persiste l'état (état PTF + Momentum + journaux). `git add data/` reste robuste
 # même si un fichier manque ; les secrets (email_config.json) sont git-ignorés.
+# Garantit l'existence des journaux : un `git add` avec UN fichier manquant échoue et ne
+# stage RIEN (donc l'état ne serait pas persisté). postmortems.jsonl n'apparaît qu'à la 1re
+# clôture → on le crée vide au besoin (inoffensif : digest lit ligne par ligne).
+touch data/decisions_log.jsonl data/postmortems.jsonl 2>/dev/null || true
 git add data/portfolio_state.json data/momentum_state.json \
         data/momentum_signals.jsonl data/daily_log.txt \
         data/decisions_log.jsonl data/postmortems.jsonl 2>/dev/null || true
