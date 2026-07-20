@@ -149,16 +149,15 @@ def _reconcile_ibkr(pm):
         remaining = pos.qty_remaining
         bracketed = bool(getattr(pos, "bracket_oca", ""))
 
-        if not bracketed:
-            if ibkr_qty < 1e-9:
-                issues.append(f"{tk} dans le ledger mais absente d'IBKR (fermée à notre insu ?)")
+        # IBKR = vérité. Si IBKR détient AUTANT (ou plus) que le ledger → rien à synchroniser.
+        if ibkr_qty >= remaining - 1e-6:
             continue
 
-        # Position BRACKETÉE : IBKR gère les sorties (stops + ladder TP) côté serveur. On synchronise
-        # le ledger sur ce qu'IBKR a réellement exécuté depuis le dernier run.
-        if ibkr_qty >= remaining - 1e-6:
-            continue                                   # rien de nouveau (ou qty inchangée)
-
+        # IBKR détient MOINS que le ledger → une sortie a eu lieu HORS run. Deux origines :
+        #  - position BRACKETÉE : le stop ou un palier TP natif s'est déclenché côté serveur ;
+        #  - position gérée-bot : clôture EXTERNE (manuelle, ou divergence héritée) — avant, on se
+        #    contentait de logger, laissant un fantôme au ledger que le bot tentait de gérer à vide.
+        # Dans les DEUX cas on synchronise le ledger sur le réel IBKR (au prix de fill réel).
         fill = None
         if hasattr(broker, "recent_exit_fill"):
             try:
@@ -168,16 +167,19 @@ def _reconcile_ibkr(pm):
         px         = (fill or {}).get("price") or pm.last_prices.get(tk) or pos.entry_price
         sold_today = (fill or {}).get("qty", 0) or 0
         fee_today  = (fill or {}).get("fees", 0.0) or 0.0
+        src        = "bracket natif" if bracketed else "clôture externe"
+        r_full     = "BRACKET" if bracketed else "RECONCILE"
+        r_part     = "TP" if bracketed else "RECONCILE"
 
-        if ibkr_qty < 1.0:                             # < 1 action → position SOLDÉE (stop ou dernier TP)
+        if ibkr_qty < 1.0:                             # < 1 action → position SOLDÉE
             fee = fee_today * (remaining / sold_today) if sold_today > 0 else 0.0
-            pm.book_native_exit(tk, px, round(fee, 4), reason="BRACKET")
-            issues.append(f"{tk} : bracket natif soldé par IBKR @ {px:.2f} → clôturé au ledger")
-        else:                                          # TP PARTIEL : IBKR détient moins que le ledger
+            pm.book_native_exit(tk, px, round(fee, 4), reason=r_full)
+            issues.append(f"{tk} : {src} soldé(e) @ {px:.2f} → clôturé au ledger")
+        else:                                          # PARTIEL : IBKR détient moins que le ledger
             delta = remaining - ibkr_qty
             fee = fee_today * (delta / sold_today) if sold_today > 0 else 0.0
-            pm.book_native_partial(tk, delta, px, round(fee, 4), reason="TP")
-            issues.append(f"{tk} : TP natif partiel ({delta:.2f} @ {px:.2f}) → ledger synchronisé "
+            pm.book_native_partial(tk, delta, px, round(fee, 4), reason=r_part)
+            issues.append(f"{tk} : {src} partiel ({delta:.2f} @ {px:.2f}) → ledger synchronisé "
                           f"(reste {ibkr_qty:.2f})")
 
     halt = bool(phantom)
