@@ -125,7 +125,11 @@ def _reconcile_ibkr(pm):
         ibkr_pos = broker.account_positions()        # {ticker: {qty, avg_cost}}
         ibkr_cash = broker.account_cash()
     except Exception as e:
-        return False, [f"réconciliation IBKR impossible : {e}"], None
+        # IBKR activé mais injoignable (Gateway down/logged-out, cf. maintenance week-end) :
+        # on NE PEUT PAS confirmer positions/cash → HALT des nouveaux achats (pas de vérité,
+        # pas de nouveau risque) + alerte bruyante dans le recap. Fail loud, jamais silencieux.
+        return True, [f"réconciliation IBKR IMPOSSIBLE ({e}) → Gateway injoignable ? "
+                      "ACHATS SUSPENDUS ce run (pas de vérité IBKR)"], None
 
     ledger = set(pm.open_positions.keys())
     issues, phantom = [], []
