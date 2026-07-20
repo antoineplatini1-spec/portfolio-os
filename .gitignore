@@ -13,15 +13,18 @@ data/newsletter_cache.json
 data/llm.env                 # clé ANTHROPIC_API_KEY (couche LLM)
 data/heartbeat.url           # URL de ping healthchecks.io (dead-man's switch)
 
-# Journal d'audit LLM (local à chaque machine, peut grossir)
+# Journal d'audit LLM (local à chaque machine, peut grossir vite : 1 ligne/appel LLM)
 data/llm_signals.jsonl
 
 # Cache SEC EDGAR ticker→CIK (regénéré depuis la SEC, ~1 Mo)
 data/edgar_ciks.json
 
-# Journaux d'apprentissage/attribution (locaux à chaque machine)
-data/postmortems.jsonl
-data/decisions_log.jsonl
+# Journaux d'apprentissage/attribution — TRACKÉS (backup offsite GitHub).
+# Le VPS est le SEUL à écrire dedans (les runs y tournent) → pas de conflit de merge.
+# Petits (1 ligne / décision ou clôture, ~2-3 trades/j) → négligeable en taille. C'est
+# tout l'historique de la boucle d'attribution : à ne PAS perdre si le VPS meurt.
+# data/postmortems.jsonl    ← décommenté intentionnellement
+# data/decisions_log.jsonl  ← idem
 
 # IBKR — identifiants Gateway & état local du Gateway (NE PAS committer)
 docker/.env

@@ -61,7 +61,8 @@ set -e
 # Persiste l'état (état PTF + Momentum + journaux). `git add data/` reste robuste
 # même si un fichier manque ; les secrets (email_config.json) sont git-ignorés.
 git add data/portfolio_state.json data/momentum_state.json \
-        data/momentum_signals.jsonl data/daily_log.txt 2>/dev/null || true
+        data/momentum_signals.jsonl data/daily_log.txt \
+        data/decisions_log.jsonl data/postmortems.jsonl 2>/dev/null || true
 if ! git diff --staged --quiet; then
     git commit -m "auto(vps): portfolio $(date +%F)"
     # Récupère d'éventuels commits distants (push de dev) AVANT de pousser → plus de conflit.
