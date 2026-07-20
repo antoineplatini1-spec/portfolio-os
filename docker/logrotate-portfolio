@@ -1,0 +1,18 @@
+# Rotation des logs du bot sur le VPS. Installer avec :
+#   sudo cp docker/logrotate-portfolio /etc/logrotate.d/portfolio
+# logrotate (cron.daily) l'applique ensuite automatiquement.
+#
+# copytruncate : copie puis VIDE le fichier en place → le fd d'append ouvert par le cron
+# (`>> data/cron.log`) continue d'écrire dans le même fichier tronqué, sans rien casser.
+/root/portfolio-os/data/cron.log
+/root/portfolio-os/data/streamlit.log
+/root/portfolio-os/data/streamlit.log.err {
+    weekly
+    rotate 4
+    size 5M
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+}
