@@ -242,10 +242,14 @@ def send_email(subject: str, html_body: str):
 
 def run():
     today = date.today()
-    # Pas de trading le week-end
-    if today.weekday() >= 5:
-        log(f"Week-end ({today.strftime('%A')}) - pas de trading.")
+    # Pas de trading week-end NI jours fériés US (sinon ordres MKT dans le vide → rejets).
+    from utils.market_calendar import is_us_market_holiday
+    closed, motif = is_us_market_holiday(today)
+    if closed:
+        log(f"Marché US fermé ({motif}, {today.strftime('%A %d %b %Y')}) - pas de trading.")
         return
+    if motif:                                       # année non couverte → on tourne mais on alerte
+        log(f"⚠️ Calendrier bourse : {motif}")
 
     log("=" * 60)
     log(f"SCAN JOURNALIER - {today}")

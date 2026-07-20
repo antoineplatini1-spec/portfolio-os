@@ -179,6 +179,33 @@ def test_newsletter_negation_not_buy():
     assert _classify("n'achetez pas cette action") != "BUY"
 
 
+# ── Calendrier bourse US ──────────────────────────────────────────
+
+def test_market_holiday_detected():
+    from datetime import date
+    from utils.market_calendar import is_us_market_holiday
+    closed, motif = is_us_market_holiday(date(2026, 12, 25))   # Noël
+    assert closed and motif == "jour férié US"
+
+def test_market_weekend_detected():
+    from datetime import date
+    from utils.market_calendar import is_us_market_holiday
+    closed, motif = is_us_market_holiday(date(2026, 7, 18))    # samedi
+    assert closed and motif == "week-end"
+
+def test_market_trading_day_open():
+    from datetime import date
+    from utils.market_calendar import is_us_market_holiday
+    closed, _ = is_us_market_holiday(date(2026, 7, 20))        # lundi ordinaire
+    assert not closed
+
+def test_market_uncovered_year_does_not_block():
+    from datetime import date
+    from utils.market_calendar import is_us_market_holiday
+    closed, motif = is_us_market_holiday(date(2035, 3, 14))    # année non renseignée, mercredi
+    assert not closed and "non couverte" in motif
+
+
 # ── Ordres bracket natifs (entrée + réconciliation) ───────────────
 
 class _FakeBracketBroker:
