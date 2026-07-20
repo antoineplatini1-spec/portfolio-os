@@ -332,26 +332,44 @@ class IBKRBroker:
                 return float(r.value)
         return 0.0
 
-    def recent_exit_fill(self, ticker: str) -> dict | None:
+    def recent_exit_fill(self, ticker: str, lookback_days: int = 5) -> dict | None:
         """
-        Prix moyen + frais de la/les VENTE(S) du jour pour ce symbole, agrégés sur les
-        exécutions IBKR. Sert à enregistrer au ledger la sortie d'un bracket NATIF qui s'est
-        déclenché côté serveur (SL ou TP). None si aucune vente trouvée aujourd'hui.
+        Prix moyen + frais des VENTE(S) RÉCENTES (fenêtre `lookback_days`) pour ce symbole,
+        agrégés sur les exécutions IBKR. Sert à enregistrer au ledger la sortie d'un bracket
+        NATIF déclenché côté serveur (SL ou TP). None si aucune vente trouvée.
+
+        ⚠️ Un bracket se déclenche EN SÉANCE et n'est réconcilié qu'au run SUIVANT (= le
+        lendemain) → une fenêtre "jour même" raterait TOUS les fills bracketés (PnL alors
+        approximé sur last_price). On interroge donc reqExecutions sur `lookback_days` jours
+        (récupère jusqu'à 7 j côté serveur IBKR, survit à un restart Gateway qui vide fills()).
+        Repli sur ib.fills() si reqExecutions échoue → jamais pire que l'ancien comportement.
+        La qty rebookée vient TOUJOURS de la divergence ledger↔IBKR (pas de ces fills) : au
+        pire le PRIX est un léger blend si le symbole a plusieurs A/R dans la fenêtre — borné,
+        et le cash se recale de toute façon sur IBKR (seed).
         """
-        from datetime import timezone
-        today = datetime.now(timezone.utc).date()
+        from datetime import timezone, timedelta
         sym = ticker[:-3] if ticker.endswith(".PA") else ticker
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=lookback_days)).date()
+
+        fills = None
+        try:
+            from ib_async import ExecutionFilter
+            since = (datetime.now() - timedelta(days=lookback_days)).strftime("%Y%m%d-%H:%M:%S")
+            fills = self.ib.reqExecutions(ExecutionFilter(time=since))
+        except Exception:
+            fills = None
+        if not fills:                                    # repli : fills de session (ancien comportement)
+            fills = self.ib.fills()
+
         tot_qty = tot_val = tot_fee = 0.0
-        for f in self.ib.fills():
+        for f in fills:
             try:
                 if f.contract.symbol != sym:
                     continue
                 if f.execution.side != "SLD":            # BOT = achat, SLD = vente
                     continue
-                # Gateway tourne en continu → ib.fills() peut accumuler plusieurs jours. On ne
-                # garde que les ventes du JOUR (sinon on ré-attribuerait de vieux fills).
                 t = getattr(f.execution, "time", None)
-                if t is not None and hasattr(t, "date") and t.date() != today:
+                if t is not None and hasattr(t, "date") and t.date() < cutoff:
                     continue
                 q = float(f.execution.shares)
                 p = float(f.execution.avgPrice or f.execution.price or 0)
