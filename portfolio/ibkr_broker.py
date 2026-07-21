@@ -312,6 +312,90 @@ class IBKRBroker:
                     pass
         return out
 
+    def protect_position(self, ticker: str, qty: float, sl: float, tps,
+                         cancel_ids: list[int] | None = None) -> dict:
+        """
+        Pose un bracket de PROTECTION sur une position DÉJÀ détenue (aucun ordre d'entrée) :
+        N tranches (STP + LMT) en paires OCA, tous les stops au MÊME prix (SL) — comme
+        buy_bracket mais sans parent. Retrofit des positions historiques laissées nues.
+
+        Ordre SÛR : on POSE d'abord, on confirme que TOUS les stops sont vivants, PUIS
+        seulement on annule les anciens ordres (`cancel_ids`, ex. un stop manuel) → jamais de
+        fenêtre sans protection. Si les stops ne se confirment pas, on annule le nouveau bracket
+        et on NE touche PAS aux anciens ordres. Retourne {ok, oca, stops_live}.
+        """
+        from ib_async import Order
+
+        qty_int = max(1, int(round(qty)))
+        contract = self._stock_contract(ticker)
+        base = f"rf_{ticker}_{int(datetime.now().timestamp())}"
+
+        if isinstance(tps, (int, float)):
+            spec = [(float(tps), 1.0)]
+        else:
+            spec = [(float(p), float(f)) for p, f in tps if p and p > 0]
+        if not spec:
+            spec = [(round(sl, 2) * 1.25, 1.0)]
+        tot = sum(f for _, f in spec) or 1.0
+        shares = self._alloc_shares(qty_int, [f / tot for _, f in spec])
+        tranches = [(p, sh) for (p, _), sh in zip(spec, shares) if sh > 0]
+        if not tranches:
+            tranches = [(spec[0][0], qty_int)]
+
+        children = []
+        for i, (tp_prc, sh) in enumerate(tranches):
+            oca = f"{base}_{i}"
+            stop = Order(action="SELL", orderType="STP", totalQuantity=sh,
+                         auxPrice=round(sl, 2), tif="GTC", ocaGroup=oca, ocaType=1, transmit=False)
+            take = Order(action="SELL", orderType="LMT", totalQuantity=sh,
+                         lmtPrice=round(tp_prc, 2), tif="GTC", ocaGroup=oca, ocaType=1, transmit=False)
+            if self.cfg.get("account"):
+                stop.account = take.account = self.cfg["account"]
+            children.append(("stop", stop))
+            children.append(("take", take))
+        children[-1][1].transmit = True                    # dernier ordre → transmet le lot
+
+        child_trades = [(k, self.ib.placeOrder(contract, o)) for k, o in children]
+
+        LIVE = ("PreSubmitted", "Submitted", "PendingSubmit")
+        stop_trades = [t for k, t in child_trades if k == "stop"]
+        waited, step = 0.0, 0.5
+        while (any(t.orderStatus.status not in LIVE and not t.isDone() for t in stop_trades)
+               and waited < 8.0):
+            self.ib.waitOnUpdate(timeout=step)
+            waited += step
+        stops_live = all(t.orderStatus.status in LIVE for t in stop_trades)
+
+        if not stops_live:
+            for _, t in child_trades:                      # échec → on retire le nouveau bracket
+                try:
+                    if not t.isDone():
+                        self.ib.cancelOrder(t.order)
+                except Exception:
+                    pass
+            return {"ok": False, "oca": None, "stops_live": False}
+
+        # Stops confirmés → SEULEMENT MAINTENANT on annule les anciens ordres (stop manuel).
+        for oid in (cancel_ids or []):
+            for t in self.ib.openTrades():
+                if t.order.orderId == oid:
+                    try:
+                        self.ib.cancelOrder(t.order)
+                    except Exception:
+                        pass
+        return {"ok": True, "oca": base, "stops_live": True}
+
+    def open_orders_by_symbol(self) -> dict[str, list[dict]]:
+        """Ordres ouverts groupés par symbole : [{orderId, type, action, qty, price, oca}]."""
+        out: dict[str, list[dict]] = {}
+        for t in self.ib.reqAllOpenOrders():
+            o, c = t.order, t.contract
+            px = o.auxPrice if o.orderType == "STP" else o.lmtPrice
+            out.setdefault(c.symbol, []).append({
+                "orderId": o.orderId, "type": o.orderType, "action": o.action,
+                "qty": float(o.totalQuantity), "price": float(px or 0), "oca": o.ocaGroup or ""})
+        return out
+
     # ── Réconciliation ────────────────────────────────────────────
 
     def account_positions(self) -> dict[str, dict]:
