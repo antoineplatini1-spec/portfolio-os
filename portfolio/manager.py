@@ -34,6 +34,7 @@ class PortfolioManager:
     def __init__(self, state_file: Path = STATE_FILE):
         self.state_file = state_file
         self.broker = make_broker(BROKER_CONFIG)
+        self.ibkr_marks: dict[str, float] = {}   # marks IBKR réels (valorisation), seedés au run
         self._load()
 
     # ── Persistence ───────────────────────────────────────────────
@@ -107,6 +108,21 @@ class PortfolioManager:
         """Cash disponible hors réserve."""
         return max(0.0, self.cash - self.reserve_cash)
 
+    def _mark(self, ticker: str, pos) -> float:
+        """
+        Prix de valorisation d'une position, par ordre de VÉRITÉ décroissante :
+        1) mark IBKR réel (seedé au run via set_ibkr_marks) — SOURCE DE VÉRITÉ ;
+        2) dernier prix connu (cache yfinance) — repli si IBKR indispo ;
+        3) coût d'entrée — dernier recours (ni IBKR ni cache).
+        """
+        return (self.ibkr_marks.get(ticker)
+                or self.last_prices.get(ticker)
+                or pos.entry_price)
+
+    def set_ibkr_marks(self, marks: dict[str, float]) -> None:
+        """Injecte les marks RÉELS d'IBKR (valorisation = vérité compte, pas cache). Per-run."""
+        self.ibkr_marks = {k: v for k, v in (marks or {}).items() if v and v > 0}
+
     @property
     def total_invested(self) -> float:
         """Valeur des positions au coût d'entrée (basis)."""
@@ -114,9 +130,9 @@ class PortfolioManager:
 
     @property
     def total_market_value(self) -> float:
-        """Valeur des positions au dernier prix de marché connu."""
+        """Valeur des positions au mark IBKR réel (repli cache/coût — cf. _mark)."""
         return sum(
-            p.qty_remaining * self.last_prices.get(t, p.entry_price)
+            p.qty_remaining * self._mark(t, p)
             for t, p in self.open_positions.items()
         )
 
@@ -128,9 +144,9 @@ class PortfolioManager:
 
     @property
     def pnl_unrealized(self) -> float:
-        """PnL latent sur les positions ouvertes (prix marché - prix entrée)."""
+        """PnL latent sur les positions ouvertes (mark IBKR réel - prix entrée)."""
         return sum(
-            (self.last_prices.get(t, p.entry_price) - p.entry_price) * p.qty_remaining
+            (self._mark(t, p) - p.entry_price) * p.qty_remaining
             for t, p in self.open_positions.items()
         )
 
@@ -594,7 +610,7 @@ class PortfolioManager:
         return True
 
     def book_native_exit(self, ticker: str, exit_price: float, fees: float = 0.0,
-                         reason: str = "BRACKET") -> bool:
+                         reason: str = "BRACKET", realized_pnl: float | None = None) -> bool:
         """
         Enregistre au ledger la sortie d'une position gérée par un bracket NATIF IBKR : le SL
         ou le TP s'est déclenché CÔTÉ SERVEUR (hors run) et IBKR a déjà vendu. On NE renvoie
@@ -611,12 +627,17 @@ class PortfolioManager:
         pos.close_price = exit_price
         pos.close_date = datetime.now().strftime("%Y-%m-%d")
         pos.fees_out = fees
-        # PnL : même comptabilité que _close_position (fills partiels déjà comptés séparément).
-        qty_closed  = pos.qty_total - sum(f.qty for f in pos.partial_fills)
-        pnl_close   = net_pnl(pos.entry_price, exit_price, qty_closed, BROKER_CONFIG)
+        # PnL : IBKR est SOURCE DE VÉRITÉ. Si son realizedPNL est fourni, on le prend TEL QUEL
+        # (couvre tout le round-trip sur son coût de revient, y c. fills partiels) au lieu de
+        # reconstruire entry×exit (approximatif). Repli sur la reconstruction si IBKR indispo.
         fees_partials = sum(compute_fees(f.price, f.qty, BROKER_CONFIG) for f in pos.partial_fills)
-        pnl_partials  = sum((f.price - pos.entry_price) * f.qty for f in pos.partial_fills) - fees_partials
-        pnl_total = pnl_close + pnl_partials
+        if realized_pnl is not None:
+            pnl_total = realized_pnl
+        else:
+            qty_closed  = pos.qty_total - sum(f.qty for f in pos.partial_fills)
+            pnl_close   = net_pnl(pos.entry_price, exit_price, qty_closed, BROKER_CONFIG)
+            pnl_partials = sum((f.price - pos.entry_price) * f.qty for f in pos.partial_fills) - fees_partials
+            pnl_total = pnl_close + pnl_partials
         fees_all  = pos.fees_in + fees + fees_partials
         self.history.append({
             "ticker":       pos.ticker,
@@ -628,6 +649,7 @@ class PortfolioManager:
             "close_reason": reason,
             "entry_date":   pos.entry_date,
             "close_date":   pos.close_date,
+            "pnl_source":   "ibkr_realized" if realized_pnl is not None else "reconstructed",
         })
         self._save()
         return True

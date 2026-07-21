@@ -124,6 +124,11 @@ def _reconcile_ibkr(pm):
     try:
         ibkr_pos = broker.account_positions()        # {ticker: {qty, avg_cost}}
         ibkr_cash = broker.account_cash()
+        if hasattr(broker, "account_marks"):         # marks RÉELS → valorisation = vérité IBKR
+            try:
+                pm.set_ibkr_marks(broker.account_marks())
+            except Exception:
+                pass
     except Exception as e:
         # IBKR activé mais injoignable (Gateway down/logged-out, cf. maintenance week-end) :
         # on NE PEUT PAS confirmer positions/cash → HALT des nouveaux achats (pas de vérité,
@@ -167,14 +172,16 @@ def _reconcile_ibkr(pm):
         px         = (fill or {}).get("price") or pm.last_prices.get(tk) or pos.entry_price
         sold_today = (fill or {}).get("qty", 0) or 0
         fee_today  = (fill or {}).get("fees", 0.0) or 0.0
+        real_pnl   = (fill or {}).get("realized_pnl")   # PnL RÉALISÉ IBKR (None si indispo)
         src        = "bracket natif" if bracketed else "clôture externe"
         r_full     = "BRACKET" if bracketed else "RECONCILE"
         r_part     = "TP" if bracketed else "RECONCILE"
 
         if ibkr_qty < 1.0:                             # < 1 action → position SOLDÉE
             fee = fee_today * (remaining / sold_today) if sold_today > 0 else 0.0
-            pm.book_native_exit(tk, px, round(fee, 4), reason=r_full)
-            issues.append(f"{tk} : {src} soldé(e) @ {px:.2f} → clôturé au ledger")
+            pm.book_native_exit(tk, px, round(fee, 4), reason=r_full, realized_pnl=real_pnl)
+            src2 = src + (" [PnL IBKR]" if real_pnl is not None else " [PnL estimé]")
+            issues.append(f"{tk} : {src2} soldé(e) @ {px:.2f} → clôturé au ledger")
         else:                                          # PARTIEL : IBKR détient moins que le ledger
             delta = remaining - ibkr_qty
             fee = fee_today * (delta / sold_today) if sold_today > 0 else 0.0

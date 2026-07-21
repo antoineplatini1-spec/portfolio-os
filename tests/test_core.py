@@ -316,6 +316,34 @@ def test_native_disabled_uses_plain_buy(tmp_path, monkeypatch):
     assert len(pos.tp_levels) >= 1                     # ladder ATR classique conservé
 
 
+def test_ibkr_marks_drive_valuation(tmp_path, monkeypatch):
+    # La valorisation doit suivre les MARKS IBKR (vérité), pas last_prices (cache).
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("MRK", 100.0, atr=2.0, score=60)
+    assert ok
+    pm.last_prices["MRK"] = 95.0                 # cache dit 95
+    pm.set_ibkr_marks({"MRK": 110.0})            # IBKR dit 110 → doit primer
+    assert pm._mark("MRK", pos) == 110.0
+    assert pm.total_market_value == pytest.approx(pos.qty_remaining * 110.0)
+
+def test_ibkr_marks_fallback_to_cache(tmp_path, monkeypatch):
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("MRK", 100.0, atr=2.0, score=60)
+    pm.last_prices["MRK"] = 95.0
+    pm.set_ibkr_marks({})                         # pas de mark IBKR → repli cache
+    assert pm._mark("MRK", pos) == 95.0
+
+def test_book_native_exit_uses_ibkr_realized_pnl(tmp_path, monkeypatch):
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("MRK", 100.0, atr=2.0, score=60)
+    # realizedPNL IBKR fourni → pris TEL QUEL, pas de reconstruction.
+    pm.book_native_exit("MRK", exit_price=90.0, fees=1.0, reason="BRACKET", realized_pnl=-512.0)
+    assert pm.history[-1]["pnl"] == pytest.approx(-512.0)
+    assert pm.history[-1]["pnl_source"] == "ibkr_realized"
+
 def test_book_native_exit_records_pnl_and_closes(tmp_path, monkeypatch):
     br = _FakeBracketBroker(stop_live=True)
     pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)

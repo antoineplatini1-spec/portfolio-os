@@ -421,6 +421,17 @@ class IBKRBroker:
             out[sym] = {"qty": float(p.position), "avg_cost": float(p.avgCost)}
         return out
 
+    def account_marks(self) -> dict[str, float]:
+        """Prix de marché RÉELS des positions détenues {ticker: marketPrice} (valorisation vérité)."""
+        out = {}
+        for it in self.ib.portfolio(self.cfg.get("account") or ""):
+            sym = it.contract.symbol
+            if it.contract.currency == "EUR":
+                sym = f"{sym}.PA"
+            if it.marketPrice and it.marketPrice > 0:
+                out[sym] = float(it.marketPrice)
+        return out
+
     def account_cash(self) -> float:
         """Cash disponible (NetLiquidation - valeur positions) via summary."""
         rows = self.ib.accountSummary(self.cfg.get("account") or "")
@@ -459,6 +470,8 @@ class IBKRBroker:
             fills = self.ib.fills()
 
         tot_qty = tot_val = tot_fee = 0.0
+        realized = 0.0
+        has_realized = False
         for f in fills:
             try:
                 if f.contract.symbol != sym:
@@ -476,8 +489,15 @@ class IBKRBroker:
                 tot_val += q * p
                 if f.commissionReport and f.commissionReport.commission:
                     tot_fee += abs(float(f.commissionReport.commission))
+                # PnL RÉALISÉ calculé par IBKR (vérité) — évite la reconstruction entry×exit.
+                if f.commissionReport:
+                    rp = getattr(f.commissionReport, "realizedPNL", None)
+                    if rp is not None and abs(float(rp)) < 1e12:   # 1e18 = sentinel "non renseigné"
+                        realized += float(rp)
+                        has_realized = True
             except Exception:
                 continue
         if tot_qty <= 0:
             return None
-        return {"qty": tot_qty, "price": tot_val / tot_qty, "fees": round(tot_fee, 4)}
+        return {"qty": tot_qty, "price": tot_val / tot_qty, "fees": round(tot_fee, 4),
+                "realized_pnl": realized if has_realized else None}
