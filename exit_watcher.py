@@ -110,6 +110,10 @@ def main(test: bool = False) -> int:
         ib.disconnect()
         return 0
 
+    # Premier lancement (pas d'état) : on établit une BASELINE silencieuse — toutes les ventes
+    # déjà présentes sont marquées "vues" SANS email. On n'alerte que sur les sorties POSTÉRIEURES.
+    # Évite de blaster l'historique (et les éventuels fills fantômes du paper) à chaque déploiement.
+    first_run = not SEEN_FILE.exists()
     seen = _load_seen()
     window_sell_ids: set[str] = set()
     to_notify = []
@@ -132,6 +136,13 @@ def main(test: bool = False) -> int:
                               float(e.avgPrice or 0), pnl, str(e.time)[:19]))
         except Exception:
             continue
+
+    if first_run:
+        _save_seen(window_sell_ids)
+        ib.disconnect()
+        print(f"[EXIT-WATCH] baseline initialisée ({len(window_sell_ids)} vente(s) marquée(s) vue(s), "
+              "aucun email). Les prochaines sorties seront notifiées.")
+        return 0
 
     notified = 0
     for exec_id, sym, qty, px, pnl, when in to_notify:
