@@ -353,18 +353,31 @@ class IBKRBroker:
                 stop.account = take.account = self.cfg["account"]
             children.append(("stop", stop))
             children.append(("take", take))
-        children[-1][1].transmit = True                    # dernier ordre → transmet le lot
+        # SANS ordre parent, chaque ordre DOIT être transmit=True : un `transmit=False` ne serait
+        # jamais relâché (rien pour le déclencher) → l'ordre reste retenu, non actif. (C'était le
+        # bug du 1er retrofit : seul le dernier partait.)
+        for _, o in children:
+            o.transmit = True
 
         child_trades = [(k, self.ib.placeOrder(contract, o)) for k, o in children]
 
+        n_stops = sum(1 for k, _ in children if k == "stop")
         LIVE = ("PreSubmitted", "Submitted", "PendingSubmit")
-        stop_trades = [t for k, t in child_trades if k == "stop"]
         waited, step = 0.0, 0.5
-        while (any(t.orderStatus.status not in LIVE and not t.isDone() for t in stop_trades)
-               and waited < 8.0):
+        while waited < 8.0:
             self.ib.waitOnUpdate(timeout=step)
             waited += step
-        stops_live = all(t.orderStatus.status in LIVE for t in stop_trades)
+
+        # CONFIRMATION ROBUSTE : ne PAS se fier au trade.orderStatus (montre "PreSubmitted" même
+        # pour un ordre retenu). On RE-LIT les ordres RÉELLEMENT ouverts côté IBKR et on compte les
+        # STP live de CE bracket (ocaGroup préfixé par `base`) — pas les stops préexistants. Il en
+        # faut au moins `n_stops` vraiment actifs pour valider (sinon on n'annule PAS l'ancien stop).
+        live_stops = sum(
+            1 for t in self.ib.reqAllOpenOrders()
+            if t.order.orderType == "STP" and t.orderStatus.status in LIVE
+            and (t.order.ocaGroup or "").startswith(base)
+        )
+        stops_live = live_stops >= n_stops
 
         if not stops_live:
             for _, t in child_trades:                      # échec → on retire le nouveau bracket
@@ -373,7 +386,7 @@ class IBKRBroker:
                         self.ib.cancelOrder(t.order)
                 except Exception:
                     pass
-            return {"ok": False, "oca": None, "stops_live": False}
+            return {"ok": False, "oca": None, "stops_live": False, "live_stops": live_stops}
 
         # Stops confirmés → SEULEMENT MAINTENANT on annule les anciens ordres (stop manuel).
         for oid in (cancel_ids or []):
