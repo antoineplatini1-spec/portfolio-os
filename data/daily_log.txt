@@ -11053,3 +11053,255 @@ Traceback (most recent call last):
 [2026-07-17 11:01]   [MOMENTUM] Michelin (ML.PA) 28.441× à 35.16€ | SL=33.93 | TPs=38.37 | investi=1000€
 [2026-07-17 11:01] [MOMENTUM] valeur=10061.83€  cash=3036.01€  positions=7  PnL=+18.83€
 [2026-07-17 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-20 11:00] ============================================================
+[2026-07-20 11:00] SCAN JOURNALIER - 2026-07-20
+[2026-07-20 11:00] ============================================================
+[2026-07-20 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-20 11:00]   Date     : 2026-07-20  [imap]
+[2026-07-20 11:00]   CAC 40   : NEUTRAL
+[2026-07-20 11:00]   Valeurs  :
+[2026-07-20 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-20 11:00]   Macro    : market_caution
+[2026-07-20 11:00]   Secteurs : Tech:-1
+[2026-07-20 11:00] ───────────────────────────────────────────────────────
+[2026-07-20 11:00] [LLM] Biais sectoriel = LLM : Semi:-2, Tech:-1, Energie:+1, Macro:-1
+[2026-07-20 11:00] [LLM] Trades momentum = LLM (1) : Thales:BUY
+[2026-07-20 11:00] [US] Barchart «Netflix Crashes to a 52-Week Low After E» → secteur {'Media': 2} | idées: NFLX
+[2026-07-20 11:00] [US] The Transcript «As Good As It Gets» → secteur {'Macro': 2, 'Finance': 2, 'Conso': 2, 'Semi': 1, 'Energie': -1} | idées: JPM, BAC, MS, C, WFC, BNY, DAL, RIO, BLK
+[2026-07-20 11:00] ══════════════════════════════════════════════
+[2026-07-20 11:00]   AGENT MACRO — 2026-07-20
+[2026-07-20 11:00] ══════════════════════════════════════════════
+[2026-07-20 11:00]   Régime marché  : BULL
+[2026-07-20 11:00]   SPY vs EMA200  : +6.5%
+[2026-07-20 11:00]   VIX            : 18.3 (LOW)
+[2026-07-20 11:00]   Max trades/j   : 3
+[2026-07-20 11:00]   Seuil net min  : 10
+[2026-07-20 11:00]   Top secteurs   : Energie, Santé, Finance, REIT, ConsoBase, Utilities, Media
+[2026-07-20 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-20 11:00]   Rationale      : Marché haussier (SPY +6.5% vs EMA200). Exposition maximale autorisée.
+[2026-07-20 11:00] ══════════════════════════════════════════════
+[2026-07-20 11:00] [RECONCILE IBKR] cash réel IBKR = 152495 | ledger = 149500
+[2026-07-20 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 149500 → 152495
+[2026-07-20 11:00] 9 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-20 11:00]   PANW: 358.42
+[2026-07-20 11:00]   V: 360.86
+[2026-07-20 11:00]   CRWD: 203.25
+[2026-07-20 11:00]   SNOW: 270.40
+[2026-07-20 11:00]   JPM: 340.28
+[2026-07-20 11:00]   JNJ: 250.77
+[2026-07-20 11:00]   ABBV: 254.51
+[2026-07-20 11:00]   MRK: 126.41
+[2026-07-20 11:00]   MO: 74.72
+[2026-07-20 11:00] Screener en cours...
+[2026-07-20 11:00] [US] Univers screener enrichi de 10 idée(s) newsletters US : NFLX, JPM, BAC, MS, C, WFC, BNY, DAL, RIO, BLK
+[2026-07-20 11:00] Scores : max=75  mediane=16  (159 tickers)
+[2026-07-20 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=75
+[2026-07-20 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Semi, Macro, Media, Finance, Conso | pénalisés: Tech, Energie
+[2026-07-20 11:00] Filtre ETF/indices (non achetables) : 43 → 33 candidats
+[2026-07-20 11:00] 33 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-20 11:01]   [SEC 8-K] V (2026-07-15) : Modification des statuts, États financiers & annexes
+[2026-07-20 11:01]   [SEC 8-K] BNY (2026-07-15) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-20 11:01]   [SEC 8-K] SNOW (2026-07-16) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-07-20 11:01]   [SEC 8-K] JNJ (2026-07-15) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-20 11:01]   [SEC 8-K] BAC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-20 11:01]   [SEC 8-K] O (2026-07-13) ⚠MATÉRIEL : Accord matériel signé, Résiliation d'accord matériel, Nouvelle obligation financière, Autre événement matériel, États financiers & annexes
+[2026-07-20 11:01]   [SEC 8-K] UNH (2026-07-16) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-20 11:01]   [SEC 8-K] JPM (2026-07-14) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-20 11:01]   [SEC 8-K] JPM (2026-07-14) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-20 11:01] [LLM news] ABBV: bullish 0.50 — Approbation UE traitement rides du front
+[2026-07-20 11:01] [LLM news] MA: bearish 0.40 — Berkshire Hathaway vend ses actions Mastercard
+[2026-07-20 11:01] [LLM news] DDOG: bearish 0.40 — Vente massive d'actions par le CEO
+[2026-07-20 11:01] [LLM news] SNOW: neutral 0.40 — Départ/nomination d'un dirigeant (8-K)
+[2026-07-20 11:01] [LLM news] CRWD: bullish 0.50 — Acquisition de la PI de XM Cyber
+[2026-07-20 11:01] [LLM news] LLY: bullish 0.50 — Rachat d'ATAI par Eli Lilly
+[2026-07-20 11:01] [LLM news] PYPL: neutral 0.40 — Cible potentielle de fusion
+[2026-07-20 11:01] [LLM news] VRTX: bullish 0.60 — Acquisition de 10 Md$
+[2026-07-20 11:01] [LLM news] JNJ: bullish 0.70 — Résultats Q2 solides
+[2026-07-20 11:01] [LLM news] MRK: bullish 0.50 — Approbation FDA premier PCSK9 oral
+[2026-07-20 11:01] [LLM news] COP: bullish 0.50 — Acquisition de 42% de la coentreprise Kirkuk de BP
+[2026-07-20 11:01] [LLM news] UNH: bearish 0.40 — Avertissement du CFO après résultats
+[2026-07-20 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-20 11:01] [NEWSLETTER US] 1 instrument(s) US recommandé(s)
+[2026-07-20 11:01]   [NEWSLETTER US] Achat NEWSLETTER 35.0000 RACE @ 373.67 SL 343.56 (SL plafonné -8%) TP 422.46 [bracket IBKR]
+[2026-07-20 11:01] Cash deployable cette semaine : 136628 EUR  (max trades/j : 2)
+[2026-07-20 11:01] ────────────────────────────────────────────────────
+[2026-07-20 11:01]   DÉBAT : MA
+[2026-07-20 11:01] ────────────────────────────────────────────────────
+[2026-07-20 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-07-20 11:01]      • Score haussier fort (71/100)
+[2026-07-20 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-20 11:01]      • Prix au-dessus EMA200 (514.25) — tendance long terme haussière
+[2026-07-20 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-20 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-20 11:01] 
+[2026-07-20 11:01]   🔴 BEAR [concern=15] → OK
+[2026-07-20 11:01]      • Secteur Finance déjà exposé (2 positions) — diversification limitée
+[2026-07-20 11:01]      • Volume faible (0.1× moyenne)
+[2026-07-20 11:01] 
+[2026-07-20 11:01]   ✅ ARBITRE → ACHETER  (net=+58)
+[2026-07-20 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=15, net=+58)
+[2026-07-20 11:01] ────────────────────────────────────────────────────
+[2026-07-20 11:01]   [ACHAT] MA score=69 bull=67 bear=15 prix=545.29 investi=13090EUR SL=521.06 TP1=563.46
+[2026-07-20 11:01] ────────────────────────────────────────────────────
+[2026-07-20 11:01]   DÉBAT : BNY
+[2026-07-20 11:01] ────────────────────────────────────────────────────
+[2026-07-20 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-07-20 11:01]      • Score haussier fort (71/100)
+[2026-07-20 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-20 11:01]      • Prix au-dessus EMA200 (130.72) — tendance long terme haussière
+[2026-07-20 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-20 11:01]      • OBV en hausse — accumulation en cours
+[2026-07-20 11:01] 
+[2026-07-20 11:01]   🔴 BEAR [concern=13] → OK
+[2026-07-20 11:01]      • RSI suracheté (72)
+[2026-07-20 11:01]      • Volume faible (0.1× moyenne)
+[2026-07-20 11:01] 
+[2026-07-20 11:01]   ✅ ARBITRE → ACHETER  (net=+59)
+[2026-07-20 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=13, net=+59)
+[2026-07-20 11:01] ────────────────────────────────────────────────────
+[2026-07-20 11:01]   [ACHAT] BNY score=65 bull=67 bear=13 prix=157.72 investi=13097EUR SL=149.95 TP1=163.55
+[2026-07-20 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-20 11:01] ----------------------------------------
+[2026-07-20 11:01] RESUME : valeur=263300.95 EUR  investi=150160.45 EUR  cash=113229.78 EUR  expo=57.0%  positions=12
+[2026-07-20 11:01] ----------------------------------------
+[2026-07-20 11:01] [MOMENTUM] 7 position(s) ouverte(s)...
+[2026-07-20 11:01]   [MOMENTUM] VK.PA: 21.00
+[2026-07-20 11:01]   [MOMENTUM] BIM.PA: 72.35
+[2026-07-20 11:01]   [MOMENTUM] AI.PA: 177.58
+[2026-07-20 11:01]   [MOMENTUM] AIR.PA: 192.66
+[2026-07-20 11:01]   [MOMENTUM] LR.PA: 136.60
+[2026-07-20 11:01]   [MOMENTUM] PUB.PA: 88.10
+[2026-07-20 11:01]   [MOMENTUM] ML.PA: 34.98
+[2026-07-20 11:01] [MOMENTUM] 1 signal(s) newsletter...
+[2026-07-20 11:01]   [MOMENTUM] Thales (HO.PA) 4.456× à 224.40€ | SL=206.75 | TPs=270.20 | investi=1000€
+[2026-07-20 11:01] [MOMENTUM] valeur=10081.77€  cash=2035.01€  positions=8  PnL=+38.76€
+[2026-07-20 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-21 11:00] ============================================================
+[2026-07-21 11:00] SCAN JOURNALIER - 2026-07-21
+[2026-07-21 11:00] ============================================================
+[2026-07-21 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-21 11:00]   Date     : 2026-07-21  [imap]
+[2026-07-21 11:00]   CAC 40   : NEUTRAL
+[2026-07-21 11:00]   Valeurs  :
+[2026-07-21 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-21 11:00]     ✅ Unibail (REIT) → BUY
+[2026-07-21 11:00]     ✅ Urw (REIT) → BUY
+[2026-07-21 11:00]   Macro    : market_caution
+[2026-07-21 11:00]   Secteurs : REIT:+2, Tech:-1
+[2026-07-21 11:00] ───────────────────────────────────────────────────────
+[2026-07-21 11:00] [LLM] Biais sectoriel = LLM : REIT:+2, Tech:-1, Macro:-1, Energie:+1
+[2026-07-21 11:00] [LLM] Trades momentum : LLM sans résultat → algo (regex)
+[2026-07-21 11:00] [US] Barchart «Microsoft vs. Amazon: 1 AI Giant Is the » → secteur {'Tech': 2} | idées: MSFT, AMZN
+[2026-07-21 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Finance': 2, 'Macro': 1} | idées: BAC, JPM, WFC
+[2026-07-21 11:00] ══════════════════════════════════════════════
+[2026-07-21 11:00]   AGENT MACRO — 2026-07-21
+[2026-07-21 11:00] ══════════════════════════════════════════════
+[2026-07-21 11:00]   Régime marché  : BULL
+[2026-07-21 11:00]   SPY vs EMA200  : +6.8%
+[2026-07-21 11:00]   VIX            : 17.4 (LOW)
+[2026-07-21 11:00]   Max trades/j   : 3
+[2026-07-21 11:00]   Seuil net min  : 10
+[2026-07-21 11:00]   Top secteurs   : Energie, Finance, Santé, REIT, ConsoBase
+[2026-07-21 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-21 11:00]   Rationale      : Marché haussier (SPY +6.8% vs EMA200). Exposition maximale autorisée.
+[2026-07-21 11:00] ══════════════════════════════════════════════
+[2026-07-21 11:00] [RECONCILE IBKR] MRK : bracket natif soldé(e) @ 126.41 → clôturé au ledger
+[2026-07-21 11:00] [RECONCILE IBKR] cash réel IBKR = 128851 | ledger = 125744
+[2026-07-21 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 125744 → 128851
+[2026-07-21 11:00] 11 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-21 11:00]   PANW: 336.58
+[2026-07-21 11:00]   V: 357.72
+[2026-07-21 11:00]   CRWD: 192.27
+[2026-07-21 11:00]   SNOW: 274.63
+[2026-07-21 11:00]   JPM: 342.33
+[2026-07-21 11:00]   JNJ: 249.76
+[2026-07-21 11:00]   ABBV: 255.57
+[2026-07-21 11:00]   MO: 73.44
+[2026-07-21 11:00]   RACE: 371.02
+[2026-07-21 11:00]   MA: 543.18
+[2026-07-21 11:00]   BNY: 158.02
+[2026-07-21 11:00] Screener en cours...
+[2026-07-21 11:00] [US] Univers screener enrichi de 5 idée(s) newsletters US : MSFT, AMZN, BAC, JPM, WFC
+[2026-07-21 11:00] Scores : max=71  mediane=11  (156 tickers)
+[2026-07-21 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=71
+[2026-07-21 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Tech, REIT, Macro, Energie, Finance | pénalisés: —
+[2026-07-21 11:00] Filtre ETF/indices (non achetables) : 50 → 36 candidats
+[2026-07-21 11:00] 36 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-21 11:00]   [SEC 8-K] SNOW (2026-07-16) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-07-21 11:00]   [SEC 8-K] V (2026-07-15) : Modification des statuts, États financiers & annexes
+[2026-07-21 11:00]   [SEC 8-K] UNH (2026-07-16) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-21 11:00]   [SEC 8-K] JNJ (2026-07-15) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-21 11:00]   [SEC 8-K] BAC (2026-07-14) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-21 11:00]   [SEC 8-K] JPM (2026-07-14) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-21 11:00]   [SEC 8-K] JPM (2026-07-14) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-21 11:00]   [SEC 8-K] BNY (2026-07-15) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-21 11:01] [LLM news] ABBV: neutral 0.60 — Acquisition of Apogee for $10.9B
+[2026-07-21 11:01] [LLM news] SNOW: neutral 0.40 — Dirigeant : départ/nomination (8-K)
+[2026-07-21 11:01] [LLM news] V: bullish 0.50 — Lancement plateforme stablecoin pour banques et fintechs
+[2026-07-21 11:01] [LLM news] PYPL: bullish 0.40 — Offre de rachat de Stripe à $60 (rumeur/opinion)
+[2026-07-21 11:01] [LLM news] AMD: bullish 0.50 — Advancing AI Summit + accord Microsoft
+[2026-07-21 11:01] [LLM news] UNH: neutral 0.50 — Résultats financiers publiés (8-K)
+[2026-07-21 11:01] [LLM news] SCHW: bullish 0.70 — Résultats T2 supérieurs aux attentes, revenus record
+[2026-07-21 11:01] [LLM news] LLY: bearish 0.50 — Poursuite de Novo Nordisk pour publicité mensongère
+[2026-07-21 11:01] [LLM news] COP: bullish 0.50 — Acquisition de 42% dans la coentreprise Kirkuk de BP
+[2026-07-21 11:01] [LLM news] OXY: neutral 0.40 — Réduction des dépenses d'investissement 2026 de 8%
+[2026-07-21 11:01] [LLM news] JNJ: neutral 0.50 — Résultats financiers publiés (8-K)
+[2026-07-21 11:01] [LLM news] BAC: neutral 0.50 — Résultats financiers publiés (8-K)
+[2026-07-21 11:01] [LLM news] JPM: neutral 0.50 — Résultats financiers publiés (8-K)
+[2026-07-21 11:01] [LLM news] BNY: neutral 0.50 — Résultats financiers publiés (8-K)
+[2026-07-21 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-21 11:01] Cash deployable cette semaine : 126274 EUR  (max trades/j : 2)
+[2026-07-21 11:01] ────────────────────────────────────────────────────
+[2026-07-21 11:01]   DÉBAT : SPG
+[2026-07-21 11:01] ────────────────────────────────────────────────────
+[2026-07-21 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-07-21 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-21 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-21 11:01]      • Prix au-dessus EMA200 (197.85) — tendance long terme haussière
+[2026-07-21 11:01]      • Score haussier correct (68/100)
+[2026-07-21 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-21 11:01] 
+[2026-07-21 11:01]   🔴 BEAR [concern=5] → OK
+[2026-07-21 11:01]      • Volume faible (0.0× moyenne)
+[2026-07-21 11:01] 
+[2026-07-21 11:01]   ✅ ARBITRE → ACHETER  (net=+69)
+[2026-07-21 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=5, net=+69)
+[2026-07-21 11:01] ────────────────────────────────────────────────────
+[2026-07-21 11:01]   [ACHAT] SPG score=66 bull=72 bear=5 prix=228.25 investi=13241EUR SL=219.64 TP1=234.72
+[2026-07-21 11:01] ────────────────────────────────────────────────────
+[2026-07-21 11:01]   DÉBAT : AAPL
+[2026-07-21 11:01] ────────────────────────────────────────────────────
+[2026-07-21 11:01]   🟢 BULL [conviction=62] → ACHETER
+[2026-07-21 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-21 11:01]      • Prix au-dessus EMA200 (275.15) — tendance long terme haussière
+[2026-07-21 11:01]      • Score haussier correct (68/100)
+[2026-07-21 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-21 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-21 11:01] 
+[2026-07-21 11:01]   🔴 BEAR [concern=41] → PRUDENCE
+[2026-07-21 11:01]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-07-21 11:01]      • Stoch RSI suracheté (84) — retournement baissier possible
+[2026-07-21 11:01]      • RSI suracheté (80)
+[2026-07-21 11:01]      • Volume faible (0.2× moyenne)
+[2026-07-21 11:01] 
+[2026-07-21 11:01]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-07-21 11:01]      Arguments haussiers l'emportent clairement (conviction=62, concern=41, net=+37)
+[2026-07-21 11:01] ────────────────────────────────────────────────────
+[2026-07-21 11:01]   [ACHAT] AAPL score=62 bull=62 bear=41 prix=327.16 investi=13084EUR SL=311.05 TP1=339.24
+[2026-07-21 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-21 11:01] ----------------------------------------
+[2026-07-21 11:01] RESUME : valeur=263984.10 EUR  investi=163461.01 EUR  cash=102525.56 EUR  expo=61.2%  positions=13
+[2026-07-21 11:01] ----------------------------------------
+[2026-07-21 11:01] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-07-21 11:01]   [MOMENTUM] VK.PA: 20.89
+[2026-07-21 11:01]   [MOMENTUM] BIM.PA: 70.25
+[2026-07-21 11:01]   [MOMENTUM] AI.PA: 176.32
+[2026-07-21 11:01]   [MOMENTUM] AIR.PA: 193.66
+[2026-07-21 11:01]   [MOMENTUM] LR.PA: 137.05
+[2026-07-21 11:01]   [MOMENTUM] PUB.PA: 86.84
+[2026-07-21 11:01]   [MOMENTUM] ML.PA: 35.13
+[2026-07-21 11:01]   [MOMENTUM] HO.PA: 224.00
+[2026-07-21 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-07-21 11:01]   [MOMENTUM] Unibail (URW.PA) 9.648× à 103.65€ | SL=96.39 | TPs=106.55 | investi=1000€
+[2026-07-21 11:01] [MOMENTUM] valeur=10034.90€  cash=1034.01€  positions=9  PnL=-8.10€
+[2026-07-21 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr

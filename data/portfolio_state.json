@@ -1,10 +1,10 @@
 {
-  "cash": 149500.04969999997,
+  "cash": 102525.56,
   "initial_cash": 250000.0,
   "reserve_cash": 0.0,
   "start_date": "2026-07-11",
-  "weekly_deployed": 114171.089956,
-  "week_start": "2026-07-11",
+  "weekly_deployed": 65589.86,
+  "week_start": "2026-07-20",
   "positions": {
     "PANW": {
       "ticker": "PANW",
@@ -290,15 +290,15 @@
       "ticker": "MRK",
       "entry_price": 131.56,
       "qty_total": 99.0,
-      "qty_remaining": 99.0,
+      "qty_remaining": 0.0,
       "sl": 124.33879999999999,
       "trailing_stop": false,
       "trailing_stop_price": 131.56,
       "entry_date": "2026-07-17",
       "fees_in": 0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 126.40599822998047,
+      "close_date": "2026-07-21",
       "entry_score": 75,
       "entry_atr": 3.5881,
       "fees_out": 0.0,
@@ -339,9 +339,204 @@
         }
       ],
       "partial_fills": []
+    },
+    "RACE": {
+      "ticker": "RACE",
+      "entry_price": 373.67,
+      "qty_total": 35.0,
+      "qty_remaining": 35.0,
+      "sl": 343.56019775390627,
+      "trailing_stop": false,
+      "trailing_stop_price": 373.67,
+      "entry_date": "2026-07-20",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 60,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "br_RACE_1784559706",
+      "tp_levels": [
+        {
+          "price": 422.46,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "MA": {
+      "ticker": "MA",
+      "entry_price": 545.41,
+      "qty_total": 24.0,
+      "qty_remaining": 24.0,
+      "sl": 521.0568,
+      "trailing_stop": false,
+      "trailing_stop_price": 545.41,
+      "entry_date": "2026-07-20",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 69,
+      "entry_atr": 12.1166,
+      "fees_out": 0.0,
+      "bracket_oca": "br_MA_1784559707",
+      "tp_levels": [
+        {
+          "price": 563.4649,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 581.6397999999999,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 605.8729999999999,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "BNY": {
+      "ticker": "BNY",
+      "entry_price": 157.79,
+      "qty_total": 83.0,
+      "qty_remaining": 83.0,
+      "sl": 149.9503,
+      "trailing_stop": false,
+      "trailing_stop_price": 157.79,
+      "entry_date": "2026-07-20",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 65,
+      "entry_atr": 3.8861,
+      "fees_out": 0.0,
+      "bracket_oca": "br_BNY_1784559709",
+      "tp_levels": [
+        {
+          "price": 163.55165,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 169.3808,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 177.153,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "SPG": {
+      "ticker": "SPG",
+      "entry_price": 228.3,
+      "qty_total": 58.0,
+      "qty_remaining": 58.0,
+      "sl": 219.636,
+      "trailing_stop": false,
+      "trailing_stop_price": 228.3,
+      "entry_date": "2026-07-21",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 66,
+      "entry_atr": 4.3095,
+      "fees_out": 0.0,
+      "bracket_oca": "br_SPG_1784646089",
+      "tp_levels": [
+        {
+          "price": 234.71925,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 241.18349999999998,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 249.8025,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "AAPL": {
+      "ticker": "AAPL",
+      "entry_price": 327.09,
+      "qty_total": 40.0,
+      "qty_remaining": 40.0,
+      "sl": 311.0547,
+      "trailing_stop": false,
+      "trailing_stop_price": 327.09,
+      "entry_date": "2026-07-21",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 62,
+      "entry_atr": 8.0527,
+      "fees_out": 0.0,
+      "bracket_oca": "br_AAPL_1784646090",
+      "tp_levels": [
+        {
+          "price": 339.23915,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 351.3182,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 367.4236,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
-  "history": [],
+  "history": [
+    {
+      "ticker": "MRK",
+      "entry_price": 131.56,
+      "close_price": 126.40599822998047,
+      "qty": 99.0,
+      "pnl": -512.2462,
+      "fees_total": 0.0,
+      "close_reason": "BRACKET",
+      "entry_date": "2026-07-17",
+      "close_date": "2026-07-21"
+    }
+  ],
   "last_prices": {
     "LMT": 513.43701171875,
     "SPG": 219.7100067138672,
@@ -358,7 +553,7 @@
     "CIBR": 94.26000213623047,
     "HACK": 111.87999725341797,
     "AMD": 546.719970703125,
-    "SNOW": 265.9200134277344,
+    "SNOW": 274.6310119628906,
     "EOG": 131.47999572753906,
     "PM": 181.1699981689453,
     "GS": 1055.969970703125,
@@ -368,23 +563,27 @@
     "TLT": 85.46600341796875,
     "HYG": 79.75,
     "GE": 359.0400085449219,
-    "PANW": 360.28509521484375,
-    "CRWD": 204.47500610351562,
-    "ABBV": 258.42999267578125,
+    "PANW": 336.5849914550781,
+    "CRWD": 192.2696990966797,
+    "ABBV": 255.57000732421875,
     "ARKG": 43.0,
     "AMAT": 588.6599731445312,
     "KLAC": 229.52000427246094,
     "LRCX": 326.1300048828125,
     "XBI": 164.27999877929688,
-    "JPM": 345.239990234375,
-    "MO": 71.58999633789062,
+    "JPM": 342.3299865722656,
+    "MO": 73.44000244140625,
     "WFC": 86.91000366210938,
     "KO": 82.62999725341797,
     "DE": 592.9000244140625,
     "RTX": 195.1999969482422,
     "ASML": 1804.25,
-    "V": 358.42498779296875,
-    "JNJ": 254.56500244140625
+    "V": 357.7200012207031,
+    "JNJ": 249.7550048828125,
+    "MRK": 126.40599822998047,
+    "RACE": 371.0249938964844,
+    "MA": 543.1799926757812,
+    "BNY": 158.02000427246094
   },
-  "peak_value": 261114.08307861327
+  "peak_value": 264482.3177056885
 }
