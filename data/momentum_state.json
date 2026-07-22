@@ -1,5 +1,5 @@
 {
-  "cash": 1034.0056675957178,
+  "cash": 33.00566759571768,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -297,18 +297,46 @@
         }
       ],
       "partial_fills": []
+    },
+    "SAF.PA": {
+      "ticker": "SAF.PA",
+      "entry_price": 326.82649999999995,
+      "qty_total": 3.0627871362940278,
+      "qty_remaining": 3.0627871362940278,
+      "sl": 312.3,
+      "trailing_stop": false,
+      "trailing_stop_price": 326.82649999999995,
+      "entry_date": "2026-07-22",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 357.1,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [],
   "last_prices": {
-    "VK.PA": 20.889999389648438,
+    "VK.PA": 21.530000686645508,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.25,
-    "AI.PA": 176.32000732421875,
-    "AIR.PA": 193.66000366210938,
-    "LR.PA": 137.0500030517578,
-    "PUB.PA": 86.83999633789062,
-    "ML.PA": 35.130001068115234,
-    "HO.PA": 224.0
+    "AI.PA": 177.3800048828125,
+    "AIR.PA": 207.14999389648438,
+    "LR.PA": 137.3000030517578,
+    "PUB.PA": 86.45999908447266,
+    "ML.PA": 35.119998931884766,
+    "HO.PA": 228.8000030517578,
+    "URW.PA": 104.30000305175781
   }
 }

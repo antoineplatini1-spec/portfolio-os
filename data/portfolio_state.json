@@ -1,9 +1,9 @@
 {
-  "cash": 102525.56,
+  "cash": 95893.01,
   "initial_cash": 250000.0,
   "reserve_cash": 0.0,
   "start_date": "2026-07-11",
-  "weekly_deployed": 65589.86,
+  "weekly_deployed": 91852.29000000001,
   "week_start": "2026-07-20",
   "positions": {
     "PANW": {
@@ -22,7 +22,7 @@
       "entry_score": 69,
       "entry_atr": 16.0595,
       "fees_out": 0.0,
-      "bracket_oca": "",
+      "bracket_oca": "rf_PANW_1784663164",
       "tp_levels": [
         {
           "price": 351.63925,
@@ -68,7 +68,7 @@
       "entry_score": 60,
       "entry_atr": 8.1141,
       "fees_out": 0.0,
-      "bracket_oca": "",
+      "bracket_oca": "rf_V_1784663174",
       "tp_levels": [
         {
           "price": 370.42115,
@@ -95,15 +95,15 @@
       "ticker": "CRWD",
       "entry_price": 206.566122,
       "qty_total": 98.0,
-      "qty_remaining": 98.0,
+      "qty_remaining": 0.0,
       "sl": 190.04083224000001,
       "trailing_stop": false,
       "trailing_stop_price": 206.566122,
       "entry_date": "2026-07-14",
       "fees_in": 1.0003,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 192.2696990966797,
+      "close_date": "2026-07-22",
       "entry_score": 80,
       "entry_atr": 10.21,
       "fees_out": 0.0,
@@ -146,7 +146,7 @@
       "entry_score": 72,
       "entry_atr": 13.2148,
       "fees_out": 0.0,
-      "bracket_oca": "",
+      "bracket_oca": "rf_SNOW_1784663169",
       "tp_levels": [
         {
           "price": 295.0022,
@@ -185,7 +185,7 @@
       "entry_score": 71,
       "entry_atr": 7.75,
       "fees_out": 0.0,
-      "bracket_oca": "",
+      "bracket_oca": "rf_JPM_1784663160",
       "tp_levels": [
         {
           "price": 359.805,
@@ -224,7 +224,7 @@
       "entry_score": 75,
       "entry_atr": 6.2299,
       "fees_out": 0.0,
-      "bracket_oca": "",
+      "bracket_oca": "rf_JNJ_1784663155",
       "tp_levels": [
         {
           "price": 260.93485,
@@ -263,7 +263,7 @@
       "entry_score": 71,
       "entry_atr": 6.4444,
       "fees_out": 0.0,
-      "bracket_oca": "",
+      "bracket_oca": "rf_ABBV_1784663153",
       "tp_levels": [
         {
           "price": 261.9766,
@@ -290,7 +290,7 @@
       "ticker": "MRK",
       "entry_price": 131.56,
       "qty_total": 99.0,
-      "qty_remaining": 0.0,
+      "qty_remaining": 99.0,
       "sl": 124.33879999999999,
       "trailing_stop": false,
       "trailing_stop_price": 131.56,
@@ -522,6 +522,84 @@
         }
       ],
       "partial_fills": []
+    },
+    "MPC": {
+      "ticker": "MPC",
+      "entry_price": 322.38,
+      "qty_total": 41.0,
+      "qty_remaining": 41.0,
+      "sl": 304.96619999999996,
+      "trailing_stop": false,
+      "trailing_stop_price": 322.38,
+      "entry_date": "2026-07-22",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 62,
+      "entry_atr": 8.3369,
+      "fees_out": 0.0,
+      "bracket_oca": "br_MPC_1784732503",
+      "tp_levels": [
+        {
+          "price": 334.14535,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 346.6507,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 363.3245,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "PSX": {
+      "ticker": "PSX",
+      "entry_price": 213.85,
+      "qty_total": 61.0,
+      "qty_remaining": 61.0,
+      "sl": 202.2408,
+      "trailing_stop": false,
+      "trailing_stop_price": 213.85,
+      "entry_date": "2026-07-22",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 62,
+      "entry_atr": 5.5346,
+      "fees_out": 0.0,
+      "bracket_oca": "br_PSX_1784732504",
+      "tp_levels": [
+        {
+          "price": 221.6119,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 229.9138,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 240.983,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [
@@ -535,11 +613,23 @@
       "close_reason": "BRACKET",
       "entry_date": "2026-07-17",
       "close_date": "2026-07-21"
+    },
+    {
+      "ticker": "CRWD",
+      "entry_price": 206.566122,
+      "close_price": 192.2696990966797,
+      "qty": 98.0,
+      "pnl": -1403.0494,
+      "fees_total": 1.0003,
+      "close_reason": "RECONCILE",
+      "entry_date": "2026-07-14",
+      "close_date": "2026-07-22",
+      "pnl_source": "reconstructed"
     }
   ],
   "last_prices": {
     "LMT": 513.43701171875,
-    "SPG": 219.7100067138672,
+    "SPG": 225.83999633789062,
     "MS": 222.1300048828125,
     "ON": 86.87999725341797,
     "NUE": 233.83999633789062,
@@ -553,7 +643,7 @@
     "CIBR": 94.26000213623047,
     "HACK": 111.87999725341797,
     "AMD": 546.719970703125,
-    "SNOW": 274.6310119628906,
+    "SNOW": 265.6600036621094,
     "EOG": 131.47999572753906,
     "PM": 181.1699981689453,
     "GS": 1055.969970703125,
@@ -563,27 +653,28 @@
     "TLT": 85.46600341796875,
     "HYG": 79.75,
     "GE": 359.0400085449219,
-    "PANW": 336.5849914550781,
+    "PANW": 333.4800109863281,
     "CRWD": 192.2696990966797,
-    "ABBV": 255.57000732421875,
+    "ABBV": 256.3900146484375,
     "ARKG": 43.0,
     "AMAT": 588.6599731445312,
     "KLAC": 229.52000427246094,
     "LRCX": 326.1300048828125,
     "XBI": 164.27999877929688,
-    "JPM": 342.3299865722656,
-    "MO": 73.44000244140625,
+    "JPM": 346.3299865722656,
+    "MO": 72.78500366210938,
     "WFC": 86.91000366210938,
     "KO": 82.62999725341797,
     "DE": 592.9000244140625,
     "RTX": 195.1999969482422,
     "ASML": 1804.25,
-    "V": 357.7200012207031,
-    "JNJ": 249.7550048828125,
+    "V": 354.760009765625,
+    "JNJ": 255.17999267578125,
     "MRK": 126.40599822998047,
-    "RACE": 371.0249938964844,
-    "MA": 543.1799926757812,
-    "BNY": 158.02000427246094
+    "RACE": 373.3399963378906,
+    "MA": 535.0800170898438,
+    "BNY": 159.4550018310547,
+    "AAPL": 325.4700012207031
   },
-  "peak_value": 264482.3177056885
+  "peak_value": 264686.53042075003
 }
