@@ -13,3 +13,5 @@
 {"ts": "2026-07-21T15:01:31.080714+00:00", "ticker": "AAPL", "features": {"momentum": 62.0, "sector": 2.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 6.0, "news": 0.0, "conviction": 0.0}, "total": 68.0}
 {"ts": "2026-07-22T15:01:44.615488+00:00", "ticker": "MPC", "features": {"momentum": 62.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 65.0}
 {"ts": "2026-07-22T15:01:46.083418+00:00", "ticker": "PSX", "features": {"momentum": 62.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 65.0}
+{"ts": "2026-07-23T15:01:49.133211+00:00", "ticker": "PYPL", "features": {"momentum": 62.0, "sector": 1.0, "news": 0.7, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 3.0, "news": 5.6, "conviction": 0.0}, "total": 70.6}
+{"ts": "2026-07-23T15:01:50.811022+00:00", "ticker": "APD", "features": {"momentum": 58.0, "sector": 1.0, "news": 0.55, "conviction": 0.0}, "contrib": {"momentum": 58.0, "sector": 3.0, "news": 4.4, "conviction": 0.0}, "total": 65.4}
