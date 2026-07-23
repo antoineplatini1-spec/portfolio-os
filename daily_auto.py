@@ -21,8 +21,12 @@ from utils.near_miss import save_near_miss, purge_old_entries
 
 BASE = os.path.dirname(__file__)
 sys.path.insert(0, BASE)
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-sys.stderr  = io.TextIOWrapper(sys.stderr.buffer,  encoding='utf-8', errors='replace')
+# Forçage UTF-8 des flux SEULEMENT quand on tourne comme script (console Windows). À l'IMPORT
+# (tests, autres modules), on n'y touche pas : sinon on emballe le stdout capturé par pytest,
+# qui casse au teardown ("I/O operation on closed file").
+if __name__ == "__main__":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # ── ETFs sectoriels → secteur sous-jacent (pour le véto de concentration) ─────
 _ETF_TO_UNDERLYING = {
