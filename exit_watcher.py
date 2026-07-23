@@ -25,6 +25,7 @@ from pathlib import Path
 
 _data_dir = Path(os.environ.get("DATA_DIR", Path(__file__).parent / "data"))
 SEEN_FILE = _data_dir / "notified_execs.json"
+JOURNAL_FILE = _data_dir / "trade_journal.jsonl"
 
 
 def _send_email(subject: str, html_body: str) -> bool:
@@ -46,6 +47,63 @@ def _send_email(subject: str, html_body: str) -> bool:
         s.sendmail(cfg["sender"], cfg["recipient"], msg.as_string())
     print(f"[EXIT-WATCH] email envoyé à {cfg['recipient']} — {subject}")
     return True
+
+
+def _journal_fills(fills) -> int:
+    """
+    Écrit dans le JOURNAL DURABLE (`trade_journal.jsonl`) chaque exécution IBKR nouvelle
+    (achats BOT ET ventes SLD), dédupliquée par execId. C'est le registre AUTORITAIRE des
+    fills — sourcé d'IBKR (prix + realizedPNL réels), jamais reconstruit. Idempotent : un
+    execId déjà présent n'est pas ré-écrit. Retourne le nombre de lignes ajoutées.
+    """
+    seen: set[str] = set()
+    if JOURNAL_FILE.exists():
+        try:
+            for line in JOURNAL_FILE.read_text(encoding="utf-8").splitlines():
+                if line.strip():
+                    eid = json.loads(line).get("execId")
+                    if eid:
+                        seen.add(eid)
+        except Exception:
+            pass
+
+    rows = []
+    for f in fills or []:
+        try:
+            e = f.execution
+            if e.execId in seen:
+                continue
+            seen.add(e.execId)                          # anti-doublon intra-run aussi
+            comm = rpnl = None
+            cr = getattr(f, "commissionReport", None)
+            if cr:
+                if cr.commission is not None:
+                    comm = abs(float(cr.commission))
+                rp = getattr(cr, "realizedPNL", None)
+                if rp is not None and abs(float(rp)) < 1e12:   # 1e18 = sentinel "non renseigné"
+                    rpnl = float(rp)
+            rows.append({
+                "execId": e.execId,
+                "time": str(e.time)[:19],
+                "symbol": f.contract.symbol,
+                "side": e.side,                         # BOT = achat, SLD = vente
+                "qty": float(e.shares),
+                "price": float(e.avgPrice or e.price or 0),
+                "commission": comm,
+                "realized_pnl": rpnl,
+            })
+        except Exception:
+            continue
+
+    if rows:
+        try:
+            with open(JOURNAL_FILE, "a", encoding="utf-8") as fh:
+                for r in rows:
+                    fh.write(json.dumps(r, ensure_ascii=False) + "\n")
+        except Exception as ex:
+            print(f"[EXIT-WATCH] écriture journal impossible : {ex}")
+            return 0
+    return len(rows)
 
 
 def _load_seen() -> set[str]:
@@ -110,6 +168,10 @@ def main(test: bool = False) -> int:
         ib.disconnect()
         return 0
 
+    # JOURNAL DURABLE : on enregistre TOUS les fills (achats + ventes), à chaque tick, quel que
+    # soit l'état email/baseline. C'est le registre autoritaire sourcé IBKR. Idempotent (execId).
+    n_journal = _journal_fills(fills)
+
     # Premier lancement (pas d'état) : on établit une BASELINE silencieuse — toutes les ventes
     # déjà présentes sont marquées "vues" SANS email. On n'alerte que sur les sorties POSTÉRIEURES.
     # Évite de blaster l'historique (et les éventuels fills fantômes du paper) à chaque déploiement.
@@ -141,7 +203,7 @@ def main(test: bool = False) -> int:
         _save_seen(window_sell_ids)
         ib.disconnect()
         print(f"[EXIT-WATCH] baseline initialisée ({len(window_sell_ids)} vente(s) marquée(s) vue(s), "
-              "aucun email). Les prochaines sorties seront notifiées.")
+              f"aucun email). Journal : +{n_journal} fill(s). Les prochaines sorties seront notifiées.")
         return 0
 
     notified = 0
@@ -158,7 +220,8 @@ def main(test: bool = False) -> int:
     # État borné à la fenêtre : les execId hors fenêtre disparaîtront (ils ne reviendront pas).
     _save_seen(window_sell_ids)
     ib.disconnect()
-    print(f"[EXIT-WATCH] {notified} sortie(s) notifiée(s), {len(window_sell_ids)} vente(s) en fenêtre.")
+    print(f"[EXIT-WATCH] {notified} sortie(s) notifiée(s), {len(window_sell_ids)} vente(s) en fenêtre, "
+          f"journal +{n_journal} fill(s).")
     return 0
 
 

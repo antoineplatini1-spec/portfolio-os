@@ -22,6 +22,11 @@ data/edgar_ciks.json
 # État du watcher de sorties (execId déjà notifiés par email) — local à chaque machine
 data/notified_execs.json
 
+# Journal de trades (fills IBKR réels) — TRACKÉ (registre autoritaire, backup offsite).
+# Le VPS est le seul writer (watcher + run) → pas de conflit.
+# data/trade_journal.jsonl  ← décommenté intentionnellement
+# data/nav_history.jsonl    ← idem (historique NLV pour le benchmark)
+
 # Journaux d'apprentissage/attribution — TRACKÉS (backup offsite GitHub).
 # Le VPS est le SEUL à écrire dedans (les runs y tournent) → pas de conflit de merge.
 # Petits (1 ligne / décision ou clôture, ~2-3 trades/j) → négligeable en taille. C'est

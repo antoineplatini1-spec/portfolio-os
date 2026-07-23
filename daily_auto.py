@@ -75,6 +75,7 @@ def _near_earnings(ticker: str, days: int = 3) -> bool:
 _data_dir = os.environ.get("DATA_DIR", os.path.join(BASE, "data"))
 os.makedirs(_data_dir, exist_ok=True)
 LOG_FILE = os.path.join(_data_dir, "daily_log.txt")
+NAV_HISTORY_FILE = os.path.join(_data_dir, "nav_history.jsonl")
 
 def log(msg: str):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -194,6 +195,59 @@ def _reconcile_ibkr(pm):
         issues.append("POSITIONS FANTÔMES sur IBKR absentes du ledger : "
                       + ", ".join(phantom) + " → ACHATS SUSPENDUS ce run (anti-surlevier)")
     return halt, issues, ibkr_cash
+
+
+def _record_nav(nlv: float, spy_close: float) -> None:
+    """
+    Ajoute (1×/jour, dédup sur la date) une ligne {date, nlv, spy} au NAV history — base du
+    benchmark. NLV = valorisation IBKR-sourcée (pm.total_value), SPY = close du jour. Historique
+    forward-only (pas de backfill approximatif) → le comparatif se construit au fil des runs.
+    """
+    if nlv <= 0:
+        return
+    today = date.today().isoformat()
+    try:
+        lines = []
+        if os.path.exists(NAV_HISTORY_FILE):
+            with open(NAV_HISTORY_FILE, encoding="utf-8") as f:
+                lines = [l for l in f.read().splitlines() if l.strip()]
+        if lines:
+            last = json.loads(lines[-1])
+            if last.get("date") == today:          # déjà écrit aujourd'hui → on met à jour la ligne
+                lines[-1] = json.dumps({"date": today, "nlv": round(nlv, 2),
+                                        "spy": round(spy_close, 4) if spy_close else None})
+                with open(NAV_HISTORY_FILE, "w", encoding="utf-8") as f:
+                    f.write("\n".join(lines) + "\n")
+                return
+        with open(NAV_HISTORY_FILE, "a", encoding="utf-8") as f:
+            f.write(json.dumps({"date": today, "nlv": round(nlv, 2),
+                                "spy": round(spy_close, 4) if spy_close else None}) + "\n")
+    except Exception as e:
+        log(f"[NAV] écriture nav_history impossible : {e}")
+
+
+def _benchmark() -> dict | None:
+    """
+    Return du portefeuille vs SPY depuis l'inception (1re ligne du NAV history). Retourne
+    {inception, ret_ptf, ret_spy, alpha} en fractions, ou None si < 2 points ou données absentes.
+    """
+    try:
+        if not os.path.exists(NAV_HISTORY_FILE):
+            return None
+        rows = [json.loads(l) for l in open(NAV_HISTORY_FILE, encoding="utf-8").read().splitlines() if l.strip()]
+        if len(rows) < 2:
+            return None
+        first, last = rows[0], rows[-1]
+        n0, n1 = first.get("nlv"), last.get("nlv")
+        s0, s1 = first.get("spy"), last.get("spy")
+        if not n0 or not n1:
+            return None
+        ret_ptf = n1 / n0 - 1
+        ret_spy = (s1 / s0 - 1) if (s0 and s1) else None
+        return {"inception": first.get("date"), "ret_ptf": ret_ptf, "ret_spy": ret_spy,
+                "alpha": (ret_ptf - ret_spy) if ret_spy is not None else None}
+    except Exception:
+        return None
 
 
 def _maybe_postmortem(ticker, entry_price, close_price, pnl_pct,
@@ -946,6 +1000,15 @@ def run():
         f"positions={len(pm.open_positions)}")
     log("-" * 40)
 
+    # ── 4a-bis. NAV history (benchmark vs SPY) ────────────────────
+    # NLV = valorisation IBKR-sourcée ; SPY = close du jour (même source que le macro).
+    try:
+        _spy_df = fetch_ohlcv("SPY")
+        _spy_close = float(_spy_df["Close"].iloc[-1]) if not _spy_df.empty else 0.0
+    except Exception:
+        _spy_close = 0.0
+    _record_nav(pm.total_value, _spy_close)
+
     # ── 4b. Momentum PTF (newsletter Capital Momentum) ────────────
     momentum_log: list[dict] = []
     momentum_status = "unknown"   # unavailable | stale | no_signal | active
@@ -1131,6 +1194,7 @@ def run():
             "provenance": llm_provenance,
             "errors":  _llm_errors,
         },
+        benchmark=_benchmark(),
     )
 
 
@@ -1473,6 +1537,7 @@ def _send_daily_email(
     mpm=None,
     momentum_status: str = "unknown",
     llm_summary: dict | None = None,
+    benchmark: dict | None = None,
 ):
     """Construit et envoie le recap journalier par email."""
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
@@ -1644,6 +1709,42 @@ def _send_daily_email(
     )
     latent_color = "#34d399" if latent_pnl >= 0 else "#fb7185"
 
+    # ── R:R mélangé du portefeuille (récompense/risque, pondéré par les paliers TP) ──
+    from portfolio.risk import r_ratio as _r_ratio
+    def _pos_rr(p):
+        sl = p.trailing_stop_price if p.trailing_stop else p.sl
+        if sl <= 0 or not p.tp_levels:
+            return None
+        return sum(tp.sell_pct * _r_ratio(p.entry_price, tp.price, sl) for tp in p.tp_levels)
+    _rrs = [rr for rr in (_pos_rr(p) for p in pm.open_positions.values()) if rr]
+    port_rr = sum(_rrs) / len(_rrs) if _rrs else 0.0
+
+    # ── Bloc PERFORMANCE : absolu (PnL réalisé) + relatif vs SPY (alpha) ───────
+    def _pct_cell(label, frac):
+        if frac is None:
+            return _cell(label, "n/c", "#8097b5")
+        return _cell(label, f"{frac*100:+.1f}%", "#34d399" if frac >= 0 else "#fb7185")
+    _real = pm.pnl_realized
+    _real_color = "#34d399" if _real >= 0 else "#fb7185"
+    if benchmark:
+        _perf_cells = (
+            f'{_cell("PnL réalisé", f"{_real:+,.0f}&nbsp;&euro;", _real_color)}'
+            f'{_spacer_td()}{_pct_cell("Return ptf", benchmark.get("ret_ptf"))}'
+            f'{_spacer_td()}{_pct_cell("SPY", benchmark.get("ret_spy"))}'
+            f'{_spacer_td()}{_pct_cell("Alpha", benchmark.get("alpha"))}'
+        )
+        _perf_note = f"depuis le {benchmark.get('inception','?')}"
+    else:
+        _perf_cells = f'{_cell("PnL réalisé", f"{_real:+,.0f}&nbsp;&euro;", _real_color)}'
+        _perf_note = "benchmark vs SPY dispo après 2 jours de suivi"
+    perf_html = (
+        f"<tr><td style='color:#8097b5;font-weight:700;font-size:14px;padding-bottom:8px'>"
+        f"&#x1F4C8; Performance <span style='color:#445470;font-weight:400;font-size:11px'>"
+        f"({_perf_note})</span></td></tr>"
+        f"<tr><td><table width='100%' cellpadding='0' cellspacing='0'><tr>{_perf_cells}</tr></table></td></tr>"
+        f"<tr><td style='height:16px'></td></tr>"
+    )
+
     subject_icon = "✅" if opened_positions else ("📤" if sales_log else "⚠️")
     if blockers:
         subject_icon = "🚨"
@@ -1710,6 +1811,9 @@ def _send_daily_email(
 
   <tr><td style='height:20px'></td></tr>
 
+  <!-- PERFORMANCE -->
+  {perf_html}
+
   <!-- PORTEFEUILLE -->
   <tr><td style='color:#8097b5;font-weight:700;font-size:14px;
                  padding-bottom:8px'>&#x1F4CA; Portefeuille</td></tr>
@@ -1723,6 +1827,8 @@ def _send_daily_email(
         {_cell("Exposition",   f"{pm.exposure_pct*100:.1f}%",        "#d6e0f0")}
         {_spacer_td()}
         {_cell("PnL latent",   f"{latent_pnl:+.0f}&nbsp;&euro;",    latent_color)}
+        {_spacer_td()}
+        {_cell("R:R moyen",    f"{port_rr:.2f}:1" if port_rr else "n/c", "#8097b5")}
       </tr>
     </table>
   </td></tr>

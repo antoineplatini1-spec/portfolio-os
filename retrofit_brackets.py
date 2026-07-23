@@ -26,10 +26,40 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-SL_PCT = 0.08
-TP_LADDER = [(0.06, 0.25), (0.12, 0.35), (0.20, 0.40)]   # (+% depuis coût, fraction vendue)
+SL_PCT = 0.08                                            # plancher (repli si ATR indispo)
+R_LADDER = [(0.75, 0.25), (1.5, 0.35), (2.5, 0.40)]      # (R-multiple, fraction vendue) — repli
 _data_dir = Path(os.environ.get("DATA_DIR", Path(__file__).parent / "data"))
 STATE_FILE = _data_dir / "portfolio_state.json"
+
+
+def _levels(cost: float, atr: float) -> tuple[float, list[tuple[float, float]]]:
+    """
+    SL + ladder TP identiques aux ENTRÉES normales du bot : on réutilise `risk.sl_price` et
+    `risk.tp_prices` (ATR-based, SL capé −8%, TP 1,5/3/5×ATR). Repli si ATR indispo : SL −8% +
+    TP en R-multiples du stop (0,75/1,5/2,5 R) — même profil, exprimé sur le stop réel.
+    """
+    from portfolio.risk import sl_price, tp_prices
+    if atr and atr > 0:
+        sl = sl_price(cost, atr)
+        tps = [(round(l["price"], 2), l["sell_pct"]) for l in tp_prices(cost, atr)]
+        return round(sl, 2), tps
+    sl = round(cost * (1 - SL_PCT), 2)
+    R = cost - sl
+    return sl, [(round(cost + m * R, 2), f) for m, f in R_LADDER]
+
+
+def _atr_for(sym: str) -> float:
+    """ATR courant du titre via le même pipeline que le bot (fetch_ohlcv → indicators)."""
+    try:
+        from data.fetcher import fetch_ohlcv
+        from indicators import compute_all
+        df = fetch_ohlcv(sym)
+        if df is None or df.empty:
+            return 0.0
+        df = compute_all(df)
+        return float(df["ATR"].iloc[-1]) if "ATR" in df else 0.0
+    except Exception:
+        return 0.0
 
 
 def main(dry: bool = False) -> int:
@@ -56,9 +86,10 @@ def main(dry: bool = False) -> int:
 
         manual_ids = [o["orderId"] for o in ords if o["type"] == "STP"]   # stop(s) manuel(s) à retirer
         mark = marks.get(sym, 0) or 0
-        sl = round(cost * (1 - SL_PCT), 2)
-        tps = [(round(cost * (1 + p), 2), f) for p, f in TP_LADDER if cost * (1 + p) > mark * 1.001]
-        if not tps:                                      # position déjà très haut → 1 TP loin
+        # Niveaux ATR-based (mêmes que les entrées normales) ; repli R-multiples si ATR indispo.
+        sl, tps_all = _levels(cost, _atr_for(sym))
+        tps = [(p, f) for p, f in tps_all if p > mark * 1.001]   # anti-vente immédiate (TP > prix)
+        if not tps:                                      # position déjà au-dessus de tous les TP
             tps = [(round(cost * 1.20, 2), 1.0)]
 
         tp_str = "/".join(f"{p:.2f}" for p, _ in tps)

@@ -63,10 +63,12 @@ set -e
 # Garantit l'existence des journaux : un `git add` avec UN fichier manquant échoue et ne
 # stage RIEN (donc l'état ne serait pas persisté). postmortems.jsonl n'apparaît qu'à la 1re
 # clôture → on le crée vide au besoin (inoffensif : digest lit ligne par ligne).
-touch data/decisions_log.jsonl data/postmortems.jsonl 2>/dev/null || true
+touch data/decisions_log.jsonl data/postmortems.jsonl \
+      data/trade_journal.jsonl data/nav_history.jsonl 2>/dev/null || true
 git add data/portfolio_state.json data/momentum_state.json \
         data/momentum_signals.jsonl data/daily_log.txt \
-        data/decisions_log.jsonl data/postmortems.jsonl 2>/dev/null || true
+        data/decisions_log.jsonl data/postmortems.jsonl \
+        data/trade_journal.jsonl data/nav_history.jsonl 2>/dev/null || true
 if ! git diff --staged --quiet; then
     git commit -m "auto(vps): portfolio $(date +%F)"
     # Récupère d'éventuels commits distants (push de dev) AVANT de pousser → plus de conflit.

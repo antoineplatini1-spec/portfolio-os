@@ -316,6 +316,51 @@ def test_native_disabled_uses_plain_buy(tmp_path, monkeypatch):
     assert len(pos.tp_levels) >= 1                     # ladder ATR classique conservé
 
 
+# ── Benchmark SPY + journal de trades ─────────────────────────────
+
+def test_benchmark_return_and_alpha(tmp_path, monkeypatch):
+    import daily_auto as da
+    f = tmp_path / "nav.jsonl"
+    f.write_text('{"date":"2026-07-20","nlv":100000,"spy":600}\n'
+                 '{"date":"2026-07-22","nlv":110000,"spy":630}\n', encoding="utf-8")
+    monkeypatch.setattr(da, "NAV_HISTORY_FILE", str(f))
+    b = da._benchmark()
+    assert b["ret_ptf"] == pytest.approx(0.10)      # 100k → 110k
+    assert b["ret_spy"] == pytest.approx(0.05)      # 600 → 630
+    assert b["alpha"] == pytest.approx(0.05)        # surperformance
+    assert b["inception"] == "2026-07-20"
+
+def test_benchmark_none_with_one_point(tmp_path, monkeypatch):
+    import daily_auto as da
+    f = tmp_path / "nav.jsonl"
+    f.write_text('{"date":"2026-07-22","nlv":100000,"spy":600}\n', encoding="utf-8")
+    monkeypatch.setattr(da, "NAV_HISTORY_FILE", str(f))
+    assert da._benchmark() is None                  # < 2 points → pas de benchmark
+
+class _FE:
+    def __init__(s, eid, side, shares, price):
+        s.execId, s.side, s.shares, s.avgPrice, s.price = eid, side, shares, price, price
+        s.time = "2026-07-22 15:01:00"
+class _FCR:
+    def __init__(s, comm, rpnl): s.commission, s.realizedPNL = comm, rpnl
+class _FC:
+    def __init__(s, sym): s.symbol = sym
+class _FF:
+    def __init__(s, eid, sym, side, shares, price, rpnl):
+        s.execution, s.contract, s.commissionReport = _FE(eid, side, shares, price), _FC(sym), _FCR(1.0, rpnl)
+
+def test_journal_fills_idempotent(tmp_path, monkeypatch):
+    import exit_watcher as ew
+    monkeypatch.setattr(ew, "JOURNAL_FILE", tmp_path / "tj.jsonl")
+    fills = [_FF("e1", "AAPL", "BOT", 10, 100.0, None), _FF("e2", "MO", "SLD", 5, 70.0, -20.0)]
+    assert ew._journal_fills(fills) == 2            # 2 fills écrits
+    assert ew._journal_fills(fills) == 0            # dédup par execId → rien de nouveau
+    lines = (tmp_path / "tj.jsonl").read_text(encoding="utf-8").splitlines()
+    assert len(lines) == 2
+    import json as _j
+    r = _j.loads(lines[1])
+    assert r["symbol"] == "MO" and r["side"] == "SLD" and r["realized_pnl"] == -20.0
+
 def test_ibkr_marks_drive_valuation(tmp_path, monkeypatch):
     # La valorisation doit suivre les MARKS IBKR (vérité), pas last_prices (cache).
     br = _FakeBracketBroker(stop_live=True)
