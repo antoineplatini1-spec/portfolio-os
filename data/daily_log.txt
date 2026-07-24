@@ -11603,3 +11603,181 @@ Traceback (most recent call last):
 [2026-07-23 11:01]   Cash insuffisant (33€ < 1000€)
 [2026-07-23 11:01] [MOMENTUM] valeur=10134.44€  cash=33.01€  positions=10  PnL=+91.43€
 [2026-07-23 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-24 11:00] ============================================================
+[2026-07-24 11:00] SCAN JOURNALIER - 2026-07-24
+[2026-07-24 11:00] ============================================================
+[2026-07-24 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-24 11:00]   Date     : 2026-07-24  [imap]
+[2026-07-24 11:00]   CAC 40   : BEARISH
+[2026-07-24 11:00]   Valeurs  :
+[2026-07-24 11:00]     ⚠️ Stmicroelectronics (Semi) → CAUTION
+[2026-07-24 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-24 11:00]     🚫 Total (Energie) → AVOID
+[2026-07-24 11:00]     ✅ Vallourec (Energie) → BUY
+[2026-07-24 11:00]     🚫 L'Oréal (ConsoBase) → AVOID
+[2026-07-24 11:00]   Macro    : energy_strong, market_caution
+[2026-07-24 11:00]   Secteurs : ConsoBase:-2, Semi:-1, Tech:-1, Energie:0
+[2026-07-24 11:00] ───────────────────────────────────────────────────────
+[2026-07-24 11:00] [LLM] Biais sectoriel = LLM : Tech:-2, Semi:-1, Energie:+1, Macro:-1, ConsoBase:-1, Industrie:+2, Conso:-1
+[2026-07-24 11:00] [LLM] Trades momentum = LLM (2) : Vallourec:BUY, L'Oréal:AVOID
+[2026-07-24 11:00] [US] Barchart «Investors Keep Buying the DRAM ETF Despi» → secteur {'Semi': 1} | idées: MU, SKHY, SNDK, KXIAY, WDC, STX
+[2026-07-24 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Finance': 2, 'Macro': 1} | idées: BAC, JPM, WFC
+[2026-07-24 11:00] ══════════════════════════════════════════════
+[2026-07-24 11:00]   AGENT MACRO — 2026-07-24
+[2026-07-24 11:00] ══════════════════════════════════════════════
+[2026-07-24 11:00]   Régime marché  : BULL
+[2026-07-24 11:00]   SPY vs EMA200  : +5.7%
+[2026-07-24 11:00]   VIX            : 18.8 (LOW)
+[2026-07-24 11:00]   Max trades/j   : 3
+[2026-07-24 11:00]   Seuil net min  : 10
+[2026-07-24 11:00]   Top secteurs   : Energie, Finance, Santé, REIT
+[2026-07-24 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-24 11:00]   Rationale      : Marché haussier (SPY +5.7% vs EMA200). Exposition maximale autorisée.
+[2026-07-24 11:00] ══════════════════════════════════════════════
+[2026-07-24 11:00] [RECONCILE IBKR] cash réel IBKR = 75301 | ledger = 71916
+[2026-07-24 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 71916 → 75301
+[2026-07-24 11:00] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-24 11:00]   PANW: 324.52
+[2026-07-24 11:00]   V: 354.67
+[2026-07-24 11:00]   SNOW: 267.05
+[2026-07-24 11:00]   JPM: 351.45
+[2026-07-24 11:00]   JNJ: 262.31
+[2026-07-24 11:00]   ABBV: 258.30
+[2026-07-24 11:00]   MO: 73.20
+[2026-07-24 11:00]   RACE: 358.57
+[2026-07-24 11:00]   MA: 536.28
+[2026-07-24 11:00]   BNY: 159.51
+[2026-07-24 11:00]   SPG: 227.79
+[2026-07-24 11:00]   AAPL: 329.95
+[2026-07-24 11:00]   MPC: 314.82
+[2026-07-24 11:00]   PSX: 210.01
+[2026-07-24 11:00]   PYPL: 55.53
+[2026-07-24 11:00]   APD: 296.70
+[2026-07-24 11:00] Screener en cours...
+[2026-07-24 11:00] [US] Univers screener enrichi de 9 idée(s) newsletters US : MU, SKHY, SNDK, KXIAY, WDC, STX, BAC, JPM, WFC
+[2026-07-24 11:01] Scores : max=78  mediane=7  (160 tickers)
+[2026-07-24 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=78
+[2026-07-24 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Semi, Energie, Macro, Industrie, Finance | pénalisés: Tech, ConsoBase, Conso
+[2026-07-24 11:01] Filtre ETF/indices (non achetables) : 47 → 37 candidats
+[2026-07-24 11:01] 37 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-24 11:01]   [SEC 8-K] SCHW (2026-07-21) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] RTX (2026-07-23) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] BAC (2026-07-24) : Autre événement matériel, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] TMO (2026-07-23) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] SLB (2026-07-24) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] LMT (2026-07-23) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] PM (2026-07-22) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] JPM (2026-07-23) : Autre événement matériel, États financiers & annexes
+[2026-07-24 11:01]   [SEC 8-K] JPM (2026-07-23) : Modification des statuts
+[2026-07-24 11:01]   [SEC 8-K] BNY (2026-07-23) : Modification des droits des porteurs, Modification des statuts, Autre événement matériel, États financiers & annexes
+[2026-07-24 11:01] [LLM news] MA: bullish 0.40 — Expansion plateforme carte virtuelle avec lancement mondial Citi
+[2026-07-24 11:01] [LLM news] V: bullish 0.30 — Premier paiement B2B agentique en Chine avec Lianlian
+[2026-07-24 11:01] [LLM news] ABBV: bearish 0.40 — Pression persistante sur la franchise oncologie au Q2
+[2026-07-24 11:01] [LLM news] SNOW: bearish 0.50 — Vente d'actions par le directeur Frank Slootman (300k actions, $82.3M)
+[2026-07-24 11:01] [LLM news] AMGN: bearish 0.50 — Revers réglementaire sur le plafonnement du prix d'Enbrel au Colorado
+[2026-07-24 11:01] [LLM news] VRTX: bullish 0.60 — Vertex seul enchérisseur pour l'acquisition de Crinetics à forte prime
+[2026-07-24 11:01] [LLM news] TMO: bullish 0.40 — Contrat de fabrication ImmuPharma pour le diabète (Kapiglucagon)
+[2026-07-24 11:01] [LLM news] PYPL: bullish 0.85 — Offre de rachat de Stripe et Advent International pour $53 milliards
+[2026-07-24 11:01] [LLM news] SLB: bullish 0.55 — Résultats Q2 supérieurs aux attentes malgré la faiblesse au Moyen-Orient
+[2026-07-24 11:01] [LLM news] JNJ: bullish 0.60 — Approbation FDA du système chirurgical robotique OTTAVA
+[2026-07-24 11:01] [LLM news] LMT: bullish 0.60 — Direction annonce que le backlog record soutiendra la croissance des ventes pour les années à venir
+[2026-07-24 11:01] [LLM news] LLY: bearish 0.40 — Novo Nordisk demande une injonction contre les publicités d'Eli Lilly sur les médicaments amaigrissants
+[2026-07-24 11:01] [LLM news] APD: bullish 0.50 — Contrat d'approvisionnement long terme attribué par Taiwan Semiconductor
+[2026-07-24 11:01] [LLM news] RTX: bullish 0.55 — Actions RTX en forte hausse après de solides résultats Q2
+[2026-07-24 11:01] [LLM news] PANW: bullish 0.40 — Acquisition d'Embrace pour étendre l'observabilité à l'expérience utilisateur
+[2026-07-24 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-24 11:01] Cash deployable cette semaine : 73795 EUR  (max trades/j : 2)
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   DÉBAT : RTX
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   🟢 BULL [conviction=59] → ACHETER
+[2026-07-24 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-24 11:01]      • Prix au-dessus EMA200 (190.61) — tendance long terme haussière
+[2026-07-24 11:01]      • Score haussier correct (66.0/100)
+[2026-07-24 11:01]      • Momentum 10j fort (+9.1%) — tendance confirmée
+[2026-07-24 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   🔴 BEAR [concern=21] → OK
+[2026-07-24 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-24 11:01]      • Exposition modérée (72%) — prudence sur les ajouts
+[2026-07-24 11:01]      • Volume faible (0.3× moyenne)
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-07-24 11:01]      Arguments haussiers l'emportent clairement (conviction=59, concern=21, net=+46)
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   [ACHAT] RTX score=61 bull=59 bear=21 prix=213.69 investi=13469EUR SL=202.59 TP1=222.00
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   DÉBAT : BAC
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   🟢 BULL [conviction=54] → PENCHÉ POUR
+[2026-07-24 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-24 11:01]      • Prix au-dessus EMA200 (53.32) — tendance long terme haussière
+[2026-07-24 11:01]      • Score haussier correct (61.0/100)
+[2026-07-24 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-24 11:01]      • OBV en hausse — accumulation en cours
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-07-24 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-07-24 11:01]      • Secteur Finance très concentré (4 positions) — risque sectoriel
+[2026-07-24 11:01]      • Volume faible (0.2× moyenne)
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   ✅ ARBITRE → ACHETER  (net=+28)
+[2026-07-24 11:01]      Arguments haussiers l'emportent clairement (conviction=54, concern=43, net=+28)
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   [VETO secteur] BAC : Finance deja a 4 positions
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   DÉBAT : SCHW
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   🟢 BULL [conviction=59] → ACHETER
+[2026-07-24 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-24 11:01]      • Prix au-dessus EMA200 (96.57) — tendance long terme haussière
+[2026-07-24 11:01]      • Score haussier correct (64.0/100)
+[2026-07-24 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-24 11:01]      • Stoch RSI survendu (0) — retournement imminent
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-07-24 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-07-24 11:01]      • Secteur Finance très concentré (4 positions) — risque sectoriel
+[2026-07-24 11:01]      • Volume faible (0.1× moyenne)
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   ✅ ARBITRE → ACHETER  (net=+33)
+[2026-07-24 11:01]      Arguments haussiers l'emportent clairement (conviction=59, concern=43, net=+33)
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   [VETO secteur] SCHW : Finance deja a 4 positions
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   DÉBAT : VRTX
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-07-24 11:01]      • RSI survendu (20) — zone de rebond historique
+[2026-07-24 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-24 11:01]      • Prix au-dessus EMA200 (465.13) — tendance long terme haussière
+[2026-07-24 11:01]      • Score haussier correct (63.0/100)
+[2026-07-24 11:01]      • Stoch RSI survendu (2) — retournement imminent
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   🔴 BEAR [concern=35] → PRUDENCE
+[2026-07-24 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-07-24 11:01]      • Secteur Santé déjà exposé (2 positions) — diversification limitée
+[2026-07-24 11:01]      • Volume faible (0.1× moyenne)
+[2026-07-24 11:01] 
+[2026-07-24 11:01]   ✅ ARBITRE → ACHETER  (net=+51)
+[2026-07-24 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=35, net=+51)
+[2026-07-24 11:01] ────────────────────────────────────────────────────
+[2026-07-24 11:01]   [ACHAT] VRTX score=61 bull=72 bear=35 prix=479.00 investi=13423EUR SL=451.86 TP1=499.36
+[2026-07-24 11:01] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-24 11:01] ----------------------------------------
+[2026-07-24 11:01] RESUME : valeur=269254.95 EUR  investi=223038.45 EUR  cash=48408.24 EUR  expo=82.0%  positions=18
+[2026-07-24 11:01] ----------------------------------------
+[2026-07-24 11:01] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-07-24 11:01]   [MOMENTUM] VK.PA: 22.18
+[2026-07-24 11:01]   [MOMENTUM] BIM.PA: 69.50
+[2026-07-24 11:01]   [MOMENTUM] AI.PA: 176.04
+[2026-07-24 11:01]   [MOMENTUM] AIR.PA: 203.80
+[2026-07-24 11:01]   [MOMENTUM] LR.PA: 133.40
+[2026-07-24 11:01]   [MOMENTUM] PUB.PA: 87.70
+[2026-07-24 11:01]   [MOMENTUM] ML.PA: 34.30
+[2026-07-24 11:01]   [MOMENTUM] HO.PA: 234.70
+[2026-07-24 11:01]   [MOMENTUM] URW.PA: 104.70
+[2026-07-24 11:01]   [MOMENTUM] SAF.PA: 327.60
+[2026-07-24 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-07-24 11:01] [MOMENTUM] valeur=10156.05€  cash=33.01€  positions=10  PnL=+113.04€
+[2026-07-24 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
