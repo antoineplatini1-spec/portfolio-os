@@ -100,7 +100,7 @@ def main(dry: bool = False) -> int:
 
         res = broker.protect_position(sym, qty, sl, tps, cancel_ids=manual_ids)
         if res["ok"]:
-            done[sym] = {"oca": res["oca"], "sl": sl}
+            done[sym] = {"oca": res["oca"], "sl": sl, "tps": tps}
             print(f"         ✅ bracket posé ({res['oca']}), stops vivants")
         else:
             print(f"         ❌ stops NON confirmés → bracket annulé, stop manuel CONSERVÉ")
@@ -119,6 +119,12 @@ def main(dry: bool = False) -> int:
                     d["positions"][sym]["sl"] = info["sl"]
                     d["positions"][sym]["trailing_stop"] = False
                     d["positions"][sym]["trailing_stop_price"] = 0.0
+                    # SYNCHRO des TP aussi (sinon R:R faux : vieux TP + nouveau stop). Le ledger
+                    # reflète le VRAI bracket serveur.
+                    d["positions"][sym]["tp_levels"] = [
+                        {"price": round(p, 2), "sell_pct": f, "hit": False, "hit_date": ""}
+                        for p, f in info["tps"]
+                    ]
             STATE_FILE.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
             print(f"\nLedger synchronisé (bracket_oca + SL réel) pour : {', '.join(sorted(done))}")
         except Exception as e:
