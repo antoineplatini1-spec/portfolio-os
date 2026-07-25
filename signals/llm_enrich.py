@@ -187,6 +187,18 @@ def _call(system: str, user: str, max_tokens: int = 4000,
 
 # ── 1. Signaux d'actualité par titre ──────────────────────────────
 
+# Directive « apprendre à IGNORER » (inspirée de Bridgewater AIA : on enseigne au modèle le
+# boilerplate à sauter, comme un analyste humain le fait naturellement). Améliore le rapport
+# signal/bruit sur les documents longs (newsletters), sans coût de tokens en sortie.
+_IGNORE_GUIDANCE = (
+    "AVANT d'extraire, IGNORE tout ce qui n'est PAS un avis actionnable sur un titre ou un "
+    "secteur : disclaimers et avertissements de risque, mentions « performances passées », "
+    "argumentaires d'abonnement/promotionnels, formules d'introduction/politesse, éditos et "
+    "généralités macro sans recommandation, et les sections qui se répètent d'une édition à "
+    "l'autre. Ne retiens QUE les recommandations spécifiques (titre + sens + prix/catalyseur). "
+    "En cas de doute entre du bruit et un vrai signal, n'extrais pas. "
+)
+
 _NEWS_SYSTEM = (
     "Tu es un analyste actions. On te donne des titres d'actualité RÉCENTS pour "
     "quelques valeurs. Pour chaque valeur ayant une actualité MATÉRIELLE (résultats, "
@@ -338,6 +350,7 @@ def fetch_news_signals(
 # ── 2. Lecture de la newsletter en UN appel : biais secteur + trades momentum ──
 
 _NEWSLETTER_SYSTEM = (
+    _IGNORE_GUIDANCE +
     "Tu analyses une newsletter boursière française. Réponds UNIQUEMENT par un objet "
     "JSON à DEUX clés, sans texte autour, en te fondant EXCLUSIVEMENT sur le texte "
     "fourni (n'invente rien) :\n"
@@ -519,6 +532,7 @@ def _parse_us_trade_rows(rows) -> list[dict]:
 # ── 2bis. Newsletter US (ex. Barchart) : biais secteur + idées titres US ──────────
 
 _US_SOURCE_SYSTEM = (
+    _IGNORE_GUIDANCE +
     "Tu analyses une newsletter boursière US. Réponds UNIQUEMENT par un objet JSON à "
     "deux clés, fondé EXCLUSIVEMENT sur le texte (n'invente rien) :\n"
     '- "sectors": [{"sector": str, "bias": int -2..2, "quote": str}] — biais sectoriel. '
