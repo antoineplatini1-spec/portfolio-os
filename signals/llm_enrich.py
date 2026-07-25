@@ -678,7 +678,10 @@ def portfolio_review(snapshot: dict) -> Optional[dict]:
         return None
     import json as _json
     user = "--- ÉTAT PORTEFEUILLE (JSON, chiffres réels) ---\n" + _json.dumps(snapshot, ensure_ascii=False)
-    data, usage = _call(_REVIEW_SYSTEM, user, max_tokens=1800, label="portfolio_review")
+    # 4000 (pas 1800) : Sonnet « réfléchit » avant de répondre ; un plafond trop bas fait manger
+    # tout le budget en réflexion → texte vide (1er essai : out=1779/1800, au ras). Facturé à
+    # l'usage réel, donc un plafond haut ne coûte pas plus.
+    data, usage = _call(_REVIEW_SYSTEM, user, max_tokens=4000, label="portfolio_review")
     if not isinstance(data, dict):
         return None
     out = {
