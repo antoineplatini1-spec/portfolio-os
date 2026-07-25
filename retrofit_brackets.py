@@ -100,22 +100,27 @@ def main(dry: bool = False) -> int:
 
         res = broker.protect_position(sym, qty, sl, tps, cancel_ids=manual_ids)
         if res["ok"]:
-            done[sym] = res["oca"]
+            done[sym] = {"oca": res["oca"], "sl": sl}
             print(f"         ✅ bracket posé ({res['oca']}), stops vivants")
         else:
             print(f"         ❌ stops NON confirmés → bracket annulé, stop manuel CONSERVÉ")
 
     broker.disconnect()
 
-    # Marquage ledger : ÉCRITURE directe du flag bracket_oca (pas de 2e connexion IBKR).
+    # Marquage ledger : bracket_oca + SYNCHRO du stop. On écrit le SL du bracket réel et on
+    # DÉSACTIVE le trailing du ledger : sinon le ledger garde un vieux stop (ex. ancien trailing)
+    # ≠ du vrai stop serveur → snapshot/R:R faux (bug repéré par la revue LLM sur PANW).
     if done and not dry:
         try:
             d = json.loads(STATE_FILE.read_text(encoding="utf-8"))
-            for sym, oca in done.items():
+            for sym, info in done.items():
                 if sym in d.get("positions", {}):
-                    d["positions"][sym]["bracket_oca"] = oca
+                    d["positions"][sym]["bracket_oca"] = info["oca"]
+                    d["positions"][sym]["sl"] = info["sl"]
+                    d["positions"][sym]["trailing_stop"] = False
+                    d["positions"][sym]["trailing_stop_price"] = 0.0
             STATE_FILE.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding="utf-8")
-            print(f"\nLedger marqué bracket_oca pour : {', '.join(sorted(done))}")
+            print(f"\nLedger synchronisé (bracket_oca + SL réel) pour : {', '.join(sorted(done))}")
         except Exception as e:
             print(f"\n⚠️ marquage ledger échoué : {e} — brackets POSÉS mais bot pourrait double-gérer")
 
