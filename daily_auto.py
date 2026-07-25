@@ -254,6 +254,53 @@ def _benchmark() -> dict | None:
         return None
 
 
+def _portfolio_snapshot(pm, benchmark, regime) -> dict:
+    """
+    État CHIFFRÉ et OBJECTIF du portefeuille pour la revue LLM consultative. Uniquement des
+    faits (marks IBKR, poids, PnL, distance stop, R:R, concentration) → l'avis reste fondé.
+    """
+    from config import SECTOR_MAP
+    from portfolio.risk import r_ratio
+    tv = pm.total_value or 1.0
+    positions, sectors = [], {}
+    for t, p in pm.open_positions.items():
+        mark = pm._mark(t, p)
+        val = p.qty_remaining * mark
+        sec = SECTOR_MAP.get(t, "Other")
+        sl = p.trailing_stop_price if p.trailing_stop else p.sl
+        rr = None
+        if sl and sl > 0 and p.tp_levels:
+            rr = round(sum(tp.sell_pct * r_ratio(p.entry_price, tp.price, sl) for tp in p.tp_levels), 2)
+        positions.append({
+            "ticker": t, "sector": sec,
+            "weight_pct": round(val / tv * 100, 1),
+            "pnl_pct": round((mark / p.entry_price - 1) * 100, 1) if p.entry_price else 0.0,
+            "stop_dist_pct": round((mark - sl) / mark * 100, 1) if (sl and mark) else None,
+            "rr": rr,
+            "bracketed": bool(getattr(p, "bracket_oca", "")),
+        })
+        s = sectors.setdefault(sec, {"n": 0, "weight_pct": 0.0})
+        s["n"] += 1
+        s["weight_pct"] = round(s["weight_pct"] + val / tv * 100, 1)
+    def _pct(x):
+        return round(x * 100, 1) if x is not None else None
+    return {
+        "regime": regime,
+        "total_value": round(pm.total_value),
+        "cash_pct": round(pm.cash / tv * 100, 1),
+        "exposure_pct": round(pm.exposure_pct * 100, 1),
+        "realized_pnl": round(pm.pnl_realized),
+        "unrealized_pnl": round(pm.pnl_unrealized),
+        "vs_spy": None if not benchmark else {
+            "ret_ptf_pct": _pct(benchmark.get("ret_ptf")),
+            "spy_pct": _pct(benchmark.get("ret_spy")),
+            "alpha_pct": _pct(benchmark.get("alpha")),
+        },
+        "sectors": sectors,
+        "positions": sorted(positions, key=lambda x: -x["weight_pct"]),
+    }
+
+
 def _maybe_postmortem(ticker, entry_price, close_price, pnl_pct,
                       reason, holding_days, entry_score):
     """
@@ -1166,6 +1213,15 @@ def run():
         import traceback
         log(f"[MOMENTUM ERROR] {e}\n{traceback.format_exc()[:500]}")
 
+    # ── 4c. Revue de portefeuille LLM (CONSULTATIVE — ne pilote rien) ─
+    # 1 appel/jour sur un snapshot chiffré objectif. Surfacée dans le recap pour l'humain.
+    _bench = _benchmark()
+    _review = None
+    try:
+        _review = llm_enrich.portfolio_review(_portfolio_snapshot(pm, _bench, market_ctx))
+    except Exception as e:
+        log(f"[REVIEW] revue portefeuille impossible : {e}")
+
     # ── 5. Email recap ────────────────────────────────────────────
     # Erreurs LLM du run : jamais silencieuses → journal + email.
     _llm_errors = llm_enrich.run_errors()
@@ -1198,7 +1254,8 @@ def run():
             "provenance": llm_provenance,
             "errors":  _llm_errors,
         },
-        benchmark=_benchmark(),
+        benchmark=_bench,
+        portfolio_review=_review,
     )
 
 
@@ -1542,6 +1599,7 @@ def _send_daily_email(
     momentum_status: str = "unknown",
     llm_summary: dict | None = None,
     benchmark: dict | None = None,
+    portfolio_review: dict | None = None,
 ):
     """Construit et envoie le recap journalier par email."""
     ctx_color = {"FORT": "#34d399", "MOYEN": "#fbbf24", "FAIBLE": "#fb7185"}.get(market_ctx, "#8097b5")
@@ -1749,6 +1807,28 @@ def _send_daily_email(
         f"<tr><td style='height:16px'></td></tr>"
     )
 
+    # ── Bloc REVUE IA (consultatif) ───────────────────────────────────────────
+    review_html = ""
+    if portfolio_review and (portfolio_review.get("posture") or portfolio_review.get("synthese")):
+        def _li(items, color):
+            return "".join(f"<div style='color:{color};font-size:12px;margin:3px 0'>&#x2022; {x}</div>"
+                           for x in items)
+        _posture = portfolio_review.get("posture", "")
+        _synth = portfolio_review.get("synthese", "")
+        _risks = _li(portfolio_review.get("risks", []), "#e0b0a0")
+        _incoh = _li(portfolio_review.get("incoherences", []), "#fb7185")
+        review_html = (
+            "<tr><td style='color:#8097b5;font-weight:700;font-size:14px;padding-bottom:8px'>"
+            "&#x1F9E0; Revue IA <span style='color:#445470;font-weight:400;font-size:11px'>"
+            "(consultatif — ne pilote aucune décision)</span></td></tr>"
+            "<tr><td style='background:#141c2b;border-radius:8px;padding:14px 18px'>"
+            f"<div style='color:#d6e0f0;font-size:13px;margin-bottom:8px'>{_posture}</div>"
+            + (f"<div style='color:#667;font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin:6px 0 2px'>Risques</div>{_risks}" if _risks else "")
+            + (f"<div style='color:#667;font-size:10px;text-transform:uppercase;letter-spacing:.06em;margin:6px 0 2px'>Incohérences</div>{_incoh}" if _incoh else "")
+            + (f"<div style='color:#8097b5;font-size:12px;font-style:italic;margin-top:8px'>{_synth}</div>" if _synth else "")
+            + "</td></tr><tr><td style='height:16px'></td></tr>"
+        )
+
     subject_icon = "✅" if opened_positions else ("📤" if sales_log else "⚠️")
     if blockers:
         subject_icon = "🚨"
@@ -1841,6 +1921,11 @@ def _send_daily_email(
 
   <!-- POSITIONS OUVERTES -->
   {"<tr><td><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;background:#0d1420;border-radius:8px'><thead><tr style='background:#192235'><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px;letter-spacing:.06em'>TICKER</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL %</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL €</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th></tr></thead><tbody>" + pos_rows + "</tbody></table></td></tr>" if pos_rows else "<tr><td style='color:#445470;font-size:12px;padding:8px 0'>Aucune position ouverte.</td></tr>"}
+
+  <tr><td style='height:16px'></td></tr>
+
+  <!-- REVUE IA (consultatif) -->
+  {review_html}
 
   <!-- SIGNAUX LLM -->
   {_llm_email_section(llm_summary)}

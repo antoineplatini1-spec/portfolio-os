@@ -361,6 +361,27 @@ def test_journal_fills_idempotent(tmp_path, monkeypatch):
     r = _j.loads(lines[1])
     assert r["symbol"] == "MO" and r["side"] == "SLD" and r["realized_pnl"] == -20.0
 
+def test_portfolio_snapshot_structure(tmp_path, monkeypatch):
+    import daily_auto as da
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("AAPL", 100.0, atr=2.0, score=60)
+    assert ok
+    pm.set_ibkr_marks({"AAPL": 110.0})
+    snap = da._portfolio_snapshot(pm, {"ret_ptf": 0.10, "ret_spy": 0.05, "alpha": 0.05}, "BULL")
+    assert snap["regime"] == "BULL"
+    assert snap["total_value"] > 0
+    p0 = snap["positions"][0]
+    assert p0["ticker"] == "AAPL" and p0["bracketed"] is True
+    assert p0["pnl_pct"] == pytest.approx(10.0, abs=1.0)         # 100 → 110 (mark IBKR)
+    assert snap["vs_spy"]["alpha_pct"] == pytest.approx(5.0)     # fractions → %
+    assert "sectors" in snap and "positions" in snap
+
+def test_portfolio_review_noop_when_llm_off(monkeypatch):
+    from signals import llm_enrich
+    monkeypatch.setattr(llm_enrich, "is_enabled", lambda: False)
+    assert llm_enrich.portfolio_review({"total_value": 100}) is None
+
 def test_ibkr_marks_drive_valuation(tmp_path, monkeypatch):
     # La valorisation doit suivre les MARKS IBKR (vérité), pas last_prices (cache).
     br = _FakeBracketBroker(stop_live=True)

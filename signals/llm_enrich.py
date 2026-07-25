@@ -643,3 +643,51 @@ def postmortem(trade: dict) -> Optional[dict]:
     lesson = str(data.get("lesson", "")).strip()[:200]
     _log("postmortem", {"ticker": trade.get("ticker"), "cause": cause, "lesson": lesson}, usage)
     return {"cause_tag": cause, "lesson": lesson}
+
+
+# ── Revue de portefeuille (CONSULTATIVE — ne pilote AUCUNE décision) ───────────────
+# Inspiré de Bridgewater AIA : faire RAISONNER le LLM au niveau portefeuille (pas juste
+# extraire). Garde-fous : (1) entrée = uniquement des CHIFFRES réels (positions, poids, PnL,
+# distance stop, R:R, concentration, régime, perf vs SPY) → avis fondé et objectif ; (2) sortie
+# bornée (~1 appel/jour, coût contenu) ; (3) STRICTEMENT consultatif, surfacé dans le recap pour
+# l'humain, jamais branché sur l'exécution. Le LLM n'invente rien et ne prédit aucun prix.
+_REVIEW_SYSTEM = (
+    "Tu es un GÉRANT DE RISQUE. On te donne l'état OBJECTIF et CHIFFRÉ d'un portefeuille "
+    "(valeur, poids % par ligne, PnL %, distance au stop %, R:R, concentration sectorielle, "
+    "régime macro, perf vs SPY). Formule un avis CONSULTATIF fondé EXCLUSIVEMENT sur ces "
+    "chiffres : cite la métrique qui justifie chaque point, n'invente RIEN, ne fais AUCUNE "
+    "prévision de prix ni conseil d'achat/vente d'un titre précis. Si une donnée manque, dis-le. "
+    "Réponds UNIQUEMENT par un objet JSON, sans texte autour : {"
+    '"posture": str — 1 phrase : la posture globale (expo, cash, orientation) est-elle cohérente '
+    "avec le régime macro ? ; "
+    '"risks": [str] — risques de concentration ou structurels, CHIFFRÉS (ex. « secteur X = 38% ») ; '
+    '"incoherences": [str] — incohérences flagrantes (ex. plus grosse ligne aussi plus grosse '
+    "perte et proche du stop ; cash quasi nul ; R:R faible en moyenne) ; "
+    '"synthese": str — 1 phrase de conclusion neutre}. '
+    "Factuel, concis, objectif. Listes vides si rien à signaler."
+)
+
+
+def portfolio_review(snapshot: dict) -> Optional[dict]:
+    """
+    Avis CONSULTATIF du LLM sur la posture globale, fondé sur le `snapshot` chiffré (vérité).
+    No-op si LLM éteint. Retourne {posture, risks[], incoherences[], synthese} ou None.
+    N'influence AUCUNE décision — surfacé dans le recap pour l'humain.
+    """
+    if not is_enabled():
+        return None
+    import json as _json
+    user = "--- ÉTAT PORTEFEUILLE (JSON, chiffres réels) ---\n" + _json.dumps(snapshot, ensure_ascii=False)
+    data, usage = _call(_REVIEW_SYSTEM, user, max_tokens=1800, label="portfolio_review")
+    if not isinstance(data, dict):
+        return None
+    out = {
+        "posture": str(data.get("posture", "")).strip()[:300],
+        "risks": [str(x).strip()[:200] for x in (data.get("risks") or [])][:5],
+        "incoherences": [str(x).strip()[:200] for x in (data.get("incoherences") or [])][:5],
+        "synthese": str(data.get("synthese", "")).strip()[:300],
+    }
+    _log("portfolio_review", {"posture": out["posture"][:80],
+                              "n_risks": len(out["risks"]),
+                              "n_incoh": len(out["incoherences"])}, usage)
+    return out
