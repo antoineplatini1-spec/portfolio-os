@@ -11781,3 +11781,60 @@ Traceback (most recent call last):
 [2026-07-24 11:01] [MOMENTUM] 2 signal(s) newsletter...
 [2026-07-24 11:01] [MOMENTUM] valeur=10156.05€  cash=33.01€  positions=10  PnL=+113.04€
 [2026-07-24 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-27 11:00] ============================================================
+[2026-07-27 11:00] SCAN JOURNALIER - 2026-07-27
+[2026-07-27 11:00] ============================================================
+[2026-07-27 11:00] ERREUR CRITIQUE : Traceback (most recent call last):
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/portfolio-os/portfolio/ibkr_broker.py", line 52, in connect
+    ib.connect(
+  File "/root/portfolio-os/.venv/lib/python3.12/site-packages/ib_async/ib.py", line 369, in connect
+    return self._run(
+           ^^^^^^^^^^
+  File "/root/portfolio-os/.venv/lib/python3.12/site-packages/ib_async/ib.py", line 428, in _run
+    return util.run(*awaitables, timeout=self.RequestTimeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/portfolio-os/.venv/lib/python3.12/site-packages/ib_async/util.py", line 360, in run
+    result = loop.run_until_complete(task)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/portfolio-os/.venv/lib/python3.12/site-packages/ib_async/ib.py", line 2043, in connectAsync
+    await self.client.connectAsync(host, port, clientId, timeout)
+  File "/root/portfolio-os/.venv/lib/python3.12/site-packages/ib_async/client.py", line 227, in connectAsync
+    await asyncio.wait_for(self.apiStart, timeout)
+  File "/usr/lib/python3.12/asyncio/tasks.py", line 519, in wait_for
+    async with timeouts.timeout(timeout):
+  File "/usr/lib/python3.12/asyncio/timeouts.py", line 115, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/portfolio-os/daily_auto.py", line 1951, in <module>
+    run()
+  File "/root/portfolio-os/daily_auto.py", line 380, in run
+    pm = PortfolioManager()
+         ^^^^^^^^^^^^^^^^^^
+  File "/root/portfolio-os/portfolio/manager.py", line 36, in __init__
+    self.broker = make_broker(BROKER_CONFIG)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/portfolio-os/portfolio/orders.py", line 143, in make_broker
+    real = IBKRBroker(IBKR_CONFIG)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/portfolio-os/portfolio/ibkr_broker.py", line 34, in __init__
+    self.connect()
+  File "/root/portfolio-os/portfolio/ibkr_broker.py", line 60, in connect
+    raise IBKRConnectionError(
+portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 échouée : 
+
+[2026-07-27 11:00] [EMAIL] Envoye a antoine.platini@outlook.fr

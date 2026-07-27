@@ -1,3 +1,5 @@
 {"execId": "00025b49.6a694986.01.01", "time": "2026-07-23 15:01:49", "symbol": "PYPL", "side": "BOT", "qty": 239.0, "price": 55.58, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6b1fc5ff.01.01", "time": "2026-07-23 15:01:50", "symbol": "APD", "side": "BOT", "qty": 40.0, "price": 297.39, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000e0d5.6a61f493.01.01", "time": "2026-07-23 15:01:50", "symbol": "APD", "side": "BOT", "qty": 5.0, "price": 297.39, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a6af90a.01.01", "time": "2026-07-24 15:01:52", "symbol": "RTX", "side": "BOT", "qty": 63.0, "price": 213.8, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b46.6a6372a8.01.01", "time": "2026-07-24 15:01:54", "symbol": "VRTX", "side": "BOT", "qty": 28.0, "price": 479.39, "commission": 0.0, "realized_pnl": 0.0}

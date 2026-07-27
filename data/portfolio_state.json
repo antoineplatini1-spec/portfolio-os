@@ -11,9 +11,9 @@
       "entry_price": 327.55,
       "qty_total": 38.0,
       "qty_remaining": 28.0,
-      "sl": 301.346,
-      "trailing_stop": true,
-      "trailing_stop_price": 328.1660952148437,
+      "sl": 301.37,
+      "trailing_stop": false,
+      "trailing_stop_price": 0.0,
       "entry_date": "2026-07-13",
       "fees_in": 1.0001,
       "status": "partial",
@@ -25,20 +25,20 @@
       "bracket_oca": "rf_PANW_1784663164",
       "tp_levels": [
         {
-          "price": 351.63925,
+          "price": 347.23,
           "sell_pct": 0.25,
-          "hit": true,
-          "hit_date": "2026-07-15"
-        },
-        {
-          "price": 375.7285,
-          "sell_pct": 0.35,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 407.8475,
-          "sell_pct": 0.4,
+          "price": 366.89,
+          "sell_pct": 0.3571,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 393.09,
+          "sell_pct": 0.3929,
           "hit": false,
           "hit_date": ""
         }
@@ -57,9 +57,9 @@
       "entry_price": 358.25,
       "qty_total": 35.0,
       "qty_remaining": 35.0,
-      "sl": 342.0218,
+      "sl": 329.62,
       "trailing_stop": false,
-      "trailing_stop_price": 358.25,
+      "trailing_stop_price": 0.0,
       "entry_date": "2026-07-13",
       "fees_in": 1.0001,
       "status": "open",
@@ -71,19 +71,19 @@
       "bracket_oca": "rf_V_1784663174",
       "tp_levels": [
         {
-          "price": 370.42115,
-          "sell_pct": 0.25,
+          "price": 379.78,
+          "sell_pct": 0.2571,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 382.5923,
-          "sell_pct": 0.35,
+          "price": 401.27,
+          "sell_pct": 0.3429,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 398.8205,
+          "price": 429.93,
           "sell_pct": 0.4,
           "hit": false,
           "hit_date": ""
@@ -135,9 +135,9 @@
       "entry_price": 275.18,
       "qty_total": 46.0,
       "qty_remaining": 46.0,
-      "sl": 253.1656,
+      "sl": 253.19,
       "trailing_stop": false,
-      "trailing_stop_price": 275.18,
+      "trailing_stop_price": 0.0,
       "entry_date": "2026-07-14",
       "fees_in": 0.0,
       "status": "open",
@@ -149,20 +149,20 @@
       "bracket_oca": "rf_SNOW_1784663169",
       "tp_levels": [
         {
-          "price": 295.0022,
-          "sell_pct": 0.25,
+          "price": 291.71,
+          "sell_pct": 0.2609,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 314.8244,
-          "sell_pct": 0.35,
+          "price": 308.23,
+          "sell_pct": 0.3478,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 341.254,
-          "sell_pct": 0.4,
+          "price": 330.24,
+          "sell_pct": 0.3913,
           "hit": false,
           "hit_date": ""
         }
@@ -174,9 +174,9 @@
       "entry_price": 348.18,
       "qty_total": 13.0,
       "qty_remaining": 13.0,
-      "sl": 332.68,
+      "sl": 320.4,
       "trailing_stop": false,
-      "trailing_stop_price": 348.18,
+      "trailing_stop_price": 0.0,
       "entry_date": "2026-07-15",
       "fees_in": 0.0,
       "status": "open",
@@ -188,20 +188,20 @@
       "bracket_oca": "rf_JPM_1784663160",
       "tp_levels": [
         {
-          "price": 359.805,
-          "sell_pct": 0.25,
+          "price": 369.15,
+          "sell_pct": 0.2308,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 371.43,
-          "sell_pct": 0.35,
+          "price": 390.05,
+          "sell_pct": 0.3846,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 386.93,
-          "sell_pct": 0.4,
+          "price": 417.91,
+          "sell_pct": 0.3846,
           "hit": false,
           "hit_date": ""
         }
@@ -213,9 +213,9 @@
       "entry_price": 251.59,
       "qty_total": 51.0,
       "qty_remaining": 51.0,
-      "sl": 239.1302,
+      "sl": 231.48,
       "trailing_stop": false,
-      "trailing_stop_price": 251.59,
+      "trailing_stop_price": 0.0,
       "entry_date": "2026-07-16",
       "fees_in": 0.0,
       "status": "open",
@@ -227,20 +227,20 @@
       "bracket_oca": "rf_JNJ_1784663155",
       "tp_levels": [
         {
-          "price": 260.93485,
-          "sell_pct": 0.25,
+          "price": 266.71,
+          "sell_pct": 0.2549,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 270.2797,
-          "sell_pct": 0.35,
+          "price": 281.8,
+          "sell_pct": 0.3529,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 282.7395,
-          "sell_pct": 0.4,
+          "price": 301.93,
+          "sell_pct": 0.3922,
           "hit": false,
           "hit_date": ""
         }
@@ -252,9 +252,9 @@
       "entry_price": 252.31,
       "qty_total": 51.0,
       "qty_remaining": 51.0,
-      "sl": 239.4212,
+      "sl": 232.14,
       "trailing_stop": false,
-      "trailing_stop_price": 252.31,
+      "trailing_stop_price": 0.0,
       "entry_date": "2026-07-16",
       "fees_in": 0.0,
       "status": "open",
@@ -266,20 +266,20 @@
       "bracket_oca": "rf_ABBV_1784663153",
       "tp_levels": [
         {
-          "price": 261.9766,
-          "sell_pct": 0.25,
+          "price": 267.47,
+          "sell_pct": 0.2549,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 271.6432,
-          "sell_pct": 0.35,
+          "price": 282.61,
+          "sell_pct": 0.3529,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 284.532,
-          "sell_pct": 0.4,
+          "price": 302.8,
+          "sell_pct": 0.3922,
           "hit": false,
           "hit_date": ""
         }
@@ -332,7 +332,7 @@
       "bracket_oca": "br_MO_1784300514",
       "tp_levels": [
         {
-          "price": 83.24249999999999,
+          "price": 83.24,
           "sell_pct": 1.0,
           "hit": false,
           "hit_date": ""
@@ -386,20 +386,20 @@
       "bracket_oca": "br_MA_1784559707",
       "tp_levels": [
         {
-          "price": 563.4649,
-          "sell_pct": 0.25,
+          "price": 563.46,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 581.6397999999999,
-          "sell_pct": 0.35,
+          "price": 581.64,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 605.8729999999999,
-          "sell_pct": 0.4,
+          "price": 605.87,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -425,20 +425,20 @@
       "bracket_oca": "br_BNY_1784559709",
       "tp_levels": [
         {
-          "price": 163.55165,
-          "sell_pct": 0.25,
+          "price": 163.55,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 169.3808,
-          "sell_pct": 0.35,
+          "price": 169.38,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 177.153,
-          "sell_pct": 0.4,
+          "price": 177.15,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -464,20 +464,20 @@
       "bracket_oca": "br_SPG_1784646089",
       "tp_levels": [
         {
-          "price": 234.71925,
-          "sell_pct": 0.25,
+          "price": 234.72,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 241.18349999999998,
-          "sell_pct": 0.35,
+          "price": 241.18,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 249.8025,
-          "sell_pct": 0.4,
+          "price": 249.8,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -503,20 +503,20 @@
       "bracket_oca": "br_AAPL_1784646090",
       "tp_levels": [
         {
-          "price": 339.23915,
-          "sell_pct": 0.25,
+          "price": 339.24,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 351.3182,
-          "sell_pct": 0.35,
+          "price": 351.32,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 367.4236,
-          "sell_pct": 0.4,
+          "price": 367.42,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -542,20 +542,20 @@
       "bracket_oca": "br_MPC_1784732503",
       "tp_levels": [
         {
-          "price": 334.14535,
-          "sell_pct": 0.25,
+          "price": 334.15,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 346.6507,
-          "sell_pct": 0.35,
+          "price": 346.65,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 363.3245,
-          "sell_pct": 0.4,
+          "price": 363.32,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -581,20 +581,20 @@
       "bracket_oca": "br_PSX_1784732504",
       "tp_levels": [
         {
-          "price": 221.6119,
-          "sell_pct": 0.25,
+          "price": 221.61,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 229.9138,
-          "sell_pct": 0.35,
+          "price": 229.91,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 240.983,
-          "sell_pct": 0.4,
+          "price": 240.98,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -620,20 +620,20 @@
       "bracket_oca": "br_PYPL_1784818907",
       "tp_levels": [
         {
-          "price": 58.40455,
-          "sell_pct": 0.25,
+          "price": 58.4,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 61.119099999999996,
-          "sell_pct": 0.35,
+          "price": 61.12,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 64.7385,
-          "sell_pct": 0.4,
+          "price": 64.74,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -659,20 +659,20 @@
       "bracket_oca": "br_APD_1784818909",
       "tp_levels": [
         {
-          "price": 308.36875000000003,
-          "sell_pct": 0.25,
+          "price": 308.37,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 319.6825,
-          "sell_pct": 0.35,
+          "price": 319.68,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 334.76750000000004,
-          "sell_pct": 0.4,
+          "price": 334.77,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -698,20 +698,20 @@
       "bracket_oca": "br_RTX_1784905310",
       "tp_levels": [
         {
-          "price": 222.0034,
-          "sell_pct": 0.25,
+          "price": 222.0,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 230.3218,
-          "sell_pct": 0.35,
+          "price": 230.32,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 241.413,
-          "sell_pct": 0.4,
+          "price": 241.41,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
@@ -737,20 +737,20 @@
       "bracket_oca": "br_VRTX_1784905312",
       "tp_levels": [
         {
-          "price": 499.3574,
-          "sell_pct": 0.25,
+          "price": 499.36,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 519.7148,
-          "sell_pct": 0.35,
+          "price": 519.71,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 546.858,
-          "sell_pct": 0.4,
+          "price": 546.86,
+          "sell_pct": 0.3333,
           "hit": false,
           "hit_date": ""
         }
