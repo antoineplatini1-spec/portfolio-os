@@ -98,5 +98,15 @@ if [ -n "$HEARTBEAT_URL" ]; then
     fi
 fi
 
+# ── ALERTE EMAIL sur échec (sans dépendance externe) ──────────────
+# Si le run a échoué (rc != 0), on prévient IMMÉDIATEMENT par email via email_config.json.
+# C'est le filet qui manquait : les runs des 27-28/07 ont échoué en SILENCE (heartbeat non
+# configuré). Ici, aucun service tiers requis → une alerte partait dès le 1er échec.
+if [ "$RUN_RC" -ne 0 ]; then
+    tail -40 "$DATA_DIR/daily_log.txt" 2>/dev/null | \
+        python tools/send_alert.py "🚨 portfolio-os : run ÉCHOUÉ (rc=$RUN_RC) $(date -u +%F' '%H:%MZ)" \
+        || echo "alerte email échouée"
+fi
+
 echo "===== fin run_daily (rc=$RUN_RC) ====="
 exit $RUN_RC
