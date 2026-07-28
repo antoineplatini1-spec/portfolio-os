@@ -120,31 +120,77 @@ def _save_seen(ids: set[str]) -> None:
         print(f"[EXIT-WATCH] sauvegarde état impossible : {e}")
 
 
-def _exit_html(sym: str, qty: float, px: float, pnl: float | None, when: str) -> str:
-    up = pnl is None or pnl >= 0
-    emoji = "🟢" if up else "🔴"
-    color = "#34d399" if up else "#fb7185"
-    pl = f"{pnl:+.0f} $" if pnl is not None else "n/c"
-    return (
-        f"<div style='font-family:system-ui,Arial;max-width:480px'>"
-        f"<h2 style='margin:0 0 8px'>{emoji} Sortie exécutée — {sym}</h2>"
-        f"<table style='border-collapse:collapse;font-size:14px'>"
-        f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Quantité</td><td><b>{qty:.0f}</b> actions</td></tr>"
-        f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Prix de fill</td><td><b>{px:.2f}</b></td></tr>"
-        f"<tr><td style='padding:3px 12px 3px 0;color:#667'>PnL réalisé (IBKR)</td>"
-        f"<td style='color:{color};font-weight:700'>{pl}</td></tr>"
-        f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Heure</td><td>{when}</td></tr>"
-        f"</table>"
-        f"<p style='color:#889;font-size:12px;margin-top:12px'>Déclenché par un ordre "
-        f"stop/TP posé sur IBKR (sortie serveur, hors run du bot).</p></div>"
-    )
+def _avg_entry(symbol: str) -> float | None:
+    """
+    Prix d'entrée moyen (pondéré) du symbole d'après les ACHATS du journal. Sert à étiqueter
+    TP (gain) vs SL (perte) et à reconstruire le PnL quand IBKR renvoie realizedPNL=0 (paper).
+    """
+    if not JOURNAL_FILE.exists():
+        return None
+    tot_q = tot_v = 0.0
+    try:
+        for line in JOURNAL_FILE.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            r = json.loads(line)
+            if r.get("symbol") == symbol and r.get("side") == "BOT":
+                q = float(r.get("qty", 0) or 0); p = float(r.get("price", 0) or 0)
+                if q > 0 and p > 0:
+                    tot_q += q; tot_v += q * p
+    except Exception:
+        return None
+    return tot_v / tot_q if tot_q > 0 else None
 
 
-def main(test: bool = False) -> int:
+def _wrap(head: str, rows: str, note: str) -> str:
+    return (f"<div style='font-family:system-ui,Arial;max-width:480px'>"
+            f"<h2 style='margin:0 0 8px'>{head}</h2>"
+            f"<table style='border-collapse:collapse;font-size:14px'>{rows}</table>"
+            f"<p style='color:#889;font-size:12px;margin-top:12px'>{note}</p></div>")
+
+
+def _txn_email(side: str, sym: str, qty: float, px: float,
+               realized: float | None, when: str) -> tuple[str, str]:
+    """
+    (sujet, html) d'une transaction. BOT = ENTRÉE (achat) ; SLD = SORTIE, étiquetée
+    🎯 TP (gain, sortie ≥ entrée) ou 🛑 SL (perte, sortie < entrée) — SANS ambiguïté, même en
+    paper (on reconstruit le PnL depuis l'entrée du journal si realizedPNL est absent).
+    """
+    if side == "BOT":
+        rows = (f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Quantité</td><td><b>{qty:.0f}</b> actions</td></tr>"
+                f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Prix d'achat</td><td><b>{px:.2f}</b></td></tr>"
+                f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Heure</td><td>{when}</td></tr>")
+        return (f"🟢 Entrée {sym} {qty:.0f}@{px:.2f}",
+                _wrap(f"🟢 Entrée — {sym}", rows, "Nouvel achat (bracket SL/TP posé sur IBKR)."))
+
+    entry = _avg_entry(sym)
+    if realized is not None:
+        pnl_eur = realized
+    elif entry:
+        pnl_eur = (px - entry) * qty
+    else:
+        pnl_eur = None
+    gain = (px >= entry) if entry else (pnl_eur is None or pnl_eur >= 0)
+    emoji = "🎯" if gain else "🛑"
+    label = "🎯 TP — prise de profit" if gain else "🛑 SL — perte coupée"
+    color = "#34d399" if gain else "#fb7185"
+    pct = f"{(px/entry-1)*100:+.1f}%" if entry else "n/c"
+    pl = f"{pnl_eur:+.0f} $" if pnl_eur is not None else "n/c"
+    rows = (f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Type</td><td style='color:{color};font-weight:700'>{label}</td></tr>"
+            f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Quantité</td><td><b>{qty:.0f}</b> actions</td></tr>"
+            f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Entrée → Sortie</td><td>{('%.2f'%entry) if entry else '?'} &rarr; <b>{px:.2f}</b></td></tr>"
+            f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Résultat</td><td style='color:{color};font-weight:700'>{pct} ({pl})</td></tr>"
+            f"<tr><td style='padding:3px 12px 3px 0;color:#667'>Heure</td><td>{when}</td></tr>")
+    note = ("Sortie déclenchée par le bracket IBKR (côté serveur). "
+            + ("PnL réalisé IBKR." if realized is not None
+               else "PnL reconstruit depuis l'entrée (paper : realizedPNL non fourni)."))
+    return (f"{emoji} {'TP' if gain else 'SL'} {sym} {pct}", _wrap(f"{emoji} Sortie — {sym}", rows, note))
+
+
+def main(test: bool = False, resend_today: bool = False) -> int:
     if test:
-        ok = _send_email("🟢 [TEST] Watcher de sorties actif",
-                         _exit_html("TEST", 10, 123.45, 42.0, datetime.now().strftime("%Y-%m-%d %H:%M")))
-        return 0 if ok else 1
+        subj, html = _txn_email("SLD", "TEST", 10, 130.00, None, datetime.now().strftime("%Y-%m-%d %H:%M"))
+        return 0 if _send_email("[TEST] " + subj, html) else 1
 
     from config import IBKR_CONFIG
     if not IBKR_CONFIG.get("enabled"):
@@ -168,6 +214,33 @@ def main(test: bool = False) -> int:
         ib.disconnect()
         return 0
 
+    # RESEND : renvoie les transactions du JOUR au format corrigé (entrées + TP/SL), en
+    # ignorant la dédup. Sert à re-notifier après un changement de format d'email.
+    if resend_today:
+        today = datetime.now().strftime("%Y-%m-%d")
+        _journal_fills(fills)                          # s'assure que le journal a les entrées (pour _avg_entry)
+        sent = 0
+        for f in sorted(fills, key=lambda x: str(x.execution.time)):
+            e = f.execution
+            if e.side not in ("BOT", "SLD") or str(e.time)[:10] != today:
+                continue
+            realized = None
+            try:
+                r = f.commissionReport.realizedPNL
+                if r is not None and abs(r) < 1e12:
+                    realized = float(r)
+            except Exception:
+                pass
+            subj, html = _txn_email(e.side, f.contract.symbol, float(e.shares),
+                                    float(e.avgPrice or 0), realized, str(e.time)[:19])
+            try:
+                _send_email("[RENVOI] " + subj, html); sent += 1
+            except Exception as ex:
+                print(f"[EXIT-WATCH] renvoi échoué {f.contract.symbol}: {ex}")
+        ib.disconnect()
+        print(f"[EXIT-WATCH] {sent} transaction(s) du jour renvoyée(s).")
+        return 0
+
     # JOURNAL DURABLE : on enregistre TOUS les fills (achats + ventes), à chaque tick, quel que
     # soit l'état email/baseline. C'est le registre autoritaire sourcé IBKR. Idempotent (execId).
     n_journal = _journal_fills(fills)
@@ -177,53 +250,52 @@ def main(test: bool = False) -> int:
     # Évite de blaster l'historique (et les éventuels fills fantômes du paper) à chaque déploiement.
     first_run = not SEEN_FILE.exists()
     seen = _load_seen()
-    window_sell_ids: set[str] = set()
+    window_ids: set[str] = set()
     to_notify = []
     for f in fills:
         try:
             e = f.execution
-            if e.side != "SLD":                        # SLD = vente (stop/TP), BOT = achat
+            if e.side not in ("BOT", "SLD"):           # BOT = achat (entrée), SLD = vente (sortie)
                 continue
-            window_sell_ids.add(e.execId)
+            window_ids.add(e.execId)
             if e.execId in seen:
                 continue
-            pnl = None
+            realized = None
             try:
                 r = f.commissionReport.realizedPNL
                 if r is not None and abs(r) < 1e12:    # 1e18 = sentinel "non renseigné"
-                    pnl = float(r)
+                    realized = float(r)
             except Exception:
-                pnl = None
-            to_notify.append((e.execId, f.contract.symbol, float(e.shares),
-                              float(e.avgPrice or 0), pnl, str(e.time)[:19]))
+                realized = None
+            to_notify.append((e.execId, e.side, f.contract.symbol, float(e.shares),
+                              float(e.avgPrice or 0), realized, str(e.time)[:19]))
         except Exception:
             continue
 
     if first_run:
-        _save_seen(window_sell_ids)
+        _save_seen(window_ids)
         ib.disconnect()
-        print(f"[EXIT-WATCH] baseline initialisée ({len(window_sell_ids)} vente(s) marquée(s) vue(s), "
-              f"aucun email). Journal : +{n_journal} fill(s). Les prochaines sorties seront notifiées.")
+        print(f"[EXIT-WATCH] baseline initialisée ({len(window_ids)} transaction(s) marquée(s) vue(s), "
+              f"aucun email). Journal : +{n_journal} fill(s). Les prochaines seront notifiées.")
         return 0
 
     notified = 0
-    for exec_id, sym, qty, px, pnl, when in to_notify:
-        emoji = "🟢" if (pnl is None or pnl >= 0) else "🔴"
-        pl = f"{pnl:+.0f}$" if pnl is not None else ""
+    for exec_id, side, sym, qty, px, realized, when in to_notify:
         try:
-            _send_email(f"{emoji} Sortie {sym} {pl}".strip(), _exit_html(sym, qty, px, pnl, when))
+            subj, html = _txn_email(side, sym, qty, px, realized, when)
+            _send_email(subj, html)
             notified += 1
         except Exception as ex:
             print(f"[EXIT-WATCH] envoi échoué pour {sym} : {ex}")
-            window_sell_ids.discard(exec_id)           # email raté → pas marqué vu → réessai au prochain tick
+            window_ids.discard(exec_id)                # email raté → pas marqué vu → réessai au prochain tick
 
     # État borné à la fenêtre : les execId hors fenêtre disparaîtront (ils ne reviendront pas).
-    _save_seen(window_sell_ids)
+    _save_seen(window_ids)
     ib.disconnect()
-    print(f"[EXIT-WATCH] {notified} sortie(s) notifiée(s), {len(window_sell_ids)} vente(s) en fenêtre, "
+    print(f"[EXIT-WATCH] {notified} transaction(s) notifiée(s), {len(window_ids)} en fenêtre, "
           f"journal +{n_journal} fill(s).")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main(test="--test" in sys.argv))
+    sys.exit(main(test="--test" in sys.argv, resend_today="--resend-today" in sys.argv))
