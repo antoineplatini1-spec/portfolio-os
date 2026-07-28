@@ -171,6 +171,43 @@ def _ledger_levels(symbol: str):
     return None, []
 
 
+def _position_exits(symbol: str) -> list[tuple[str, float, float]]:
+    """
+    Ventes (time, price, qty) du ROUND-TRIP courant depuis le journal : les SLD postérieurs au
+    dernier achat (BOT) du symbole. Sert au gain CUMULÉ sur la ligne et au n° de palier.
+    """
+    if not JOURNAL_FILE.exists():
+        return []
+    try:
+        recs = [json.loads(l) for l in JOURNAL_FILE.read_text(encoding="utf-8").splitlines() if l.strip()]
+    except Exception:
+        return []
+    recs = [r for r in recs if r.get("symbol") == symbol]
+    last_bot = ""
+    for r in recs:
+        if r.get("side") == "BOT":
+            last_bot = max(last_bot, str(r.get("time", "")))
+    out = []
+    for r in recs:
+        if r.get("side") == "SLD" and str(r.get("time", "")) >= last_bot:
+            out.append((str(r.get("time", "")), float(r.get("price", 0) or 0), float(r.get("qty", 0) or 0)))
+    return out
+
+
+def _tp_rung(symbol: str, px: float, exits: list) -> tuple[int, int] | None:
+    """(n° de palier, nb total de paliers) pour ce prix de sortie. Via les TP du ledger si dispo,
+    sinon via le rang du prix parmi les sorties du round-trip (le plus bas = TP1)."""
+    _, tps = _ledger_levels(symbol)
+    if tps:
+        i = min(range(len(tps)), key=lambda k: abs(tps[k] - px))
+        if px and abs(tps[i] - px) / px < 0.02:
+            return i + 1, len(tps)
+    prices = sorted({round(p, 2) for _, p, q in exits if p})
+    if prices and round(px, 2) in prices:
+        return prices.index(round(px, 2)) + 1, max(len(prices), 3)
+    return None
+
+
 def _wrap(head: str, rows: str, note: str) -> str:
     return (f"<div style='font-family:system-ui,Arial;max-width:520px'>"
             f"<h2 style='margin:0 0 8px'>{head}</h2>"
@@ -214,20 +251,34 @@ def _txn_email(side: str, sym: str, qty: float, px: float,
         pnl_eur = None
     gain = (px >= entry) if entry else (pnl_eur is None or pnl_eur >= 0)
     emoji = "🎯" if gain else "🛑"
-    label = "TP — prise de profit" if gain else "SL — perte coupée"
     color = "#34d399" if gain else "#fb7185"
     pct = f"{(px/entry-1)*100:+.1f}%" if entry else "n/c"
     pl = f"{pnl_eur:+,.0f} $" if pnl_eur is not None else "n/c"
-    rows = (_row("Type", f"{emoji} {label}", color)
+
+    # Palier déclenché (TP1/2/3) + gain CUMULÉ sur la ligne (toutes les tranches vendues).
+    exits = _position_exits(sym)
+    rung = _tp_rung(sym, px, exits) if gain else None
+    if rung:
+        type_txt = f"{emoji} TP{rung[0]}/{rung[1]} — prise de profit"
+    else:
+        type_txt = f"{emoji} {'TP — prise de profit' if gain else 'SL — perte coupée'}"
+    n_exits = len(exits)
+    cumul = sum((p - entry) * q for _, p, q in exits) if entry and exits else None
+
+    rows = (_row("Palier" if rung else "Type", type_txt, color)
             + _row("Quantité", f"{qty:.0f} actions")
             + _row("Entrée &rarr; Sortie", f"{('%.2f'%entry) if entry else '?'} &rarr; {px:.2f} $")
             + _row("Montant reçu", f"{montant:,.0f} $")
-            + _row("Résultat", f"{pct}  ({pl})", color)
-            + _row("Heure", when))
+            + _row("Gain (cette tranche)", f"{pct}  ({pl})", color))
+    if n_exits > 1 and cumul is not None:                 # 2e/3e palier → gain cumulé sur la ligne
+        rows += _row("Gain cumulé (ligne)", f"{cumul:+,.0f} $  sur {n_exits} tranche(s)", color)
+    rows += _row("Heure", when)
+
     note = ("Sortie déclenchée par le bracket IBKR (côté serveur). "
-            + ("PnL réalisé IBKR." if realized is not None
+            + ("PnL réalisé IBKR." if realized is not None and abs(realized) > 0.005
                else "PnL calculé depuis l'entrée (paper : realizedPNL non fourni par IBKR)."))
-    return (f"{emoji} {'TP' if gain else 'SL'} {sym} {pct} ({pl})",
+    tp_tag = f"TP{rung[0]}" if rung else ("TP" if gain else "SL")
+    return (f"{emoji} {tp_tag} {sym} {pct} ({pl})",
             _wrap(f"{emoji} Sortie — {sym}", rows, note))
 
 
