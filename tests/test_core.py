@@ -179,6 +179,17 @@ def test_newsletter_negation_not_buy():
     assert _classify("n'achetez pas cette action") != "BUY"
 
 
+# ── Prudence événementielle (earnings) ───────────────────────────
+
+def test_earnings_blackout(monkeypatch):
+    from signals import earnings
+    monkeypatch.setattr(earnings, "days_to_earnings", lambda t: {"AAPL": 2, "MO": 20, "X": None}.get(t))
+    assert earnings.has_imminent_earnings("AAPL", 3) is True     # résultats dans 2j ≤ 3 → écarté
+    assert earnings.has_imminent_earnings("MO", 3) is False      # dans 20j → OK
+    assert earnings.has_imminent_earnings("X", 3) is False       # inconnu → on n'écarte pas
+    assert earnings.has_imminent_earnings("AAPL", 0) is False    # blackout désactivé
+
+
 # ── Calendrier bourse US ──────────────────────────────────────────
 
 def test_market_holiday_detected():

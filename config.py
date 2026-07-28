@@ -93,6 +93,12 @@ TIME_STOP_LOSS_PCT   = 0.02    # …si elle est en perte de plus de ce %
 NEWS_VETO_STRENGTH   = 0.6     # force min d'une news baissière pour véto candidat / alerte
 EXCLUDE_ETFS_FROM_TRADING = True  # ETF/indices non achetés (KID/PRIIPs EU) — gardés pour la macro
 
+# ── Prudence événementielle (résultats/earnings) ──────────────────
+# On n'OUVRE PAS une position si des résultats tombent dans <= N jours : le risque de gap
+# (±10% sur un chiffre) n'est pas couvrable par un stop intraday. 0 = prudence désactivée.
+# Ne touche PAS aux positions déjà détenues (leur bracket serveur gère le risque).
+EARNINGS_BLACKOUT_DAYS = 3
+
 # ── Signaux ───────────────────────────────────────────────────────
 BUY_SIGNAL_MIN_SCORE = 60         # Score minimum pour suggérer un achat
 ADX_TREND_THRESHOLD = 25          # ADX > seuil = marché en tendance

@@ -751,6 +751,18 @@ def run():
         if _before_etf != len(candidates):
             log(f"Filtre ETF/indices (non achetables) : {_before_etf} → {len(candidates)} candidats")
 
+    # ── Prudence événementielle : on n'ENTRE pas juste avant des résultats (risque de gap) ──
+    from config import EARNINGS_BLACKOUT_DAYS
+    if EARNINGS_BLACKOUT_DAYS > 0 and len(candidates):
+        from signals.earnings import has_imminent_earnings
+        _blk = [t for t in candidates["ticker"] if has_imminent_earnings(t, EARNINGS_BLACKOUT_DAYS)]
+        if _blk:
+            candidates = candidates[~candidates["ticker"].isin(_blk)]
+            _msg = (f"Prudence résultats : {len(_blk)} candidat(s) écarté(s) "
+                    f"(earnings dans ≤{EARNINGS_BLACKOUT_DAYS}j) → {', '.join(_blk)}")
+            log(_msg)
+            blockers.append(_msg)
+
     log(f"{len(candidates)} candidats pre-filtres (score>={min_score}, R>={MIN_R_RATIO*0.8:.1f})")
 
     # ── News LLM (optionnel) : un seul appel batch sur candidats + positions tenues ─
