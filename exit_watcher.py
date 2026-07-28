@@ -203,7 +203,10 @@ def _txn_email(side: str, sym: str, qty: float, px: float,
                 _wrap(f"🟢 Entrée — {sym}", rows, "Nouvel achat. Bracket SL/TP posé sur IBKR."))
 
     entry = _avg_entry(sym)
-    if realized is not None:
+    # PnL € : le realizedPNL IBKR fait autorité UNIQUEMENT s'il est réellement non nul (compte
+    # réel). En paper il revient à 0.0 (un vrai 0, pas None) → on RECONSTRUIT depuis l'entrée,
+    # sinon le gain € s'affichait à +0 $ alors que le % était bon.
+    if realized is not None and abs(realized) > 0.005:
         pnl_eur = realized
     elif entry:
         pnl_eur = (px - entry) * qty
