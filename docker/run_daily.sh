@@ -51,6 +51,17 @@ HEARTBEAT_URL="${HEARTBEAT_URL:-}"
 # Récupère les éventuels changements distants avant de trader
 git pull --rebase --autostash origin master || echo "git pull échoué (on continue)"
 
+# ── AUTO-RÉCUPÉRATION du Gateway (self-heal) ──────────────────────
+# Panne récurrente : le Gateway ressort « Up » mais sa session est LOGGED-OUT → l'API timeout
+# → le run HALT (2 jours d'affilée le 27-28/07). On teste l'API AVANT de trader ; si morte, on
+# redémarre le container et on attend le re-login IBC. Idempotent : ne redémarre que si KO.
+if ! python tools/gw_healthcheck.py; then
+    echo "$(date -u +%H:%M:%SZ) Gateway API injoignable → redémarrage ib-gateway…"
+    docker restart ib-gateway >/dev/null 2>&1 || echo "docker restart ib-gateway échoué"
+    sleep 90
+    python tools/gw_healthcheck.py || echo "Gateway TOUJOURS KO après restart → le run va HALT proprement"
+fi
+
 # Scan + trading — on capture le code de sortie SANS que set -e ne tue le script,
 # pour pouvoir signaler l'échec au dead-man's switch.
 set +e
