@@ -1,5 +1,5 @@
 {
-  "cash": 33.00566759571768,
+  "cash": 1671.6358730190532,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -74,13 +74,13 @@
       "ticker": "BIM.PA",
       "entry_price": 70.87080305480956,
       "qty_total": 14.124293176498275,
-      "qty_remaining": 14.124293176498275,
+      "qty_remaining": 7.062146588249138,
       "sl": 65.84400283813476,
-      "trailing_stop": false,
-      "trailing_stop_price": 70.87080305480956,
+      "trailing_stop": true,
+      "trailing_stop_price": 71.20249710083007,
       "entry_date": "2026-07-10",
       "fees_in": 0.0,
-      "status": "open",
+      "status": "partial",
       "close_price": 0.0,
       "close_date": "",
       "entry_score": 0,
@@ -91,8 +91,8 @@
         {
           "price": 74.65,
           "sell_pct": 0.5,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-07-28"
         },
         {
           "price": 77.48,
@@ -101,7 +101,14 @@
           "hit_date": ""
         }
       ],
-      "partial_fills": []
+      "partial_fills": [
+        {
+          "date": "2026-07-28",
+          "qty": 7.062146588249138,
+          "price": 74.87504695129394,
+          "reason": "TP1"
+        }
+      ]
     },
     "AI.PA": {
       "ticker": "AI.PA",
@@ -248,15 +255,15 @@
       "ticker": "HO.PA",
       "entry_price": 224.62439389038084,
       "qty_total": 4.456328106948611,
-      "qty_remaining": 4.456328106948611,
+      "qty_remaining": 0.0,
       "sl": 206.75,
       "trailing_stop": false,
       "trailing_stop_price": 224.62439389038084,
       "entry_date": "2026-07-20",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 249.05070304870605,
+      "close_date": "2026-07-28",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -326,18 +333,29 @@
       "partial_fills": []
     }
   },
-  "history": [],
+  "history": [
+    {
+      "ticker": "HO.PA",
+      "entry_price": 224.62439389038084,
+      "close_price": 249.05070304870605,
+      "qty": 4.456328106948611,
+      "pnl": 108.8516,
+      "close_reason": "manual",
+      "entry_date": "2026-07-20",
+      "close_date": "2026-07-28"
+    }
+  ],
   "last_prices": {
-    "VK.PA": 22.18000030517578,
+    "VK.PA": 21.010000228881836,
     "SCR.PA": 32.939998626708984,
-    "BIM.PA": 69.5,
-    "AI.PA": 176.0399932861328,
-    "AIR.PA": 203.8000030517578,
-    "LR.PA": 133.39999389648438,
-    "PUB.PA": 87.69999694824219,
-    "ML.PA": 34.29999923706055,
-    "HO.PA": 234.6999969482422,
-    "URW.PA": 104.69999694824219,
-    "SAF.PA": 327.6000061035156
+    "BIM.PA": 74.94999694824219,
+    "AI.PA": 173.5399932861328,
+    "AIR.PA": 212.0,
+    "LR.PA": 129.14999389648438,
+    "PUB.PA": 93.83999633789062,
+    "ML.PA": 34.459999084472656,
+    "HO.PA": 249.3000030517578,
+    "URW.PA": 105.80000305175781,
+    "SAF.PA": 343.0
   }
 }

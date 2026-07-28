@@ -17,3 +17,5 @@
 {"ts": "2026-07-23T15:01:50.811022+00:00", "ticker": "APD", "features": {"momentum": 58.0, "sector": 1.0, "news": 0.55, "conviction": 0.0}, "contrib": {"momentum": 58.0, "sector": 3.0, "news": 4.4, "conviction": 0.0}, "total": 65.4}
 {"ts": "2026-07-24T15:01:52.188556+00:00", "ticker": "RTX", "features": {"momentum": 61.0, "sector": 2.0, "news": 0.55, "conviction": 0.0}, "contrib": {"momentum": 61.0, "sector": 6.0, "news": 4.4, "conviction": 0.0}, "total": 71.4}
 {"ts": "2026-07-24T15:01:54.097204+00:00", "ticker": "VRTX", "features": {"momentum": 61.0, "sector": 0.0, "news": 0.6, "conviction": 0.0}, "contrib": {"momentum": 61.0, "sector": 0.0, "news": 4.8, "conviction": 0.0}, "total": 65.8}
+{"ts": "2026-07-28T16:51:19.074925+00:00", "ticker": "SCHW", "features": {"momentum": 84.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 84.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 87.0}
+{"ts": "2026-07-28T16:51:22.113399+00:00", "ticker": "SHOP", "features": {"momentum": 66.0, "sector": 2.0, "news": 0.7, "conviction": 0.0}, "contrib": {"momentum": 66.0, "sector": 6.0, "news": 5.6, "conviction": 0.0}, "total": 77.6}

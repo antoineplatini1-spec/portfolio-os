@@ -11895,3 +11895,152 @@ Traceback (most recent call last):
 portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 échouée : 
 
 [2026-07-28 11:00] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-28 12:49] ============================================================
+[2026-07-28 12:49] SCAN JOURNALIER - 2026-07-28
+[2026-07-28 12:49] ============================================================
+[2026-07-28 12:49] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-28 12:49]   Date     : 2026-07-28  [imap]
+[2026-07-28 12:49]   CAC 40   : NEUTRAL
+[2026-07-28 12:49]   Valeurs  :
+[2026-07-28 12:49]     ✅ Capgemini (Tech) → BUY
+[2026-07-28 12:49]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-28 12:49]     ⚠️ Lvmh (Conso) → CAUTION
+[2026-07-28 12:49]   Macro    : market_caution, market_bullish
+[2026-07-28 12:49]   Secteurs : Conso:-1, Tech:0
+[2026-07-28 12:49] ───────────────────────────────────────────────────────
+[2026-07-28 12:49] [LLM] Biais sectoriel = LLM : Tech:-1, Semi:-1, Energie:-1
+[2026-07-28 12:49] [LLM] Trades momentum = LLM (2) : Capgemini:BUY, Thales:HOLD
+[2026-07-28 12:49] [US] Barchart «Amazon Might Be Outspending Alphabet on » → secteur {'Tech': 1} | idées: AMZN, GOOGL, MSFT, META, TSLA
+[2026-07-28 12:50] [US] The Transcript «Catalyst Watch» → secteur {'Tech': 2, 'Industrie': 1, 'Finance': 1, 'Conso': 1} | idées: HON, GOOGL
+[2026-07-28 12:50] ══════════════════════════════════════════════
+[2026-07-28 12:50]   AGENT MACRO — 2026-07-28
+[2026-07-28 12:50] ══════════════════════════════════════════════
+[2026-07-28 12:50]   Régime marché  : BULL
+[2026-07-28 12:50]   SPY vs EMA200  : +5.7%
+[2026-07-28 12:50]   VIX            : 18.2 (LOW)
+[2026-07-28 12:50]   Max trades/j   : 3
+[2026-07-28 12:50]   Seuil net min  : 10
+[2026-07-28 12:50]   Top secteurs   : Finance, Energie, Santé, Materiaux, ConsoBase, REIT
+[2026-07-28 12:50]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-28 12:50]   Rationale      : Marché haussier (SPY +5.7% vs EMA200). Exposition maximale autorisée.
+[2026-07-28 12:50] ══════════════════════════════════════════════
+[2026-07-28 12:50] [RECONCILE IBKR] JNJ : bracket natif partiel (13.00 @ 262.31) → ledger synchronisé (reste 38.00)
+[2026-07-28 12:50] [RECONCILE IBKR] AAPL : bracket natif [PnL estimé] soldé(e) @ 329.95 → clôturé au ledger
+[2026-07-28 12:50] [RECONCILE IBKR] PYPL : bracket natif [PnL IBKR] soldé(e) @ 58.41 → clôturé au ledger
+[2026-07-28 12:50] [RECONCILE IBKR] SPG : bracket natif [PnL IBKR] soldé(e) @ 234.80 → clôturé au ledger
+[2026-07-28 12:50] [RECONCILE IBKR] MA : bracket natif [PnL IBKR] soldé(e) @ 563.55 → clôturé au ledger
+[2026-07-28 12:50] [RECONCILE IBKR] cash réel IBKR = 103034 | ledger = 106119
+[2026-07-28 12:50] [RECONCILE IBKR] cash ledger seedé sur IBKR : 106119 → 103034
+[2026-07-28 12:50] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-28 12:50]   PANW: 321.05
+[2026-07-28 12:50]   V: 368.76
+[2026-07-28 12:50]   SNOW: 272.84
+[2026-07-28 12:50]   JPM: 355.91
+[2026-07-28 12:50]   JNJ: 268.74
+[2026-07-28 12:50]   ABBV: 265.36
+[2026-07-28 12:50]   MO: 74.76
+[2026-07-28 12:50]   RACE: 388.92
+[2026-07-28 12:50]   BNY: 156.11
+[2026-07-28 12:50]   MPC: 307.89
+[2026-07-28 12:50]   PSX: 206.47
+[2026-07-28 12:50]   APD: 295.86
+[2026-07-28 12:50]   RTX: 217.60
+[2026-07-28 12:50]   VRTX: 484.67
+[2026-07-28 12:50] Screener en cours...
+[2026-07-28 12:50] [US] Univers screener enrichi de 6 idée(s) newsletters US : AMZN, GOOGL, MSFT, META, TSLA, HON
+[2026-07-28 12:50] Scores : max=84  mediane=19  (156 tickers)
+[2026-07-28 12:50] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=84
+[2026-07-28 12:50] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Tech, Conso, Industrie, Finance | pénalisés: Semi, Energie
+[2026-07-28 12:50] Filtre ETF/indices (non achetables) : 51 → 41 candidats
+[2026-07-28 12:50] 41 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-28 12:50]   [SEC 8-K] SCHW (2026-07-21) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] PYPL (2026-07-28) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] KO (2026-07-28) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] TMO (2026-07-23) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] NOW (2026-07-22) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] BAC (2026-07-24) : Autre événement matériel, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] T (2026-07-22) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] PM (2026-07-22) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] VZ (2026-07-24) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-07-28 12:50]   [SEC 8-K] VZ (2026-07-24) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] NUE (2026-07-27) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] JNJ (2026-07-28) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] RTX (2026-07-23) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] JPM (2026-07-23) : Autre événement matériel, États financiers & annexes
+[2026-07-28 12:50]   [SEC 8-K] JPM (2026-07-23) : Modification des statuts
+[2026-07-28 12:50]   [SEC 8-K] BNY (2026-07-23) : Modification des droits des porteurs, Modification des statuts, Autre événement matériel, États financiers & annexes
+[2026-07-28 12:51] [LLM news] SHOP: bullish 0.70 — Bond mouvementé sur anticipations de forte croissance du CA au Q2
+[2026-07-28 12:51] [LLM news] PYPL: bullish 0.50 — CEO ouvert à des opérations de M&A potentielles
+[2026-07-28 12:51] [LLM news] SNOW: bullish 0.40 — Lancement de Cortex AI Gateway pour l'IA d'entreprise
+[2026-07-28 12:51] [LLM news] V: neutral 0.50 — Annonce de licenciements liés à la restructuration IA avant résultats
+[2026-07-28 12:51] [LLM news] KO: bullish 0.80 — Relèvement des prévisions annuelles après résultats solides
+[2026-07-28 12:51] [LLM news] TMO: neutral 0.40 — Résultats Q2 solides mais outlook H2 inchangé selon RBC
+[2026-07-28 12:51] [LLM news] PLD: bullish 0.90 — Méga-fusion pour acquérir Segro pour 18.7 milliards de dollars
+[2026-07-28 12:51] [LLM news] T: bullish 0.50 — Extension du contrat de calcul quantique avec D-Wave
+[2026-07-28 12:51] [LLM news] BLK: bullish 0.70 — Partenariat avec Meta pour un projet de data center de 14 milliards de dollars
+[2026-07-28 12:51] [LLM news] PM: neutral 0.40 — Réduction des prévisions de profit 2026 malgré hausse du titre
+[2026-07-28 12:51] [LLM news] VZ: bullish 0.50 — Résultats jugés solides, thèse d'achat renforcée
+[2026-07-28 12:51] [LLM news] CVX: neutral 0.40 — Retour de Chevron en Irak pour des discussions sur les champs pétrolifères
+[2026-07-28 12:51] [LLM news] NUE: bullish 0.70 — Résultats Q2 supérieurs aux attentes grâce à la hausse des prix
+[2026-07-28 12:51] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-28 12:51] Cash deployable cette semaine : 100973 EUR  (max trades/j : 2)
+[2026-07-28 12:51] ────────────────────────────────────────────────────
+[2026-07-28 12:51]   DÉBAT : SCHW
+[2026-07-28 12:51] ────────────────────────────────────────────────────
+[2026-07-28 12:51]   🟢 BULL [conviction=87] → ACHETER
+[2026-07-28 12:51]      • Score haussier fort (86/100)
+[2026-07-28 12:51]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-28 12:51]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-28 12:51]      • Prix au-dessus EMA200 (96.84) — tendance long terme haussière
+[2026-07-28 12:51]      • Stoch RSI survendu (2) — retournement imminent
+[2026-07-28 12:51] 
+[2026-07-28 12:51]   🔴 BEAR [concern=23] → OK
+[2026-07-28 12:51]      • Secteur Finance déjà exposé (2 positions) — diversification limitée
+[2026-07-28 12:51]      • Exposition modérée (62%) — prudence sur les ajouts
+[2026-07-28 12:51]      • Volume faible (0.3× moyenne)
+[2026-07-28 12:51] 
+[2026-07-28 12:51]   ✅ ARBITRE → ACHETER  (net=+73)
+[2026-07-28 12:51]      Arguments haussiers l'emportent clairement (conviction=87, concern=23, net=+73)
+[2026-07-28 12:51] ────────────────────────────────────────────────────
+[2026-07-28 12:51]   [ACHAT] SCHW score=84 bull=87 bear=23 prix=106.04 investi=21740EUR SL=100.99 TP1=109.83
+[2026-07-28 12:51]   [SKIP earnings] MA : publication de résultats dans ±3j
+[2026-07-28 12:51] ────────────────────────────────────────────────────
+[2026-07-28 12:51]   DÉBAT : SHOP
+[2026-07-28 12:51] ────────────────────────────────────────────────────
+[2026-07-28 12:51]   🟢 BULL [conviction=84] → ACHETER
+[2026-07-28 12:51]      • Score haussier fort (71/100)
+[2026-07-28 12:51]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-07-28 12:51]      • R-ratio solide (3.0×) — risque/récompense favorable
+[2026-07-28 12:51]      • Prix au-dessus EMA200 (123.67) — tendance long terme haussière
+[2026-07-28 12:51]      • CMF fort — flux acheteur dominant
+[2026-07-28 12:51] 
+[2026-07-28 12:51]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-07-28 12:51]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-07-28 12:51]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-28 12:51]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-07-28 12:51]      • Volume faible (0.6× moyenne)
+[2026-07-28 12:51] 
+[2026-07-28 12:51]   ✅ ARBITRE → ACHETER  (net=+65)
+[2026-07-28 12:51]      Arguments haussiers l'emportent clairement (conviction=84, concern=31, net=+65)
+[2026-07-28 12:51] ────────────────────────────────────────────────────
+[2026-07-28 12:51]   [ACHAT] SHOP score=66 bull=84 bear=31 prix=133.88 investi=13531EUR SL=123.17 TP1=143.36
+[2026-07-28 12:51] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-28 12:51] ----------------------------------------
+[2026-07-28 12:51] RESUME : valeur=271300.13 EUR  investi=202340.54 EUR  cash=67760.58 EUR  expo=75.0%  positions=16
+[2026-07-28 12:51] ----------------------------------------
+[2026-07-28 12:51] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-07-28 12:51]   [MOMENTUM] VK.PA: 21.01
+[2026-07-28 12:51]   [MOMENTUM] BIM.PA: 74.95
+[2026-07-28 12:51]   [MOMENTUM] AI.PA: 173.54
+[2026-07-28 12:51]   [MOMENTUM] AIR.PA: 212.00
+[2026-07-28 12:51]   [MOMENTUM] LR.PA: 129.15
+[2026-07-28 12:51]   [MOMENTUM] PUB.PA: 93.84
+[2026-07-28 12:51]   [MOMENTUM] ML.PA: 34.46
+[2026-07-28 12:51]   [MOMENTUM] HO.PA: 249.30
+[2026-07-28 12:51]   [MOMENTUM] URW.PA: 105.80
+[2026-07-28 12:51]   [MOMENTUM] SAF.PA: 343.00
+[2026-07-28 12:51] [MOMENTUM] 2 signal(s) newsletter...
+[2026-07-28 12:51]   Cash insuffisant (562€ < 1000€)
+[2026-07-28 12:51]   [MOMENTUM SELL] Thales (HO.PA) @ 249.30 — raison newsletter : HOLD
+[2026-07-28 12:51] [MOMENTUM] valeur=10369.12€  cash=1671.64€  positions=9  PnL=+326.11€
+[2026-07-28 12:51] [EMAIL] Envoye a antoine.platini@outlook.fr
