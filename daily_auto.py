@@ -1756,6 +1756,7 @@ def _send_daily_email(
         live = _lp.get(t, p.entry_price)
         pnl  = (live - p.entry_price) * p.qty_remaining
         ppct = (live / p.entry_price - 1) * 100
+        value = p.qty_remaining * live                     # valeur de marché de la position
         clr  = "#34d399" if pnl >= 0 else "#fb7185"
         bg   = "background:#0a1d12" if pnl >= 0 else "background:#1d0a0a"
         return (
@@ -1766,6 +1767,8 @@ def _send_daily_email(
             f"{p.entry_price:.2f}</td>"
             f"<td style='padding:7px 10px;color:#8097b5;font-size:12px'>"
             f"{live:.2f}</td>"
+            f"<td style='padding:7px 10px;font-weight:600;color:#d6e0f0;"
+            f"font-size:12px'>{value:,.0f} €</td>"
             f"<td style='padding:7px 10px;font-weight:700;color:{clr};"
             f"font-size:13px'>{ppct:+.1f}%</td>"
             f"<td style='padding:7px 10px;font-weight:600;color:{clr};"
@@ -1932,7 +1935,7 @@ def _send_daily_email(
   <tr><td style='height:16px'></td></tr>
 
   <!-- POSITIONS OUVERTES -->
-  {"<tr><td><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;background:#0d1420;border-radius:8px'><thead><tr style='background:#192235'><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px;letter-spacing:.06em'>TICKER</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL %</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL €</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th></tr></thead><tbody>" + pos_rows + "</tbody></table></td></tr>" if pos_rows else "<tr><td style='color:#445470;font-size:12px;padding:8px 0'>Aucune position ouverte.</td></tr>"}
+  {"<tr><td><table width='100%' cellpadding='0' cellspacing='0' style='border-collapse:collapse;background:#0d1420;border-radius:8px'><thead><tr style='background:#192235'><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px;letter-spacing:.06em'>TICKER</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>ENTREE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>LIVE</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>VALEUR</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL %</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>PNL €</th><th style='padding:7px 10px;text-align:left;color:#445470;font-size:10px'>STOP</th></tr></thead><tbody>" + pos_rows + "</tbody></table></td></tr>" if pos_rows else "<tr><td style='color:#445470;font-size:12px;padding:8px 0'>Aucune position ouverte.</td></tr>"}
 
   <tr><td style='height:16px'></td></tr>
 
