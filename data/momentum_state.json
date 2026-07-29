@@ -1,5 +1,5 @@
 {
-  "cash": 1671.6358730190532,
+  "cash": 670.6358734015346,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -255,7 +255,7 @@
       "ticker": "HO.PA",
       "entry_price": 224.62439389038084,
       "qty_total": 4.456328106948611,
-      "qty_remaining": 0.0,
+      "qty_remaining": 4.456328106948611,
       "sl": 206.75,
       "trailing_stop": false,
       "trailing_stop_price": 224.62439389038084,
@@ -331,6 +331,39 @@
         }
       ],
       "partial_fills": []
+    },
+    "KER.PA": {
+      "ticker": "KER.PA",
+      "entry_price": 286.8866061096191,
+      "qty_total": 3.489183456747084,
+      "qty_remaining": 3.489183456747084,
+      "sl": 266.5380056762695,
+      "trailing_stop": false,
+      "trailing_stop_price": 286.8866061096191,
+      "entry_date": "2026-07-29",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 318.82,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 344.95,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [
@@ -346,16 +379,16 @@
     }
   ],
   "last_prices": {
-    "VK.PA": 21.010000228881836,
+    "VK.PA": 21.020000457763672,
     "SCR.PA": 32.939998626708984,
-    "BIM.PA": 74.94999694824219,
-    "AI.PA": 173.5399932861328,
-    "AIR.PA": 212.0,
-    "LR.PA": 129.14999389648438,
-    "PUB.PA": 93.83999633789062,
-    "ML.PA": 34.459999084472656,
+    "BIM.PA": 72.75,
+    "AI.PA": 171.0399932861328,
+    "AIR.PA": 209.75,
+    "LR.PA": 128.1999969482422,
+    "PUB.PA": 94.63999938964844,
+    "ML.PA": 34.220001220703125,
     "HO.PA": 249.3000030517578,
-    "URW.PA": 105.80000305175781,
-    "SAF.PA": 343.0
+    "URW.PA": 105.1500015258789,
+    "SAF.PA": 340.1000061035156
   }
 }
