@@ -12206,3 +12206,149 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-07-29 11:02]   [MOMENTUM] Kering (KER.PA) 3.489× à 286.60€ | SL=266.54 | TPs=318.82 / 344.95 | investi=1000€
 [2026-07-29 11:02] [MOMENTUM] valeur=10308.42€  cash=670.64€  positions=10  PnL=+265.41€
 [2026-07-29 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-30 11:00] ============================================================
+[2026-07-30 11:00] SCAN JOURNALIER - 2026-07-30
+[2026-07-30 11:00] ============================================================
+[2026-07-30 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-30 11:00]   Date     : 2026-07-30  [imap]
+[2026-07-30 11:00]   CAC 40   : NEUTRAL
+[2026-07-30 11:00]   Valeurs  :
+[2026-07-30 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-30 11:00]     ✅ Biomérieux (Santé) → BUY
+[2026-07-30 11:00]     ⚠️ Vallourec (Energie) → CAUTION
+[2026-07-30 11:00]     ⚠️ Schneider (Industrie) → CAUTION
+[2026-07-30 11:00]     ⚠️ Vinci (Industrie) → CAUTION
+[2026-07-30 11:00]     ⚠️ Bouygues (Industrie) → CAUTION
+[2026-07-30 11:00]     🚫 Hermès (Conso) → AVOID
+[2026-07-30 11:00]   Macro    : oil_bearish, market_caution
+[2026-07-30 11:00]   Secteurs : Industrie:-3, Conso:-2, Tech:-1, Santé:+1, Energie:-1
+[2026-07-30 11:00] ───────────────────────────────────────────────────────
+[2026-07-30 11:00] [LLM] Biais sectoriel = LLM : Semi:-2
+[2026-07-30 11:00] [LLM] Trades momentum = LLM (2) : Hermès:AVOID, Biomérieux:BUY
+[2026-07-30 11:00] [US] Barchart «AMD Stock Dips Ahead of Earnings: 2 Reas» → secteur {'Semi': 2} | idées: AMD
+[2026-07-30 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Tech': 2, 'Semi': 2, 'Industrie': 2, 'Finance': 1, 'Conso': 1, 'Macro': 1} | idées: GOOGL, HON
+[2026-07-30 11:00] ══════════════════════════════════════════════
+[2026-07-30 11:00]   AGENT MACRO — 2026-07-30
+[2026-07-30 11:00] ══════════════════════════════════════════════
+[2026-07-30 11:00]   Régime marché  : BULL
+[2026-07-30 11:00]   SPY vs EMA200  : +4.8%
+[2026-07-30 11:00]   VIX            : 18.5 (LOW)
+[2026-07-30 11:00]   Max trades/j   : 3
+[2026-07-30 11:00]   Seuil net min  : 10
+[2026-07-30 11:00]   Top secteurs   : Energie, Finance, Santé, Macro, ConsoBase, REIT, Materiaux
+[2026-07-30 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-30 11:00]   Rationale      : Marché haussier (SPY +4.7% vs EMA200). Exposition maximale autorisée.
+[2026-07-30 11:00] ══════════════════════════════════════════════
+[2026-07-30 11:00] [RECONCILE IBKR] SNOW : bracket natif partiel (12.00 @ 283.80) → ledger synchronisé (reste 34.00)
+[2026-07-30 11:00] [RECONCILE IBKR] APD : bracket natif [PnL IBKR] soldé(e) @ 308.37 → clôturé au ledger
+[2026-07-30 11:00] [RECONCILE IBKR] MO : bracket natif [PnL IBKR] soldé(e) @ 69.77 → clôturé au ledger
+[2026-07-30 11:00] [RECONCILE IBKR] MPC : bracket natif [PnL IBKR] soldé(e) @ 304.93 → clôturé au ledger
+[2026-07-30 11:00] [RECONCILE IBKR] SHOP : bracket natif [PnL IBKR] soldé(e) @ 123.15 → clôturé au ledger
+[2026-07-30 11:00] [RECONCILE IBKR] cash réel IBKR = 97147 | ledger = 98716
+[2026-07-30 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 98716 → 97147
+[2026-07-30 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-30 11:00]   PANW: 317.78
+[2026-07-30 11:00]   V: 362.87
+[2026-07-30 11:00]   SNOW: 289.20
+[2026-07-30 11:00]   JPM: 347.88
+[2026-07-30 11:00]   JNJ: 256.09
+[2026-07-30 11:00]   ABBV: 255.93
+[2026-07-30 11:00]   RACE: 394.58
+[2026-07-30 11:00]   BNY: 154.45
+[2026-07-30 11:00]   PSX: 210.46
+[2026-07-30 11:00]   PYPL: 56.88
+[2026-07-30 11:00]   RTX: 210.51
+[2026-07-30 11:00]   VRTX: 472.67
+[2026-07-30 11:00]   SCHW: 103.46
+[2026-07-30 11:00]   BKNG: 191.69
+[2026-07-30 11:00] Screener en cours...
+[2026-07-30 11:00] [US] Univers screener enrichi de 3 idée(s) newsletters US : AMD, GOOGL, HON
+[2026-07-30 11:01] Scores : max=62  mediane=0  (156 tickers)
+[2026-07-30 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=62
+[2026-07-30 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Tech, Santé, Industrie, Conso, Semi, Finance, Macro | pénalisés: Energie
+[2026-07-30 11:01] Filtre ETF/indices (non achetables) : 12 → 11 candidats
+[2026-07-30 11:01] Prudence résultats : 3 candidat(s) écarté(s) (earnings dans ≤3j) → MA, REGN, AAPL
+[2026-07-30 11:01] 8 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-30 11:01]   [SEC 8-K] MSFT (2026-07-29) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] BAC (2026-07-24) : Autre événement matériel, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] RTX (2026-07-23) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] TMO (2026-07-23) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] V (2026-07-28) ⚠MATÉRIEL : Résultats financiers, Autre événement matériel, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] JPM (2026-07-23) : Autre événement matériel, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] JPM (2026-07-23) : Modification des statuts
+[2026-07-30 11:01]   [SEC 8-K] JNJ (2026-07-29) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] JNJ (2026-07-28) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] BNY (2026-07-23) : Modification des droits des porteurs, Modification des statuts, Autre événement matériel, États financiers & annexes
+[2026-07-30 11:01]   [SEC 8-K] PYPL (2026-07-28) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-30 11:01] [LLM news] MSFT: bullish 0.80 — Résultats Q4 supérieurs aux attentes, revenu cloud record
+[2026-07-30 11:01] [LLM news] SNOW: bearish 0.30 — Vente d'actions par un dirigeant (18,4M$)
+[2026-07-30 11:01] [LLM news] RTX: bullish 0.40 — Demande ukrainienne de 300 intercepteurs Patriot
+[2026-07-30 11:01] [LLM news] PANW: bullish 0.30 — Cyberattaque OpenAI met en avant la demande cybersécurité
+[2026-07-30 11:01] [LLM news] V: bullish 0.70 — Résultats trimestriels Q3 supérieurs aux attentes
+[2026-07-30 11:01] [LLM news] JNJ: bullish 0.40 — Accord stratégique avec Sail Biomedicines
+[2026-07-30 11:01] [LLM news] RACE: bullish 0.60 — Relèvement des perspectives 2026 malgré un manque au T2
+[2026-07-30 11:01] [LLM news] BNY: bullish 0.30 — Migration de 8,6 billions $ d'actifs fonds vers la blockchain
+[2026-07-30 11:01] [LLM news] PYPL: bullish 0.30 — Spéculation sur un possible rachat (takeout target)
+[2026-07-30 11:01] [LLM news] VRTX: bullish 0.40 — Partenariat avec AbCellera sur les T-cell engagers
+[2026-07-30 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-30 11:01] Cash deployable cette semaine : 95204 EUR  (max trades/j : 2)
+[2026-07-30 11:01] ────────────────────────────────────────────────────
+[2026-07-30 11:01]   DÉBAT : MSFT
+[2026-07-30 11:01] ────────────────────────────────────────────────────
+[2026-07-30 11:01]   🟢 BULL [conviction=67 → effectif=59 (−8 annulés)] → ACHETER
+[2026-07-30 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-30 11:01]      • Prix au-dessus EMA200 (407.14) — tendance long terme haussière
+[2026-07-30 11:01]      • Score haussier correct (59/100)
+[2026-07-30 11:01]      • Momentum 10j fort (+10.9%) — tendance confirmée
+[2026-07-30 11:01]      • Volume fort (1.8× la moyenne) — intérêt institutionnel
+[2026-07-30 11:01] 
+[2026-07-30 11:01]   🔴 BEAR [concern=54] → ÉVITER
+[2026-07-30 11:01]      • SPY sous EMA50 — marché en correction
+[2026-07-30 11:01]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-07-30 11:01]      • RSI suracheté (72)
+[2026-07-30 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-30 11:01]      • Score baissier modéré (29 pts)
+[2026-07-30 11:01] 
+[2026-07-30 11:01]   ✅ ARBITRE → ACHETER  (net=+27)
+[2026-07-30 11:01]      Arguments haussiers l'emportent clairement (conviction=59, concern=54, net=+27)
+[2026-07-30 11:01] ────────────────────────────────────────────────────
+[2026-07-30 11:01]   [ACHAT] MSFT score=45 bull=67 bear=54 prix=444.64 investi=13344EUR SL=413.76 TP1=467.80
+[2026-07-30 11:01] ────────────────────────────────────────────────────
+[2026-07-30 11:01]   DÉBAT : MPC
+[2026-07-30 11:01] ────────────────────────────────────────────────────
+[2026-07-30 11:01]   🟢 BULL [conviction=57] → ACHETER
+[2026-07-30 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-30 11:01]      • Prix au-dessus EMA200 (231.20) — tendance long terme haussière
+[2026-07-30 11:01]      • Score haussier correct (66/100)
+[2026-07-30 11:01]      • Stoch RSI survendu (3) — retournement imminent
+[2026-07-30 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-30 11:01] 
+[2026-07-30 11:01]   🔴 BEAR [concern=41] → PRUDENCE
+[2026-07-30 11:01]      • SPY sous EMA50 — marché en correction
+[2026-07-30 11:01]      • RSI suracheté (71)
+[2026-07-30 11:01]      • Score baissier modéré (28 pts)
+[2026-07-30 11:01]      • Exposition modérée (69%) — prudence sur les ajouts
+[2026-07-30 11:01]      • Volume faible (0.3× moyenne)
+[2026-07-30 11:01] 
+[2026-07-30 11:01]   ✅ ARBITRE → ACHETER  (net=+32)
+[2026-07-30 11:01]      Arguments haussiers l'emportent clairement (conviction=57, concern=41, net=+32)
+[2026-07-30 11:01] ────────────────────────────────────────────────────
+[2026-07-30 11:01]   [ACHAT] MPC score=52 bull=57 bear=41 prix=313.08 investi=13475EUR SL=295.26 TP1=326.44
+[2026-07-30 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-30 11:01] ----------------------------------------
+[2026-07-30 11:01] RESUME : valeur=269678.89 EUR  investi=200230.85 EUR  cash=70326.96 EUR  expo=73.9%  positions=16
+[2026-07-30 11:01] ----------------------------------------
+[2026-07-30 11:01] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-07-30 11:01]   [MOMENTUM] VK.PA: 20.80
+[2026-07-30 11:01]   [MOMENTUM] BIM.PA: 72.10
+[2026-07-30 11:01]   [MOMENTUM] AI.PA: 172.70
+[2026-07-30 11:01]   [MOMENTUM] AIR.PA: 203.95
+[2026-07-30 11:01]   [MOMENTUM] LR.PA: 131.00
+[2026-07-30 11:01]   [MOMENTUM] PUB.PA: 93.02
+[2026-07-30 11:01]   [MOMENTUM] ML.PA: 34.74
+[2026-07-30 11:01]   [MOMENTUM] URW.PA: 104.90
+[2026-07-30 11:01]   [MOMENTUM] SAF.PA: 342.10
+[2026-07-30 11:01]   [MOMENTUM] KER.PA: 288.45
+[2026-07-30 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-07-30 11:01] [MOMENTUM] valeur=10298.79€  cash=670.64€  positions=10  PnL=+255.78€
+[2026-07-30 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr

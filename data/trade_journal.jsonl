@@ -10,3 +10,14 @@
 {"execId": "00025b49.6a6f2162.01.01", "time": "2026-07-28 16:51:18", "symbol": "SCHW", "side": "BOT", "qty": 105.0, "price": 106.05, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b49.6a6f2163.01.01", "time": "2026-07-28 16:51:18", "symbol": "SCHW", "side": "BOT", "qty": 100.0, "price": 106.05, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b49.6a6f2172.01.01", "time": "2026-07-28 16:51:22", "symbol": "SHOP", "side": "BOT", "qty": 101.0, "price": 133.97, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a70afd5.01.01", "time": "2026-07-29 15:02:25", "symbol": "PYPL", "side": "BOT", "qty": 136.0, "price": 58.42, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a70afdd.01.01", "time": "2026-07-29 15:02:26", "symbol": "PYPL", "side": "BOT", "qty": 100.0, "price": 58.42, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a6a6e3f.01.01", "time": "2026-07-29 15:02:27", "symbol": "BKNG", "side": "BOT", "qty": 20.0, "price": 199.28, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a6a6e40.01.01", "time": "2026-07-29 15:02:27", "symbol": "BKNG", "side": "BOT", "qty": 10.0, "price": 199.283333, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a6a6e43.01.01", "time": "2026-07-29 15:02:27", "symbol": "BKNG", "side": "BOT", "qty": 39.0, "price": 199.287101, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a718120.01.01", "time": "2026-07-29 18:44:16", "symbol": "SNOW", "side": "SLD", "qty": 12.0, "price": 291.71, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6a73ee72.01.01", "time": "2026-07-30 13:30:18", "symbol": "MPC", "side": "SLD", "qty": 41.0, "price": 304.93, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a6baeed.01.01", "time": "2026-07-30 13:30:43", "symbol": "APD", "side": "SLD", "qty": 45.0, "price": 308.37, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6a74010a.01.01", "time": "2026-07-30 13:31:36", "symbol": "MO", "side": "SLD", "qty": 110.0, "price": 69.81, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b2d23bd.01.01", "time": "2026-07-30 13:31:37", "symbol": "MO", "side": "SLD", "qty": 65.0, "price": 69.694857, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a72c353.01.01", "time": "2026-07-30 14:30:01", "symbol": "SHOP", "side": "SLD", "qty": 101.0, "price": 123.15, "commission": 0.0, "realized_pnl": 0.0}
