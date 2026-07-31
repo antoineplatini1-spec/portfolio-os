@@ -12352,3 +12352,189 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-07-30 11:01] [MOMENTUM] 2 signal(s) newsletter...
 [2026-07-30 11:01] [MOMENTUM] valeur=10298.79€  cash=670.64€  positions=10  PnL=+255.78€
 [2026-07-30 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-07-31 11:00] ============================================================
+[2026-07-31 11:00] SCAN JOURNALIER - 2026-07-31
+[2026-07-31 11:00] ============================================================
+[2026-07-31 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-07-31 11:00]   Date     : 2026-07-31  [imap]
+[2026-07-31 11:00]   CAC 40   : BEARISH
+[2026-07-31 11:00]   Valeurs  :
+[2026-07-31 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-07-31 11:00]     ✅ Legrand (Industrie) → BUY
+[2026-07-31 11:00]     ✅ Bouygues (Industrie) → BUY
+[2026-07-31 11:00]     ✅ Orange (Telecoms) → BUY
+[2026-07-31 11:00]     ✅ Iliad (Telecoms) → BUY
+[2026-07-31 11:00]   Macro    : market_caution
+[2026-07-31 11:00]   Secteurs : Industrie:+2, Telecoms:+2, Tech:-1
+[2026-07-31 11:00] ───────────────────────────────────────────────────────
+[2026-07-31 11:00] [LLM] Biais sectoriel = LLM : Industrie:+2, Telecoms:+2
+[2026-07-31 11:00] [LLM] Trades momentum = LLM (3) : Bouygues:BUY, Publicis:BUY, Legrand:BUY
+[2026-07-31 11:00] [US] Barchart «Here Are the Numbers That Matter in =?ut» → secteur {'Tech': -1} | idées: MSFT, META, GOOGL, TSLA, AMZN
+[2026-07-31 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Tech': 1, 'Finance': 1, 'Conso': 1, 'Industrie': 1, 'Semi': 2} | idées: GOOGL
+[2026-07-31 11:00] ══════════════════════════════════════════════
+[2026-07-31 11:00]   AGENT MACRO — 2026-07-31
+[2026-07-31 11:00] ══════════════════════════════════════════════
+[2026-07-31 11:00]   Régime marché  : BULL
+[2026-07-31 11:00]   SPY vs EMA200  : +5.7%
+[2026-07-31 11:00]   VIX            : 17.5 (LOW)
+[2026-07-31 11:00]   Max trades/j   : 3
+[2026-07-31 11:00]   Seuil net min  : 10
+[2026-07-31 11:00]   Top secteurs   : Energie, Finance, Telecoms
+[2026-07-31 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-07-31 11:00]   Rationale      : Marché haussier (SPY +5.7% vs EMA200). Exposition maximale autorisée.
+[2026-07-31 11:00] ══════════════════════════════════════════════
+[2026-07-31 11:00] [RECONCILE IBKR] cash réel IBKR = 73861 | ledger = 70327
+[2026-07-31 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 70327 → 73861
+[2026-07-31 11:00] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-07-31 11:00]   PANW: 323.74
+[2026-07-31 11:00]   V: 363.40
+[2026-07-31 11:00]   SNOW: 295.71
+[2026-07-31 11:00]   JPM: 352.77
+[2026-07-31 11:00]   JNJ: 256.33
+[2026-07-31 11:00]   ABBV: 252.70
+[2026-07-31 11:00]   RACE: 392.00
+[2026-07-31 11:00]   BNY: 156.18
+[2026-07-31 11:00]   MPC: 312.44
+[2026-07-31 11:00]   PSX: 209.52
+[2026-07-31 11:00]   PYPL: 56.79
+[2026-07-31 11:00]   RTX: 213.54
+[2026-07-31 11:00]   VRTX: 471.60
+[2026-07-31 11:00]   SCHW: 104.43
+[2026-07-31 11:00]   BKNG: 192.47
+[2026-07-31 11:00]   MSFT: 451.31
+[2026-07-31 11:00] Screener en cours...
+[2026-07-31 11:00] [US] Univers screener enrichi de 5 idée(s) newsletters US : MSFT, META, GOOGL, TSLA, AMZN
+[2026-07-31 11:01] Scores : max=69  mediane=8  (156 tickers)
+[2026-07-31 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=69
+[2026-07-31 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Tech, Industrie, Telecoms, Finance, Conso, Semi | pénalisés: —
+[2026-07-31 11:01] Filtre ETF/indices (non achetables) : 24 → 21 candidats
+[2026-07-31 11:01] Prudence résultats : 2 candidat(s) écarté(s) (earnings dans ≤3j) → XOM, CVX
+[2026-07-31 11:01] 19 candidats pre-filtres (score>=40, R>=1.2)
+[2026-07-31 11:01]   [SEC 8-K] BAC (2026-07-24) : Autre événement matériel, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] VZ (2026-07-24) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-07-31 11:01]   [SEC 8-K] VZ (2026-07-24) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] MA (2026-07-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] AMZN (2026-07-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] PYPL (2026-07-28) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] NUE (2026-07-27) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] REGN (2026-07-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] MSFT (2026-07-29) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] V (2026-07-28) ⚠MATÉRIEL : Résultats financiers, Autre événement matériel, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] JNJ (2026-07-29) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] JNJ (2026-07-28) : Divulgation Regulation FD, États financiers & annexes
+[2026-07-31 11:01]   [SEC 8-K] ABBV (2026-07-31) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-07-31 11:01] [LLM news] BAC: bullish 0.50 — Acquisition of cybersecurity firm MDSec Consulting
+[2026-07-31 11:01] [LLM news] SNOW: bullish 0.70 — Guidance raised on AI traction
+[2026-07-31 11:01] [LLM news] VZ: neutral 0.40 — Q2 earnings results filed
+[2026-07-31 11:01] [LLM news] MA: bullish 0.50 — Q2 earnings call highlights agentic commerce push
+[2026-07-31 11:01] [LLM news] AMZN: bullish 0.70 — AWS earnings growth, trillion-dollar business potential
+[2026-07-31 11:01] [LLM news] TMO: bullish 0.60 — Q2 earnings beat estimates
+[2026-07-31 11:01] [LLM news] PYPL: neutral 0.50 — Q2 earnings results filed
+[2026-07-31 11:01] [LLM news] RTX: bullish 0.80 — Q2 beat, raised outlook, record backlog
+[2026-07-31 11:01] [LLM news] NUE: bullish 0.55 — Q2 earnings call highlights growth projects and demand
+[2026-07-31 11:01] [LLM news] REGN: neutral 0.40 — Q2 2026 earnings results
+[2026-07-31 11:01] [LLM news] HON: neutral 0.50 — First earnings as standalone company
+[2026-07-31 11:01] [LLM news] MSFT: bullish 0.75 — AI investment validated by strong results
+[2026-07-31 11:01] [LLM news] V: bullish 0.55 — Q2 earnings results filed
+[2026-07-31 11:01] [LLM news] JNJ: bullish 0.50 — CAR-T partnership and potential buyout with Sail
+[2026-07-31 11:01] [LLM news] ABBV: bearish 0.55 — Profit forecast cut due to Apogee acquisition
+[2026-07-31 11:01] [LLM news] RACE: bullish 0.70 — Q2 record revenue and raised guidance
+[2026-07-31 11:01] [LLM news] VRTX: bullish 0.65 — Vertex acquires Crinetics for $10 billion
+[2026-07-31 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-07-31 11:01] Cash deployable cette semaine : 72384 EUR  (max trades/j : 2)
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   DÉBAT : BAC
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   🟢 BULL [conviction=57] → ACHETER
+[2026-07-31 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-31 11:01]      • Prix au-dessus EMA200 (54.30) — tendance long terme haussière
+[2026-07-31 11:01]      • Score haussier correct (68/100)
+[2026-07-31 11:01]      • Stoch RSI survendu (8) — retournement imminent
+[2026-07-31 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-07-31 11:01]      • Secteur Finance très concentré (4 positions) — risque sectoriel
+[2026-07-31 11:01]      • Exposition modérée (73%) — prudence sur les ajouts
+[2026-07-31 11:01]      • Volume faible (0.1× moyenne)
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-07-31 11:01]      Arguments haussiers l'emportent clairement (conviction=57, concern=31, net=+38)
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   [VETO secteur] BAC : Finance deja a 4 positions
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   DÉBAT : AMZN
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   🟢 BULL [conviction=64] → ACHETER
+[2026-07-31 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-31 11:01]      • Prix au-dessus EMA200 (241.34) — tendance long terme haussière
+[2026-07-31 11:01]      • Score haussier correct (64/100)
+[2026-07-31 11:01]      • Momentum 10j fort (+9.6%) — tendance confirmée
+[2026-07-31 11:01]      • Croisement MACD haussier — signal d'achat
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   🔴 BEAR [concern=46] → PRUDENCE
+[2026-07-31 11:01]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-07-31 11:01]      • EMA50 en baisse (pente négative)
+[2026-07-31 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-07-31 11:01]      • Exposition modérée (73%) — prudence sur les ajouts
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   ✅ ARBITRE → ACHETER  (net=+36)
+[2026-07-31 11:01]      Arguments haussiers l'emportent clairement (conviction=64, concern=46, net=+36)
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   [ACHAT] AMZN score=55 bull=64 bear=46 prix=271.06 investi=13819EUR SL=252.21 TP1=285.20
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   DÉBAT : MA
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   🟢 BULL [conviction=56] → ACHETER
+[2026-07-31 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-31 11:01]      • Prix au-dessus EMA200 (524.30) — tendance long terme haussière
+[2026-07-31 11:01]      • Score haussier correct (58/100)
+[2026-07-31 11:01]      • CMF fort — flux acheteur dominant
+[2026-07-31 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-07-31 11:01]      • Exposition déjà élevée (78%) — risque de surconcentration
+[2026-07-31 11:01]      • Secteur Finance très concentré (4 positions) — risque sectoriel
+[2026-07-31 11:01]      • Volume faible (0.4× moyenne)
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   ✅ ARBITRE → ACHETER  (net=+30)
+[2026-07-31 11:01]      Arguments haussiers l'emportent clairement (conviction=56, concern=43, net=+30)
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   [VETO secteur] MA : Finance deja a 4 positions
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   DÉBAT : TMO
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   🟢 BULL [conviction=51] → PENCHÉ POUR
+[2026-07-31 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-07-31 11:01]      • Prix au-dessus EMA200 (523.85) — tendance long terme haussière
+[2026-07-31 11:01]      • Score haussier correct (58/100)
+[2026-07-31 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-07-31 11:01]      • Momentum 10j positif (+6.2%)
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-07-31 11:01]      • Exposition déjà élevée (78%) — risque de surconcentration
+[2026-07-31 11:01]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-07-31 11:01]      • Volume faible (0.3× moyenne)
+[2026-07-31 11:01] 
+[2026-07-31 11:01]   ✅ ARBITRE → ACHETER  (net=+25)
+[2026-07-31 11:01]      Arguments haussiers l'emportent clairement (conviction=51, concern=43, net=+25)
+[2026-07-31 11:01] ────────────────────────────────────────────────────
+[2026-07-31 11:01]   [ACHAT] TMO score=56 bull=51 bear=43 prix=565.38 investi=13578EUR SL=530.41 TP1=591.60
+[2026-07-31 11:01] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-07-31 11:01] ----------------------------------------
+[2026-07-31 11:01] RESUME : valeur=274165.77 EUR  investi=227628.80 EUR  cash=46463.45 EUR  expo=83.1%  positions=18
+[2026-07-31 11:01] ----------------------------------------
+[2026-07-31 11:01] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-07-31 11:01]   [MOMENTUM] VK.PA: 21.22
+[2026-07-31 11:01]   [MOMENTUM] BIM.PA: 70.55
+[2026-07-31 11:01]   [MOMENTUM] AI.PA: 171.30
+[2026-07-31 11:01]   [MOMENTUM] AIR.PA: 203.75
+[2026-07-31 11:01]   [MOMENTUM] LR.PA: 131.95
+[2026-07-31 11:01]   [MOMENTUM] PUB.PA: 93.84
+[2026-07-31 11:01]   [MOMENTUM] ML.PA: 34.99
+[2026-07-31 11:01]   [MOMENTUM] URW.PA: 105.35
+[2026-07-31 11:01]   [MOMENTUM] SAF.PA: 338.70
+[2026-07-31 11:01]   [MOMENTUM] KER.PA: 286.65
+[2026-07-31 11:01] [MOMENTUM] 3 signal(s) newsletter...
+[2026-07-31 11:01]   [MOMENTUM] Bouygues (EN.PA) 20.534× à 48.70€ | SL=45.70 | TPs=50.68 / 53.00 | investi=1000€
+[2026-07-31 11:01] [MOMENTUM] valeur=10309.62€  cash=167.37€  positions=10  PnL=+266.62€
+[2026-07-31 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr

@@ -23,3 +23,5 @@
 {"ts": "2026-07-29T15:02:27.973998+00:00", "ticker": "BKNG", "features": {"momentum": 48.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 48.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 51.0}
 {"ts": "2026-07-30T15:01:48.517603+00:00", "ticker": "MSFT", "features": {"momentum": 45.0, "sector": 2.0, "news": 0.8, "conviction": 0.0}, "contrib": {"momentum": 45.0, "sector": 6.0, "news": 6.4, "conviction": 0.0}, "total": 57.4}
 {"ts": "2026-07-30T15:01:50.085498+00:00", "ticker": "MPC", "features": {"momentum": 52.0, "sector": -1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 52.0, "sector": -3.0, "news": 0.0, "conviction": 0.0}, "total": 49.0}
+{"ts": "2026-07-31T15:01:43.652595+00:00", "ticker": "AMZN", "features": {"momentum": 55.0, "sector": 1.0, "news": 0.7, "conviction": 1.0}, "contrib": {"momentum": 55.0, "sector": 3.0, "news": 5.6, "conviction": 5.0}, "total": 68.6}
+{"ts": "2026-07-31T15:01:45.081783+00:00", "ticker": "TMO", "features": {"momentum": 56.0, "sector": 0.0, "news": 0.6, "conviction": 0.0}, "contrib": {"momentum": 56.0, "sector": 0.0, "news": 4.8, "conviction": 0.0}, "total": 60.8}

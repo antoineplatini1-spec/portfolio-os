@@ -21,3 +21,5 @@
 {"execId": "00025b45.6a74010a.01.01", "time": "2026-07-30 13:31:36", "symbol": "MO", "side": "SLD", "qty": 110.0, "price": 69.81, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6b2d23bd.01.01", "time": "2026-07-30 13:31:37", "symbol": "MO", "side": "SLD", "qty": 65.0, "price": 69.694857, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b49.6a72c353.01.01", "time": "2026-07-30 14:30:01", "symbol": "SHOP", "side": "SLD", "qty": 101.0, "price": 123.15, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b2e1dcc.01.01", "time": "2026-07-30 15:01:48", "symbol": "MSFT", "side": "BOT", "qty": 30.0, "price": 444.81, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6a74c73c.01.01", "time": "2026-07-30 15:01:50", "symbol": "MPC", "side": "BOT", "qty": 43.0, "price": 313.38, "commission": 0.0, "realized_pnl": 0.0}
