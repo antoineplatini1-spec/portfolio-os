@@ -12538,3 +12538,186 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-07-31 11:01]   [MOMENTUM] Bouygues (EN.PA) 20.534× à 48.70€ | SL=45.70 | TPs=50.68 / 53.00 | investi=1000€
 [2026-07-31 11:01] [MOMENTUM] valeur=10309.62€  cash=167.37€  positions=10  PnL=+266.62€
 [2026-07-31 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-08-03 11:01] ============================================================
+[2026-08-03 11:01] SCAN JOURNALIER - 2026-08-03
+[2026-08-03 11:01] ============================================================
+[2026-08-03 11:01] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-08-03 11:01]   Date     : 2026-08-03  [imap]
+[2026-08-03 11:01]   CAC 40   : NEUTRAL
+[2026-08-03 11:01]   Valeurs  :
+[2026-08-03 11:01]     ⚠️ Ses (Tech) → CAUTION
+[2026-08-03 11:01]     🔴 Renault (Conso) → SELL
+[2026-08-03 11:01]   Macro    : market_caution
+[2026-08-03 11:01]   Secteurs : Tech:-1, Conso:-1
+[2026-08-03 11:01] ───────────────────────────────────────────────────────
+[2026-08-03 11:02] [LLM] Biais sectoriel = LLM : Tech:-1, Conso:-1
+[2026-08-03 11:02] [LLM] Trades momentum = LLM (1) : Renault:BUY
+[2026-08-03 11:02] [US] Barchart «=?utf-8?Q?Here=E2=80=99s?= What Magnific» → secteur — | idées: MSFT, GOOGL, META, AMZN, TSLA
+[2026-08-03 11:02] [US] The Transcript «Reaction Functions» → secteur — | idées: —
+[2026-08-03 11:02] ══════════════════════════════════════════════
+[2026-08-03 11:02]   AGENT MACRO — 2026-08-03
+[2026-08-03 11:02] ══════════════════════════════════════════════
+[2026-08-03 11:02]   Régime marché  : BULL
+[2026-08-03 11:02]   SPY vs EMA200  : +7.5%
+[2026-08-03 11:02]   VIX            : 15.8 (LOW)
+[2026-08-03 11:02]   Max trades/j   : 3
+[2026-08-03 11:02]   Seuil net min  : 10
+[2026-08-03 11:02]   Top secteurs   : Energie
+[2026-08-03 11:02]   Secteurs auth. : TOUS (régime favorable)
+[2026-08-03 11:02]   Rationale      : Marché haussier (SPY +7.5% vs EMA200). Exposition maximale autorisée.
+[2026-08-03 11:02] ══════════════════════════════════════════════
+[2026-08-03 11:02] [RECONCILE IBKR] SNOW : bracket natif partiel (16.00 @ 308.23) → ledger synchronisé (reste 18.00)
+[2026-08-03 11:02] [RECONCILE IBKR] MSFT : bracket natif [PnL IBKR] soldé(e) @ 477.81 → clôturé au ledger
+[2026-08-03 11:02] [RECONCILE IBKR] AMZN : bracket natif [PnL IBKR] soldé(e) @ 285.20 → clôturé au ledger
+[2026-08-03 11:02] [RECONCILE IBKR] cash réel IBKR = 79530 | ledger = 80275
+[2026-08-03 11:02] [RECONCILE IBKR] cash ledger seedé sur IBKR : 80275 → 79530
+[2026-08-03 11:02] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-08-03 11:02]   PANW: 336.62
+[2026-08-03 11:02]   V: 366.09
+[2026-08-03 11:02]   SNOW: 310.18
+[2026-08-03 11:02]   JPM: 352.87
+[2026-08-03 11:02]   JNJ: 252.61
+[2026-08-03 11:02]   ABBV: 245.97
+[2026-08-03 11:02]   RACE: 398.88
+[2026-08-03 11:02]   BNY: 155.04
+[2026-08-03 11:02]   MPC: 316.13
+[2026-08-03 11:02]   PSX: 210.20
+[2026-08-03 11:02]   PYPL: 57.54
+[2026-08-03 11:02]   RTX: 215.65
+[2026-08-03 11:02]   VRTX: 471.27
+[2026-08-03 11:02]   SCHW: 105.79
+[2026-08-03 11:02]   BKNG: 192.12
+[2026-08-03 11:02]   TMO: 576.78
+[2026-08-03 11:02] Screener en cours...
+[2026-08-03 11:02] [US] Univers screener enrichi de 5 idée(s) newsletters US : MSFT, GOOGL, META, AMZN, TSLA
+[2026-08-03 11:03] Scores : max=69  mediane=10  (156 tickers)
+[2026-08-03 11:03] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=69
+[2026-08-03 11:03] Bonus sectoriel appliqué (±3pts/unité) — favorisés: — | pénalisés: Tech, Conso
+[2026-08-03 11:03] Filtre ETF/indices (non achetables) : 44 → 34 candidats
+[2026-08-03 11:03] Prudence résultats : 8 candidat(s) écarté(s) (earnings dans ≤3j) → NET, DDOG, MPC, PSX, BKNG, OXY, EOG, COP
+[2026-08-03 11:03] 26 candidats pre-filtres (score>=40, R>=1.2)
+[2026-08-03 11:03]   [SEC 8-K] PYPL (2026-07-28) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] AMZN (2026-07-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] REGN (2026-07-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] MA (2026-07-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] XOM (2026-07-31) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD
+[2026-08-03 11:03]   [SEC 8-K] CVX (2026-07-31) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] MSFT (2026-07-29) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] NUE (2026-07-27) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] V (2026-07-28) ⚠MATÉRIEL : Résultats financiers, Autre événement matériel, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] JNJ (2026-07-29) : Divulgation Regulation FD, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] JNJ (2026-07-28) : Divulgation Regulation FD, États financiers & annexes
+[2026-08-03 11:03]   [SEC 8-K] ABBV (2026-07-31) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-03 11:04] [LLM news] AMZN: bullish 0.60 — Hausse des dépenses IA, meilleure séance depuis des années
+[2026-08-03 11:04] [LLM news] REGN: bullish 0.60 — Résultats Q2: progrès pipeline et momentum produits
+[2026-08-03 11:04] [LLM news] CRM: bullish 0.60 — Contrat gouvernemental VA de 1,6 Md$
+[2026-08-03 11:04] [LLM news] MA: bullish 0.65 — Résultats Q2 2026: forte croissance du chiffre d'affaires
+[2026-08-03 11:04] [LLM news] VZ: bullish 0.50 — Financement fibre de 1,5 Md$ par Bain et Tillman
+[2026-08-03 11:04] [LLM news] XOM: bullish 0.75 — Bénéfice trimestriel de 14,5 Md$, production record sur 20 ans
+[2026-08-03 11:04] [LLM news] COF: bearish 0.50 — Fermeture de 300+ comptes Trump Organization après enquête AML
+[2026-08-03 11:04] [LLM news] MSFT: neutral 0.40 — Publication des résultats trimestriels (8-K)
+[2026-08-03 11:04] [LLM news] NUE: bullish 0.50 — Renforcement lié aux mesures commerciales (tarifs)
+[2026-08-03 11:04] [LLM news] HON: bullish 0.65 — Forte hausse du BPA et dividende après résultats Q2 2026
+[2026-08-03 11:04] [LLM news] V: bullish 0.70 — Acquisition de BioCatch pour 2,4 Md$
+[2026-08-03 11:04] [LLM news] JPM: bullish 0.50 — Engagement de 750 Md$ dans le logement sur 10 ans
+[2026-08-03 11:04] [LLM news] JNJ: bullish 0.50 — Lancement du système chirurgical robotique OTTAVA
+[2026-08-03 11:04] [LLM news] ABBV: bearish 0.55 — Résultats trimestriels au-delà des attentes mais guidance abaissée pour financer une acquisition
+[2026-08-03 11:04] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-08-03 11:04] Cash deployable cette semaine : 77939 EUR  (max trades/j : 2)
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   DÉBAT : AMZN
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   🟢 BULL [conviction=62] → ACHETER
+[2026-08-03 11:04]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-03 11:04]      • Prix au-dessus EMA200 (240.53) — tendance long terme haussière
+[2026-08-03 11:04]      • Score haussier correct (66/100)
+[2026-08-03 11:04]      • Momentum 10j fort (+13.7%) — tendance confirmée
+[2026-08-03 11:04]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   🔴 BEAR [concern=26] → OK
+[2026-08-03 11:04]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-08-03 11:04]      • Prix au-dessus BB supérieure (surachat)
+[2026-08-03 11:04]      • Exposition modérée (71%) — prudence sur les ajouts
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-08-03 11:04]      Arguments haussiers l'emportent clairement (conviction=62, concern=26, net=+46)
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   [ACHAT] AMZN score=63 bull=62 bear=26 prix=284.30 investi=13933EUR SL=264.41 TP1=299.22
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   DÉBAT : REGN
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   🟢 BULL [conviction=67] → ACHETER
+[2026-08-03 11:04]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-03 11:04]      • Prix au-dessus EMA200 (710.14) — tendance long terme haussière
+[2026-08-03 11:04]      • Score haussier correct (68/100)
+[2026-08-03 11:04]      • Momentum 10j fort (+13.6%) — tendance confirmée
+[2026-08-03 11:04]      • CMF fort — flux acheteur dominant
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   🔴 BEAR [concern=69] → ÉVITER
+[2026-08-03 11:04]      • Exposition déjà élevée (76%) — risque de surconcentration
+[2026-08-03 11:04]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-08-03 11:04]      • Stoch RSI suracheté (100) — retournement baissier possible
+[2026-08-03 11:04]      • RSI suracheté (82)
+[2026-08-03 11:04]      • Prix au-dessus BB supérieure (surachat)
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   ✅ ARBITRE → ACHETER  (net=+26)
+[2026-08-03 11:04]      Arguments haussiers l'emportent clairement (conviction=67, concern=69, net=+26)
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   [VETO secteur] REGN : Santé deja a 4 positions
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   DÉBAT : MA
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   🟢 BULL [conviction=56] → ACHETER
+[2026-08-03 11:04]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-03 11:04]      • Prix au-dessus EMA200 (523.49) — tendance long terme haussière
+[2026-08-03 11:04]      • Score haussier correct (58/100)
+[2026-08-03 11:04]      • CMF fort — flux acheteur dominant
+[2026-08-03 11:04]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-08-03 11:04]      • Exposition déjà élevée (76%) — risque de surconcentration
+[2026-08-03 11:04]      • Secteur Finance très concentré (4 positions) — risque sectoriel
+[2026-08-03 11:04]      • Volume faible (0.3× moyenne)
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   ✅ ARBITRE → ACHETER  (net=+30)
+[2026-08-03 11:04]      Arguments haussiers l'emportent clairement (conviction=56, concern=43, net=+30)
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   [VETO secteur] MA : Finance deja a 4 positions
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   DÉBAT : CRM
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   🟢 BULL [conviction=67] → ACHETER
+[2026-08-03 11:04]      • R-ratio solide (2.8×) — risque/récompense favorable
+[2026-08-03 11:04]      • Prix au-dessus EMA200 (181.99) — tendance long terme haussière
+[2026-08-03 11:04]      • Score haussier correct (61/100)
+[2026-08-03 11:04]      • Momentum 10j fort (+8.1%) — tendance confirmée
+[2026-08-03 11:04]      • CMF fort — flux acheteur dominant
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-08-03 11:04]      • Exposition déjà élevée (76%) — risque de surconcentration
+[2026-08-03 11:04]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-08-03 11:04]      • Volume faible (0.3× moyenne)
+[2026-08-03 11:04] 
+[2026-08-03 11:04]   ✅ ARBITRE → ACHETER  (net=+41)
+[2026-08-03 11:04]      Arguments haussiers l'emportent clairement (conviction=67, concern=43, net=+41)
+[2026-08-03 11:04] ────────────────────────────────────────────────────
+[2026-08-03 11:04]   [ACHAT] CRM score=59 bull=67 bear=43 prix=187.86 investi=13897EUR SL=172.83 TP1=200.56
+[2026-08-03 11:04] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-08-03 11:04] ----------------------------------------
+[2026-08-03 11:04] RESUME : valeur=276466.09 EUR  investi=223892.01 EUR  cash=51699.85 EUR  expo=81.3%  positions=18
+[2026-08-03 11:04] ----------------------------------------
+[2026-08-03 11:04] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-08-03 11:04]   [MOMENTUM] VK.PA: 18.77
+[2026-08-03 11:04]   [MOMENTUM] AI.PA: 171.18
+[2026-08-03 11:04]   [MOMENTUM] AIR.PA: 208.45
+[2026-08-03 11:04]   [MOMENTUM] LR.PA: 134.45
+[2026-08-03 11:04]   [MOMENTUM] PUB.PA: 93.80
+[2026-08-03 11:04]   [MOMENTUM] ML.PA: 35.07
+[2026-08-03 11:04]   [MOMENTUM] URW.PA: 104.80
+[2026-08-03 11:04]   [MOMENTUM] SAF.PA: 350.80
+[2026-08-03 11:04]   [MOMENTUM] KER.PA: 287.90
+[2026-08-03 11:04]   [MOMENTUM] EN.PA: 49.42
+[2026-08-03 11:04] [MOMENTUM] 1 signal(s) newsletter...
+[2026-08-03 11:04]   [MOMENTUM] Renault (RNO.PA) 35.026× à 28.55€ | SL=24.66 | TPs=28.80 / 29.43 / 30.21 / 31.32 / 32.42 / 32.83 | investi=1000€
+[2026-08-03 11:04] [MOMENTUM] valeur=10283.35€  cash=75.54€  positions=10  PnL=+240.35€
+[2026-08-03 11:04] [EMAIL] Envoye a antoine.platini@outlook.fr

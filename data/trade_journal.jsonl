@@ -23,3 +23,5 @@
 {"execId": "00025b49.6a72c353.01.01", "time": "2026-07-30 14:30:01", "symbol": "SHOP", "side": "SLD", "qty": 101.0, "price": 123.15, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6b2e1dcc.01.01", "time": "2026-07-30 15:01:48", "symbol": "MSFT", "side": "BOT", "qty": 30.0, "price": 444.81, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b45.6a74c73c.01.01", "time": "2026-07-30 15:01:50", "symbol": "MPC", "side": "BOT", "qty": 43.0, "price": 313.38, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a6df5e7.01.01", "time": "2026-07-31 15:01:43", "symbol": "AMZN", "side": "BOT", "qty": 51.0, "price": 270.97, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b46.6a6c6be7.01.01", "time": "2026-07-31 15:01:45", "symbol": "TMO", "side": "BOT", "qty": 24.0, "price": 565.77, "commission": 0.0, "realized_pnl": 0.0}

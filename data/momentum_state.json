@@ -1,5 +1,5 @@
 {
-  "cash": 167.37209743901246,
+  "cash": 75.54444608982647,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -7,15 +7,15 @@
       "ticker": "VK.PA",
       "entry_price": 20.650629159927366,
       "qty_total": 48.473099402823266,
-      "qty_remaining": 48.473099402823266,
+      "qty_remaining": 0.0,
       "sl": 19.185899219512937,
       "trailing_stop": false,
       "trailing_stop_price": 20.650629159927366,
       "entry_date": "2026-07-09",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 18.756224618911745,
+      "close_date": "2026-08-03",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -74,7 +74,7 @@
       "ticker": "BIM.PA",
       "entry_price": 70.87080305480956,
       "qty_total": 14.124293176498275,
-      "qty_remaining": 0.0,
+      "qty_remaining": 14.124293176498275,
       "sl": 65.84400283813476,
       "trailing_stop": true,
       "trailing_stop_price": 71.20249710083007,
@@ -397,6 +397,63 @@
         }
       ],
       "partial_fills": []
+    },
+    "RNO.PA": {
+      "ticker": "RNO.PA",
+      "entry_price": 28.578549236297604,
+      "qty_total": 35.02627063828104,
+      "qty_remaining": 35.02627063828104,
+      "sl": 24.66,
+      "trailing_stop": false,
+      "trailing_stop_price": 28.578549236297604,
+      "entry_date": "2026-08-03",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 28.8,
+          "sell_pct": 0.16666666666666666,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 29.43,
+          "sell_pct": 0.16666666666666666,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 30.21,
+          "sell_pct": 0.16666666666666666,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 31.32,
+          "sell_pct": 0.16666666666666666,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 32.42,
+          "sell_pct": 0.16666666666666666,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 32.83,
+          "sell_pct": 0.16666666666666666,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [
@@ -419,20 +476,31 @@
       "close_reason": "SL",
       "entry_date": "2026-07-10",
       "close_date": "2026-07-31"
+    },
+    {
+      "ticker": "VK.PA",
+      "entry_price": 20.650629159927366,
+      "close_price": 18.756224618911745,
+      "qty": 48.473099402823266,
+      "pnl": -91.8277,
+      "close_reason": "SL",
+      "entry_date": "2026-07-09",
+      "close_date": "2026-08-03"
     }
   ],
   "last_prices": {
-    "VK.PA": 21.219999313354492,
+    "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 171.3000030517578,
-    "AIR.PA": 203.75,
-    "LR.PA": 131.9499969482422,
-    "PUB.PA": 93.83999633789062,
-    "ML.PA": 34.9900016784668,
+    "AI.PA": 171.17999267578125,
+    "AIR.PA": 208.4499969482422,
+    "LR.PA": 134.4499969482422,
+    "PUB.PA": 93.80000305175781,
+    "ML.PA": 35.06999969482422,
     "HO.PA": 249.3000030517578,
-    "URW.PA": 105.3499984741211,
-    "SAF.PA": 338.70001220703125,
-    "KER.PA": 286.6499938964844
+    "URW.PA": 104.80000305175781,
+    "SAF.PA": 350.79998779296875,
+    "KER.PA": 287.8999938964844,
+    "EN.PA": 49.41999816894531
   }
 }
