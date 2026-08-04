@@ -1,16 +1,16 @@
 {
-  "cash": 51699.850000000006,
+  "cash": 40390.96,
   "initial_cash": 250000.0,
   "reserve_cash": 0.0,
   "start_date": "2026-07-11",
-  "weekly_deployed": 27829.86,
+  "weekly_deployed": 55757.99,
   "week_start": "2026-08-03",
   "positions": {
     "PANW": {
       "ticker": "PANW",
       "entry_price": 327.55,
       "qty_total": 38.0,
-      "qty_remaining": 28.0,
+      "qty_remaining": 21.0,
       "sl": 301.37,
       "trailing_stop": false,
       "trailing_stop_price": 327.55,
@@ -27,8 +27,8 @@
         {
           "price": 347.23,
           "sell_pct": 0.25,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-08-04"
         },
         {
           "price": 366.89,
@@ -49,6 +49,12 @@
           "qty": 10.0,
           "price": 353.04,
           "reason": "TP1"
+        },
+        {
+          "date": "2026-08-04",
+          "qty": 7.0,
+          "price": 336.6235046386719,
+          "reason": "TP"
         }
       ]
     },
@@ -586,15 +592,15 @@
       "ticker": "PSX",
       "entry_price": 213.85,
       "qty_total": 61.0,
-      "qty_remaining": 61.0,
+      "qty_remaining": 0.0,
       "sl": 202.2408,
       "trailing_stop": false,
       "trailing_stop_price": 213.85,
       "entry_date": "2026-07-22",
       "fees_in": 0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 201.96,
+      "close_date": "2026-08-04",
       "entry_score": 62,
       "entry_atr": 5.5346,
       "fees_out": 0.0,
@@ -898,7 +904,7 @@
       "ticker": "MSFT",
       "entry_price": 444.81,
       "qty_total": 30.0,
-      "qty_remaining": 0.0,
+      "qty_remaining": 30.0,
       "sl": 413.7633,
       "trailing_stop": false,
       "trailing_stop_price": 444.81,
@@ -1043,6 +1049,84 @@
         },
         {
           "price": 230.19650000000001,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "NUE": {
+      "ticker": "NUE",
+      "entry_price": 266.89,
+      "qty_total": 53.0,
+      "qty_remaining": 53.0,
+      "sl": 248.74319999999997,
+      "trailing_stop": false,
+      "trailing_stop_price": 266.89,
+      "entry_date": "2026-08-04",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 65,
+      "entry_atr": 8.1109,
+      "fees_out": 0.0,
+      "bracket_oca": "br_NUE_1785855713",
+      "tp_levels": [
+        {
+          "price": 277.13135,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 289.29769999999996,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 305.5195,
+          "sell_pct": 0.4,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "CVX": {
+      "ticker": "CVX",
+      "entry_price": 191.43,
+      "qty_total": 72.0,
+      "qty_remaining": 72.0,
+      "sl": 182.3304,
+      "trailing_stop": false,
+      "trailing_stop_price": 191.43,
+      "entry_date": "2026-08-04",
+      "fees_in": 0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 53,
+      "entry_atr": 4.4898,
+      "fees_out": 0.0,
+      "bracket_oca": "br_CVX_1785855715",
+      "tp_levels": [
+        {
+          "price": 198.0447,
+          "sell_pct": 0.25,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 204.7794,
+          "sell_pct": 0.35,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 213.75900000000001,
           "sell_pct": 0.4,
           "hit": false,
           "hit_date": ""
@@ -1194,6 +1278,18 @@
       "entry_date": "2026-07-31",
       "close_date": "2026-08-03",
       "pnl_source": "ibkr_realized"
+    },
+    {
+      "ticker": "PSX",
+      "entry_price": 213.85,
+      "close_price": 201.96,
+      "qty": 61.0,
+      "pnl": 0.0,
+      "fees_total": 0.0,
+      "close_reason": "BRACKET",
+      "entry_date": "2026-07-22",
+      "close_date": "2026-08-04",
+      "pnl_source": "ibkr_realized"
     }
   ],
   "last_prices": {
@@ -1202,7 +1298,7 @@
     "MS": 222.1300048828125,
     "ON": 86.87999725341797,
     "NUE": 233.83999633789062,
-    "MPC": 316.1300048828125,
+    "MPC": 313.1300964355469,
     "BIIB": 198.91000366210938,
     "CAT": 938.3900146484375,
     "DDOG": 269.0,
@@ -1212,7 +1308,7 @@
     "CIBR": 94.26000213623047,
     "HACK": 111.87999725341797,
     "AMD": 546.719970703125,
-    "SNOW": 310.17999267578125,
+    "SNOW": 314.2850036621094,
     "EOG": 131.47999572753906,
     "PM": 181.1699981689453,
     "GS": 1055.969970703125,
@@ -1222,37 +1318,39 @@
     "TLT": 85.46600341796875,
     "HYG": 79.75,
     "GE": 359.0400085449219,
-    "PANW": 336.6235046386719,
+    "PANW": 359.4800109863281,
     "CRWD": 192.2696990966797,
-    "ABBV": 245.97000122070312,
+    "ABBV": 245.26950073242188,
     "ARKG": 43.0,
     "AMAT": 588.6599731445312,
     "KLAC": 229.52000427246094,
     "LRCX": 326.1300048828125,
     "XBI": 164.27999877929688,
-    "JPM": 352.8699951171875,
+    "JPM": 362.3599853515625,
     "MO": 75.46499633789062,
     "WFC": 86.91000366210938,
     "KO": 82.62999725341797,
     "DE": 592.9000244140625,
-    "RTX": 215.64500427246094,
+    "RTX": 216.39999389648438,
     "ASML": 1804.25,
-    "V": 366.085205078125,
-    "JNJ": 252.61000061035156,
+    "V": 367.7767028808594,
+    "JNJ": 253.3300018310547,
     "MRK": 126.40599822998047,
-    "RACE": 398.8800048828125,
+    "RACE": 400.8800048828125,
     "MA": 536.280029296875,
-    "BNY": 155.03500366210938,
+    "BNY": 158.6199951171875,
     "AAPL": 329.95001220703125,
     "PSX": 210.1999969482422,
-    "PYPL": 57.540000915527344,
+    "PYPL": 58.06999969482422,
     "APD": 292.7349853515625,
-    "VRTX": 471.2699890136719,
-    "SCHW": 105.78500366210938,
+    "VRTX": 479.3500061035156,
+    "SCHW": 106.11499786376953,
     "SHOP": 129.4600067138672,
-    "BKNG": 192.1199951171875,
+    "BKNG": 193.55999755859375,
     "MSFT": 451.30999755859375,
-    "TMO": 576.7750244140625
+    "TMO": 564.719970703125,
+    "AMZN": 277.4750061035156,
+    "CRM": 188.83999633789062
   },
-  "peak_value": 276466.0928024
+  "peak_value": 278999.92186450004
 }

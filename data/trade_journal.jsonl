@@ -25,3 +25,10 @@
 {"execId": "00025b45.6a74c73c.01.01", "time": "2026-07-30 15:01:50", "symbol": "MPC", "side": "BOT", "qty": 43.0, "price": 313.38, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000e0d5.6a6df5e7.01.01", "time": "2026-07-31 15:01:43", "symbol": "AMZN", "side": "BOT", "qty": 51.0, "price": 270.97, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b46.6a6c6be7.01.01", "time": "2026-07-31 15:01:45", "symbol": "TMO", "side": "BOT", "qty": 24.0, "price": 565.77, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6a7841a0.01.01", "time": "2026-08-03 13:30:14", "symbol": "MSFT", "side": "SLD", "qty": 30.0, "price": 477.81, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a704900.01.01", "time": "2026-08-03 13:35:33", "symbol": "AMZN", "side": "SLD", "qty": 51.0, "price": 285.2, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a75c0a7.01.01", "time": "2026-08-03 13:37:35", "symbol": "SNOW", "side": "SLD", "qty": 16.0, "price": 308.23, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a709ddd.01.01", "time": "2026-08-03 15:04:04", "symbol": "AMZN", "side": "BOT", "qty": 49.0, "price": 284.34, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6a712751.01.01", "time": "2026-08-03 15:04:06", "symbol": "CRM", "side": "BOT", "qty": 74.0, "price": 187.8, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a7798aa.01.01", "time": "2026-08-03 19:49:50", "symbol": "PANW", "side": "SLD", "qty": 7.0, "price": 347.23, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a790b96.01.01", "time": "2026-08-04 13:30:50", "symbol": "PSX", "side": "SLD", "qty": 61.0, "price": 201.96, "commission": 0.0, "realized_pnl": 0.0}

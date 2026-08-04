@@ -27,3 +27,5 @@
 {"ts": "2026-07-31T15:01:45.081783+00:00", "ticker": "TMO", "features": {"momentum": 56.0, "sector": 0.0, "news": 0.6, "conviction": 0.0}, "contrib": {"momentum": 56.0, "sector": 0.0, "news": 4.8, "conviction": 0.0}, "total": 60.8}
 {"ts": "2026-08-03T15:04:04.830109+00:00", "ticker": "AMZN", "features": {"momentum": 63.0, "sector": -1.0, "news": 0.6, "conviction": 1.0}, "contrib": {"momentum": 63.0, "sector": -3.0, "news": 4.8, "conviction": 5.0}, "total": 69.8}
 {"ts": "2026-08-03T15:04:06.091195+00:00", "ticker": "CRM", "features": {"momentum": 59.0, "sector": -1.0, "news": 0.6, "conviction": 0.0}, "contrib": {"momentum": 59.0, "sector": -3.0, "news": 4.8, "conviction": 0.0}, "total": 60.8}
+{"ts": "2026-08-04T15:01:55.091675+00:00", "ticker": "NUE", "features": {"momentum": 65.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 65.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 65.0}
+{"ts": "2026-08-04T15:01:56.055346+00:00", "ticker": "CVX", "features": {"momentum": 53.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 53.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 53.0}
