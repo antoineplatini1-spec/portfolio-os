@@ -195,17 +195,25 @@ def _position_exits(symbol: str) -> list[tuple[str, float, float]]:
 
 
 def _tp_rung(symbol: str, px: float, exits: list) -> tuple[int, int] | None:
-    """(n° de palier, nb total de paliers) pour ce prix de sortie. Via les TP du ledger si dispo,
-    sinon via le rang du prix parmi les sorties du round-trip (le plus bas = TP1)."""
+    """
+    (n° de palier, nb total de paliers) pour ce prix de sortie. PRIMAIRE = rang du prix parmi
+    les prix de sortie DISTINCTS du round-trip (le plus bas = TP1) — robuste MÊME quand la
+    position est fermée (le ledger a alors perdu ses tp_levels). C'était le bug « toujours TP1 ».
+    Le nb total de paliers vient du ladder ledger si dispo, sinon du nb de prix vus.
+    """
+    raw = sorted(p for _, p, q in exits if p > 0)
+    if not raw:
+        return None
+    # Clusterise les prix proches (< 0,5%) → un même palier TP peut être rempli en plusieurs
+    # fills à un cent près (58,40 / 58,41) : ils ne doivent PAS compter comme 2 paliers.
+    levels = []
+    for p in raw:
+        if not levels or (p - levels[-1]) / levels[-1] > 0.005:
+            levels.append(p)
+    rank = min(range(len(levels)), key=lambda i: abs(levels[i] - px)) + 1
     _, tps = _ledger_levels(symbol)
-    if tps:
-        i = min(range(len(tps)), key=lambda k: abs(tps[k] - px))
-        if px and abs(tps[i] - px) / px < 0.02:
-            return i + 1, len(tps)
-    prices = sorted({round(p, 2) for _, p, q in exits if p})
-    if prices and round(px, 2) in prices:
-        return prices.index(round(px, 2)) + 1, max(len(prices), 3)
-    return None
+    total = len(tps) if tps else max(len(levels), rank)
+    return rank, total
 
 
 def _wrap(head: str, rows: str, note: str) -> str:
@@ -282,6 +290,57 @@ def _txn_email(side: str, sym: str, qty: float, px: float,
             _wrap(f"{emoji} Sortie — {sym}", rows, note))
 
 
+def _aggregate(fills, skip_ids: set | None = None, day_filter: str | None = None) -> list[dict]:
+    """
+    Regroupe les fills en NOTIFICATIONS (1 mail par groupe, plus 1 mail par fill) :
+    - ACHATS (BOT) groupés par TITRE → un ordre rempli en N exécutions = UNE entrée.
+    - VENTES (SLD) groupées par (TITRE, prix arrondi) → chaque palier TP a son mail, mais les
+      fills d'un MÊME palier fusionnent.
+    Ignore les execId de skip_ids. Prix = moyenne pondérée du groupe. Retourne des dicts
+    {execIds, side, sym, qty, price, realized, when}.
+    """
+    groups: dict = {}
+    for f in fills:
+        try:
+            e = f.execution
+            if e.side not in ("BOT", "SLD"):
+                continue
+            if day_filter and str(e.time)[:10] != day_filter:
+                continue
+            if skip_ids is not None and e.execId in skip_ids:
+                continue
+            sym = f.contract.symbol
+            price = float(e.avgPrice or e.price or 0)
+            qty = float(e.shares)
+            realized = None
+            try:
+                r = f.commissionReport.realizedPNL
+                if r is not None and abs(r) < 1e12:
+                    realized = float(r)
+            except Exception:
+                pass
+            key = (e.side, sym)                        # 1 mail par titre & par sens (par run)
+            g = groups.setdefault(key, {"execIds": set(), "side": e.side, "sym": sym,
+                                        "qty": 0.0, "val": 0.0, "realized": 0.0,
+                                        "has_real": False, "when": ""})
+            g["execIds"].add(e.execId)
+            g["qty"] += qty
+            g["val"] += price * qty
+            if realized is not None:
+                g["realized"] += realized
+                g["has_real"] = True
+            g["when"] = max(g["when"], str(e.time)[:19])
+        except Exception:
+            continue
+    out = []
+    for g in groups.values():
+        avg = g["val"] / g["qty"] if g["qty"] else 0.0
+        out.append({"execIds": g["execIds"], "side": g["side"], "sym": g["sym"], "qty": g["qty"],
+                    "price": avg, "realized": (g["realized"] if g["has_real"] else None),
+                    "when": g["when"]})
+    return out
+
+
 def main(test: bool = False, resend_today: bool = False) -> int:
     if test:
         subj, html = _txn_email("SLD", "TEST", 10, 130.00, None, datetime.now().strftime("%Y-%m-%d %H:%M"))
@@ -313,27 +372,16 @@ def main(test: bool = False, resend_today: bool = False) -> int:
     # ignorant la dédup. Sert à re-notifier après un changement de format d'email.
     if resend_today:
         today = datetime.now().strftime("%Y-%m-%d")
-        _journal_fills(fills)                          # s'assure que le journal a les entrées (pour _avg_entry)
+        _journal_fills(fills)                          # journal à jour (pour _avg_entry / paliers)
         sent = 0
-        for f in sorted(fills, key=lambda x: str(x.execution.time)):
-            e = f.execution
-            if e.side not in ("BOT", "SLD") or str(e.time)[:10] != today:
-                continue
-            realized = None
-            try:
-                r = f.commissionReport.realizedPNL
-                if r is not None and abs(r) < 1e12:
-                    realized = float(r)
-            except Exception:
-                pass
-            subj, html = _txn_email(e.side, f.contract.symbol, float(e.shares),
-                                    float(e.avgPrice or 0), realized, str(e.time)[:19])
+        for g in _aggregate(fills, day_filter=today):
+            subj, html = _txn_email(g["side"], g["sym"], g["qty"], g["price"], g["realized"], g["when"])
             try:
                 _send_email("[RENVOI] " + subj, html); sent += 1
             except Exception as ex:
-                print(f"[EXIT-WATCH] renvoi échoué {f.contract.symbol}: {ex}")
+                print(f"[EXIT-WATCH] renvoi échoué {g['sym']}: {ex}")
         ib.disconnect()
-        print(f"[EXIT-WATCH] {sent} transaction(s) du jour renvoyée(s).")
+        print(f"[EXIT-WATCH] {sent} transaction(s) du jour renvoyée(s) (agrégées).")
         return 0
 
     # JOURNAL DURABLE : on enregistre TOUS les fills (achats + ventes), à chaque tick, quel que
@@ -345,27 +393,8 @@ def main(test: bool = False, resend_today: bool = False) -> int:
     # Évite de blaster l'historique (et les éventuels fills fantômes du paper) à chaque déploiement.
     first_run = not SEEN_FILE.exists()
     seen = _load_seen()
-    window_ids: set[str] = set()
-    to_notify = []
-    for f in fills:
-        try:
-            e = f.execution
-            if e.side not in ("BOT", "SLD"):           # BOT = achat (entrée), SLD = vente (sortie)
-                continue
-            window_ids.add(e.execId)
-            if e.execId in seen:
-                continue
-            realized = None
-            try:
-                r = f.commissionReport.realizedPNL
-                if r is not None and abs(r) < 1e12:    # 1e18 = sentinel "non renseigné"
-                    realized = float(r)
-            except Exception:
-                realized = None
-            to_notify.append((e.execId, e.side, f.contract.symbol, float(e.shares),
-                              float(e.avgPrice or 0), realized, str(e.time)[:19]))
-        except Exception:
-            continue
+    window_ids = {f.execution.execId for f in fills
+                  if getattr(f.execution, "side", "") in ("BOT", "SLD")}
 
     if first_run:
         _save_seen(window_ids)
@@ -374,20 +403,24 @@ def main(test: bool = False, resend_today: bool = False) -> int:
               f"aucun email). Journal : +{n_journal} fill(s). Les prochaines seront notifiées.")
         return 0
 
+    # AGRÉGATION : 1 mail par ENTRÉE (titre) et 1 mail par PALIER de sortie (titre+prix), même si
+    # l'ordre s'est rempli en plusieurs exécutions → fini les mails en rafale pour une ouverture.
+    groups = _aggregate(fills, skip_ids=seen)
     notified = 0
-    for exec_id, side, sym, qty, px, realized, when in to_notify:
+    failed_ids: set[str] = set()
+    for g in groups:
         try:
-            subj, html = _txn_email(side, sym, qty, px, realized, when)
+            subj, html = _txn_email(g["side"], g["sym"], g["qty"], g["price"], g["realized"], g["when"])
             _send_email(subj, html)
             notified += 1
         except Exception as ex:
-            print(f"[EXIT-WATCH] envoi échoué pour {sym} : {ex}")
-            window_ids.discard(exec_id)                # email raté → pas marqué vu → réessai au prochain tick
+            print(f"[EXIT-WATCH] envoi échoué pour {g['sym']} : {ex}")
+            failed_ids |= g["execIds"]                 # groupe raté → pas marqué vu → réessai
 
-    # État borné à la fenêtre : les execId hors fenêtre disparaîtront (ils ne reviendront pas).
-    _save_seen(window_ids)
+    # Marque vu tout ce qui est en fenêtre SAUF les groupes dont l'email a échoué (retry au tick suivant).
+    _save_seen(window_ids - failed_ids)
     ib.disconnect()
-    print(f"[EXIT-WATCH] {notified} transaction(s) notifiée(s), {len(window_ids)} en fenêtre, "
+    print(f"[EXIT-WATCH] {notified} notification(s) (agrégées), {len(window_ids)} fill(s) en fenêtre, "
           f"journal +{n_journal} fill(s).")
     return 0
 
