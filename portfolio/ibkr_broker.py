@@ -440,6 +440,14 @@ class IBKRBroker:
                 return float(r.value)
         return 0.0
 
+    def account_nlv(self) -> float:
+        """NetLiquidation OFFICIELLE d'IBKR — LA valeur du compte (celle de l'app). 0 si absente."""
+        rows = self.ib.accountSummary(self.cfg.get("account") or "")
+        for r in rows:
+            if r.tag == "NetLiquidation":
+                return float(r.value)
+        return 0.0
+
     def recent_exit_fill(self, ticker: str, lookback_days: int = 5) -> dict | None:
         """
         Prix moyen + frais des VENTE(S) RÉCENTES (fenêtre `lookback_days`) pour ce symbole,

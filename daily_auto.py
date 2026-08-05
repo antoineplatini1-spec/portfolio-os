@@ -134,6 +134,11 @@ def _reconcile_ibkr(pm):
                 pm.set_ibkr_marks(broker.account_marks())
             except Exception:
                 pass
+        if hasattr(broker, "account_nlv"):           # NLV OFFICIELLE IBKR → total_value = app IBKR
+            try:
+                pm.set_ibkr_nlv(broker.account_nlv())
+            except Exception:
+                pass
     except Exception as e:
         # IBKR activé mais injoignable (Gateway down/logged-out, cf. maintenance week-end) :
         # on NE PEUT PAS confirmer positions/cash → HALT des nouveaux achats (pas de vérité,

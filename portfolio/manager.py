@@ -35,6 +35,7 @@ class PortfolioManager:
         self.state_file = state_file
         self.broker = make_broker(BROKER_CONFIG)
         self.ibkr_marks: dict[str, float] = {}   # marks IBKR réels (valorisation), seedés au run
+        self.ibkr_nlv: float | None = None       # NetLiquidation OFFICIELLE IBKR (perf = vérité compte)
         self._load()
 
     # ── Persistence ───────────────────────────────────────────────
@@ -123,6 +124,10 @@ class PortfolioManager:
         """Injecte les marks RÉELS d'IBKR (valorisation = vérité compte, pas cache). Per-run."""
         self.ibkr_marks = {k: v for k, v in (marks or {}).items() if v and v > 0}
 
+    def set_ibkr_nlv(self, nlv: float | None) -> None:
+        """Injecte la NetLiquidation OFFICIELLE IBKR : total_value la reflète (= app IBKR)."""
+        self.ibkr_nlv = nlv if (nlv and nlv > 0) else None
+
     @property
     def total_invested(self) -> float:
         """Valeur des positions au coût d'entrée (basis)."""
@@ -138,8 +143,13 @@ class PortfolioManager:
 
     @property
     def total_value(self) -> float:
-        """Valeur totale du portefeuille au dernier prix de marché connu.
-        Si aucun prix de marché disponible, utilise le coût d'entrée."""
+        """
+        Valeur du compte. SOURCE DE VÉRITÉ = la NetLiquidation OFFICIELLE d'IBKR (celle de ton
+        app) quand elle est seedée — une seule NLV, non ambiguë. Repli (Gateway down / backtest)
+        sur cash + valeur des positions aux marks.
+        """
+        if self.ibkr_nlv and self.ibkr_nlv > 0:
+            return self.ibkr_nlv
         return self.cash + self.total_market_value
 
     @property

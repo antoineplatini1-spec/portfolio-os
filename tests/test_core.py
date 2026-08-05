@@ -404,6 +404,17 @@ def test_ibkr_marks_drive_valuation(tmp_path, monkeypatch):
     assert pm._mark("MRK", pos) == 110.0
     assert pm.total_market_value == pytest.approx(pos.qty_remaining * 110.0)
 
+def test_total_value_uses_ibkr_nlv(tmp_path, monkeypatch):
+    # total_value doit refléter la NetLiquidation IBKR officielle quand elle est seedée.
+    br = _FakeBracketBroker(stop_live=True)
+    pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
+    pm.open_position("AAA", 100.0, atr=2.0, score=60)
+    calc = pm.total_value                              # calcul par marks (repli)
+    pm.set_ibkr_nlv(250000.0)
+    assert pm.total_value == 250000.0                  # NLV IBKR prime
+    pm.set_ibkr_nlv(0)                                 # 0/None → repli sur le calcul
+    assert pm.total_value == calc
+
 def test_ibkr_marks_fallback_to_cache(tmp_path, monkeypatch):
     br = _FakeBracketBroker(stop_live=True)
     pm = _fresh_pm(tmp_path, br, native=True, monkeypatch=monkeypatch)
