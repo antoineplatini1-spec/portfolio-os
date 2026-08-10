@@ -1,5 +1,5 @@
 {
-  "cash": 2283.9814196587818,
+  "cash": 281.9814369371162,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -519,6 +519,78 @@
         }
       ],
       "partial_fills": []
+    },
+    "DSY.PA": {
+      "ticker": "DSY.PA",
+      "entry_price": 22.122100381851194,
+      "qty_total": 45.2488679972365,
+      "qty_remaining": 45.2488679972365,
+      "sl": 16.95,
+      "trailing_stop": false,
+      "trailing_stop_price": 22.122100381851194,
+      "entry_date": "2026-08-10",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 22.85,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 24.96,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "SOI.PA": {
+      "ticker": "SOI.PA",
+      "entry_price": 121.12099999999998,
+      "qty_total": 8.264462809917354,
+      "qty_remaining": 8.264462809917354,
+      "sl": 93.6,
+      "trailing_stop": false,
+      "trailing_stop_price": 121.12099999999998,
+      "entry_date": "2026-08-10",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 138.3,
+          "sell_pct": 0.3333333333333333,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 160.05,
+          "sell_pct": 0.3333333333333333,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 165.6,
+          "sell_pct": 0.3333333333333333,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [
@@ -567,16 +639,17 @@
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 173.75999450683594,
-    "AIR.PA": 214.1999969482422,
-    "LR.PA": 140.5,
+    "AI.PA": 171.5800018310547,
+    "AIR.PA": 214.39999389648438,
+    "LR.PA": 139.39999389648438,
     "PUB.PA": 100.1500015258789,
     "ML.PA": 33.880001068115234,
     "HO.PA": 249.3000030517578,
-    "URW.PA": 104.5999984741211,
+    "URW.PA": 103.25,
     "SAF.PA": 359.5,
-    "KER.PA": 288.3999938964844,
-    "EN.PA": 48.68000030517578,
-    "RNO.PA": 28.459999084472656
+    "KER.PA": 284.95001220703125,
+    "EN.PA": 48.18000030517578,
+    "RNO.PA": 28.700000762939453,
+    "RI.PA": 69.5999984741211
   }
 }

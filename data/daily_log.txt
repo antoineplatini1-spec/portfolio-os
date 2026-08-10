@@ -14088,3 +14088,140 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-08-07 11:02]   [MOMENTUM] Pernod Ricard (RI.PA) 14.261× à 70.12€ | SL=66.06 | TPs=71.08 / 72.00 / 73.13 / 79.48 / 86.84 | investi=1000€
 [2026-08-07 11:02] [MOMENTUM] valeur=10414.33€  cash=2283.98€  positions=8  PnL=+126.52€
 [2026-08-07 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-08-10 11:01] ============================================================
+[2026-08-10 11:01] SCAN JOURNALIER - 2026-08-10
+[2026-08-10 11:01] ============================================================
+[2026-08-10 11:01] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-08-10 11:01]   Date     : 2026-08-10  [imap]
+[2026-08-10 11:01]   CAC 40   : NEUTRAL
+[2026-08-10 11:01]   Macro    : oil_bearish
+[2026-08-10 11:01] ───────────────────────────────────────────────────────
+[2026-08-10 11:02] [LLM] Biais sectoriel : LLM sans résultat → algo (regex)
+[2026-08-10 11:02] [LLM] Trades momentum = LLM (3) : Dassault Systèmes:BUY, Soitec:BUY, Arcelormittal:BUY
+[2026-08-10 11:02] [US] Barchart «Why Didn't a $100 Billion Lockup Expirat» → secteur — | idées: SPCX
+[2026-08-10 11:02] [US] The Transcript «Steady as She Goes» → secteur — | idées: —
+[2026-08-10 11:02] ══════════════════════════════════════════════
+[2026-08-10 11:02]   AGENT MACRO — 2026-08-10
+[2026-08-10 11:02] ══════════════════════════════════════════════
+[2026-08-10 11:02]   Régime marché  : BULL
+[2026-08-10 11:02]   SPY vs EMA200  : +9.5%
+[2026-08-10 11:02]   VIX            : 15.2 (LOW)
+[2026-08-10 11:02]   Max trades/j   : 3
+[2026-08-10 11:02]   Seuil net min  : 10
+[2026-08-10 11:02]   Top secteurs   : Macro
+[2026-08-10 11:02]   Secteurs auth. : TOUS (régime favorable)
+[2026-08-10 11:02]   Rationale      : Marché haussier (SPY +9.5% vs EMA200). Exposition maximale autorisée.
+[2026-08-10 11:02] ══════════════════════════════════════════════
+[2026-08-10 11:02] [RECONCILE IBKR] TMO : bracket natif [PnL estimé] soldé(e) @ 584.43 → clôturé au ledger
+[2026-08-10 11:02] [RECONCILE IBKR] VRTX : bracket natif [PnL IBKR] soldé(e) @ 536.52 → clôturé au ledger
+[2026-08-10 11:02] [RECONCILE IBKR] cash réel IBKR = 80599 | ledger = 84372
+[2026-08-10 11:02] [RECONCILE IBKR] cash ledger seedé sur IBKR : 84372 → 80599
+[2026-08-10 11:02] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-08-10 11:02]   PANW: 378.33
+[2026-08-10 11:02]   V: 362.22
+[2026-08-10 11:02]   JPM: 358.69
+[2026-08-10 11:02]   JNJ: 259.23
+[2026-08-10 11:02]   ABBV: 245.15
+[2026-08-10 11:02]   RACE: 407.50
+[2026-08-10 11:02]   BNY: 159.32
+[2026-08-10 11:02]   PSX: 210.54
+[2026-08-10 11:02]   PYPL: 58.78
+[2026-08-10 11:02]   RTX: 226.18
+[2026-08-10 11:02]   SCHW: 108.72
+[2026-08-10 11:02]   BKNG: 210.54
+[2026-08-10 11:02]   AMZN: 277.82
+[2026-08-10 11:02]   CRM: 195.36
+[2026-08-10 11:02]   NUE: 274.28
+[2026-08-10 11:02]   CVX: 192.82
+[2026-08-10 11:02]   [TIME STOP] ABBV : 25j ouverte, PnL=-2.8% -> fermeture
+[2026-08-10 11:02]   [LLM post-mortem] ABBV: momentum_essouffle — Sur ABBV, envisager une sortie anticipée ou un stop resserré si le momentum stagne avant le time stop, plutôt que d'attendre 25 jours pour une perte de -2.84%.
+[2026-08-10 11:02] Screener en cours...
+[2026-08-10 11:02] [US] Univers screener enrichi de 1 idée(s) newsletters US : SPCX
+[2026-08-10 11:02] Scores : max=71  mediane=23  (157 tickers)
+[2026-08-10 11:02] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=71
+[2026-08-10 11:02] Filtre ETF/indices (non achetables) : 49 → 40 candidats
+[2026-08-10 11:02] 40 candidats pre-filtres (score>=40, R>=1.2)
+[2026-08-10 11:03]   [SEC 8-K] NET (2026-08-06) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] COP (2026-08-06) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] OXY (2026-08-05) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] AMGN (2026-08-04) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] PFE (2026-08-04) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] MPC (2026-08-04) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] CRM (2026-08-05) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-08-10 11:03]   [SEC 8-K] PSX (2026-08-05) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] PLTR (2026-08-03) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] BKNG (2026-08-04) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] ABNB (2026-08-06) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] SHOP (2026-08-05) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] VRTX (2026-08-03) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-10 11:03]   [SEC 8-K] JNJ (2026-08-04) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-08-10 11:03] [LLM news] NET: neutral 0.50 — Émission de $2.175B d'obligations convertibles
+[2026-08-10 11:03] [LLM news] COP: bullish 0.40 — Trajectoire de free cash-flow 2029 réaffirmée
+[2026-08-10 11:03] [LLM news] OXY: bullish 0.70 — Cash-flow record finance une réduction de dette de $1.9B, action +5%
+[2026-08-10 11:03] [LLM news] AMGN: bullish 0.60 — Résultats Q2 supérieurs aux attentes, relèvements de cibles analystes
+[2026-08-10 11:03] [LLM news] ABT: bullish 0.50 — Programme de rachat d'actions de $1.35B
+[2026-08-10 11:03] [LLM news] PFE: bullish 0.70 — Action +7% après résultats Q2
+[2026-08-10 11:03] [LLM news] RTX: bullish 0.40 — Le Pentagone demande une accélération de la production d'armements
+[2026-08-10 11:03] [LLM news] LMT: bullish 0.40 — Le Pentagone demande une accélération de la production d'armements, pénurie de missiles évoquée
+[2026-08-10 11:03] [LLM news] CRM: neutral 0.40 — Départ/nomination d'un dirigeant (8-K)
+[2026-08-10 11:03] [LLM news] PSX: bullish 0.60 — Résultats Q2 records, momentum stratégique
+[2026-08-10 11:03] [LLM news] ABNB: bullish 0.75 — Action +17% après résultats trimestriels supérieurs aux attentes et relèvement des perspectives 2026
+[2026-08-10 11:03] [LLM news] JNJ: neutral 0.35 — Départ/nomination d'un dirigeant (8-K)
+[2026-08-10 11:03] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-08-10 11:03] Cash deployable cette semaine : 91234 EUR  (max trades/j : 2)
+[2026-08-10 11:03] ────────────────────────────────────────────────────
+[2026-08-10 11:03]   DÉBAT : NET
+[2026-08-10 11:03] ────────────────────────────────────────────────────
+[2026-08-10 11:03]   🟢 BULL [conviction=77] → ACHETER
+[2026-08-10 11:03]      • Score haussier fort (71/100)
+[2026-08-10 11:03]      • R-ratio excellent (3.4×) — asymétrie gain/risque idéale
+[2026-08-10 11:03]      • Prix au-dessus EMA200 (219.58) — tendance long terme haussière
+[2026-08-10 11:03]      • Momentum 10j fort (+14.5%) — tendance confirmée
+[2026-08-10 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-08-10 11:03] 
+[2026-08-10 11:03]   🔴 BEAR [concern=26] → OK
+[2026-08-10 11:03]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-08-10 11:03]      • Exposition modérée (74%) — prudence sur les ajouts
+[2026-08-10 11:03] 
+[2026-08-10 11:03]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-08-10 11:03]      Arguments haussiers l'emportent clairement (conviction=77, concern=26, net=+61)
+[2026-08-10 11:03] ────────────────────────────────────────────────────
+[2026-08-10 11:03]   [ACHAT] NET score=71 bull=77 bear=26 prix=304.09 investi=12780EUR SL=279.76 TP1=328.73
+[2026-08-10 11:03] ────────────────────────────────────────────────────
+[2026-08-10 11:03]   DÉBAT : OXY
+[2026-08-10 11:03] ────────────────────────────────────────────────────
+[2026-08-10 11:03]   🟢 BULL [conviction=77] → ACHETER
+[2026-08-10 11:03]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-08-10 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-10 11:03]      • Prix au-dessus EMA200 (52.73) — tendance long terme haussière
+[2026-08-10 11:03]      • Score haussier correct (65/100)
+[2026-08-10 11:03]      • Stoch RSI survendu (9) — retournement imminent
+[2026-08-10 11:03] 
+[2026-08-10 11:03]   🔴 BEAR [concern=35] → PRUDENCE
+[2026-08-10 11:03]      • Exposition déjà élevée (79%) — risque de surconcentration
+[2026-08-10 11:03]      • Secteur Energie déjà exposé (2 positions) — diversification limitée
+[2026-08-10 11:03]      • Volume faible (0.3× moyenne)
+[2026-08-10 11:03] 
+[2026-08-10 11:03]   ✅ ARBITRE → ACHETER  (net=+56)
+[2026-08-10 11:03]      Arguments haussiers l'emportent clairement (conviction=77, concern=35, net=+56)
+[2026-08-10 11:03] ────────────────────────────────────────────────────
+[2026-08-10 11:03]   [ACHAT] OXY score=63 bull=77 bear=35 prix=57.80 investi=12838EUR SL=54.10 TP1=60.57
+[2026-08-10 11:03] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-08-10 11:03] ----------------------------------------
+[2026-08-10 11:03] RESUME : valeur=256808.61 EUR  investi=212668.17 EUR  cash=67476.37 EUR  expo=84.4%  positions=17
+[2026-08-10 11:03] ----------------------------------------
+[2026-08-10 11:03] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-08-10 11:03]   [MOMENTUM] AI.PA: 171.58
+[2026-08-10 11:03]   [MOMENTUM] AIR.PA: 214.40
+[2026-08-10 11:03]   [MOMENTUM] LR.PA: 139.40
+[2026-08-10 11:03]   [MOMENTUM] URW.PA: 103.25
+[2026-08-10 11:03]   [MOMENTUM] KER.PA: 284.95
+[2026-08-10 11:03]   [MOMENTUM] EN.PA: 48.18
+[2026-08-10 11:03]   [MOMENTUM] RNO.PA: 28.70
+[2026-08-10 11:03]   [MOMENTUM] RI.PA: 69.60
+[2026-08-10 11:03] [MOMENTUM] 3 signal(s) newsletter...
+[2026-08-10 11:03]   [MOMENTUM] Dassault Systèmes (DSY.PA) 45.249× à 22.10€ | SL=16.95 | TPs=22.85 / 24.96 | investi=1000€
+[2026-08-10 11:03]   [MOMENTUM] Soitec (SOI.PA) 8.264× à 121.00€ | SL=93.60 | TPs=138.30 / 160.05 / 165.60 | investi=1000€
+[2026-08-10 11:03]   [MOMENTUM SKIP] MT.PA: données vides
+[2026-08-10 11:03] [MOMENTUM] valeur=10359.44€  cash=281.98€  positions=10  PnL=+71.63€
+[2026-08-10 11:04] [EMAIL] Envoye a antoine.platini@outlook.fr

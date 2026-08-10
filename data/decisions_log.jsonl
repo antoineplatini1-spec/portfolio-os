@@ -33,3 +33,5 @@
 {"ts": "2026-08-05T15:02:26.079516+00:00", "ticker": "NUE", "features": {"momentum": 57.0, "sector": 2.0, "news": 0.4, "conviction": 0.0}, "contrib": {"momentum": 57.0, "sector": 6.0, "news": 3.2, "conviction": 0.0}, "total": 66.2}
 {"ts": "2026-08-06T15:02:21.289749+00:00", "ticker": "RTX", "features": {"momentum": 64.0, "sector": 0.0, "news": 0.3, "conviction": 0.0}, "contrib": {"momentum": 64.0, "sector": 0.0, "news": 2.4, "conviction": 0.0}, "total": 66.4}
 {"ts": "2026-08-06T15:02:23.089883+00:00", "ticker": "PSX", "features": {"momentum": 46.0, "sector": 2.0, "news": 0.8, "conviction": 0.0}, "contrib": {"momentum": 46.0, "sector": 6.0, "news": 6.4, "conviction": 0.0}, "total": 58.4}
+{"ts": "2026-08-10T15:03:35.091750+00:00", "ticker": "NET", "features": {"momentum": 71.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 71.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 71.0}
+{"ts": "2026-08-10T15:03:36.099229+00:00", "ticker": "OXY", "features": {"momentum": 63.0, "sector": 0.0, "news": 0.7, "conviction": 0.0}, "contrib": {"momentum": 63.0, "sector": 0.0, "news": 5.6, "conviction": 0.0}, "total": 68.6}
