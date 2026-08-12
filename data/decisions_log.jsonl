@@ -37,3 +37,4 @@
 {"ts": "2026-08-10T15:03:36.099229+00:00", "ticker": "OXY", "features": {"momentum": 63.0, "sector": 0.0, "news": 0.7, "conviction": 0.0}, "contrib": {"momentum": 63.0, "sector": 0.0, "news": 5.6, "conviction": 0.0}, "total": 68.6}
 {"ts": "2026-08-11T15:02:09.127882+00:00", "ticker": "XOM", "features": {"momentum": 74.0, "sector": 0.0, "news": 0.6, "conviction": 0.0}, "contrib": {"momentum": 74.0, "sector": 0.0, "news": 4.8, "conviction": 0.0}, "total": 78.8}
 {"ts": "2026-08-11T15:02:11.527168+00:00", "ticker": "MPC", "features": {"momentum": 61.0, "sector": 0.0, "news": 0.7, "conviction": 0.0}, "contrib": {"momentum": 61.0, "sector": 0.0, "news": 5.6, "conviction": 0.0}, "total": 66.6}
+{"ts": "2026-08-12T15:01:57.286313+00:00", "ticker": "AMGN", "features": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 62.0}
