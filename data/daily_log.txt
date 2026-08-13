@@ -14914,3 +14914,142 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-08-12 11:02]   Cash insuffisant (282€ < 1000€)
 [2026-08-12 11:02] [MOMENTUM] valeur=10321.13€  cash=281.98€  positions=10  PnL=+33.32€
 [2026-08-12 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-08-13 11:00] ============================================================
+[2026-08-13 11:00] SCAN JOURNALIER - 2026-08-13
+[2026-08-13 11:00] ============================================================
+[2026-08-13 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-08-13 11:00]   Date     : 2026-08-13  [imap]
+[2026-08-13 11:00]   CAC 40   : NEUTRAL
+[2026-08-13 11:00]   Macro    : market_bullish
+[2026-08-13 11:00] ───────────────────────────────────────────────────────
+[2026-08-13 11:00] [LLM] Biais sectoriel = LLM : Finance:+1, Macro:+1
+[2026-08-13 11:00] [LLM] Trades momentum = LLM (2) : Nexans:BUY, Edenred:BUY
+[2026-08-13 11:00] [US] Barchart «Why Wall Street Isn't Buying Super Micro» → secteur {'Tech': 1} | idées: SMCI
+[2026-08-13 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-08-13 11:00] ══════════════════════════════════════════════
+[2026-08-13 11:00]   AGENT MACRO — 2026-08-13
+[2026-08-13 11:00] ══════════════════════════════════════════════
+[2026-08-13 11:00]   Régime marché  : BULL
+[2026-08-13 11:00]   SPY vs EMA200  : +9.7%
+[2026-08-13 11:00]   VIX            : 14.6 (LOW)
+[2026-08-13 11:00]   Max trades/j   : 3
+[2026-08-13 11:00]   Seuil net min  : 10
+[2026-08-13 11:00]   Top secteurs   : Macro, Tech, Energie
+[2026-08-13 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-08-13 11:00]   Rationale      : Marché haussier (SPY +9.7% vs EMA200). Exposition maximale autorisée.
+[2026-08-13 11:00] ══════════════════════════════════════════════
+[2026-08-13 11:00] [RECONCILE IBKR] PANW : bracket natif [PnL IBKR] soldé(e) @ 393.09 → clôturé au ledger
+[2026-08-13 11:00] [RECONCILE IBKR] SCHW : bracket natif [PnL IBKR] soldé(e) @ 109.83 → clôturé au ledger
+[2026-08-13 11:00] [RECONCILE IBKR] BNY : bracket natif [PnL IBKR] soldé(e) @ 163.59 → clôturé au ledger
+[2026-08-13 11:00] [RECONCILE IBKR] MPC : bracket natif [PnL estimé] soldé(e) @ 340.10 → clôturé au ledger
+[2026-08-13 11:00] [RECONCILE IBKR] cash réel IBKR = 93785 | ledger = 98951
+[2026-08-13 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 98951 → 93785
+[2026-08-13 11:00] 15 position(s) ouverte(s) - mise a jour des prix...
+[2026-08-13 11:00]   V: 360.62
+[2026-08-13 11:00]   JPM: 363.92
+[2026-08-13 11:00]   JNJ: 261.24
+[2026-08-13 11:00]   RACE: 412.40
+[2026-08-13 11:00]   PYPL: 59.73
+[2026-08-13 11:00]   RTX: 219.79
+[2026-08-13 11:00]   BKNG: 212.12
+[2026-08-13 11:00]   AMZN: 268.21
+[2026-08-13 11:00]   CRM: 194.93
+[2026-08-13 11:00]   NUE: 272.44
+[2026-08-13 11:00]   CVX: 196.38
+[2026-08-13 11:00]   NET: 325.76
+[2026-08-13 11:00]   OXY: 57.72
+[2026-08-13 11:00]   XOM: 158.60
+[2026-08-13 11:00]   AMGN: 417.26
+[2026-08-13 11:00] Screener en cours...
+[2026-08-13 11:00] [US] Univers screener enrichi de 1 idée(s) newsletters US : SMCI
+[2026-08-13 11:01] Scores : max=71  mediane=30  (157 tickers)
+[2026-08-13 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=71
+[2026-08-13 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Finance, Macro, Tech | pénalisés: —
+[2026-08-13 11:01] Filtre ETF/indices (non achetables) : 55 → 46 candidats
+[2026-08-13 11:01] 46 candidats pre-filtres (score>=40, R>=1.2)
+[2026-08-13 11:01]   [SEC 8-K] ABNB (2026-08-06) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-13 11:01]   [SEC 8-K] SMCI (2026-08-11) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-13 11:01]   [SEC 8-K] SCHW (2026-08-12) : Autre événement matériel, États financiers & annexes
+[2026-08-13 11:01]   [SEC 8-K] NET (2026-08-06) ⚠MATÉRIEL : Résultats financiers, Divulgation Regulation FD, États financiers & annexes
+[2026-08-13 11:01]   [SEC 8-K] COP (2026-08-11) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-08-13 11:01]   [SEC 8-K] COP (2026-08-06) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-13 11:01] [LLM news] MPC: bullish 0.60 — Earnings beat expectations, stock hits all-time high
+[2026-08-13 11:01] [LLM news] ABT: bullish 0.40 — Analyst rating shift: Wolfe upgrades Abbott, downgrades Stryker
+[2026-08-13 11:01] [LLM news] PANW: bullish 0.50 — AI tailwinds and faster CyberArk integration boosting growth
+[2026-08-13 11:01] [LLM news] ABNB: bullish 0.50 — Q2 earnings filed (8-K), stock up on results
+[2026-08-13 11:01] [LLM news] SNOW: bullish 0.40 — Oppenheimer revises 2026 price target upward
+[2026-08-13 11:01] [LLM news] AMGN: neutral 0.40 — Q2 2026 earnings call held
+[2026-08-13 11:01] [LLM news] PSX: bullish 0.60 — Blowout Q2 earnings; insider option cash-out and director trust stake trim
+[2026-08-13 11:01] [LLM news] PFE: bullish 0.50 — CEO buys $1 million of Pfizer stock
+[2026-08-13 11:01] [LLM news] MSFT: bullish 0.60 — Microsoft accepts first AI data center under $9.7B SpaceX-related deal
+[2026-08-13 11:01] [LLM news] SMCI: bullish 0.70 — Q2 results filed, big beat and big backlog reported
+[2026-08-13 11:01] [LLM news] LMT: bullish 0.50 — Progress on orbital interceptors, passed Golden Dome missile defense test
+[2026-08-13 11:01] [LLM news] SCHW: bearish 0.50 — Material 8-K filing and 13,000-customer lawsuit risk
+[2026-08-13 11:01] [LLM news] VZ: bullish 0.40 — Partnership with Nvidia and Lockheed Martin for 5G drone-tracking system
+[2026-08-13 11:01] [LLM news] NET: neutral 0.40 — Q2 earnings and Regulation FD disclosure filed via 8-K
+[2026-08-13 11:01] [LLM news] AVGO: bullish 0.50 — Strengthens market position with major customer agreements
+[2026-08-13 11:01] [LLM news] CVX: bullish 0.50 — Paid down $8.4 billion in debt
+[2026-08-13 11:01] [LLM news] CRM: bullish 0.60 — Record $27 billion stock buyback in a single quarter
+[2026-08-13 11:01] [LLM news] BKNG: bullish 0.50 — Q2 earnings deep dive: AI and Connected Trip strategy driving growth
+[2026-08-13 11:01] [LLM news] COP: neutral 0.50 — Executive departure/appointment and Q2 financial results filed via 8-K
+[2026-08-13 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-08-13 11:01] Cash deployable cette semaine : 91910 EUR  (max trades/j : 2)
+[2026-08-13 11:01] ────────────────────────────────────────────────────
+[2026-08-13 11:01]   DÉBAT : MPC
+[2026-08-13 11:01] ────────────────────────────────────────────────────
+[2026-08-13 11:01]   🟢 BULL [conviction=77] → ACHETER
+[2026-08-13 11:01]      • Score haussier fort (76/100)
+[2026-08-13 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-13 11:01]      • Prix au-dessus EMA200 (246.74) — tendance long terme haussière
+[2026-08-13 11:01]      • Momentum 10j fort (+11.5%) — tendance confirmée
+[2026-08-13 11:01]      • CMF fort — flux acheteur dominant
+[2026-08-13 11:01] 
+[2026-08-13 11:01]   🔴 BEAR [concern=39] → PRUDENCE
+[2026-08-13 11:01]      • Secteur Energie très concentré (3 positions) — risque sectoriel
+[2026-08-13 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-08-13 11:01]      • Exposition modérée (74%) — prudence sur les ajouts
+[2026-08-13 11:01]      • Volume faible (0.3× moyenne)
+[2026-08-13 11:01] 
+[2026-08-13 11:01]   ✅ ARBITRE → ACHETER  (net=+54)
+[2026-08-13 11:01]      Arguments haussiers l'emportent clairement (conviction=77, concern=39, net=+54)
+[2026-08-13 11:01] ────────────────────────────────────────────────────
+[2026-08-13 11:02]   [ACHAT] MPC score=71 bull=77 bear=39 prix=350.11 investi=12966EUR SL=326.99 TP1=367.44
+[2026-08-13 11:02] ────────────────────────────────────────────────────
+[2026-08-13 11:02]   DÉBAT : SMCI
+[2026-08-13 11:02] ────────────────────────────────────────────────────
+[2026-08-13 11:02]   🟢 BULL [conviction=75] → ACHETER
+[2026-08-13 11:02]      • R-ratio excellent (4.0×) — asymétrie gain/risque idéale
+[2026-08-13 11:02]      • Prix au-dessus EMA200 (30.65) — tendance long terme haussière
+[2026-08-13 11:02]      • Score haussier correct (66/100)
+[2026-08-13 11:02]      • Momentum 10j fort (+50.8%) — tendance confirmée
+[2026-08-13 11:02]      • CMF fort — flux acheteur dominant
+[2026-08-13 11:02] 
+[2026-08-13 11:02]   🔴 BEAR [concern=36] → PRUDENCE
+[2026-08-13 11:02]      • Exposition déjà élevée (79%) — risque de surconcentration
+[2026-08-13 11:02]      • RSI suracheté (73)
+[2026-08-13 11:02]      • Prix au-dessus BB supérieure (surachat)
+[2026-08-13 11:02] 
+[2026-08-13 11:02]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-08-13 11:02]      Arguments haussiers l'emportent clairement (conviction=75, concern=36, net=+53)
+[2026-08-13 11:02] ────────────────────────────────────────────────────
+[2026-08-13 11:02]   [ACHAT] SMCI score=59 bull=75 bear=36 prix=41.80 investi=13024EUR SL=38.46 TP1=45.82
+[2026-08-13 11:02] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-08-13 11:02] ----------------------------------------
+[2026-08-13 11:02] RESUME : valeur=258599.73 EUR  investi=213272.05 EUR  cash=67793.72 EUR  expo=83.5%  positions=17
+[2026-08-13 11:02] ----------------------------------------
+[2026-08-13 11:02] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-08-13 11:02]   [MOMENTUM] AI.PA: 169.64
+[2026-08-13 11:02]   [MOMENTUM] AIR.PA: 214.20
+[2026-08-13 11:02]   [MOMENTUM] LR.PA: 142.25
+[2026-08-13 11:02]   [MOMENTUM] URW.PA: 104.00
+[2026-08-13 11:02]   [MOMENTUM] KER.PA: 272.50
+[2026-08-13 11:02]   [MOMENTUM] EN.PA: 47.54
+[2026-08-13 11:02]   [MOMENTUM] RNO.PA: 28.24
+[2026-08-13 11:02]   [MOMENTUM] RI.PA: 68.36
+[2026-08-13 11:02]   [MOMENTUM] DSY.PA: 20.91
+[2026-08-13 11:02]   [MOMENTUM] SOI.PA: 133.95
+[2026-08-13 11:02] [MOMENTUM] 2 signal(s) newsletter...
+[2026-08-13 11:02]   Cash insuffisant (282€ < 1000€)
+[2026-08-13 11:02]   Cash insuffisant (282€ < 1000€)
+[2026-08-13 11:02] [MOMENTUM] valeur=10335.88€  cash=281.98€  positions=10  PnL=+48.07€
+[2026-08-13 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
