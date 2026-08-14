@@ -1,5 +1,5 @@
 {
-  "cash": 281.9814369371162,
+  "cash": 204.16758185521792,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -199,37 +199,42 @@
     },
     "PUB.PA": {
       "ticker": "PUB.PA",
-      "entry_price": 87.3272378616333,
-      "qty_total": 11.46263210094938,
-      "qty_remaining": 11.46263210094938,
-      "sl": 82.58,
-      "trailing_stop": true,
-      "trailing_stop_price": 95.14250144958496,
-      "entry_date": "2026-07-17",
+      "entry_price": 102.00190152740477,
+      "qty_total": 9.813542541959984,
+      "qty_remaining": 9.813542541959984,
+      "sl": 81.54,
+      "trailing_stop": false,
+      "trailing_stop_price": 102.00190152740477,
+      "entry_date": "2026-08-14",
       "fees_in": 0.0,
-      "status": "closed",
-      "close_price": 100.04985152435303,
-      "close_date": "2026-08-06",
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
       "bracket_oca": "",
       "tp_levels": [
         {
-          "price": 99.84,
-          "sell_pct": 1.0,
-          "hit": true,
-          "hit_date": "2026-08-06"
+          "price": 104.75,
+          "sell_pct": 0.3333333333333333,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 107.7,
+          "sell_pct": 0.3333333333333333,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 109.3,
+          "sell_pct": 0.3333333333333333,
+          "hit": false,
+          "hit_date": ""
         }
       ],
-      "partial_fills": [
-        {
-          "date": "2026-08-06",
-          "qty": 11.46263210094938,
-          "price": 100.04985152435303,
-          "reason": "TP1"
-        }
-      ]
+      "partial_fills": []
     },
     "ML.PA": {
       "ticker": "ML.PA",
@@ -350,15 +355,15 @@
       "ticker": "KER.PA",
       "entry_price": 286.8866061096191,
       "qty_total": 3.489183456747084,
-      "qty_remaining": 3.489183456747084,
+      "qty_remaining": 0.0,
       "sl": 266.5380056762695,
       "trailing_stop": false,
       "trailing_stop_price": 286.8866061096191,
       "entry_date": "2026-07-29",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 264.5851560974121,
+      "close_date": "2026-08-14",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -633,25 +638,35 @@
       "close_reason": "SL",
       "entry_date": "2026-07-17",
       "close_date": "2026-08-05"
+    },
+    {
+      "ticker": "KER.PA",
+      "entry_price": 286.8866061096191,
+      "close_price": 264.5851560974121,
+      "qty": 3.489183456747084,
+      "pnl": -77.8139,
+      "close_reason": "SL",
+      "entry_date": "2026-07-29",
+      "close_date": "2026-08-14"
     }
   ],
   "last_prices": {
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 169.63999938964844,
-    "AIR.PA": 214.1999969482422,
-    "LR.PA": 142.25,
+    "AI.PA": 168.33999633789062,
+    "AIR.PA": 215.8000030517578,
+    "LR.PA": 141.5500030517578,
     "PUB.PA": 100.1500015258789,
     "ML.PA": 33.880001068115234,
     "HO.PA": 249.3000030517578,
-    "URW.PA": 104.0,
+    "URW.PA": 103.30000305175781,
     "SAF.PA": 359.5,
-    "KER.PA": 272.5,
-    "EN.PA": 47.540000915527344,
-    "RNO.PA": 28.239999771118164,
-    "RI.PA": 68.36000061035156,
-    "DSY.PA": 20.90999984741211,
-    "SOI.PA": 133.9499969482422
+    "KER.PA": 264.8500061035156,
+    "EN.PA": 47.66999816894531,
+    "RNO.PA": 28.40999984741211,
+    "RI.PA": 68.80000305175781,
+    "DSY.PA": 21.68000030517578,
+    "SOI.PA": 131.35000610351562
   }
 }
