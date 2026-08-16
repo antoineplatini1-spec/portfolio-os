@@ -524,9 +524,13 @@ def run():
     # Détecte les positions fantômes (fill non enregistré) → suspend les achats pour ne
     # jamais empiler du surlevier silencieux.
     reconcile_halt, _rec_issues, _ibkr_cash = _reconcile_ibkr(pm)
+    # Les messages de réconciliation sont en MAJORITÉ des SYNCHROS NORMALES (un bracket a vendu
+    # côté IBKR, on aligne le ledger) → INFO neutre, PAS une alerte. On ne met en ROUGE (blockers)
+    # que le cas vraiment grave : le HALT (position fantôme). Sinon l'utilisateur croit à un
+    # problème alors que c'est l'alignement qui fonctionne.
+    reconcile_notes = list(_rec_issues)
     for _iss in _rec_issues:
         log(f"[RECONCILE IBKR] {_iss}")
-        blockers.append("Réconciliation IBKR : " + _iss)
     if _ibkr_cash is not None:
         log(f"[RECONCILE IBKR] cash réel IBKR = {_ibkr_cash:.0f} | ledger = {pm.cash:.0f}")
         # IBKR = SOURCE UNIQUE de vérité pour le cash. On SEED le ledger sur le réel IBKR à chaque
@@ -537,6 +541,8 @@ def run():
             pm.cash = _ibkr_cash
     if reconcile_halt:
         log("[RECONCILE IBKR] ⛔ Divergence critique → NOUVEAUX ACHATS SUSPENDUS ce run.")
+        blockers.append("⛔ Divergence IBKR critique (position fantôme sur IBKR, absente du "
+                        "ledger) → achats suspendus ce run, à vérifier")
 
     # ── 1. Mise a jour des prix des positions ouvertes ────────────
     open_pos = pm.open_positions
@@ -1258,6 +1264,7 @@ def run():
         available=available,
         live_prices=prices if open_pos else {},
         blockers=blockers,
+        reconcile_notes=reconcile_notes,
         momentum_log=momentum_log,
         mpm=mpm if 'mpm' in dir() else None,
         momentum_status=momentum_status,
@@ -1611,6 +1618,7 @@ def _send_daily_email(
     opened_positions, sales_log, sltp_cash, pm, available,
     live_prices: dict | None = None,
     blockers: list[str] | None = None,
+    reconcile_notes: list[str] | None = None,
     momentum_log: list[dict] | None = None,
     mpm=None,
     momentum_status: str = "unknown",
@@ -1886,6 +1894,9 @@ def _send_daily_email(
   <tr><td style='height:12px'></td></tr>
 
   {"" if not blockers else "<tr><td style='background:#3d1111;border-radius:8px;border-left:4px solid #fb7185;padding:14px 18px;margin-bottom:12px'><div style='color:#fb7185;font-weight:700;font-size:14px;margin-bottom:6px'>&#x1F6A8; Blocage structurel detect&eacute;</div>" + "".join(f"<div style='color:#e8a0a0;font-size:12px;margin:3px 0'>&#x2022; {b}</div>" for b in blockers) + "</td></tr><tr><td style='height:12px'></td></tr>"}
+
+  <!-- RÉCONCILIATION IBKR (info neutre — l'alignement qui fonctionne, PAS une alerte) -->
+  {"" if not reconcile_notes else "<tr><td style='background:#0d1a2b;border-radius:8px;border-left:4px solid #4a90d9;padding:12px 18px;margin-bottom:12px'><div style='color:#7ab0e0;font-weight:700;font-size:13px;margin-bottom:5px'>&#x2139;&#xFE0F; R&eacute;conciliation IBKR (synchro normale)</div>" + "".join(f"<div style='color:#93a8bf;font-size:12px;margin:3px 0'>&#x2022; {n}</div>" for n in reconcile_notes) + "</td></tr><tr><td style='height:12px'></td></tr>"}
 
   <!-- STATS MARCHE (table 4 colonnes) -->
   <tr><td>
