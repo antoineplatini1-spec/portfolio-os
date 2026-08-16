@@ -465,8 +465,11 @@ def run():
     # Séparées de la poche FR. Le biais secteur US s'ajoute à l'overlay macro ; les
     # tickers US mis en avant sont injectés dans l'univers du screener (validés ensuite
     # par le débat déterministe — une newsletter ne force aucun achat, elle nomme).
+    # Barchart RETIRÉ (2026-08) : newsletter gratuite SPONSORISÉE (pub/placements payants), pas
+    # des recos vérifiées + on en extrayait le ticker de manchette (souvent une actu NÉGATIVE).
+    # Deux vices (polarité + conflit d'intérêt) → source coupée. On garde The Transcript (earnings,
+    # du fond). Discipline : qualité des sources > quantité de collecte.
     US_SOURCES = [
-        ("newsletters@barchart.com", "Barchart"),
         ("thetranscript@substack.com", "The Transcript"),
     ]
     if llm_on:
