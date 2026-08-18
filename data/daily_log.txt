@@ -15343,3 +15343,136 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-08-17 11:01]   Cash insuffisant (204€ < 1000€)
 [2026-08-17 11:01] [MOMENTUM] valeur=10281.40€  cash=204.17€  positions=10  PnL=-6.41€
 [2026-08-17 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-08-18 11:00] ============================================================
+[2026-08-18 11:00] SCAN JOURNALIER - 2026-08-18
+[2026-08-18 11:00] ============================================================
+[2026-08-18 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-08-18 11:00]   Date     : 2026-08-18  [imap]
+[2026-08-18 11:00]   CAC 40   : NEUTRAL
+[2026-08-18 11:00]   Valeurs  :
+[2026-08-18 11:00]     ✅ Total (Energie) → BUY
+[2026-08-18 11:00]     ✅ Bouygues (Industrie) → BUY
+[2026-08-18 11:00]     ✅ Orange (Telecoms) → BUY
+[2026-08-18 11:00]     ✅ Iliad (Telecoms) → BUY
+[2026-08-18 11:00]   Macro    : market_bullish
+[2026-08-18 11:00]   Secteurs : Telecoms:+2, Energie:+1, Industrie:+1
+[2026-08-18 11:00] ───────────────────────────────────────────────────────
+[2026-08-18 11:00] [LLM] Biais sectoriel = LLM : Telecoms:+2
+[2026-08-18 11:00] [LLM] Trades momentum : LLM sans résultat → algo (regex)
+[2026-08-18 11:00] [US] The Transcript : aucun email récent
+[2026-08-18 11:00] ══════════════════════════════════════════════
+[2026-08-18 11:00]   AGENT MACRO — 2026-08-18
+[2026-08-18 11:00] ══════════════════════════════════════════════
+[2026-08-18 11:00]   Régime marché  : BULL
+[2026-08-18 11:00]   SPY vs EMA200  : +8.1%
+[2026-08-18 11:00]   VIX            : 15.7 (LOW)
+[2026-08-18 11:00]   Max trades/j   : 3
+[2026-08-18 11:00]   Seuil net min  : 10
+[2026-08-18 11:00]   Top secteurs   : Energie, Macro, Santé, Telecoms
+[2026-08-18 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-08-18 11:00]   Rationale      : Marché haussier (SPY +8.1% vs EMA200). Exposition maximale autorisée.
+[2026-08-18 11:00] ══════════════════════════════════════════════
+[2026-08-18 11:00] [RECONCILE IBKR] cash réel IBKR = 98497 | ledger = 94894
+[2026-08-18 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 94894 → 98497
+[2026-08-18 11:00] 15 position(s) ouverte(s) - mise a jour des prix...
+[2026-08-18 11:00]   V: 365.27
+[2026-08-18 11:00]   JPM: 360.17
+[2026-08-18 11:00]   JNJ: 270.22
+[2026-08-18 11:00]   RACE: 415.37
+[2026-08-18 11:00]   MPC: 362.12
+[2026-08-18 11:00]   RTX: 223.46
+[2026-08-18 11:00]   BKNG: 210.60
+[2026-08-18 11:00]   TMO: 590.04
+[2026-08-18 11:00]   NUE: 264.01
+[2026-08-18 11:00]   OXY: 59.50
+[2026-08-18 11:00]   XOM: 163.71
+[2026-08-18 11:00]   AMGN: 423.03
+[2026-08-18 11:00]   LMT: 607.68
+[2026-08-18 11:00]   ABT: 112.64
+[2026-08-18 11:00]   FCX: 66.02
+[2026-08-18 11:00] Screener en cours...
+[2026-08-18 11:00] Scores : max=80  mediane=23  (156 tickers)
+[2026-08-18 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=80
+[2026-08-18 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Energie, Industrie, Telecoms | pénalisés: —
+[2026-08-18 11:00] Filtre ETF/indices (non achetables) : 60 → 50 candidats
+[2026-08-18 11:01] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → TGT
+[2026-08-18 11:01] 49 candidats pre-filtres (score>=40, R>=1.2)
+[2026-08-18 11:01]   [SEC 8-K] T (2026-08-17) : Autre événement matériel, États financiers & annexes
+[2026-08-18 11:01]   [SEC 8-K] SCHW (2026-08-12) : Autre événement matériel, États financiers & annexes
+[2026-08-18 11:01]   [SEC 8-K] COP (2026-08-11) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-08-18 11:01]   [SEC 8-K] NET (2026-08-13) ⚠MATÉRIEL : Accord matériel signé, Nouvelle obligation financière, Émission non enregistrée de titres, Autre événement matériel, États financiers & annexes
+[2026-08-18 11:01]   [SEC 8-K] NEM (2026-08-13) ⚠MATÉRIEL : Accord matériel signé, Divulgation Regulation FD, États financiers & annexes
+[2026-08-18 11:01] [LLM news] JNJ: bullish 0.40 — FDA clearance for MONARCH QUEST 3 bronchoscopy system
+[2026-08-18 11:01] [LLM news] RTX: bullish 0.80 — $22.9B Tomahawk missile contract with 7-year production ramp
+[2026-08-18 11:01] [LLM news] VZ: bearish 0.30 — Supreme Court rejects bid to recover $47M FCC fine
+[2026-08-18 11:01] [LLM news] ABT: bullish 0.35 — New app-controlled insulin pump rollout
+[2026-08-18 11:01] [LLM news] LMT: neutral 0.30 — United Launch Alliance names new CEO
+[2026-08-18 11:01] [LLM news] SCHW: neutral 0.40 — Launch of single stock futures product
+[2026-08-18 11:01] [LLM news] REGN: bullish 0.50 — Competitor EyePoint's Duravyu fails Phase III vs Eylea
+[2026-08-18 11:01] [LLM news] XOM: bullish 0.45 — $1.1B pre-FID contracts awarded for Rovuma LNG phase one
+[2026-08-18 11:01] [LLM news] COP: neutral 0.30 — Executive departure/appointment disclosed via 8-K
+[2026-08-18 11:01] [LLM news] AAPL: bearish 0.40 — Trump administration urges Apple not to buy Chinese memory chips
+[2026-08-18 11:01] [LLM news] PSX: bearish 0.40 — Lightning sparks fire at major fuel depot on key pipeline
+[2026-08-18 11:01] [LLM news] VRTX: bullish 0.55 — Raised 2026 guidance amid pipeline catalysts
+[2026-08-18 11:01] [LLM news] CVX: bullish 0.40 — Oil and gas condensate discovery in Angola's Block 0
+[2026-08-18 11:01] [LLM news] NET: neutral 0.50 — 8-K discloses material agreement, new financial obligation, unregistered securities issuance
+[2026-08-18 11:01] [LLM news] NEM: neutral 0.35 — 8-K discloses material agreement signed
+[2026-08-18 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-08-18 11:01] Cash deployable cette semaine : 96527 EUR  (max trades/j : 2)
+[2026-08-18 11:01] ────────────────────────────────────────────────────
+[2026-08-18 11:01]   DÉBAT : T
+[2026-08-18 11:01] ────────────────────────────────────────────────────
+[2026-08-18 11:01]   🟢 BULL [conviction=83] → ACHETER
+[2026-08-18 11:01]      • Score haussier fort (80/100)
+[2026-08-18 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-18 11:01]      • Prix au-dessus EMA200 (25.03) — tendance long terme haussière
+[2026-08-18 11:01]      • CMF fort — flux acheteur dominant
+[2026-08-18 11:01]      • Stoch RSI survendu (1) — retournement imminent
+[2026-08-18 11:01] 
+[2026-08-18 11:01]   🔴 BEAR [concern=13] → OK
+[2026-08-18 11:01]      • Exposition modérée (72%) — prudence sur les ajouts
+[2026-08-18 11:01]      • Volume faible (0.1× moyenne)
+[2026-08-18 11:01] 
+[2026-08-18 11:01]   ✅ ARBITRE → ACHETER  (net=+75)
+[2026-08-18 11:01]      Arguments haussiers l'emportent clairement (conviction=83, concern=13, net=+75)
+[2026-08-18 11:01] ────────────────────────────────────────────────────
+[2026-08-18 11:01]   [ACHAT] T score=78 bull=83 bear=13 prix=25.16 investi=12998EUR SL=23.94 TP1=26.09
+[2026-08-18 11:01] ────────────────────────────────────────────────────
+[2026-08-18 11:01]   DÉBAT : VZ
+[2026-08-18 11:01] ────────────────────────────────────────────────────
+[2026-08-18 11:01]   🟢 BULL [conviction=83] → ACHETER
+[2026-08-18 11:01]      • Score haussier fort (70/100)
+[2026-08-18 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-18 11:01]      • Prix au-dessus EMA200 (46.21) — tendance long terme haussière
+[2026-08-18 11:01]      • CMF fort — flux acheteur dominant
+[2026-08-18 11:01]      • Stoch RSI survendu (0) — retournement imminent
+[2026-08-18 11:01] 
+[2026-08-18 11:01]   🔴 BEAR [concern=25] → OK
+[2026-08-18 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-08-18 11:01]      • Volume faible (0.1× moyenne)
+[2026-08-18 11:01] 
+[2026-08-18 11:01]   ✅ ARBITRE → ACHETER  (net=+68)
+[2026-08-18 11:01]      Arguments haussiers l'emportent clairement (conviction=83, concern=25, net=+68)
+[2026-08-18 11:01] ────────────────────────────────────────────────────
+[2026-08-18 11:01]   [ACHAT] VZ score=68 bull=83 bear=25 prix=48.87 investi=13021EUR SL=46.59 TP1=50.58
+[2026-08-18 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-08-18 11:01] ----------------------------------------
+[2026-08-18 11:01] RESUME : valeur=259650.52 EUR  investi=209716.05 EUR  cash=72477.97 EUR  expo=82.0%  positions=17
+[2026-08-18 11:01] ----------------------------------------
+[2026-08-18 11:01] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-08-18 11:01]   [MOMENTUM] AI.PA: 167.36
+[2026-08-18 11:01]   [MOMENTUM] AIR.PA: 209.45
+[2026-08-18 11:01]   [MOMENTUM] LR.PA: 135.35
+[2026-08-18 11:01]   [MOMENTUM] PUB.PA: 102.00
+[2026-08-18 11:01]   [MOMENTUM] URW.PA: 102.20
+[2026-08-18 11:01]   [MOMENTUM] EN.PA: 46.78
+[2026-08-18 11:01]   [MOMENTUM] RNO.PA: 28.74
+[2026-08-18 11:01]   [MOMENTUM] RI.PA: 68.20
+[2026-08-18 11:01]   [MOMENTUM] DSY.PA: 21.78
+[2026-08-18 11:01]   [MOMENTUM] SOI.PA: 117.20
+[2026-08-18 11:01] [MOMENTUM] 4 signal(s) newsletter...
+[2026-08-18 11:01]   Cash insuffisant (204€ < 1000€)
+[2026-08-18 11:02]   Cash insuffisant (204€ < 1000€)
+[2026-08-18 11:02]   [MOMENTUM SKIP] ILD.PA: données vides
+[2026-08-18 11:02] [MOMENTUM] valeur=10104.00€  cash=204.17€  positions=10  PnL=-183.81€
+[2026-08-18 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
