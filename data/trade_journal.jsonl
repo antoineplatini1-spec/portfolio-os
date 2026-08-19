@@ -82,3 +82,16 @@
 {"execId": "00025b46.6a82f611.01.01", "time": "2026-08-17 15:01:39", "symbol": "TMO", "side": "BOT", "qty": 22.0, "price": 591.82, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6a83154b.01.01", "time": "2026-08-17 15:01:41", "symbol": "FCX", "side": "BOT", "qty": 100.0, "price": 68.46, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6a83154f.01.01", "time": "2026-08-17 15:01:41", "symbol": "FCX", "side": "BOT", "qty": 89.0, "price": 68.46, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b46.6a843736.01.01", "time": "2026-08-18 15:01:56", "symbol": "T", "side": "BOT", "qty": 516.0, "price": 25.19, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b46.6a843738.01.01", "time": "2026-08-18 15:01:58", "symbol": "VZ", "side": "BOT", "qty": 100.0, "price": 48.95, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b46.6a843739.01.01", "time": "2026-08-18 15:01:58", "symbol": "VZ", "side": "BOT", "qty": 100.0, "price": 48.95, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b46.6a84373a.01.01", "time": "2026-08-18 15:01:58", "symbol": "VZ", "side": "BOT", "qty": 66.0, "price": 48.95, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b61eb5c.01.01", "time": "2026-08-19 13:36:18", "symbol": "AMGN", "side": "SLD", "qty": 31.0, "price": 432.59, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b47.6a8582c9.01.01", "time": "2026-08-19 13:39:05", "symbol": "XOM", "side": "SLD", "qty": 80.0, "price": 166.72, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b622384.01.01", "time": "2026-08-19 13:50:08", "symbol": "TMO", "side": "SLD", "qty": 22.0, "price": 613.95, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a8bbed9.01.01", "time": "2026-08-19 14:06:57", "symbol": "RACE", "side": "SLD", "qty": 35.0, "price": 422.46, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a857609.01.01", "time": "2026-08-19 14:18:16", "symbol": "ABT", "side": "SLD", "qty": 100.0, "price": 115.5, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6a85760a.01.01", "time": "2026-08-19 14:18:16", "symbol": "ABT", "side": "SLD", "qty": 16.0, "price": 115.5, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b635abb.01.01", "time": "2026-08-19 14:19:12", "symbol": "OXY", "side": "SLD", "qty": 100.0, "price": 60.58, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a8bcdfc.01.01", "time": "2026-08-19 14:19:12", "symbol": "OXY", "side": "SLD", "qty": 100.0, "price": 60.58, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a8bcdfd.01.01", "time": "2026-08-19 14:19:12", "symbol": "OXY", "side": "SLD", "qty": 22.0, "price": 60.58, "commission": 0.0, "realized_pnl": 0.0}
