@@ -48,3 +48,5 @@
 {"ts": "2026-08-18T15:01:58.125812+00:00", "ticker": "VZ", "features": {"momentum": 68.0, "sector": 2.0, "news": -0.3, "conviction": 0.0}, "contrib": {"momentum": 68.0, "sector": 6.0, "news": -2.4, "conviction": 0.0}, "total": 71.6}
 {"ts": "2026-08-19T15:01:52.087312+00:00", "ticker": "TMO", "features": {"momentum": 76.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 76.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 79.0}
 {"ts": "2026-08-19T15:01:53.124295+00:00", "ticker": "MRK", "features": {"momentum": 69.0, "sector": 1.0, "news": 0.7, "conviction": 0.0}, "contrib": {"momentum": 69.0, "sector": 3.0, "news": 5.6, "conviction": 0.0}, "total": 77.6}
+{"ts": "2026-08-20T15:02:22.450358+00:00", "ticker": "TGT", "features": {"momentum": 70.0, "sector": 1.0, "news": 0.4, "conviction": 0.0}, "contrib": {"momentum": 70.0, "sector": 3.0, "news": 3.2, "conviction": 0.0}, "total": 76.2}
+{"ts": "2026-08-20T15:02:29.028519+00:00", "ticker": "ABT", "features": {"momentum": 70.0, "sector": 0.0, "news": 0.3, "conviction": 0.0}, "contrib": {"momentum": 70.0, "sector": 0.0, "news": 2.4, "conviction": 0.0}, "total": 72.4}
