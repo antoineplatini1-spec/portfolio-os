@@ -108,3 +108,5 @@
 {"execId": "0000dc8f.6b684ceb.01.01", "time": "2026-08-21 13:31:19", "symbol": "FCX", "side": "SLD", "qty": 100.0, "price": 75.52, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6a87ee1e.01.01", "time": "2026-08-21 13:31:19", "symbol": "FCX", "side": "SLD", "qty": 89.0, "price": 75.524709, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b49.6a8ed706.01.01", "time": "2026-08-21 14:09:48", "symbol": "RTX", "side": "SLD", "qty": 57.0, "price": 211.65, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b6a2a99.01.01", "time": "2026-08-21 15:01:50", "symbol": "ZS", "side": "BOT", "qty": 74.0, "price": 177.48, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a8f09b8.01.01", "time": "2026-08-21 15:01:52", "symbol": "SNOW", "side": "BOT", "qty": 41.0, "price": 323.94, "commission": 0.0, "realized_pnl": 0.0}

@@ -15894,3 +15894,128 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-08-21 11:01] [MOMENTUM] Newsletter fraîche mais aucun signal exploitable.
 [2026-08-21 11:01] [MOMENTUM] valeur=10050.54€  cash=374.05€  positions=10  PnL=-237.27€
 [2026-08-21 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-08-24 11:01] ============================================================
+[2026-08-24 11:01] SCAN JOURNALIER - 2026-08-24
+[2026-08-24 11:01] ============================================================
+[2026-08-24 11:01] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-08-24 11:01]   Date     : 2026-08-24  [imap]
+[2026-08-24 11:01]   CAC 40   : NEUTRAL
+[2026-08-24 11:01]   Macro    : oil_bearish
+[2026-08-24 11:01] ───────────────────────────────────────────────────────
+[2026-08-24 11:02] [LLM] Biais sectoriel = LLM : Macro:-1
+[2026-08-24 11:02] [LLM] Trades momentum = LLM (1) : Nexans:BUY
+[2026-08-24 11:02] [US] The Transcript «Treasury Buybacks» → secteur — | idées: —
+[2026-08-24 11:02] ══════════════════════════════════════════════
+[2026-08-24 11:02]   AGENT MACRO — 2026-08-24
+[2026-08-24 11:02] ══════════════════════════════════════════════
+[2026-08-24 11:02]   Régime marché  : BULL
+[2026-08-24 11:02]   SPY vs EMA200  : +7.0%
+[2026-08-24 11:02]   VIX            : 15.8 (LOW)
+[2026-08-24 11:02]   Max trades/j   : 3
+[2026-08-24 11:02]   Seuil net min  : 10
+[2026-08-24 11:02]   Top secteurs   : Macro, Energie, Conso, Santé
+[2026-08-24 11:02]   Secteurs auth. : TOUS (régime favorable)
+[2026-08-24 11:02]   Rationale      : Marché haussier (SPY +7.0% vs EMA200). Exposition maximale autorisée.
+[2026-08-24 11:02] ══════════════════════════════════════════════
+[2026-08-24 11:02] [RECONCILE IBKR] V : bracket natif partiel (9.00 @ 379.78) → ledger synchronisé (reste 26.00)
+[2026-08-24 11:02] [RECONCILE IBKR] TGT : bracket natif [PnL IBKR] soldé(e) @ 166.57 → clôturé au ledger
+[2026-08-24 11:02] [RECONCILE IBKR] cash réel IBKR = 139277 | ledger = 138008
+[2026-08-24 11:02] [RECONCILE IBKR] cash ledger seedé sur IBKR : 138008 → 139277
+[2026-08-24 11:02] 12 position(s) ouverte(s) - mise a jour des prix...
+[2026-08-24 11:02]   V: 381.23
+[2026-08-24 11:02]   SNOW: 328.21
+[2026-08-24 11:02]   JPM: 357.43
+[2026-08-24 11:02]   JNJ: 271.76
+[2026-08-24 11:02]   MRK: 150.50
+[2026-08-24 11:02]   BKNG: 213.86
+[2026-08-24 11:02]   TMO: 620.14
+[2026-08-24 11:02]   ABT: 116.75
+[2026-08-24 11:02]   T: 25.66
+[2026-08-24 11:02]   VZ: 49.97
+[2026-08-24 11:02]   NFLX: 80.00
+[2026-08-24 11:02]   ZS: 178.51
+[2026-08-24 11:02] Screener en cours...
+[2026-08-24 11:02] Scores : max=70  mediane=28  (156 tickers)
+[2026-08-24 11:02] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=70
+[2026-08-24 11:02] Bonus sectoriel appliqué (±3pts/unité) — favorisés: — | pénalisés: Macro
+[2026-08-24 11:02] Filtre ETF/indices (non achetables) : 52 → 38 candidats
+[2026-08-24 11:02] Prudence résultats : 2 candidat(s) écarté(s) (earnings dans ≤3j) → CRM, MRVL
+[2026-08-24 11:02] 36 candidats pre-filtres (score>=40, R>=1.2)
+[2026-08-24 11:02]   [SEC 8-K] TGT (2026-08-19) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-24 11:02]   [SEC 8-K] ABT (2026-08-20) : Divulgation Regulation FD, Autre événement matériel, États financiers & annexes
+[2026-08-24 11:02]   [SEC 8-K] COF (2026-08-20) : Autre événement matériel, États financiers & annexes
+[2026-08-24 11:02]   [SEC 8-K] COF (2026-08-17) : Divulgation Regulation FD, États financiers & annexes
+[2026-08-24 11:02]   [SEC 8-K] PSX (2026-08-21) ⚠MATÉRIEL : Accord matériel signé, Nouvelle obligation financière, États financiers & annexes
+[2026-08-24 11:02]   [SEC 8-K] NEM (2026-08-20) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-08-24 11:02]   [SEC 8-K] EL (2026-08-19) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-24 11:02]   [SEC 8-K] T (2026-08-17) : Autre événement matériel, États financiers & annexes
+[2026-08-24 11:03] [LLM news] MA: bullish 0.70 — Cross-border transaction growth beats expectations, easing consumer spending fears
+[2026-08-24 11:03] [LLM news] ABT: neutral 0.50 — US$670 million NEC settlement resolves litigation but represents material financial cost
+[2026-08-24 11:03] [LLM news] MRNA: bullish 0.75 — Positive Phase III data for cancer vaccine candidate intismeran
+[2026-08-24 11:03] [LLM news] PLTR: bearish 0.50 — Cathie Wood's ARK sells large stake in Palantir after rally
+[2026-08-24 11:03] [LLM news] BKNG: bearish 0.60 — Booking Holdings trims full-year outlook
+[2026-08-24 11:03] [LLM news] V: bullish 0.65 — Visa shares hit record high as consumer spending stays resilient
+[2026-08-24 11:03] [LLM news] NEM: neutral 0.40 — Executive departure/appointment disclosed via 8-K amid stock surge
+[2026-08-24 11:03] [LLM news] COP: neutral 0.40 — New CFO appointment may shift LNG and Willow project priorities
+[2026-08-24 11:03] [LLM news] PSX: neutral 0.40 — Material agreement and new financial obligation disclosed in 8-K filing
+[2026-08-24 11:03] [LLM news] BAC: bearish 0.40 — SEC insider trading charges raise regulatory scrutiny
+[2026-08-24 11:03]   [LLM news] ⚠ position tenue BKNG : Booking Holdings trims full-year outlook — à surveiller
+[2026-08-24 11:03] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-08-24 11:03] Cash deployable cette semaine : 136491 EUR  (max trades/j : 2)
+[2026-08-24 11:03] ────────────────────────────────────────────────────
+[2026-08-24 11:03]   DÉBAT : MA
+[2026-08-24 11:03] ────────────────────────────────────────────────────
+[2026-08-24 11:03]   🟢 BULL [conviction=79] → ACHETER
+[2026-08-24 11:03]      • Score haussier fort (71/100)
+[2026-08-24 11:03]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-08-24 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-24 11:03]      • Prix au-dessus EMA200 (515.90) — tendance long terme haussière
+[2026-08-24 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-08-24 11:03] 
+[2026-08-24 11:03]   🔴 BEAR [concern=23] → OK
+[2026-08-24 11:03]      • Secteur Finance déjà exposé (2 positions) — diversification limitée
+[2026-08-24 11:03]      • Prix au-dessus BB supérieure (surachat)
+[2026-08-24 11:03]      • Volume faible (0.3× moyenne)
+[2026-08-24 11:03] 
+[2026-08-24 11:03]   ✅ ARBITRE → ACHETER  (net=+65)
+[2026-08-24 11:03]      Arguments haussiers l'emportent clairement (conviction=79, concern=23, net=+65)
+[2026-08-24 11:03] ────────────────────────────────────────────────────
+[2026-08-24 11:03]   [ACHAT] MA score=66 bull=79 bear=23 prix=597.15 investi=13138EUR SL=574.44 TP1=614.18
+[2026-08-24 11:03] ────────────────────────────────────────────────────
+[2026-08-24 11:03]   DÉBAT : SCHW
+[2026-08-24 11:03] ────────────────────────────────────────────────────
+[2026-08-24 11:03]   🟢 BULL [conviction=72] → ACHETER
+[2026-08-24 11:03]      • Score haussier fort (76/100)
+[2026-08-24 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-24 11:03]      • Prix au-dessus EMA200 (96.06) — tendance long terme haussière
+[2026-08-24 11:03]      • CMF fort — flux acheteur dominant
+[2026-08-24 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-08-24 11:03] 
+[2026-08-24 11:03]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-08-24 11:03]      • Secteur Finance très concentré (3 positions) — risque sectoriel
+[2026-08-24 11:03]      • RSI suracheté (78)
+[2026-08-24 11:03]      • Volume faible (0.2× moyenne)
+[2026-08-24 11:03] 
+[2026-08-24 11:03]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-08-24 11:03]      Arguments haussiers l'emportent clairement (conviction=72, concern=31, net=+53)
+[2026-08-24 11:03] ────────────────────────────────────────────────────
+[2026-08-24 11:03]   [ACHAT] SCHW score=70 bull=72 bear=31 prix=113.91 investi=13218EUR SL=109.82 TP1=116.97
+[2026-08-24 11:03] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-08-24 11:03] ----------------------------------------
+[2026-08-24 11:03] RESUME : valeur=263441.51 EUR  investi=168560.47 EUR  cash=112919.40 EUR  expo=64.3%  positions=14
+[2026-08-24 11:03] ----------------------------------------
+[2026-08-24 11:03] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-08-24 11:03]   [MOMENTUM] AI.PA: 168.16
+[2026-08-24 11:03]   [MOMENTUM] AIR.PA: 202.95
+[2026-08-24 11:03]   [MOMENTUM] LR.PA: 133.20
+[2026-08-24 11:03]   [MOMENTUM] PUB.PA: 104.40
+[2026-08-24 11:03]   [MOMENTUM] URW.PA: 102.45
+[2026-08-24 11:03]   [MOMENTUM] EN.PA: 45.91
+[2026-08-24 11:03]   [MOMENTUM] RNO.PA: 28.31
+[2026-08-24 11:03]   [MOMENTUM] RI.PA: 68.74
+[2026-08-24 11:03]   [MOMENTUM] DSY.PA: 22.59
+[2026-08-24 11:03]   [MOMENTUM] SOI.PA: 108.00
+[2026-08-24 11:03] [MOMENTUM] 1 signal(s) newsletter...
+[2026-08-24 11:03]   [MOMENTUM] Nexans (NEX.PA) 7.246× à 138.00€ | SL=133.90 | TPs=156.60 / 163.80 | investi=1000€
+[2026-08-24 11:03] [MOMENTUM] valeur=10024.97€  cash=198.55€  positions=10  PnL=-262.84€
+[2026-08-24 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr

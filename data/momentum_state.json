@@ -1,5 +1,5 @@
 {
-  "cash": 374.05006836582004,
+  "cash": 198.55182616634136,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -421,15 +421,15 @@
       "ticker": "RNO.PA",
       "entry_price": 28.578549236297604,
       "qty_total": 35.02627063828104,
-      "qty_remaining": 29.1885588652342,
+      "qty_remaining": 0.0,
       "sl": 24.66,
       "trailing_stop": true,
       "trailing_stop_price": 28.578549236297604,
       "entry_date": "2026-08-03",
       "fees_in": 0.0,
-      "status": "partial",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 28.28168946647644,
+      "close_date": "2026-08-24",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -603,6 +603,39 @@
         }
       ],
       "partial_fills": []
+    },
+    "NEX.PA": {
+      "ticker": "NEX.PA",
+      "entry_price": 138.13799999999998,
+      "qty_total": 7.246376811594203,
+      "qty_remaining": 7.246376811594203,
+      "sl": 133.9,
+      "trailing_stop": false,
+      "trailing_stop_price": 138.13799999999998,
+      "entry_date": "2026-08-24",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 156.6,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 163.8,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [
@@ -655,25 +688,35 @@
       "close_reason": "SL",
       "entry_date": "2026-07-29",
       "close_date": "2026-08-14"
+    },
+    {
+      "ticker": "RNO.PA",
+      "entry_price": 28.578549236297604,
+      "close_price": 28.28168946647644,
+      "qty": 35.02627063828104,
+      "pnl": -5.6158,
+      "close_reason": "SL",
+      "entry_date": "2026-08-03",
+      "close_date": "2026-08-24"
     }
   ],
   "last_prices": {
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 167.6999969482422,
-    "AIR.PA": 203.85000610351562,
-    "LR.PA": 135.14999389648438,
-    "PUB.PA": 101.9000015258789,
+    "AI.PA": 168.16000366210938,
+    "AIR.PA": 202.9499969482422,
+    "LR.PA": 133.1999969482422,
+    "PUB.PA": 104.4000015258789,
     "ML.PA": 33.880001068115234,
     "HO.PA": 249.3000030517578,
-    "URW.PA": 103.0,
+    "URW.PA": 102.44999694824219,
     "SAF.PA": 359.5,
     "KER.PA": 264.8500061035156,
-    "EN.PA": 46.310001373291016,
-    "RNO.PA": 28.649999618530273,
-    "RI.PA": 68.5,
-    "DSY.PA": 22.3700008392334,
-    "SOI.PA": 110.80000305175781
+    "EN.PA": 45.90999984741211,
+    "RNO.PA": 28.309999465942383,
+    "RI.PA": 68.73999786376953,
+    "DSY.PA": 22.59000015258789,
+    "SOI.PA": 108.0
   }
 }
