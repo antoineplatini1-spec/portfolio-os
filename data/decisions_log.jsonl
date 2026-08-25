@@ -54,3 +54,5 @@
 {"ts": "2026-08-21T15:01:52.078615+00:00", "ticker": "SNOW", "features": {"momentum": 71.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 71.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 74.0}
 {"ts": "2026-08-24T15:03:17.098973+00:00", "ticker": "MA", "features": {"momentum": 66.0, "sector": 0.0, "news": 0.7, "conviction": 0.0}, "contrib": {"momentum": 66.0, "sector": 0.0, "news": 5.6, "conviction": 0.0}, "total": 71.6}
 {"ts": "2026-08-24T15:03:19.124226+00:00", "ticker": "SCHW", "features": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 70.0}
+{"ts": "2026-08-25T15:01:56.128755+00:00", "ticker": "CMCSA", "features": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 64.0}
+{"ts": "2026-08-25T15:01:57.197978+00:00", "ticker": "NEM", "features": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 62.0}
