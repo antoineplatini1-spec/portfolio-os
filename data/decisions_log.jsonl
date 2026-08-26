@@ -56,3 +56,5 @@
 {"ts": "2026-08-24T15:03:19.124226+00:00", "ticker": "SCHW", "features": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 70.0}
 {"ts": "2026-08-25T15:01:56.128755+00:00", "ticker": "CMCSA", "features": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 64.0}
 {"ts": "2026-08-25T15:01:57.197978+00:00", "ticker": "NEM", "features": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 62.0}
+{"ts": "2026-08-26T15:01:46.450197+00:00", "ticker": "MSFT", "features": {"momentum": 75.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 75.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 75.0}
+{"ts": "2026-08-26T15:01:47.429790+00:00", "ticker": "PLTR", "features": {"momentum": 74.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 74.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 74.0}
