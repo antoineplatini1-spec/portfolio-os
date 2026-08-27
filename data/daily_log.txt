@@ -16346,3 +16346,175 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-08-26 11:01]   Cash insuffisant (199€ < 1000€)
 [2026-08-26 11:01] [MOMENTUM] valeur=10086.57€  cash=198.55€  positions=10  PnL=-201.24€
 [2026-08-26 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-08-27 11:00] ============================================================
+[2026-08-27 11:00] SCAN JOURNALIER - 2026-08-27
+[2026-08-27 11:00] ============================================================
+[2026-08-27 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-08-27 11:00]   Date     : 2026-08-27  [imap]
+[2026-08-27 11:00]   CAC 40   : NEUTRAL
+[2026-08-27 11:00]   Valeurs  :
+[2026-08-27 11:00]     ✅ Schneider (Industrie) → BUY
+[2026-08-27 11:00]   Secteurs : Industrie:+1
+[2026-08-27 11:00] ───────────────────────────────────────────────────────
+[2026-08-27 11:00] [LLM] Biais sectoriel = LLM : Industrie:+2, Semi:+1
+[2026-08-27 11:00] [LLM] Trades momentum = LLM (1) : Safran:BUY
+[2026-08-27 11:00] [US] The Transcript «Catalyst Watch» → secteur {'REIT': -1} | idées: —
+[2026-08-27 11:00] ══════════════════════════════════════════════
+[2026-08-27 11:00]   AGENT MACRO — 2026-08-27
+[2026-08-27 11:00] ══════════════════════════════════════════════
+[2026-08-27 11:00]   Régime marché  : BULL
+[2026-08-27 11:00]   SPY vs EMA200  : +7.8%
+[2026-08-27 11:00]   VIX            : 14.6 (LOW)
+[2026-08-27 11:00]   Max trades/j   : 3
+[2026-08-27 11:00]   Seuil net min  : 10
+[2026-08-27 11:00]   Top secteurs   : Macro, Tech, Semi
+[2026-08-27 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-08-27 11:00]   Rationale      : Marché haussier (SPY +7.8% vs EMA200). Exposition maximale autorisée.
+[2026-08-27 11:00] ══════════════════════════════════════════════
+[2026-08-27 11:00] [RECONCILE IBKR] cash réel IBKR = 115935 | ledger = 112258
+[2026-08-27 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 112258 → 115935
+[2026-08-27 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-08-27 11:00]   V: 380.03
+[2026-08-27 11:00]   SNOW: 330.45
+[2026-08-27 11:00]   JPM: 354.32
+[2026-08-27 11:00]   JNJ: 266.26
+[2026-08-27 11:00]   MA: 591.62
+[2026-08-27 11:00]   BKNG: 205.49
+[2026-08-27 11:00]   MSFT: 502.51
+[2026-08-27 11:00]   TMO: 633.05
+[2026-08-27 11:00]   ABT: 111.78
+[2026-08-27 11:00]   T: 25.50
+[2026-08-27 11:00]   NFLX: 79.56
+[2026-08-27 11:00]   CMCSA: 26.65
+[2026-08-27 11:00]   NEM: 133.06
+[2026-08-27 11:00]   PLTR: 185.03
+[2026-08-27 11:00] Screener en cours...
+[2026-08-27 11:01] Scores : max=82  mediane=23  (156 tickers)
+[2026-08-27 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=82
+[2026-08-27 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Industrie, Semi | pénalisés: REIT
+[2026-08-27 11:01] Filtre ETF/indices (non achetables) : 50 → 35 candidats
+[2026-08-27 11:01] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → MRVL
+[2026-08-27 11:01] 34 candidats pre-filtres (score>=40, R>=1.2)
+[2026-08-27 11:01]   [SEC 8-K] CRM (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-27 11:01]   [SEC 8-K] CRWD (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-27 11:01]   [SEC 8-K] NEM (2026-08-20) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-08-27 11:01]   [SEC 8-K] NVDA (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-27 11:01]   [SEC 8-K] PANW (2026-08-21) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Modification des statuts, États financiers & annexes
+[2026-08-27 11:01]   [SEC 8-K] ABT (2026-08-20) : Divulgation Regulation FD, Autre événement matériel, États financiers & annexes
+[2026-08-27 11:02] [LLM news] CRM: bullish 0.80 — Résultats Q2 supérieurs aux attentes, guidance de revenus relevée
+[2026-08-27 11:02] [LLM news] CRWD: bullish 0.75 — Relève ses prévisions d'ARR annuel
+[2026-08-27 11:02] [LLM news] PLTR: bullish 0.60 — Activité Pentagone IA proche de 1Md$/an
+[2026-08-27 11:02] [LLM news] NOW: bullish 0.50 — Accord IA avec Tech Mahindra
+[2026-08-27 11:02] [LLM news] NEM: bullish 0.60 — Production record et cash-flow libre record
+[2026-08-27 11:02] [LLM news] GILD: bullish 0.50 — Approbation UE de Trodelvy en cancer du sein
+[2026-08-27 11:02] [LLM news] EL: bullish 0.55 — Résultats Q4 confirmant le redressement
+[2026-08-27 11:02] [LLM news] SHOP: bullish 0.60 — Résultats Q2 e-commerce solides
+[2026-08-27 11:02] [LLM news] MRNA: bearish 0.40 — Levée de 2Md$ en obligations convertibles (dilution potentielle)
+[2026-08-27 11:02] [LLM news] REGN: bearish 0.50 — Résultats mitigés d'essai sur le mélanome
+[2026-08-27 11:02] [LLM news] AMGN: bullish 0.50 — Succès Phase III de Tezspire (maladie inflammatoire)
+[2026-08-27 11:02] [LLM news] DIS: bullish 0.40 — Segment Experiences génère 3Md$ de revenus sur le trimestre
+[2026-08-27 11:02] [LLM news] PYPL: bullish 0.50 — Discussions autour d'une possible vente de l'entreprise (M&A)
+[2026-08-27 11:02] [LLM news] NVDA: bullish 0.80 — Résultats trimestriels très solides
+[2026-08-27 11:02] [LLM news] PANW: neutral 0.30 — Changement de dirigeant et modification des statuts (8-K)
+[2026-08-27 11:02] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-08-27 11:02] Cash deployable cette semaine : 113616 EUR  (max trades/j : 2)
+[2026-08-27 11:02]   [SKIP earnings] CRM : publication de résultats dans ±3j
+[2026-08-27 11:02]   [SKIP earnings] CRWD : publication de résultats dans ±3j
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   DÉBAT : NOW
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   🟢 BULL [conviction=84] → ACHETER
+[2026-08-27 11:02]      • Score haussier fort (76/100)
+[2026-08-27 11:02]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-08-27 11:02]      • R-ratio solide (2.9×) — risque/récompense favorable
+[2026-08-27 11:02]      • Prix au-dessus EMA200 (108.21) — tendance long terme haussière
+[2026-08-27 11:02]      • CMF fort — flux acheteur dominant
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   🔴 BEAR [concern=39] → PRUDENCE
+[2026-08-27 11:02]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-08-27 11:02]      • Prix au-dessus BB supérieure (surachat)
+[2026-08-27 11:02]      • Exposition modérée (65%) — prudence sur les ajouts
+[2026-08-27 11:02]      • Volume faible (0.7× moyenne)
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-08-27 11:02]      Arguments haussiers l'emportent clairement (conviction=84, concern=39, net=+61)
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   [ACHAT] NOW score=71 bull=84 bear=39 prix=137.36 investi=13061EUR SL=126.37 TP1=146.95
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   DÉBAT : ADBE
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   🟢 BULL [conviction=84] → ACHETER
+[2026-08-27 11:02]      • Score haussier fort (76/100)
+[2026-08-27 11:02]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-08-27 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-27 11:02]      • Prix au-dessus EMA200 (249.12) — tendance long terme haussière
+[2026-08-27 11:02]      • CMF fort — flux acheteur dominant
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   🔴 BEAR [concern=39] → PRUDENCE
+[2026-08-27 11:02]      • Secteur Tech très concentré (4 positions) — risque sectoriel
+[2026-08-27 11:02]      • Prix au-dessus BB supérieure (surachat)
+[2026-08-27 11:02]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-08-27 11:02]      • Volume faible (0.5× moyenne)
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-08-27 11:02]      Arguments haussiers l'emportent clairement (conviction=84, concern=39, net=+61)
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   [VETO secteur] ADBE : Tech deja a 4 positions
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   DÉBAT : ZS
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   🟢 BULL [conviction=80] → ACHETER
+[2026-08-27 11:02]      • Score haussier fort (73/100)
+[2026-08-27 11:02]      • R-ratio excellent (3.0×) — asymétrie gain/risque idéale
+[2026-08-27 11:02]      • Prix au-dessus EMA200 (149.80) — tendance long terme haussière
+[2026-08-27 11:02]      • CMF fort — flux acheteur dominant
+[2026-08-27 11:02]      • Stoch RSI survendu (7) — retournement imminent
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-08-27 11:02]      • Secteur Tech très concentré (4 positions) — risque sectoriel
+[2026-08-27 11:02]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-08-27 11:02]      • Volume faible (0.6× moyenne)
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-08-27 11:02]      Arguments haussiers l'emportent clairement (conviction=80, concern=31, net=+61)
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   [VETO secteur] ZS : Tech deja a 4 positions
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   DÉBAT : TGT
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   🟢 BULL [conviction=72] → ACHETER
+[2026-08-27 11:02]      • Score haussier fort (76/100)
+[2026-08-27 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-27 11:02]      • Prix au-dessus EMA200 (128.04) — tendance long terme haussière
+[2026-08-27 11:02]      • CMF fort — flux acheteur dominant
+[2026-08-27 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   🔴 BEAR [concern=21] → OK
+[2026-08-27 11:02]      • RSI suracheté (71)
+[2026-08-27 11:02]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-08-27 11:02]      • Volume faible (0.2× moyenne)
+[2026-08-27 11:02] 
+[2026-08-27 11:02]   ✅ ARBITRE → ACHETER  (net=+59)
+[2026-08-27 11:02]      Arguments haussiers l'emportent clairement (conviction=72, concern=21, net=+59)
+[2026-08-27 11:02] ────────────────────────────────────────────────────
+[2026-08-27 11:02]   [ACHAT] TGT score=70 bull=72 bear=21 prix=166.11 investi=13134EUR SL=155.83 TP1=173.82
+[2026-08-27 11:02] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-08-27 11:02] ----------------------------------------
+[2026-08-27 11:02] RESUME : valeur=261888.87 EUR  investi=194479.68 EUR  cash=89740.44 EUR  expo=75.0%  positions=16
+[2026-08-27 11:02] ----------------------------------------
+[2026-08-27 11:02] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-08-27 11:02]   [MOMENTUM] AI.PA: 166.86
+[2026-08-27 11:02]   [MOMENTUM] AIR.PA: 203.00
+[2026-08-27 11:02]   [MOMENTUM] LR.PA: 136.00
+[2026-08-27 11:02]   [MOMENTUM] PUB.PA: 101.85
+[2026-08-27 11:02]   [MOMENTUM] URW.PA: 99.32
+[2026-08-27 11:02]   [MOMENTUM] EN.PA: 44.01
+[2026-08-27 11:02]   [MOMENTUM] RI.PA: 64.06
+[2026-08-27 11:02]   [MOMENTUM] DSY.PA: 23.06
+[2026-08-27 11:02]   [MOMENTUM] SOI.PA: 112.10
+[2026-08-27 11:02]   [MOMENTUM] NEX.PA: 143.30
+[2026-08-27 11:02] [MOMENTUM] 1 signal(s) newsletter...
+[2026-08-27 11:02]   [MOMENTUM] Safran (SAF.PA) 2.915× à 343.10€ | SL=318.00 | TPs=366.50 / 374.90 / 384.60 | investi=1000€
+[2026-08-27 11:02] [MOMENTUM] valeur=10014.03€  cash=1534.20€  positions=9  PnL=-273.78€
+[2026-08-27 11:02] [LLM] 1 erreur(s) d'appel → fallback algo : [portfolio_review] JSONDecodeError: Expecting ',' delimiter: line 2 column 300 (char 301)
+[2026-08-27 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr

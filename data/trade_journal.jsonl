@@ -127,3 +127,5 @@
 {"execId": "00025b46.6a8eafdd.01.01", "time": "2026-08-26 14:09:13", "symbol": "VZ", "side": "SLD", "qty": 100.0, "price": 50.58, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b46.6a8eafde.01.01", "time": "2026-08-26 14:09:13", "symbol": "VZ", "side": "SLD", "qty": 100.0, "price": 50.58, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b46.6a8eafdf.01.01", "time": "2026-08-26 14:09:13", "symbol": "VZ", "side": "SLD", "qty": 66.0, "price": 50.58, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b74c425.01.01", "time": "2026-08-26 15:01:46", "symbol": "MSFT", "side": "BOT", "qty": 26.0, "price": 495.21, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a93a541.01.01", "time": "2026-08-26 15:01:47", "symbol": "PLTR", "side": "BOT", "qty": 75.0, "price": 174.79, "commission": 0.0, "realized_pnl": 0.0}
