@@ -1,5 +1,5 @@
 {
-  "cash": 1534.2049752212695,
+  "cash": 533.2049690354684,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -393,7 +393,7 @@
       "ticker": "EN.PA",
       "entry_price": 48.74870076370239,
       "qty_total": 20.533880581804773,
-      "qty_remaining": 0.0,
+      "qty_remaining": 20.533880581804773,
       "sl": 45.7,
       "trailing_stop": false,
       "trailing_stop_price": 48.74870076370239,
@@ -490,7 +490,7 @@
       "ticker": "RI.PA",
       "entry_price": 70.19012274932861,
       "qty_total": 14.261265841846313,
-      "qty_remaining": 0.0,
+      "qty_remaining": 14.261265841846313,
       "sl": 66.06,
       "trailing_stop": false,
       "trailing_stop_price": 70.19012274932861,
@@ -648,6 +648,39 @@
         }
       ],
       "partial_fills": []
+    },
+    "ATE.PA": {
+      "ticker": "ATE.PA",
+      "entry_price": 76.47640152740478,
+      "qty_total": 13.089004974185386,
+      "qty_remaining": 13.089004974185386,
+      "sl": 67.35,
+      "trailing_stop": false,
+      "trailing_stop_price": 76.47640152740478,
+      "entry_date": "2026-08-28",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 84.0,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 91.5,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [
@@ -736,20 +769,20 @@
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 166.86000061035156,
-    "AIR.PA": 203.0,
-    "LR.PA": 136.0,
-    "PUB.PA": 101.8499984741211,
+    "AI.PA": 170.44000244140625,
+    "AIR.PA": 202.9499969482422,
+    "LR.PA": 140.64999389648438,
+    "PUB.PA": 102.0999984741211,
     "ML.PA": 33.880001068115234,
     "HO.PA": 249.3000030517578,
-    "URW.PA": 99.31999969482422,
-    "SAF.PA": 359.5,
+    "URW.PA": 99.12000274658203,
+    "SAF.PA": 344.8999938964844,
     "KER.PA": 264.8500061035156,
     "EN.PA": 44.0099983215332,
     "RNO.PA": 28.309999465942383,
     "RI.PA": 64.05999755859375,
-    "DSY.PA": 23.059999465942383,
-    "SOI.PA": 112.0999984741211,
-    "NEX.PA": 143.3000030517578
+    "DSY.PA": 23.030000686645508,
+    "SOI.PA": 108.69999694824219,
+    "NEX.PA": 143.5
   }
 }

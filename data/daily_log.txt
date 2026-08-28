@@ -16518,3 +16518,136 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-08-27 11:02] [MOMENTUM] valeur=10014.03€  cash=1534.20€  positions=9  PnL=-273.78€
 [2026-08-27 11:02] [LLM] 1 erreur(s) d'appel → fallback algo : [portfolio_review] JSONDecodeError: Expecting ',' delimiter: line 2 column 300 (char 301)
 [2026-08-27 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-08-28 11:00] ============================================================
+[2026-08-28 11:00] SCAN JOURNALIER - 2026-08-28
+[2026-08-28 11:00] ============================================================
+[2026-08-28 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-08-28 11:00]   Date     : 2026-08-28  [imap]
+[2026-08-28 11:00]   CAC 40   : BEARISH
+[2026-08-28 11:00]   Valeurs  :
+[2026-08-28 11:00]     ✅ Schneider (Industrie) → BUY
+[2026-08-28 11:00]     ✅ Vinci (Industrie) → BUY
+[2026-08-28 11:00]     ✅ Airbus (Industrie) → BUY
+[2026-08-28 11:00]     ✅ Safran (Industrie) → BUY
+[2026-08-28 11:00]   Macro    : market_bullish
+[2026-08-28 11:00]   Secteurs : Industrie:+4
+[2026-08-28 11:00] ───────────────────────────────────────────────────────
+[2026-08-28 11:00] [LLM] Biais sectoriel = LLM : Industrie:+2
+[2026-08-28 11:00] [LLM] Trades momentum = LLM (1) : Alten:BUY
+[2026-08-28 11:00] [US] The Transcript «Catalyst Watch» → secteur {'REIT': -2, 'Macro': -1} | idées: —
+[2026-08-28 11:00] ══════════════════════════════════════════════
+[2026-08-28 11:00]   AGENT MACRO — 2026-08-28
+[2026-08-28 11:00] ══════════════════════════════════════════════
+[2026-08-28 11:00]   Régime marché  : BULL
+[2026-08-28 11:00]   SPY vs EMA200  : +8.3%
+[2026-08-28 11:00]   VIX            : 14.2 (LOW)
+[2026-08-28 11:00]   Max trades/j   : 3
+[2026-08-28 11:00]   Seuil net min  : 10
+[2026-08-28 11:00]   Top secteurs   : Macro, Tech
+[2026-08-28 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-08-28 11:00]   Rationale      : Marché haussier (SPY +8.3% vs EMA200). Exposition maximale autorisée.
+[2026-08-28 11:00] ══════════════════════════════════════════════
+[2026-08-28 11:00] [RECONCILE IBKR] PLTR : bracket natif [PnL estimé] soldé(e) @ 185.03 → clôturé au ledger
+[2026-08-28 11:00] [RECONCILE IBKR] MSFT : bracket natif [PnL IBKR] soldé(e) @ 512.58 → clôturé au ledger
+[2026-08-28 11:00] [RECONCILE IBKR] cash réel IBKR = 116608 | ledger = 116945
+[2026-08-28 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 116945 → 116608
+[2026-08-28 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-08-28 11:00]   V: 382.40
+[2026-08-28 11:00]   SNOW: 331.69
+[2026-08-28 11:00]   JPM: 357.49
+[2026-08-28 11:00]   JNJ: 266.27
+[2026-08-28 11:00]   MA: 595.61
+[2026-08-28 11:00]   BKNG: 205.52
+[2026-08-28 11:00]   TMO: 622.02
+[2026-08-28 11:00]   ABT: 112.07
+[2026-08-28 11:00]   T: 25.91
+[2026-08-28 11:00]   NFLX: 82.08
+[2026-08-28 11:00]   TGT: 163.08
+[2026-08-28 11:00]   CMCSA: 26.89
+[2026-08-28 11:00]   NEM: 131.07
+[2026-08-28 11:00]   NOW: 144.19
+[2026-08-28 11:00] Screener en cours...
+[2026-08-28 11:00] Scores : max=84  mediane=30  (156 tickers)
+[2026-08-28 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=84
+[2026-08-28 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Industrie | pénalisés: REIT, Macro
+[2026-08-28 11:00] Filtre ETF/indices (non achetables) : 51 → 41 candidats
+[2026-08-28 11:01] 41 candidats pre-filtres (score>=40, R>=1.2)
+[2026-08-28 11:01]   [SEC 8-K] CRM (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-28 11:01]   [SEC 8-K] CRWD (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-08-28 11:01]   [SEC 8-K] PANW (2026-08-21) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Modification des statuts, États financiers & annexes
+[2026-08-28 11:01]   [SEC 8-K] PSX (2026-08-21) ⚠MATÉRIEL : Accord matériel signé, Nouvelle obligation financière, États financiers & annexes
+[2026-08-28 11:01] [LLM news] TGT: bullish 0.50 — Résultats trimestriels dopés par ~1Md$ de remboursements tarifaires Trump
+[2026-08-28 11:01] [LLM news] SHOP: bullish 0.50 — Accord majeur avec Affirm dopant les résultats
+[2026-08-28 11:01] [LLM news] SLB: neutral 0.40 — Accès aux données pétrolières du Venezuela, risque de paiement
+[2026-08-28 11:01] [LLM news] UBER: bearish 0.60 — Amende de 966 millions de dollars, risque réglementaire
+[2026-08-28 11:01] [LLM news] CRM: bullish 0.60 — Résultats trimestriels publiés (8-K), réaction positive du marché
+[2026-08-28 11:01] [LLM news] PFE: bullish 0.30 — Nouveaux jalons vaccins COVID et Lyme
+[2026-08-28 11:01] [LLM news] T: bullish 0.50 — Marge à un plus haut pluriannuel grâce au retrait du réseau cuivre
+[2026-08-28 11:01] [LLM news] CMCSA: bullish 0.50 — Spin-off NBCU et profits de Peacock changent la thèse d'investissement
+[2026-08-28 11:01] [LLM news] ABT: bullish 0.60 — Approbation FDA d'un dispositif portable inédit pour cétones/glucose
+[2026-08-28 11:01] [LLM news] MRNA: bullish 0.60 — Succès d'un essai clinique sur le mélanome, upgrade analyste
+[2026-08-28 11:01] [LLM news] SCHW: bullish 0.40 — Expansion du trading crypto (SOL, AVAX, LINK) sur 39,9M de comptes
+[2026-08-28 11:01] [LLM news] CRWD: neutral 0.40 — Publication de résultats (8-K)
+[2026-08-28 11:01] [LLM news] FDX: bullish 0.50 — Spin-off de la division Freight et investissement de 150M$ à Delhi
+[2026-08-28 11:01] [LLM news] EL: bullish 0.50 — Rebond des ventes en Chine dans les résultats
+[2026-08-28 11:01] [LLM news] GILD: bullish 0.60 — Approbations FDA (Bixlenvo pour VIH) et UE (Trodelvy) élargissant le pipeline
+[2026-08-28 11:01] [LLM news] PANW: neutral 0.40 — Changement de dirigeant et modification des statuts (8-K)
+[2026-08-28 11:01] [LLM news] PSX: neutral 0.40 — Accord matériel signé et nouvelle obligation financière (8-K)
+[2026-08-28 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-08-28 11:01] Cash deployable cette semaine : 114275 EUR  (max trades/j : 2)
+[2026-08-28 11:01] ────────────────────────────────────────────────────
+[2026-08-28 11:01]   DÉBAT : PLTR
+[2026-08-28 11:01] ────────────────────────────────────────────────────
+[2026-08-28 11:01]   🟢 BULL [conviction=80] → ACHETER
+[2026-08-28 11:01]      • Score haussier fort (86/100)
+[2026-08-28 11:01]      • R-ratio solide (2.6×) — risque/récompense favorable
+[2026-08-28 11:01]      • Prix au-dessus EMA200 (144.72) — tendance long terme haussière
+[2026-08-28 11:01]      • CMF fort — flux acheteur dominant
+[2026-08-28 11:01]      • Stoch RSI survendu (15) — retournement imminent
+[2026-08-28 11:01] 
+[2026-08-28 11:01]   🔴 BEAR [concern=23] → OK
+[2026-08-28 11:01]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-08-28 11:01]      • Exposition modérée (65%) — prudence sur les ajouts
+[2026-08-28 11:01]      • Volume faible (0.1× moyenne)
+[2026-08-28 11:01] 
+[2026-08-28 11:01]   ✅ ARBITRE → ACHETER  (net=+66)
+[2026-08-28 11:01]      Arguments haussiers l'emportent clairement (conviction=80, concern=23, net=+66)
+[2026-08-28 11:01] ────────────────────────────────────────────────────
+[2026-08-28 11:01]   [ACHAT] PLTR score=84 bull=80 bear=23 prix=186.50 investi=21091EUR SL=171.58 TP1=197.95
+[2026-08-28 11:01] ────────────────────────────────────────────────────
+[2026-08-28 11:01]   DÉBAT : DIS
+[2026-08-28 11:01] ────────────────────────────────────────────────────
+[2026-08-28 11:01]   🟢 BULL [conviction=75] → ACHETER
+[2026-08-28 11:01]      • Score haussier fort (78/100)
+[2026-08-28 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-08-28 11:01]      • Prix au-dessus EMA200 (101.67) — tendance long terme haussière
+[2026-08-28 11:01]      • CMF fort — flux acheteur dominant
+[2026-08-28 11:01]      • Stoch RSI survendu (14) — retournement imminent
+[2026-08-28 11:01] 
+[2026-08-28 11:01]   🔴 BEAR [concern=23] → OK
+[2026-08-28 11:01]      • Secteur Media déjà exposé (2 positions) — diversification limitée
+[2026-08-28 11:01]      • Exposition modérée (73%) — prudence sur les ajouts
+[2026-08-28 11:01]      • Volume faible (0.1× moyenne)
+[2026-08-28 11:01] 
+[2026-08-28 11:01]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-08-28 11:01]      Arguments haussiers l'emportent clairement (conviction=75, concern=23, net=+61)
+[2026-08-28 11:01] ────────────────────────────────────────────────────
+[2026-08-28 11:01]   [ACHAT] DIS score=76 bull=75 bear=23 prix=107.91 investi=13177EUR SL=103.34 TP1=111.33
+[2026-08-28 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-08-28 11:01] ----------------------------------------
+[2026-08-28 11:01] RESUME : valeur=263050.06 EUR  investi=202762.99 EUR  cash=82338.48 EUR  expo=77.8%  positions=16
+[2026-08-28 11:01] ----------------------------------------
+[2026-08-28 11:01] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-08-28 11:01]   [MOMENTUM] AI.PA: 170.44
+[2026-08-28 11:01]   [MOMENTUM] AIR.PA: 202.95
+[2026-08-28 11:01]   [MOMENTUM] LR.PA: 140.65
+[2026-08-28 11:01]   [MOMENTUM] PUB.PA: 102.10
+[2026-08-28 11:01]   [MOMENTUM] URW.PA: 99.12
+[2026-08-28 11:01]   [MOMENTUM] SAF.PA: 344.90
+[2026-08-28 11:01]   [MOMENTUM] DSY.PA: 23.03
+[2026-08-28 11:01]   [MOMENTUM] SOI.PA: 108.70
+[2026-08-28 11:01]   [MOMENTUM] NEX.PA: 143.50
+[2026-08-28 11:01] [MOMENTUM] 1 signal(s) newsletter...
+[2026-08-28 11:01]   [MOMENTUM] Alten (ATE.PA) 13.089× à 76.40€ | SL=67.35 | TPs=84.00 / 91.50 | investi=1000€
+[2026-08-28 11:01] [MOMENTUM] valeur=9998.80€  cash=533.20€  positions=10  PnL=-289.01€
+[2026-08-28 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
