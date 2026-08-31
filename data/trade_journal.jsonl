@@ -133,3 +133,7 @@
 {"execId": "00025b46.6a900158.01.01", "time": "2026-08-27 15:02:15", "symbol": "TGT", "side": "BOT", "qty": 79.0, "price": 166.25, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b49.6a9564a2.01.01", "time": "2026-08-27 17:01:53", "symbol": "PLTR", "side": "SLD", "qty": 75.0, "price": 186.52, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6b79681a.01.01", "time": "2026-08-28 13:46:25", "symbol": "MSFT", "side": "SLD", "qty": 26.0, "price": 512.58, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6b7a9d2a.01.01", "time": "2026-08-28 15:01:55", "symbol": "PLTR", "side": "BOT", "qty": 100.0, "price": 186.65, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6a967b30.01.01", "time": "2026-08-28 15:01:55", "symbol": "PLTR", "side": "BOT", "qty": 13.0, "price": 186.644248, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6a9223df.01.01", "time": "2026-08-28 15:01:56", "symbol": "DIS", "side": "BOT", "qty": 100.0, "price": 108.01, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6a9223e0.01.01", "time": "2026-08-28 15:01:56", "symbol": "DIS", "side": "BOT", "qty": 22.0, "price": 108.01, "commission": 0.0, "realized_pnl": 0.0}

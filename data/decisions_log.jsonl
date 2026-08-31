@@ -62,3 +62,5 @@
 {"ts": "2026-08-27T15:02:15.094191+00:00", "ticker": "TGT", "features": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 70.0}
 {"ts": "2026-08-28T15:01:55.454381+00:00", "ticker": "PLTR", "features": {"momentum": 84.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 84.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 84.0}
 {"ts": "2026-08-28T15:01:56.554812+00:00", "ticker": "DIS", "features": {"momentum": 76.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 76.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 76.0}
+{"ts": "2026-08-31T15:03:56.084999+00:00", "ticker": "CRWD", "features": {"momentum": 88.0, "sector": 0.0, "news": 0.6, "conviction": 0.0}, "contrib": {"momentum": 88.0, "sector": 0.0, "news": 4.8, "conviction": 0.0}, "total": 92.8}
+{"ts": "2026-08-31T15:04:01.115444+00:00", "ticker": "PFE", "features": {"momentum": 84.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 84.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 84.0}
