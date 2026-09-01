@@ -16782,3 +16782,128 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-08-31 11:04]   Cash insuffisant (533€ < 1000€)
 [2026-08-31 11:04] [MOMENTUM] valeur=9962.49€  cash=533.20€  positions=10  PnL=-325.32€
 [2026-08-31 11:04] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-01 11:00] ============================================================
+[2026-09-01 11:00] SCAN JOURNALIER - 2026-09-01
+[2026-09-01 11:00] ============================================================
+[2026-09-01 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-01 11:00]   Date     : 2026-09-01  [imap]
+[2026-09-01 11:00]   CAC 40   : NEUTRAL
+[2026-09-01 11:00]   Valeurs  :
+[2026-09-01 11:00]     ✅ Vallourec (Energie) → BUY
+[2026-09-01 11:00]     🔴 Airbus (Industrie) → SELL
+[2026-09-01 11:00]   Macro    : market_caution, market_bullish
+[2026-09-01 11:00]   Secteurs : Energie:+1, Industrie:-1
+[2026-09-01 11:00] ───────────────────────────────────────────────────────
+[2026-09-01 11:00] [LLM] Biais sectoriel : LLM sans résultat → algo (regex)
+[2026-09-01 11:00] [LLM] Trades momentum = LLM (3) : Air Liquide:BUY, Vallourec:BUY, Airbus:HOLD
+[2026-09-01 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-01 11:00] ══════════════════════════════════════════════
+[2026-09-01 11:00]   AGENT MACRO — 2026-09-01
+[2026-09-01 11:00] ══════════════════════════════════════════════
+[2026-09-01 11:00]   Régime marché  : BULL
+[2026-09-01 11:00]   SPY vs EMA200  : +6.7%
+[2026-09-01 11:00]   VIX            : 15.4 (LOW)
+[2026-09-01 11:00]   Max trades/j   : 3
+[2026-09-01 11:00]   Seuil net min  : 10
+[2026-09-01 11:00]   Top secteurs   : Energie, Macro, Santé
+[2026-09-01 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-01 11:00]   Rationale      : Marché haussier (SPY +6.7% vs EMA200). Exposition maximale autorisée.
+[2026-09-01 11:00] ══════════════════════════════════════════════
+[2026-09-01 11:00] [RECONCILE IBKR] PFE : bracket natif [PnL IBKR] soldé(e) @ 29.08 → clôturé au ledger
+[2026-09-01 11:00] [RECONCILE IBKR] NEM : bracket natif [PnL IBKR] soldé(e) @ 122.09 → clôturé au ledger
+[2026-09-01 11:00] [RECONCILE IBKR] ABT : bracket natif [PnL estimé] soldé(e) @ 110.35 → clôturé au ledger
+[2026-09-01 11:00] [RECONCILE IBKR] cash réel IBKR = 114655 | ledger = 115670
+[2026-09-01 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 115670 → 114655
+[2026-09-01 11:00] 13 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-01 11:00]   V: 376.70
+[2026-09-01 11:00]   CRWD: 214.82
+[2026-09-01 11:00]   SNOW: 324.15
+[2026-09-01 11:00]   JPM: 357.66
+[2026-09-01 11:00]   JNJ: 268.20
+[2026-09-01 11:00]   MA: 586.22
+[2026-09-01 11:00]   AMZN: 254.59
+[2026-09-01 11:00]   TMO: 604.96
+[2026-09-01 11:00]   NFLX: 81.02
+[2026-09-01 11:00]   TGT: 163.57
+[2026-09-01 11:00]   CMCSA: 26.51
+[2026-09-01 11:00]   PLTR: 183.80
+[2026-09-01 11:00]   DIS: 107.76
+[2026-09-01 11:00] Screener en cours...
+[2026-09-01 11:00] Scores : max=84  mediane=19  (156 tickers)
+[2026-09-01 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=84
+[2026-09-01 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Energie | pénalisés: Industrie
+[2026-09-01 11:00] Filtre ETF/indices (non achetables) : 49 → 40 candidats
+[2026-09-01 11:01] Prudence résultats : 2 candidat(s) écarté(s) (earnings dans ≤3j) → SNOW, ZS
+[2026-09-01 11:01] 38 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-01 11:01]   [SEC 8-K] CRM (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-09-01 11:01]   [SEC 8-K] SLB (2026-08-31) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-01 11:01]   [SEC 8-K] CRWD (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-09-01 11:01]   [SEC 8-K] XOM (2026-08-28) : Autre événement matériel, États financiers & annexes
+[2026-09-01 11:01] [LLM news] MRNA: bullish 0.80 — Merck-Moderna cancer vaccine breakthrough drives stock surge
+[2026-09-01 11:01] [LLM news] MRK: bullish 0.80 — Merck-Moderna cancer vaccine breakthrough
+[2026-09-01 11:01] [LLM news] AMGN: bullish 0.60 — Drug shown to cut risk of dying by 20%
+[2026-09-01 11:01] [LLM news] PFE: bullish 0.50 — Confidential settlement reached in Depo Provera litigation
+[2026-09-01 11:01] [LLM news] REGN: bullish 0.70 — FDA approves Pasatru for adult FOP
+[2026-09-01 11:01] [LLM news] ADBE: neutral 0.50 — $4 billion investment/deal in Saudi Arabia AI push
+[2026-09-01 11:01] [LLM news] SLB: bullish 0.60 — Acquires Kelvion in data center cooling deal
+[2026-09-01 11:01] [LLM news] VZ: neutral 0.40 — Debt redemption and hyperscaler dark fiber strategic pivot
+[2026-09-01 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-01 11:01] Cash deployable cette semaine : 112361 EUR  (max trades/j : 2)
+[2026-09-01 11:01] ────────────────────────────────────────────────────
+[2026-09-01 11:01]   DÉBAT : MRNA
+[2026-09-01 11:01] ────────────────────────────────────────────────────
+[2026-09-01 11:01]   🟢 BULL [conviction=93] → ACHETER
+[2026-09-01 11:01]      • Score haussier fort (86/100)
+[2026-09-01 11:01]      • R-ratio excellent (6.0×) — asymétrie gain/risque idéale
+[2026-09-01 11:01]      • Prix au-dessus EMA200 (64.12) — tendance long terme haussière
+[2026-09-01 11:01]      • Momentum 10j fort (+129.5%) — tendance confirmée
+[2026-09-01 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-01 11:01] 
+[2026-09-01 11:01]   🔴 BEAR [concern=23] → OK
+[2026-09-01 11:01]      • Secteur Santé déjà exposé (2 positions) — diversification limitée
+[2026-09-01 11:01]      • Exposition modérée (65%) — prudence sur les ajouts
+[2026-09-01 11:01]      • Volume faible (0.3× moyenne)
+[2026-09-01 11:01] 
+[2026-09-01 11:01]   ✅ ARBITRE → ACHETER  (net=+79)
+[2026-09-01 11:01]      Arguments haussiers l'emportent clairement (conviction=93, concern=23, net=+79)
+[2026-09-01 11:01] ────────────────────────────────────────────────────
+[2026-09-01 11:01]   [ACHAT] MRNA score=84 bull=93 bear=23 prix=144.50 investi=20796EUR SL=132.94 TP1=165.41
+[2026-09-01 11:01] ────────────────────────────────────────────────────
+[2026-09-01 11:01]   DÉBAT : MRK
+[2026-09-01 11:01] ────────────────────────────────────────────────────
+[2026-09-01 11:01]   🟢 BULL [conviction=77] → ACHETER
+[2026-09-01 11:01]      • Score haussier fort (76/100)
+[2026-09-01 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-01 11:01]      • Prix au-dessus EMA200 (123.94) — tendance long terme haussière
+[2026-09-01 11:01]      • Momentum 10j fort (+10.5%) — tendance confirmée
+[2026-09-01 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-01 11:01] 
+[2026-09-01 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-01 11:01]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-09-01 11:01]      • Exposition modérée (73%) — prudence sur les ajouts
+[2026-09-01 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-01 11:01] 
+[2026-09-01 11:01]   ✅ ARBITRE → ACHETER  (net=+58)
+[2026-09-01 11:01]      Arguments haussiers l'emportent clairement (conviction=77, concern=31, net=+58)
+[2026-09-01 11:01] ────────────────────────────────────────────────────
+[2026-09-01 11:01]   [ACHAT] MRK score=74 bull=77 bear=31 prix=149.40 investi=12981EUR SL=140.96 TP1=155.73
+[2026-09-01 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-01 11:01] ----------------------------------------
+[2026-09-01 11:01] RESUME : valeur=260009.71 EUR  investi=204201.27 EUR  cash=80875.80 EUR  expo=78.1%  positions=15
+[2026-09-01 11:01] ----------------------------------------
+[2026-09-01 11:01] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-09-01 11:01]   [MOMENTUM] AI.PA: 172.94
+[2026-09-01 11:01]   [MOMENTUM] AIR.PA: 195.44
+[2026-09-01 11:01]   [MOMENTUM] LR.PA: 134.05
+[2026-09-01 11:01]   [MOMENTUM] PUB.PA: 100.60
+[2026-09-01 11:01]   [MOMENTUM] URW.PA: 96.58
+[2026-09-01 11:01]   [MOMENTUM] SAF.PA: 330.40
+[2026-09-01 11:01]   [MOMENTUM] DSY.PA: 22.59
+[2026-09-01 11:01]   [MOMENTUM] SOI.PA: 109.85
+[2026-09-01 11:01]   [MOMENTUM] NEX.PA: 136.40
+[2026-09-01 11:01]   [MOMENTUM] ATE.PA: 76.30
+[2026-09-01 11:01] [MOMENTUM] 3 signal(s) newsletter...
+[2026-09-01 11:01]   Cash insuffisant (533€ < 1000€)
+[2026-09-01 11:01]   [MOMENTUM SELL] Airbus (AIR.PA) @ 195.44 — raison newsletter : HOLD
+[2026-09-01 11:01] [MOMENTUM] valeur=9790.36€  cash=1531.29€  positions=9  PnL=-497.45€
+[2026-09-01 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
