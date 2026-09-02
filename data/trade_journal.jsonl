@@ -157,3 +157,7 @@
 {"execId": "00025b49.6a98dbe5.01.01", "time": "2026-09-01 13:32:52", "symbol": "PFE", "side": "SLD", "qty": 300.0, "price": 29.08, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b49.6a98dbea.01.01", "time": "2026-09-01 13:32:52", "symbol": "PFE", "side": "SLD", "qty": 100.0, "price": 29.08, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b49.6a98dbeb.01.01", "time": "2026-09-01 13:32:52", "symbol": "PFE", "side": "SLD", "qty": 42.0, "price": 29.08, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6a9b9a8f.01.01", "time": "2026-09-01 15:01:40", "symbol": "MRNA", "side": "BOT", "qty": 144.0, "price": 144.42, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6a9b9ab5.01.01", "time": "2026-09-01 15:01:45", "symbol": "MRK", "side": "BOT", "qty": 87.0, "price": 149.21, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6a97eeac.01.01", "time": "2026-09-02 13:32:06", "symbol": "CRWD", "side": "SLD", "qty": 52.0, "price": 208.7, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6a97eead.01.01", "time": "2026-09-02 13:32:06", "symbol": "CRWD", "side": "SLD", "qty": 40.0, "price": 208.7, "commission": 0.0, "realized_pnl": 0.0}

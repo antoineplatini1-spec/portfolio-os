@@ -16907,3 +16907,133 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-01 11:01]   [MOMENTUM SELL] Airbus (AIR.PA) @ 195.44 — raison newsletter : HOLD
 [2026-09-01 11:01] [MOMENTUM] valeur=9790.36€  cash=1531.29€  positions=9  PnL=-497.45€
 [2026-09-01 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-02 11:00] ============================================================
+[2026-09-02 11:00] SCAN JOURNALIER - 2026-09-02
+[2026-09-02 11:00] ============================================================
+[2026-09-02 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-02 11:00]   Date     : 2026-09-02  [imap]
+[2026-09-02 11:00]   CAC 40   : NEUTRAL
+[2026-09-02 11:00]   Valeurs  :
+[2026-09-02 11:00]     ✅ Bnp (Finance) → BUY
+[2026-09-02 11:00]     ✅ Axa (Finance) → BUY
+[2026-09-02 11:00]     🚫 Total (Energie) → AVOID
+[2026-09-02 11:00]   Macro    : tech_pressure, energy_strong, market_caution, market_bullish
+[2026-09-02 11:00]   Secteurs : Finance:+2, Energie:-1, Tech:-1
+[2026-09-02 11:00] ───────────────────────────────────────────────────────
+[2026-09-02 11:00] [LLM] Biais sectoriel : LLM sans résultat → algo (regex)
+[2026-09-02 11:00] [LLM] Trades momentum = LLM (2) : Axa:BUY, Thales:AVOID
+[2026-09-02 11:01] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-02 11:01] ══════════════════════════════════════════════
+[2026-09-02 11:01]   AGENT MACRO — 2026-09-02
+[2026-09-02 11:01] ══════════════════════════════════════════════
+[2026-09-02 11:01]   Régime marché  : BULL
+[2026-09-02 11:01]   SPY vs EMA200  : +6.8%
+[2026-09-02 11:01]   VIX            : 15.4 (LOW)
+[2026-09-02 11:01]   Max trades/j   : 3
+[2026-09-02 11:01]   Seuil net min  : 10
+[2026-09-02 11:01]   Top secteurs   : Energie, Santé, Macro, Finance
+[2026-09-02 11:01]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-02 11:01]   Rationale      : Marché haussier (SPY +6.8% vs EMA200). Exposition maximale autorisée.
+[2026-09-02 11:01] ══════════════════════════════════════════════
+[2026-09-02 11:01] [RECONCILE IBKR] CRWD : bracket natif [PnL IBKR] soldé(e) @ 208.70 → clôturé au ledger
+[2026-09-02 11:01] [RECONCILE IBKR] cash réel IBKR = 102048 | ledger = 100076
+[2026-09-02 11:01] [RECONCILE IBKR] cash ledger seedé sur IBKR : 100076 → 102048
+[2026-09-02 11:01] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-02 11:01]   V: 379.60
+[2026-09-02 11:01]   SNOW: 313.27
+[2026-09-02 11:01]   JPM: 361.00
+[2026-09-02 11:01]   JNJ: 274.92
+[2026-09-02 11:01]   MRK: 150.32
+[2026-09-02 11:01]   MA: 589.69
+[2026-09-02 11:01]   AMZN: 255.18
+[2026-09-02 11:01]   TMO: 609.87
+[2026-09-02 11:01]   NFLX: 82.66
+[2026-09-02 11:01]   TGT: 164.45
+[2026-09-02 11:01]   CMCSA: 27.07
+[2026-09-02 11:01]   PLTR: 172.62
+[2026-09-02 11:01]   DIS: 108.83
+[2026-09-02 11:01]   MRNA: 148.87
+[2026-09-02 11:01] Screener en cours...
+[2026-09-02 11:01] Scores : max=89  mediane=25  (156 tickers)
+[2026-09-02 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=89
+[2026-09-02 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Finance | pénalisés: Energie, Tech
+[2026-09-02 11:01] Filtre ETF/indices (non achetables) : 60 → 45 candidats
+[2026-09-02 11:01] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → ZS
+[2026-09-02 11:01] 44 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-02 11:01]   [SEC 8-K] SLB (2026-08-31) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-02 11:01]   [SEC 8-K] MU (2026-08-26) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-09-02 11:01]   [SEC 8-K] MRNA (2026-09-01) ⚠MATÉRIEL : Accord matériel signé, Nouvelle obligation financière, Émission non enregistrée de titres, Autre événement matériel, États financiers & annexes
+[2026-09-02 11:01]   [SEC 8-K] CRM (2026-08-26) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-09-02 11:01]   [SEC 8-K] VRTX (2026-09-01) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-02 11:02] [LLM news] MRK: bullish 0.70 — Positive Phase 3 individualized mRNA cancer trial result
+[2026-09-02 11:02] [LLM news] SLB: bullish 0.50 — Kelvion acquisition expands data center cooling platform
+[2026-09-02 11:02] [LLM news] JNJ: bearish 0.60 — Talc litigation verdict raises legal risk
+[2026-09-02 11:02] [LLM news] PFE: bullish 0.40 — Confidential settlement reached in Depo Provera litigation
+[2026-09-02 11:02] [LLM news] AMGN: bullish 0.50 — Key drug shows 20% reduction in mortality risk
+[2026-09-02 11:02] [LLM news] REGN: bullish 0.70 — FDA approval for Pasatru in adult FOP
+[2026-09-02 11:02] [LLM news] VZ: bullish 0.40 — Debt redemption and dark fiber pivot toward hyperscalers
+[2026-09-02 11:02] [LLM news] CVX: bullish 0.60 — $7B investment to double Venezuela venture output
+[2026-09-02 11:02] [LLM news] C: bearish 0.40 — London unit fined for Russia sanctions breach
+[2026-09-02 11:02] [LLM news] MU: neutral 0.30 — Executive departure/appointment disclosed via 8-K
+[2026-09-02 11:02] [LLM news] V: bearish 0.30 — DOJ debit card antitrust case document production continues
+[2026-09-02 11:02] [LLM news] MRNA: neutral 0.40 — Material agreement and new financial obligation disclosed via 8-K
+[2026-09-02 11:02] [LLM news] CRM: neutral 0.30 — Financial results disclosed via 8-K
+[2026-09-02 11:02] [LLM news] VRTX: neutral 0.30 — Executive departure/appointment disclosed via 8-K
+[2026-09-02 11:02]   [LLM news] ⚠ position tenue JNJ : Talc litigation verdict raises legal risk — à surveiller
+[2026-09-02 11:02] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-02 11:02] Cash deployable cette semaine : 100007 EUR  (max trades/j : 2)
+[2026-09-02 11:02] ────────────────────────────────────────────────────
+[2026-09-02 11:02]   DÉBAT : APD
+[2026-09-02 11:02] ────────────────────────────────────────────────────
+[2026-09-02 11:02]   🟢 BULL [conviction=90] → ACHETER
+[2026-09-02 11:02]      • Score haussier fort (91/100)
+[2026-09-02 11:02]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-09-02 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-02 11:02]      • Prix au-dessus EMA200 (288.22) — tendance long terme haussière
+[2026-09-02 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-02 11:02] 
+[2026-09-02 11:02]   🔴 BEAR [concern=13] → OK
+[2026-09-02 11:02]      • Exposition modérée (71%) — prudence sur les ajouts
+[2026-09-02 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-02 11:02] 
+[2026-09-02 11:02]   ✅ ARBITRE → ACHETER  (net=+82)
+[2026-09-02 11:02]      Arguments haussiers l'emportent clairement (conviction=90, concern=13, net=+82)
+[2026-09-02 11:02] ────────────────────────────────────────────────────
+[2026-09-02 11:02]   [ACHAT] APD score=89 bull=90 bear=13 prix=311.25 investi=20865EUR SL=298.70 TP1=320.66
+[2026-09-02 11:02] ────────────────────────────────────────────────────
+[2026-09-02 11:02]   DÉBAT : PSX
+[2026-09-02 11:02] ────────────────────────────────────────────────────
+[2026-09-02 11:02]   🟢 BULL [conviction=80] → ACHETER
+[2026-09-02 11:02]      • Score haussier fort (86/100)
+[2026-09-02 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-02 11:02]      • Prix au-dessus EMA200 (184.36) — tendance long terme haussière
+[2026-09-02 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-02 11:02]      • Stoch RSI survendu (17) — retournement imminent
+[2026-09-02 11:02] 
+[2026-09-02 11:02]   🔴 BEAR [concern=33] → PRUDENCE
+[2026-09-02 11:02]      • Exposition déjà élevée (78%) — risque de surconcentration
+[2026-09-02 11:02]      • RSI suracheté (75)
+[2026-09-02 11:02]      • Volume faible (0.3× moyenne)
+[2026-09-02 11:02] 
+[2026-09-02 11:02]   ✅ ARBITRE → ACHETER  (net=+60)
+[2026-09-02 11:02]      Arguments haussiers l'emportent clairement (conviction=80, concern=33, net=+60)
+[2026-09-02 11:02] ────────────────────────────────────────────────────
+[2026-09-02 11:02]   [ACHAT] PSX score=80 bull=80 bear=33 prix=254.85 investi=20906EUR SL=241.12 TP1=265.15
+[2026-09-02 11:02] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-02 11:02] ----------------------------------------
+[2026-09-02 11:02] RESUME : valeur=259679.55 EUR  investi=225042.31 EUR  cash=60276.16 EUR  expo=84.7%  positions=16
+[2026-09-02 11:02] ----------------------------------------
+[2026-09-02 11:02] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-09-02 11:02]   [MOMENTUM] AI.PA: 172.58
+[2026-09-02 11:02]   [MOMENTUM] LR.PA: 134.90
+[2026-09-02 11:02]   [MOMENTUM] PUB.PA: 98.68
+[2026-09-02 11:02]   [MOMENTUM] URW.PA: 96.66
+[2026-09-02 11:02]   [MOMENTUM] SAF.PA: 331.50
+[2026-09-02 11:02]   [MOMENTUM] DSY.PA: 22.16
+[2026-09-02 11:02]   [MOMENTUM] SOI.PA: 112.05
+[2026-09-02 11:02]   [MOMENTUM] NEX.PA: 138.00
+[2026-09-02 11:02]   [MOMENTUM] ATE.PA: 74.85
+[2026-09-02 11:02] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-02 11:02]   [MOMENTUM] Axa (CS.PA) 23.015× à 43.45€ | SL=42.27 | TPs=45.57 / 48.70 | investi=1000€
+[2026-09-02 11:02] [MOMENTUM] valeur=9780.64€  cash=530.29€  positions=10  PnL=-507.17€
+[2026-09-02 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
