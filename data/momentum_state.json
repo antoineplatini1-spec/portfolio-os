@@ -1,5 +1,5 @@
 {
-  "cash": 530.2857698152985,
+  "cash": 457.63770615387864,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -294,15 +294,15 @@
       "ticker": "URW.PA",
       "entry_price": 103.75365152740477,
       "qty_total": 9.647853210598594,
-      "qty_remaining": 9.647853210598594,
+      "qty_remaining": 0.0,
       "sl": 96.39450141906738,
       "trailing_stop": false,
       "trailing_stop_price": 103.75365152740477,
       "entry_date": "2026-07-21",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 96.22367969512939,
+      "close_date": "2026-09-03",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -714,6 +714,33 @@
         }
       ],
       "partial_fills": []
+    },
+    "ERF.PA": {
+      "ticker": "ERF.PA",
+      "entry_price": 73.77369694519042,
+      "qty_total": 13.56852159305077,
+      "qty_remaining": 13.56852159305077,
+      "sl": 68.54099716186523,
+      "trailing_stop": false,
+      "trailing_stop_price": 73.77369694519042,
+      "entry_date": "2026-09-03",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "tp_levels": [
+        {
+          "price": 68.2,
+          "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
     }
   },
   "history": [
@@ -806,27 +833,38 @@
       "close_reason": "manual",
       "entry_date": "2026-07-15",
       "close_date": "2026-09-01"
+    },
+    {
+      "ticker": "URW.PA",
+      "entry_price": 103.75365152740477,
+      "close_price": 96.22367969512939,
+      "qty": 9.647853210598594,
+      "pnl": -72.6481,
+      "close_reason": "SL",
+      "entry_date": "2026-07-21",
+      "close_date": "2026-09-03"
     }
   ],
   "last_prices": {
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 172.5800018310547,
+    "AI.PA": 172.8000030517578,
     "AIR.PA": 195.44000244140625,
-    "LR.PA": 134.89999389648438,
-    "PUB.PA": 98.68000030517578,
+    "LR.PA": 136.75,
+    "PUB.PA": 102.8499984741211,
     "ML.PA": 33.880001068115234,
     "HO.PA": 249.3000030517578,
-    "URW.PA": 96.66000366210938,
-    "SAF.PA": 331.5,
+    "URW.PA": 96.31999969482422,
+    "SAF.PA": 329.6000061035156,
     "KER.PA": 264.8500061035156,
     "EN.PA": 44.0099983215332,
     "RNO.PA": 28.309999465942383,
     "RI.PA": 64.05999755859375,
-    "DSY.PA": 22.15999984741211,
-    "SOI.PA": 112.05000305175781,
-    "NEX.PA": 138.0,
-    "ATE.PA": 74.8499984741211
+    "DSY.PA": 22.389999389648438,
+    "SOI.PA": 122.0,
+    "NEX.PA": 138.39999389648438,
+    "ATE.PA": 76.30000305175781,
+    "CS.PA": 44.15999984741211
   }
 }

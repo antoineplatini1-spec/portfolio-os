@@ -17037,3 +17037,139 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-02 11:02]   [MOMENTUM] Axa (CS.PA) 23.015× à 43.45€ | SL=42.27 | TPs=45.57 / 48.70 | investi=1000€
 [2026-09-02 11:02] [MOMENTUM] valeur=9780.64€  cash=530.29€  positions=10  PnL=-507.17€
 [2026-09-02 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-03 11:00] ============================================================
+[2026-09-03 11:00] SCAN JOURNALIER - 2026-09-03
+[2026-09-03 11:00] ============================================================
+[2026-09-03 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-03 11:00]   Date     : 2026-09-03  [imap]
+[2026-09-03 11:00]   CAC 40   : NEUTRAL
+[2026-09-03 11:00]   Valeurs  :
+[2026-09-03 11:00]     ✅ Eurofins (Santé) → BUY
+[2026-09-03 11:00]   Macro    : market_caution, market_bullish
+[2026-09-03 11:00]   Secteurs : Santé:+1
+[2026-09-03 11:00] ───────────────────────────────────────────────────────
+[2026-09-03 11:00] [LLM] Biais sectoriel = LLM : Semi:+2, Macro:-1
+[2026-09-03 11:00] [LLM] Trades momentum : LLM sans résultat → algo (regex)
+[2026-09-03 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-03 11:00] ══════════════════════════════════════════════
+[2026-09-03 11:00]   AGENT MACRO — 2026-09-03
+[2026-09-03 11:00] ══════════════════════════════════════════════
+[2026-09-03 11:00]   Régime marché  : BULL
+[2026-09-03 11:00]   SPY vs EMA200  : +7.3%
+[2026-09-03 11:00]   VIX            : 15.0 (LOW)
+[2026-09-03 11:00]   Max trades/j   : 3
+[2026-09-03 11:00]   Seuil net min  : 10
+[2026-09-03 11:00]   Top secteurs   : Energie, Santé, Macro
+[2026-09-03 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-03 11:00]   Rationale      : Marché haussier (SPY +7.3% vs EMA200). Exposition maximale autorisée.
+[2026-09-03 11:00] ══════════════════════════════════════════════
+[2026-09-03 11:00] [RECONCILE IBKR] PLTR : bracket natif [PnL estimé] soldé(e) @ 172.62 → clôturé au ledger
+[2026-09-03 11:00] [RECONCILE IBKR] SNOW : bracket natif [PnL IBKR] soldé(e) @ 383.83 → clôturé au ledger
+[2026-09-03 11:00] [RECONCILE IBKR] cash réel IBKR = 96320 | ledger = 95519
+[2026-09-03 11:00] [RECONCILE IBKR] cash ledger seedé sur IBKR : 95519 → 96320
+[2026-09-03 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-03 11:00]   V: 377.86
+[2026-09-03 11:00]   JPM: 360.18
+[2026-09-03 11:00]   JNJ: 277.26
+[2026-09-03 11:00]   MRK: 150.38
+[2026-09-03 11:00]   MA: 585.15
+[2026-09-03 11:00]   PSX: 259.56
+[2026-09-03 11:00]   APD: 306.43
+[2026-09-03 11:00]   AMZN: 256.46
+[2026-09-03 11:00]   TMO: 609.85
+[2026-09-03 11:00]   NFLX: 82.25
+[2026-09-03 11:00]   TGT: 164.20
+[2026-09-03 11:00]   CMCSA: 26.55
+[2026-09-03 11:00]   DIS: 107.56
+[2026-09-03 11:00]   MRNA: 146.60
+[2026-09-03 11:00] Screener en cours...
+[2026-09-03 11:01] Scores : max=80  mediane=24  (156 tickers)
+[2026-09-03 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=80
+[2026-09-03 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Santé, Semi | pénalisés: Macro
+[2026-09-03 11:01] Filtre ETF/indices (non achetables) : 60 → 47 candidats
+[2026-09-03 11:01] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → ZS
+[2026-09-03 11:01] 46 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-03 11:01]   [SEC 8-K] SLB (2026-08-31) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-03 11:01]   [SEC 8-K] MRNA (2026-09-01) ⚠MATÉRIEL : Accord matériel signé, Nouvelle obligation financière, Émission non enregistrée de titres, Autre événement matériel, États financiers & annexes
+[2026-09-03 11:01]   [SEC 8-K] SNOW (2026-09-02) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-09-03 11:01]   [SEC 8-K] COIN (2026-09-02) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-03 11:01]   [SEC 8-K] VRTX (2026-09-01) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-03 11:01]   [SEC 8-K] MSFT (2026-09-02) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-03 11:01]   [SEC 8-K] XOM (2026-08-28) : Autre événement matériel, États financiers & annexes
+[2026-09-03 11:01]   [SEC 8-K] COF (2026-09-01) : Modification des statuts, États financiers & annexes
+[2026-09-03 11:01]   [SEC 8-K] ABBV (2026-09-03) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-03 11:01]   [SEC 8-K] NVDA (2026-09-03) : Autre événement matériel
+[2026-09-03 11:02] [LLM news] ABNB: neutral 0.30 — Nomination d'un nouveau Chief Business Officer
+[2026-09-03 11:02] [LLM news] SLB: bullish 0.50 — Acquisition de Kelvion pour renforcer la plateforme data center
+[2026-09-03 11:02] [LLM news] TGT: bullish 0.30 — Expansion de la stratégie beauté avec 600 studios en magasin
+[2026-09-03 11:02] [LLM news] PLTR: bearish 0.30 — Controverse réglementaire/juridique autour du partage de données WhatsApp
+[2026-09-03 11:02] [LLM news] MRNA: neutral 0.40 — Dépôt 8-K : accord matériel, nouvelle obligation financière et émission de titres non enregistrée
+[2026-09-03 11:02] [LLM news] BIIB: bullish 0.40 — Lancement de l'injection hebdomadaire Alzheimer à domicile aux Etats-Unis
+[2026-09-03 11:02] [LLM news] SNOW: bullish 0.90 — Résultats trimestriels et relèvement de guidance portés par l'IA
+[2026-09-03 11:02] [LLM news] COIN: neutral 0.30 — Départ / nomination d'un dirigeant (8-K)
+[2026-09-03 11:02] [LLM news] VRTX: neutral 0.30 — Départ / nomination d'un dirigeant (8-K)
+[2026-09-03 11:02] [LLM news] CRM: bullish 0.60 — Rebond après accord avec Anthropic
+[2026-09-03 11:02] [LLM news] TSLA: neutral 0.40 — Événement de lancement Cybercab à Austin
+[2026-09-03 11:02] [LLM news] CVX: bullish 0.60 — Investissement de 7 milliards $ au Venezuela pour doubler la production
+[2026-09-03 11:02] [LLM news] C: neutral 0.30 — Poussée blockchain et nouvelle émission de notes
+[2026-09-03 11:02] [LLM news] EL: neutral 0.30 — Nomination d'un nouveau Global President pour les marques de luxe
+[2026-09-03 11:02] [LLM news] TMO: bullish 0.30 — Lancement du détecteur EMPAD G2
+[2026-09-03 11:02] [LLM news] AMGN: bearish 0.30 — Retrait du Tavneos au Royaume-Uni
+[2026-09-03 11:02] [LLM news] CRWD: bullish 0.30 — Intégration de GPT-5.6 Cyber dans Falcon, partenariat potentiel avec OpenAI
+[2026-09-03 11:02] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-03 11:02] Cash deployable cette semaine : 94394 EUR  (max trades/j : 2)
+[2026-09-03 11:02] ────────────────────────────────────────────────────
+[2026-09-03 11:02]   DÉBAT : SNOW
+[2026-09-03 11:02] ────────────────────────────────────────────────────
+[2026-09-03 11:02]   🟢 BULL [conviction=82] → ACHETER
+[2026-09-03 11:02]      • Score haussier fort (74/100)
+[2026-09-03 11:02]      • R-ratio excellent (3.0×) — asymétrie gain/risque idéale
+[2026-09-03 11:02]      • Prix au-dessus EMA200 (224.10) — tendance long terme haussière
+[2026-09-03 11:02]      • Momentum 10j fort (+15.3%) — tendance confirmée
+[2026-09-03 11:02]      • Volume fort (2.4× la moyenne) — intérêt institutionnel
+[2026-09-03 11:02] 
+[2026-09-03 11:02]   🔴 BEAR [concern=16] → OK
+[2026-09-03 11:02]      • Prix au-dessus BB supérieure (surachat)
+[2026-09-03 11:02]      • Exposition modérée (73%) — prudence sur les ajouts
+[2026-09-03 11:02] 
+[2026-09-03 11:02]   ✅ ARBITRE → ACHETER  (net=+72)
+[2026-09-03 11:02]      Arguments haussiers l'emportent clairement (conviction=82, concern=16, net=+72)
+[2026-09-03 11:02] ────────────────────────────────────────────────────
+[2026-09-03 11:02]   [ACHAT] SNOW score=71 bull=82 bear=16 prix=370.49 investi=12967EUR SL=340.85 TP1=397.27
+[2026-09-03 11:02] ────────────────────────────────────────────────────
+[2026-09-03 11:02]   DÉBAT : SLB
+[2026-09-03 11:02] ────────────────────────────────────────────────────
+[2026-09-03 11:02]   🟢 BULL [conviction=77] → ACHETER
+[2026-09-03 11:02]      • Score haussier fort (76/100)
+[2026-09-03 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-03 11:02]      • Prix au-dessus EMA200 (50.65) — tendance long terme haussière
+[2026-09-03 11:02]      • Momentum 10j fort (+9.6%) — tendance confirmée
+[2026-09-03 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-03 11:02] 
+[2026-09-03 11:02]   🔴 BEAR [concern=25] → OK
+[2026-09-03 11:02]      • Exposition déjà élevée (78%) — risque de surconcentration
+[2026-09-03 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-03 11:02] 
+[2026-09-03 11:02]   ✅ ARBITRE → ACHETER  (net=+62)
+[2026-09-03 11:02]      Arguments haussiers l'emportent clairement (conviction=77, concern=25, net=+62)
+[2026-09-03 11:02] ────────────────────────────────────────────────────
+[2026-09-03 11:02]   [ACHAT] SLB score=74 bull=77 bear=25 prix=58.39 investi=13077EUR SL=54.67 TP1=61.18
+[2026-09-03 11:02] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-03 11:02] ----------------------------------------
+[2026-09-03 11:02] RESUME : valeur=261269.46 EUR  investi=216714.24 EUR  cash=70273.86 EUR  expo=82.6%  positions=16
+[2026-09-03 11:02] ----------------------------------------
+[2026-09-03 11:02] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-09-03 11:02]   [MOMENTUM] AI.PA: 172.80
+[2026-09-03 11:02]   [MOMENTUM] LR.PA: 136.75
+[2026-09-03 11:02]   [MOMENTUM] PUB.PA: 102.85
+[2026-09-03 11:02]   [MOMENTUM] URW.PA: 96.32
+[2026-09-03 11:02]   [MOMENTUM] SAF.PA: 329.60
+[2026-09-03 11:02]   [MOMENTUM] DSY.PA: 22.39
+[2026-09-03 11:02]   [MOMENTUM] SOI.PA: 122.00
+[2026-09-03 11:02]   [MOMENTUM] NEX.PA: 138.40
+[2026-09-03 11:02]   [MOMENTUM] ATE.PA: 76.30
+[2026-09-03 11:02]   [MOMENTUM] CS.PA: 44.16
+[2026-09-03 11:02] [MOMENTUM] 1 signal(s) newsletter...
+[2026-09-03 11:02]   [MOMENTUM] Eurofins (ERF.PA) 13.569× à 73.70€ | SL=68.54 | TPs=68.20 | investi=1000€
+[2026-09-03 11:02] [MOMENTUM] valeur=9951.14€  cash=457.64€  positions=10  PnL=-336.67€
+[2026-09-03 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr
