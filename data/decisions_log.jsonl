@@ -70,3 +70,5 @@
 {"ts": "2026-09-02T15:02:43.083655+00:00", "ticker": "PSX", "features": {"momentum": 80.0, "sector": -1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 80.0, "sector": -3.0, "news": 0.0, "conviction": 0.0}, "total": 77.0}
 {"ts": "2026-09-03T15:02:28.101169+00:00", "ticker": "SNOW", "features": {"momentum": 71.0, "sector": 0.0, "news": 0.9, "conviction": 0.0}, "contrib": {"momentum": 71.0, "sector": 0.0, "news": 7.2, "conviction": 0.0}, "total": 78.2}
 {"ts": "2026-09-03T15:02:30.118061+00:00", "ticker": "SLB", "features": {"momentum": 74.0, "sector": 0.0, "news": 0.5, "conviction": 0.0}, "contrib": {"momentum": 74.0, "sector": 0.0, "news": 4.0, "conviction": 0.0}, "total": 78.0}
+{"ts": "2026-09-04T15:01:40.158816+00:00", "ticker": "MPC", "features": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 70.0}
+{"ts": "2026-09-04T15:01:41.374235+00:00", "ticker": "MU", "features": {"momentum": 63.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 63.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 63.0}
