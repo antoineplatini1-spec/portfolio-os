@@ -17296,3 +17296,4 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-04 11:01] [MOMENTUM] 1 signal(s) newsletter...
 [2026-09-04 11:01] [MOMENTUM] valeur=9912.17€  cash=1922.01€  positions=8  PnL=-362.80€
 [2026-09-04 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-07 11:01] Marché US fermé (jour férié US, Monday 07 Sep 2026) - pas de trading.
