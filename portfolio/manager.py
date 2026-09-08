@@ -128,6 +128,94 @@ class PortfolioManager:
         """Injecte la NetLiquidation OFFICIELLE IBKR : total_value la reflète (= app IBKR)."""
         self.ibkr_nlv = nlv if (nlv and nlv > 0) else None
 
+    def sync_from_ibkr(self, broker) -> dict:
+        """
+        IBKR = SOURCE DE VÉRITÉ UNIQUE. En UN point (début de run), aligne le ledger sur le compte
+        IBKR : cash, marks, NLV, ET le SET de positions (qty/coût). Le ledger ne fait plus autorité
+        que sur les MÉTADONNÉES (score/ATR d'entrée, tp_levels planifiés, bracket_oca) — plus de
+        double comptabilité qui dérive.
+          - Position IBKR déjà au ledger : on CORRIGE qty/coût sur IBKR (métadonnées préservées).
+          - Position IBKR absente du ledger : ADOPTÉE (créée au reflet IBKR, adopted=True) — au lieu
+            de HALT+ignorer. IBKR l'a → on l'enregistre. L'appelant alerte.
+          - Position ledger absente d'IBKR (ou qty IBKR < ledger) : SOLDÉE / réduite au prix réel
+            (book_native_exit/partial, realizedPNL IBKR prioritaire).
+        No-op si broker non-IBKR (PaperBroker/backtest) → le ledger reste le livre (zéro régression).
+        Retourne {ok, cash, adopted:[], closed:[], grown:[], notes:[], orphans_pa:[], error}.
+        """
+        res = {"ok": True, "cash": None, "adopted": [], "closed": [],
+               "grown": [], "notes": [], "orphans_pa": [], "error": None}
+        if not hasattr(broker, "account_positions"):
+            return res                                   # non-IBKR → no-op (ledger = livre)
+        try:
+            ibkr_pos = broker.account_positions()        # {ticker: {qty, avg_cost}}
+            ibkr_cash = broker.account_cash()
+        except Exception as e:
+            res["ok"] = False; res["error"] = str(e)
+            return res                                   # IBKR injoignable → l'appelant HALT
+        if hasattr(broker, "account_marks"):
+            try: self.set_ibkr_marks(broker.account_marks())
+            except Exception: pass
+        if hasattr(broker, "account_nlv"):
+            try: self.set_ibkr_nlv(broker.account_nlv())
+            except Exception: pass
+        if ibkr_cash and ibkr_cash > 0:
+            self.cash = ibkr_cash                        # cash = vérité IBKR
+        res["cash"] = ibkr_cash
+
+        us = {tk: info for tk, info in ibkr_pos.items()
+              if abs(info.get("qty", 0)) >= 1e-9 and not tk.endswith(".PA")}
+        res["orphans_pa"] = [f"{tk} {info['qty']:+.0f}" for tk, info in ibkr_pos.items()
+                             if tk.endswith(".PA") and abs(info.get("qty", 0)) >= 1e-9]
+
+        # 1) Positions IBKR : adopter les manquantes, corriger les qty
+        for tk, info in us.items():
+            iq = abs(info["qty"]); avg = float(info.get("avg_cost") or 0)
+            pos = self.positions.get(tk)
+            if pos is None or pos.is_closed:
+                self.positions[tk] = Position(
+                    ticker=tk, entry_price=avg or self.ibkr_marks.get(tk, avg) or 0.0,
+                    qty_total=iq, sl=0.0, tp_levels=[], adopted=True)
+                res["adopted"].append(tk)
+            elif iq > pos.qty_remaining + 0.5:           # IBKR détient PLUS → ajuster à la hausse
+                pos.qty_total += (iq - pos.qty_remaining)
+                pos.qty_remaining = iq
+                res["grown"].append(tk)
+                res["notes"].append(f"{tk} : qty ledger relevée sur IBKR ({iq:.0f})")
+
+        # 2) Réductions / soldes : ledger détient PLUS qu'IBKR (sortie hors run) → book au prix réel
+        for tk in list(self.open_positions.keys()):
+            if tk.endswith(".PA"):
+                continue
+            pos = self.open_positions.get(tk)
+            iq = abs(ibkr_pos.get(tk, {}).get("qty", 0))
+            if pos is None or iq >= pos.qty_remaining - 1e-6:
+                continue
+            bracketed = bool(getattr(pos, "bracket_oca", ""))
+            fill = None
+            if hasattr(broker, "recent_exit_fill"):
+                try: fill = broker.recent_exit_fill(tk)
+                except Exception: fill = None
+            px = (fill or {}).get("price") or self.last_prices.get(tk) or pos.entry_price
+            sold = (fill or {}).get("qty", 0) or 0
+            fee_t = (fill or {}).get("fees", 0.0) or 0.0
+            rpnl = (fill or {}).get("realized_pnl")
+            src = "bracket natif" if bracketed else "clôture externe"
+            if iq < 1.0:                                 # position soldée
+                fee = fee_t * (pos.qty_remaining / sold) if sold > 0 else 0.0
+                self.book_native_exit(tk, px, round(fee, 4),
+                                      reason=("BRACKET" if bracketed else "RECONCILE"), realized_pnl=rpnl)
+                res["closed"].append(tk)
+                res["notes"].append(f"{tk} : {src} soldé(e) @ {px:.2f} → clôturé")
+            else:                                        # réduction partielle
+                delta = pos.qty_remaining - iq
+                fee = fee_t * (delta / sold) if sold > 0 else 0.0
+                self.book_native_partial(tk, delta, px, round(fee, 4),
+                                         reason=("TP" if bracketed else "RECONCILE"))
+                res["notes"].append(f"{tk} : {src} partiel ({delta:.2f} @ {px:.2f}) → reste {iq:.0f}")
+
+        self._save()
+        return res
+
     @property
     def total_invested(self) -> float:
         """Valeur des positions au coût d'entrée (basis)."""

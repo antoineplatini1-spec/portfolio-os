@@ -43,6 +43,9 @@ class Position:
     # Groupe OCA du bracket NATIF IBKR (SL+TP posés côté serveur). Non-vide → IBKR gère
     # les sorties intraday ; le bot NE double PAS le check SL/TP et RÉCONCILIE les fills.
     bracket_oca: str = ""
+    # True = position ADOPTÉE depuis IBKR (présente sur le compte, PAS née d'un ordre du bot :
+    # fill non enregistré, trade manuel…). IBKR = vérité → on l'enregistre au lieu de l'ignorer.
+    adopted: bool = False
 
     def __post_init__(self):
         if self.qty_remaining == 0.0:
@@ -85,6 +88,7 @@ class Position:
             "entry_atr":   self.entry_atr,
             "fees_out": self.fees_out,
             "bracket_oca": self.bracket_oca,
+            "adopted": self.adopted,
             "tp_levels": [
                 {
                     "price": t.price,
@@ -144,4 +148,5 @@ class Position:
             close_date=d.get("close_date", ""),
             fees_out=d.get("fees_out", 0.0),
             bracket_oca=d.get("bracket_oca", ""),
+            adopted=d.get("adopted", False),
         )

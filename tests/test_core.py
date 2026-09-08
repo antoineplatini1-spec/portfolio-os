@@ -393,6 +393,55 @@ def test_portfolio_review_noop_when_llm_off(monkeypatch):
     monkeypatch.setattr(llm_enrich, "is_enabled", lambda: False)
     assert llm_enrich.portfolio_review({"total_value": 100}) is None
 
+# ── sync_from_ibkr : IBKR = source de vérité unique ───────────────
+
+class _FakeIBKR:
+    """Broker IBKR factice pour tester sync_from_ibkr (introspection compte)."""
+    def __init__(self, positions, cash, marks=None, nlv=None, exit_fills=None):
+        self._pos, self._cash, self._marks = positions, cash, marks or {}
+        self._nlv, self._ef = nlv, exit_fills or {}
+    def account_positions(self): return self._pos
+    def account_cash(self): return self._cash
+    def account_marks(self): return self._marks
+    def account_nlv(self): return self._nlv
+    def recent_exit_fill(self, tk): return self._ef.get(tk)
+
+def test_sync_adopts_missing_position(tmp_path, monkeypatch):
+    pm = _fresh_pm(tmp_path, _FakeBracketBroker(), native=True, monkeypatch=monkeypatch)
+    br = _FakeIBKR({"AAPL": {"qty": 10, "avg_cost": 100.0}}, cash=50000,
+                   marks={"AAPL": 110.0}, nlv=51100)
+    res = pm.sync_from_ibkr(br)
+    assert res["adopted"] == ["AAPL"]
+    assert "AAPL" in pm.open_positions and pm.open_positions["AAPL"].adopted is True
+    assert pm.open_positions["AAPL"].qty_remaining == 10
+    assert pm.cash == 50000
+    assert pm.total_value == 51100                       # NLV IBKR
+
+def test_sync_closes_phantom_ledger_position(tmp_path, monkeypatch):
+    pm = _fresh_pm(tmp_path, _FakeBracketBroker(), native=True, monkeypatch=monkeypatch)
+    pm.open_position("MO", 100.0, atr=2.0, score=60)     # au ledger
+    br = _FakeIBKR({}, cash=50000)                       # IBKR ne détient rien
+    res = pm.sync_from_ibkr(br)
+    assert "MO" in res["closed"]
+    assert pm.open_positions.get("MO") is None
+
+def test_sync_preserves_metadata(tmp_path, monkeypatch):
+    pm = _fresh_pm(tmp_path, _FakeBracketBroker(), native=True, monkeypatch=monkeypatch)
+    ok, _, pos = pm.open_position("MO", 100.0, atr=2.0, score=77)
+    q = pos.qty_total
+    br = _FakeIBKR({"MO": {"qty": q, "avg_cost": 100.0}}, cash=50000, marks={"MO": 100.0})
+    res = pm.sync_from_ibkr(br)
+    assert res["adopted"] == []                          # déjà connue, pas adoptée
+    assert pm.open_positions["MO"].entry_score == 77     # métadonnée préservée
+    assert pm.open_positions["MO"].adopted is False
+
+def test_sync_noop_non_ibkr(tmp_path, monkeypatch):
+    pm = _fresh_pm(tmp_path, _FakeBracketBroker(), native=True, monkeypatch=monkeypatch)
+    pm.open_position("MO", 100.0, atr=2.0, score=60)
+    res = pm.sync_from_ibkr(_FakeBracketBroker())        # pas d'account_positions
+    assert res["adopted"] == [] and res["closed"] == []
+    assert "MO" in pm.open_positions                     # ledger intact (backtest/paper)
+
 def test_ibkr_marks_drive_valuation(tmp_path, monkeypatch):
     # La valorisation doit suivre les MARKS IBKR (vérité), pas last_prices (cache).
     br = _FakeBracketBroker(stop_live=True)

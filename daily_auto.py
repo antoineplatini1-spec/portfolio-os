@@ -112,13 +112,13 @@ def _newsletter_raw_text() -> str:
 
 def _reconcile_ibkr(pm):
     """
-    Sécurité : IBKR = SOURCE DE VÉRITÉ. Compare les positions réelles du compte au ledger
-    local. Détecte les **positions fantômes** (présentes sur IBKR mais pas dans le ledger,
-    ex. un fill que le bot a cru échoué) → HALT des nouveaux achats + alerte, pour ne
-    jamais empiler du surlevier silencieux (cf. incident TIF/10349).
-
-    Retourne (halt: bool, issues: list[str], ibkr_cash: float | None).
-    No-op si IBKR désactivé ou broker sans introspection compte.
+    IBKR = SOURCE DE VÉRITÉ UNIQUE. Délègue à `pm.sync_from_ibkr()` qui aligne cash/positions/
+    valeur du ledger sur le compte (adopte les positions inattendues, solde/réduit celles parties
+    hors run). Ici : traduction en (halt, notes, cash) + ALERTE sur adoption / Gateway injoignable.
+      - Gateway injoignable → HALT (pas de vérité, pas de nouveau risque).
+      - Position ADOPTÉE (présente IBKR, pas d'un ordre du bot) → enregistrée + email d'alerte +
+        pause des achats CE run (prudence). Remplace l'ancien « HALT + on n'enregistre rien ».
+    Retourne (halt: bool, notes: list[str], ibkr_cash: float | None). No-op si IBKR désactivé.
     """
     from config import IBKR_CONFIG
     if not IBKR_CONFIG.get("enabled"):
@@ -126,84 +126,36 @@ def _reconcile_ibkr(pm):
     broker = getattr(pm.broker, "real", pm.broker)   # DualBroker → .real
     if not hasattr(broker, "account_positions"):
         return False, [], None
-    try:
-        ibkr_pos = broker.account_positions()        # {ticker: {qty, avg_cost}}
-        ibkr_cash = broker.account_cash()
-        if hasattr(broker, "account_marks"):         # marks RÉELS → valorisation = vérité IBKR
-            try:
-                pm.set_ibkr_marks(broker.account_marks())
-            except Exception:
-                pass
-        if hasattr(broker, "account_nlv"):           # NLV OFFICIELLE IBKR → total_value = app IBKR
-            try:
-                pm.set_ibkr_nlv(broker.account_nlv())
-            except Exception:
-                pass
-    except Exception as e:
-        # IBKR activé mais injoignable (Gateway down/logged-out, cf. maintenance week-end) :
-        # on NE PEUT PAS confirmer positions/cash → HALT des nouveaux achats (pas de vérité,
-        # pas de nouveau risque) + alerte bruyante dans le recap. Fail loud, jamais silencieux.
-        return True, [f"réconciliation IBKR IMPOSSIBLE ({e}) → Gateway injoignable ? "
+
+    res = pm.sync_from_ibkr(broker)
+    if not res["ok"]:
+        return True, [f"synchro IBKR IMPOSSIBLE ({res['error']}) → Gateway injoignable ? "
                       "ACHATS SUSPENDUS ce run (pas de vérité IBKR)"], None
 
-    ledger = set(pm.open_positions.keys())
-    issues, phantom = [], []
-    for tk, info in ibkr_pos.items():
-        if abs(info.get("qty", 0)) < 1e-9:
-            continue
-        if tk.endswith(".PA"):                        # orphelin connu (hors book US) — non bloquant
-            issues.append(f"position hors book US sur IBKR : {tk} {info['qty']:+.0f} (à réconcilier)")
-            continue
-        if tk not in ledger:
-            phantom.append(f"{tk} {info['qty']:+.0f}")
-    for tk in list(ledger):                           # ledger vs IBKR : sorties/paliers hors run
-        pos = pm.open_positions.get(tk)
-        if pos is None:
-            continue
-        ibkr_qty = abs(ibkr_pos.get(tk, {}).get("qty", 0))
-        remaining = pos.qty_remaining
-        bracketed = bool(getattr(pos, "bracket_oca", ""))
-
-        # IBKR = vérité. Si IBKR détient AUTANT (ou plus) que le ledger → rien à synchroniser.
-        if ibkr_qty >= remaining - 1e-6:
-            continue
-
-        # IBKR détient MOINS que le ledger → une sortie a eu lieu HORS run. Deux origines :
-        #  - position BRACKETÉE : le stop ou un palier TP natif s'est déclenché côté serveur ;
-        #  - position gérée-bot : clôture EXTERNE (manuelle, ou divergence héritée) — avant, on se
-        #    contentait de logger, laissant un fantôme au ledger que le bot tentait de gérer à vide.
-        # Dans les DEUX cas on synchronise le ledger sur le réel IBKR (au prix de fill réel).
-        fill = None
-        if hasattr(broker, "recent_exit_fill"):
-            try:
-                fill = broker.recent_exit_fill(tk)
-            except Exception:
-                fill = None
-        px         = (fill or {}).get("price") or pm.last_prices.get(tk) or pos.entry_price
-        sold_today = (fill or {}).get("qty", 0) or 0
-        fee_today  = (fill or {}).get("fees", 0.0) or 0.0
-        real_pnl   = (fill or {}).get("realized_pnl")   # PnL RÉALISÉ IBKR (None si indispo)
-        src        = "bracket natif" if bracketed else "clôture externe"
-        r_full     = "BRACKET" if bracketed else "RECONCILE"
-        r_part     = "TP" if bracketed else "RECONCILE"
-
-        if ibkr_qty < 1.0:                             # < 1 action → position SOLDÉE
-            fee = fee_today * (remaining / sold_today) if sold_today > 0 else 0.0
-            pm.book_native_exit(tk, px, round(fee, 4), reason=r_full, realized_pnl=real_pnl)
-            src2 = src + (" [PnL IBKR]" if real_pnl is not None else " [PnL estimé]")
-            issues.append(f"{tk} : {src2} soldé(e) @ {px:.2f} → clôturé au ledger")
-        else:                                          # PARTIEL : IBKR détient moins que le ledger
-            delta = remaining - ibkr_qty
-            fee = fee_today * (delta / sold_today) if sold_today > 0 else 0.0
-            pm.book_native_partial(tk, delta, px, round(fee, 4), reason=r_part)
-            issues.append(f"{tk} : {src} partiel ({delta:.2f} @ {px:.2f}) → ledger synchronisé "
-                          f"(reste {ibkr_qty:.2f})")
-
-    halt = bool(phantom)
-    if phantom:
-        issues.append("POSITIONS FANTÔMES sur IBKR absentes du ledger : "
-                      + ", ".join(phantom) + " → ACHATS SUSPENDUS ce run (anti-surlevier)")
-    return halt, issues, ibkr_cash
+    notes = list(res["notes"])
+    for o in res["orphans_pa"]:
+        notes.append(f"position hors book US sur IBKR : {o} (à réconcilier)")
+    halt = False
+    if res["adopted"]:
+        adopted = ", ".join(res["adopted"])
+        notes.append(f"POSITION(S) ADOPTÉE(S) depuis IBKR (présentes sur le compte, PAS d'un ordre "
+                     f"du bot) : {adopted} → enregistrées ; ACHATS SUSPENDUS ce run, à vérifier")
+        halt = True
+        try:
+            send_email("🚨 Position adoptée depuis IBKR",
+                       f"<div style='font-family:system-ui,Arial;max-width:520px'>"
+                       f"<h3 style='color:#fb7185'>🚨 Position(s) inattendue(s) sur IBKR</h3>"
+                       f"<p>Présentes sur le compte mais PAS nées d'un ordre du bot : <b>{adopted}</b>.<br>"
+                       f"Elles ont été <b>enregistrées</b> (IBKR = vérité) et les achats sont "
+                       f"<b>suspendus ce run</b> par prudence. À vérifier : trade manuel ? fill non "
+                       f"enregistré ? Ces positions n'ont pas de stop géré par le bot.</p></div>")
+        except Exception:
+            pass
+    for n in notes:
+        log(f"[SYNC IBKR] {n}")
+    if res["closed"]:
+        log(f"[SYNC IBKR] soldée(s) : {', '.join(res['closed'])}")
+    return halt, notes, res["cash"]
 
 
 def _record_nav(nlv: float, spy_close: float) -> None:
@@ -523,29 +475,17 @@ def run():
     sltp_cash_delta: float = 0.0
     blockers: list[str] = []          # diagnostic structurel si le bot ne peut pas acheter
 
-    # ── Sécurité : réconciliation IBKR (source de vérité) AVANT tout achat ──────────
-    # Détecte les positions fantômes (fill non enregistré) → suspend les achats pour ne
-    # jamais empiler du surlevier silencieux.
-    reconcile_halt, _rec_issues, _ibkr_cash = _reconcile_ibkr(pm)
-    # Les messages de réconciliation sont en MAJORITÉ des SYNCHROS NORMALES (un bracket a vendu
-    # côté IBKR, on aligne le ledger) → INFO neutre, PAS une alerte. On ne met en ROUGE (blockers)
-    # que le cas vraiment grave : le HALT (position fantôme). Sinon l'utilisateur croit à un
-    # problème alors que c'est l'alignement qui fonctionne.
-    reconcile_notes = list(_rec_issues)
-    for _iss in _rec_issues:
-        log(f"[RECONCILE IBKR] {_iss}")
+    # ── IBKR = SOURCE DE VÉRITÉ UNIQUE : synchro AVANT tout achat ──────────
+    # sync_from_ibkr aligne cash/positions/valeur sur le compte (cash seedé, marks/NLV, positions
+    # adoptées/soldées). Les notes sont des SYNCHROS NORMALES → info neutre (bloc bleu). Seul un
+    # HALT (Gateway injoignable OU adoption inattendue) devient un blocage rouge + pause des achats.
+    reconcile_halt, reconcile_notes, _ibkr_cash = _reconcile_ibkr(pm)
     if _ibkr_cash is not None:
-        log(f"[RECONCILE IBKR] cash réel IBKR = {_ibkr_cash:.0f} | ledger = {pm.cash:.0f}")
-        # IBKR = SOURCE UNIQUE de vérité pour le cash. On SEED le ledger sur le réel IBKR à chaque
-        # run (inconditionnel, hors halt) : le cash du ledger n'est qu'un CACHE intra-run, décrémenté
-        # au fil des achats, ré-écrasé par IBKR au run suivant. Plus de compta parallèle qui dérive.
-        if not reconcile_halt and _ibkr_cash > 0 and abs(_ibkr_cash - pm.cash) > 0.01:
-            log(f"[RECONCILE IBKR] cash ledger seedé sur IBKR : {pm.cash:.0f} → {_ibkr_cash:.0f}")
-            pm.cash = _ibkr_cash
+        log(f"[SYNC IBKR] cash = {_ibkr_cash:.0f} | NLV = {pm.total_value:.0f} | positions = {len(pm.open_positions)}")
     if reconcile_halt:
-        log("[RECONCILE IBKR] ⛔ Divergence critique → NOUVEAUX ACHATS SUSPENDUS ce run.")
-        blockers.append("⛔ Divergence IBKR critique (position fantôme sur IBKR, absente du "
-                        "ledger) → achats suspendus ce run, à vérifier")
+        log("[SYNC IBKR] ⛔ → NOUVEAUX ACHATS SUSPENDUS ce run.")
+        blockers.append("⛔ Divergence/adoption IBKR (Gateway injoignable ou position inattendue) "
+                        "→ achats suspendus ce run, à vérifier")
 
     # ── 1. Mise a jour des prix des positions ouvertes ────────────
     open_pos = pm.open_positions
