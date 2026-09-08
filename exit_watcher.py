@@ -375,6 +375,8 @@ def main(test: bool = False, resend_today: bool = False) -> int:
         _journal_fills(fills)                          # journal à jour (pour _avg_entry / paliers)
         sent = 0
         for g in _aggregate(fills, day_filter=today):
+            if g["side"] != "SLD":                     # sorties uniquement (plus d'emails d'entrée)
+                continue
             subj, html = _txn_email(g["side"], g["sym"], g["qty"], g["price"], g["realized"], g["when"])
             try:
                 _send_email("[RENVOI] " + subj, html); sent += 1
@@ -403,12 +405,15 @@ def main(test: bool = False, resend_today: bool = False) -> int:
               f"aucun email). Journal : +{n_journal} fill(s). Les prochaines seront notifiées.")
         return 0
 
-    # AGRÉGATION : 1 mail par ENTRÉE (titre) et 1 mail par PALIER de sortie (titre+prix), même si
-    # l'ordre s'est rempli en plusieurs exécutions → fini les mails en rafale pour une ouverture.
+    # Notifications : UNIQUEMENT les SORTIES (SL/TP). Les ENTRÉES ne sont PLUS emailées (le recap
+    # du jour les couvre — choix utilisateur). Les achats restent JOURNALISÉS (registre complet),
+    # mais pas notifiés. Agrégation : 1 mail par palier de sortie même si rempli en N exécutions.
     groups = _aggregate(fills, skip_ids=seen)
     notified = 0
     failed_ids: set[str] = set()
     for g in groups:
+        if g["side"] != "SLD":                         # achats journalisés mais NON notifiés
+            continue
         try:
             subj, html = _txn_email(g["side"], g["sym"], g["qty"], g["price"], g["realized"], g["when"])
             _send_email(subj, html)
