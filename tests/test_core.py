@@ -494,3 +494,43 @@ def test_book_native_exit_records_pnl_and_closes(tmp_path, monkeypatch):
     assert pm.cash == pytest.approx(cash_before + 110.0 * qty - 1.0)
     assert pm.history[-1]["close_reason"] == "BRACKET"
     assert pm.history[-1]["pnl"] > 0                   # sortie à +10% → gain net
+
+
+# ── Track record (round-trips FIFO sur fills réels) ──────────────────────────
+def test_track_record_fifo_stats():
+    from signals.track_record import round_trip_stats
+    fills = [
+        {"symbol": "AAA", "side": "BOT", "qty": 10, "price": 100.0, "time": "1"},
+        {"symbol": "AAA", "side": "SLD", "qty": 10, "price": 110.0, "time": "2"},  # +100 (gagnant)
+        {"symbol": "BBB", "side": "BOT", "qty": 5,  "price": 200.0, "time": "3"},
+        {"symbol": "BBB", "side": "SLD", "qty": 5,  "price": 180.0, "time": "4"},  # -100 (perdant)
+        {"symbol": "CCC", "side": "BOT", "qty": 4,  "price": 50.0,  "time": "5"},  # encore ouvert
+    ]
+    s = round_trip_stats(fills)
+    assert s["n_closed"] == 2
+    assert s["wins"] == 1 and s["losses"] == 1
+    assert s["win_rate"] == 0.5
+    assert s["profit_factor"] == 1.0
+    assert s["realized_pnl"] == 0.0
+    assert s["n_open"] == 1                              # CCC pas encore soldé
+
+
+def test_track_record_partial_and_no_loss():
+    from signals.track_record import round_trip_stats
+    fills = [
+        {"symbol": "AAA", "side": "BOT", "qty": 10, "price": 100.0, "time": "1"},
+        {"symbol": "AAA", "side": "SLD", "qty": 4,  "price": 120.0, "time": "2"},  # +80 sur 4
+        {"symbol": "AAA", "side": "SLD", "qty": 6,  "price": 110.0, "time": "3"},  # +60 sur 6
+    ]
+    s = round_trip_stats(fills)
+    assert s["n_closed"] == 2
+    assert s["losses"] == 0
+    assert s["profit_factor"] is None                    # aucune perte → PF indéfini
+    assert s["realized_pnl"] == 140.0
+    assert s["n_open"] == 0
+
+
+def test_track_record_empty():
+    from signals.track_record import round_trip_stats
+    s = round_trip_stats([])
+    assert s["n_closed"] == 0 and s["win_rate"] == 0.0 and s["profit_factor"] is None

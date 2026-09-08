@@ -26,6 +26,7 @@ data/notified_execs.json
 # Le VPS est le seul writer (watcher + run) → pas de conflit.
 # data/trade_journal.jsonl  ← décommenté intentionnellement
 # data/nav_history.jsonl    ← idem (historique NLV pour le benchmark)
+# data/track_record.jsonl   ← idem (edge mesuré 1×/j sur fills réels : PF/win rate/réalisé)
 
 # Journaux d'apprentissage/attribution — TRACKÉS (backup offsite GitHub).
 # Le VPS est le SEUL à écrire dedans (les runs y tournent) → pas de conflit de merge.

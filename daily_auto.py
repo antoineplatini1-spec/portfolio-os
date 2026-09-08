@@ -80,6 +80,8 @@ _data_dir = os.environ.get("DATA_DIR", os.path.join(BASE, "data"))
 os.makedirs(_data_dir, exist_ok=True)
 LOG_FILE = os.path.join(_data_dir, "daily_log.txt")
 NAV_HISTORY_FILE = os.path.join(_data_dir, "nav_history.jsonl")
+TRADE_JOURNAL_FILE = os.path.join(_data_dir, "trade_journal.jsonl")
+TRACK_RECORD_FILE = os.path.join(_data_dir, "track_record.jsonl")
 
 def log(msg: str):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -209,6 +211,40 @@ def _benchmark() -> dict | None:
                 "alpha": (ret_ptf - ret_spy) if ret_spy is not None else None}
     except Exception:
         return None
+
+
+def _record_track(benchmark: dict | None, nlv: float) -> dict | None:
+    """
+    Mesure QUOTIDIENNE de l'edge : recalcule les round-trips FIFO sur les fills RÉELS
+    (`trade_journal.jsonl`) → win rate / profit factor / réalisé, y adjoint le return vs SPY du
+    jour, et ajoute une ligne (dédup sur la date) à `track_record.jsonl`. Historique forward-only
+    qui alimente le track record. Retourne le snapshot du jour (ou None si pas de fills).
+    """
+    from signals.track_record import round_trip_stats, read_journal
+    fills = read_journal(TRADE_JOURNAL_FILE)
+    if not fills:
+        return None
+    stats = round_trip_stats(fills)
+    snap = {"date": date.today().isoformat(), "nlv": round(nlv, 2) if nlv else None, **stats}
+    if benchmark:
+        snap["ret_ptf"] = round(benchmark.get("ret_ptf"), 4) if benchmark.get("ret_ptf") is not None else None
+        snap["ret_spy"] = round(benchmark["ret_spy"], 4) if benchmark.get("ret_spy") is not None else None
+        snap["alpha"] = round(benchmark["alpha"], 4) if benchmark.get("alpha") is not None else None
+    try:
+        lines = []
+        if os.path.exists(TRACK_RECORD_FILE):
+            with open(TRACK_RECORD_FILE, encoding="utf-8") as f:
+                lines = [l for l in f.read().splitlines() if l.strip()]
+        if lines and json.loads(lines[-1]).get("date") == snap["date"]:
+            lines[-1] = json.dumps(snap)                       # même jour → on met à jour la ligne
+            with open(TRACK_RECORD_FILE, "w", encoding="utf-8") as f:
+                f.write("\n".join(lines) + "\n")
+        else:
+            with open(TRACK_RECORD_FILE, "a", encoding="utf-8") as f:
+                f.write(json.dumps(snap) + "\n")
+    except Exception as e:
+        log(f"[TRACK] écriture track_record impossible : {e}")
+    return snap
 
 
 def _portfolio_snapshot(pm, benchmark, regime) -> dict:
@@ -1182,6 +1218,7 @@ def run():
     # ── 4c. Revue de portefeuille LLM (CONSULTATIVE — ne pilote rien) ─
     # 1 appel/jour sur un snapshot chiffré objectif. Surfacée dans le recap pour l'humain.
     _bench = _benchmark()
+    _track = _record_track(_bench, pm.total_value)     # mesure quotidienne de l'edge (fills réels)
     _review = None
     try:
         _review = llm_enrich.portfolio_review(_portfolio_snapshot(pm, _bench, market_ctx))
@@ -1222,6 +1259,7 @@ def run():
             "errors":  _llm_errors,
         },
         benchmark=_bench,
+        track=_track,
         portfolio_review=_review,
     )
 
@@ -1567,6 +1605,7 @@ def _send_daily_email(
     momentum_status: str = "unknown",
     llm_summary: dict | None = None,
     benchmark: dict | None = None,
+    track: dict | None = None,
     portfolio_review: dict | None = None,
 ):
     """Construit et envoie le recap journalier par email."""
@@ -1778,6 +1817,30 @@ def _send_daily_email(
         f"<tr><td style='height:16px'></td></tr>"
     )
 
+    # ── Bloc TRACK RECORD : edge mesuré sur les fills RÉELS (round-trips FIFO) ──
+    # Se recoupe avec la variation de NLV → fiable même sans realizedPNL IBKR (paper).
+    track_html = ""
+    if track and track.get("n_closed"):
+        _pf = track.get("profit_factor")
+        _pf_txt = f"{_pf:.2f}" if _pf is not None else "&#x221E;"
+        _pf_color = "#34d399" if (_pf is None or _pf >= 1.2) else ("#fbbf24" if _pf >= 1.0 else "#fb7185")
+        _wr = track.get("win_rate", 0.0)
+        _wr_color = "#34d399" if _wr >= 0.5 else "#fbbf24"
+        _tr_real = track.get("realized_pnl", 0.0)
+        _tr_color = "#34d399" if _tr_real >= 0 else "#fb7185"
+        track_html = (
+            "<tr><td style='color:#8097b5;font-weight:700;font-size:14px;padding-bottom:8px'>"
+            "&#x1F3AF; Track record <span style='color:#445470;font-weight:400;font-size:11px'>"
+            f"(fills r&eacute;els &middot; {track['n_closed']} round-trips &middot; {track.get('wins',0)}G/{track.get('losses',0)}P)</span></td></tr>"
+            "<tr><td><table width='100%' cellpadding='0' cellspacing='0'><tr>"
+            f'{_cell("Win rate", f"{_wr*100:.0f}%", _wr_color)}'
+            f'{_spacer_td()}{_cell("Profit factor", _pf_txt, _pf_color)}'
+            f'{_spacer_td()}{_cell("Réalisé (fills)", f"{_tr_real:+,.0f}&nbsp;&euro;", _tr_color)}'
+            f"""{_spacer_td()}{_cell("Gain/perte moy.", f"{track.get('avg_win',0):+.0f}/{track.get('avg_loss',0):+.0f}", "#8097b5")}"""
+            "</tr></table></td></tr>"
+            "<tr><td style='height:16px'></td></tr>"
+        )
+
     # ── Bloc REVUE IA (consultatif) ───────────────────────────────────────────
     review_html = ""
     if portfolio_review and (portfolio_review.get("posture") or portfolio_review.get("synthese")):
@@ -1871,6 +1934,7 @@ def _send_daily_email(
 
   <!-- PERFORMANCE -->
   {perf_html}
+  {track_html}
 
   <!-- PORTEFEUILLE -->
   <tr><td style='color:#8097b5;font-weight:700;font-size:14px;
