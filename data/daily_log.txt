@@ -17297,3 +17297,93 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-04 11:01] [MOMENTUM] valeur=9912.17€  cash=1922.01€  positions=8  PnL=-362.80€
 [2026-09-04 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
 [2026-09-07 11:01] Marché US fermé (jour férié US, Monday 07 Sep 2026) - pas de trading.
+[2026-09-08 11:00] ============================================================
+[2026-09-08 11:00] SCAN JOURNALIER - 2026-09-08
+[2026-09-08 11:00] ============================================================
+[2026-09-08 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-08 11:00]   Date     : 2026-09-08  [imap]
+[2026-09-08 11:00]   CAC 40   : NEUTRAL
+[2026-09-08 11:00]   Valeurs  :
+[2026-09-08 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-08 11:00]     🔴 Totalenergies (Energie) → SELL
+[2026-09-08 11:00]   Macro    : market_caution, market_bullish
+[2026-09-08 11:00]   Secteurs : Tech:-1, Energie:-1
+[2026-09-08 11:00] ───────────────────────────────────────────────────────
+[2026-09-08 11:00] [LLM] Biais sectoriel = LLM : Energie:+1, Macro:-1
+[2026-09-08 11:00] [LLM] Trades momentum = LLM (1) : Totalenergies:BUY
+[2026-09-08 11:00] [US] The Transcript «AI Bottlenecks» → secteur — | idées: —
+[2026-09-08 11:00] ══════════════════════════════════════════════
+[2026-09-08 11:00]   AGENT MACRO — 2026-09-08
+[2026-09-08 11:00] ══════════════════════════════════════════════
+[2026-09-08 11:00]   Régime marché  : BULL
+[2026-09-08 11:00]   SPY vs EMA200  : +6.8%
+[2026-09-08 11:00]   VIX            : 15.5 (LOW)
+[2026-09-08 11:00]   Max trades/j   : 3
+[2026-09-08 11:00]   Seuil net min  : 10
+[2026-09-08 11:00]   Top secteurs   : Energie
+[2026-09-08 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-08 11:00]   Rationale      : Marché haussier (SPY +6.8% vs EMA200). Exposition maximale autorisée.
+[2026-09-08 11:00] ══════════════════════════════════════════════
+[2026-09-08 11:00] [RECONCILE IBKR] APD : bracket natif [PnL IBKR] soldé(e) @ 298.38 → clôturé au ledger
+[2026-09-08 11:00] [RECONCILE IBKR] MA : bracket natif [PnL IBKR] soldé(e) @ 571.16 → clôturé au ledger
+[2026-09-08 11:00] [RECONCILE IBKR] SNOW : bracket natif [PnL estimé] soldé(e) @ 349.20 → clôturé au ledger
+[2026-09-08 11:00] [RECONCILE IBKR] POSITIONS FANTÔMES sur IBKR absentes du ledger : BKNG -68 → ACHATS SUSPENDUS ce run (anti-surlevier)
+[2026-09-08 11:00] [RECONCILE IBKR] cash réel IBKR = 101183 | ledger = 92738
+[2026-09-08 11:00] [RECONCILE IBKR] ⛔ Divergence critique → NOUVEAUX ACHATS SUSPENDUS ce run.
+[2026-09-08 11:00] 15 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-08 11:00]   V: 370.05
+[2026-09-08 11:00]   JPM: 355.22
+[2026-09-08 11:00]   JNJ: 268.45
+[2026-09-08 11:00]   MRK: 148.87
+[2026-09-08 11:00]   MPC: 395.85
+[2026-09-08 11:00]   PSX: 258.55
+[2026-09-08 11:00]   AMZN: 256.94
+[2026-09-08 11:00]   TMO: 604.03
+[2026-09-08 11:00]   NFLX: 76.54
+[2026-09-08 11:00]   TGT: 161.79
+[2026-09-08 11:00]   CMCSA: 26.22
+[2026-09-08 11:00]   DIS: 104.59
+[2026-09-08 11:00]   MRNA: 144.43
+[2026-09-08 11:00]   SLB: 58.22
+[2026-09-08 11:00]   MU: 1017.00
+[2026-09-08 11:00] Screener en cours...
+[2026-09-08 11:01] Scores : max=86  mediane=16  (156 tickers)
+[2026-09-08 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=86
+[2026-09-08 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Energie | pénalisés: Tech, Macro
+[2026-09-08 11:01] Filtre ETF/indices (non achetables) : 31 → 21 candidats
+[2026-09-08 11:01] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → ORCL
+[2026-09-08 11:01] 20 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-08 11:01]   [SEC 8-K] MRNA (2026-09-01) ⚠MATÉRIEL : Accord matériel signé, Nouvelle obligation financière, Émission non enregistrée de titres, Autre événement matériel, États financiers & annexes
+[2026-09-08 11:01]   [SEC 8-K] CRM (2026-09-04) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-08 11:01] [LLM news] SLB: neutral 0.40 — Accord logiciel upstream pouvant transformer l'activité
+[2026-09-08 11:01] [LLM news] CVX: bullish 0.50 — Expansion de la coentreprise au Venezuela
+[2026-09-08 11:01] [LLM news] MU: bullish 0.50 — Hausse des prix des puces mémoire / forte demande HBM
+[2026-09-08 11:01] [LLM news] MRK: bearish 0.40 — Changement de communication sur GARDASIL
+[2026-09-08 11:01] [LLM news] MRNA: bullish 0.60 — Forte hausse du titre liée à des données sur un vaccin anticancéreux
+[2026-09-08 11:01] [LLM news] INTC: bullish 0.40 — Hausses de prix des produits Intel
+[2026-09-08 11:01] [LLM news] TSM: bullish 0.50 — Engagement envers les machines EUV High-NA d'ASML pour puces IA
+[2026-09-08 11:01] [LLM news] CRM: neutral 0.40 — Changement de direction (8-K)
+[2026-09-08 11:01] [LLM news] V: bullish 0.50 — Expansion du réseau de cartes stablecoin
+[2026-09-08 11:01] [LLM news] AMZN: bullish 0.70 — Accord IA multi-générationnel de 60 milliards $ avec Qualcomm
+[2026-09-08 11:01] [LLM news] CMCSA: bullish 0.40 — Expansion multi-états du haut débit
+[2026-09-08 11:01] [LLM news] DIS: bearish 0.50 — Fermeture de la boutique en ligne, repli sur le retail
+[2026-09-08 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-08 11:01] Cash deployable cette semaine : 90883 EUR  (max trades/j : 0)
+[2026-09-08 11:01] 0 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-09-08 11:01] Aucune nouvelle position ouverte.
+[2026-09-08 11:01] ----------------------------------------
+[2026-09-08 11:01] RESUME : valeur=258069.69 EUR  investi=195608.29 EUR  cash=92737.76 EUR  expo=75.6%  positions=15
+[2026-09-08 11:01] ----------------------------------------
+[2026-09-08 11:01] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-09-08 11:01]   [MOMENTUM] AI.PA: 173.50
+[2026-09-08 11:01]   [MOMENTUM] LR.PA: 145.90
+[2026-09-08 11:01]   [MOMENTUM] PUB.PA: 98.52
+[2026-09-08 11:01]   [MOMENTUM] SAF.PA: 332.10
+[2026-09-08 11:01]   [MOMENTUM] SOI.PA: 142.20
+[2026-09-08 11:01]   [MOMENTUM] NEX.PA: 140.90
+[2026-09-08 11:01]   [MOMENTUM] ATE.PA: 69.60
+[2026-09-08 11:01]   [MOMENTUM] CS.PA: 43.41
+[2026-09-08 11:01] [MOMENTUM] 1 signal(s) newsletter...
+[2026-09-08 11:01]   [MOMENTUM] Totalenergies (TTE.PA) 12.827× à 77.96€ | SL=72.32 | TPs=81.02 | investi=1000€
+[2026-09-08 11:01] [MOMENTUM] valeur=10022.79€  cash=1312.36€  positions=9  PnL=-252.18€
+[2026-09-08 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
