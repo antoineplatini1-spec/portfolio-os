@@ -1,10 +1,10 @@
 {
-  "cash": 92737.7604272461,
+  "cash": 75675.0,
   "initial_cash": 250000.0,
   "reserve_cash": 0.0,
   "start_date": "2026-07-11",
-  "weekly_deployed": 182404.36000000002,
-  "week_start": "2026-08-31",
+  "weekly_deployed": 25743.84,
+  "week_start": "2026-09-07",
   "positions": {
     "PANW": {
       "ticker": "PANW",
@@ -23,6 +23,7 @@
       "entry_atr": 16.0595,
       "fees_out": 0.0,
       "bracket_oca": "rf_PANW_1784663164",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 347.23,
@@ -81,6 +82,7 @@
       "entry_atr": 8.1141,
       "fees_out": 0.0,
       "bracket_oca": "rf_V_1784663174",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 379.78,
@@ -127,6 +129,7 @@
       "entry_atr": 12.3172,
       "fees_out": 0.0,
       "bracket_oca": "br_CRWD_1788188634",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 245.4308,
@@ -153,7 +156,7 @@
       "ticker": "SNOW",
       "entry_price": 370.49,
       "qty_total": 35.0,
-      "qty_remaining": 0.0,
+      "qty_remaining": 35.0,
       "sl": 340.85080000000005,
       "trailing_stop": false,
       "trailing_stop_price": 370.49,
@@ -166,6 +169,7 @@
       "entry_atr": 17.8562,
       "fees_out": 0.0,
       "bracket_oca": "br_SNOW_1788447746",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 397.27430000000004,
@@ -205,6 +209,7 @@
       "entry_atr": 7.75,
       "fees_out": 0.0,
       "bracket_oca": "rf_JPM_1784663160",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 369.15,
@@ -244,6 +249,7 @@
       "entry_atr": 6.2299,
       "fees_out": 0.0,
       "bracket_oca": "rf_JNJ_1784663155",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 266.71,
@@ -290,6 +296,7 @@
       "entry_atr": 6.4444,
       "fees_out": 0.0,
       "bracket_oca": "rf_ABBV_1784663153",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 267.47,
@@ -329,6 +336,7 @@
       "entry_atr": 4.2206,
       "fees_out": 0.0,
       "bracket_oca": "br_MRK_1788274900",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 155.73090000000002,
@@ -368,6 +376,7 @@
       "entry_atr": 1.7505,
       "fees_out": 0.0,
       "bracket_oca": "br_MO_1784300514",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 83.24,
@@ -395,6 +404,7 @@
       "entry_atr": 0.0,
       "fees_out": 0.0,
       "bracket_oca": "br_RACE_1784559706",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 422.46,
@@ -409,7 +419,7 @@
       "ticker": "MA",
       "entry_price": 597.18,
       "qty_total": 22.0,
-      "qty_remaining": 0.0,
+      "qty_remaining": 22.0,
       "sl": 574.441,
       "trailing_stop": false,
       "trailing_stop_price": 597.18,
@@ -422,6 +432,7 @@
       "entry_atr": 11.3545,
       "fees_out": 0.0,
       "bracket_oca": "br_MA_1787583796",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 614.18175,
@@ -461,6 +472,7 @@
       "entry_atr": 3.8861,
       "fees_out": 0.0,
       "bracket_oca": "br_BNY_1784559709",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 163.55,
@@ -500,6 +512,7 @@
       "entry_atr": 4.3095,
       "fees_out": 0.0,
       "bracket_oca": "br_SPG_1784646089",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 234.72,
@@ -539,6 +552,7 @@
       "entry_atr": 8.0527,
       "fees_out": 0.0,
       "bracket_oca": "br_AAPL_1784646090",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 339.24,
@@ -578,6 +592,7 @@
       "entry_atr": 10.8979,
       "fees_out": 0.0,
       "bracket_oca": "br_MPC_1788534096",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 404.77685,
@@ -617,6 +632,7 @@
       "entry_atr": 6.8637,
       "fees_out": 0.0,
       "bracket_oca": "br_PSX_1788361361",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 265.14555,
@@ -656,6 +672,7 @@
       "entry_atr": 1.8234,
       "fees_out": 0.0,
       "bracket_oca": "br_PYPL_1785337344",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 61.1351,
@@ -682,7 +699,7 @@
       "ticker": "APD",
       "entry_price": 311.42,
       "qty_total": 67.0,
-      "qty_remaining": 0.0,
+      "qty_remaining": 67.0,
       "sl": 298.7004,
       "trailing_stop": false,
       "trailing_stop_price": 311.42,
@@ -695,6 +712,7 @@
       "entry_atr": 6.2748,
       "fees_out": 0.0,
       "bracket_oca": "br_APD_1788361332",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 320.6622,
@@ -734,6 +752,7 @@
       "entry_atr": 5.2868,
       "fees_out": 0.0,
       "bracket_oca": "br_RTX_1786028538",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 230.24020000000002,
@@ -773,6 +792,7 @@
       "entry_atr": 13.5716,
       "fees_out": 0.0,
       "bracket_oca": "br_VRTX_1784905312",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 499.36,
@@ -812,6 +832,7 @@
       "entry_atr": 2.0427,
       "fees_out": 0.0,
       "bracket_oca": "br_SCHW_1787583797",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 116.97404999999999,
@@ -851,6 +872,7 @@
       "entry_atr": 6.3211,
       "fees_out": 0.0,
       "bracket_oca": "br_SHOP_1785257479",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 143.35665,
@@ -875,41 +897,23 @@
     },
     "BKNG": {
       "ticker": "BKNG",
-      "entry_price": 206.945294,
+      "entry_price": 190.2905875,
       "qty_total": 68.0,
       "qty_remaining": 68.0,
-      "sl": 191.6284,
+      "sl": 0.0,
       "trailing_stop": false,
-      "trailing_stop_price": 206.945294,
-      "entry_date": "2026-08-05",
-      "fees_in": 1.0002,
-      "status": "closed",
-      "close_price": 201.563824,
-      "close_date": "2026-08-31",
-      "entry_score": 68,
-      "entry_atr": 7.7558,
-      "fees_out": 1.1131,
-      "bracket_oca": "br_BKNG_1785942143",
-      "tp_levels": [
-        {
-          "price": 218.7737,
-          "sell_pct": 0.25,
-          "hit": false,
-          "hit_date": ""
-        },
-        {
-          "price": 230.4074,
-          "sell_pct": 0.35,
-          "hit": false,
-          "hit_date": ""
-        },
-        {
-          "price": 245.91899999999998,
-          "sell_pct": 0.4,
-          "hit": false,
-          "hit_date": ""
-        }
-      ],
+      "trailing_stop_price": 190.2905875,
+      "entry_date": "2026-09-08",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "adopted": true,
+      "tp_levels": [],
       "partial_fills": []
     },
     "MSFT": {
@@ -929,6 +933,7 @@
       "entry_atr": 11.6267,
       "fees_out": 0.0,
       "bracket_oca": "br_MSFT_1787756503",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 512.52005,
@@ -968,6 +973,7 @@
       "entry_atr": 0.0,
       "fees_out": 0.0,
       "bracket_oca": "br_AMZN_1788188632",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 287.2,
@@ -1007,6 +1013,7 @@
       "entry_atr": 15.4337,
       "fees_out": 0.0,
       "bracket_oca": "br_TMO_1787151709",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 638.11555,
@@ -1031,36 +1038,37 @@
     },
     "CRM": {
       "ticker": "CRM",
-      "entry_price": 187.8,
-      "qty_total": 74.0,
-      "qty_remaining": 74.0,
-      "sl": 172.83120000000002,
+      "entry_price": 250.16,
+      "qty_total": 51.0,
+      "qty_remaining": 51.0,
+      "sl": 230.220708,
       "trailing_stop": false,
-      "trailing_stop_price": 187.8,
-      "entry_date": "2026-08-03",
+      "trailing_stop_price": 250.16,
+      "entry_date": "2026-09-09",
       "fees_in": 0,
-      "status": "closed",
-      "close_price": 194.92999267578125,
-      "close_date": "2026-08-14",
-      "entry_score": 59,
-      "entry_atr": 8.4673,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 65,
+      "entry_atr": 10.2271,
       "fees_out": 0.0,
-      "bracket_oca": "br_CRM_1785769445",
+      "bracket_oca": "br_CRM_1788966098",
+      "adopted": false,
       "tp_levels": [
         {
-          "price": 200.56095000000002,
+          "price": 265.58055,
           "sell_pct": 0.25,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 213.26190000000003,
+          "price": 280.9212,
           "sell_pct": 0.35,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 230.19650000000001,
+          "price": 301.3754,
           "sell_pct": 0.4,
           "hit": false,
           "hit_date": ""
@@ -1085,6 +1093,7 @@
       "entry_atr": 8.4971,
       "fees_out": 0.0,
       "bracket_oca": "br_NUE_1785942145",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 287.92565,
@@ -1109,36 +1118,37 @@
     },
     "CVX": {
       "ticker": "CVX",
-      "entry_price": 191.43,
-      "qty_total": 72.0,
-      "qty_remaining": 72.0,
-      "sl": 182.3304,
+      "entry_price": 212.88,
+      "qty_total": 61.0,
+      "qty_remaining": 61.0,
+      "sl": 204.6446,
       "trailing_stop": false,
-      "trailing_stop_price": 191.43,
-      "entry_date": "2026-08-04",
+      "trailing_stop_price": 212.88,
+      "entry_date": "2026-09-09",
       "fees_in": 0,
-      "status": "closed",
-      "close_price": 198.9,
-      "close_date": "2026-08-14",
-      "entry_score": 53,
-      "entry_atr": 4.4898,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 74,
+      "entry_atr": 4.0877,
       "fees_out": 0.0,
-      "bracket_oca": "br_CVX_1785855715",
+      "bracket_oca": "br_CVX_1788966096",
+      "adopted": false,
       "tp_levels": [
         {
-          "price": 198.0447,
+          "price": 218.95155,
           "sell_pct": 0.25,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 204.7794,
+          "price": 225.0831,
           "sell_pct": 0.35,
           "hit": false,
           "hit_date": ""
         },
         {
-          "price": 213.75900000000001,
+          "price": 233.2585,
           "sell_pct": 0.4,
           "hit": false,
           "hit_date": ""
@@ -1163,6 +1173,7 @@
       "entry_atr": 16.4237,
       "fees_out": 0.0,
       "bracket_oca": "br_NET_1786374213",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 328.72555,
@@ -1202,6 +1213,7 @@
       "entry_atr": 1.8487,
       "fees_out": 0.0,
       "bracket_oca": "br_OXY_1786374215",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 60.573049999999995,
@@ -1241,6 +1253,7 @@
       "entry_atr": 3.8653,
       "fees_out": 0.0,
       "bracket_oca": "br_XOM_1786460527",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 166.71794999999997,
@@ -1280,6 +1293,7 @@
       "entry_atr": 11.2792,
       "fees_out": 0.0,
       "bracket_oca": "br_AMGN_1786546916",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 432.1588,
@@ -1319,6 +1333,7 @@
       "entry_atr": 2.6755,
       "fees_out": 0.0,
       "bracket_oca": "br_SMCI_1786633320",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 45.81825,
@@ -1358,6 +1373,7 @@
       "entry_atr": 15.0945,
       "fees_out": 0.0,
       "bracket_oca": "br_LMT_1786719714",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 628.82175,
@@ -1397,6 +1413,7 @@
       "entry_atr": 2.5978,
       "fees_out": 0.0,
       "bracket_oca": "br_ABT_1787238142",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 118.6767,
@@ -1436,6 +1453,7 @@
       "entry_atr": 2.5742,
       "fees_out": 0.0,
       "bracket_oca": "br_FCX_1786978899",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 72.2263,
@@ -1475,6 +1493,7 @@
       "entry_atr": 0.6144,
       "fees_out": 0.0,
       "bracket_oca": "br_T_1787065315",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 26.0866,
@@ -1514,6 +1533,7 @@
       "entry_atr": 1.1413,
       "fees_out": 0.0,
       "bracket_oca": "br_VZ_1787065316",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 50.58205,
@@ -1553,6 +1573,7 @@
       "entry_atr": 0.0,
       "fees_out": 0.0,
       "bracket_oca": "br_NFLX_1787151708",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 91.0,
@@ -1586,6 +1607,7 @@
       "entry_atr": 5.1409,
       "fees_out": 0.0,
       "bracket_oca": "br_TGT_1787842934",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 173.82135000000002,
@@ -1625,6 +1647,7 @@
       "entry_atr": 7.8038,
       "fees_out": 0.0,
       "bracket_oca": "br_ZS_1787324507",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 189.3857,
@@ -1664,6 +1687,7 @@
       "entry_atr": 0.6878,
       "fees_out": 0.0,
       "bracket_oca": "br_CMCSA_1787670112",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 28.096700000000002,
@@ -1703,6 +1727,7 @@
       "entry_atr": 4.4464,
       "fees_out": 0.0,
       "bracket_oca": "br_NEM_1787670116",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 139.0746,
@@ -1742,6 +1767,7 @@
       "entry_atr": 7.6381,
       "fees_out": 0.0,
       "bracket_oca": "br_PLTR_1787929314",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 197.95215000000002,
@@ -1781,6 +1807,7 @@
       "entry_atr": 6.3911,
       "fees_out": 0.0,
       "bracket_oca": "br_NOW_1787842932",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 146.94665,
@@ -1820,6 +1847,7 @@
       "entry_atr": 2.2826,
       "fees_out": 0.0,
       "bracket_oca": "br_DIS_1787929315",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 111.3339,
@@ -1859,6 +1887,7 @@
       "entry_atr": 0.5561,
       "fees_out": 0.0,
       "bracket_oca": "br_PFE_1788188636",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 29.079150000000002,
@@ -1898,6 +1927,7 @@
       "entry_atr": 13.9422,
       "fees_out": 0.0,
       "bracket_oca": "br_MRNA_1788274898",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 165.4133,
@@ -1937,6 +1967,7 @@
       "entry_atr": 1.8589,
       "fees_out": 0.0,
       "bracket_oca": "br_SLB_1788447748",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 61.17835,
@@ -1976,6 +2007,7 @@
       "entry_atr": 53.8352,
       "fees_out": 0.0,
       "bracket_oca": "br_MU_1788534100",
+      "adopted": false,
       "tp_levels": [
         {
           "price": 1083.1228,
@@ -2748,7 +2780,7 @@
     "MS": 222.1300048828125,
     "ON": 86.87999725341797,
     "NUE": 262.92498779296875,
-    "MPC": 395.8500061035156,
+    "MPC": 398.1400146484375,
     "BIIB": 198.91000366210938,
     "CAT": 938.3900146484375,
     "DDOG": 269.0,
@@ -2776,30 +2808,30 @@
     "KLAC": 229.52000427246094,
     "LRCX": 326.1300048828125,
     "XBI": 164.27999877929688,
-    "JPM": 355.2200012207031,
+    "JPM": 355.75,
     "MO": 75.46499633789062,
     "WFC": 86.91000366210938,
     "KO": 82.62999725341797,
     "DE": 592.9000244140625,
     "RTX": 219.35000610351562,
     "ASML": 1804.25,
-    "V": 370.0450134277344,
-    "JNJ": 268.45001220703125,
-    "MRK": 148.8699951171875,
+    "V": 367.68499755859375,
+    "JNJ": 269.2349853515625,
+    "MRK": 147.4550018310547,
     "RACE": 415.3699951171875,
     "MA": 579.4199829101562,
     "BNY": 162.77999877929688,
     "AAPL": 329.95001220703125,
-    "PSX": 258.5450134277344,
+    "PSX": 259.9747009277344,
     "PYPL": 59.85499954223633,
     "APD": 303.3450012207031,
     "VRTX": 489.9100036621094,
     "SCHW": 112.61499786376953,
     "SHOP": 129.4600067138672,
-    "BKNG": 201.63999938964844,
+    "BKNG": 173.14999389648438,
     "MSFT": 502.510009765625,
-    "TMO": 604.030029296875,
-    "AMZN": 256.94000244140625,
+    "TMO": 605.6649780273438,
+    "AMZN": 251.86000061035156,
     "CRM": 194.92999267578125,
     "CVX": 196.3800048828125,
     "NET": 325.760009765625,
@@ -2810,17 +2842,17 @@
     "ABT": 110.34500122070312,
     "T": 25.90999984741211,
     "VZ": 50.17499923706055,
-    "NFLX": 76.54000091552734,
-    "TGT": 161.78500366210938,
+    "NFLX": 76.68000030517578,
+    "TGT": 160.88999938964844,
     "ZS": 172.7550048828125,
-    "CMCSA": 26.21500015258789,
+    "CMCSA": 26.09000015258789,
     "NEM": 125.26000213623047,
     "PLTR": 172.6199951171875,
     "NOW": 144.19000244140625,
-    "DIS": 104.58999633789062,
-    "MRNA": 144.42880249023438,
-    "SLB": 58.21500015258789,
-    "MU": 1016.9998779296875
+    "DIS": 104.45999908447266,
+    "MRNA": 138.72000122070312,
+    "SLB": 57.82500076293945,
+    "MU": 1034.030029296875
   },
   "peak_value": 282161.61513555003
 }

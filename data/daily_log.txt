@@ -17387,3 +17387,141 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-08 11:01]   [MOMENTUM] Totalenergies (TTE.PA) 12.827× à 77.96€ | SL=72.32 | TPs=81.02 | investi=1000€
 [2026-09-08 11:01] [MOMENTUM] valeur=10022.79€  cash=1312.36€  positions=9  PnL=-252.18€
 [2026-09-08 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-09 11:00] ============================================================
+[2026-09-09 11:00] SCAN JOURNALIER - 2026-09-09
+[2026-09-09 11:00] ============================================================
+[2026-09-09 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-09 11:00]   Date     : 2026-09-09  [imap]
+[2026-09-09 11:00]   CAC 40   : NEUTRAL
+[2026-09-09 11:00]   Macro    : energy_strong, market_bullish
+[2026-09-09 11:00]   Secteurs : Energie:+1
+[2026-09-09 11:00] ───────────────────────────────────────────────────────
+[2026-09-09 11:00] [LLM] Biais sectoriel = LLM : Energie:+2
+[2026-09-09 11:00] [LLM] Trades momentum = LLM (2) : Totalenergies:HOLD, Teleperformance:HOLD
+[2026-09-09 11:00] [US] The Transcript «AI Bottlenecks» → secteur — | idées: —
+[2026-09-09 11:00] ══════════════════════════════════════════════
+[2026-09-09 11:00]   AGENT MACRO — 2026-09-09
+[2026-09-09 11:00] ══════════════════════════════════════════════
+[2026-09-09 11:00]   Régime marché  : BULL
+[2026-09-09 11:00]   SPY vs EMA200  : +6.2%
+[2026-09-09 11:00]   VIX            : 16.0 (LOW)
+[2026-09-09 11:00]   Max trades/j   : 3
+[2026-09-09 11:00]   Seuil net min  : 10
+[2026-09-09 11:00]   Top secteurs   : Energie, Tech
+[2026-09-09 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-09 11:00]   Rationale      : Marché haussier (SPY +6.2% vs EMA200). Exposition maximale autorisée.
+[2026-09-09 11:00] ══════════════════════════════════════════════
+[2026-09-09 11:00] [SYNC IBKR] cash = 101419 | NLV = 257708 | positions = 16
+[2026-09-09 11:00] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-09 11:00]   V: 367.68
+[2026-09-09 11:00]   JPM: 355.75
+[2026-09-09 11:00]   JNJ: 269.23
+[2026-09-09 11:00]   MRK: 147.46
+[2026-09-09 11:00]   MPC: 398.14
+[2026-09-09 11:00]   PSX: 259.97
+[2026-09-09 11:00]   BKNG: 173.15
+[2026-09-09 11:00]   AMZN: 251.86
+[2026-09-09 11:00]   TMO: 605.66
+[2026-09-09 11:00]   NFLX: 76.68
+[2026-09-09 11:00]   TGT: 160.89
+[2026-09-09 11:00]   CMCSA: 26.09
+[2026-09-09 11:00]   DIS: 104.46
+[2026-09-09 11:00]   MRNA: 138.72
+[2026-09-09 11:00]   SLB: 57.83
+[2026-09-09 11:00]   MU: 1034.03
+[2026-09-09 11:00] Screener en cours...
+[2026-09-09 11:00] Scores : max=100  mediane=14  (156 tickers)
+[2026-09-09 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=100
+[2026-09-09 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Energie | pénalisés: —
+[2026-09-09 11:00] Filtre ETF/indices (non achetables) : 38 → 27 candidats
+[2026-09-09 11:00] 27 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-09 11:01]   [SEC 8-K] CRM (2026-09-04) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-09 11:01]   [SEC 8-K] ZS (2026-09-03) ⚠MATÉRIEL : Résultats financiers, Coûts de restructuration, États financiers & annexes
+[2026-09-09 11:01] [LLM news] CVX: neutral 0.40 — Chevron targets 600,000 barrels/day from Venezuela by 2031
+[2026-09-09 11:01] [LLM news] SLB: bullish 0.50 — SLB invests $4.1B in AI data center boom
+[2026-09-09 11:01] [LLM news] CRM: bullish 0.50 — Agentforce ARR reaches $1.5B
+[2026-09-09 11:01] [LLM news] GILD: bullish 0.30 — Gilead opens new US research facility
+[2026-09-09 11:01] [LLM news] AMD: bullish 0.60 — CFO raises AI chip TAM forecast to $3 trillion
+[2026-09-09 11:01] [LLM news] MRK: bullish 0.40 — Merck combines ADCs with Keytruda for women's cancers
+[2026-09-09 11:01] [LLM news] PLTR: bullish 0.45 — Palantir partners with Nebius for sovereign AI services
+[2026-09-09 11:01] [LLM news] META: bullish 0.40 — Meta launches new AI agent, Wall Street bullish
+[2026-09-09 11:01] [LLM news] ZS: neutral 0.50 — Zscaler reports Q results with restructuring costs and workforce reduction
+[2026-09-09 11:01] [LLM news] AMGN: bullish 0.55 — Amgen-AstraZeneca combo improves survival in late-stage lung cancer trial
+[2026-09-09 11:01] [LLM news] JPM: bullish 0.30 — JPMorgan's Canadian revenue nearly doubles
+[2026-09-09 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-09 11:01] Cash deployable cette semaine : 99390 EUR  (max trades/j : 2)
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   DÉBAT : CVX
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-09-09 11:01]      • Score haussier fort (76/100)
+[2026-09-09 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-09 11:01]      • Prix au-dessus EMA200 (188.78) — tendance long terme haussière
+[2026-09-09 11:01]      • Stoch RSI survendu (4) — retournement imminent
+[2026-09-09 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-09 11:01] 
+[2026-09-09 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-09 11:01]      • Exposition déjà élevée (80%) — risque de surconcentration
+[2026-09-09 11:01]      • Secteur Energie très concentré (3 positions) — risque sectoriel
+[2026-09-09 11:01]      • Volume faible (0.4× moyenne)
+[2026-09-09 11:01] 
+[2026-09-09 11:01]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-09-09 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=43, net=+46)
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   [ACHAT] CVX score=74 bull=72 bear=43 prix=212.82 investi=12986EUR SL=204.64 TP1=218.95
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   DÉBAT : COP
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-09-09 11:01]      • Score haussier fort (71/100)
+[2026-09-09 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-09 11:01]      • Prix au-dessus EMA200 (118.94) — tendance long terme haussière
+[2026-09-09 11:01]      • Stoch RSI survendu (4) — retournement imminent
+[2026-09-09 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-09 11:01] 
+[2026-09-09 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-09 11:01]      • Exposition déjà élevée (84%) — risque de surconcentration
+[2026-09-09 11:01]      • Secteur Energie très concentré (4 positions) — risque sectoriel
+[2026-09-09 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-09 11:01] 
+[2026-09-09 11:01]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-09-09 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=43, net=+46)
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   [VETO secteur] COP : Energie deja a 4 positions
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   DÉBAT : CRM
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-09-09 11:01]      • Score haussier fort (71/100)
+[2026-09-09 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-09 11:01]      • Prix au-dessus EMA200 (191.71) — tendance long terme haussière
+[2026-09-09 11:01]      • Momentum 10j fort (+21.7%) — tendance confirmée
+[2026-09-09 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-09 11:01] 
+[2026-09-09 11:01]   🔴 BEAR [concern=33] → PRUDENCE
+[2026-09-09 11:01]      • Exposition déjà élevée (84%) — risque de surconcentration
+[2026-09-09 11:01]      • RSI suracheté (76)
+[2026-09-09 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-09 11:01] 
+[2026-09-09 11:01]   ✅ ARBITRE → ACHETER  (net=+52)
+[2026-09-09 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=33, net=+52)
+[2026-09-09 11:01] ────────────────────────────────────────────────────
+[2026-09-09 11:01]   [ACHAT] CRM score=65 bull=72 bear=33 prix=250.24 investi=12758EUR SL=230.22 TP1=265.58
+[2026-09-09 11:01] 3 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-09 11:01] ----------------------------------------
+[2026-09-09 11:01] RESUME : valeur=257708.28 EUR  investi=234291.89 EUR  cash=75675.00 EUR  expo=88.3%  positions=18
+[2026-09-09 11:01] ----------------------------------------
+[2026-09-09 11:01] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-09-09 11:01]   [MOMENTUM] AI.PA: 169.40
+[2026-09-09 11:01]   [MOMENTUM] LR.PA: 140.35
+[2026-09-09 11:01]   [MOMENTUM] PUB.PA: 95.46
+[2026-09-09 11:01]   [MOMENTUM] SAF.PA: 323.10
+[2026-09-09 11:01]   [MOMENTUM] SOI.PA: 144.05
+[2026-09-09 11:01]   [MOMENTUM] NEX.PA: 137.90
+[2026-09-09 11:01]   [MOMENTUM] ATE.PA: 67.35
+[2026-09-09 11:01]   [MOMENTUM] CS.PA: 42.91
+[2026-09-09 11:01]   [MOMENTUM] TTE.PA: 78.28
+[2026-09-09 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-09 11:01]   [MOMENTUM SELL] Totalenergies (TTE.PA) @ 78.28 — raison newsletter : HOLD
+[2026-09-09 11:01] [MOMENTUM] valeur=9851.33€  cash=3196.12€  positions=7  PnL=-423.64€
+[2026-09-09 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
