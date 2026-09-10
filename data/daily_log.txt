@@ -17525,3 +17525,383 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-09 11:01]   [MOMENTUM SELL] Totalenergies (TTE.PA) @ 78.28 — raison newsletter : HOLD
 [2026-09-09 11:01] [MOMENTUM] valeur=9851.33€  cash=3196.12€  positions=7  PnL=-423.64€
 [2026-09-09 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-10 11:00] ============================================================
+[2026-09-10 11:00] SCAN JOURNALIER - 2026-09-10
+[2026-09-10 11:00] ============================================================
+[2026-09-10 11:01] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-10 11:01]   Date     : 2026-09-10  [imap]
+[2026-09-10 11:01]   CAC 40   : NEUTRAL
+[2026-09-10 11:01]   Valeurs  :
+[2026-09-10 11:01]     🚫 Capgemini (Tech) → AVOID
+[2026-09-10 11:01]     ✅ Ses (Tech) → BUY
+[2026-09-10 11:01]   Macro    : market_caution, market_bullish
+[2026-09-10 11:01]   Secteurs : Tech:-1
+[2026-09-10 11:01] ───────────────────────────────────────────────────────
+[2026-09-10 11:01] [LLM] Biais sectoriel = LLM : Tech:-1, Media:-1
+[2026-09-10 11:01] [LLM] Trades momentum = LLM (2) : Capgemini:AVOID, Publicis:AVOID
+[2026-09-10 11:01] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-10 11:01] ══════════════════════════════════════════════
+[2026-09-10 11:01]   AGENT MACRO — 2026-09-10
+[2026-09-10 11:01] ══════════════════════════════════════════════
+[2026-09-10 11:01]   Régime marché  : BULL
+[2026-09-10 11:01]   SPY vs EMA200  : +5.4%
+[2026-09-10 11:01]   VIX            : 17.4 (LOW)
+[2026-09-10 11:01]   Max trades/j   : 3
+[2026-09-10 11:01]   Seuil net min  : 10
+[2026-09-10 11:01]   Top secteurs   : Energie
+[2026-09-10 11:01]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-10 11:01]   Rationale      : Marché haussier (SPY +5.4% vs EMA200). Exposition maximale autorisée.
+[2026-09-10 11:01] ══════════════════════════════════════════════
+[2026-09-10 11:01] [SYNC IBKR] cash = 79022 | NLV = 254722 | positions = 18
+[2026-09-10 11:01] 18 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-10 11:01]   V: 366.06
+[2026-09-10 11:01]   JPM: 352.43
+[2026-09-10 11:01]   JNJ: 266.28
+[2026-09-10 11:01]   MRK: 144.46
+[2026-09-10 11:01]   MPC: 398.72
+[2026-09-10 11:01]   PSX: 261.07
+[2026-09-10 11:01]   BKNG: 175.07
+[2026-09-10 11:01]   AMZN: 252.57
+[2026-09-10 11:01]   TMO: 601.80
+[2026-09-10 11:01]   CRM: mouvement suspect 194.93→244.82 (25.6%) — double verification intraday...
+[2026-09-10 11:01]   CRM: CONFIRME intraday (244.82, 25.6%) → SL/TP actives
+[2026-09-10 11:01]   CVX: 212.87
+[2026-09-10 11:01]   NFLX: 75.80
+[2026-09-10 11:01]   TGT: 157.59
+[2026-09-10 11:01]   CMCSA: 24.94
+[2026-09-10 11:01]   DIS: 104.41
+[2026-09-10 11:01]   MRNA: 133.35
+[2026-09-10 11:01]   SLB: 55.56
+[2026-09-10 11:01]   MU: 984.27
+[2026-09-10 11:01] Screener en cours...
+[2026-09-10 11:02] Scores : max=70  mediane=7  (156 tickers)
+[2026-09-10 11:02] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=70
+[2026-09-10 11:02] Bonus sectoriel appliqué (±3pts/unité) — favorisés: — | pénalisés: Tech, Media
+[2026-09-10 11:02] Filtre ETF/indices (non achetables) : 29 → 24 candidats
+[2026-09-10 11:02] 24 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-10 11:02]   [SEC 8-K] T (2026-09-09) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-09-10 11:02]   [SEC 8-K] CRM (2026-09-04) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-10 11:02]   [SEC 8-K] EL (2026-09-08) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-10 11:02]   [SEC 8-K] ABBV (2026-09-03) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-10 11:02]   [SEC 8-K] AMZN (2026-09-09) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-10 11:02] [LLM news] GILD: bullish 0.50 — Pipeline update: HIV/oncology catalysts and new HIV growth compound highlighted
+[2026-09-10 11:02] [LLM news] T: bullish 0.40 — CEO details fiber, wireless and AI growth strategy at investor conference
+[2026-09-10 11:02] [LLM news] VZ: bullish 0.50 — Company targets faster growth, cost cuts and larger shareholder returns
+[2026-09-10 11:02] [LLM news] CRM: bullish 0.60 — In talks to acquire Listen Labs for ~$2B, consolidating agentic research stack
+[2026-09-10 11:02] [LLM news] AAPL: bullish 0.50 — Launch of iPhone 18 Pro and Pro Max, plus foldable iPhone Duo and upgraded Siri
+[2026-09-10 11:02] [LLM news] SLB: bullish 0.50 — Company commits $4.1B toward AI data center boom
+[2026-09-10 11:02] [LLM news] MRK: neutral 0.50 — Targets $70B pipeline ahead of Keytruda exclusivity loss
+[2026-09-10 11:02] [LLM news] EL: neutral 0.30 — Regulation FD disclosure filed via 8-K
+[2026-09-10 11:02] [LLM news] NET: bullish 0.70 — Stock soars 10.5% on upbeat outlook, sees larger opportunities than current business
+[2026-09-10 11:02] [LLM news] ABBV: bullish 0.60 — $10.9 billion acquisition of Apogee Therapeutics seen as growth catalyst
+[2026-09-10 11:02] [LLM news] V: bullish 0.40 — Visa, Mastercard and Ant International agree on agent identity standard for agentic commerce
+[2026-09-10 11:02] [LLM news] JPM: bullish 0.60 — JPMorgan earned $16.9 billion in one quarter
+[2026-09-10 11:02] [LLM news] AMZN: bullish 0.40 — Amazon opens ChatGPT ads to its advertisers
+[2026-09-10 11:02] [LLM news] NFLX: bearish 0.40 — Florida accuses Netflix of privacy 'bait-and-switch' practices
+[2026-09-10 11:02] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-10 11:02] Cash deployable cette semaine : 77442 EUR  (max trades/j : 2)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : NOW
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=83] → ACHETER
+[2026-09-10 11:02]      • Score haussier fort (70/100)
+[2026-09-10 11:02]      • R-ratio excellent (3.1×) — asymétrie gain/risque idéale
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (113.16) — tendance long terme haussière
+[2026-09-10 11:02]      • Stoch RSI survendu (7) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=35] → PRUDENCE
+[2026-09-10 11:02]      • Exposition déjà élevée (90%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-09-10 11:02]      • Volume faible (0.3× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+62)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=83, concern=35, net=+62)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [ACHAT] NOW score=68 bull=83 bear=35 prix=132.80 investi=12767EUR SL=122.18 TP1=142.60
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : COP
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=59] → ACHETER
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (118.31) — tendance long terme haussière
+[2026-09-10 11:02]      • Score haussier correct (62/100)
+[2026-09-10 11:02]      • Stoch RSI survendu (2) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Energie très concentré (4 positions) — risque sectoriel
+[2026-09-10 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+33)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=59, concern=43, net=+33)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [VETO secteur] COP : Energie deja a 4 positions
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : GILD
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=59] → ACHETER
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (138.61) — tendance long terme haussière
+[2026-09-10 11:02]      • Score haussier correct (59/100)
+[2026-09-10 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-10 11:02]      • Stoch RSI survendu (4) — retournement imminent
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=55] → ÉVITER
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-10 11:02]      • Momentum 10j : -2.8% (faible)
+[2026-09-10 11:02]      • Volume faible (0.1× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+26)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=59, concern=55, net=+26)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [VETO secteur] GILD : Santé deja a 4 positions
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : DE
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=54] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (599.53) — tendance long terme haussière
+[2026-09-10 11:02]      • Score haussier correct (58/100)
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=35] → PRUDENCE
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Stoch RSI suracheté (91) — retournement baissier possible
+[2026-09-10 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+33)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=54, concern=35, net=+33)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] DE : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : VZ
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (47.43) — tendance long terme haussière
+[2026-09-10 11:02]      • Stoch RSI survendu (4) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=25] → OK
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=52, concern=25, net=+37)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] VZ : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : T
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (25.06) — tendance long terme haussière
+[2026-09-10 11:02]      • Stoch RSI survendu (3) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=25] → OK
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Volume faible (0.3× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=52, concern=25, net=+37)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] T : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : PFE
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=59] → ACHETER
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (26.04) — tendance long terme haussière
+[2026-09-10 11:02]      • Score haussier correct (59/100)
+[2026-09-10 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-10 11:02]      • Stoch RSI survendu (1) — retournement imminent
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=55] → ÉVITER
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-10 11:02]      • Momentum 10j : -3.1% (faible)
+[2026-09-10 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+26)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=59, concern=55, net=+26)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [VETO secteur] PFE : Santé deja a 4 positions
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : AAPL
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=47] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (289.91) — tendance long terme haussière
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-10 11:02]      • Score haussier modéré (51/100)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-09-10 11:02]      • Volume faible (0.5× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+21)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=47, concern=43, net=+21)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] AAPL : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : NET
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=77] → ACHETER
+[2026-09-10 11:02]      • R-ratio excellent (3.3×) — asymétrie gain/risque idéale
+[2026-09-10 11:02]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (242.29) — tendance long terme haussière
+[2026-09-10 11:02]      • Momentum 10j fort (+10.4%) — tendance confirmée
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=53] → ÉVITER
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-09-10 11:02]      • Stoch RSI suracheté (86) — retournement baissier possible
+[2026-09-10 11:02]      • Volume faible (0.4× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+45)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=77, concern=53, net=+45)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] NET : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : ABBV
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=60] → ACHETER
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (232.73) — tendance long terme haussière
+[2026-09-10 11:02]      • RSI bas (37) — zone d'accumulation
+[2026-09-10 11:02]      • Stoch RSI survendu (4) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=55] → ÉVITER
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-10 11:02]      • Momentum 10j : -4.1% (faible)
+[2026-09-10 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+27)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=60, concern=55, net=+27)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [VETO secteur] ABBV : Santé deja a 4 positions
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : EL
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=54] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (88.19) — tendance long terme haussière
+[2026-09-10 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-10 11:02]      • Stoch RSI survendu (17) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=52] → ÉVITER
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Chute de -6.5% sur 10j — attraper un couteau ?
+[2026-09-10 11:02]      • Momentum 10j : -6.5% (chute forte)
+[2026-09-10 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+23)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=54, concern=52, net=+23)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] EL : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : NEM
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=46] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (111.76) — tendance long terme haussière
+[2026-09-10 11:02]      • Stoch RSI survendu (9) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • Score haussier modéré (49/100)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=37] → PRUDENCE
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Momentum 10j : -4.5% (faible)
+[2026-09-10 11:02]      • Volume faible (0.3× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+24)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=46, concern=37, net=+24)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] NEM : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : MSFT
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=47] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (423.56) — tendance long terme haussière
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-10 11:02]      • Score haussier modéré (48/100)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-09-10 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+21)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=47, concern=43, net=+21)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [SKIP portefeuille] MSFT : Exposition max atteinte (95%)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : BIIB
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=55] → ACHETER
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (198.02) — tendance long terme haussière
+[2026-09-10 11:02]      • Stoch RSI survendu (14) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=55] → ÉVITER
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-10 11:02]      • Momentum 10j : -2.9% (faible)
+[2026-09-10 11:02]      • Volume faible (0.3× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+22)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=55, concern=55, net=+22)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [VETO secteur] BIIB : Santé deja a 4 positions
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   DÉBAT : OXY
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   🟢 BULL [conviction=48] → PENCHÉ POUR
+[2026-09-10 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-10 11:02]      • Prix au-dessus EMA200 (55.88) — tendance long terme haussière
+[2026-09-10 11:02]      • Stoch RSI survendu (10) — retournement imminent
+[2026-09-10 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-10 11:02]      • Score haussier modéré (42/100)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-10 11:02]      • Exposition déjà élevée (95%) — risque de surconcentration
+[2026-09-10 11:02]      • Secteur Energie très concentré (4 positions) — risque sectoriel
+[2026-09-10 11:02]      • Volume faible (0.5× moyenne)
+[2026-09-10 11:02] 
+[2026-09-10 11:02]   ✅ ARBITRE → ACHETER  (net=+22)
+[2026-09-10 11:02]      Arguments haussiers l'emportent clairement (conviction=48, concern=43, net=+22)
+[2026-09-10 11:02] ────────────────────────────────────────────────────
+[2026-09-10 11:02]   [VETO secteur] OXY : Energie deja a 4 positions
+[2026-09-10 11:02] 15 debat(s) mene(s) → 1 achat(s) effectue(s).
+[2026-09-10 11:02] ----------------------------------------
+[2026-09-10 11:02] RESUME : valeur=254721.67 EUR  investi=247058.93 EUR  cash=66255.09 EUR  expo=95.0%  positions=19
+[2026-09-10 11:02] ----------------------------------------
+[2026-09-10 11:02] [MOMENTUM] 7 position(s) ouverte(s)...
+[2026-09-10 11:02]   [MOMENTUM] AI.PA: 167.22
+[2026-09-10 11:02]   [MOMENTUM] LR.PA: 138.90
+[2026-09-10 11:02]   [MOMENTUM] PUB.PA: 97.02
+[2026-09-10 11:02]   [MOMENTUM] SAF.PA: 321.60
+[2026-09-10 11:02]   [MOMENTUM] SOI.PA: 136.70
+[2026-09-10 11:02]   [MOMENTUM] NEX.PA: 138.70
+[2026-09-10 11:02]   [MOMENTUM] CS.PA: 42.98
+[2026-09-10 11:02] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-10 11:02]   [MOMENTUM SELL] Publicis (PUB.PA) @ 97.02 — raison newsletter : AVOID
+[2026-09-10 11:02] [MOMENTUM] valeur=9804.37€  cash=4899.69€  positions=5  PnL=-470.60€
+[2026-09-10 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr
