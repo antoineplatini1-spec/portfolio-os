@@ -181,3 +181,4 @@
 {"execId": "0000e0d5.6a9fd854.01.01", "time": "2026-09-08 13:31:44", "symbol": "APD", "side": "SLD", "qty": 27.0, "price": 298.38, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6aa15343.01.01", "time": "2026-09-09 15:01:38", "symbol": "CVX", "side": "BOT", "qty": 61.0, "price": 212.88, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6aa15367.01.01", "time": "2026-09-09 15:01:40", "symbol": "CRM", "side": "BOT", "qty": 51.0, "price": 250.16, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6aa4090d.01.01", "time": "2026-09-10 15:02:50", "symbol": "NOW", "side": "BOT", "qty": 96.0, "price": 132.99, "commission": 0.0, "realized_pnl": 0.0}
