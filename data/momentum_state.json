@@ -1,5 +1,5 @@
 {
-  "cash": 3898.6938225180575,
+  "cash": 3848.1916703102866,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -644,15 +644,15 @@
       "ticker": "NEX.PA",
       "entry_price": 138.13799999999998,
       "qty_total": 7.246376811594203,
-      "qty_remaining": 7.246376811594203,
+      "qty_remaining": 0.0,
       "sl": 133.9,
       "trailing_stop": false,
       "trailing_stop_price": 138.13799999999998,
       "entry_date": "2026-08-24",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 131.16870304870605,
+      "close_date": "2026-09-14",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -793,6 +793,40 @@
         {
           "price": 81.02,
           "sell_pct": 1.0,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "AM.PA": {
+      "ticker": "AM.PA",
+      "entry_price": 283.68339389038084,
+      "qty_total": 3.5285815862270744,
+      "qty_remaining": 3.5285815862270744,
+      "sl": 260.6,
+      "trailing_stop": false,
+      "trailing_stop_price": 283.68339389038084,
+      "entry_date": "2026-09-14",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "adopted": false,
+      "tp_levels": [
+        {
+          "price": 320.4,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 353.4,
+          "sell_pct": 0.5,
           "hit": false,
           "hit_date": ""
         }
@@ -950,29 +984,39 @@
       "close_reason": "manual",
       "entry_date": "2026-08-14",
       "close_date": "2026-09-10"
+    },
+    {
+      "ticker": "NEX.PA",
+      "entry_price": 138.13799999999998,
+      "close_price": 131.16870304870605,
+      "qty": 7.246376811594203,
+      "pnl": -50.5022,
+      "close_reason": "SL",
+      "entry_date": "2026-08-24",
+      "close_date": "2026-09-14"
     }
   ],
   "last_prices": {
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 166.8000030517578,
+    "AI.PA": 166.8800048828125,
     "AIR.PA": 195.44000244140625,
-    "LR.PA": 141.5,
+    "LR.PA": 132.5,
     "PUB.PA": 97.0199966430664,
     "ML.PA": 33.880001068115234,
     "HO.PA": 249.3000030517578,
     "URW.PA": 96.31999969482422,
-    "SAF.PA": 329.6000061035156,
+    "SAF.PA": 319.8999938964844,
     "KER.PA": 264.8500061035156,
     "EN.PA": 44.0099983215332,
     "RNO.PA": 28.309999465942383,
     "RI.PA": 64.05999755859375,
     "DSY.PA": 21.06999969482422,
     "SOI.PA": 136.6999969482422,
-    "NEX.PA": 143.5,
-    "ATE.PA": 67.3499984741211,
-    "CS.PA": 43.2599983215332,
+    "NEX.PA": 131.3000030517578,
+    "ATE.PA": 71.0,
+    "CS.PA": 43.4900016784668,
     "ERF.PA": 72.9000015258789,
     "TTE.PA": 78.27999877929688
   }

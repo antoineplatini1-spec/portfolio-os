@@ -18308,3 +18308,136 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-11 11:00] [MOMENTUM] valeur=9862.53€  cash=3898.69€  positions=6  PnL=-412.44€
 [2026-09-11 11:00] [LLM] 4 erreur(s) d'appel → fallback algo : [newsletter] BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. | [us_source] BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. | [news] BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. | [portfolio_review] BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API.
 [2026-09-11 11:00] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-14 11:01] ============================================================
+[2026-09-14 11:01] SCAN JOURNALIER - 2026-09-14
+[2026-09-14 11:01] ============================================================
+[2026-09-14 11:01] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-14 11:01]   Date     : 2026-09-14  [imap]
+[2026-09-14 11:01]   CAC 40   : NEUTRAL
+[2026-09-14 11:01]   Valeurs  :
+[2026-09-14 11:01]     ⚠️ Stmicroelectronics (Semi) → CAUTION
+[2026-09-14 11:01]     ✅ Dassault Aviation (Industrie) → BUY
+[2026-09-14 11:01]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-14 11:01]     🚫 Société Générale (Finance) → AVOID
+[2026-09-14 11:01]     ⚠️ Eurofins (Santé) → CAUTION
+[2026-09-14 11:01]     ✅ Total (Energie) → BUY
+[2026-09-14 11:01]     ⚠️ Schneider (Industrie) → CAUTION
+[2026-09-14 11:01]     ⚠️ Legrand (Industrie) → CAUTION
+[2026-09-14 11:01]     ✅ Safran (Industrie) → BUY
+[2026-09-14 11:01]   Macro    : market_caution, market_bullish
+[2026-09-14 11:01]   Secteurs : Finance:-2, Semi:-1, Tech:-1, Santé:-1, Energie:+1, Industrie:0
+[2026-09-14 11:01] ───────────────────────────────────────────────────────
+[2026-09-14 11:02] [LLM] Biais sectoriel = LLM : Tech:-2, Finance:-2, Industrie:+2
+[2026-09-14 11:02] [LLM] Trades momentum = LLM (3) : Société Générale:AVOID, Dassault Aviation:BUY, Safran:BUY
+[2026-09-14 11:02] [US] The Transcript «Slow Down» → secteur {'Conso': 1, 'REIT': -2, 'Finance': 1, 'ConsoBase': -1, 'Macro': -1} | idées: —
+[2026-09-14 11:02] ══════════════════════════════════════════════
+[2026-09-14 11:02]   AGENT MACRO — 2026-09-14
+[2026-09-14 11:02] ══════════════════════════════════════════════
+[2026-09-14 11:02]   Régime marché  : BULL
+[2026-09-14 11:02]   SPY vs EMA200  : +5.2%
+[2026-09-14 11:02]   VIX            : 17.5 (LOW)
+[2026-09-14 11:02]   Max trades/j   : 3
+[2026-09-14 11:02]   Seuil net min  : 10
+[2026-09-14 11:02]   Top secteurs   : Energie
+[2026-09-14 11:02]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-14 11:02]   Rationale      : Marché haussier (SPY +5.2% vs EMA200). Exposition maximale autorisée.
+[2026-09-14 11:02] ══════════════════════════════════════════════
+[2026-09-14 11:02] [SYNC IBKR] MPC : bracket natif soldé(e) @ 405.04 → clôturé
+[2026-09-14 11:02] [SYNC IBKR] CMCSA : bracket natif soldé(e) @ 25.35 → clôturé
+[2026-09-14 11:02] [SYNC IBKR] SLB : bracket natif soldé(e) @ 54.65 → clôturé
+[2026-09-14 11:02] [SYNC IBKR] MU : bracket natif soldé(e) @ 910.33 → clôturé
+[2026-09-14 11:02] [SYNC IBKR] soldée(s) : MPC, CMCSA, SLB, MU
+[2026-09-14 11:02] [SYNC IBKR] cash = 109708 | NLV = 257622 | positions = 15
+[2026-09-14 11:02] 15 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-14 11:02]   V: 375.11
+[2026-09-14 11:02]   JPM: 351.33
+[2026-09-14 11:02]   JNJ: 268.21
+[2026-09-14 11:02]   MRK: 144.25
+[2026-09-14 11:02]   PSX: 261.69
+[2026-09-14 11:02]   BKNG: 176.22
+[2026-09-14 11:02]   AMZN: 252.04
+[2026-09-14 11:02]   TMO: 606.04
+[2026-09-14 11:02]   CRM: 255.17
+[2026-09-14 11:02]   CVX: 215.93
+[2026-09-14 11:02]   NFLX: 80.16
+[2026-09-14 11:02]   TGT: 159.22
+[2026-09-14 11:02]   NOW: 139.84
+[2026-09-14 11:02]   DIS: 108.39
+[2026-09-14 11:02]   MRNA: 142.71
+[2026-09-14 11:02] Screener en cours...
+[2026-09-14 11:03] Scores : max=78  mediane=3  (156 tickers)
+[2026-09-14 11:03] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=78
+[2026-09-14 11:03] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Industrie, Finance, Energie, Conso | pénalisés: Semi, Tech, Santé, REIT, ConsoBase, Macro
+[2026-09-14 11:03] Filtre ETF/indices (non achetables) : 36 → 29 candidats
+[2026-09-14 11:03] 29 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-14 11:03]   [SEC 8-K] EL (2026-09-08) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-14 11:03]   [SEC 8-K] T (2026-09-09) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-09-14 11:03]   [SEC 8-K] AMZN (2026-09-09) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-14 11:03] [LLM news] GILD: bullish 0.50 — Lancement de Sunlenca soutenant la croissance HIV long terme
+[2026-09-14 11:03] [LLM news] TGT: bearish 0.30 — Augmentation du dividende jugée faible signal
+[2026-09-14 11:03] [LLM news] MPC: bullish 0.50 — La Maison Blanche envisagerait d'étendre la capacité de raffinage US
+[2026-09-14 11:03] [LLM news] PSX: bullish 0.50 — La Maison Blanche envisagerait d'étendre la capacité de raffinage US
+[2026-09-14 11:03] [LLM news] COIN: bullish 0.40 — Expansion de Coinbase dans les stablecoins via des banques communautaires
+[2026-09-14 11:03] [LLM news] CVX: bullish 0.35 — Chevron anticipe des prix du GNL élevés à court terme
+[2026-09-14 11:03] [LLM news] EL: bearish 0.40 — Le procès sur les contrefaçons vendues sur Walmart avance
+[2026-09-14 11:03] [LLM news] CRWD: bullish 0.40 — Les valeurs cybersécurité bondissent après les avertissements sur le ralentissement de l'IA
+[2026-09-14 11:03] [LLM news] T: neutral 0.30 — Dépôt 8-K signalant un changement de direction
+[2026-09-14 11:03] [LLM news] MRNA: bullish 0.50 — Moderna en forte hausse sur un momentum 2026
+[2026-09-14 11:03] [LLM news] JNJ: bullish 0.60 — Action J&J en hausse sur les discussions Apollo
+[2026-09-14 11:03] [LLM news] REGN: bullish 0.45 — Catalyseurs 2026 avec EYLEA HD et DUPIXENT soutenant la croissance
+[2026-09-14 11:03] [LLM news] AMZN: neutral 0.25 — Dépôt 8-K signalant un changement de direction
+[2026-09-14 11:03] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-14 11:03] Cash deployable cette semaine : 156281 EUR  (max trades/j : 2)
+[2026-09-14 11:03] ────────────────────────────────────────────────────
+[2026-09-14 11:03]   DÉBAT : EOG
+[2026-09-14 11:03] ────────────────────────────────────────────────────
+[2026-09-14 11:03]   🟢 BULL [conviction=90] → ACHETER
+[2026-09-14 11:03]      • Score haussier fort (80/100)
+[2026-09-14 11:03]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-09-14 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-14 11:03]      • Prix au-dessus EMA200 (137.76) — tendance long terme haussière
+[2026-09-14 11:03]      • Stoch RSI survendu (15) — retournement imminent
+[2026-09-14 11:03] 
+[2026-09-14 11:03]   🔴 BEAR [concern=35] → PRUDENCE
+[2026-09-14 11:03]      • Exposition déjà élevée (76%) — risque de surconcentration
+[2026-09-14 11:03]      • Secteur Energie déjà exposé (2 positions) — diversification limitée
+[2026-09-14 11:03]      • Volume faible (0.3× moyenne)
+[2026-09-14 11:03] 
+[2026-09-14 11:03]   ✅ ARBITRE → ACHETER  (net=+69)
+[2026-09-14 11:03]      Arguments haussiers l'emportent clairement (conviction=90, concern=35, net=+69)
+[2026-09-14 11:03] ────────────────────────────────────────────────────
+[2026-09-14 11:03]   [ACHAT] EOG score=78 bull=90 bear=35 prix=151.10 investi=12851EUR SL=143.99 TP1=156.43
+[2026-09-14 11:03] ────────────────────────────────────────────────────
+[2026-09-14 11:03]   DÉBAT : COP
+[2026-09-14 11:03] ────────────────────────────────────────────────────
+[2026-09-14 11:03]   🟢 BULL [conviction=72] → ACHETER
+[2026-09-14 11:03]      • Score haussier fort (76/100)
+[2026-09-14 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-14 11:03]      • Prix au-dessus EMA200 (120.67) — tendance long terme haussière
+[2026-09-14 11:03]      • Stoch RSI survendu (14) — retournement imminent
+[2026-09-14 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-14 11:03] 
+[2026-09-14 11:03]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-14 11:03]      • Exposition déjà élevée (80%) — risque de surconcentration
+[2026-09-14 11:03]      • Secteur Energie très concentré (3 positions) — risque sectoriel
+[2026-09-14 11:03]      • Volume faible (0.2× moyenne)
+[2026-09-14 11:03] 
+[2026-09-14 11:03]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-09-14 11:03]      Arguments haussiers l'emportent clairement (conviction=72, concern=43, net=+46)
+[2026-09-14 11:03] ────────────────────────────────────────────────────
+[2026-09-14 11:04]   [ACHAT] COP score=74 bull=72 bear=43 prix=139.03 investi=12938EUR SL=133.02 TP1=143.55
+[2026-09-14 11:04] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-14 11:04] ----------------------------------------
+[2026-09-14 11:04] RESUME : valeur=257621.71 EUR  investi=220750.80 EUR  cash=133680.60 EUR  expo=85.0%  positions=17
+[2026-09-14 11:04] ----------------------------------------
+[2026-09-14 11:04] [MOMENTUM] 6 position(s) ouverte(s)...
+[2026-09-14 11:04]   [MOMENTUM] AI.PA: 166.88
+[2026-09-14 11:04]   [MOMENTUM] LR.PA: 132.50
+[2026-09-14 11:04]   [MOMENTUM] SAF.PA: 319.90
+[2026-09-14 11:04]   [MOMENTUM] NEX.PA: 131.30
+[2026-09-14 11:04]   [MOMENTUM] ATE.PA: 71.00
+[2026-09-14 11:04]   [MOMENTUM] CS.PA: 43.49
+[2026-09-14 11:04] [MOMENTUM] 3 signal(s) newsletter...
+[2026-09-14 11:04]   [MOMENTUM] Dassault Aviation (AM.PA) 3.529× à 283.40€ | SL=260.60 | TPs=320.40 / 353.40 | investi=1000€
+[2026-09-14 11:04] [MOMENTUM] valeur=9738.48€  cash=3848.19€  positions=6  PnL=-536.49€
+[2026-09-14 11:04] [EMAIL] Envoye a antoine.platini@outlook.fr
