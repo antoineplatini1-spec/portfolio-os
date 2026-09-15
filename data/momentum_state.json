@@ -1,5 +1,5 @@
 {
-  "cash": 3848.1916703102866,
+  "cash": 2847.1916705398075,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -273,17 +273,17 @@
     },
     "HO.PA": {
       "ticker": "HO.PA",
-      "entry_price": 224.62439389038084,
-      "qty_total": 4.456328106948611,
-      "qty_remaining": 4.456328106948611,
+      "entry_price": 239.03880305480953,
+      "qty_total": 4.187604636601527,
+      "qty_remaining": 4.187604636601527,
       "sl": 206.75,
       "trailing_stop": false,
-      "trailing_stop_price": 224.62439389038084,
-      "entry_date": "2026-07-20",
+      "trailing_stop_price": 239.03880305480953,
+      "entry_date": "2026-09-15",
       "fees_in": 0.0,
-      "status": "closed",
-      "close_price": 249.05070304870605,
-      "close_date": "2026-07-28",
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -291,8 +291,44 @@
       "adopted": false,
       "tp_levels": [
         {
-          "price": 270.2,
-          "sell_pct": 1.0,
+          "price": 243.15,
+          "sell_pct": 0.14285714285714285,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 254.8,
+          "sell_pct": 0.14285714285714285,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 256.1,
+          "sell_pct": 0.14285714285714285,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 259.4,
+          "sell_pct": 0.14285714285714285,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 259.6,
+          "sell_pct": 0.14285714285714285,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 271.9,
+          "sell_pct": 0.14285714285714285,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 274.2,
+          "sell_pct": 0.14285714285714285,
           "hit": false,
           "hit_date": ""
         }
@@ -644,7 +680,7 @@
       "ticker": "NEX.PA",
       "entry_price": 138.13799999999998,
       "qty_total": 7.246376811594203,
-      "qty_remaining": 0.0,
+      "qty_remaining": 7.246376811594203,
       "sl": 133.9,
       "trailing_stop": false,
       "trailing_stop_price": 138.13799999999998,
@@ -1000,14 +1036,14 @@
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 166.8800048828125,
+    "AI.PA": 165.82000732421875,
     "AIR.PA": 195.44000244140625,
-    "LR.PA": 132.5,
+    "LR.PA": 133.10000610351562,
     "PUB.PA": 97.0199966430664,
     "ML.PA": 33.880001068115234,
     "HO.PA": 249.3000030517578,
     "URW.PA": 96.31999969482422,
-    "SAF.PA": 319.8999938964844,
+    "SAF.PA": 321.8999938964844,
     "KER.PA": 264.8500061035156,
     "EN.PA": 44.0099983215332,
     "RNO.PA": 28.309999465942383,
@@ -1015,9 +1051,10 @@
     "DSY.PA": 21.06999969482422,
     "SOI.PA": 136.6999969482422,
     "NEX.PA": 131.3000030517578,
-    "ATE.PA": 71.0,
-    "CS.PA": 43.4900016784668,
+    "ATE.PA": 69.3499984741211,
+    "CS.PA": 43.59000015258789,
     "ERF.PA": 72.9000015258789,
-    "TTE.PA": 78.27999877929688
+    "TTE.PA": 78.27999877929688,
+    "AM.PA": 287.6000061035156
   }
 }

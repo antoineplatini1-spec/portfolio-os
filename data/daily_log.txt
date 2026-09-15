@@ -18441,3 +18441,172 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-14 11:04]   [MOMENTUM] Dassault Aviation (AM.PA) 3.529× à 283.40€ | SL=260.60 | TPs=320.40 / 353.40 | investi=1000€
 [2026-09-14 11:04] [MOMENTUM] valeur=9738.48€  cash=3848.19€  positions=6  PnL=-536.49€
 [2026-09-14 11:04] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-15 11:00] ============================================================
+[2026-09-15 11:00] SCAN JOURNALIER - 2026-09-15
+[2026-09-15 11:00] ============================================================
+[2026-09-15 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-15 11:00]   Date     : 2026-09-15  [imap]
+[2026-09-15 11:00]   CAC 40   : NEUTRAL
+[2026-09-15 11:00]   Valeurs  :
+[2026-09-15 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-15 11:00]     🚫 Engie (Energie) → AVOID
+[2026-09-15 11:00]   Macro    : tech_pressure, energy_strong, market_caution, market_bullish
+[2026-09-15 11:00]   Secteurs : Tech:-2, Energie:-1
+[2026-09-15 11:00] ───────────────────────────────────────────────────────
+[2026-09-15 11:00] [LLM] Biais sectoriel = LLM : Semi:-2, Utilities:-1
+[2026-09-15 11:00] [LLM] Trades momentum = LLM (2) : Thales:BUY, Engie:AVOID
+[2026-09-15 11:01] [US] The Transcript «Catalyst Watch» → secteur {'Macro': -1} | idées: —
+[2026-09-15 11:01] ══════════════════════════════════════════════
+[2026-09-15 11:01]   AGENT MACRO — 2026-09-15
+[2026-09-15 11:01] ══════════════════════════════════════════════
+[2026-09-15 11:01]   Régime marché  : BULL
+[2026-09-15 11:01]   SPY vs EMA200  : +4.8%
+[2026-09-15 11:01]   VIX            : 17.5 (LOW)
+[2026-09-15 11:01]   Max trades/j   : 3
+[2026-09-15 11:01]   Seuil net min  : 10
+[2026-09-15 11:01]   Top secteurs   : Energie, Santé
+[2026-09-15 11:01]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-15 11:01]   Rationale      : Marché haussier (SPY +4.9% vs EMA200). Exposition maximale autorisée.
+[2026-09-15 11:01] ══════════════════════════════════════════════
+[2026-09-15 11:01] [SYNC IBKR] TGT : bracket natif soldé(e) @ 155.69 → clôturé
+[2026-09-15 11:01] [SYNC IBKR] NOW : bracket natif soldé(e) @ 139.84 → clôturé
+[2026-09-15 11:01] [SYNC IBKR] soldée(s) : TGT, NOW
+[2026-09-15 11:01] [SYNC IBKR] cash = 109949 | NLV = 257471 | positions = 15
+[2026-09-15 11:01] 15 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-15 11:01]   V: 373.36
+[2026-09-15 11:01]   JPM: 346.46
+[2026-09-15 11:01]   JNJ: 263.46
+[2026-09-15 11:01]   MRK: 143.19
+[2026-09-15 11:01]   PSX: 260.63
+[2026-09-15 11:01]   BKNG: 171.44
+[2026-09-15 11:01]   AMZN: 248.55
+[2026-09-15 11:01]   TMO: 630.74
+[2026-09-15 11:01]   CRM: 257.33
+[2026-09-15 11:01]   CVX: 215.07
+[2026-09-15 11:01]   NFLX: 78.04
+[2026-09-15 11:01]   DIS: 107.25
+[2026-09-15 11:01]   MRNA: 142.45
+[2026-09-15 11:01]   EOG: 151.83
+[2026-09-15 11:01]   COP: 139.21
+[2026-09-15 11:01]   [TIME STOP] NFLX : 27j ouverte, PnL=-3.7% -> fermeture
+[2026-09-15 11:01]   [LLM post-mortem] NFLX: momentum_essouffle — Sur NFLX, éviter de maintenir une position 27 jours sans progression claire : instaurer un stop de temps plus court si le PnL reste négatif après quelques jours.
+[2026-09-15 11:01] Screener en cours...
+[2026-09-15 11:01] Scores : max=68  mediane=0  (156 tickers)
+[2026-09-15 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=68
+[2026-09-15 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: — | pénalisés: Tech, Energie, Semi, Utilities, Macro
+[2026-09-15 11:01] Filtre ETF/indices (non achetables) : 11 → 9 candidats
+[2026-09-15 11:01] 9 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-15 11:01]   [SEC 8-K] EL (2026-09-08) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-15 11:01]   [SEC 8-K] AMZN (2026-09-14) : Autre événement matériel, États financiers & annexes
+[2026-09-15 11:01]   [SEC 8-K] AMZN (2026-09-09) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-15 11:02] [LLM news] GILD: bullish 0.60 — Victoire en appel bloquant les ventes de médicaments HIV importés (contrefaçon générique)
+[2026-09-15 11:02] [LLM news] COP: bullish 0.50 — Fermeture d'un pipeline clé en Arabie Saoudite, pression sur l'offre pétrolière
+[2026-09-15 11:02] [LLM news] MRK: bullish 0.40 — Le CEO voit un potentiel de pipeline avec lancements et santé animale
+[2026-09-15 11:02] [LLM news] DE: bullish 0.40 — Deere surperforme parmi les valeurs de machinisme agricole au Q2
+[2026-09-15 11:02] [LLM news] EL: bearish 0.40 — Le procès pour contrefaçons vendues sur Walmart avance
+[2026-09-15 11:02] [LLM news] MPC: bullish 0.50 — Rallye des raffineurs américains suite à la pénurie mondiale de carburant
+[2026-09-15 11:02] [LLM news] PSX: bullish 0.50 — Rallye des raffineurs américains suite à la pénurie mondiale de carburant
+[2026-09-15 11:02] [LLM news] JNJ: bullish 0.50 — Apollo et J&J négocient un deal orthopédique majeur, J&J signale une zone d'opportunité M&A
+[2026-09-15 11:02] [LLM news] BKNG: bearish 0.50 — La stratégie de croissance de Booking se heurte à un obstacle réglementaire européen
+[2026-09-15 11:02] [LLM news] AMZN: neutral 0.30 — Départ/nomination d'un dirigeant (8-K)
+[2026-09-15 11:02] [LLM news] CVX: bullish 0.40 — Chevron cible l'Argentine et la Méditerranée pour son expansion GNL
+[2026-09-15 11:02] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-15 11:02] Cash deployable cette semaine : 145350 EUR  (max trades/j : 2)
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   DÉBAT : GILD
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   🟢 BULL [conviction=56] → ACHETER
+[2026-09-15 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-15 11:02]      • Prix au-dessus EMA200 (138.13) — tendance long terme haussière
+[2026-09-15 11:02]      • Score haussier correct (59/100)
+[2026-09-15 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-15 11:02]      • Stoch RSI survendu (4) — retournement imminent
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-15 11:02]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-15 11:02]      • SPY sous EMA50 — marché en correction
+[2026-09-15 11:02]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-09-15 11:02]      • Volume faible (0.2× moyenne)
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   ✅ ARBITRE → ACHETER  (net=+30)
+[2026-09-15 11:02]      Arguments haussiers l'emportent clairement (conviction=56, concern=43, net=+30)
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   [VETO secteur] GILD : Santé deja a 4 positions
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   DÉBAT : DE
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   🟢 BULL [conviction=57] → ACHETER
+[2026-09-15 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-15 11:02]      • Prix au-dessus EMA200 (596.31) — tendance long terme haussière
+[2026-09-15 11:02]      • Score haussier correct (61/100)
+[2026-09-15 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-15 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   🔴 BEAR [concern=41] → PRUDENCE
+[2026-09-15 11:02]      • SPY sous EMA50 — marché en correction
+[2026-09-15 11:02]      • RSI suracheté (71)
+[2026-09-15 11:02]      • Score baissier modéré (28 pts)
+[2026-09-15 11:02]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-09-15 11:02]      • Volume faible (0.1× moyenne)
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   ✅ ARBITRE → ACHETER  (net=+32)
+[2026-09-15 11:02]      Arguments haussiers l'emportent clairement (conviction=57, concern=41, net=+32)
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   [ACHAT] DE score=47 bull=57 bear=41 prix=683.70 investi=13003EUR SL=647.89 TP1=710.56
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   DÉBAT : MPC
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   🟢 BULL [conviction=54] → PENCHÉ POUR
+[2026-09-15 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-15 11:02]      • Prix au-dessus EMA200 (279.07) — tendance long terme haussière
+[2026-09-15 11:02]      • Score haussier correct (61/100)
+[2026-09-15 11:02]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-15 11:02]      • OBV en hausse — accumulation en cours
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   🔴 BEAR [concern=59] → ÉVITER
+[2026-09-15 11:02]      • Secteur Energie très concentré (4 positions) — risque sectoriel
+[2026-09-15 11:02]      • SPY sous EMA50 — marché en correction
+[2026-09-15 11:02]      • RSI suracheté (89)
+[2026-09-15 11:02]      • Score baissier modéré (28 pts)
+[2026-09-15 11:02]      • Exposition modérée (75%) — prudence sur les ajouts
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   ✅ ARBITRE → ACHETER  (net=+19)
+[2026-09-15 11:02]      Arguments haussiers l'emportent clairement (conviction=54, concern=59, net=+19)
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   [VETO secteur] MPC : Energie deja a 4 positions
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   DÉBAT : EL
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   🟢 BULL [conviction=64] → ACHETER
+[2026-09-15 11:02]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-15 11:02]      • Prix au-dessus EMA200 (86.97) — tendance long terme haussière
+[2026-09-15 11:02]      • Score haussier correct (60/100)
+[2026-09-15 11:02]      • RSI bas (33) — zone d'accumulation
+[2026-09-15 11:02]      • CMF fort — flux acheteur dominant
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   🔴 BEAR [concern=45] → PRUDENCE
+[2026-09-15 11:02]      • Momentum 10j : -5.0% (faible)
+[2026-09-15 11:02]      • SPY sous EMA50 — marché en correction
+[2026-09-15 11:02]      • Score baissier modéré (26 pts)
+[2026-09-15 11:02]      • Exposition modérée (75%) — prudence sur les ajouts
+[2026-09-15 11:02]      • Volume faible (0.1× moyenne)
+[2026-09-15 11:02] 
+[2026-09-15 11:02]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-09-15 11:02]      Arguments haussiers l'emportent clairement (conviction=64, concern=45, net=+37)
+[2026-09-15 11:02] ────────────────────────────────────────────────────
+[2026-09-15 11:02]   [ACHAT] EL score=47 bull=64 bear=45 prix=97.23 investi=12826EUR SL=90.98 TP1=101.92
+[2026-09-15 11:02] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-15 11:02] ----------------------------------------
+[2026-09-15 11:02] RESUME : valeur=257470.66 EUR  investi=207546.52 EUR  cash=122486.26 EUR  expo=79.7%  positions=16
+[2026-09-15 11:02] ----------------------------------------
+[2026-09-15 11:02] [MOMENTUM] 6 position(s) ouverte(s)...
+[2026-09-15 11:02]   [MOMENTUM] AI.PA: 165.82
+[2026-09-15 11:02]   [MOMENTUM] LR.PA: 133.10
+[2026-09-15 11:02]   [MOMENTUM] SAF.PA: 321.90
+[2026-09-15 11:02]   [MOMENTUM] ATE.PA: 69.35
+[2026-09-15 11:02]   [MOMENTUM] CS.PA: 43.59
+[2026-09-15 11:02]   [MOMENTUM] AM.PA: 287.60
+[2026-09-15 11:02] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-15 11:02]   [MOMENTUM] Thales (HO.PA) 4.188× à 238.80€ | SL=206.75 | TPs=243.15 / 254.80 / 256.10 / 259.40 / 259.60 / 271.90 / 274.20 | investi=1000€
+[2026-09-15 11:02] [MOMENTUM] valeur=9777.65€  cash=2847.19€  positions=7  PnL=-497.32€
+[2026-09-15 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
