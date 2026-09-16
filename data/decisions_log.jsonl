@@ -79,3 +79,5 @@
 {"ts": "2026-09-14T15:04:00.325309+00:00", "ticker": "COP", "features": {"momentum": 74.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 74.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 77.0}
 {"ts": "2026-09-15T15:02:08.093075+00:00", "ticker": "DE", "features": {"momentum": 47.0, "sector": 0.0, "news": 0.4, "conviction": 0.0}, "contrib": {"momentum": 47.0, "sector": 0.0, "news": 3.2, "conviction": 0.0}, "total": 50.2}
 {"ts": "2026-09-15T15:02:10.111993+00:00", "ticker": "EL", "features": {"momentum": 47.0, "sector": 0.0, "news": -0.4, "conviction": 0.0}, "contrib": {"momentum": 47.0, "sector": 0.0, "news": -3.2, "conviction": 0.0}, "total": 43.8}
+{"ts": "2026-09-16T15:01:49.145960+00:00", "ticker": "TMO", "features": {"momentum": 88.0, "sector": 0.0, "news": 0.6, "conviction": 0.0}, "contrib": {"momentum": 88.0, "sector": 0.0, "news": 4.8, "conviction": 0.0}, "total": 92.8}
+{"ts": "2026-09-16T15:01:50.910749+00:00", "ticker": "MRVL", "features": {"momentum": 73.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 73.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 73.0}

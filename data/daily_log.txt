@@ -18610,3 +18610,125 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-15 11:02]   [MOMENTUM] Thales (HO.PA) 4.188× à 238.80€ | SL=206.75 | TPs=243.15 / 254.80 / 256.10 / 259.40 / 259.60 / 271.90 / 274.20 | investi=1000€
 [2026-09-15 11:02] [MOMENTUM] valeur=9777.65€  cash=2847.19€  positions=7  PnL=-497.32€
 [2026-09-15 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-16 11:00] ============================================================
+[2026-09-16 11:00] SCAN JOURNALIER - 2026-09-16
+[2026-09-16 11:00] ============================================================
+[2026-09-16 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-16 11:00]   Date     : 2026-09-16  [imap]
+[2026-09-16 11:00]   CAC 40   : NEUTRAL
+[2026-09-16 11:00]   Valeurs  :
+[2026-09-16 11:00]     ✅ Airbus (Industrie) → BUY
+[2026-09-16 11:00]     ✅ Safran (Industrie) → BUY
+[2026-09-16 11:00]   Macro    : market_caution
+[2026-09-16 11:00]   Secteurs : Industrie:+2
+[2026-09-16 11:00] ───────────────────────────────────────────────────────
+[2026-09-16 11:00] [LLM] Biais sectoriel = LLM : Industrie:+2
+[2026-09-16 11:00] [LLM] Trades momentum : LLM sans résultat → algo (regex)
+[2026-09-16 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-16 11:00] ══════════════════════════════════════════════
+[2026-09-16 11:00]   AGENT MACRO — 2026-09-16
+[2026-09-16 11:00] ══════════════════════════════════════════════
+[2026-09-16 11:00]   Régime marché  : BULL
+[2026-09-16 11:00]   SPY vs EMA200  : +5.3%
+[2026-09-16 11:00]   VIX            : 16.7 (LOW)
+[2026-09-16 11:00]   Max trades/j   : 3
+[2026-09-16 11:00]   Seuil net min  : 10
+[2026-09-16 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-16 11:00]   Rationale      : Marché haussier (SPY +5.3% vs EMA200). Exposition maximale autorisée.
+[2026-09-16 11:00] ══════════════════════════════════════════════
+[2026-09-16 11:00] [SYNC IBKR] PSX : bracket natif soldé(e) @ 260.63 → clôturé
+[2026-09-16 11:00] [SYNC IBKR] TMO : bracket natif soldé(e) @ 630.74 → clôturé
+[2026-09-16 11:00] [SYNC IBKR] soldée(s) : PSX, TMO
+[2026-09-16 11:00] [SYNC IBKR] cash = 128963 | NLV = 257036 | positions = 14
+[2026-09-16 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-16 11:00]   V: 372.60
+[2026-09-16 11:00]   JPM: 352.16
+[2026-09-16 11:00]   JNJ: 267.32
+[2026-09-16 11:00]   MRK: 143.90
+[2026-09-16 11:00]   BKNG: 173.07
+[2026-09-16 11:00]   AMZN: 247.60
+[2026-09-16 11:00]   CRM: 252.07
+[2026-09-16 11:00]   CVX: 211.66
+[2026-09-16 11:00]   DIS: 107.62
+[2026-09-16 11:00]   MRNA: 146.40
+[2026-09-16 11:00]   EOG: 145.04
+[2026-09-16 11:00]   COP: 133.92
+[2026-09-16 11:00]   DE: 674.63
+[2026-09-16 11:00]   EL: 96.24
+[2026-09-16 11:00] Screener en cours...
+[2026-09-16 11:00] Scores : max=88  mediane=13  (156 tickers)
+[2026-09-16 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=88
+[2026-09-16 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Industrie | pénalisés: —
+[2026-09-16 11:00] Filtre ETF/indices (non achetables) : 31 → 25 candidats
+[2026-09-16 11:01] 25 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-16 11:01]   [SEC 8-K] T (2026-09-09) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-09-16 11:01]   [SEC 8-K] AMZN (2026-09-14) : Autre événement matériel, États financiers & annexes
+[2026-09-16 11:01]   [SEC 8-K] AMZN (2026-09-09) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-16 11:01] [LLM news] TMO: bullish 0.60 — CEO guidance: AI to drive pharma spending, targets 7% organic growth by 2028
+[2026-09-16 11:01] [LLM news] GILD: bullish 0.50 — New licensing agreements add once-yearly HIV prevention formulation
+[2026-09-16 11:01] [LLM news] T: neutral 0.30 — 8-K filing: executive departure/appointment
+[2026-09-16 11:01] [LLM news] AAPL: bullish 0.50 — Apple reportedly building M8 AI servers, in talks with Nvidia
+[2026-09-16 11:01] [LLM news] META: bullish 0.50 — Launch of Meta One subscription to monetize AI spending
+[2026-09-16 11:01] [LLM news] INTC: bullish 0.50 — Reports of potential SK Hynix fab deal in Ohio
+[2026-09-16 11:01] [LLM news] VRTX: neutral 0.30 — New CFO elevation signals capital allocation shift
+[2026-09-16 11:01] [LLM news] MSFT: bullish 0.50 — Microsoft raises dividend by 8%
+[2026-09-16 11:01] [LLM news] BIIB: bullish 0.40 — Biogen pipeline expansion with upcoming Phase III readouts beyond neuroscience
+[2026-09-16 11:01] [LLM news] JNJ: bullish 0.60 — Stronger survival data reported in EGFR mutated lung cancer trial
+[2026-09-16 11:01] [LLM news] BKNG: bearish 0.50 — EU regulatory roadblock hits growth strategy
+[2026-09-16 11:01] [LLM news] AMZN: neutral 0.30 — 8-K filing: executive departure/appointment
+[2026-09-16 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-16 11:01] [NEWSLETTER US] 1 instrument(s) US recommandé(s)
+[2026-09-16 11:01] Cash deployable cette semaine : 160309 EUR  (max trades/j : 2)
+[2026-09-16 11:01] ────────────────────────────────────────────────────
+[2026-09-16 11:01]   DÉBAT : TMO
+[2026-09-16 11:01] ────────────────────────────────────────────────────
+[2026-09-16 11:01]   🟢 BULL [conviction=87] → ACHETER
+[2026-09-16 11:01]      • Score haussier fort (90/100)
+[2026-09-16 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-09-16 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-16 11:01]      • Prix au-dessus EMA200 (520.45) — tendance long terme haussière
+[2026-09-16 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-16 11:01] 
+[2026-09-16 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-16 11:01]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-09-16 11:01]      • Exposition modérée (67%) — prudence sur les ajouts
+[2026-09-16 11:01]      • Volume faible (0.3× moyenne)
+[2026-09-16 11:01] 
+[2026-09-16 11:01]   ✅ ARBITRE → ACHETER  (net=+68)
+[2026-09-16 11:01]      Arguments haussiers l'emportent clairement (conviction=87, concern=31, net=+68)
+[2026-09-16 11:01] ────────────────────────────────────────────────────
+[2026-09-16 11:01]   [ACHAT] TMO score=88 bull=87 bear=31 prix=643.75 investi=20594EUR SL=612.67 TP1=667.06
+[2026-09-16 11:01] ────────────────────────────────────────────────────
+[2026-09-16 11:01]   DÉBAT : MRVL
+[2026-09-16 11:01] ────────────────────────────────────────────────────
+[2026-09-16 11:01]   🟢 BULL [conviction=97] → ACHETER
+[2026-09-16 11:01]      • Score haussier fort (75/100)
+[2026-09-16 11:01]      • R-ratio excellent (4.0×) — asymétrie gain/risque idéale
+[2026-09-16 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-09-16 11:01]      • Prix au-dessus EMA200 (176.85) — tendance long terme haussière
+[2026-09-16 11:01]      • Momentum 10j fort (+9.3%) — tendance confirmée
+[2026-09-16 11:01] 
+[2026-09-16 11:01]   🔴 BEAR [concern=13] → OK
+[2026-09-16 11:01]      • Exposition modérée (75%) — prudence sur les ajouts
+[2026-09-16 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-16 11:01] 
+[2026-09-16 11:01]   ✅ ARBITRE → ACHETER  (net=+89)
+[2026-09-16 11:01]      Arguments haussiers l'emportent clairement (conviction=97, concern=13, net=+89)
+[2026-09-16 11:01] ────────────────────────────────────────────────────
+[2026-09-16 11:01]   [ACHAT] MRVL score=73 bull=97 bear=13 prix=229.99 investi=12880EUR SL=211.59 TP1=252.07
+[2026-09-16 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-16 11:01] ----------------------------------------
+[2026-09-16 11:01] RESUME : valeur=257036.36 EUR  investi=207188.41 EUR  cash=130106.46 EUR  expo=79.6%  positions=16
+[2026-09-16 11:01] ----------------------------------------
+[2026-09-16 11:01] [MOMENTUM] 7 position(s) ouverte(s)...
+[2026-09-16 11:01]   [MOMENTUM] AI.PA: 166.64
+[2026-09-16 11:01]   [MOMENTUM] LR.PA: 135.30
+[2026-09-16 11:01]   [MOMENTUM] HO.PA: 240.20
+[2026-09-16 11:01]   [MOMENTUM] SAF.PA: 325.80
+[2026-09-16 11:01]   [MOMENTUM] ATE.PA: 71.25
+[2026-09-16 11:01]   [MOMENTUM] CS.PA: 44.07
+[2026-09-16 11:01]   [MOMENTUM] AM.PA: 292.80
+[2026-09-16 11:01] [MOMENTUM] 3 signal(s) newsletter...
+[2026-09-16 11:01]   [MOMENTUM] Airbus (AIR.PA) 5.075× à 197.06€ | SL=183.27 | TPs=6.61 | investi=1000€
+[2026-09-16 11:01] [MOMENTUM] valeur=9819.36€  cash=1846.19€  positions=8  PnL=-455.61€
+[2026-09-16 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
