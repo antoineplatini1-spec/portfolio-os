@@ -18732,3 +18732,151 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-16 11:01]   [MOMENTUM] Airbus (AIR.PA) 5.075× à 197.06€ | SL=183.27 | TPs=6.61 | investi=1000€
 [2026-09-16 11:01] [MOMENTUM] valeur=9819.36€  cash=1846.19€  positions=8  PnL=-455.61€
 [2026-09-16 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-17 11:00] ============================================================
+[2026-09-17 11:00] SCAN JOURNALIER - 2026-09-17
+[2026-09-17 11:00] ============================================================
+[2026-09-17 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-17 11:00]   Date     : 2026-09-17  [imap]
+[2026-09-17 11:00]   CAC 40   : NEUTRAL
+[2026-09-17 11:00]   Valeurs  :
+[2026-09-17 11:00]     🔴 Axa (Finance) → SELL
+[2026-09-17 11:00]     ✅ Bouygues (Industrie) → BUY
+[2026-09-17 11:00]     ✅ Orange (Telecoms) → BUY
+[2026-09-17 11:00]   Macro    : oil_bearish, market_caution, market_bullish
+[2026-09-17 11:00]   Secteurs : Finance:-1, Industrie:+1, Telecoms:+1
+[2026-09-17 11:00] ───────────────────────────────────────────────────────
+[2026-09-17 11:00] [LLM] Biais sectoriel = LLM : Telecoms:+2
+[2026-09-17 11:00] [LLM] Trades momentum = LLM (2) : Orange:BUY, Axa:HOLD
+[2026-09-17 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-17 11:00] ══════════════════════════════════════════════
+[2026-09-17 11:00]   AGENT MACRO — 2026-09-17
+[2026-09-17 11:00] ══════════════════════════════════════════════
+[2026-09-17 11:00]   Régime marché  : BULL
+[2026-09-17 11:00]   SPY vs EMA200  : +5.3%
+[2026-09-17 11:00]   VIX            : 15.7 (LOW)
+[2026-09-17 11:00]   Max trades/j   : 3
+[2026-09-17 11:00]   Seuil net min  : 10
+[2026-09-17 11:00]   Top secteurs   : Tech, Telecoms
+[2026-09-17 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-17 11:00]   Rationale      : Marché haussier (SPY +5.3% vs EMA200). Exposition maximale autorisée.
+[2026-09-17 11:00] ══════════════════════════════════════════════
+[2026-09-17 11:00] [SYNC IBKR] EOG : bracket natif soldé(e) @ 144.56 → clôturé
+[2026-09-17 11:00] [SYNC IBKR] COP : bracket natif soldé(e) @ 133.92 → clôturé
+[2026-09-17 11:00] [SYNC IBKR] soldée(s) : EOG, COP
+[2026-09-17 11:00] [SYNC IBKR] cash = 120751 | NLV = 259201 | positions = 14
+[2026-09-17 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-17 11:00]   V: 368.73
+[2026-09-17 11:00]   JPM: 347.67
+[2026-09-17 11:00]   JNJ: 268.68
+[2026-09-17 11:00]   MRK: 146.68
+[2026-09-17 11:00]   BKNG: 169.28
+[2026-09-17 11:00]   AMZN: 251.58
+[2026-09-17 11:00]   TMO: 654.70
+[2026-09-17 11:00]   CRM: 243.18
+[2026-09-17 11:00]   CVX: 210.79
+[2026-09-17 11:00]   DIS: 106.17
+[2026-09-17 11:00]   MRNA: 160.21
+[2026-09-17 11:00]   DE: 677.82
+[2026-09-17 11:00]   EL: 94.82
+[2026-09-17 11:00]   MRVL: 241.30
+[2026-09-17 11:00] Screener en cours...
+[2026-09-17 11:00] Scores : max=88  mediane=8  (156 tickers)
+[2026-09-17 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=88
+[2026-09-17 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Industrie, Telecoms | pénalisés: Finance
+[2026-09-17 11:00] Filtre ETF/indices (non achetables) : 35 → 28 candidats
+[2026-09-17 11:00] 28 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-17 11:00]   [SEC 8-K] CRM (2026-09-17) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-17 11:00]   [SEC 8-K] AMZN (2026-09-14) : Autre événement matériel, États financiers & annexes
+[2026-09-17 11:01] [LLM news] TMO: bullish 0.60 — CEO prévoit que l'IA stimulera les dépenses pharma, croissance organique 7% d'ici 2028
+[2026-09-17 11:01] [LLM news] MSFT: bullish 0.40 — Lancement d'une nouvelle plateforme de sécurité Microsoft
+[2026-09-17 11:01] [LLM news] GILD: bullish 0.60 — Licences Lenacapavir étendues à une formulation annuelle pour prévention HIV
+[2026-09-17 11:01] [LLM news] ZS: bearish 0.50 — Ralentissement de l'ARR malgré une croissance solide
+[2026-09-17 11:01] [LLM news] MU: bullish 0.60 — Investissement de 2,75 milliards de dollars en Inde pour répondre à la demande mémoire IA
+[2026-09-17 11:01] [LLM news] INTC: bullish 0.50 — Reprise des discussions sur une usine mémoire commune en Ohio
+[2026-09-17 11:01] [LLM news] TGT: bullish 0.60 — Résultats trimestriels jugés meilleurs que prévu
+[2026-09-17 11:01] [LLM news] AMD: bullish 0.30 — Extension du support ROCm aux serveurs datacenter RISC-V
+[2026-09-17 11:01] [LLM news] MRNA: bullish 0.50 — Rally sur le vaccin anticancer, +137% sur le mois
+[2026-09-17 11:01] [LLM news] PLTR: bullish 0.60 — Multiples nouveaux contrats commerciaux (OperatorOS, Chipotle, cloud souverain Nebius)
+[2026-09-17 11:01] [LLM news] FCX: bullish 0.50 — Percée sur la technologie leaching, croissance Bagdad et reprise à Grasberg
+[2026-09-17 11:01] [LLM news] MRVL: bullish 0.60 — Accord de capacité optique IA et extension de l'accord de capacité chips avec GlobalFoundries
+[2026-09-17 11:01] [LLM news] T: neutral 0.30 — Enchères de spectre à venir pourraient générer plus de 100 milliards de dollars
+[2026-09-17 11:01] [LLM news] DE: bullish 0.50 — Résultats meilleurs que prévu relançant le débat sur la valorisation
+[2026-09-17 11:01] [LLM news] CRM: bullish 0.60 — Objectif de revenu de 63 milliards de dollars porté par l'IA
+[2026-09-17 11:01] [LLM news] V: bullish 0.30 — Déploiement de bots IA pour les achats des consommateurs
+[2026-09-17 11:01] [LLM news] JPM: bullish 0.40 — Perspectives solides pour les marchés de capitaux au T3
+[2026-09-17 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-17 11:01] Cash deployable cette semaine : 142584 EUR  (max trades/j : 2)
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   DÉBAT : GILD
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   🟢 BULL [conviction=65] → ACHETER
+[2026-09-17 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-17 11:01]      • Prix au-dessus EMA200 (137.37) — tendance long terme haussière
+[2026-09-17 11:01]      • Score haussier correct (67/100)
+[2026-09-17 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-17 11:01]      • Stoch RSI survendu (15) — retournement imminent
+[2026-09-17 11:01] 
+[2026-09-17 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-17 11:01]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-17 11:01]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-09-17 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-17 11:01] 
+[2026-09-17 11:01]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-09-17 11:01]      Arguments haussiers l'emportent clairement (conviction=65, concern=31, net=+46)
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   [VETO secteur] GILD : Santé deja a 4 positions
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   DÉBAT : MSFT
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   🟢 BULL [conviction=65] → ACHETER
+[2026-09-17 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-17 11:01]      • Prix au-dessus EMA200 (425.44) — tendance long terme haussière
+[2026-09-17 11:01]      • Score haussier correct (67/100)
+[2026-09-17 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-17 11:01]      • Stoch RSI survendu (11) — retournement imminent
+[2026-09-17 11:01] 
+[2026-09-17 11:01]   🔴 BEAR [concern=23] → OK
+[2026-09-17 11:01]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-09-17 11:01]      • Exposition modérée (70%) — prudence sur les ajouts
+[2026-09-17 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-17 11:01] 
+[2026-09-17 11:01]   ✅ ARBITRE → ACHETER  (net=+51)
+[2026-09-17 11:01]      Arguments haussiers l'emportent clairement (conviction=65, concern=23, net=+51)
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   [ACHAT] MSFT score=65 bull=65 bear=23 prix=496.34 investi=12895EUR SL=474.65 TP1=512.61
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   DÉBAT : NEM
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   🟢 BULL [conviction=65] → ACHETER
+[2026-09-17 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-17 11:01]      • Prix au-dessus EMA200 (110.26) — tendance long terme haussière
+[2026-09-17 11:01]      • Score haussier correct (68/100)
+[2026-09-17 11:01]      • RSI bas (40) — zone d'accumulation
+[2026-09-17 11:01]      • Stoch RSI survendu (7) — retournement imminent
+[2026-09-17 11:01] 
+[2026-09-17 11:01]   🔴 BEAR [concern=25] → OK
+[2026-09-17 11:01]      • Exposition déjà élevée (75%) — risque de surconcentration
+[2026-09-17 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-17 11:01] 
+[2026-09-17 11:01]   ✅ ARBITRE → ACHETER  (net=+50)
+[2026-09-17 11:01]      Arguments haussiers l'emportent clairement (conviction=65, concern=25, net=+50)
+[2026-09-17 11:01] ────────────────────────────────────────────────────
+[2026-09-17 11:01]   [ACHAT] NEM score=66 bull=65 bear=25 prix=124.73 investi=12970EUR SL=115.92 TP1=131.34
+[2026-09-17 11:01] 3 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-17 11:01] ----------------------------------------
+[2026-09-17 11:01] RESUME : valeur=259200.92 EUR  investi=207264.16 EUR  cash=119628.58 EUR  expo=80.4%  positions=16
+[2026-09-17 11:01] ----------------------------------------
+[2026-09-17 11:01] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-09-17 11:01]   [MOMENTUM] AI.PA: 165.32
+[2026-09-17 11:01]   [MOMENTUM] AIR.PA: 196.30
+[2026-09-17 11:01]   [MOMENTUM] LR.PA: 137.55
+[2026-09-17 11:01]   [MOMENTUM] HO.PA: 240.20
+[2026-09-17 11:01]   [MOMENTUM] SAF.PA: 333.50
+[2026-09-17 11:01]   [MOMENTUM] ATE.PA: 68.25
+[2026-09-17 11:01]   [MOMENTUM] CS.PA: 44.94
+[2026-09-17 11:01]   [MOMENTUM] AM.PA: 293.40
+[2026-09-17 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-17 11:01]   [MOMENTUM] Orange (ORA.PA) 62.755× à 15.94€ | SL=14.35 | TPs=16.45 / 17.40 | investi=1000€
+[2026-09-17 11:01]   [MOMENTUM SELL] Axa (CS.PA) @ 44.94 — raison newsletter : HOLD
+[2026-09-17 11:01] [MOMENTUM] valeur=9831.48€  cash=2873.71€  positions=7  PnL=-437.63€
+[2026-09-17 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr

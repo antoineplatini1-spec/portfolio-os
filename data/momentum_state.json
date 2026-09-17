@@ -1,5 +1,5 @@
 {
-  "cash": 1846.1916682874598,
+  "cash": 2873.711818008037,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -145,15 +145,15 @@
       "ticker": "AIR.PA",
       "entry_price": 197.25705755615232,
       "qty_total": 5.074596632442667,
-      "qty_remaining": 5.074596632442667,
+      "qty_remaining": 0.0,
       "sl": 183.26579772949216,
-      "trailing_stop": false,
+      "trailing_stop": true,
       "trailing_stop_price": 197.25705755615232,
       "entry_date": "2026-09-16",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 196.10370304870605,
+      "close_date": "2026-09-17",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -163,11 +163,18 @@
         {
           "price": 6.61,
           "sell_pct": 1.0,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-09-17"
         }
       ],
-      "partial_fills": []
+      "partial_fills": [
+        {
+          "date": "2026-09-17",
+          "qty": 5.074596632442667,
+          "price": 196.10370304870605,
+          "reason": "TP1"
+        }
+      ]
     },
     "LR.PA": {
       "ticker": "LR.PA",
@@ -742,15 +749,15 @@
       "ticker": "CS.PA",
       "entry_price": 43.49345076370239,
       "qty_total": 23.014959319700335,
-      "qty_remaining": 23.014959319700335,
+      "qty_remaining": 0.0,
       "sl": 42.27,
       "trailing_stop": false,
       "trailing_stop_price": 43.49345076370239,
       "entry_date": "2026-09-02",
       "fees_in": 0.0,
-      "status": "open",
-      "close_price": 0.0,
-      "close_date": "",
+      "status": "closed",
+      "close_price": 44.90005469512939,
+      "close_date": "2026-09-17",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -862,6 +869,40 @@
         },
         {
           "price": 353.4,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        }
+      ],
+      "partial_fills": []
+    },
+    "ORA.PA": {
+      "ticker": "ORA.PA",
+      "entry_price": 15.950935420036314,
+      "qty_total": 62.7549402991515,
+      "qty_remaining": 62.7549402991515,
+      "sl": 14.35,
+      "trailing_stop": false,
+      "trailing_stop_price": 15.950935420036314,
+      "entry_date": "2026-09-17",
+      "fees_in": 0.0,
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
+      "entry_score": 0,
+      "entry_atr": 0.0,
+      "fees_out": 0.0,
+      "bracket_oca": "",
+      "adopted": false,
+      "tp_levels": [
+        {
+          "price": 16.45,
+          "sell_pct": 0.5,
+          "hit": false,
+          "hit_date": ""
+        },
+        {
+          "price": 17.4,
           "sell_pct": 0.5,
           "hit": false,
           "hit_date": ""
@@ -1030,20 +1071,30 @@
       "close_reason": "SL",
       "entry_date": "2026-08-24",
       "close_date": "2026-09-14"
+    },
+    {
+      "ticker": "CS.PA",
+      "entry_price": 43.49345076370239,
+      "close_price": 44.90005469512939,
+      "qty": 23.014959319700335,
+      "pnl": 32.3729,
+      "close_reason": "manual",
+      "entry_date": "2026-09-02",
+      "close_date": "2026-09-17"
     }
   ],
   "last_prices": {
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 166.63999938964844,
-    "AIR.PA": 195.44000244140625,
-    "LR.PA": 135.3000030517578,
+    "AI.PA": 165.32000732421875,
+    "AIR.PA": 196.3000030517578,
+    "LR.PA": 137.5500030517578,
     "PUB.PA": 97.0199966430664,
     "ML.PA": 33.880001068115234,
     "HO.PA": 240.1999969482422,
     "URW.PA": 96.31999969482422,
-    "SAF.PA": 325.79998779296875,
+    "SAF.PA": 333.5,
     "KER.PA": 264.8500061035156,
     "EN.PA": 44.0099983215332,
     "RNO.PA": 28.309999465942383,
@@ -1051,10 +1102,10 @@
     "DSY.PA": 21.06999969482422,
     "SOI.PA": 136.6999969482422,
     "NEX.PA": 131.3000030517578,
-    "ATE.PA": 71.25,
-    "CS.PA": 44.06999969482422,
+    "ATE.PA": 68.25,
+    "CS.PA": 44.94499969482422,
     "ERF.PA": 72.9000015258789,
     "TTE.PA": 78.27999877929688,
-    "AM.PA": 292.79998779296875
+    "AM.PA": 293.3999938964844
   }
 }
