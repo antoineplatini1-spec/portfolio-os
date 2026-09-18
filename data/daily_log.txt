@@ -18880,3 +18880,99 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-17 11:01]   [MOMENTUM SELL] Axa (CS.PA) @ 44.94 — raison newsletter : HOLD
 [2026-09-17 11:01] [MOMENTUM] valeur=9831.48€  cash=2873.71€  positions=7  PnL=-437.63€
 [2026-09-17 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-18 11:00] ============================================================
+[2026-09-18 11:00] SCAN JOURNALIER - 2026-09-18
+[2026-09-18 11:00] ============================================================
+[2026-09-18 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-18 11:00]   Date     : 2026-09-18  [imap]
+[2026-09-18 11:00]   CAC 40   : NEUTRAL
+[2026-09-18 11:00]   Valeurs  :
+[2026-09-18 11:00]     ✅ Total (Energie) → BUY
+[2026-09-18 11:00]     ✅ Bouygues (Industrie) → BUY
+[2026-09-18 11:00]     🚫 Stellantis (Conso) → AVOID
+[2026-09-18 11:00]     ✅ Danone (ConsoBase) → BUY
+[2026-09-18 11:00]     ✅ Orange (Telecoms) → BUY
+[2026-09-18 11:00]     ✅ Iliad (Telecoms) → BUY
+[2026-09-18 11:00]   Macro    : oil_bullish, oil_bearish, market_caution, market_bullish
+[2026-09-18 11:00]   Secteurs : Energie:+3, Conso:-2, Telecoms:+2, Industrie:+1, ConsoBase:+1
+[2026-09-18 11:00] ───────────────────────────────────────────────────────
+[2026-09-18 11:00] [LLM] Biais sectoriel : LLM sans résultat → algo (regex)
+[2026-09-18 11:00] [LLM] Trades momentum = LLM (3) : Bouygues:BUY, Stellantis:AVOID, Danone:BUY
+[2026-09-18 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Macro': -1} | idées: —
+[2026-09-18 11:00] ══════════════════════════════════════════════
+[2026-09-18 11:00]   AGENT MACRO — 2026-09-18
+[2026-09-18 11:00] ══════════════════════════════════════════════
+[2026-09-18 11:00]   Régime marché  : BULL
+[2026-09-18 11:00]   SPY vs EMA200  : +5.1%
+[2026-09-18 11:00]   VIX            : 15.5 (LOW)
+[2026-09-18 11:00]   Max trades/j   : 3
+[2026-09-18 11:00]   Seuil net min  : 10
+[2026-09-18 11:00]   Top secteurs   : Energie, Tech, Telecoms
+[2026-09-18 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-18 11:00]   Rationale      : Marché haussier (SPY +5.1% vs EMA200). Exposition maximale autorisée.
+[2026-09-18 11:00] ══════════════════════════════════════════════
+[2026-09-18 11:00] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-18 11:00] [SYNC IBKR] DIS : bracket natif soldé(e) @ 103.28 → clôturé
+[2026-09-18 11:00] [SYNC IBKR] POSITION(S) ADOPTÉE(S) depuis IBKR (présentes sur le compte, PAS d'un ordre du bot) : NFLX → enregistrées ; ACHATS SUSPENDUS ce run, à vérifier
+[2026-09-18 11:00] [SYNC IBKR] soldée(s) : DIS
+[2026-09-18 11:00] [SYNC IBKR] cash = 118952 | NLV = 257745 | positions = 16
+[2026-09-18 11:00] [SYNC IBKR] ⛔ → NOUVEAUX ACHATS SUSPENDUS ce run.
+[2026-09-18 11:00] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-18 11:00]   V: 369.11
+[2026-09-18 11:00]   JPM: 347.37
+[2026-09-18 11:00]   JNJ: 268.55
+[2026-09-18 11:00]   MRK: 146.33
+[2026-09-18 11:00]   BKNG: 169.33
+[2026-09-18 11:00]   MSFT: 493.45
+[2026-09-18 11:00]   AMZN: 254.15
+[2026-09-18 11:00]   TMO: 655.65
+[2026-09-18 11:00]   CRM: 240.74
+[2026-09-18 11:00]   CVX: 210.91
+[2026-09-18 11:00]   NFLX: 72.24
+[2026-09-18 11:00]   NEM: 122.27
+[2026-09-18 11:00]   MRNA: 155.68
+[2026-09-18 11:00]   DE: 682.63
+[2026-09-18 11:00]   EL: 93.86
+[2026-09-18 11:00]   MRVL: 239.04
+[2026-09-18 11:00] Screener en cours...
+[2026-09-18 11:00] Scores : max=68  mediane=1  (156 tickers)
+[2026-09-18 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=68
+[2026-09-18 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Energie, Industrie, ConsoBase, Telecoms | pénalisés: Conso, Macro
+[2026-09-18 11:00] Filtre ETF/indices (non achetables) : 26 → 19 candidats
+[2026-09-18 11:00] 19 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-18 11:00]   [SEC 8-K] CRM (2026-09-17) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-18 11:00]   [SEC 8-K] AMZN (2026-09-14) : Autre événement matériel, États financiers & annexes
+[2026-09-18 11:01] [LLM news] PSX: bearish 0.30 — Labor questions at Bayway refinery raise cost/operational concerns
+[2026-09-18 11:01] [LLM news] COIN: bearish 0.40 — Clarity Act crypto regulation fails in Congress
+[2026-09-18 11:01] [LLM news] T: bullish 0.20 — AT&T launches Cricket 5G Home Internet and virtual care offering
+[2026-09-18 11:01] [LLM news] ZS: neutral 0.40 — Q2 earnings results reported
+[2026-09-18 11:01] [LLM news] MSFT: bearish 0.40 — NYT lawsuit against OpenAI and Microsoft over alleged copyright theft
+[2026-09-18 11:01] [LLM news] GILD: bullish 0.50 — Expands Lenacapavir licensing to include once-yearly HIV prevention formulation
+[2026-09-18 11:01] [LLM news] CVX: bullish 0.60 — Chevron secures Venezuela oil expansion deal
+[2026-09-18 11:01] [LLM news] META: bearish 0.40 — French regulatory probe into smart glasses over nonconsensual filming
+[2026-09-18 11:01] [LLM news] TMO: bullish 0.50 — Company signals strong demand and calls 2026 an 'Outstanding Year' in guidance
+[2026-09-18 11:01] [LLM news] JNJ: neutral 0.40 — Speculation over DePuy unit sale raises valuation questions
+[2026-09-18 11:01] [LLM news] NFLX: bearish 0.50 — Wells Fargo downgrades Netflix citing worrying engagement trends
+[2026-09-18 11:01] [LLM news] NEM: bullish 0.30 — Fourmile resource resolution seen as underappreciated catalyst
+[2026-09-18 11:01] [LLM news] DE: bullish 0.40 — Earnings beat reframes valuation debate
+[2026-09-18 11:01] [LLM news] MRVL: bullish 0.40 — GlobalFoundries and Marvell agree on SiGe technology expansion partnership
+[2026-09-18 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-18 11:01] Cash deployable cette semaine : 128921 EUR  (max trades/j : 0)
+[2026-09-18 11:01] 0 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-09-18 11:01] Aucune nouvelle position ouverte.
+[2026-09-18 11:01] ----------------------------------------
+[2026-09-18 11:01] RESUME : valeur=257745.34 EUR  investi=205581.25 EUR  cash=131552.05 EUR  expo=79.8%  positions=16
+[2026-09-18 11:01] ----------------------------------------
+[2026-09-18 11:01] [MOMENTUM] 7 position(s) ouverte(s)...
+[2026-09-18 11:01]   [MOMENTUM] AI.PA: 162.92
+[2026-09-18 11:01]   [MOMENTUM] LR.PA: 135.75
+[2026-09-18 11:01]   [MOMENTUM] HO.PA: 238.10
+[2026-09-18 11:01]   [MOMENTUM] SAF.PA: 322.70
+[2026-09-18 11:01]   [MOMENTUM] ATE.PA: 66.00
+[2026-09-18 11:01]   [MOMENTUM] AM.PA: 291.00
+[2026-09-18 11:01]   [MOMENTUM] ORA.PA: 15.07
+[2026-09-18 11:01] [MOMENTUM] 3 signal(s) newsletter...
+[2026-09-18 11:01]   [MOMENTUM] Bouygues (EN.PA) 23.068× à 43.35€ | SL=43.22 | TPs=46.77 / 53.00 | investi=1000€
+[2026-09-18 11:01]   [MOMENTUM] Danone (BN.PA) 16.639× à 60.10€ | SL=58.88 | TPs=64.84 / 74.00 | investi=1000€
+[2026-09-18 11:01] [MOMENTUM] valeur=9682.09€  cash=871.71€  positions=9  PnL=-587.03€
+[2026-09-18 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
