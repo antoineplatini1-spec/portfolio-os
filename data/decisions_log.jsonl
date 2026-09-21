@@ -83,3 +83,5 @@
 {"ts": "2026-09-16T15:01:50.910749+00:00", "ticker": "MRVL", "features": {"momentum": 73.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 73.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 73.0}
 {"ts": "2026-09-17T15:01:56.098044+00:00", "ticker": "MSFT", "features": {"momentum": 65.0, "sector": 0.0, "news": 0.4, "conviction": 0.0}, "contrib": {"momentum": 65.0, "sector": 0.0, "news": 3.2, "conviction": 0.0}, "total": 68.2}
 {"ts": "2026-09-17T15:01:58.099287+00:00", "ticker": "NEM", "features": {"momentum": 66.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 66.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 66.0}
+{"ts": "2026-09-21T15:03:26.126013+00:00", "ticker": "COIN", "features": {"momentum": 76.0, "sector": 0.0, "news": 0.3, "conviction": 0.0}, "contrib": {"momentum": 76.0, "sector": 0.0, "news": 2.4, "conviction": 0.0}, "total": 78.4}
+{"ts": "2026-09-21T15:03:28.032300+00:00", "ticker": "MRNA", "features": {"momentum": 58.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 58.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 58.0}
