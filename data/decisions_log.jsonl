@@ -85,3 +85,5 @@
 {"ts": "2026-09-17T15:01:58.099287+00:00", "ticker": "NEM", "features": {"momentum": 66.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 66.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 66.0}
 {"ts": "2026-09-21T15:03:26.126013+00:00", "ticker": "COIN", "features": {"momentum": 76.0, "sector": 0.0, "news": 0.3, "conviction": 0.0}, "contrib": {"momentum": 76.0, "sector": 0.0, "news": 2.4, "conviction": 0.0}, "total": 78.4}
 {"ts": "2026-09-21T15:03:28.032300+00:00", "ticker": "MRNA", "features": {"momentum": 58.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 58.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 58.0}
+{"ts": "2026-09-22T15:02:03.084773+00:00", "ticker": "QCOM", "features": {"momentum": 55.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 55.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 55.0}
+{"ts": "2026-09-22T15:02:05.075415+00:00", "ticker": "MPC", "features": {"momentum": 48.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 48.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 48.0}

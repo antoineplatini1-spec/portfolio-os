@@ -209,3 +209,9 @@
 {"execId": "0000dc8f.6ba7a80e.01.01", "time": "2026-09-18 13:30:25", "symbol": "NFLX", "side": "SLD", "qty": 100.0, "price": 70.96037, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6ba7bdc7.01.01", "time": "2026-09-18 13:41:15", "symbol": "DIS", "side": "SLD", "qty": 100.0, "price": 103.28, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6aae0ebf.01.01", "time": "2026-09-18 13:41:15", "symbol": "DIS", "side": "SLD", "qty": 22.0, "price": 103.28, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6ab0dd41.01.01", "time": "2026-09-21 13:31:17", "symbol": "MRVL", "side": "SLD", "qty": 56.0, "price": 252.17, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6ab10dec.01.01", "time": "2026-09-21 13:51:10", "symbol": "MRNA", "side": "SLD", "qty": 142.0, "price": 165.66, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6ab10ded.01.01", "time": "2026-09-21 13:51:10", "symbol": "MRNA", "side": "SLD", "qty": 2.0, "price": 165.66, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6ab1a0dc.01.01", "time": "2026-09-21 15:03:26", "symbol": "COIN", "side": "BOT", "qty": 63.0, "price": 205.88, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6bab3cae.01.01", "time": "2026-09-21 15:03:27", "symbol": "MRNA", "side": "BOT", "qty": 78.0, "price": 167.23, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6babeb2e.01.01", "time": "2026-09-21 16:23:41", "symbol": "CVX", "side": "SLD", "qty": 61.0, "price": 204.65, "commission": 0.0, "realized_pnl": 0.0}
