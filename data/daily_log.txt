@@ -19473,3 +19473,89 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-22 11:02]   Cash insuffisant (872€ < 1000€)
 [2026-09-22 11:02] [MOMENTUM] valeur=9781.97€  cash=871.71€  positions=9  PnL=-487.14€
 [2026-09-22 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-23 11:00] ============================================================
+[2026-09-23 11:00] SCAN JOURNALIER - 2026-09-23
+[2026-09-23 11:00] ============================================================
+[2026-09-23 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-23 11:00]   Date     : 2026-09-23  [imap]
+[2026-09-23 11:00]   CAC 40   : NEUTRAL
+[2026-09-23 11:00]   Macro    : oil_bearish, market_caution, market_bullish
+[2026-09-23 11:00] ───────────────────────────────────────────────────────
+[2026-09-23 11:00] [LLM] Biais sectoriel = LLM : Finance:+1, Macro:-1
+[2026-09-23 11:00] [LLM] Trades momentum = LLM (1) : Valeo:BUY
+[2026-09-23 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-23 11:00] ══════════════════════════════════════════════
+[2026-09-23 11:00]   AGENT MACRO — 2026-09-23
+[2026-09-23 11:00] ══════════════════════════════════════════════
+[2026-09-23 11:00]   Régime marché  : BULL
+[2026-09-23 11:00]   SPY vs EMA200  : +6.6%
+[2026-09-23 11:00]   VIX            : 14.7 (LOW)
+[2026-09-23 11:00]   Max trades/j   : 3
+[2026-09-23 11:00]   Seuil net min  : 10
+[2026-09-23 11:00]   Top secteurs   : Semi, Tech
+[2026-09-23 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-23 11:00]   Rationale      : Marché haussier (SPY +6.6% vs EMA200). Exposition maximale autorisée.
+[2026-09-23 11:00] ══════════════════════════════════════════════
+[2026-09-23 11:00] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-23 11:00] [SYNC IBKR] TMO : bracket natif soldé(e) @ 667.06 → clôturé
+[2026-09-23 11:00] [SYNC IBKR] CRM : bracket natif soldé(e) @ 232.15 → clôturé
+[2026-09-23 11:00] [SYNC IBKR] MRNA : bracket natif soldé(e) @ 183.91 → clôturé
+[2026-09-23 11:00] [SYNC IBKR] DE : bracket natif soldé(e) @ 710.99 → clôturé
+[2026-09-23 11:00] [SYNC IBKR] POSITION(S) ADOPTÉE(S) depuis IBKR (présentes sur le compte, PAS d'un ordre du bot) : ABBV → enregistrées ; ACHATS SUSPENDUS ce run, à vérifier
+[2026-09-23 11:00] [SYNC IBKR] soldée(s) : TMO, CRM, MRNA, DE
+[2026-09-23 11:00] [SYNC IBKR] cash = 177118 | NLV = 261459 | positions = 13
+[2026-09-23 11:00] [SYNC IBKR] ⛔ → NOUVEAUX ACHATS SUSPENDUS ce run.
+[2026-09-23 11:00] 13 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-23 11:00]   V: 362.79
+[2026-09-23 11:00]   JNJ: 270.01
+[2026-09-23 11:00]   ABBV: 265.93
+[2026-09-23 11:00]   MRK: 148.17
+[2026-09-23 11:00]   MPC: 387.10
+[2026-09-23 11:00]   BKNG: 158.17
+[2026-09-23 11:00]   MSFT: 500.38
+[2026-09-23 11:00]   AMZN: 250.68
+[2026-09-23 11:00]   NFLX: 71.90
+[2026-09-23 11:00]   NEM: 122.97
+[2026-09-23 11:00]   EL: 98.11
+[2026-09-23 11:00]   COIN: 199.29
+[2026-09-23 11:00]   QCOM: 196.16
+[2026-09-23 11:00] Screener en cours...
+[2026-09-23 11:00] Scores : max=73  mediane=0  (156 tickers)
+[2026-09-23 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=73
+[2026-09-23 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Finance | pénalisés: Macro
+[2026-09-23 11:00] Filtre ETF/indices (non achetables) : 31 → 24 candidats
+[2026-09-23 11:00] 24 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-23 11:00]   [SEC 8-K] CRM (2026-09-17) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-23 11:01] [LLM news] PFE: bearish 0.40 — Overseas drug pricing deal raises valuation concerns
+[2026-09-23 11:01] [LLM news] QCOM: bullish 0.50 — Launch of next-gen Snapdragon SoCs targeting agentic AI
+[2026-09-23 11:01] [LLM news] BIIB: bullish 0.50 — New kidney disease trial data and at-home LEQEMBI pen progress
+[2026-09-23 11:01] [LLM news] META: bullish 0.70 — Muse AI product launch driving market cap gains
+[2026-09-23 11:01] [LLM news] ZS: bullish 0.50 — Launch of Agentic SOC for AI-driven security operations
+[2026-09-23 11:01] [LLM news] MU: bearish 0.50 — Memory prices may peak earlier than expected
+[2026-09-23 11:01] [LLM news] CVX: bullish 0.55 — 50% surge in exploration spending guidance for next year
+[2026-09-23 11:01] [LLM news] AMGN: bullish 0.65 — Positive Phase 3 results for Dazodalibep in Sjögren's Disease
+[2026-09-23 11:01] [LLM news] MPC: bearish 0.55 — Trump backing diesel export ban pressuring refiners
+[2026-09-23 11:01] [LLM news] TSM: bullish 0.50 — A14 process node gaining customer traction ahead of 2028 volume production
+[2026-09-23 11:01] [LLM news] JNJ: bullish 0.50 — Caplyta shows benefit in Bipolar 1 mania study
+[2026-09-23 11:01] [LLM news] ABBV: bullish 0.50 — EU approval for Rinvoq in pediatric arthritis
+[2026-09-23 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-23 11:01] Cash deployable cette semaine : 233395 EUR  (max trades/j : 0)
+[2026-09-23 11:01] 0 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-09-23 11:01] Aucune nouvelle position ouverte.
+[2026-09-23 11:01] ----------------------------------------
+[2026-09-23 11:01] RESUME : valeur=261459.32 EUR  investi=150717.47 EUR  cash=238158.02 EUR  expo=56.7%  positions=13
+[2026-09-23 11:01] ----------------------------------------
+[2026-09-23 11:01] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-09-23 11:01]   [MOMENTUM] AI.PA: 168.50
+[2026-09-23 11:01]   [MOMENTUM] LR.PA: 138.25
+[2026-09-23 11:01]   [MOMENTUM] HO.PA: 239.00
+[2026-09-23 11:01]   [MOMENTUM] SAF.PA: 334.90
+[2026-09-23 11:01]   [MOMENTUM] EN.PA: 43.21
+[2026-09-23 11:01]   [MOMENTUM] ATE.PA: 71.10
+[2026-09-23 11:01]   [MOMENTUM] AM.PA: 292.40
+[2026-09-23 11:01]   [MOMENTUM] ORA.PA: 14.13
+[2026-09-23 11:01]   [MOMENTUM] BN.PA: 60.40
+[2026-09-23 11:01] [MOMENTUM] 1 signal(s) newsletter...
+[2026-09-23 11:01]   [MOMENTUM] Valeo (FR.PA) 66.778× à 14.98€ | SL=13.38 | TPs=16.64 | investi=1000€
+[2026-09-23 11:01] [MOMENTUM] valeur=9775.47€  cash=1752.33€  positions=8  PnL=-493.65€
+[2026-09-23 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
