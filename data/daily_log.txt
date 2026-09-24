@@ -19559,3 +19559,142 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-23 11:01]   [MOMENTUM] Valeo (FR.PA) 66.778× à 14.98€ | SL=13.38 | TPs=16.64 | investi=1000€
 [2026-09-23 11:01] [MOMENTUM] valeur=9775.47€  cash=1752.33€  positions=8  PnL=-493.65€
 [2026-09-23 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-24 11:00] ============================================================
+[2026-09-24 11:00] SCAN JOURNALIER - 2026-09-24
+[2026-09-24 11:00] ============================================================
+[2026-09-24 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-24 11:00]   Date     : 2026-09-24  [imap]
+[2026-09-24 11:00]   CAC 40   : NEUTRAL
+[2026-09-24 11:00]   Valeurs  :
+[2026-09-24 11:00]     ✅ Teleperformance (Tech) → BUY
+[2026-09-24 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-24 11:00]   Macro    : market_caution, market_bullish
+[2026-09-24 11:00]   Secteurs : Tech:0
+[2026-09-24 11:00] ───────────────────────────────────────────────────────
+[2026-09-24 11:00] [LLM] Biais sectoriel = LLM : Macro:-1
+[2026-09-24 11:00] [LLM] Trades momentum = LLM (2) : Teleperformance:BUY, Essilorluxottica:BUY
+[2026-09-24 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-24 11:00] ══════════════════════════════════════════════
+[2026-09-24 11:00]   AGENT MACRO — 2026-09-24
+[2026-09-24 11:00] ══════════════════════════════════════════════
+[2026-09-24 11:00]   Régime marché  : BULL
+[2026-09-24 11:00]   SPY vs EMA200  : +5.7%
+[2026-09-24 11:00]   VIX            : 15.8 (LOW)
+[2026-09-24 11:00]   Max trades/j   : 3
+[2026-09-24 11:00]   Seuil net min  : 10
+[2026-09-24 11:00]   Top secteurs   : Semi, Tech
+[2026-09-24 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-24 11:00]   Rationale      : Marché haussier (SPY +5.7% vs EMA200). Exposition maximale autorisée.
+[2026-09-24 11:00] ══════════════════════════════════════════════
+[2026-09-24 11:00] [SYNC IBKR] cash = 176951 | NLV = 261129 | positions = 13
+[2026-09-24 11:00] 13 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-24 11:00]   V: 364.69
+[2026-09-24 11:00]   JNJ: 272.27
+[2026-09-24 11:00]   ABBV: 265.65
+[2026-09-24 11:00]   MRK: 149.68
+[2026-09-24 11:00]   MPC: 397.81
+[2026-09-24 11:00]   BKNG: 157.87
+[2026-09-24 11:00]   MSFT: 493.61
+[2026-09-24 11:00]   AMZN: 246.61
+[2026-09-24 11:00]   NFLX: 71.56
+[2026-09-24 11:00]   NEM: 121.13
+[2026-09-24 11:00]   EL: 97.27
+[2026-09-24 11:00]   COIN: 195.69
+[2026-09-24 11:00]   QCOM: 192.78
+[2026-09-24 11:00] Screener en cours...
+[2026-09-24 11:00] Scores : max=78  mediane=0  (156 tickers)
+[2026-09-24 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=78
+[2026-09-24 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: — | pénalisés: Macro
+[2026-09-24 11:00] Filtre ETF/indices (non achetables) : 41 → 32 candidats
+[2026-09-24 11:00] 32 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-24 11:00]   [SEC 8-K] CRM (2026-09-17) : Divulgation Regulation FD, États financiers & annexes
+[2026-09-24 11:00]   [SEC 8-K] V (2026-09-23) : Autre événement matériel
+[2026-09-24 11:01] [LLM news] RBLX: bullish 0.45 — JPMorgan note highlights surge in weekend platform engagement
+[2026-09-24 11:01] [LLM news] CRM: bullish 0.50 — Wells Fargo raises price target citing $1.5B Agentforce ARR
+[2026-09-24 11:01] [LLM news] MRNA: bullish 0.50 — CEO commentary drives stock to new high on diversification beyond Covid vaccines
+[2026-09-24 11:01] [LLM news] META: neutral 0.40 — Launch of new Muse AI smartglass/product lineup
+[2026-09-24 11:01] [LLM news] MPC: bullish 0.30 — White House denies diesel export ban report
+[2026-09-24 11:01] [LLM news] CVX: neutral 0.35 — Oil executives push back against potential diesel export ban
+[2026-09-24 11:01] [LLM news] PSX: bearish 0.50 — Diesel export ban threat pressures refiners, executives push back
+[2026-09-24 11:01] [LLM news] ZS: bullish 0.50 — Zscaler launches Agentic SOC for AI-driven security operations
+[2026-09-24 11:01] [LLM news] VRTX: bullish 0.60 — Positive Phase II data on kidney disease drug
+[2026-09-24 11:01] [LLM news] QCOM: bullish 0.55 — Qualcomm renews global Apple patent license through 2027
+[2026-09-24 11:01] [LLM news] AMGN: bullish 0.70 — Positive Phase 3 Dazodalibep data in Systemic Sjögren's Disease; price target raised
+[2026-09-24 11:01] [LLM news] MO: bullish 0.50 — Trump administration plans to speed vape/nicotine pouch approvals
+[2026-09-24 11:01] [LLM news] REGN: bullish 0.45 — Highlights on EYLEA HD momentum, Dupixent growth and pipeline catalysts
+[2026-09-24 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-24 11:01] Cash deployable cette semaine : 173412 EUR  (max trades/j : 2)
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   DÉBAT : RBLX
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   🟢 BULL [conviction=85] → ACHETER
+[2026-09-24 11:01]      • Score haussier fort (80/100)
+[2026-09-24 11:01]      • R-ratio solide (2.9×) — risque/récompense favorable
+[2026-09-24 11:01]      • Prix au-dessus EMA200 (49.02) — tendance long terme haussière
+[2026-09-24 11:01]      • Momentum 10j fort (+9.4%) — tendance confirmée
+[2026-09-24 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-24 11:01] 
+[2026-09-24 11:01]   🔴 BEAR [concern=23] → OK
+[2026-09-24 11:01]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-09-24 11:01]      • Volume faible (0.1× moyenne)
+[2026-09-24 11:01] 
+[2026-09-24 11:01]   ✅ ARBITRE → ACHETER  (net=+71)
+[2026-09-24 11:01]      Arguments haussiers l'emportent clairement (conviction=85, concern=23, net=+71)
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   [ACHAT] RBLX score=78 bull=85 bear=23 prix=49.09 investi=13067EUR SL=45.16 TP1=52.53
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   DÉBAT : CRM
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-09-24 11:01]      • Score haussier fort (73/100)
+[2026-09-24 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-24 11:01]      • Prix au-dessus EMA200 (192.08) — tendance long terme haussière
+[2026-09-24 11:01]      • RSI bas (38) — zone d'accumulation
+[2026-09-24 11:01]      • Stoch RSI survendu (2) — retournement imminent
+[2026-09-24 11:01] 
+[2026-09-24 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-24 11:01]      • Secteur Tech très concentré (4 positions) — risque sectoriel
+[2026-09-24 11:01]      • Exposition modérée (62%) — prudence sur les ajouts
+[2026-09-24 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-24 11:01] 
+[2026-09-24 11:01]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-09-24 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=31, net=+53)
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   [VETO secteur] CRM : Tech deja a 4 positions
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   DÉBAT : PFE
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   🟢 BULL [conviction=77] → ACHETER
+[2026-09-24 11:01]      • Score haussier fort (70/100)
+[2026-09-24 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-24 11:01]      • Prix au-dessus EMA200 (26.14) — tendance long terme haussière
+[2026-09-24 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-24 11:01]      • Stoch RSI survendu (18) — retournement imminent
+[2026-09-24 11:01] 
+[2026-09-24 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-24 11:01]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-09-24 11:01]      • Exposition modérée (62%) — prudence sur les ajouts
+[2026-09-24 11:01]      • Volume faible (0.3× moyenne)
+[2026-09-24 11:01] 
+[2026-09-24 11:01]   ✅ ARBITRE → ACHETER  (net=+58)
+[2026-09-24 11:01]      Arguments haussiers l'emportent clairement (conviction=77, concern=31, net=+58)
+[2026-09-24 11:01] ────────────────────────────────────────────────────
+[2026-09-24 11:01]   [ACHAT] PFE score=68 bull=77 bear=31 prix=28.70 investi=13063EUR SL=27.69 TP1=29.47
+[2026-09-24 11:01] 3 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-24 11:01] ----------------------------------------
+[2026-09-24 11:01] RESUME : valeur=261129.04 EUR  investi=176847.42 EUR  cash=150820.32 EUR  expo=66.5%  positions=15
+[2026-09-24 11:01] ----------------------------------------
+[2026-09-24 11:01] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-09-24 11:01]   [MOMENTUM] AI.PA: 168.28
+[2026-09-24 11:01]   [MOMENTUM] LR.PA: 134.70
+[2026-09-24 11:01]   [MOMENTUM] HO.PA: 232.80
+[2026-09-24 11:01]   [MOMENTUM] SAF.PA: 335.60
+[2026-09-24 11:01]   [MOMENTUM] ATE.PA: 70.80
+[2026-09-24 11:01]   [MOMENTUM] AM.PA: 292.00
+[2026-09-24 11:01]   [MOMENTUM] BN.PA: 60.34
+[2026-09-24 11:01]   [MOMENTUM] FR.PA: 14.56
+[2026-09-24 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-24 11:01]   [MOMENTUM] Teleperformance (TEP.PA) 13.877× à 72.06€ | SL=67.42 | TPs=75.94 / 78.14 / 84.84 / 90.68 | investi=1000€
+[2026-09-24 11:01]   Cash insuffisant (751€ < 1000€)
+[2026-09-24 11:01] [MOMENTUM] valeur=9689.08€  cash=751.33€  positions=9  PnL=-580.04€
+[2026-09-24 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
