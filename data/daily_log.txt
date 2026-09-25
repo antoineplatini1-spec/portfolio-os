@@ -19698,3 +19698,169 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-24 11:01]   Cash insuffisant (751€ < 1000€)
 [2026-09-24 11:01] [MOMENTUM] valeur=9689.08€  cash=751.33€  positions=9  PnL=-580.04€
 [2026-09-24 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-25 11:00] ============================================================
+[2026-09-25 11:00] SCAN JOURNALIER - 2026-09-25
+[2026-09-25 11:00] ============================================================
+[2026-09-25 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-25 11:00]   Date     : 2026-09-25  [imap]
+[2026-09-25 11:00]   CAC 40   : NEUTRAL
+[2026-09-25 11:00]   Valeurs  :
+[2026-09-25 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-25 11:00]     ✅ Crédit Agricole (Finance) → BUY
+[2026-09-25 11:00]     ✅ Biomérieux (Santé) → BUY
+[2026-09-25 11:00]   Macro    : market_caution, market_bullish
+[2026-09-25 11:00]   Secteurs : Tech:-1, Finance:+1, Santé:+1
+[2026-09-25 11:00] ───────────────────────────────────────────────────────
+[2026-09-25 11:00] [LLM] Biais sectoriel = LLM : Santé:+2
+[2026-09-25 11:00] [LLM] Trades momentum = LLM (2) : Biomérieux:BUY, Crédit Agricole:BUY
+[2026-09-25 11:00] [US] The Transcript «Catalyst Watch» → secteur — | idées: —
+[2026-09-25 11:00] ══════════════════════════════════════════════
+[2026-09-25 11:00]   AGENT MACRO — 2026-09-25
+[2026-09-25 11:00] ══════════════════════════════════════════════
+[2026-09-25 11:00]   Régime marché  : BULL
+[2026-09-25 11:00]   SPY vs EMA200  : +6.3%
+[2026-09-25 11:00]   VIX            : 15.7 (LOW)
+[2026-09-25 11:00]   Max trades/j   : 3
+[2026-09-25 11:00]   Seuil net min  : 10
+[2026-09-25 11:00]   Top secteurs   : Semi, Tech
+[2026-09-25 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-25 11:00]   Rationale      : Marché haussier (SPY +6.3% vs EMA200). Exposition maximale autorisée.
+[2026-09-25 11:00] ══════════════════════════════════════════════
+[2026-09-25 11:00] [SYNC IBKR] MSFT : bracket natif soldé(e) @ 512.63 → clôturé
+[2026-09-25 11:00] [SYNC IBKR] soldée(s) : MSFT
+[2026-09-25 11:00] [SYNC IBKR] cash = 165890 | NLV = 260422 | positions = 14
+[2026-09-25 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-25 11:00]   V: 365.96
+[2026-09-25 11:00]   JNJ: 270.51
+[2026-09-25 11:00]   ABBV: 264.04
+[2026-09-25 11:00]   MRK: 148.49
+[2026-09-25 11:00]   MPC: 385.44
+[2026-09-25 11:00]   BKNG: 162.01
+[2026-09-25 11:00]   AMZN: 248.40
+[2026-09-25 11:00]   NFLX: 71.32
+[2026-09-25 11:00]   NEM: 121.35
+[2026-09-25 11:00]   PFE: 28.27
+[2026-09-25 11:00]   EL: 94.51
+[2026-09-25 11:00]   COIN: 194.65
+[2026-09-25 11:00]   QCOM: 202.08
+[2026-09-25 11:00]   RBLX: 47.33
+[2026-09-25 11:00]   [TIME STOP] AMZN : 25j ouverte, PnL=-4.9% -> fermeture
+[2026-09-25 11:00]   [LLM post-mortem] AMZN: momentum_essouffle — Sur AMZN, un score d'entrée modéré (60) suivi d'une absence de progression sur 25 jours confirme la tendance récurrente du momentum qui s'essouffle : resserrer le time stop ou exiger un score d'entrée
+[2026-09-25 11:00] Screener en cours...
+[2026-09-25 11:00] Scores : max=64  mediane=2  (156 tickers)
+[2026-09-25 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=64
+[2026-09-25 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Finance, Santé | pénalisés: Tech
+[2026-09-25 11:00] Filtre ETF/indices (non achetables) : 31 → 20 candidats
+[2026-09-25 11:00] 20 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-25 11:00]   [SEC 8-K] ZS (2026-09-24) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-25 11:00]   [SEC 8-K] V (2026-09-23) : Autre événement matériel
+[2026-09-25 11:01] [LLM news] MRNA: bullish 0.70 — Discussions d'investissement de haut niveau avec les Émirats Arabes Unis, action au plus haut depuis 4 ans
+[2026-09-25 11:01] [LLM news] MRK: bullish 0.60 — Winrevair avance plus tôt dans le traitement du PAH
+[2026-09-25 11:01] [LLM news] REGN: bullish 0.50 — Momentum EYLEA HD, croissance Dupixent et catalyseurs pipeline mis en avant
+[2026-09-25 11:01] [LLM news] META: bullish 0.50 — Le pari de 14 milliards $ sur l'IA semble enfin payant
+[2026-09-25 11:01] [LLM news] BIIB: bullish 0.50 — Avancée du stylo LEQEMBI à domicile et données sur maladie rénale
+[2026-09-25 11:01] [LLM news] LRCX: bullish 0.70 — Relèvement des perspectives 2026 et croissance du packaging
+[2026-09-25 11:01] [LLM news] ZS: bearish 0.60 — Départ du CRO, action en forte baisse
+[2026-09-25 11:01] [LLM news] V: bullish 0.40 — Standardisation de l'identité des agents IA dans les réseaux de paiement
+[2026-09-25 11:01] [LLM news] JNJ: bullish 0.50 — Tremfya réduit les douleurs spinales dans un essai Phase 4
+[2026-09-25 11:01] [LLM news] NFLX: bearish 0.50 — Effondrement de l'accord WBD, action en baisse de 22% cette année
+[2026-09-25 11:01] [LLM news] RBLX: bearish 0.40 — Menace concurrentielle des outils IA de création de jeux de Meta
+[2026-09-25 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-25 11:01] Cash deployable cette semaine : 187803 EUR  (max trades/j : 2)
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   DÉBAT : MRNA
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   🟢 BULL [conviction=75] → ACHETER
+[2026-09-25 11:01]      • R-ratio excellent (4.0×) — asymétrie gain/risque idéale
+[2026-09-25 11:01]      • Prix au-dessus EMA200 (79.10) — tendance long terme haussière
+[2026-09-25 11:01]      • Score haussier correct (68/100)
+[2026-09-25 11:01]      • Momentum 10j fort (+35.8%) — tendance confirmée
+[2026-09-25 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   🔴 BEAR [concern=49] → PRUDENCE
+[2026-09-25 11:01]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-25 11:01]      • Stoch RSI suracheté (100) — retournement baissier possible
+[2026-09-25 11:01]      • RSI suracheté (80)
+[2026-09-25 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-09-25 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   ✅ ARBITRE → ACHETER  (net=+46)
+[2026-09-25 11:01]      Arguments haussiers l'emportent clairement (conviction=75, concern=49, net=+46)
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   [VETO secteur] MRNA : Santé deja a 4 positions
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   DÉBAT : AMGN
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-09-25 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-25 11:01]      • Prix au-dessus EMA200 (369.30) — tendance long terme haussière
+[2026-09-25 11:01]      • Score haussier correct (66/100)
+[2026-09-25 11:01]      • Momentum 10j fort (+8.4%) — tendance confirmée
+[2026-09-25 11:01]      • RSI bas (37) — zone d'accumulation
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-25 11:01]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-25 11:01]      • Force relative négative vs SPY (-6.3% sur 20j)
+[2026-09-25 11:01]      • Volume faible (0.1× moyenne)
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   ✅ ARBITRE → ACHETER  (net=+48)
+[2026-09-25 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=31, net=+48)
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   [VETO secteur] AMGN : Santé deja a 4 positions
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   DÉBAT : AMD
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-09-25 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-25 11:01]      • Prix au-dessus EMA200 (405.27) — tendance long terme haussière
+[2026-09-25 11:01]      • Score haussier correct (68/100)
+[2026-09-25 11:01]      • Momentum 10j fort (+22.5%) — tendance confirmée
+[2026-09-25 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   🔴 BEAR [concern=23] → OK
+[2026-09-25 11:01]      • Stoch RSI suracheté (95) — retournement baissier possible
+[2026-09-25 11:01]      • RSI suracheté (81)
+[2026-09-25 11:01]      • Volume faible (0.4× moyenne)
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-09-25 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=23, net=+53)
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   [ACHAT] AMD score=62 bull=67 bear=23 prix=632.21 investi=13291EUR SL=583.29 TP1=668.90
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   DÉBAT : MU
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   🟢 BULL [conviction=70] → ACHETER
+[2026-09-25 11:01]      • R-ratio solide (2.8×) — risque/récompense favorable
+[2026-09-25 11:01]      • Prix au-dessus EMA200 (744.62) — tendance long terme haussière
+[2026-09-25 11:01]      • Score haussier correct (61/100)
+[2026-09-25 11:01]      • Momentum 10j fort (+11.2%) — tendance confirmée
+[2026-09-25 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   🔴 BEAR [concern=23] → OK
+[2026-09-25 11:01]      • Secteur Semi déjà exposé (2 positions) — diversification limitée
+[2026-09-25 11:01]      • Exposition modérée (61%) — prudence sur les ajouts
+[2026-09-25 11:01]      • Volume faible (0.4× moyenne)
+[2026-09-25 11:01] 
+[2026-09-25 11:01]   ✅ ARBITRE → ACHETER  (net=+56)
+[2026-09-25 11:01]      Arguments haussiers l'emportent clairement (conviction=70, concern=23, net=+56)
+[2026-09-25 11:01] ────────────────────────────────────────────────────
+[2026-09-25 11:01]   [ACHAT] MU score=59 bull=70 bear=23 prix=1084.23 investi=13026EUR SL=997.49 TP1=1156.04
+[2026-09-25 11:01] 4 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-25 11:01] ----------------------------------------
+[2026-09-25 11:01] RESUME : valeur=260421.83 EUR  investi=177213.81 EUR  cash=165318.92 EUR  expo=65.6%  positions=15
+[2026-09-25 11:01] ----------------------------------------
+[2026-09-25 11:01] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-09-25 11:01]   [MOMENTUM] AI.PA: 167.44
+[2026-09-25 11:01]   [MOMENTUM] LR.PA: 134.25
+[2026-09-25 11:01]   [MOMENTUM] HO.PA: 229.90
+[2026-09-25 11:01]   [MOMENTUM] SAF.PA: 335.90
+[2026-09-25 11:01]   [MOMENTUM] ATE.PA: 75.20
+[2026-09-25 11:01]   [MOMENTUM] AM.PA: 291.80
+[2026-09-25 11:01]   [MOMENTUM] BN.PA: 59.56
+[2026-09-25 11:01]   [MOMENTUM] FR.PA: 14.81
+[2026-09-25 11:01]   [MOMENTUM] TEP.PA: 73.06
+[2026-09-25 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-25 11:01]   Cash insuffisant (751€ < 1000€)
+[2026-09-25 11:01]   Cash insuffisant (751€ < 1000€)
+[2026-09-25 11:01] [MOMENTUM] valeur=9749.49€  cash=751.33€  positions=9  PnL=-519.63€
+[2026-09-25 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr

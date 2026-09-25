@@ -89,3 +89,5 @@
 {"ts": "2026-09-22T15:02:05.075415+00:00", "ticker": "MPC", "features": {"momentum": 48.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 48.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 48.0}
 {"ts": "2026-09-24T15:01:26.100509+00:00", "ticker": "RBLX", "features": {"momentum": 78.0, "sector": 0.0, "news": 0.45, "conviction": 0.0}, "contrib": {"momentum": 78.0, "sector": 0.0, "news": 3.6, "conviction": 0.0}, "total": 81.6}
 {"ts": "2026-09-24T15:01:27.128928+00:00", "ticker": "PFE", "features": {"momentum": 68.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 68.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 68.0}
+{"ts": "2026-09-25T15:01:35.102016+00:00", "ticker": "AMD", "features": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 62.0}
+{"ts": "2026-09-25T15:01:36.616177+00:00", "ticker": "MU", "features": {"momentum": 59.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 59.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 59.0}
