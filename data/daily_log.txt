@@ -19864,3 +19864,134 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-25 11:01]   Cash insuffisant (751€ < 1000€)
 [2026-09-25 11:01] [MOMENTUM] valeur=9749.49€  cash=751.33€  positions=9  PnL=-519.63€
 [2026-09-25 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-28 11:01] ============================================================
+[2026-09-28 11:01] SCAN JOURNALIER - 2026-09-28
+[2026-09-28 11:01] ============================================================
+[2026-09-28 11:01] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-28 11:01]   Date     : 2026-09-28  [imap]
+[2026-09-28 11:01]   CAC 40   : NEUTRAL
+[2026-09-28 11:01]   Valeurs  :
+[2026-09-28 11:01]     ✅ Stmicroelectronics (Semi) → BUY
+[2026-09-28 11:01]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-28 11:01]     ⚠️ Total (Energie) → CAUTION
+[2026-09-28 11:01]     🚫 Arcelormittal (Materiaux) → AVOID
+[2026-09-28 11:01]   Macro    : market_caution, market_bullish
+[2026-09-28 11:01]   Secteurs : Materiaux:-2, Semi:+1, Tech:-1, Energie:-1
+[2026-09-28 11:01] ───────────────────────────────────────────────────────
+[2026-09-28 11:02] [LLM] Biais sectoriel = LLM : Semi:+2, Materiaux:-2, Tech:+1
+[2026-09-28 11:02] [LLM] Trades momentum = LLM (2) : Stmicroelectronics:BUY, Arcelormittal:AVOID
+[2026-09-28 11:02] [US] The Transcript «Powering Forward» → secteur — | idées: —
+[2026-09-28 11:02] ══════════════════════════════════════════════
+[2026-09-28 11:02]   AGENT MACRO — 2026-09-28
+[2026-09-28 11:02] ══════════════════════════════════════════════
+[2026-09-28 11:02]   Régime marché  : BULL
+[2026-09-28 11:02]   SPY vs EMA200  : +5.5%
+[2026-09-28 11:02]   VIX            : 16.6 (LOW)
+[2026-09-28 11:02]   Max trades/j   : 3
+[2026-09-28 11:02]   Seuil net min  : 10
+[2026-09-28 11:02]   Top secteurs   : Semi, Tech
+[2026-09-28 11:02]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-28 11:02]   Rationale      : Marché haussier (SPY +5.5% vs EMA200). Exposition maximale autorisée.
+[2026-09-28 11:02] ══════════════════════════════════════════════
+[2026-09-28 11:02] [SYNC IBKR] NEM : bracket natif soldé(e) @ 115.03 → clôturé
+[2026-09-28 11:02] [SYNC IBKR] RBLX : bracket natif soldé(e) @ 43.57 → clôturé
+[2026-09-28 11:02] [SYNC IBKR] soldée(s) : NEM, RBLX
+[2026-09-28 11:02] [SYNC IBKR] cash = 174102 | NLV = 257475 | positions = 13
+[2026-09-28 11:02] 13 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-28 11:02]   V: 367.22
+[2026-09-28 11:02]   JNJ: 272.55
+[2026-09-28 11:02]   ABBV: 266.14
+[2026-09-28 11:02]   MRK: 148.55
+[2026-09-28 11:02]   MPC: 392.66
+[2026-09-28 11:02]   BKNG: 163.37
+[2026-09-28 11:02]   NFLX: 69.65
+[2026-09-28 11:02]   PFE: 28.52
+[2026-09-28 11:02]   MU: 1041.68
+[2026-09-28 11:02]   EL: 93.87
+[2026-09-28 11:02]   COIN: 192.08
+[2026-09-28 11:02]   QCOM: 189.00
+[2026-09-28 11:02]   AMD: 599.30
+[2026-09-28 11:02] Screener en cours...
+[2026-09-28 11:02] Scores : max=61  mediane=0  (156 tickers)
+[2026-09-28 11:02] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=61
+[2026-09-28 11:02] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Semi, Tech | pénalisés: Energie, Materiaux
+[2026-09-28 11:02] Filtre ETF/indices (non achetables) : 30 → 22 candidats
+[2026-09-28 11:02] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → MU
+[2026-09-28 11:02] 21 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-28 11:02]   [SEC 8-K] ZS (2026-09-24) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-09-28 11:02]   [SEC 8-K] MRVL (2026-09-25) : Autre événement matériel, États financiers & annexes
+[2026-09-28 11:02]   [SEC 8-K] V (2026-09-23) : Autre événement matériel
+[2026-09-28 11:03] [LLM news] AMD: bullish 0.60 — CEO commentary on AI demand, AMD and Intel stock up to 17%
+[2026-09-28 11:03] [LLM news] NVDA: bullish 0.80 — Board authorizes record $150B share buyback
+[2026-09-28 11:03] [LLM news] AMGN: neutral 0.40 — Sale-leaseback of Deerfield campus for $151M
+[2026-09-28 11:03] [LLM news] TSM: bullish 0.55 — Apple/Nvidia demand boosting TSMC chip business
+[2026-09-28 11:03] [LLM news] GILD: bullish 0.70 — Raised 2026 guidance and dividend
+[2026-09-28 11:03] [LLM news] PFE: neutral 0.30 — Presenting 45 oncology abstracts at ESMO
+[2026-09-28 11:03] [LLM news] ZS: neutral 0.40 — Names new Chief Revenue Officer / executive change (8-K)
+[2026-09-28 11:03] [LLM news] MRVL: neutral 0.30 — Material event disclosed in 8-K filing
+[2026-09-28 11:03] [LLM news] MRNA: bullish 0.70 — Melanoma vaccine success and Middle East expansion talks
+[2026-09-28 11:03] [LLM news] BIIB: bullish 0.50 — Q2 earnings results
+[2026-09-28 11:03] [LLM news] DE: bullish 0.55 — Strong Q2 earnings beat
+[2026-09-28 11:03] [LLM news] QCOM: bullish 0.70 — New Apple supply agreement locked in
+[2026-09-28 11:03] [LLM news] COIN: bullish 0.50 — Citi partnership expands digital-asset footprint
+[2026-09-28 11:03] [LLM news] JNJ: neutral 0.40 — New clinical trial data released
+[2026-09-28 11:03] [LLM news] ABBV: bullish 0.75 — FDA approval for Parkinson's drug Juvmo
+[2026-09-28 11:03] [LLM news] MRK: bearish 0.50 — Merck/Daiichi end plans for speedy approval of lung cancer ADC
+[2026-09-28 11:03] [LLM news] MPC: bullish 0.50 — Trump considering diesel export ban, refining margins impact
+[2026-09-28 11:03] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-28 11:03] Cash deployable cette semaine : 193702 EUR  (max trades/j : 2)
+[2026-09-28 11:03] ────────────────────────────────────────────────────
+[2026-09-28 11:03]   DÉBAT : NVDA
+[2026-09-28 11:03] ────────────────────────────────────────────────────
+[2026-09-28 11:03]   🟢 BULL [conviction=65] → ACHETER
+[2026-09-28 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-28 11:03]      • Prix au-dessus EMA200 (198.34) — tendance long terme haussière
+[2026-09-28 11:03]      • Score haussier correct (60/100)
+[2026-09-28 11:03]      • Momentum 10j fort (+8.8%) — tendance confirmée
+[2026-09-28 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-28 11:03] 
+[2026-09-28 11:03]   🔴 BEAR [concern=5] → OK
+[2026-09-28 11:03]      • Volume faible (0.5× moyenne)
+[2026-09-28 11:03] 
+[2026-09-28 11:03]   ✅ ARBITRE → ACHETER  (net=+62)
+[2026-09-28 11:03]      Arguments haussiers l'emportent clairement (conviction=65, concern=5, net=+62)
+[2026-09-28 11:03] ────────────────────────────────────────────────────
+[2026-09-28 11:03]   [ACHAT] NVDA score=58 bull=65 bear=5 prix=229.46 investi=12844EUR SL=217.41 TP1=238.49
+[2026-09-28 11:03] ────────────────────────────────────────────────────
+[2026-09-28 11:03]   DÉBAT : CRWD
+[2026-09-28 11:03] ────────────────────────────────────────────────────
+[2026-09-28 11:03]   🟢 BULL [conviction=62] → ACHETER
+[2026-09-28 11:03]      • R-ratio solide (2.9×) — risque/récompense favorable
+[2026-09-28 11:03]      • Prix au-dessus EMA200 (162.73) — tendance long terme haussière
+[2026-09-28 11:03]      • Score haussier correct (66/100)
+[2026-09-28 11:03]      • CMF fort — flux acheteur dominant
+[2026-09-28 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-28 11:03] 
+[2026-09-28 11:03]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-28 11:03]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-09-28 11:03]      • RSI suracheté (74)
+[2026-09-28 11:03]      • Exposition modérée (62%) — prudence sur les ajouts
+[2026-09-28 11:03]      • Volume faible (0.2× moyenne)
+[2026-09-28 11:03] 
+[2026-09-28 11:03]   ✅ ARBITRE → ACHETER  (net=+43)
+[2026-09-28 11:03]      Arguments haussiers l'emportent clairement (conviction=62, concern=31, net=+43)
+[2026-09-28 11:03] ────────────────────────────────────────────────────
+[2026-09-28 11:03]   [ACHAT] CRWD score=60 bull=62 bear=31 prix=254.20 investi=13007EUR SL=233.86 TP1=272.10
+[2026-09-28 11:03] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-28 11:03] ----------------------------------------
+[2026-09-28 11:03] RESUME : valeur=257475.09 EUR  investi=177027.71 EUR  cash=171804.55 EUR  expo=66.2%  positions=15
+[2026-09-28 11:03] ----------------------------------------
+[2026-09-28 11:03] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-09-28 11:03]   [MOMENTUM] AI.PA: 168.50
+[2026-09-28 11:03]   [MOMENTUM] LR.PA: 136.45
+[2026-09-28 11:03]   [MOMENTUM] HO.PA: 227.00
+[2026-09-28 11:03]   [MOMENTUM] SAF.PA: 333.50
+[2026-09-28 11:03]   [MOMENTUM] ATE.PA: 79.90
+[2026-09-28 11:03]   [MOMENTUM] AM.PA: 292.00
+[2026-09-28 11:03]   [MOMENTUM] BN.PA: 59.82
+[2026-09-28 11:03]   [MOMENTUM] FR.PA: 14.68
+[2026-09-28 11:03]   [MOMENTUM] TEP.PA: 71.26
+[2026-09-28 11:03] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-28 11:03]   [MOMENTUM SKIP] STM.PA: données vides
+[2026-09-28 11:03] [MOMENTUM] valeur=9792.05€  cash=751.33€  positions=9  PnL=-477.07€
+[2026-09-28 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr

@@ -91,3 +91,5 @@
 {"ts": "2026-09-24T15:01:27.128928+00:00", "ticker": "PFE", "features": {"momentum": 68.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 68.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 68.0}
 {"ts": "2026-09-25T15:01:35.102016+00:00", "ticker": "AMD", "features": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 62.0}
 {"ts": "2026-09-25T15:01:36.616177+00:00", "ticker": "MU", "features": {"momentum": 59.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 59.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 59.0}
+{"ts": "2026-09-28T15:03:32.669530+00:00", "ticker": "NVDA", "features": {"momentum": 58.0, "sector": 1.0, "news": 0.8, "conviction": 0.0}, "contrib": {"momentum": 58.0, "sector": 3.0, "news": 6.4, "conviction": 0.0}, "total": 67.4}
+{"ts": "2026-09-28T15:03:34.143794+00:00", "ticker": "CRWD", "features": {"momentum": 60.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 60.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 63.0}
