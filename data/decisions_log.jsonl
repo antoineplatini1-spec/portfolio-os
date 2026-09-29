@@ -93,3 +93,5 @@
 {"ts": "2026-09-25T15:01:36.616177+00:00", "ticker": "MU", "features": {"momentum": 59.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 59.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 59.0}
 {"ts": "2026-09-28T15:03:32.669530+00:00", "ticker": "NVDA", "features": {"momentum": 58.0, "sector": 1.0, "news": 0.8, "conviction": 0.0}, "contrib": {"momentum": 58.0, "sector": 3.0, "news": 6.4, "conviction": 0.0}, "total": 67.4}
 {"ts": "2026-09-28T15:03:34.143794+00:00", "ticker": "CRWD", "features": {"momentum": 60.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 60.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 63.0}
+{"ts": "2026-09-29T15:01:11.586782+00:00", "ticker": "META", "features": {"momentum": 74.0, "sector": 1.0, "news": 0.0, "conviction": 1.0}, "contrib": {"momentum": 74.0, "sector": 3.0, "news": 0.0, "conviction": 5.0}, "total": 82.0}
+{"ts": "2026-09-29T15:01:12.520197+00:00", "ticker": "INTC", "features": {"momentum": 74.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 74.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 77.0}

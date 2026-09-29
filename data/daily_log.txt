@@ -19995,3 +19995,118 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-28 11:03]   [MOMENTUM SKIP] STM.PA: données vides
 [2026-09-28 11:03] [MOMENTUM] valeur=9792.05€  cash=751.33€  positions=9  PnL=-477.07€
 [2026-09-28 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-29 11:00] ============================================================
+[2026-09-29 11:00] SCAN JOURNALIER - 2026-09-29
+[2026-09-29 11:00] ============================================================
+[2026-09-29 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-29 11:00]   Date     : 2026-09-29  [imap]
+[2026-09-29 11:00]   CAC 40   : NEUTRAL
+[2026-09-29 11:00]   Valeurs  :
+[2026-09-29 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-29 11:00]     🔴 Totalenergies (Energie) → SELL
+[2026-09-29 11:00]     ⚠️ Schneider (Industrie) → CAUTION
+[2026-09-29 11:00]     ⚠️ Legrand (Industrie) → CAUTION
+[2026-09-29 11:00]   Macro    : market_caution, market_bullish
+[2026-09-29 11:00]   Secteurs : Industrie:-2, Tech:-1, Energie:-1
+[2026-09-29 11:00] ───────────────────────────────────────────────────────
+[2026-09-29 11:00] [LLM] Biais sectoriel = LLM : Energie:+1, Industrie:+2, ConsoBase:+1
+[2026-09-29 11:00] [LLM] Trades momentum = LLM (2) : Totalenergies:HOLD, Edenred:SELL
+[2026-09-29 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Tech': 1, 'Semi': 1} | idées: META
+[2026-09-29 11:00] ══════════════════════════════════════════════
+[2026-09-29 11:00]   AGENT MACRO — 2026-09-29
+[2026-09-29 11:00] ══════════════════════════════════════════════
+[2026-09-29 11:00]   Régime marché  : BULL
+[2026-09-29 11:00]   SPY vs EMA200  : +5.5%
+[2026-09-29 11:00]   VIX            : 15.9 (LOW)
+[2026-09-29 11:00]   Max trades/j   : 3
+[2026-09-29 11:00]   Seuil net min  : 10
+[2026-09-29 11:00]   Top secteurs   : Semi, Tech
+[2026-09-29 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-29 11:00]   Rationale      : Marché haussier (SPY +5.5% vs EMA200). Exposition maximale autorisée.
+[2026-09-29 11:00] ══════════════════════════════════════════════
+[2026-09-29 11:00] [SYNC IBKR] cash = 151145 | NLV = 258135 | positions = 15
+[2026-09-29 11:00] 15 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-29 11:00]   V: 367.04
+[2026-09-29 11:00]   CRWD: 258.45
+[2026-09-29 11:00]   JNJ: 266.71
+[2026-09-29 11:00]   ABBV: 262.61
+[2026-09-29 11:00]   MRK: 146.73
+[2026-09-29 11:00]   MPC: 388.95
+[2026-09-29 11:00]   BKNG: 161.17
+[2026-09-29 11:00]   NFLX: 70.85
+[2026-09-29 11:00]   PFE: 28.35
+[2026-09-29 11:00]   MU: 1077.42
+[2026-09-29 11:00]   EL: 94.84
+[2026-09-29 11:00]   COIN: 192.23
+[2026-09-29 11:00]   QCOM: 187.81
+[2026-09-29 11:00]   AMD: 617.42
+[2026-09-29 11:00]   NVDA: 231.23
+[2026-09-29 11:00] Screener en cours...
+[2026-09-29 11:00] [US] Univers screener enrichi de 1 idée(s) newsletters US : META
+[2026-09-29 11:00] Scores : max=74  mediane=0  (156 tickers)
+[2026-09-29 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=74
+[2026-09-29 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Tech, Energie, Industrie, ConsoBase, Semi | pénalisés: —
+[2026-09-29 11:00] Filtre ETF/indices (non achetables) : 27 → 20 candidats
+[2026-09-29 11:00] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → MU
+[2026-09-29 11:00] 19 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-29 11:00]   [SEC 8-K] AMD (2026-09-28) : Émission non enregistrée de titres
+[2026-09-29 11:00]   [SEC 8-K] MRVL (2026-09-25) : Autre événement matériel, États financiers & annexes
+[2026-09-29 11:00]   [SEC 8-K] V (2026-09-23) : Autre événement matériel
+[2026-09-29 11:01] [LLM news] AMD: neutral 0.30 — Émission non enregistrée de titres (8-K Item 3.02)
+[2026-09-29 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-29 11:01] Cash deployable cette semaine : 148122 EUR  (max trades/j : 2)
+[2026-09-29 11:01] ────────────────────────────────────────────────────
+[2026-09-29 11:01]   DÉBAT : META
+[2026-09-29 11:01] ────────────────────────────────────────────────────
+[2026-09-29 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-09-29 11:01]      • Score haussier fort (76/100)
+[2026-09-29 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-29 11:01]      • Prix au-dessus EMA200 (595.59) — tendance long terme haussière
+[2026-09-29 11:01]      • Stoch RSI survendu (0) — retournement imminent
+[2026-09-29 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-29 11:01] 
+[2026-09-29 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-29 11:01]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-09-29 11:01]      • Exposition modérée (67%) — prudence sur les ajouts
+[2026-09-29 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-29 11:01] 
+[2026-09-29 11:01]   ✅ ARBITRE → ACHETER  (net=+53)
+[2026-09-29 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=31, net=+53)
+[2026-09-29 11:01] ────────────────────────────────────────────────────
+[2026-09-29 11:01]   [ACHAT] META score=74 bull=72 bear=31 prix=721.43 investi=12976EUR SL=667.71 TP1=761.72
+[2026-09-29 11:01] ────────────────────────────────────────────────────
+[2026-09-29 11:01]   DÉBAT : INTC
+[2026-09-29 11:01] ────────────────────────────────────────────────────
+[2026-09-29 11:01]   🟢 BULL [conviction=96] → ACHETER
+[2026-09-29 11:01]      • Score haussier fort (76/100)
+[2026-09-29 11:01]      • R-ratio excellent (3.3×) — asymétrie gain/risque idéale
+[2026-09-29 11:01]      • Prix au-dessus EMA200 (85.42) — tendance long terme haussière
+[2026-09-29 11:01]      • Momentum 10j fort (+21.9%) — tendance confirmée
+[2026-09-29 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-29 11:01] 
+[2026-09-29 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-29 11:01]      • Secteur Semi très concentré (3 positions) — risque sectoriel
+[2026-09-29 11:01]      • Exposition modérée (72%) — prudence sur les ajouts
+[2026-09-29 11:01]      • Volume faible (0.3× moyenne)
+[2026-09-29 11:01] 
+[2026-09-29 11:01]   ✅ ARBITRE → ACHETER  (net=+77)
+[2026-09-29 11:01]      Arguments haussiers l'emportent clairement (conviction=96, concern=31, net=+77)
+[2026-09-29 11:01] ────────────────────────────────────────────────────
+[2026-09-29 11:01]   [ACHAT] INTC score=74 bull=96 bear=31 prix=118.37 investi=12909EUR SL=108.90 TP1=127.80
+[2026-09-29 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-29 11:01] ----------------------------------------
+[2026-09-29 11:01] RESUME : valeur=258135.22 EUR  investi=202912.78 EUR  cash=125259.67 EUR  expo=77.2%  positions=17
+[2026-09-29 11:01] ----------------------------------------
+[2026-09-29 11:01] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-09-29 11:01]   [MOMENTUM] AI.PA: 168.94
+[2026-09-29 11:01]   [MOMENTUM] LR.PA: 144.70
+[2026-09-29 11:01]   [MOMENTUM] HO.PA: 226.90
+[2026-09-29 11:01]   [MOMENTUM] SAF.PA: 337.20
+[2026-09-29 11:01]   [MOMENTUM] ATE.PA: 81.20
+[2026-09-29 11:01]   [MOMENTUM] AM.PA: 289.60
+[2026-09-29 11:01]   [MOMENTUM] BN.PA: 58.88
+[2026-09-29 11:01]   [MOMENTUM] FR.PA: 14.72
+[2026-09-29 11:01]   [MOMENTUM] TEP.PA: 71.74
+[2026-09-29 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-29 11:01] [MOMENTUM] valeur=9867.64€  cash=1929.52€  positions=8  PnL=-578.67€
+[2026-09-29 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr

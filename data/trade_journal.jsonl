@@ -233,3 +233,10 @@
 {"execId": "0000dc8f.6bb8ddbb.01.01", "time": "2026-09-25 15:00:31", "symbol": "AMZN", "side": "SLD", "qty": 50.0, "price": 248.35, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000e0d5.6ab67c05.01.01", "time": "2026-09-25 15:01:35", "symbol": "AMD", "side": "BOT", "qty": 21.0, "price": 632.91, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6bb8e054.01.01", "time": "2026-09-25 15:01:36", "symbol": "MU", "side": "BOT", "qty": 12.0, "price": 1085.5, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6aba5627.01.01", "time": "2026-09-28 13:30:26", "symbol": "NEM", "side": "SLD", "qty": 104.0, "price": 115.03, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6aba25cb.01.01", "time": "2026-09-28 13:30:30", "symbol": "RBLX", "side": "SLD", "qty": 124.0, "price": 43.57, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6aba25cc.01.01", "time": "2026-09-28 13:30:30", "symbol": "RBLX", "side": "SLD", "qty": 42.0, "price": 43.57, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6aba2767.01.01", "time": "2026-09-28 13:30:34", "symbol": "RBLX", "side": "SLD", "qty": 100.0, "price": 43.57, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6abb161d.01.01", "time": "2026-09-28 15:03:32", "symbol": "NVDA", "side": "BOT", "qty": 56.0, "price": 229.35, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6aba962b.01.01", "time": "2026-09-28 15:03:34", "symbol": "CRWD", "side": "BOT", "qty": 40.0, "price": 255.04, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6aba962c.01.01", "time": "2026-09-28 15:03:34", "symbol": "CRWD", "side": "BOT", "qty": 11.0, "price": 255.04, "commission": 0.0, "realized_pnl": 0.0}
