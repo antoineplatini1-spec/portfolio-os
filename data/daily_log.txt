@@ -20110,3 +20110,286 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-09-29 11:01] [MOMENTUM] 2 signal(s) newsletter...
 [2026-09-29 11:01] [MOMENTUM] valeur=9867.64€  cash=1929.52€  positions=8  PnL=-578.67€
 [2026-09-29 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-09-30 11:00] ============================================================
+[2026-09-30 11:00] SCAN JOURNALIER - 2026-09-30
+[2026-09-30 11:00] ============================================================
+[2026-09-30 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-09-30 11:00]   Date     : 2026-09-30  [imap]
+[2026-09-30 11:00]   CAC 40   : NEUTRAL
+[2026-09-30 11:00]   Valeurs  :
+[2026-09-30 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-09-30 11:00]     🚫 Sanofi (Santé) → AVOID
+[2026-09-30 11:00]   Macro    : market_caution, market_bullish
+[2026-09-30 11:00]   Secteurs : Santé:-2, Tech:-1
+[2026-09-30 11:00] ───────────────────────────────────────────────────────
+[2026-09-30 11:00] [LLM] Biais sectoriel = LLM : Macro:-1
+[2026-09-30 11:00] [LLM] Trades momentum = LLM (2) : Sanofi:AVOID, Gtt:SELL
+[2026-09-30 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Semi': 1} | idées: META
+[2026-09-30 11:00] ══════════════════════════════════════════════
+[2026-09-30 11:00]   AGENT MACRO — 2026-09-30
+[2026-09-30 11:00] ══════════════════════════════════════════════
+[2026-09-30 11:00]   Régime marché  : BULL
+[2026-09-30 11:00]   SPY vs EMA200  : +5.9%
+[2026-09-30 11:00]   VIX            : 15.9 (LOW)
+[2026-09-30 11:00]   Max trades/j   : 3
+[2026-09-30 11:00]   Seuil net min  : 10
+[2026-09-30 11:00]   Top secteurs   : Semi, Tech
+[2026-09-30 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-09-30 11:00]   Rationale      : Marché haussier (SPY +5.9% vs EMA200). Exposition maximale autorisée.
+[2026-09-30 11:00] ══════════════════════════════════════════════
+[2026-09-30 11:00] [SYNC IBKR] COIN : bracket natif soldé(e) @ 192.23 → clôturé
+[2026-09-30 11:00] [SYNC IBKR] soldée(s) : COIN
+[2026-09-30 11:00] [SYNC IBKR] cash = 138979 | NLV = 258284 | positions = 16
+[2026-09-30 11:00] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-09-30 11:00]   V: 363.05
+[2026-09-30 11:00]   CRWD: 266.97
+[2026-09-30 11:00]   JNJ: 268.13
+[2026-09-30 11:00]   ABBV: 263.91
+[2026-09-30 11:00]   MRK: 146.96
+[2026-09-30 11:00]   MPC: 399.24
+[2026-09-30 11:00]   BKNG: 164.26
+[2026-09-30 11:00]   NFLX: 69.97
+[2026-09-30 11:00]   PFE: 28.70
+[2026-09-30 11:00]   MU: 1076.42
+[2026-09-30 11:00]   EL: 94.61
+[2026-09-30 11:00]   QCOM: 185.50
+[2026-09-30 11:00]   AMD: 603.79
+[2026-09-30 11:00]   NVDA: 230.77
+[2026-09-30 11:00]   META: 729.56
+[2026-09-30 11:00]   INTC: 118.90
+[2026-09-30 11:00] Screener en cours...
+[2026-09-30 11:00] [US] Univers screener enrichi de 1 idée(s) newsletters US : META
+[2026-09-30 11:00] Scores : max=74  mediane=4  (156 tickers)
+[2026-09-30 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=74
+[2026-09-30 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Semi | pénalisés: Tech, Santé, Macro
+[2026-09-30 11:00] Filtre ETF/indices (non achetables) : 31 → 22 candidats
+[2026-09-30 11:00] Prudence résultats : 1 candidat(s) écarté(s) (earnings dans ≤3j) → MU
+[2026-09-30 11:00] 21 candidats pre-filtres (score>=40, R>=1.2)
+[2026-09-30 11:01]   [SEC 8-K] AMD (2026-09-28) : Émission non enregistrée de titres
+[2026-09-30 11:01]   [SEC 8-K] MRVL (2026-09-25) : Autre événement matériel, États financiers & annexes
+[2026-09-30 11:01]   [SEC 8-K] MRNA (2026-09-30) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-09-30 11:01]   [SEC 8-K] V (2026-09-23) : Autre événement matériel
+[2026-09-30 11:01] [LLM news] TSM: bullish 0.50 — Étude d'un investissement additionnel au Texas
+[2026-09-30 11:01] [LLM news] AMD: bearish 0.55 — Chute du titre après l'annonce du deal World Labs à 8,2 Md$
+[2026-09-30 11:01] [LLM news] MRNA: bearish 0.65 — Chute de 6% suite à la dégradation de Citi (Sell)
+[2026-09-30 11:01] [LLM news] AMGN: bullish 0.50 — Augmentation du dividende de 6%
+[2026-09-30 11:01] [LLM news] AMAT: bullish 0.55 — Investissement de 5 Md$ dans le EPIC Center pour la mémoire AI
+[2026-09-30 11:01] [LLM news] JNJ: bullish 0.45 — Nouvelles données cliniques sur la gMG adolescente
+[2026-09-30 11:01] [LLM news] V: neutral 0.25 — Événement matériel déclaré (8-K)
+[2026-09-30 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-09-30 11:01] Cash deployable cette semaine : 148068 EUR  (max trades/j : 2)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : TSM
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-09-30 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (389.57) — tendance long terme haussière
+[2026-09-30 11:01]      • Score haussier correct (61/100)
+[2026-09-30 11:01]      • Momentum 10j fort (+9.9%) — tendance confirmée
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-09-30 11:01]      • Secteur Semi très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • Exposition modérée (73%) — prudence sur les ajouts
+[2026-09-30 11:01]      • Volume faible (0.3× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+48)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=31, net=+48)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] TSM : Semi deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : MSFT
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=74] → ACHETER
+[2026-09-30 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-09-30 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (421.60) — tendance long terme haussière
+[2026-09-30 11:01]      • Score haussier correct (68/100)
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=49] → PRUDENCE
+[2026-09-30 11:01]      • Secteur Tech très concentré (3 positions) — risque sectoriel
+[2026-09-30 11:01]      • Stoch RSI suracheté (98) — retournement baissier possible
+[2026-09-30 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-09-30 11:01]      • Exposition modérée (73%) — prudence sur les ajouts
+[2026-09-30 11:01]      • Volume faible (0.3× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+45)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=74, concern=49, net=+45)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [ACHAT] MSFT score=63 bull=74 bear=49 prix=518.04 investi=12946EUR SL=494.43 TP1=535.76
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : TMO
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=62] → ACHETER
+[2026-09-30 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (537.20) — tendance long terme haussière
+[2026-09-30 11:01]      • Score haussier correct (68/100)
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=61] → ÉVITER
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • Stoch RSI suracheté (100) — retournement baissier possible
+[2026-09-30 11:01]      • RSI suracheté (89)
+[2026-09-30 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+25)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=62, concern=61, net=+25)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] TMO : Santé deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : LRCX
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=62] → ACHETER
+[2026-09-30 11:01]      • R-ratio solide (2.6×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (279.21) — tendance long terme haussière
+[2026-09-30 11:01]      • Momentum 10j fort (+21.2%) — tendance confirmée
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=53] → ÉVITER
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Secteur Semi très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • Stoch RSI suracheté (83) — retournement baissier possible
+[2026-09-30 11:01]      • Volume faible (0.1× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+30)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=62, concern=53, net=+30)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] LRCX : Semi deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : MRVL
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=64] → ACHETER
+[2026-09-30 11:01]      • R-ratio excellent (3.2×) — asymétrie gain/risque idéale
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (183.33) — tendance long terme haussière
+[2026-09-30 11:01]      • Momentum 10j fort (+12.5%) — tendance confirmée
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Secteur Semi très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+38)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=64, concern=43, net=+38)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] MRVL : Semi deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : PANW
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=62] → ACHETER
+[2026-09-30 11:01]      • R-ratio solide (2.8×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (271.06) — tendance long terme haussière
+[2026-09-30 11:01]      • Score haussier correct (61/100)
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=51] → ÉVITER
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Secteur Tech très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • RSI suracheté (72)
+[2026-09-30 11:01]      • Volume faible (0.3× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+31)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=62, concern=51, net=+31)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] PANW : Tech deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : PLTR
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-09-30 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (149.14) — tendance long terme haussière
+[2026-09-30 11:01]      • Score haussier correct (58/100)
+[2026-09-30 11:01]      • Momentum 10j fort (+8.7%) — tendance confirmée
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=61] → ÉVITER
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Secteur Tech très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • Stoch RSI suracheté (100) — retournement baissier possible
+[2026-09-30 11:01]      • RSI suracheté (83)
+[2026-09-30 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+30)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=61, net=+30)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] PLTR : Tech deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : DDOG
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-09-30 11:01]      • R-ratio solide (2.8×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (196.44) — tendance long terme haussière
+[2026-09-30 11:01]      • Score haussier correct (58/100)
+[2026-09-30 11:01]      • Momentum 10j fort (+18.7%) — tendance confirmée
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=61] → ÉVITER
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Secteur Tech très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • Stoch RSI suracheté (98) — retournement baissier possible
+[2026-09-30 11:01]      • RSI suracheté (90)
+[2026-09-30 11:01]      • Volume faible (0.1× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+30)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=61, net=+30)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] DDOG : Tech deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : NET
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=51] → PENCHÉ POUR
+[2026-09-30 11:01]      • R-ratio solide (3.0×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (251.37) — tendance long terme haussière
+[2026-09-30 11:01]      • CMF fort — flux acheteur dominant
+[2026-09-30 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-30 11:01]      • Score haussier modéré (53/100)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=43] → PRUDENCE
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Secteur Tech très concentré (4 positions) — risque sectoriel
+[2026-09-30 11:01]      • Volume faible (0.2× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+25)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=51, concern=43, net=+25)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [VETO secteur] NET : Tech deja a 4 positions
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   DÉBAT : DE
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   🟢 BULL [conviction=52] → PENCHÉ POUR
+[2026-09-30 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-09-30 11:01]      • Prix au-dessus EMA200 (601.25) — tendance long terme haussière
+[2026-09-30 11:01]      • Stoch RSI survendu (18) — retournement imminent
+[2026-09-30 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-09-30 11:01]      • OBV en hausse — accumulation en cours
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   🔴 BEAR [concern=25] → OK
+[2026-09-30 11:01]      • Exposition déjà élevée (77%) — risque de surconcentration
+[2026-09-30 11:01]      • Volume faible (0.1× moyenne)
+[2026-09-30 11:01] 
+[2026-09-30 11:01]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-09-30 11:01]      Arguments haussiers l'emportent clairement (conviction=52, concern=25, net=+37)
+[2026-09-30 11:01] ────────────────────────────────────────────────────
+[2026-09-30 11:01]   [ACHAT] DE score=48 bull=52 bear=25 prix=683.57 investi=13002EUR SL=651.06 TP1=707.95
+[2026-09-30 11:01] 10 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-09-30 11:01] ----------------------------------------
+[2026-09-30 11:01] RESUME : valeur=258284.17 EUR  investi=215890.61 EUR  cash=125141.05 EUR  expo=82.6%  positions=18
+[2026-09-30 11:01] ----------------------------------------
+[2026-09-30 11:01] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-09-30 11:01]   [MOMENTUM] AI.PA: 170.16
+[2026-09-30 11:01]   [MOMENTUM] LR.PA: 141.90
+[2026-09-30 11:01]   [MOMENTUM] HO.PA: 224.60
+[2026-09-30 11:01]   [MOMENTUM] SAF.PA: 334.40
+[2026-09-30 11:01]   [MOMENTUM] AM.PA: 285.60
+[2026-09-30 11:01]   [MOMENTUM] BN.PA: 58.82
+[2026-09-30 11:01]   [MOMENTUM] FR.PA: 14.58
+[2026-09-30 11:01]   [MOMENTUM] TEP.PA: 69.46
+[2026-09-30 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-09-30 11:01] [MOMENTUM] valeur=9779.54€  cash=2907.25€  positions=7  PnL=-666.77€
+[2026-09-30 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr

@@ -95,3 +95,5 @@
 {"ts": "2026-09-28T15:03:34.143794+00:00", "ticker": "CRWD", "features": {"momentum": 60.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 60.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 63.0}
 {"ts": "2026-09-29T15:01:11.586782+00:00", "ticker": "META", "features": {"momentum": 74.0, "sector": 1.0, "news": 0.0, "conviction": 1.0}, "contrib": {"momentum": 74.0, "sector": 3.0, "news": 0.0, "conviction": 5.0}, "total": 82.0}
 {"ts": "2026-09-29T15:01:12.520197+00:00", "ticker": "INTC", "features": {"momentum": 74.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 74.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 77.0}
+{"ts": "2026-09-30T15:01:36.167623+00:00", "ticker": "MSFT", "features": {"momentum": 63.0, "sector": -1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 63.0, "sector": -3.0, "news": 0.0, "conviction": 0.0}, "total": 60.0}
+{"ts": "2026-09-30T15:01:39.093216+00:00", "ticker": "DE", "features": {"momentum": 48.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 48.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 48.0}

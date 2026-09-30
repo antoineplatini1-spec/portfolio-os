@@ -240,3 +240,7 @@
 {"execId": "00025b45.6abb161d.01.01", "time": "2026-09-28 15:03:32", "symbol": "NVDA", "side": "BOT", "qty": 56.0, "price": 229.35, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6aba962b.01.01", "time": "2026-09-28 15:03:34", "symbol": "CRWD", "side": "BOT", "qty": 40.0, "price": 255.04, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6aba962c.01.01", "time": "2026-09-28 15:03:34", "symbol": "CRWD", "side": "BOT", "qty": 11.0, "price": 255.04, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6bc1cadc.01.01", "time": "2026-09-29 15:01:11", "symbol": "META", "side": "BOT", "qty": 18.0, "price": 720.9, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6abcb547.01.01", "time": "2026-09-29 15:01:12", "symbol": "INTC", "side": "BOT", "qty": 109.0, "price": 118.43, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6abbf8b1.01.01", "time": "2026-09-29 17:53:15", "symbol": "COIN", "side": "SLD", "qty": 62.0, "price": 188.69, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b44.6abbf8b2.01.01", "time": "2026-09-29 17:53:15", "symbol": "COIN", "side": "SLD", "qty": 1.0, "price": 188.69, "commission": 0.0, "realized_pnl": 0.0}
