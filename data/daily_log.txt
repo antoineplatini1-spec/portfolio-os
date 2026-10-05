@@ -21090,3 +21090,90 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-10-02 11:01] [MOMENTUM] 1 signal(s) newsletter...
 [2026-10-02 11:01] [MOMENTUM] valeur=9760.09€  cash=2907.25€  positions=7  PnL=-686.22€
 [2026-10-02 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-10-05 11:01] ============================================================
+[2026-10-05 11:01] SCAN JOURNALIER - 2026-10-05
+[2026-10-05 11:01] ============================================================
+[2026-10-05 11:01] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-10-05 11:01]   Date     : 2026-10-05  [imap]
+[2026-10-05 11:01]   CAC 40   : NEUTRAL
+[2026-10-05 11:01]   Valeurs  :
+[2026-10-05 11:01]     ✅ Eurofins (Santé) → BUY
+[2026-10-05 11:01]     🚫 Airbus (Industrie) → AVOID
+[2026-10-05 11:01]   Macro    : market_bullish
+[2026-10-05 11:01]   Secteurs : Industrie:-2, Santé:+1
+[2026-10-05 11:01] ───────────────────────────────────────────────────────
+[2026-10-05 11:02] [LLM] Biais sectoriel = LLM : Industrie:-2, Santé:+1
+[2026-10-05 11:02] [LLM] Trades momentum = LLM (2) : Nexans:BUY, Airbus:AVOID
+[2026-10-05 11:02] [US] The Transcript «High Rates?» → secteur — | idées: —
+[2026-10-05 11:02] ══════════════════════════════════════════════
+[2026-10-05 11:02]   AGENT MACRO — 2026-10-05
+[2026-10-05 11:02] ══════════════════════════════════════════════
+[2026-10-05 11:02]   Régime marché  : BULL
+[2026-10-05 11:02]   SPY vs EMA200  : +6.3%
+[2026-10-05 11:02]   VIX            : 15.5 (LOW)
+[2026-10-05 11:02]   Max trades/j   : 3
+[2026-10-05 11:02]   Seuil net min  : 10
+[2026-10-05 11:02]   Top secteurs   : Semi, Tech
+[2026-10-05 11:02]   Secteurs auth. : TOUS (régime favorable)
+[2026-10-05 11:02]   Rationale      : Marché haussier (SPY +6.3% vs EMA200). Exposition maximale autorisée.
+[2026-10-05 11:02] ══════════════════════════════════════════════
+[2026-10-05 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-10-05 11:02] [SYNC IBKR] PFE : bracket natif soldé(e) @ 27.76 → clôturé
+[2026-10-05 11:02] [SYNC IBKR] POSITION(S) ADOPTÉE(S) depuis IBKR (présentes sur le compte, PAS d'un ordre du bot) : MRK → enregistrées ; ACHATS SUSPENDUS ce run, à vérifier
+[2026-10-05 11:02] [SYNC IBKR] soldée(s) : PFE
+[2026-10-05 11:02] [SYNC IBKR] cash = 159595 | NLV = 258934 | positions = 16
+[2026-10-05 11:02] [SYNC IBKR] ⛔ → NOUVEAUX ACHATS SUSPENDUS ce run.
+[2026-10-05 11:02] 16 position(s) ouverte(s) - mise a jour des prix...
+[2026-10-05 11:02]   V: 364.74
+[2026-10-05 11:02]   JNJ: 253.35
+[2026-10-05 11:02]   ABBV: 261.90
+[2026-10-05 11:02]   MRK: 139.22
+[2026-10-05 11:02]   BKNG: 157.17
+[2026-10-05 11:02]   MSFT: 526.24
+[2026-10-05 11:02]   TMO: 662.22
+[2026-10-05 11:02]   NFLX: 67.14
+[2026-10-05 11:02]   MU: 1067.66
+[2026-10-05 11:02]   DE: 683.47
+[2026-10-05 11:02]   QCOM: 183.18
+[2026-10-05 11:02]   AMD: 629.65
+[2026-10-05 11:02]   NVDA: 237.30
+[2026-10-05 11:02]   META: 745.61
+[2026-10-05 11:02]   INTC: 116.85
+[2026-10-05 11:02]   DDOG: 278.00
+[2026-10-05 11:02]   [TIME STOP] BKNG : 27j ouverte, PnL=-17.4% -> fermeture
+[2026-10-05 11:02]   [LLM post-mortem] BKNG: momentum_essouffle — Quand le score d'entrée est nul et que le marché stagne sans franchir TP/SL, coupe la position avant le time stop pour limiter l'érosion du capital.
+[2026-10-05 11:02] Screener en cours...
+[2026-10-05 11:03] Scores : max=74  mediane=1  (155 tickers)
+[2026-10-05 11:03] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=74
+[2026-10-05 11:03] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Santé | pénalisés: Industrie
+[2026-10-05 11:03] Filtre ETF/indices (non achetables) : 24 → 17 candidats
+[2026-10-05 11:03] 17 candidats pre-filtres (score>=40, R>=1.2)
+[2026-10-05 11:03]   [SEC 8-K] MRNA (2026-09-30) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-10-05 11:03]   [SEC 8-K] AMD (2026-09-28) : Émission non enregistrée de titres
+[2026-10-05 11:03]   [SEC 8-K] ON (2026-10-01) ⚠MATÉRIEL : Accord matériel signé, Autre événement matériel, États financiers & annexes
+[2026-10-05 11:03]   [SEC 8-K] PSX (2026-10-05) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-10-05 11:03]   [SEC 8-K] MU (2026-09-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-05 11:03] [LLM news] MRNA: neutral 0.30 — Changement de dirigeant / divulgation Reg FD
+[2026-10-05 11:03] [LLM news] AMD: bearish 0.30 — Émission non enregistrée de titres
+[2026-10-05 11:03] [LLM news] ON: bullish 0.40 — Accord matériel signé
+[2026-10-05 11:03] [LLM news] PSX: neutral 0.30 — Changement de dirigeant
+[2026-10-05 11:03] [LLM news] MU: neutral 0.40 — Publication de résultats financiers
+[2026-10-05 11:03] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-10-05 11:03] Cash deployable cette semaine : 179255 EUR  (max trades/j : 0)
+[2026-10-05 11:03] 0 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-10-05 11:03] Aucune nouvelle position ouverte.
+[2026-10-05 11:03] ----------------------------------------
+[2026-10-05 11:03] RESUME : valeur=258933.67 EUR  investi=175573.30 EUR  cash=182913.50 EUR  expo=67.5%  positions=15
+[2026-10-05 11:03] ----------------------------------------
+[2026-10-05 11:03] [MOMENTUM] 7 position(s) ouverte(s)...
+[2026-10-05 11:03]   [MOMENTUM] AI.PA: 171.22
+[2026-10-05 11:03]   [MOMENTUM] LR.PA: 143.10
+[2026-10-05 11:03]   [MOMENTUM] HO.PA: 227.80
+[2026-10-05 11:03]   [MOMENTUM] SAF.PA: 330.30
+[2026-10-05 11:03]   [MOMENTUM] AM.PA: 288.00
+[2026-10-05 11:03]   [MOMENTUM] FR.PA: 14.30
+[2026-10-05 11:03]   [MOMENTUM] TEP.PA: 68.86
+[2026-10-05 11:03] [MOMENTUM] 2 signal(s) newsletter...
+[2026-10-05 11:03]   [MOMENTUM] Nexans (NEX.PA) 7.468× à 133.90€ | SL=120.90 | TPs=156.60 / 164.30 | investi=1000€
+[2026-10-05 11:03] [MOMENTUM] valeur=9756.51€  cash=1906.25€  positions=8  PnL=-689.80€
+[2026-10-05 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr
