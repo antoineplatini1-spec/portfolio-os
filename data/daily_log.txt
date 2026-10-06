@@ -21177,3 +21177,85 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-10-05 11:03]   [MOMENTUM] Nexans (NEX.PA) 7.468× à 133.90€ | SL=120.90 | TPs=156.60 / 164.30 | investi=1000€
 [2026-10-05 11:03] [MOMENTUM] valeur=9756.51€  cash=1906.25€  positions=8  PnL=-689.80€
 [2026-10-05 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-10-06 11:00] ============================================================
+[2026-10-06 11:00] SCAN JOURNALIER - 2026-10-06
+[2026-10-06 11:00] ============================================================
+[2026-10-06 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-10-06 11:00]   Date     : 2026-10-06  [imap]
+[2026-10-06 11:00]   CAC 40   : NEUTRAL
+[2026-10-06 11:00]   Valeurs  :
+[2026-10-06 11:00]     🔴 Capgemini (Tech) → SELL
+[2026-10-06 11:00]     ✅ Ses (Tech) → BUY
+[2026-10-06 11:00]     ✅ Schneider (Industrie) → BUY
+[2026-10-06 11:00]     ✅ Alstom (Industrie) → BUY
+[2026-10-06 11:00]   Macro    : market_caution, market_bullish
+[2026-10-06 11:00]   Secteurs : Industrie:+2, Tech:0
+[2026-10-06 11:00] ───────────────────────────────────────────────────────
+[2026-10-06 11:00] [LLM] Biais sectoriel = LLM : Tech:+1
+[2026-10-06 11:00] [LLM] Trades momentum = LLM (1) : Capgemini:BUY
+[2026-10-06 11:00] [US] The Transcript «High Rates?» → secteur — | idées: —
+[2026-10-06 11:00] ══════════════════════════════════════════════
+[2026-10-06 11:00]   AGENT MACRO — 2026-10-06
+[2026-10-06 11:00] ══════════════════════════════════════════════
+[2026-10-06 11:00]   Régime marché  : BULL
+[2026-10-06 11:00]   SPY vs EMA200  : +7.3%
+[2026-10-06 11:00]   VIX            : 15.4 (LOW)
+[2026-10-06 11:00]   Max trades/j   : 3
+[2026-10-06 11:00]   Seuil net min  : 10
+[2026-10-06 11:00]   Top secteurs   : Semi, Tech
+[2026-10-06 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-10-06 11:00]   Rationale      : Marché haussier (SPY +7.3% vs EMA200). Exposition maximale autorisée.
+[2026-10-06 11:00] ══════════════════════════════════════════════
+[2026-10-06 11:00] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-10-06 11:00] [SYNC IBKR] TMO : bracket natif soldé(e) @ 689.03 → clôturé
+[2026-10-06 11:00] [SYNC IBKR] NVDA : bracket natif soldé(e) @ 237.30 → clôturé
+[2026-10-06 11:00] [SYNC IBKR] POSITION(S) ADOPTÉE(S) depuis IBKR (présentes sur le compte, PAS d'un ordre du bot) : BKNG → enregistrées ; ACHATS SUSPENDUS ce run, à vérifier
+[2026-10-06 11:00] [SYNC IBKR] soldée(s) : TMO, NVDA
+[2026-10-06 11:00] [SYNC IBKR] cash = 192964 | NLV = 259217 | positions = 14
+[2026-10-06 11:00] [SYNC IBKR] ⛔ → NOUVEAUX ACHATS SUSPENDUS ce run.
+[2026-10-06 11:00] 14 position(s) ouverte(s) - mise a jour des prix...
+[2026-10-06 11:00]   V: 370.55
+[2026-10-06 11:00]   JNJ: 252.12
+[2026-10-06 11:00]   ABBV: 263.64
+[2026-10-06 11:00]   MRK: 141.15
+[2026-10-06 11:00]   BKNG: 158.11
+[2026-10-06 11:00]   MSFT: 534.15
+[2026-10-06 11:00]   NFLX: 68.09
+[2026-10-06 11:00]   MU: 1071.65
+[2026-10-06 11:00]   DE: 681.34
+[2026-10-06 11:00]   QCOM: 179.85
+[2026-10-06 11:00]   AMD: 654.59
+[2026-10-06 11:00]   META: 741.00
+[2026-10-06 11:00]   INTC: 114.86
+[2026-10-06 11:00]   DDOG: 278.80
+[2026-10-06 11:00] Screener en cours...
+[2026-10-06 11:01] Scores : max=70  mediane=2  (156 tickers)
+[2026-10-06 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=70
+[2026-10-06 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Tech, Industrie | pénalisés: —
+[2026-10-06 11:01] Filtre ETF/indices (non achetables) : 25 → 18 candidats
+[2026-10-06 11:01] 18 candidats pre-filtres (score>=40, R>=1.2)
+[2026-10-06 11:01]   [SEC 8-K] ZS (2026-10-06) : Divulgation Regulation FD, États financiers & annexes
+[2026-10-06 11:01]   [SEC 8-K] MRNA (2026-09-30) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-10-06 11:01]   [SEC 8-K] CVX (2026-10-05) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-10-06 11:01]   [SEC 8-K] ABBV (2026-10-05) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-06 11:01]   [SEC 8-K] MU (2026-09-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-06 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-10-06 11:01] Cash deployable cette semaine : 214958 EUR  (max trades/j : 0)
+[2026-10-06 11:01] 0 debat(s) mene(s) → 0 achat(s) effectue(s).
+[2026-10-06 11:01] Aucune nouvelle position ouverte.
+[2026-10-06 11:01] ----------------------------------------
+[2026-10-06 11:01] RESUME : valeur=259217.25 EUR  investi=173692.04 EUR  cash=219344.48 EUR  expo=66.0%  positions=14
+[2026-10-06 11:01] ----------------------------------------
+[2026-10-06 11:01] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-10-06 11:01]   [MOMENTUM] AI.PA: 168.82
+[2026-10-06 11:01]   [MOMENTUM] LR.PA: 147.20
+[2026-10-06 11:01]   [MOMENTUM] HO.PA: 219.50
+[2026-10-06 11:01]   [MOMENTUM] SAF.PA: 326.70
+[2026-10-06 11:01]   [MOMENTUM] NEX.PA: 133.00
+[2026-10-06 11:01]   [MOMENTUM] AM.PA: 278.40
+[2026-10-06 11:01]   [MOMENTUM] FR.PA: 15.05
+[2026-10-06 11:01]   [MOMENTUM] TEP.PA: 69.72
+[2026-10-06 11:01] [MOMENTUM] 1 signal(s) newsletter...
+[2026-10-06 11:01]   [MOMENTUM] Capgemini (CAP.PA) 9.079× à 110.15€ | SL=94.88 | TPs=112.60 / 118.87 / 125.73 / 134.95 | investi=1000€
+[2026-10-06 11:01] [MOMENTUM] valeur=9767.92€  cash=905.25€  positions=9  PnL=-678.39€
+[2026-10-06 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
