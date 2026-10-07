@@ -21259,3 +21259,134 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-10-06 11:01]   [MOMENTUM] Capgemini (CAP.PA) 9.079× à 110.15€ | SL=94.88 | TPs=112.60 / 118.87 / 125.73 / 134.95 | investi=1000€
 [2026-10-06 11:01] [MOMENTUM] valeur=9767.92€  cash=905.25€  positions=9  PnL=-678.39€
 [2026-10-06 11:02] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-10-07 11:00] ============================================================
+[2026-10-07 11:00] SCAN JOURNALIER - 2026-10-07
+[2026-10-07 11:00] ============================================================
+[2026-10-07 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-10-07 11:00]   Date     : 2026-10-07  [imap]
+[2026-10-07 11:00]   CAC 40   : NEUTRAL
+[2026-10-07 11:00]   Valeurs  :
+[2026-10-07 11:00]     🔴 Legrand (Industrie) → SELL
+[2026-10-07 11:00]   Macro    : tech_pressure, market_bullish
+[2026-10-07 11:00]   Secteurs : Industrie:-1, Tech:-1
+[2026-10-07 11:00] ───────────────────────────────────────────────────────
+[2026-10-07 11:00] [LLM] Biais sectoriel = LLM : Macro:-1
+[2026-10-07 11:00] [LLM] Trades momentum = LLM (2) : Michelin:SELL, Legrand:HOLD
+[2026-10-07 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Semi': -1, 'REIT': -1, 'Macro': 0} | idées: MU, DLR
+[2026-10-07 11:00] ══════════════════════════════════════════════
+[2026-10-07 11:00]   AGENT MACRO — 2026-10-07
+[2026-10-07 11:00] ══════════════════════════════════════════════
+[2026-10-07 11:00]   Régime marché  : BULL
+[2026-10-07 11:00]   SPY vs EMA200  : +6.4%
+[2026-10-07 11:00]   VIX            : 15.7 (LOW)
+[2026-10-07 11:00]   Max trades/j   : 3
+[2026-10-07 11:00]   Seuil net min  : 10
+[2026-10-07 11:00]   Top secteurs   : Semi, Tech
+[2026-10-07 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-10-07 11:00]   Rationale      : Marché haussier (SPY +6.4% vs EMA200). Exposition maximale autorisée.
+[2026-10-07 11:00] ══════════════════════════════════════════════
+[2026-10-07 11:00] [SYNC IBKR] QCOM : bracket natif soldé(e) @ 178.46 → clôturé
+[2026-10-07 11:00] [SYNC IBKR] soldée(s) : QCOM
+[2026-10-07 11:00] [SYNC IBKR] cash = 203313 | NLV = 257677 | positions = 13
+[2026-10-07 11:00] 13 position(s) ouverte(s) - mise a jour des prix...
+[2026-10-07 11:00]   V: 371.65
+[2026-10-07 11:00]   JNJ: 259.88
+[2026-10-07 11:00]   ABBV: 273.50
+[2026-10-07 11:00]   MRK: 143.20
+[2026-10-07 11:00]   BKNG: 156.96
+[2026-10-07 11:00]   MSFT: 525.47
+[2026-10-07 11:00]   NFLX: 68.90
+[2026-10-07 11:00]   MU: 1063.98
+[2026-10-07 11:00]   DE: 655.32
+[2026-10-07 11:00]   AMD: 643.30
+[2026-10-07 11:00]   META: 724.07
+[2026-10-07 11:00]   INTC: 113.51
+[2026-10-07 11:00]   DDOG: 274.24
+[2026-10-07 11:00] Screener en cours...
+[2026-10-07 11:00] [US] Univers screener enrichi de 2 idée(s) newsletters US : MU, DLR
+[2026-10-07 11:01] Scores : max=75  mediane=0  (157 tickers)
+[2026-10-07 11:01] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=75
+[2026-10-07 11:01] Bonus sectoriel appliqué (±3pts/unité) — favorisés: — | pénalisés: Industrie, Tech, Semi, REIT
+[2026-10-07 11:01] Filtre ETF/indices (non achetables) : 20 → 17 candidats
+[2026-10-07 11:01] 17 candidats pre-filtres (score>=40, R>=1.2)
+[2026-10-07 11:01]   [SEC 8-K] MRNA (2026-09-30) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, Divulgation Regulation FD, États financiers & annexes
+[2026-10-07 11:01]   [SEC 8-K] ABBV (2026-10-05) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-07 11:01]   [SEC 8-K] ZS (2026-10-06) : Divulgation Regulation FD, États financiers & annexes
+[2026-10-07 11:01]   [SEC 8-K] PSX (2026-10-05) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-10-07 11:01]   [SEC 8-K] MU (2026-09-30) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-07 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-10-07 11:01] Cash deployable cette semaine : 210964 EUR  (max trades/j : 2)
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   DÉBAT : TMO
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   🟢 BULL [conviction=75] → ACHETER
+[2026-10-07 11:01]      • Score haussier fort (77/100)
+[2026-10-07 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-10-07 11:01]      • Prix au-dessus EMA200 (545.64) — tendance long terme haussière
+[2026-10-07 11:01]      • CMF fort — flux acheteur dominant
+[2026-10-07 11:01]      • Stoch RSI survendu (10) — retournement imminent
+[2026-10-07 11:01] 
+[2026-10-07 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-10-07 11:01]      • Secteur Santé très concentré (3 positions) — risque sectoriel
+[2026-10-07 11:01]      • Exposition modérée (61%) — prudence sur les ajouts
+[2026-10-07 11:01]      • Volume faible (0.2× moyenne)
+[2026-10-07 11:01] 
+[2026-10-07 11:01]   ✅ ARBITRE → ACHETER  (net=+56)
+[2026-10-07 11:01]      Arguments haussiers l'emportent clairement (conviction=75, concern=31, net=+56)
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   [ACHAT] TMO score=75 bull=75 bear=31 prix=660.40 investi=13220EUR SL=624.77 TP1=687.13
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   DÉBAT : MRNA
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   🟢 BULL [conviction=67] → ACHETER
+[2026-10-07 11:01]      • R-ratio excellent (4.7×) — asymétrie gain/risque idéale
+[2026-10-07 11:01]      • Prix au-dessus EMA200 (87.08) — tendance long terme haussière
+[2026-10-07 11:01]      • Score haussier correct (66/100)
+[2026-10-07 11:01]      • CMF fort — flux acheteur dominant
+[2026-10-07 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-10-07 11:01] 
+[2026-10-07 11:01]   🔴 BEAR [concern=31] → PRUDENCE
+[2026-10-07 11:01]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-10-07 11:01]      • Exposition modérée (66%) — prudence sur les ajouts
+[2026-10-07 11:01]      • Volume faible (0.3× moyenne)
+[2026-10-07 11:01] 
+[2026-10-07 11:01]   ✅ ARBITRE → ACHETER  (net=+48)
+[2026-10-07 11:01]      Arguments haussiers l'emportent clairement (conviction=67, concern=31, net=+48)
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   [VETO secteur] MRNA : Santé deja a 4 positions
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   DÉBAT : MPC
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   🟢 BULL [conviction=62] → ACHETER
+[2026-10-07 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-10-07 11:01]      • Prix au-dessus EMA200 (302.60) — tendance long terme haussière
+[2026-10-07 11:01]      • Score haussier correct (66/100)
+[2026-10-07 11:01]      • Momentum 10j fort (+13.3%) — tendance confirmée
+[2026-10-07 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-10-07 11:01] 
+[2026-10-07 11:01]   🔴 BEAR [concern=13] → OK
+[2026-10-07 11:01]      • Exposition modérée (66%) — prudence sur les ajouts
+[2026-10-07 11:01]      • Volume faible (0.2× moyenne)
+[2026-10-07 11:01] 
+[2026-10-07 11:01]   ✅ ARBITRE → ACHETER  (net=+54)
+[2026-10-07 11:01]      Arguments haussiers l'emportent clairement (conviction=62, concern=13, net=+54)
+[2026-10-07 11:01] ────────────────────────────────────────────────────
+[2026-10-07 11:01]   [ACHAT] MPC score=64 bull=62 bear=13 prix=440.10 investi=12766EUR SL=410.27 TP1=462.47
+[2026-10-07 11:01] 3 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-10-07 11:01] ----------------------------------------
+[2026-10-07 11:01] RESUME : valeur=257677.08 EUR  investi=186629.50 EUR  cash=189283.78 EUR  expo=71.1%  positions=15
+[2026-10-07 11:01] ----------------------------------------
+[2026-10-07 11:01] [MOMENTUM] 9 position(s) ouverte(s)...
+[2026-10-07 11:01]   [MOMENTUM] AI.PA: 168.04
+[2026-10-07 11:01]   [MOMENTUM] LR.PA: 141.55
+[2026-10-07 11:01]   [MOMENTUM] HO.PA: 216.90
+[2026-10-07 11:01]   [MOMENTUM] SAF.PA: 320.50
+[2026-10-07 11:01]   [MOMENTUM] NEX.PA: 128.10
+[2026-10-07 11:01]   [MOMENTUM] AM.PA: 277.60
+[2026-10-07 11:01]   [MOMENTUM] FR.PA: 14.77
+[2026-10-07 11:01]   [MOMENTUM] TEP.PA: 70.12
+[2026-10-07 11:01]   [MOMENTUM] CAP.PA: 109.60
+[2026-10-07 11:01] [MOMENTUM] 2 signal(s) newsletter...
+[2026-10-07 11:01]   [MOMENTUM SELL] Legrand (LR.PA) @ 141.55 — raison newsletter : HOLD
+[2026-10-07 11:01] [MOMENTUM] valeur=9634.28€  cash=1929.57€  positions=8  PnL=-812.04€
+[2026-10-07 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr

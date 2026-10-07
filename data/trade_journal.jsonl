@@ -264,3 +264,4 @@
 {"execId": "0000e0d5.6ac40dae.01.01", "time": "2026-10-05 15:02:43", "symbol": "BKNG", "side": "SLD", "qty": 4.0, "price": 157.155, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6bd35050.01.01", "time": "2026-10-05 18:26:30", "symbol": "NVDA", "side": "SLD", "qty": 56.0, "price": 238.49, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6bd38e0b.01.01", "time": "2026-10-06 13:31:58", "symbol": "TMO", "side": "SLD", "qty": 19.0, "price": 689.03, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6ac6de02.01.01", "time": "2026-10-07 13:30:12", "symbol": "QCOM", "side": "SLD", "qty": 67.0, "price": 178.46, "commission": 0.0, "realized_pnl": 0.0}
