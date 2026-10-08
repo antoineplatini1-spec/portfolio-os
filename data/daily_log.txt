@@ -21390,3 +21390,118 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-10-07 11:01]   [MOMENTUM SELL] Legrand (LR.PA) @ 141.55 — raison newsletter : HOLD
 [2026-10-07 11:01] [MOMENTUM] valeur=9634.28€  cash=1929.57€  positions=8  PnL=-812.04€
 [2026-10-07 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-10-08 11:00] ============================================================
+[2026-10-08 11:00] SCAN JOURNALIER - 2026-10-08
+[2026-10-08 11:00] ============================================================
+[2026-10-08 11:00] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-10-08 11:00]   Date     : 2026-10-08  [imap]
+[2026-10-08 11:00]   CAC 40   : NEUTRAL
+[2026-10-08 11:00]   Valeurs  :
+[2026-10-08 11:00]     ✅ Dassault Systèmes (Tech) → BUY
+[2026-10-08 11:00]     ⚠️ Ses (Tech) → CAUTION
+[2026-10-08 11:00]   Macro    : oil_bearish, inflation_high, market_bullish
+[2026-10-08 11:00]   Secteurs : Tech:-1
+[2026-10-08 11:00] ───────────────────────────────────────────────────────
+[2026-10-08 11:00] [LLM] Biais sectoriel = LLM : Macro:-1, Energie:+1, Tech:+1, Conso:-1
+[2026-10-08 11:00] [LLM] Trades momentum = LLM (1) : Dassault Systèmes:BUY
+[2026-10-08 11:00] [US] The Transcript «Catalyst Watch» → secteur {'Semi': -1, 'REIT': -1, 'Macro': -1} | idées: MU, DLR
+[2026-10-08 11:00] ══════════════════════════════════════════════
+[2026-10-08 11:00]   AGENT MACRO — 2026-10-08
+[2026-10-08 11:00] ══════════════════════════════════════════════
+[2026-10-08 11:00]   Régime marché  : BULL
+[2026-10-08 11:00]   SPY vs EMA200  : +6.4%
+[2026-10-08 11:00]   VIX            : 15.3 (LOW)
+[2026-10-08 11:00]   Max trades/j   : 3
+[2026-10-08 11:00]   Seuil net min  : 10
+[2026-10-08 11:00]   Top secteurs   : Semi, Tech
+[2026-10-08 11:00]   Secteurs auth. : TOUS (régime favorable)
+[2026-10-08 11:00]   Rationale      : Marché haussier (SPY +6.4% vs EMA200). Exposition maximale autorisée.
+[2026-10-08 11:00] ══════════════════════════════════════════════
+[2026-10-08 11:00] [SYNC IBKR] MPC : bracket natif soldé(e) @ 462.47 → clôturé
+[2026-10-08 11:00] [SYNC IBKR] INTC : bracket natif soldé(e) @ 108.90 → clôturé
+[2026-10-08 11:00] [SYNC IBKR] soldée(s) : MPC, INTC
+[2026-10-08 11:00] [SYNC IBKR] cash = 202746 | NLV = 257303 | positions = 13
+[2026-10-08 11:00] 13 position(s) ouverte(s) - mise a jour des prix...
+[2026-10-08 11:00]   V: 375.39
+[2026-10-08 11:00]   JNJ: 252.45
+[2026-10-08 11:00]   ABBV: 266.82
+[2026-10-08 11:00]   MRK: 139.74
+[2026-10-08 11:00]   BKNG: 156.09
+[2026-10-08 11:00]   MSFT: 530.27
+[2026-10-08 11:00]   TMO: 639.46
+[2026-10-08 11:00]   NFLX: 71.22
+[2026-10-08 11:00]   MU: 1067.78
+[2026-10-08 11:00]   DE: 645.02
+[2026-10-08 11:00]   AMD: 636.71
+[2026-10-08 11:00]   META: 720.34
+[2026-10-08 11:00]   DDOG: 278.37
+[2026-10-08 11:00] Screener en cours...
+[2026-10-08 11:00] [US] Univers screener enrichi de 2 idée(s) newsletters US : MU, DLR
+[2026-10-08 11:00] Scores : max=71  mediane=0  (156 tickers)
+[2026-10-08 11:00] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=71
+[2026-10-08 11:00] Bonus sectoriel appliqué (±3pts/unité) — favorisés: Tech, Energie | pénalisés: Macro, Conso, Semi, REIT
+[2026-10-08 11:00] Filtre ETF/indices (non achetables) : 28 → 22 candidats
+[2026-10-08 11:00] 22 candidats pre-filtres (score>=40, R>=1.2)
+[2026-10-08 11:01]   [SEC 8-K] PSX (2026-10-05) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-10-08 11:01]   [SEC 8-K] WOLF (2026-10-07) : Divulgation Regulation FD, Autre événement matériel, États financiers & annexes
+[2026-10-08 11:01]   [SEC 8-K] ZS (2026-10-06) : Divulgation Regulation FD, États financiers & annexes
+[2026-10-08 11:01]   [SEC 8-K] ABBV (2026-10-05) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-08 11:01] [LLM news] PSX: neutral 0.30 — Changement de dirigeant (8-K)
+[2026-10-08 11:01] [LLM news] ABBV: neutral 0.30 — Publication de résultats financiers (8-K)
+[2026-10-08 11:01] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-10-08 11:01] Cash deployable cette semaine : 223467 EUR  (max trades/j : 2)
+[2026-10-08 11:01] ────────────────────────────────────────────────────
+[2026-10-08 11:01]   DÉBAT : PSX
+[2026-10-08 11:01] ────────────────────────────────────────────────────
+[2026-10-08 11:01]   🟢 BULL [conviction=84] → ACHETER
+[2026-10-08 11:01]      • Score haussier fort (76/100)
+[2026-10-08 11:01]      • Croisement MACD haussier au-dessus de zéro — momentum fort
+[2026-10-08 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-10-08 11:01]      • Prix au-dessus EMA200 (202.84) — tendance long terme haussière
+[2026-10-08 11:01]      • Momentum 10j fort (+9.1%) — tendance confirmée
+[2026-10-08 11:01] 
+[2026-10-08 11:01]   🔴 BEAR [concern=21] → OK
+[2026-10-08 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-10-08 11:01]      • Exposition modérée (61%) — prudence sur les ajouts
+[2026-10-08 11:01]      • Volume faible (0.2× moyenne)
+[2026-10-08 11:01] 
+[2026-10-08 11:01]   ✅ ARBITRE → ACHETER  (net=+71)
+[2026-10-08 11:01]      Arguments haussiers l'emportent clairement (conviction=84, concern=21, net=+71)
+[2026-10-08 11:01] ────────────────────────────────────────────────────
+[2026-10-08 11:01]   [ACHAT] PSX score=71 bull=84 bear=21 prix=279.23 investi=12842EUR SL=262.58 TP1=291.72
+[2026-10-08 11:01] ────────────────────────────────────────────────────
+[2026-10-08 11:01]   DÉBAT : MPC
+[2026-10-08 11:01] ────────────────────────────────────────────────────
+[2026-10-08 11:01]   🟢 BULL [conviction=72] → ACHETER
+[2026-10-08 11:01]      • Score haussier fort (71/100)
+[2026-10-08 11:01]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-10-08 11:01]      • Prix au-dessus EMA200 (300.51) — tendance long terme haussière
+[2026-10-08 11:01]      • Momentum 10j fort (+18.5%) — tendance confirmée
+[2026-10-08 11:01]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-10-08 11:01] 
+[2026-10-08 11:01]   🔴 BEAR [concern=21] → OK
+[2026-10-08 11:01]      • Prix au-dessus BB supérieure (surachat)
+[2026-10-08 11:01]      • Exposition modérée (66%) — prudence sur les ajouts
+[2026-10-08 11:01]      • Volume faible (0.2× moyenne)
+[2026-10-08 11:01] 
+[2026-10-08 11:01]   ✅ ARBITRE → ACHETER  (net=+59)
+[2026-10-08 11:01]      Arguments haussiers l'emportent clairement (conviction=72, concern=21, net=+59)
+[2026-10-08 11:01] ────────────────────────────────────────────────────
+[2026-10-08 11:01]   [ACHAT] MPC score=66 bull=72 bear=21 prix=463.12 investi=12979EUR SL=432.44 TP1=486.13
+[2026-10-08 11:01] 2 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-10-08 11:01] ----------------------------------------
+[2026-10-08 11:01] RESUME : valeur=257303.04 EUR  investi=186776.24 EUR  cash=202206.11 EUR  expo=70.6%  positions=15
+[2026-10-08 11:01] ----------------------------------------
+[2026-10-08 11:01] [MOMENTUM] 8 position(s) ouverte(s)...
+[2026-10-08 11:01]   [MOMENTUM] AI.PA: 168.12
+[2026-10-08 11:01]   [MOMENTUM] HO.PA: 216.20
+[2026-10-08 11:01]   [MOMENTUM] SAF.PA: 312.30
+[2026-10-08 11:01]   [MOMENTUM] NEX.PA: 127.20
+[2026-10-08 11:01]   [MOMENTUM] AM.PA: 279.40
+[2026-10-08 11:01]   [MOMENTUM] FR.PA: 13.36
+[2026-10-08 11:01]   [MOMENTUM] TEP.PA: 70.32
+[2026-10-08 11:01]   [MOMENTUM] CAP.PA: 110.00
+[2026-10-08 11:01] [MOMENTUM] 1 signal(s) newsletter...
+[2026-10-08 11:01]   [MOMENTUM] Dassault Systèmes (DSY.PA) 46.447× à 21.53€ | SL=20.39 | TPs=22.90 | investi=1000€
+[2026-10-08 11:01] [MOMENTUM] valeur=9495.62€  cash=2729.15€  positions=7  PnL=-950.69€
+[2026-10-08 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr

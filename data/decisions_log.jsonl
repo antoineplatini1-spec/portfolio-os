@@ -102,3 +102,5 @@
 {"ts": "2026-10-02T15:01:29.123443+00:00", "ticker": "DE", "features": {"momentum": 40.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 40.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 43.0}
 {"ts": "2026-10-07T15:01:31.088041+00:00", "ticker": "TMO", "features": {"momentum": 75.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 75.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 75.0}
 {"ts": "2026-10-07T15:01:33.105630+00:00", "ticker": "MPC", "features": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 64.0}
+{"ts": "2026-10-08T15:01:43.095102+00:00", "ticker": "PSX", "features": {"momentum": 71.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 71.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 74.0}
+{"ts": "2026-10-08T15:01:44.582973+00:00", "ticker": "MPC", "features": {"momentum": 66.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 66.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 69.0}
