@@ -104,3 +104,5 @@
 {"ts": "2026-10-07T15:01:33.105630+00:00", "ticker": "MPC", "features": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 64.0}
 {"ts": "2026-10-08T15:01:43.095102+00:00", "ticker": "PSX", "features": {"momentum": 71.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 71.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 74.0}
 {"ts": "2026-10-08T15:01:44.582973+00:00", "ticker": "MPC", "features": {"momentum": 66.0, "sector": 1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 66.0, "sector": 3.0, "news": 0.0, "conviction": 0.0}, "total": 69.0}
+{"ts": "2026-10-09T15:03:12.299516+00:00", "ticker": "CRWD", "features": {"momentum": 69.0, "sector": -1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 69.0, "sector": -3.0, "news": 0.0, "conviction": 0.0}, "total": 66.0}
+{"ts": "2026-10-09T15:03:16.943435+00:00", "ticker": "MRVL", "features": {"momentum": 56.0, "sector": -1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 56.0, "sector": -3.0, "news": 0.0, "conviction": 0.0}, "total": 53.0}

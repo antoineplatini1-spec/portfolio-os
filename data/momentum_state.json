@@ -1,5 +1,5 @@
 {
-  "cash": 2729.154821009231,
+  "cash": 1989.8084801582459,
   "initial_cash": 10000.0,
   "start_date": "2026-07-09",
   "positions": {
@@ -374,7 +374,7 @@
       "ticker": "SAF.PA",
       "entry_price": 343.4431061096191,
       "qty_total": 2.914602104956807,
-      "qty_remaining": 0.0,
+      "qty_remaining": 2.914602104956807,
       "sl": 318.0,
       "trailing_stop": false,
       "trailing_stop_price": 343.4431061096191,
@@ -906,17 +906,17 @@
     },
     "BN.PA": {
       "ticker": "BN.PA",
-      "entry_price": 60.16009847259521,
-      "qty_total": 16.638935530599014,
-      "qty_remaining": 16.638935530599014,
-      "sl": 58.88,
+      "entry_price": 58.73868030548095,
+      "qty_total": 17.041581370131595,
+      "qty_remaining": 17.041581370131595,
+      "sl": 57.0,
       "trailing_stop": false,
-      "trailing_stop_price": 60.16009847259521,
-      "entry_date": "2026-09-18",
+      "trailing_stop_price": 58.73868030548095,
+      "entry_date": "2026-10-09",
       "fees_in": 0.0,
-      "status": "closed",
-      "close_price": 58.76117969512939,
-      "close_date": "2026-09-30",
+      "status": "open",
+      "close_price": 0.0,
+      "close_date": "",
       "entry_score": 0,
       "entry_atr": 0.0,
       "fees_out": 0.0,
@@ -924,7 +924,7 @@
       "adopted": false,
       "tp_levels": [
         {
-          "price": 64.84,
+          "price": 63.91,
           "sell_pct": 0.5,
           "hit": false,
           "hit_date": ""
@@ -942,7 +942,7 @@
       "ticker": "FR.PA",
       "entry_price": 14.989975381851195,
       "qty_total": 66.77796157103367,
-      "qty_remaining": 0.0,
+      "qty_remaining": 66.77796157103367,
       "sl": 13.38,
       "trailing_stop": false,
       "trailing_stop_price": 14.989975381851195,
@@ -1016,13 +1016,13 @@
       "ticker": "CAP.PA",
       "entry_price": 110.26015152740477,
       "qty_total": 9.078529152494452,
-      "qty_remaining": 9.078529152494452,
+      "qty_remaining": 6.808896864370839,
       "sl": 94.88,
-      "trailing_stop": false,
+      "trailing_stop": true,
       "trailing_stop_price": 110.26015152740477,
       "entry_date": "2026-10-06",
       "fees_in": 0.0,
-      "status": "open",
+      "status": "partial",
       "close_price": 0.0,
       "close_date": "",
       "entry_score": 0,
@@ -1034,8 +1034,8 @@
         {
           "price": 112.6,
           "sell_pct": 0.25,
-          "hit": false,
-          "hit_date": ""
+          "hit": true,
+          "hit_date": "2026-10-09"
         },
         {
           "price": 118.87,
@@ -1056,7 +1056,14 @@
           "hit_date": ""
         }
       ],
-      "partial_fills": []
+      "partial_fills": [
+        {
+          "date": "2026-10-09",
+          "qty": 2.269632288123613,
+          "price": 115.28460152435302,
+          "reason": "TP1"
+        }
+      ]
     }
   },
   "history": [
@@ -1295,30 +1302,30 @@
     "VK.PA": 18.774999618530273,
     "SCR.PA": 32.939998626708984,
     "BIM.PA": 70.55000305175781,
-    "AI.PA": 168.1199951171875,
+    "AI.PA": 169.83999633789062,
     "AIR.PA": 196.3000030517578,
     "LR.PA": 141.5500030517578,
     "PUB.PA": 97.0199966430664,
     "ML.PA": 33.880001068115234,
-    "HO.PA": 216.1999969482422,
+    "HO.PA": 216.6999969482422,
     "URW.PA": 96.31999969482422,
     "SAF.PA": 312.29998779296875,
     "KER.PA": 264.8500061035156,
     "EN.PA": 43.209999084472656,
     "RNO.PA": 28.309999465942383,
     "RI.PA": 64.05999755859375,
-    "DSY.PA": 21.06999969482422,
+    "DSY.PA": 21.690000534057617,
     "SOI.PA": 136.6999969482422,
-    "NEX.PA": 127.19999694824219,
+    "NEX.PA": 128.60000610351562,
     "ATE.PA": 81.19999694824219,
     "CS.PA": 44.94499969482422,
     "ERF.PA": 72.9000015258789,
     "TTE.PA": 78.27999877929688,
-    "AM.PA": 279.3999938964844,
+    "AM.PA": 281.3999938964844,
     "ORA.PA": 14.130000114440918,
     "BN.PA": 58.81999969482422,
     "FR.PA": 13.359999656677246,
-    "TEP.PA": 70.31999969482422,
-    "CAP.PA": 110.0
+    "TEP.PA": 71.91999816894531,
+    "CAP.PA": 115.4000015258789
   }
 }
