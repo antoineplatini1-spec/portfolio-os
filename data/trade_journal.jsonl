@@ -277,3 +277,12 @@
 {"execId": "00025b44.6ac8cef5.01.01", "time": "2026-10-09 15:03:12", "symbol": "CRWD", "side": "BOT", "qty": 8.0, "price": 267.76, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b45.6acb3455.01.01", "time": "2026-10-09 15:03:16", "symbol": "MRVL", "side": "BOT", "qty": 47.0, "price": 270.69, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6bddcfd9.01.01", "time": "2026-10-09 18:40:37", "symbol": "MSFT", "side": "SLD", "qty": 25.0, "price": 535.81, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6accb378.01.01", "time": "2026-10-12 13:30:07", "symbol": "MU", "side": "SLD", "qty": 12.0, "price": 996.86, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6bddff9a.01.01", "time": "2026-10-12 13:30:28", "symbol": "DDOG", "side": "SLD", "qty": 46.0, "price": 299.3, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6bdf45cb.01.01", "time": "2026-10-12 15:03:20", "symbol": "NVDA", "side": "BOT", "qty": 57.0, "price": 225.92, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6accf1f3.01.01", "time": "2026-10-12 15:03:23", "symbol": "SHOP", "side": "BOT", "qty": 73.0, "price": 176.94, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6acd6b4b.01.01", "time": "2026-10-12 15:03:24", "symbol": "MAR", "side": "BOT", "qty": 35.0, "price": 368.83, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6ace00f3.01.01", "time": "2026-10-13 13:30:24", "symbol": "AMD", "side": "SLD", "qty": 21.0, "price": 576.44, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000dc8f.6be124de.01.01", "time": "2026-10-13 13:32:35", "symbol": "MRVL", "side": "SLD", "qty": 47.0, "price": 248.65, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "0000e0d5.6ace0c39.01.01", "time": "2026-10-13 13:33:09", "symbol": "ABBV", "side": "SLD", "qty": 18.0, "price": 282.61, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6ace9e59.01.01", "time": "2026-10-13 13:50:17", "symbol": "META", "side": "SLD", "qty": 18.0, "price": 761.72, "commission": 0.0, "realized_pnl": 0.0}
