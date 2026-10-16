@@ -114,3 +114,5 @@
 {"ts": "2026-10-14T15:01:39.732335+00:00", "ticker": "AMD", "features": {"momentum": 50.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 50.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 50.0}
 {"ts": "2026-10-15T15:01:49.114106+00:00", "ticker": "MRNA", "features": {"momentum": 81.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 81.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 81.0}
 {"ts": "2026-10-15T15:01:50.088690+00:00", "ticker": "MAR", "features": {"momentum": 67.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 67.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 67.0}
+{"ts": "2026-10-16T15:01:32.495185+00:00", "ticker": "TMO", "features": {"momentum": 75.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 75.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 75.0}
+{"ts": "2026-10-16T15:01:34.087837+00:00", "ticker": "PM", "features": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 64.0}
