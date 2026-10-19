@@ -22776,3 +22776,138 @@ portfolio.ibkr_broker.IBKRConnectionError: Connexion IB Gateway 127.0.0.1:4002 �
 [2026-10-16 11:01]   Cash insuffisant (780€ < 1000€)
 [2026-10-16 11:01] [MOMENTUM] valeur=10020.77€  cash=780.25€  positions=10  PnL=-488.50€
 [2026-10-16 11:01] [EMAIL] Envoye a antoine.platini@outlook.fr
+[2026-10-19 11:01] ============================================================
+[2026-10-19 11:01] SCAN JOURNALIER - 2026-10-19
+[2026-10-19 11:01] ============================================================
+[2026-10-19 11:02] ── NEWSLETTER MOMENTUM ────────────────────────────────
+[2026-10-19 11:02]   Date     : 2026-10-19  [imap]
+[2026-10-19 11:02]   CAC 40   : BEARISH
+[2026-10-19 11:02] ───────────────────────────────────────────────────────
+[2026-10-19 11:02] [LLM] Biais sectoriel : LLM sans résultat → algo (regex)
+[2026-10-19 11:02] [LLM] Trades momentum = LLM (1) : Dassault Aviation:BUY
+[2026-10-19 11:02] [US] The Transcript «Shortage of Capital» → secteur — | idées: —
+[2026-10-19 11:02] ══════════════════════════════════════════════
+[2026-10-19 11:02]   AGENT MACRO — 2026-10-19
+[2026-10-19 11:02] ══════════════════════════════════════════════
+[2026-10-19 11:02]   Régime marché  : BULL
+[2026-10-19 11:02]   SPY vs EMA200  : +5.1%
+[2026-10-19 11:02]   VIX            : 17.8 (LOW)
+[2026-10-19 11:02]   Max trades/j   : 3
+[2026-10-19 11:02]   Seuil net min  : 10
+[2026-10-19 11:02]   Top secteurs   : Energie, ConsoBase, Santé, Materiaux, Utilities, Conso
+[2026-10-19 11:02]   Secteurs auth. : TOUS (régime favorable)
+[2026-10-19 11:02]   Rationale      : Marché haussier (SPY +5.1% vs EMA200). Exposition maximale autorisée.
+[2026-10-19 11:02] ══════════════════════════════════════════════
+[2026-10-19 11:02] [SYNC IBKR] MPC : bracket natif soldé(e) @ 486.13 → clôturé
+[2026-10-19 11:02] [SYNC IBKR] soldée(s) : MPC
+[2026-10-19 11:02] [SYNC IBKR] cash = 219703 | NLV = 251785 | positions = 12
+[2026-10-19 11:02] 12 position(s) ouverte(s) - mise a jour des prix...
+[2026-10-19 11:02]   V: 401.33
+[2026-10-19 11:02]   JNJ: 251.81
+[2026-10-19 11:02]   ABBV: 284.01
+[2026-10-19 11:02]   MRK: 145.17
+[2026-10-19 11:02]   PSX: 293.68
+[2026-10-19 11:02]   SHOP: 172.56
+[2026-10-19 11:02]   BKNG: 160.69
+[2026-10-19 11:02]   TMO: 682.89
+[2026-10-19 11:02]   NFLX: 69.76
+[2026-10-19 11:02]   NVDA: 217.84
+[2026-10-19 11:02]   MAR: 390.93
+[2026-10-19 11:02]   PM: 202.87
+[2026-10-19 11:02] Screener en cours...
+[2026-10-19 11:02] Scores : max=84  mediane=5  (155 tickers)
+[2026-10-19 11:02] Contexte marche : BULL | seuil=40 | max_trades=3 | score_max=84
+[2026-10-19 11:02] Filtre ETF/indices (non achetables) : 33 → 29 candidats
+[2026-10-19 11:02] Prudence résultats : 4 candidat(s) écarté(s) (earnings dans ≤3j) → ISRG, TMO, PG, PM
+[2026-10-19 11:02] 25 candidats pre-filtres (score>=40, R>=1.2)
+[2026-10-19 11:02]   [SEC 8-K] COST (2026-10-16) ⚠MATÉRIEL : Départ / nomination d'un dirigeant, États financiers & annexes
+[2026-10-19 11:02]   [SEC 8-K] COST (2026-10-14) : Autre événement matériel, États financiers & annexes
+[2026-10-19 11:02]   [SEC 8-K] UNH (2026-10-13) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-19 11:02]   [SEC 8-K] ABBV (2026-10-15) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-10-19 11:02]   [SEC 8-K] XOM (2026-10-16) : Divulgation Regulation FD
+[2026-10-19 11:02]   [SEC 8-K] OXY (2026-10-13) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-19 11:02]   [SEC 8-K] JNJ (2026-10-13) ⚠MATÉRIEL : Résultats financiers, États financiers & annexes
+[2026-10-19 11:02]   [SEC 8-K] MRK (2026-10-13) ⚠MATÉRIEL : Départ / nomination d'un dirigeant
+[2026-10-19 11:03] [LLM news] COST: neutral 0.30 — Changement de dirigeant
+[2026-10-19 11:03] [LLM news] UNH: neutral 0.40 — Publication de résultats financiers
+[2026-10-19 11:03] [LLM news] ABBV: neutral 0.30 — Changement de dirigeant
+[2026-10-19 11:03] [LLM news] OXY: neutral 0.40 — Publication de résultats financiers
+[2026-10-19 11:03] [LLM news] JNJ: neutral 0.40 — Publication de résultats financiers
+[2026-10-19 11:03] [LLM news] MRK: neutral 0.30 — Changement de dirigeant
+[2026-10-19 11:03] Score décision unifié (momentum+secteur+news+conviction) → candidats reclassés
+[2026-10-19 11:03] Cash deployable cette semaine : 228648 EUR  (max trades/j : 2)
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   DÉBAT : MRNA
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   🟢 BULL [conviction=96] → ACHETER
+[2026-10-19 11:03]      • Score haussier fort (86/100)
+[2026-10-19 11:03]      • R-ratio excellent (4.7×) — asymétrie gain/risque idéale
+[2026-10-19 11:03]      • Prix au-dessus EMA200 (98.58) — tendance long terme haussière
+[2026-10-19 11:03]      • Momentum 10j fort (+11.5%) — tendance confirmée
+[2026-10-19 11:03]      • CMF fort — flux acheteur dominant
+[2026-10-19 11:03] 
+[2026-10-19 11:03]   🔴 BEAR [concern=23] → OK
+[2026-10-19 11:03]      • Secteur Santé très concentré (4 positions) — risque sectoriel
+[2026-10-19 11:03]      • Volume faible (0.4× moyenne)
+[2026-10-19 11:03] 
+[2026-10-19 11:03]   ✅ ARBITRE → ACHETER  (net=+82)
+[2026-10-19 11:03]      Arguments haussiers l'emportent clairement (conviction=96, concern=23, net=+82)
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   [VETO secteur] MRNA : Santé deja a 4 positions
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   DÉBAT : PLTR
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   🟢 BULL [conviction=70] → ACHETER
+[2026-10-19 11:03]      • Score haussier fort (71/100)
+[2026-10-19 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-10-19 11:03]      • Prix au-dessus EMA200 (157.19) — tendance long terme haussière
+[2026-10-19 11:03]      • Stoch RSI survendu (15) — retournement imminent
+[2026-10-19 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-10-19 11:03] 
+[2026-10-19 11:03]   🔴 BEAR [concern=15] → OK
+[2026-10-19 11:03]      • Secteur Tech déjà exposé (2 positions) — diversification limitée
+[2026-10-19 11:03]      • Volume faible (0.4× moyenne)
+[2026-10-19 11:03] 
+[2026-10-19 11:03]   ✅ ARBITRE → ACHETER  (net=+61)
+[2026-10-19 11:03]      Arguments haussiers l'emportent clairement (conviction=70, concern=15, net=+61)
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   [ACHAT] PLTR score=69 bull=70 bear=15 prix=194.96 investi=12680EUR SL=179.36 TP1=206.78
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   DÉBAT : COST
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   🟢 BULL [conviction=62] → ACHETER
+[2026-10-19 11:03]      • R-ratio solide (2.5×) — risque/récompense favorable
+[2026-10-19 11:03]      • Prix au-dessus EMA200 (962.46) — tendance long terme haussière
+[2026-10-19 11:03]      • Score haussier correct (68/100)
+[2026-10-19 11:03]      • CMF fort — flux acheteur dominant
+[2026-10-19 11:03]      • Prix au-dessus EMA50 — soutien technique actif
+[2026-10-19 11:03] 
+[2026-10-19 11:03]   🔴 BEAR [concern=41] → PRUDENCE
+[2026-10-19 11:03]      • Secteur Conso déjà exposé (2 positions) — diversification limitée
+[2026-10-19 11:03]      • Stoch RSI suracheté (82) — retournement baissier possible
+[2026-10-19 11:03]      • RSI suracheté (79)
+[2026-10-19 11:03]      • Exposition modérée (62%) — prudence sur les ajouts
+[2026-10-19 11:03]      • Volume faible (0.2× moyenne)
+[2026-10-19 11:03] 
+[2026-10-19 11:03]   ✅ ARBITRE → ACHETER  (net=+37)
+[2026-10-19 11:03]      Arguments haussiers l'emportent clairement (conviction=62, concern=41, net=+37)
+[2026-10-19 11:03] ────────────────────────────────────────────────────
+[2026-10-19 11:03]   [ACHAT] COST score=62 bull=62 bear=41 prix=990.98 investi=12889EUR SL=959.08 TP1=1014.91
+[2026-10-19 11:03] 3 debat(s) mene(s) → 2 achat(s) effectue(s).
+[2026-10-19 11:03] ----------------------------------------
+[2026-10-19 11:03] RESUME : valeur=251784.60 EUR  investi=172121.31 EUR  cash=207743.93 EUR  expo=67.3%  positions=14
+[2026-10-19 11:03] ----------------------------------------
+[2026-10-19 11:03] [MOMENTUM] 10 position(s) ouverte(s)...
+[2026-10-19 11:03]   [MOMENTUM] VK.PA: 18.73
+[2026-10-19 11:03]   [MOMENTUM] AI.PA: 172.66
+[2026-10-19 11:03]   [MOMENTUM] HO.PA: 229.40
+[2026-10-19 11:03]   [MOMENTUM] NEX.PA: 121.90
+[2026-10-19 11:03]   [MOMENTUM] AM.PA: 299.80
+[2026-10-19 11:03]   [MOMENTUM] BN.PA: 60.62
+[2026-10-19 11:03]   [MOMENTUM] TEP.PA: 76.06
+[2026-10-19 11:03]   [MOMENTUM] CAP.PA: 122.35
+[2026-10-19 11:03]   [MOMENTUM] OR.PA: 401.50
+[2026-10-19 11:03]   [MOMENTUM] ENGI.PA: 22.76
+[2026-10-19 11:03] [MOMENTUM] 1 signal(s) newsletter...
+[2026-10-19 11:03] [MOMENTUM] valeur=9921.29€  cash=1043.86€  positions=10  PnL=-587.99€
+[2026-10-19 11:03] [EMAIL] Envoye a antoine.platini@outlook.fr
