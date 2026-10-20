@@ -118,3 +118,5 @@
 {"ts": "2026-10-16T15:01:34.087837+00:00", "ticker": "PM", "features": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 64.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 64.0}
 {"ts": "2026-10-19T15:03:15.378542+00:00", "ticker": "PLTR", "features": {"momentum": 69.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 69.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 69.0}
 {"ts": "2026-10-19T15:03:17.605705+00:00", "ticker": "COST", "features": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 62.0}
+{"ts": "2026-10-20T15:01:20.103058+00:00", "ticker": "MAR", "features": {"momentum": 67.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 67.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 67.0}
+{"ts": "2026-10-20T15:01:22.087085+00:00", "ticker": "MA", "features": {"momentum": 62.0, "sector": -1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": -3.0, "news": 0.0, "conviction": 0.0}, "total": 59.0}
