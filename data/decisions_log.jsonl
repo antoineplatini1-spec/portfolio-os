@@ -120,3 +120,5 @@
 {"ts": "2026-10-19T15:03:17.605705+00:00", "ticker": "COST", "features": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 62.0}
 {"ts": "2026-10-20T15:01:20.103058+00:00", "ticker": "MAR", "features": {"momentum": 67.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 67.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 67.0}
 {"ts": "2026-10-20T15:01:22.087085+00:00", "ticker": "MA", "features": {"momentum": 62.0, "sector": -1.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 62.0, "sector": -3.0, "news": 0.0, "conviction": 0.0}, "total": 59.0}
+{"ts": "2026-10-21T15:01:48.114358+00:00", "ticker": "MPC", "features": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 70.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 70.0}
+{"ts": "2026-10-21T15:01:49.170143+00:00", "ticker": "DDOG", "features": {"momentum": 65.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "contrib": {"momentum": 65.0, "sector": 0.0, "news": 0.0, "conviction": 0.0}, "total": 65.0}

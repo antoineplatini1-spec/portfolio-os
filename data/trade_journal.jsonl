@@ -307,3 +307,6 @@
 {"execId": "00025b49.6ad60e52.01.01", "time": "2026-10-19 15:03:15", "symbol": "PLTR", "side": "BOT", "qty": 65.0, "price": 195.08, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "00025b44.6ad61708.01.01", "time": "2026-10-19 15:03:17", "symbol": "COST", "side": "BOT", "qty": 13.0, "price": 991.49, "commission": 0.0, "realized_pnl": 0.0}
 {"execId": "0000dc8f.6bea4007.01.01", "time": "2026-10-20 14:48:55", "symbol": "MAR", "side": "SLD", "qty": 33.0, "price": 395.91, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6ad794b9.01.01", "time": "2026-10-20 15:01:20", "symbol": "MAR", "side": "BOT", "qty": 32.0, "price": 396.32, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b45.6ad794c1.01.01", "time": "2026-10-20 15:01:22", "symbol": "MA", "side": "BOT", "qty": 20.0, "price": 622.46, "commission": 0.0, "realized_pnl": 0.0}
+{"execId": "00025b49.6ad89e6b.01.01", "time": "2026-10-21 13:30:08", "symbol": "PM", "side": "SLD", "qty": 61.0, "price": 185.59, "commission": 0.0, "realized_pnl": 0.0}
