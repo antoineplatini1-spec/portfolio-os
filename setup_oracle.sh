@@ -217,6 +217,18 @@ if ! command -v cloudflared &>/dev/null; then
     log "cloudflared installé : $(cloudflared --version)"
 else
     log "cloudflared déjà installé : $(cloudflared --version)"
+    # Versions < 2026.10.2 font confiance à des certificats eMudhra compromis → mise à jour
+    CF_VER="$(cloudflared --version | grep -oE '[0-9]{4}\.[0-9]+\.[0-9]+' | head -1)"
+    if [ "$(printf '%s\n%s\n' "2026.10.2" "$CF_VER" | sort -V | head -1)" != "2026.10.2" ]; then
+        warn "cloudflared $CF_VER < 2026.10.2 : mise à jour..."
+        CLOUDFLARED_DEB="cloudflared-linux-arm64.deb"
+        wget -q "https://github.com/cloudflare/cloudflared/releases/latest/download/${CLOUDFLARED_DEB}" \
+            -O "/tmp/${CLOUDFLARED_DEB}"
+        sudo dpkg -i "/tmp/${CLOUDFLARED_DEB}"
+        rm -f "/tmp/${CLOUDFLARED_DEB}"
+        sudo systemctl restart cloudflared 2>/dev/null || true
+        log "cloudflared mis à jour : $(cloudflared --version)"
+    fi
 fi
 
 # === 10. Firewall — iptables ==================================================
